@@ -1,0 +1,22 @@
+{
+  "name": "skillsmith",
+  "displayName": "Skillsmith",
+  "description": "Author, edit, and audit Claude Code skills for token-efficient, high-trigger-accuracy LLM ingestion: a verified token cost model, description-as-router rules, progressive disclosure into reference files, and skill eval methodology.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "homepage": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/src/branch/main/skills/skillsmith",
+  "repository": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills",
+  "keywords": [
+    "skills",
+    "skill-authoring",
+    "claude-code",
+    "prompt-engineering",
+    "token-efficiency",
+    "frontmatter",
+    "progressive-disclosure"
+  ]
+}

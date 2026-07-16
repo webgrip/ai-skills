@@ -1,0 +1,39 @@
+{
+  "skill_name": "domain-language",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "naming-collision-grilling",
+      "prompt": "We keep calling the same thing Cart, Basket and Bag in different parts of the codebase and it's causing bugs. Help us sort out our vocabulary.",
+      "assertions": [
+        "Gathers raw material first (scans code/docs/conversation for candidate terms) before asking questions",
+        "Asks pointed questions in small rounds (2-3 at a time), not a wall of questions",
+        "Proposes ONE canonical term itself with a one-line reason instead of only asking which the user prefers",
+        "Demotes the losing names to synonyms or avoid in the model",
+        "Writes the confirmed result to docs/domain/model.yaml (or the project's existing model location)"
+      ]
+    },
+    {
+      "id": "health-check-scorecard",
+      "prompt": "How good is our domain model? Score it and tell us what to fix first.",
+      "files": ["docs/domain/model.yaml"],
+      "assertions": [
+        "Runs scripts/health_check.py against the model rather than eyeballing a score",
+        "Presents the 0-10 scorecard with the five dimensions",
+        "Adds qualitative judgment beyond the script (definition usability, whether contexts pull their weight)",
+        "Ends with the 2-3 fixes that would raise the score most and offers to make them",
+        "Does not chase 10/10 by deleting honest open ambiguities"
+      ]
+    },
+    {
+      "id": "generate-not-handwrite",
+      "prompt": "Turn our domain model into documentation the team can read.",
+      "files": ["docs/domain/model.yaml"],
+      "assertions": [
+        "Runs scripts/generate_docs.py with the model path and -o docs/domain/ instead of hand-writing the docs",
+        "Surfaces any validation warnings the generator prints and offers to fix them",
+        "Does not hand-edit generated output files"
+      ]
+    }
+  ]
+}

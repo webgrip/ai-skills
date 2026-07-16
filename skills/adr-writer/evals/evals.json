@@ -1,0 +1,37 @@
+{
+  "skill_name": "adr-writer",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "new-adr-from-decision",
+      "prompt": "We just decided to switch the inventory service from MySQL to PostgreSQL because of JSONB and partitioning. Record that decision properly.",
+      "assertions": [
+        "Creates the record under an ADR directory (docs/adr/ or the repo's existing corpus location)",
+        "Filename matches adr-NNNN-<kebab-title>.md with the next free number",
+        "Record contains MADR sections: Context and Problem Statement, Considered Options (chosen option listed first), Decision Outcome opening with 'Chosen option:', Consequences as Good/Bad-because bullets, and a Confirmation subsection naming a concrete check",
+        "Frontmatter status is lowercase (proposed or accepted) and date is the last-updated date",
+        "A row for the new record is appended to the index Records table",
+        "The consistency validator is run (or its absence is called out) after writing"
+      ]
+    },
+    {
+      "id": "status-change-after-revert",
+      "prompt": "We reverted the decision in ADR-0007 last Tuesday — production couldn't handle the migration. Update our decision log to reflect reality.",
+      "assertions": [
+        "Appends a dated More Information history bullet citing the revert (with commit reference when available) instead of rewriting the body",
+        "The original decision body text is left as decided",
+        "Creates a new superseding ADR for the reversal or sets status to superseded/deprecated with a forward link, per MADR supersession mechanics",
+        "The index row is updated to mirror the new status and date",
+        "Does not backdate: dates come from git history or the stated event, not invention"
+      ]
+    },
+    {
+      "id": "no-adr-for-exploration",
+      "prompt": "Help me think through whether we should adopt Kafka or RabbitMQ for our event bus — I want to weigh the options.",
+      "assertions": [
+        "Does NOT create an ADR for an unmade decision — frames the work as design exploration (RFC/design doc territory)",
+        "Offers to record an ADR only once a decision is actually made"
+      ]
+    }
+  ]
+}

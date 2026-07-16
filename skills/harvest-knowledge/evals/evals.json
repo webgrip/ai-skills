@@ -1,0 +1,36 @@
+{
+  "skill_name": "harvest-knowledge",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "phase1-distill-verbatim",
+      "prompt": "This session taught us a lot about our deploy pipeline. Before we close: distill this thread so we don't lose the learnings.",
+      "assertions": [
+        "Identifies this as Phase 1 and reads prompt-1-distill.md",
+        "Executes the prompt file verbatim — does not paraphrase, trim, or reorder it",
+        "Produces a self-contained digest that an integrator who cannot see this thread could use",
+        "Does not skip ahead to writing repo docs (that is Phase 3's job)"
+      ]
+    },
+    {
+      "id": "phase2-readonly",
+      "prompt": "Here are five thread digests pasted below. Consolidate them into one knowledge set. [digest 1] ... [digest 5]",
+      "assertions": [
+        "Identifies this as Phase 2 and reads prompt-2-consolidate.md",
+        "Operates ONLY on the pasted digests",
+        "Modifies no files — output only",
+        "Output is deduplicated and truth-checked across digests"
+      ]
+    },
+    {
+      "id": "phase3-plan-before-write",
+      "prompt": "Take this consolidated knowledge set and fold it into the repo docs and skills. [knowledge set]",
+      "assertions": [
+        "Identifies this as Phase 3 and reads prompt-3-synthesize.md",
+        "Inventories the repo's existing docs/skills/conventions FIRST",
+        "Presents the item-to-action PLAN table and waits for approval before writing anything",
+        "LOW-confidence items are verified against the repo or deferred — never enshrined as fact"
+      ]
+    }
+  ]
+}

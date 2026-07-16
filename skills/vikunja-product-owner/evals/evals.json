@@ -1,0 +1,37 @@
+{
+  "skill_name": "vikunja-product-owner",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "create-ticket-with-conventions",
+      "prompt": "Make a ticket for the flaky deploy pipeline — it failed three times this week on the smoke-test step.",
+      "assertions": [
+        "Resolves the board contract from the consuming repo's AGENTS.md/CLAUDE.md first (or runs projects_list and asks which project when absent)",
+        "Loads the vikunja MCP tool schemas via ToolSearch before calling them",
+        "Writes the description as TipTap HTML, not raw markdown, with the first paragraph in the theme + [P · I · E] format",
+        "Applies the label taxonomy: theme/<kebab>, impact/H|M|L, effort/S|M|L, plus needs-refinement for an unrefined ticket",
+        "Does not mark the ticket ready — the Definition of Ready has seven sections it cannot yet satisfy"
+      ]
+    },
+    {
+      "id": "do-next-curation",
+      "prompt": "What should we work on next?",
+      "assertions": [
+        "Reads the board via tasks_list and checks the reported 'Found N' against expected board size (pagination gotcha)",
+        "Recommends highest-leverage UNBLOCKED tickets (P-band first, then impact/effort; effort/S unblocked tickets favored)",
+        "Uses/curates the do-next label within its hard cap, removing stale picks when adding",
+        "Never pads: if nothing genuinely qualifies, says so instead of inventing work"
+      ]
+    },
+    {
+      "id": "completion-with-evidence",
+      "prompt": "VIK-42 is done — I merged the fix this morning. Close it out.",
+      "assertions": [
+        "Posts an HTML evidence comment with the commit/PR links before calling task_complete",
+        "Verifies against the ticket's own Verification section rather than taking 'done' on faith — or states plainly that verification could not be run",
+        "Uses task_complete (soft completion), not task_delete",
+        "Moves/labels per lifecycle conventions (Review bucket for agent-completed work when the contract says a human accepts)"
+      ]
+    }
+  ]
+}

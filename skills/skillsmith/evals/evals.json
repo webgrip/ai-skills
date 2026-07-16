@@ -1,0 +1,36 @@
+{
+  "skill_name": "skillsmith",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "author-new-skill",
+      "prompt": "Write me a skill that teaches the agent our staging deploy procedure: build, push to registry, bump the kustomize tag, wait for argo sync, smoke-test.",
+      "assertions": [
+        "Creates skills/<kebab-name>/SKILL.md (or .claude/skills/...) with frontmatter name equal to the directory name",
+        "Description states what the skill does plus 'Use when' trigger phrases, third person, under 1024 chars",
+        "Body leads with the decision/procedure, imperative voice, no Overview/Introduction section",
+        "Fragile exact-sequence steps are specific (low degrees of freedom): exact commands, no alternative-tool menus",
+        "Rarely-needed detail is split to a sibling reference file, linked one level deep"
+      ]
+    },
+    {
+      "id": "fix-under-triggering",
+      "prompt": "My kubernetes-debugging skill never fires when I ask things like 'why is this pod crashlooping' — it only fires if I literally say kubernetes. Fix it.",
+      "assertions": [
+        "Diagnoses the description as the trigger surface and edits it (not the body) to add symptom phrasings like crashloop/pod/OOM",
+        "Keeps description within budget (1024 spec cap; 1536 listing cap) and checks nothing else gets squeezed out",
+        "Recommends probing with realistic symptom phrasings, not only canonical ones"
+      ]
+    },
+    {
+      "id": "route-to-right-home",
+      "prompt": "I want the agent to always use conventional commits in this repo. Should that be a skill?",
+      "assertions": [
+        "Routes an always-on project rule to CLAUDE.md/AGENTS.md, not a skill",
+        "Explains the cost model briefly: skill bodies load on trigger, CLAUDE.md is always-on",
+        "Does not create an unnecessary skill"
+      ],
+      "expect_trigger": null
+    }
+  ]
+}

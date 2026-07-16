@@ -1,0 +1,20 @@
+{
+  "name": "skill-usage",
+  "displayName": "Skill Usage",
+  "description": "Local skill-usage telemetry: a PostToolUse hook logs every Skill invocation to ~/.claude/skill-usage.jsonl (no network), and the bundled skill reports which skills are used, dead, or undertriggering.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "homepage": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/src/branch/main/skills/skill-usage",
+  "repository": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills",
+  "keywords": [
+    "telemetry",
+    "skills",
+    "usage",
+    "hooks",
+    "curation"
+  ]
+}

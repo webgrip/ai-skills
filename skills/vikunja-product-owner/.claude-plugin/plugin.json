@@ -1,0 +1,20 @@
+{
+  "name": "vikunja-product-owner",
+  "displayName": "Vikunja Product Owner",
+  "description": "Run a Vikunja board as product owner: ticket CRUD, Definition-of-Ready refinement, prioritization, top-up, and agent work protocols over the vikunja MCP.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "vikunja",
+    "product-owner",
+    "backlog",
+    "tickets",
+    "definition-of-ready",
+    "roadmap",
+    "mcp"
+  ]
+}

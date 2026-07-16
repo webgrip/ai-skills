@@ -1,0 +1,135 @@
+{
+  "_comment": "Junior overlay \u2014 opencode v2 ORDERED rules, last match wins; self-contained (org floor at the END, nothing above can unlock it). Safety net against accidents, not a security boundary. v2 gates file READS too \u2014 juniors get explicit read-tier allows so browsing never prompts. v2 bonus: session snapshots + /revert make mistakes cheaply reversible.",
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "glob",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "grep",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git status*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git diff*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git log*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git show*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "ls*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "rg *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "grep *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "find *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "cat *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "mise run*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "mise exec*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "npm test*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "npm run check*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git push*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "rm -rf*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "kubectl *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "helm *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "sops *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "**/*.sops.yaml",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "**/*.sops.yml",
+      "effect": "deny"
+    }
+  ]
+}

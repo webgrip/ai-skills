@@ -1,0 +1,34 @@
+{
+  "skill_name": "skill-usage",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "usage-report",
+      "prompt": "Which of our agent skills do we actually use? Give me a usage report.",
+      "assertions": [
+        "Reads ~/.claude/skill-usage.jsonl (and the opencode twin) rather than guessing",
+        "Handles a missing or empty log as 'no data yet', not as 'no usage'",
+        "Aggregates invocations per skill and compares against the installed estate",
+        "Presents a count table plus the never-fired list"
+      ]
+    },
+    {
+      "id": "find-dead-skills",
+      "prompt": "Find skills we should probably remove — stuff nobody uses anymore.",
+      "assertions": [
+        "Diffs installed skills against logged invocations to produce dead candidates",
+        "Flags that local logs miss other machines and per-skill enablement gaps before recommending removal",
+        "Recommends the estate's deprecation process (consolidate or remove via PR), never silent deletion"
+      ]
+    },
+    {
+      "id": "undertriggering-candidates",
+      "prompt": "I think some of our skills never fire on their own even though they'd be useful. How do we find and fix those?",
+      "assertions": [
+        "Uses the usage log to identify rarely-fired skills",
+        "Notes the log cannot distinguish manual /invocations from auto-triggers — flags rather than concludes",
+        "Routes fixes to description tuning (skillsmith) and re-probing with run_evals.py"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "_comment": "webgrip org defaults \u2014 opencode v2 NATIVE (pinned 0.0.0-next-15495; Ryan owns bumps, runbook in docs/onboarding-opencode.md). Merged into ~/.config/opencode/opencode.json by scripts/install_opencode.sh. AUTH (default) = the webgrip LiteLLM metered inference plane (homelab ADR-0044) at litellm.webgrip.dev \u2014 VPN/LAN only, per-person virtual key in $WEBGRIP_LLM_KEY (mint one, never commit it; see docs/auth.md). The Agent-SDK bridge on personal Max is retired as the default (the 2026-07-14 billing split meters it at API rates anyway \u2014 docs/auth.md); it survives only as a documented personal fallback. PERMISSIONS are an ORDERED rule list, LAST MATCH WINS \u2014 the deny floor stays at the END. autoupdate:false \u2014 the beta self-updates otherwise.",
+  "autoupdate": false,
+  "providers": {
+    "webgrip": {
+      "name": "webgrip LiteLLM",
+      "package": "aisdk:@ai-sdk/openai-compatible",
+      "settings": {
+        "baseURL": "https://litellm.webgrip.dev/v1",
+        "apiKey": "{env:WEBGRIP_LLM_KEY}"
+      },
+      "models": {
+        "claude-opus-4-8": {
+          "modelID": "claude-opus-4-8",
+          "name": "Claude Opus 4.8 (LiteLLM)"
+        },
+        "claude-sonnet-5": {
+          "modelID": "claude-sonnet-5",
+          "name": "Claude Sonnet 5 (LiteLLM)"
+        },
+        "claude-haiku-4-5": {
+          "modelID": "claude-haiku-4-5",
+          "name": "Claude Haiku 4.5 (LiteLLM)"
+        }
+      }
+    }
+  },
+  "model": "webgrip/claude-opus-4-8",
+  "instructions": [
+    "__WEBGRIP_SKILLS_HOME__/org/org-guidelines.md"
+  ],
+  "mcp": {
+    "servers": {
+      "vikunja": {
+        "type": "remote",
+        "url": "https://mcp-vikunja.webgrip.dev/mcp",
+        "oauth": false
+      }
+    }
+  },
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "edit",
+      "resource": "**/*.sops.yaml",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "**/*.sops.yml",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "deny"
+    }
+  ]
+}

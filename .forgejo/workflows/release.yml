@@ -1,0 +1,114 @@
+# .forgejo/workflows/release.yml
+name: Release
+
+# Per-skill release trains on every push to main: re-run the CI checks, then
+# run scripts/release_skills.py, which for each skill changed since its own
+# <skill>-vX.Y.Z tag bumps the version, writes skills/<skill>/CHANGELOG.md,
+# regenerates marketplace.json, commits back, tags, pushes, publishes the
+# <skill>.skill to the generic package registry, and creates a Forgejo release.
+# A change to one skill releases that skill and nothing else — no repo-wide tag.
+#
+# Forgejo notes:
+#   - concurrency is supported (v11+); keeps releases serialized per ref
+#   - no `permissions:` blocks — Forgejo ignores them; write access comes from
+#     WEBGRIP_CI_TOKEN (token-authenticated checkout for push; same token in
+#     FORGEJO_TOKEN for the release + package-registry API calls)
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    name: Manifests, dist & plugin tests
+    runs-on: docker
+    container:
+      image: node:24-trixie
+    steps:
+      # Explicit token: the auto-injected Forgejo Actions token is rejected by
+      # the git HTTP endpoint (401 → prompt → fail). WEBGRIP_CI_TOKEN is the
+      # same known-good bot token the release job checks out with.
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.WEBGRIP_CI_TOKEN }}
+
+      - name: Install PyYAML
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3-yaml
+
+      - name: Check manifests
+        run: python3 scripts/check_manifests.py
+
+      - name: Check marketplace.json is generated
+        run: python3 scripts/sync_marketplace.py --check
+
+      - name: Lint skills
+        run: python3 scripts/lint_skills.py
+
+      - name: Check opencode config estate
+        run: python3 scripts/check_opencode_config.py
+
+      - name: Cross-tool install smoke
+        env:
+          DISABLE_TELEMETRY: "1"
+          DO_NOT_TRACK: "1"
+        run: |
+          # Capture BOTH streams (the CLI prints its summary UI to stderr in
+          # non-TTY CI) and verify each skill by name — robust to stream, ANSI
+          # styling, and the exact "Found N" wording.
+          npx -y skills@latest add ./ --list > /tmp/skills-list.txt 2>&1 || true
+          cat /tmp/skills-list.txt
+          missing=0
+          for d in skills/*/; do
+            name=$(basename "$d")
+            grep -qF "$name" /tmp/skills-list.txt || { echo "MISSING from CLI discovery: $name"; missing=1; }
+          done
+          if [ "$missing" != 0 ]; then echo "FAIL — some skills not discovered by the CLI"; exit 1; fi
+          echo "install smoke OK — all $(ls -d skills/*/ | wc -l | tr -d ' ') skills discovered"
+
+      - name: Official plugin validation (strict)
+        env:
+          CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
+        run: |
+          npm install -g @anthropic-ai/claude-code > /dev/null 2>&1
+          claude plugin validate . --strict
+
+      - name: Run plugin test suites
+        run: |
+          for t in $(find skills -maxdepth 2 -name test.sh | sort); do
+            echo "=== $t"
+            bash "$t"
+          done
+
+  # Per-skill release trains. Plain job (no composite action): token-authenticated
+  # checkout so the commit-back + tag push reach protected main, and the org bot
+  # token passed as GITEA_TOKEN for the release + package-registry API. NOT
+  # FORGEJO_TOKEN — Forgejo auto-injects that as the per-job token, which the
+  # package registry rejects with 401 reqPackageAccess; GITEA_TOKEN is a name it
+  # does not inject, so our explicit value wins. node:24-trixie ships python3 +
+  # git; release_skills.py is stdlib-only.
+  release:
+    name: Per-skill release trains
+    needs:
+      - checks
+    runs-on: docker
+    container:
+      image: node:24-trixie
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.WEBGRIP_CI_TOKEN }}
+      - name: Release changed skills
+        env:
+          GITEA_TOKEN: ${{ secrets.WEBGRIP_CI_TOKEN }}
+        run: |
+          git config user.email "ci@webgrip.dev"
+          git config user.name "Webgrip Release Bot"
+          python3 scripts/release_skills.py apply

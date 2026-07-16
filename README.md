@@ -1,0 +1,116 @@
+# webgrip-ai-skills
+
+[![Release](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/actions/workflows/release.yml/badge.svg?branch=main)](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/actions?workflow=release.yml)
+
+Webgrip's open-source Claude skills, shipped as one plugin marketplace hosted on [Forgejo](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills). Each skill is its own plugin — install only what you want.
+
+## Skills
+
+| Skill | What it does |
+|---|---|
+| [adr-writer](skills/adr-writer) | Write, amend, and supersede MADR 4.0.0 Architecture Decision Records: bootstrap or adopt an ADR corpus, registry index kept in lock-step, append-only dated history, and a bundled CI-ready consistency validator. |
+| [domain-language](skills/domain-language) | Define a project's ubiquitous language (terms, entities, rules, events) in `domain/model.yaml`; generate glossaries, entity docs with Mermaid diagrams, [Context Mapper](https://contextmapper.org) exports, a 0–10 model health score, and feature specs from it. |
+| [guard-secrets](skills/guard-secrets) | A `PreToolUse` hook that blocks plaintext-secret leaks before an edit lands (no decrypted artifacts, SOPS stays ciphertext, gitleaks scan), plus the secrets-floor knowledge behind it — the Claude Code twin of the opencode guard-secrets plugin. |
+| [harvest-knowledge](skills/harvest-knowledge) | Mine durable learnings out of Claude threads in three phases (distill → consolidate → synthesize) and land them as repo docs, CLAUDE.md rules, new skills, and memory updates. |
+| [skill-usage](skills/skill-usage) | Local skill-usage telemetry: a `PostToolUse` hook logs every skill invocation to a local JSONL (no network), and the skill reports which skills are used, dead, or undertriggering — the private answer to "which of our skills earn their keep?". |
+| [skillsmith](skills/skillsmith) | Author, edit, and audit agent skills for token-efficient, high-trigger-accuracy ingestion: the skill loading/token cost model, description-as-router rules, cross-tool frontmatter portability, progressive disclosure, and eval methodology. |
+| [vikunja-product-owner](skills/vikunja-product-owner) | Run a Vikunja board as product owner via the bundled `vikunja` MCP: Definition-of-Ready refinement, prioritization/do-next curation, dependency sequencing, backlog top-up/inventory, and agent claim/completion protocols. |
+| [worktree-herd-dev](skills/worktree-herd-dev) | Parallel git worktrees, each with a dedicated Laravel Herd `.test` domain, isolated Vite port, and optional per-worktree database — setup rolls back on failure, cleanup never guesses (macOS). |
+
+## Install
+
+**Claude Code (recommended):**
+
+```
+/plugin marketplace add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git
+/plugin install domain-language@webgrip-ai-skills
+```
+
+Updates arrive via `/plugin marketplace update webgrip-ai-skills` whenever a version is bumped.
+
+**Whole repo / team** (everyone opening the repo gets the plugin, no per-person steps): commit
+both keys to the project's `.claude/settings.json` — the marketplace source must be the git URL,
+not a local path, so teammates' machines can resolve it:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "webgrip-ai-skills": {
+      "source": { "source": "git", "url": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git" }
+    }
+  },
+  "enabledPlugins": { "domain-language@webgrip-ai-skills": true }
+}
+```
+
+Plugin skills load at session start (not `/reload-skills`) and invoke namespaced:
+`/domain-language:domain-language`.
+
+**Claude Code (manual):** copy `skills/<name>/` into a project's `.claude/skills/` or your `~/.claude/skills/`.
+
+**Any other agent (`npx skills`):** the generated flat `skills/` tree is the vendor-neutral
+layout the cross-tool installers consume — one command installs into 70+ agents
+(opencode, Cursor, Codex, Copilot, Gemini CLI, …):
+
+```bash
+npx skills add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git            # interactive
+npx skills add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git --all -g   # everything, user-level
+```
+
+opencode also natively reads a project's `.claude/skills/` and `~/.claude/skills/`, so the
+manual copy path above covers it with zero extra steps. Pinning, lockfiles, and telemetry
+opt-out: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
+
+**Claude app / claude.ai:** grab the matching `<name>.skill` file from the [latest release](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/releases/latest) (or the [package registry](https://forgejo.webgrip.dev/webgrip/-/packages)), upload via Settings → Skills (or attach in a chat), and hit *Save skill*.
+
+Some skills bundle Python scripts requiring PyYAML (`pip install pyyaml`); see each skill's folder for specifics.
+
+## Repo layout
+
+```
+.claude-plugin/marketplace.json   # the catalog Claude Code reads — GENERATED, never hand-edited
+.forgejo/workflows/               # Forgejo Actions: ci.yml (PRs), release.yml (main)
+skills/<name>/                    # one dir per skill — and each dir IS its plugin
+  SKILL.md                        #   the skill itself (+ scripts, assets, references, evals/)
+  .claude-plugin/plugin.json      #   plugin manifest — the single source of truth
+  test.sh                         #   optional plugin-specific tests (generic rules: lint)
+scripts/new_skill.py              # scaffold a new skill
+scripts/sync_marketplace.py       # regenerate marketplace.json from plugin manifests
+scripts/lint_skills.py            # skill-quality rules for every plugin (CI)
+scripts/check_manifests.py        # manifest structure checks (CI)
+scripts/check_plugin_commits.py   # plugin commits must be release-worthy, no hand-bumps (CI, PRs)
+scripts/release_skills.py         # per-skill release trains (versions, changelogs, tags, releases)
+scripts/build_dist.py             # build a skill's .skill zip into dist/ (gitignored; used by release)
+```
+
+One tree, every consumer: Claude Code installs per-skill plugins through the
+marketplace manifest, `npx skills` and other agents walk `skills/` flat, and
+opencode symlinks it — no generated mirrors, no duplication.
+
+## Adding a skill
+
+```bash
+python3 scripts/new_skill.py my-new-skill "One-line description."
+# write skills/my-new-skill/SKILL.md, evals/evals.json (≥ 3 cases), README.md
+npm run check && npm test
+```
+
+That's the whole job: no version bookkeeping, no zip building, no catalog editing — the release trains derive all of it. The scaffolder registers the plugin in `marketplace.json` via the generator; CI lints every skill against the [skillsmith](skills/skillsmith) quality rules (portable trigger text in the description, char budgets, no TODOs, body size, link integrity, evals present) and runs any plugin-specific `test.sh`. The full standard — what belongs here, review checklist, security model — is [CONTRIBUTING.md](CONTRIBUTING.md); rolling the skills out to a team is [docs/ADOPTION.md](docs/ADOPTION.md).
+
+## CI & releases
+
+CI runs on [Forgejo Actions](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/actions). Every PR gets `ci.yml`: conventional-commit check, plugin-commit guard (`scripts/check_plugin_commits.py` — commits touching a skill must use a release-triggering type, and versions must not be hand-edited), manifest structure (`scripts/check_manifests.py`), catalog sync (`scripts/sync_marketplace.py --check`), skill lint (`scripts/lint_skills.py`), and any plugin `test.sh`. Pushes to `main` run `release.yml`: the same checks, then the **per-skill release trains** (`scripts/release_skills.py`).
+
+## Versioning — per-skill release trains
+
+Each skill is its **own release train**. `scripts/release_skills.py` walks each skill independently: for a skill with conventional commits touching `skills/<skill>/` since its own last `<skill>-v<X.Y.Z>` tag, it bumps that skill's version (breaking → major, `feat` → minor, `fix`/`perf`/`refactor`/`revert` → patch), prepends `skills/<skill>/CHANGELOG.md`, regenerates `marketplace.json`, commits back `chore(release): <skill>-vX.Y.Z, … [skip ci]`, tags each released skill, and publishes its `<skill>.skill` to the [generic package registry](https://forgejo.webgrip.dev/webgrip/-/packages) at `api/packages/webgrip/generic/<skill>/<version>/<skill>.skill` plus a [Forgejo release](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/releases) per tag.
+
+So a `feat:` touching one skill bumps, tags, changelogs, and releases **only that skill** — the others don't move, and there is no repo-wide `vX.Y.Z` tag. Claude Code users are prompted to update only the skills whose version rose. Never edit a version by hand (CI rejects it — use `feat(<plugin>)!:` to force a major); plugin `name` slugs are immutable once published (renames break installs — use `displayName`). A commit touching a skill under a non-releasing type (`docs:`/`chore:`) releases nothing for it — `check_plugin_commits.py` blocks that on PRs. If a release run goes red, fix it promptly — the trains are idempotent (each skill bases off its own tag; re-runs converge), so a fixed re-run resumes cleanly.
+
+## Contributing
+
+Issues and PRs welcome. Use conventional commit messages (release-triggering types for anything under `skills/`), run `npm run check` and `npm test` locally before submitting, and run `claude plugin validate .` if you have Claude Code installed. Versions, the catalog, and dist zips are all derived — don't edit them.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

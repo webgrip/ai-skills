@@ -1,0 +1,16 @@
+# Code owners — Forgejo reads this from .forgejo/CODEOWNERS.
+# Review of a skill change is the estate's trust boundary, so ownership is
+# explicit. Right now one person is responsible for everything; team groups
+# come later. Advisory until "Require Code Owner review" is enabled in the
+# default branch's protection settings.
+
+# Every skill change needs the maintainer's eyes.
+/skills/            @ryangr0
+
+# CI + lint changes gate everything else, so same bar.
+/scripts/           @ryangr0
+/.forgejo/          @ryangr0
+
+# Agent policy + estate config.
+/org/               @ryangr0
+/opencode/          @ryangr0

@@ -1,0 +1,147 @@
+project: Order Management
+description: >
+  Handles the lifecycle of customer purchases for the web shop, from cart
+  through fulfillment. Payments and inventory live in adjacent systems.
+version: "0.2"
+
+contexts:
+  - name: Ordering
+    description: Everything up to and including a confirmed purchase.
+  - name: Fulfillment
+    description: Getting confirmed purchases into customers' hands.
+
+terms:
+  - name: Cart
+    definition: >
+      An uncommitted collection of Products a Customer intends to buy. Has no
+      Order Number and reserves no stock. Becomes an Order at checkout.
+    context: Ordering
+    avoid: [Basket, Shopping Bag]
+    see_also: [Order]
+
+  - name: Order
+    definition: >
+      A confirmed request by a Customer to purchase one or more Products at
+      agreed prices. Created at checkout, identified by an Order Number.
+      Distinct from a Cart, which is uncommitted.
+    context: Ordering
+    synonyms: [Purchase]
+    avoid: [Basket]
+    examples: ["Order #10482: 2× Coffee Mug, 1× Grinder, total €54.00"]
+    see_also: [Cart, Shipment]
+
+  - name: Shipment
+    definition: >
+      A physical parcel dispatched to fulfil all or part of one Order. One
+      Order may produce several Shipments (split fulfillment), but a Shipment
+      never spans Orders.
+    context: Fulfillment
+    avoid: [Delivery, Package]
+    see_also: [Order]
+
+  - name: Customer
+    definition: >
+      A person or organization with an account who can place Orders. Guests
+      who browse without an account are Visitors, not Customers.
+
+entities:
+  - name: Order
+    description: The central aggregate of the Ordering context.
+    context: Ordering
+    attributes:
+      - name: order_number
+        type: string
+        description: Human-readable unique identifier, e.g. "10482".
+        required: true
+      - name: status
+        type: enum(draft, placed, paid, fulfilled, cancelled)
+        description: Current lifecycle state.
+        required: true
+      - name: total
+        type: Money
+        description: Sum of line totals including tax.
+    states:
+      - { from: "[start]", to: draft, trigger: Checkout begins }
+      - { from: draft, to: placed, trigger: Customer confirms checkout }
+      - { from: placed, to: paid, trigger: Payment captured }
+      - { from: paid, to: fulfilled, trigger: All Shipments delivered }
+      - { from: placed, to: cancelled, trigger: Customer or staff cancels }
+      - { from: paid, to: cancelled, trigger: Staff cancels with refund }
+    relationships:
+      - { to: Customer, kind: belongs_to, description: The Customer who placed it. }
+      - { to: Shipment, kind: has_many, description: Parcels fulfilling this Order. }
+
+  - name: Shipment
+    description: A dispatched parcel; owned by the Fulfillment context.
+    context: Fulfillment
+    attributes:
+      - name: tracking_code
+        type: string
+        description: Carrier tracking reference.
+    relationships:
+      - { to: Order, kind: belongs_to, description: The Order being fulfilled. }
+
+  - name: Customer
+    description: Account holder able to place Orders.
+    attributes:
+      - name: email
+        type: string
+        required: true
+
+rules:
+  - id: R1
+    statement: An Order cannot be placed with zero line items.
+    rationale: Empty Orders pollute reporting and confuse fulfillment.
+    applies_to: [Order]
+    context: Ordering
+  - id: R2
+    statement: A Shipment must belong to exactly one Order.
+    rationale: Cross-order parcels make returns and liability untraceable.
+    applies_to: [Shipment, Order]
+    context: Fulfillment
+  - id: R3
+    statement: A cancelled Order that was paid must be refunded in full within 5 business days.
+    rationale: Legal requirement in our primary markets.
+    applies_to: [Order]
+
+events:
+  - name: OrderPlaced
+    description: A Customer confirmed checkout; the Cart became an Order.
+    entity: Order
+    triggers: Stock reservation and payment capture.
+  - name: ShipmentDispatched
+    description: A parcel left the warehouse.
+    entity: Shipment
+    triggers: Tracking email to the Customer.
+
+ambiguities:
+  - phrase: account
+    issue: >
+      Used to mean both the Customer (who places Orders) and the login
+      identity (authentication). These are distinct concepts.
+    options: [Customer + User, Customer + Login]
+    recommendation: >
+      Split into Customer and User — "User" matches the auth library's
+      vocabulary, reducing translation at the boundary.
+    status: open
+  - phrase: Basket
+    issue: Basket, Cart, and Shopping Bag were all in use for the pre-checkout collection.
+    status: resolved
+    resolution: Canonical name is Cart; Basket and Shopping Bag listed under avoid.
+
+dialogues:
+  - title: Cart vs Order at checkout
+    context: Ordering
+    lines:
+      - speaker: Dev
+        text: So a **Cart** reserves stock as soon as items are added?
+      - speaker: Domain expert
+        text: >
+          No — a **Cart** is uncommitted and reserves nothing. Stock is
+          reserved only when it becomes an **Order** at checkout.
+      - speaker: Dev
+        text: And if payment fails, do we still have an **Order**?
+      - speaker: Domain expert
+        text: >
+          Yes, a placed **Order** exists before payment; it just never
+          reaches the paid state and is eventually cancelled.

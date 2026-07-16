@@ -1,0 +1,30 @@
+{
+  "_comment": "Senior overlay \u2014 opencode v2 ordered rules. Open by default; the org floor (sops/sudo deny) stays at the END \u2014 it is an org invariant, not a junior training wheel.",
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "**/*.sops.yaml",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "**/*.sops.yml",
+      "effect": "deny"
+    }
+  ]
+}

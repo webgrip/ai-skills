@@ -1,0 +1,16 @@
+{
+  "name": "@webgrip/webgrip-ai-skills",
+  "version": "0.0.0-versionless",
+  "description": "Webgrip's open-source Claude skills, shipped as a Forgejo-hosted plugin marketplace with per-skill release trains",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git"
+  },
+  "scripts": {
+    "check": "python3 scripts/check_manifests.py && python3 scripts/sync_marketplace.py --check && python3 scripts/lint_skills.py && python3 scripts/check_opencode_config.py",
+    "test": "bash -c 'for t in $(find skills -maxdepth 2 -name test.sh | sort); do bash \"$t\"; done'",
+    "release:plan": "python3 scripts/release_skills.py plan"
+  }
+}
