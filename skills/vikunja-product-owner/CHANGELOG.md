@@ -1,5 +1,12 @@
 # vikunja-product-owner
 
+## 1.2.0 (2026-07-18)
+
+### 🚀 Features
+
+- **vikunja-product-owner:** stage flow + 3D estimation + finish/accept split (5e8310b1)
+
+
 ## 1.1.0 (2026-07-18)
 
 ### 🚀 Features
