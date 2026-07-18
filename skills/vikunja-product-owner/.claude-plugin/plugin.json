@@ -2,7 +2,7 @@
   "name": "vikunja-product-owner",
   "displayName": "Vikunja Product Owner",
   "description": "Run a Vikunja board as product owner: ticket CRUD, Definition-of-Ready refinement, prioritization, top-up, and agent work protocols over the vikunja MCP.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",
