@@ -27,6 +27,15 @@ Tools return **formatted text, not JSON**:
 - errors → `isError` content `Error: … Vikunja API error (<code>): …`
 - unset due dates render as `Due: 0001-01-01` — not a bug
 
+## Ordering — no position API
+
+Vikunja stores task order **per-view** (list/kanban drag positions); vikunja-mcp 0.1.0 exposes no
+position read or write. The `tasks_bulk_update` schema *advertises* `position` and `bucketId`,
+but both fail live (verified 2026-07-18): `position` → `Vikunja API error (400): The task field
+'position' is invalid`; `bucketId` → vikunja-mcp crash `updatedTasks.forEach is not a function`.
+Consequence: pick-up order cannot live in view positions — it's encoded as the pick-up queue in
+the project description (SKILL.md conventions), and UI drag-order is cosmetic.
+
 ## Pagination
 
 `tasks_list` returns ONE server page (Vikunja `maxitemsperpage`, default 50); `search` matches

@@ -22,6 +22,24 @@ creates → `ID: <n>`; lists → `[ID: <n>, Project: <m>]`; strip ` (xxxxxx)` fr
 
 1. `comment_create {taskId, comment: "<p>Done: <evidence — commit hash, live check output, link>.</p>"}`
 2. `task_complete {id}` — never without the ticket's own Verification satisfied.
+3. If the ticket held a pick-up-queue entry, drop its line (queue emit below).
+
+## Pick-up queue emit / insert
+
+The queue lives in the **project description** (conventions in SKILL.md) because the MCP has no
+position API. `project_update` REPLACES the whole description — always round-trip:
+
+1. `project_get {id: <pid>}` → current description; keep everything OUTSIDE the
+   `<h3>Pick-up queue</h3>` section verbatim.
+2. Rebuild the section:
+   `<h3>Pick-up queue</h3><p><em>top = picked up first · refreshed <date></em></p>`
+   `<ol><li><PREFIX>-<id> — <exact title></li>…</ol>` — every `do-next` holder first, then the
+   next-up tail (≤ 2× the do-next cap total); never rank a ticket above its blocker.
+3. `project_update {id: <pid>, description: "<merged HTML>"}`; spot-check with `project_get`.
+4. Inserting one ticket = same round-trip with the new `<li>` where it fits (not appended).
+
+Refresh triggers: do-next rebalance · a queue ticket closes · a new/refined ticket outranks an
+existing entry · top-up sweep step 4.
 
 ## Stale-premise verify-and-close
 
@@ -52,6 +70,8 @@ Fetch `tasks_list {projectId: <pid>, show: "all", limit: <cap>}` once, then:
 - **Count**: reported "Found N" ≈ the contract's open target — pagination sanity.
 - **Label coverage**: every open ticket parses `theme/`, `impact/`, `effort/` from its labels.
 - **do-next ≤ cap**: count holders.
+- **Queue**: `project_get` → every `do-next` holder has a queue line, every queue line's ID is an
+  open ticket, no entry above its blocker.
 - **ready ⇒ DoR**: `ready` tickets' descriptions contain `<h3>Problem</h3>`,
   `data-type="taskList"`, `<h3>Verification</h3>`.
 - **Relations**: spot-verify via duplicate-create → expect
@@ -61,7 +81,8 @@ Fetch `tasks_list {projectId: <pid>, show: "all", limit: <cap>}` once, then:
 
 1. List current holders; drop any now-blocked/stale (`label_remove_from_task`).
 2. Add highest-leverage unblocked (`label_add_to_task`) up to the contract's cap.
-3. Say what changed and why in the run report.
+3. Re-emit the pick-up queue (membership changed ⇒ order changed).
+4. Say what changed and why in the run report.
 
 ## Bulk relabel / bulk update
 
