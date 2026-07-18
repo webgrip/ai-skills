@@ -12,6 +12,11 @@ session reaping (on a 404/410 mid-run: reset `session['id']` and `init()` again)
 board passes and when `.mcp.json` changed mid-session (native tools need a restart). Endpoint:
 `VIKUNJA_MCP_URL` env, else the webgrip default baked into the script.
 
+**Etiquette for supergateway-bridged deployments** (stateless mode): sequential calls only, client
+timeout ≥ 120 s. A client that disconnects before its response is ready crashes the whole gateway
+(uncaught throw in `stdioToStatelessStreamableHttp.js` — verified 2026-07-18), killing every
+session's in-flight calls; a threaded sweep with 60 s timeouts is enough to crash-loop it.
+
 ## Response formats
 
 Tools return **formatted text, not JSON**:
