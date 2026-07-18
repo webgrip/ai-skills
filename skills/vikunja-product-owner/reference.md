@@ -47,6 +47,13 @@ the project description (SKILL.md conventions), and UI drag-order is cosmetic.
 only within that window; `limit: 0` does NOT mean "all" — it falls back to 50. Always sanity-check
 the reported "Found N" against expected board size; fall back to `task_get` by ID.
 
+## Known-broken tools (v0.1.0, verified live 2026-07-18)
+
+- `filter_create` → `Cannot read properties of null (reading 'username')` — saved filters can't
+  be created through the MCP (so no label-filtered task lists via filter pseudo-projects either).
+- `tasks_bulk_update` `position`/`bucketId` — see "Ordering" above.
+- Deterministic tool errors like these don't heal on retry — fall back, don't hammer.
+
 ## Troubleshooting
 
 | Symptom | Cause / next step |
