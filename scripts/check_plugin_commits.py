@@ -31,12 +31,11 @@ def main():
         sys.exit(__doc__)
     base = sys.argv[1]
 
-    _, out = git("log", "--no-merges", "--format=%H", f"{base}..HEAD")
+    out = git("log", "--no-merges", "--format=%H", f"{base}..HEAD")
     for sha in out.split():
-        _, subject = git("log", "-1", "--format=%s", sha)
-        subject = subject.strip()
-        _, body = git("log", "-1", "--format=%b", sha)
-        _, files = git("diff-tree", "--no-commit-id", "--name-only", "-r", sha)
+        subject = git("log", "-1", "--format=%s", sha).strip()
+        body = git("log", "-1", "--format=%b", sha)
+        files = git("diff-tree", "--no-commit-id", "--name-only", "-r", sha)
         if not any(f.startswith(("skills/", "plugins/")) for f in files.splitlines()):
             continue
         m = TYPE_RE.match(subject)
@@ -48,12 +47,13 @@ def main():
                 f"{subject!r}"
             )
 
-    _, diff = git("diff", "--name-only", f"{base}...HEAD")
+    diff = git("diff", "--name-only", f"{base}...HEAD")
     for path in diff.splitlines():
         parts = path.split("/")
         if len(parts) == 4 and parts[0] in ("skills", "plugins") and path.endswith(".claude-plugin/plugin.json"):
-            code, base_pj = git("show", f"{base}:{path}", ok_codes=(0, 128))
-            if code != 0:
+            # exits 128 with empty stdout when the path is absent at base
+            base_pj = git("show", f"{base}:{path}", ok=(0, 128))
+            if not base_pj.strip():
                 continue  # new plugin: authoring the initial version is fine
             if not (ROOT / path).exists():
                 continue  # plugin deleted in this PR
