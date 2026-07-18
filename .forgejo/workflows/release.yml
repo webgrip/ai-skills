@@ -27,8 +27,6 @@ jobs:
   checks:
     name: Manifests, dist & plugin tests
     runs-on: docker
-    container:
-      image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner:latest
     steps:
       # Explicit token: the auto-injected Forgejo Actions token is rejected by
       # the git HTTP endpoint (401 → prompt → fail). WEBGRIP_CI_TOKEN is the
@@ -84,15 +82,13 @@ jobs:
   # token passed as GITEA_TOKEN for the release + package-registry API. NOT
   # FORGEJO_TOKEN — Forgejo auto-injects that as the per-job token, which the
   # package registry rejects with 401 reqPackageAccess; GITEA_TOKEN is a name it
-  # does not inject, so our explicit value wins. skills-ci-runner ships python3 +
-  # git; release_skills.py is stdlib-only.
+  # does not inject, so our explicit value wins. Host-mode: the runner's own
+  # ci-runner toolchain ships python3 + git; release_skills.py is stdlib-only.
   release:
     name: Per-skill release trains
     needs:
       - checks
     runs-on: docker
-    container:
-      image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner:latest
     steps:
       - uses: actions/checkout@v5
         with:

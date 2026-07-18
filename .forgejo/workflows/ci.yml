@@ -4,11 +4,16 @@ name: CI
 # PR checks. Pushes to main run the same checks via release.yml before releasing.
 # Forgejo notes:
 #   - runs-on: docker (the only label the in-cluster runner advertises)
-#   - container image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner — the
-#     webgrip/infrastructure CI image with node 24 + system python3 3.13/PyYAML
-#     + git + the Claude Code CLI baked in. Pulled warm from the Harbor ghcr
-#     pull-through (LAN) instead of pulling node:24-trixie from Docker Hub every
-#     job (~4m "Set up job" stall). node is on PATH for the js actions (checkout).
+#   - NO job-level `container:` — this runs HOST-MODE, i.e. steps execute directly
+#     in the runner pod's own toolchain image (webgrip ci-runner), which already
+#     carries node 24, python3 + PyYAML, git and the Claude Code CLI. Do not
+#     reintroduce `container:`: a job container is re-pulled AND re-extracted into
+#     the ephemeral DinD on EVERY job, which cost ~4m of "Set up job" here — the
+#     runner node's disk saturates around 12MB/s, so extraction, not download, was
+#     the bottleneck (swapping registries did not help). Host-mode reuses the image
+#     from the node's containerd cache, so that cost disappears entirely.
+#   - steps run as the image's non-root `runner` user, so nothing may assume root
+#     (this is why the old apt-get / npm -g install steps are gone — they're baked)
 #   - actions/checkout@v5 — resolves against data.forgejo.org; v6 is broken on
 #     non-GitHub runners
 #   - no `permissions:` block — Forgejo Actions ignores it; token scope is
@@ -22,8 +27,6 @@ jobs:
   checks:
     name: Manifests, dist & plugin tests
     runs-on: docker
-    container:
-      image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner:latest
     steps:
       # Explicit token: the auto-injected Forgejo Actions token is rejected by
       # the git HTTP endpoint (401 → prompt → fail). WEBGRIP_CI_TOKEN is the
@@ -88,7 +91,7 @@ jobs:
           echo "install smoke OK — all $(ls -d skills/*/ | wc -l | tr -d ' ') skills discovered"
 
       # Anthropic's official manifest + frontmatter validator (the `claude` CLI is
-      # baked into skills-ci-runner). --strict works here because plugin.json files
+      # baked into the runner toolchain). --strict works here because plugin.json files
       # carry version/description (computed at release time — see CLAUDE.md).
       - name: Official plugin validation (strict)
         env:
