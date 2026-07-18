@@ -2,10 +2,10 @@
 # install_opencode.sh — set up (or update) the webgrip opencode estate for one person.
 #
 #   bash scripts/install_opencode.sh --profile junior|senior   (from a checkout)
-#   curl -fsSL https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/raw/branch/main/scripts/install_opencode.sh | bash -s -- --profile senior
+#   curl -fsSL https://forgejo.webgrip.dev/webgrip/ai-skills/raw/branch/main/scripts/install_opencode.sh | bash -s -- --profile senior
 #
 # Idempotent — run it again any time to pull updates. It:
-#   1. clones/updates the repo to ~/.webgrip/webgrip-ai-skills
+#   1. clones/updates the repo to ~/.webgrip/ai-skills
 #   2. symlinks every skills/<name> into ~/.config/opencode/skills/ (per-skill
 #      links, so personal skills coexist; stale org links are swept)
 #   3. symlinks opencode/plugins/* and opencode/agents/* likewise
@@ -22,8 +22,8 @@ set -euo pipefail
 OPENCODE_VERSION="0.0.0-next-15495"
 OPENCODE_PLUGIN_VERSION="0.0.0-next-15495"  # tracks the binary generation
 
-REPO_URL="${WEBGRIP_SKILLS_REPO:-https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git}"
-HOME_DIR="${WEBGRIP_SKILLS_HOME:-$HOME/.webgrip/webgrip-ai-skills}"
+REPO_URL="${WEBGRIP_SKILLS_REPO:-https://forgejo.webgrip.dev/webgrip/ai-skills.git}"
+HOME_DIR="${WEBGRIP_SKILLS_HOME:-$HOME/.webgrip/ai-skills}"
 OC_DIR="$HOME/.config/opencode"
 PROFILE="senior"
 

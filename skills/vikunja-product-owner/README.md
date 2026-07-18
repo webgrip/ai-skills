@@ -12,14 +12,29 @@ in your instance's ops runbook — not in this plugin.
 
 ## Install
 
+**Claude Code plugin** — the only route that wires the MCP server for you:
+
 ```json
 // .claude/settings.json
-"enabledPlugins": { "vikunja-product-owner@webgrip-ai-skills": true }
+"enabledPlugins": { "vikunja-product-owner@ai-skills": true }
 ```
 
 The plugin ships the webgrip `vikunja` MCP server config (`.mcp.json` at plugin root —
 `https://mcp-vikunja.webgrip.dev/mcp`, LAN-only). A repo-level `.mcp.json` entry with the same
 server name overrides it; scripts can override via the `VIKUNJA_MCP_URL` env var.
+
+**`npx skills`** — works in every agent, but the skill is useless without a `vikunja` MCP server,
+and the CLI copies the bundled `.mcp.json` without registering it:
+
+```bash
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s vikunja-product-owner -g
+```
+
+Add the server yourself to the consuming repo's `.mcp.json` (point `url` at your own instance):
+
+```json
+{ "mcpServers": { "vikunja": { "type": "http", "url": "https://mcp-vikunja.example.com/mcp" } } }
+```
 
 ## Board contract (add to your repo's AGENTS.md)
 

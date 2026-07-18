@@ -24,8 +24,8 @@ webgrip **LiteLLM plane** (metered, per-person virtual key, VPN required) —
 npm i -g @opencode-ai/cli@0.0.0-next-15495
 
 # the webgrip estate: skills + agents + guardrails + org config
-git clone https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git
-bash webgrip-ai-skills/scripts/install_opencode.sh --profile junior   # or senior
+git clone https://forgejo.webgrip.dev/webgrip/ai-skills.git
+bash ai-skills/scripts/install_opencode.sh --profile junior   # or senior
 
 # auth: mint a personal LiteLLM virtual key + export it (docs/auth.md §1)
 export WEBGRIP_LLM_KEY="sk-..."     # VPN/LAN required; the org default routes here

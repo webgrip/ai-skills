@@ -63,7 +63,7 @@ tolerated), so a fixed re-run resumes cleanly.
 
 ## Marketplace-over-Forgejo specifics
 
-- `/plugin marketplace add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git`
+- `/plugin marketplace add https://forgejo.webgrip.dev/webgrip/ai-skills.git`
   works because Claude Code accepts any git host; scp-form SSH URLs work too.
 - Background marketplace auto-refresh disables git credential helpers — fine
   for this public repo over https; a **private** Forgejo marketplace should

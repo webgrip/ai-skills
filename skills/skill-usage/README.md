@@ -10,10 +10,31 @@ actually get used?" is the question that keeps a curated estate curated
 (the Claude Code team runs the same trick internally). Everything stays on
 your machine — one local JSONL, no network, fail-open hook.
 
-**Install (Claude Code):**
+**Install (Claude Code plugin — recommended for this skill):**
 
 ```text
-/plugin install skill-usage@webgrip-ai-skills
+/plugin install skill-usage@ai-skills
+```
+
+**Install (`npx skills`) — read this first:** the CLI copies `hooks/hooks.json`
+but nothing registers it, so **nothing is logged** and the report has no data.
+Either use the plugin route above, or register the hook yourself in
+`~/.claude/settings.json` (`${CLAUDE_PLUGIN_ROOT}` does not exist outside the
+plugin loader):
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          { "type": "command", "command": "python3 \"$HOME/.agents/skills/skill-usage/scripts/log_usage.py\"" }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 **opencode twin:** `opencode/plugins/skill-usage-log.js` (installed by

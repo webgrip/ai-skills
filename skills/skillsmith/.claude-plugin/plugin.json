@@ -8,8 +8,8 @@
     "name": "Webgrip",
     "url": "https://forgejo.webgrip.dev/webgrip"
   },
-  "homepage": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/src/branch/main/skills/skillsmith",
-  "repository": "https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills",
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/skillsmith",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills",
   "keywords": [
     "skills",
     "skill-authoring",

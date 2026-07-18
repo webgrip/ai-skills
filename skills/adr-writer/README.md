@@ -21,18 +21,24 @@ standard), in any repo, with the conventions that keep a decision log trustworth
 
 ## Install
 
-**Claude Code (as a plugin, recommended):**
+**`npx skills` (recommended — works in every agent, not just Claude):**
+
+```bash
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s adr-writer -g
+```
+
+**Claude Code plugin:**
 
 ```
-/plugin marketplace add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git
-/plugin install adr-writer@webgrip-ai-skills
+/plugin marketplace add https://forgejo.webgrip.dev/webgrip/ai-skills.git
+/plugin install adr-writer@ai-skills
 ```
 
 **Claude Code (manual):** copy `skills/adr-writer/` into your project's
 `.claude/skills/` (shared with your team via git) or `~/.claude/skills/` (just you).
 
 **Claude app / claude.ai:** grab `adr-writer.skill` from the
-[latest release](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/releases/latest),
+[latest release](https://forgejo.webgrip.dev/webgrip/ai-skills/releases/latest),
 upload it via Settings → Skills (or attach it in a chat), and hit *Save skill*.
 
 The validator needs only `python3` (any recent version, stdlib only).

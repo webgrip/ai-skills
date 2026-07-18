@@ -1,4 +1,4 @@
-# CLAUDE.md — webgrip-ai-skills
+# CLAUDE.md — ai-skills
 
 Claude-skills plugin marketplace (Forgejo-hosted). **Merged layout: each
 `skills/<name>/` directory IS its plugin** — `SKILL.md` at the plugin root,

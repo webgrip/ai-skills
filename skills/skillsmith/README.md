@@ -13,16 +13,22 @@ What it teaches Claude:
 
 ## Install
 
-**Claude Code (as a plugin, recommended):**
+**`npx skills` (recommended — works in every agent, not just Claude):**
+
+```bash
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s skillsmith -g
+```
+
+**Claude Code plugin:**
 
 ```
-/plugin marketplace add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git
-/plugin install skillsmith@webgrip-ai-skills
+/plugin marketplace add https://forgejo.webgrip.dev/webgrip/ai-skills.git
+/plugin install skillsmith@ai-skills
 ```
 
 **Claude Code (manual):** copy `skills/skillsmith/` into your project's `.claude/skills/` (shared with your team via git) or `~/.claude/skills/` (just you).
 
-**Claude app / claude.ai:** grab `skillsmith.skill` from the [latest release](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/releases/latest), upload it via Settings → Skills (or attach it in a chat), and hit *Save skill*.
+**Claude app / claude.ai:** grab `skillsmith.skill` from the [latest release](https://forgejo.webgrip.dev/webgrip/ai-skills/releases/latest), upload it via Settings → Skills (or attach it in a chat), and hit *Save skill*.
 
 ## Use
 

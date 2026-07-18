@@ -15,16 +15,22 @@ Requires macOS with [Laravel Herd](https://herd.laravel.com), plus `git`, `node`
 
 ## Install
 
-**Claude Code (as a plugin, recommended):**
+**`npx skills` (recommended — works in every agent, not just Claude):**
+
+```bash
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s worktree-herd-dev -g
+```
+
+**Claude Code plugin:**
 
 ```
-/plugin marketplace add https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills.git
-/plugin install worktree-herd-dev@webgrip-ai-skills
+/plugin marketplace add https://forgejo.webgrip.dev/webgrip/ai-skills.git
+/plugin install worktree-herd-dev@ai-skills
 ```
 
 **Claude Code (manual):** copy `skills/worktree-herd-dev/` into your project's `.claude/skills/` (shared with your team via git) or `~/.claude/skills/` (just you).
 
-**Claude app / claude.ai:** grab `worktree-herd-dev.skill` from the [latest release](https://forgejo.webgrip.dev/webgrip/webgrip-ai-skills/releases/latest), upload it via Settings → Skills (or attach it in a chat), and hit *Save skill*.
+**Claude app / claude.ai:** grab `worktree-herd-dev.skill` from the [latest release](https://forgejo.webgrip.dev/webgrip/ai-skills/releases/latest), upload it via Settings → Skills (or attach it in a chat), and hit *Save skill*.
 
 After installing, run the skill's one-time CLI install (links `worktree-herd-setup`, `worktree-herd-cleanup`, and `worktree-herd-install-tasks` into `~/.local/bin`):
 
