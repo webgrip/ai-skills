@@ -4,10 +4,11 @@ name: CI
 # PR checks. Pushes to main run the same checks via release.yml before releasing.
 # Forgejo notes:
 #   - runs-on: docker (the only label the in-cluster runner advertises)
-#   - container image must have node in PATH: the runner execs `node` inside
-#     the job container to run js actions (checkout). node:24-trixie = Node 24
-#     LTS on Debian 13, system python3 3.13; PyYAML from apt (no PEP 668
-#     pip friction)
+#   - container image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner — the
+#     webgrip/infrastructure CI image with node 24 + system python3 3.13/PyYAML
+#     + git + the Claude Code CLI baked in. Pulled warm from the Harbor ghcr
+#     pull-through (LAN) instead of pulling node:24-trixie from Docker Hub every
+#     job (~4m "Set up job" stall). node is on PATH for the js actions (checkout).
 #   - actions/checkout@v5 — resolves against data.forgejo.org; v6 is broken on
 #     non-GitHub runners
 #   - no `permissions:` block — Forgejo Actions ignores it; token scope is
@@ -22,7 +23,7 @@ jobs:
     name: Manifests, dist & plugin tests
     runs-on: docker
     container:
-      image: node:24-trixie
+      image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner:latest
     steps:
       # Explicit token: the auto-injected Forgejo Actions token is rejected by
       # the git HTTP endpoint (401 → prompt → fail). WEBGRIP_CI_TOKEN is the
@@ -51,13 +52,6 @@ jobs:
       - name: Check plugin commits
         if: github.event_name == 'pull_request'
         run: python3 scripts/check_plugin_commits.py '${{ github.event.pull_request.base.sha }}'
-
-      # PyYAML is only for the plugin test suites (domain-language's
-      # generators); the repo's own scripts are stdlib-only.
-      - name: Install PyYAML
-        run: |
-          apt-get update -qq
-          apt-get install -y -qq python3-yaml
 
       - name: Check manifests
         run: python3 scripts/check_manifests.py
@@ -93,15 +87,13 @@ jobs:
           if [ "$missing" != 0 ]; then echo "FAIL — some skills not discovered by the CLI"; exit 1; fi
           echo "install smoke OK — all $(ls -d skills/*/ | wc -l | tr -d ' ') skills discovered"
 
-      # Anthropic's official manifest + frontmatter validator. --strict works
-      # here because plugin.json files carry version/description (computed at
-      # release time — see CLAUDE.md).
+      # Anthropic's official manifest + frontmatter validator (the `claude` CLI is
+      # baked into skills-ci-runner). --strict works here because plugin.json files
+      # carry version/description (computed at release time — see CLAUDE.md).
       - name: Official plugin validation (strict)
         env:
           CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
-        run: |
-          npm install -g @anthropic-ai/claude-code > /dev/null 2>&1
-          claude plugin validate . --strict
+        run: claude plugin validate . --strict
 
       # test.sh is optional — only skills with plugin-specific behavior ship
       # one (generic quality rules live in scripts/lint_skills.py).

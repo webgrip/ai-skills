@@ -28,7 +28,7 @@ jobs:
     name: Manifests, dist & plugin tests
     runs-on: docker
     container:
-      image: node:24-trixie
+      image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner:latest
     steps:
       # Explicit token: the auto-injected Forgejo Actions token is rejected by
       # the git HTTP endpoint (401 → prompt → fail). WEBGRIP_CI_TOKEN is the
@@ -36,11 +36,6 @@ jobs:
       - uses: actions/checkout@v5
         with:
           token: ${{ secrets.WEBGRIP_CI_TOKEN }}
-
-      - name: Install PyYAML
-        run: |
-          apt-get update -qq
-          apt-get install -y -qq python3-yaml
 
       - name: Check manifests
         run: python3 scripts/check_manifests.py
@@ -75,9 +70,7 @@ jobs:
       - name: Official plugin validation (strict)
         env:
           CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
-        run: |
-          npm install -g @anthropic-ai/claude-code > /dev/null 2>&1
-          claude plugin validate . --strict
+        run: claude plugin validate . --strict
 
       - name: Run plugin test suites
         run: |
@@ -91,7 +84,7 @@ jobs:
   # token passed as GITEA_TOKEN for the release + package-registry API. NOT
   # FORGEJO_TOKEN — Forgejo auto-injects that as the per-job token, which the
   # package registry rejects with 401 reqPackageAccess; GITEA_TOKEN is a name it
-  # does not inject, so our explicit value wins. node:24-trixie ships python3 +
+  # does not inject, so our explicit value wins. skills-ci-runner ships python3 +
   # git; release_skills.py is stdlib-only.
   release:
     name: Per-skill release trains
@@ -99,7 +92,7 @@ jobs:
       - checks
     runs-on: docker
     container:
-      image: node:24-trixie
+      image: harbor.webgrip.dev/ghcr/webgrip/skills-ci-runner:latest
     steps:
       - uses: actions/checkout@v5
         with:
