@@ -12,7 +12,7 @@
       "name": "adr-writer",
       "source": "./skills/adr-writer",
       "description": "Write, amend, and supersede Architecture Decision Records in MADR 4.0.0 — locate or bootstrap an ADR directory with template and registry index in any repo, keep decision history append-only through ratifications, reverts, and supersessions, and enforce file-to-index consistency with a bundled CI-ready validator.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "adr",
@@ -28,7 +28,7 @@
       "name": "domain-language",
       "source": "./skills/domain-language",
       "description": "Define and maintain a project's ubiquitous language (terms, entities, rules, events) in docs/domain/model.yaml, and generate documentation, diagrams, Context Mapper exports, health scores, and feature specs from it.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "ddd",
@@ -44,7 +44,7 @@
       "name": "guard-secrets",
       "source": "./skills/guard-secrets",
       "description": "PreToolUse hook that hard-blocks plaintext-secret leaks before an edit/write runs: no decrypted secret artifacts, SOPS files must stay ciphertext, and a best-effort gitleaks scan. The Claude Code twin of the estate's opencode guard-secrets plugin — same secrets floor, both tools.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "security",
@@ -58,7 +58,7 @@
       "name": "harvest-knowledge",
       "source": "./skills/harvest-knowledge",
       "description": "Mine durable, reusable knowledge out of Claude conversation threads with a three-phase workflow — distill each thread into a self-contained digest, consolidate many digests into one deduplicated truth-checked knowledge set, then synthesize repo docs, CLAUDE.md rules, new-skill candidates, and memory updates from it.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "knowledge-management",
@@ -74,7 +74,7 @@
       "name": "skill-usage",
       "source": "./skills/skill-usage",
       "description": "Local skill-usage telemetry: a PostToolUse hook logs every Skill invocation to ~/.claude/skill-usage.jsonl (no network), and the bundled skill reports which skills are used, dead, or undertriggering.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "telemetry",
@@ -88,7 +88,7 @@
       "name": "skillsmith",
       "source": "./skills/skillsmith",
       "description": "Author, edit, and audit Claude Code skills for token-efficient, high-trigger-accuracy LLM ingestion: a verified token cost model, description-as-router rules, progressive disclosure into reference files, and skill eval methodology.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "skills",
@@ -104,7 +104,7 @@
       "name": "vikunja-product-owner",
       "source": "./skills/vikunja-product-owner",
       "description": "Run a Vikunja board as product owner: ticket CRUD, Definition-of-Ready refinement, prioritization, top-up, and agent work protocols over the vikunja MCP.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "vikunja",
@@ -120,7 +120,7 @@
       "name": "worktree-herd-dev",
       "source": "./skills/worktree-herd-dev",
       "description": "Set up and tear down git worktrees with a dedicated Laravel Herd .test domain, isolated Vite port, and optional per-worktree database per branch — with rollback on failure, collision guards, and per-project config/hooks for parallel dev environments and browser testing.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "keywords": [
         "git-worktree",
