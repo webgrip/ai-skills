@@ -25,6 +25,10 @@ Tools return **formatted text, not JSON**:
 - list tools → `Found <N> <thing>(s)` then blocks `<i>. <title>` / detail lines / `[ID: <n>]`
   (tasks: `[ID: <n>, Project: <m>]`)
 - `task_get` → title line, then `Priority: …`, `Labels: <comma-joined>`, `Project ID: <n>` lines
+- `project_get` → title, blank line, description, blank line, then metadata — **an optional
+  `Color: <hex>` line precedes `Owner:`** (colored projects only). When extracting the description
+  for a round-trip edit, match `\n\n(.*?)\n\n(?:Color: [0-9a-f]{6}\n)?Owner:` — anchoring on
+  `\n\nOwner:` alone silently returns nothing for colored projects and you clobber the description
 - `labels_list` appends the hex color to colored label titles — `impact/M (f5a524)` — strip the
   trailing space-plus-`(xxxxxx)` before using titles as map keys
 - **relations never render in `task_get`** — verify a `relation_create` persisted by re-creating

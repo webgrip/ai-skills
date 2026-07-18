@@ -30,7 +30,9 @@ The queue lives in the **project description** (conventions in SKILL.md) because
 position API. `project_update` REPLACES the whole description — always round-trip:
 
 1. `project_get {id: <pid>}` → current description; keep everything OUTSIDE the
-   `<h3>Pick-up queue</h3>` section verbatim.
+   `<h3>Pick-up queue</h3>` section verbatim. Parse gotcha: colored projects render a `Color:`
+   line between description and `Owner:` (reference.md "Response formats") — a failed extraction
+   returns empty and CLOBBERS the description, so verify non-empty before writing.
 2. Rebuild the section:
    `<h3>Pick-up queue</h3><p><em>top = picked up first · refreshed <date></em></p>`
    `<ol><li><PREFIX>-<id> — <exact title></li>…</ol>` — every `do-next` holder first, then the
