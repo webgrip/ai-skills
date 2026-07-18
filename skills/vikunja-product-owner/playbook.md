@@ -7,8 +7,9 @@ creates → `ID: <n>`; lists → `[ID: <n>, Project: <m>]`; strip ` (xxxxxx)` fr
 ## Create a ticket end-to-end
 
 1. `task_create {title, projectId: <pid>, priority: <5|4|3|2>, description: "<HTML first para: theme + tag>"}`
-2. `labels_bulk_set_on_task {taskId, labelIds: [<theme>, <impact>, <effort>, <needs-refinement>]}`
-   — REPLACES the whole set; always pass everything.
+2. `labels_bulk_set_on_task {taskId, labelIds: [<theme>, <impact>, <needs-refinement>]}`
+   — REPLACES the whole set; always pass everything. The 3D estimation labels
+   (`effort/` `time/` `uncertainty/`) are added at refinement, not at intake.
 3. New tickets are `needs-refinement`; refinement ([refine.md](refine.md)) is a separate pass.
 
 ## Split an oversized ticket
@@ -18,16 +19,22 @@ creates → `ID: <n>`; lists → `[ID: <n>, Project: <m>]`; strip ` (xxxxxx)` fr
 3. `relation_create {taskId: <first>, otherTaskId: <second>, relationKind: "precedes"}` where order matters.
 4. Parent keeps the outcome; children carry the ACs. Re-label parent `effort` honestly.
 
-## Close with evidence
+## Finish → review → accept (close with evidence)
 
-1. `comment_create {taskId, comment: "<p>Done: <evidence — commit hash, live check output, link>.</p>"}`
-2. `task_complete {id}` — never without the ticket's own Verification satisfied.
+1. **Finish (agent)**: `comment_create {taskId, comment: "<p>Done: <evidence — commit hash, live
+   check output, link>. Regression signal: <alert/dashboard/scheduled check>.</p>"}` +
+   `label_add_to_task` `review`. Agents never `task_complete` their own work.
+2. **Accept (PO/human)**: evidence meets the DoD (deployed — live check, not proxy; monitored —
+   regression signal named) → `label_remove_from_task` `review` → `task_complete {id}`.
+   Gaps → remove `review` with a comment saying what's missing.
 3. If the ticket held a pick-up-queue entry, drop its line (queue emit below).
 
 ## Pick-up queue emit / insert
 
 The queue lives in the **project description** (conventions in SKILL.md) because the MCP has no
-position API. `project_update` REPLACES the whole description — always round-trip:
+position API. A consuming repo's board UI may rewrite this same section on drag (marker
+`refreshed <date> (board)`) — treat whichever write is newest as current and never fight it.
+`project_update` REPLACES the whole description — always round-trip:
 
 1. `project_get {id: <pid>}` → current description; keep everything OUTSIDE the
    `<h3>Pick-up queue</h3>` section verbatim. Parse gotcha: colored projects render a `Color:`

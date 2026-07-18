@@ -11,11 +11,14 @@ execution: per-ticket procedure, the HTML template, and the bulk fan-out pattern
    becomes an explicit evidence-gap line, not a fact.
 2. **Stale premises are a first-class finding.** If the work already shipped or the failure no
    longer exists, write the Problem as "Premise stale — …", reframe as verify-and-close, flag it.
-3. Write the description per the template via `task_update`; sanity-check `priority` and the
-   `impact/·` `effort/·` labels against what research showed; correct drift and say so.
+3. Write the description per the template via `task_update`; sanity-check `priority`, the
+   `impact/·` label, and set all three estimation labels — `effort/S|M|L` (work size),
+   `time/hours|days|weeks` (wall-clock lead incl. soaks/waits), `uncertainty/low|med|high`
+   (path clarity; high ⇒ spike first, never `agent-ready`) — against what research showed;
+   correct drift and say so.
 4. Labels: add `ready`, remove `needs-refinement` — via `label_add_to_task`/`label_remove_from_task`
    (NOT `labels_bulk_set_on_task` unless passing the complete set).
-5. If sizing tripped (L without a slice): split — children via `task_create` +
+5. If sizing tripped (effort L without a slice, or uncertainty high without a spike): split — children via `task_create` +
    `relation_create` kind `subtask`, sequence with `precedes`.
 6. Report per ticket: one-line what-changed + any evidence gap left open.
 
@@ -26,7 +29,7 @@ survive sanitization; the checklist renders with an x/y counter). Escape `&` as 
 `<`/`>` as `&lt;`/`&gt;`. 1500–3500 chars. Never omit Problem, Acceptance criteria, or Verification.
 
 ```html
-<p><strong>&lt;theme&gt;</strong> — <code>[P· · · · ·]</code></p>
+<p><strong>&lt;theme&gt;</strong> — <code>[P1 · impact H · effort M · time d · unc low]</code></p>
 <h3>Problem</h3><p>What is wrong today + evidence: <code>path/file:12</code>, live symptom, decision record.</p>
 <h3>Outcome</h3><p>One sentence end-state.</p>
 <h3>Acceptance criteria</h3>
@@ -45,7 +48,7 @@ survive sanitization; the checklist renders with an x/y counter). Escape `&` as 
 Title (unchanged): `Default-deny the security namespace — crown jewels sit on a flat network`
 
 ```html
-<p><strong>Security — network containment</strong> — <code>[P1 · H · M]</code></p>
+<p><strong>Security — network containment</strong> — <code>[P1 · impact H · effort M · time d · unc low]</code></p>
 <h3>Problem</h3><p>The <code>security</code> ns has no NetworkPolicy — any pod can reach the
 secrets store. The opt-in default-deny generator is live but this ns never got the label
 (<code>kubernetes/apps/security/namespace.yaml</code>).</p>
