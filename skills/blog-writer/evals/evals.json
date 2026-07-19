@@ -1,0 +1,44 @@
+{
+  "skill_name": "blog-writer",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills",
+  "evals": [
+    {
+      "id": "notes-to-post",
+      "prompt": "I spent last weekend debugging a Cilium network policy that silently ate my database operator's API-server traffic. I have my notes and the fix. Help me turn this into a blog post.",
+      "assertions": [
+        "Asks framing questions before drafting: post type, target reader, and the one concrete lesson",
+        "Gathers or requests first-hand evidence (log lines, timestamps, the actual fix diff) into a research file before outlining",
+        "Proposes 2-3 opening hook alternatives rather than a single opener",
+        "Draft leads with the payoff in the first three sentences instead of chronological backstory"
+      ]
+    },
+    {
+      "id": "adapt-for-platforms",
+      "prompt": "My post about self-hosting a CI runner fleet is finished and published on my Substack. Now I want to get it onto Hacker News, LinkedIn, and dev.to.",
+      "assertions": [
+        "HN guidance: submit the canonical URL with the original de-hyped title, never solicit votes, be present in comments",
+        "LinkedIn variant is a native standalone-value post with the hook in the first ~2 lines and the external link kept out of the body",
+        "dev.to variant sets canonical_url frontmatter pointing at the Substack original and uses at most 4 tags",
+        "Advises adapting each variant rather than pasting the same text to all three platforms"
+      ]
+    },
+    {
+      "id": "de-slop-draft",
+      "prompt": "Here's my blog post draft. Before I publish, can you edit it? It needs to not sound like it was written by an AI.",
+      "assertions": [
+        "Runs distinct single-dimension edit passes rather than one combined rewrite",
+        "Identifies AI-tell clusters (generic openings, buzz-verbs, symmetric structure, em-dash density) with specific instances from the draft",
+        "Preserves the author's voice and colorful lines; does not flag isolated tells or rewrite quoted text",
+        "Adds or requests first-hand specifics (numbers, anecdotes, opinions) rather than only deleting flagged phrases"
+      ]
+    },
+    {
+      "id": "not-a-blog-task",
+      "prompt": "Write an ADR documenting our decision to switch from Loki to VictoriaLogs.",
+      "expect_trigger": false,
+      "assertions": [
+        "The blog-writer skill does not trigger; ADR authoring is not blog writing"
+      ]
+    }
+  ]
+}

@@ -9,6 +9,7 @@ Webgrip's open-source Claude skills, shipped as one plugin marketplace hosted on
 | Skill | What it does |
 |---|---|
 | [adr-writer](skills/adr-writer) | Write, amend, and supersede MADR 4.0.0 Architecture Decision Records: bootstrap or adopt an ADR corpus, registry index kept in lock-step, append-only dated history, and a bundled CI-ready consistency validator. |
+| [blog-writer](skills/blog-writer) | Turn project notes into technical blog posts developers read — evidence-first drafting, hook workshop, single-dimension edit sweeps with a de-AI-ify pass, fresh-reader testing, and per-platform syndication recipes (HN, LinkedIn, Substack, dev.to, Reddit, Lobsters). |
 | [domain-language](skills/domain-language) | Define a project's ubiquitous language (terms, entities, rules, events) in `domain/model.yaml`; generate glossaries, entity docs with Mermaid diagrams, [Context Mapper](https://contextmapper.org) exports, a 0–10 model health score, and feature specs from it. |
 | [guard-secrets](skills/guard-secrets) | A `PreToolUse` hook that blocks plaintext-secret leaks before an edit lands (no decrypted artifacts, SOPS stays ciphertext, gitleaks scan), plus the secrets-floor knowledge behind it — the Claude Code twin of the opencode guard-secrets plugin. |
 | [harvest-knowledge](skills/harvest-knowledge) | Mine durable learnings out of Claude threads in three phases (distill → consolidate → synthesize) and land them as repo docs, CLAUDE.md rules, new skills, and memory updates. |

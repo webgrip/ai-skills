@@ -1,0 +1,22 @@
+{
+  "name": "blog-writer",
+  "displayName": "Blog Writer",
+  "description": "Write, edit, and syndicate technical blog posts: evidence-first drafting, hook workshop, single-dimension edit sweeps with a de-AI-ify pass, fresh-reader testing, and per-platform adaptation for HN, LinkedIn, Substack, dev.to, Reddit, and Lobsters.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "blog",
+    "writing",
+    "technical-writing",
+    "editing",
+    "cross-posting",
+    "syndication",
+    "hacker-news",
+    "linkedin",
+    "substack"
+  ]
+}

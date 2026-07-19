@@ -25,6 +25,24 @@
       ]
     },
     {
+      "name": "blog-writer",
+      "source": "./skills/blog-writer",
+      "description": "Write, edit, and syndicate technical blog posts: evidence-first drafting, hook workshop, single-dimension edit sweeps with a de-AI-ify pass, fresh-reader testing, and per-platform adaptation for HN, LinkedIn, Substack, dev.to, Reddit, and Lobsters.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "blog",
+        "writing",
+        "technical-writing",
+        "editing",
+        "cross-posting",
+        "syndication",
+        "hacker-news",
+        "linkedin",
+        "substack"
+      ]
+    },
+    {
       "name": "domain-language",
       "source": "./skills/domain-language",
       "description": "Define and maintain a project's ubiquitous language (terms, entities, rules, events) in docs/domain/model.yaml, and generate documentation, diagrams, Context Mapper exports, health scores, and feature specs from it.",
