@@ -30,7 +30,7 @@ in the reference files.
 **`npx skills` (recommended — works in every agent, not just Claude):**
 
 ```bash
-npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills --skill blog-writer
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git --skill blog-writer
 ```
 
 **Claude Code plugin:**
