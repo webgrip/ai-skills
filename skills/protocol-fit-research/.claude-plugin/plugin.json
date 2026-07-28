@@ -1,0 +1,12 @@
+{
+  "name": "protocol-fit-research",
+  "displayName": "Protocol Fit Research",
+  "description": "Evaluate an external protocol or standard against a project's architecture seams via parallel research fan-out.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": []
+}

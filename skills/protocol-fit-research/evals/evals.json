@@ -1,0 +1,55 @@
+{
+  "skill_name": "protocol-fit-research",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = should-NOT-fire probe; null = output-quality-only case the trigger probe skips.",
+  "evals": [
+    {
+      "id": "protocol-fit-deep-research",
+      "prompt": "How does AG-UI fit into this repo's design? How could we implement it? Do deep research.",
+      "assertions": [
+        "Resolves where findings must land before researching (a Protocol research contract block in AGENTS.md/CLAUDE.md, or states the inferred ledger, watchlist and dossier locations)",
+        "Launches the four research angles in a single parallel block — spec crawl, source repo dig, ecosystem plus absence checks, local seam map — rather than researching serially",
+        "Reads the project's own architecture docs itself while the agents run instead of delegating the seam mapping",
+        "Report opens with a verdict sentence, then a layer-map table that marks seams nobody claims, then component-by-component fit citing the project's own file paths",
+        "Ends with numbered recommendations and falsifiable re-evaluation triggers naming versions, repos, or events",
+        "Writes the dossier, ledger row, and (if adoption is conditional) watchlist item into the repo in the same session, without parking the verdict in agent memory"
+      ]
+    },
+    {
+      "id": "absence-and-maturity-axes",
+      "prompt": "Does the OpenFeature spec matter to us at all? Research it properly against our stack.",
+      "assertions": [
+        "Instructs the ecosystem agent to run absence checks naming the project's actual components, and treats a confirmed zero-mentions result as a reportable finding",
+        "Separates maturity from fit — does not treat a stable, well-governed spec as automatically adoptable, and names which axis drove the verdict",
+        "Distinguishes shipped adoption (docs, endpoints, merged code) from press-release or governance-seat claims",
+        "A negative verdict still names the specific trigger that would flip it"
+      ]
+    },
+    {
+      "id": "competing-bet-comparison",
+      "prompt": "Someone says this new protocol replaces the one we already bet on for that seam. Is that right?",
+      "assertions": [
+        "Identifies the seam and the project's existing bet from the repo before comparing",
+        "Compares the two head-to-head at that seam rather than describing the newcomer in isolation",
+        "Re-confirms or explicitly amends the standing bet's record in the repo's docs, treating new evidence for an existing decision as a finding worth recording"
+      ]
+    },
+    {
+      "id": "single-fact-lookup",
+      "prompt": "What transport does MCP use, stdio or HTTP?",
+      "expect_trigger": null,
+      "assertions": [
+        "Answers directly from one targeted lookup",
+        "Does not launch the multi-agent fan-out for a single-fact question"
+      ]
+    },
+    {
+      "id": "not-a-research-question",
+      "prompt": "Update the KEDA ScaledJob trigger config in our Helm chart to poll every 15 seconds.",
+      "expect_trigger": false,
+      "assertions": [
+        "Treats this as a configuration edit, not a protocol-landscape question",
+        "Does not launch research agents"
+      ]
+    }
+  ]
+}
