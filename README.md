@@ -47,6 +47,34 @@ lockfiles, and telemetry opt-out: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 /plugin install domain-language@ai-skills
 ```
 
+**`webgrip` — the whole estate, namespaced.** The repo root is itself a plugin,
+so one install loads every skill prefixed `webgrip:<skill>`:
+
+```
+/plugin marketplace add https://forgejo.webgrip.dev/webgrip/ai-skills.git
+/plugin install webgrip@ai-skills
+```
+
+That prefix is the point: it lets this estate sit alongside **another estate
+shipping same-named skills** (`adr-writer`, `skillsmith`, …) without the two
+competing to trigger — you get `webgrip:adr-writer` next to the other's
+`adr-writer`, and the agent can tell them apart. It matters because same-named
+skills across estates encode *different org policy*.
+
+The bundle wires the estate's hooks too — the `guard-secrets` PreToolUse block
+and the `skill-usage` PostToolUse logger, re-declared in the root
+[hooks/hooks.json](hooks/hooks.json) rooted at the repo instead of the skill
+dir (a skill's own `hooks.json` resolves `${CLAUDE_PLUGIN_ROOT}` to that skill's
+directory, which is wrong under the bundle). `check_manifests.py` fails if a
+skill grows a hook the bundle doesn't mirror, so the bundle can't ship an
+enforcement hook silently dead.
+
+The bundle carries a repo-wide version that moves whenever *any* skill releases
+— it has to, or installs never see the update — but it is deliberately **not
+tagged**: `<skill>-v<X.Y.Z>` stays the only release tag and the only unit of
+pinning. Take the bundle **or** per-skill plugins, never both; enabling `webgrip`
+alongside `domain-language@ai-skills` loads that skill twice.
+
 Updates arrive via `/plugin marketplace update ai-skills` whenever a version is bumped. Plugin
 skills load at session start (not `/reload-skills`) and invoke **namespaced**:
 `/domain-language:domain-language`. Don't run both routes for the same skill — it double-loads.

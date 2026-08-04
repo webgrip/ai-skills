@@ -21,18 +21,25 @@ MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
 ENTRY_FIELDS = ("description", "version", "license", "keywords")
 
 
+def entry_from(pj_path: Path, source: str) -> dict:
+    pj = json.loads(pj_path.read_text())
+    missing = [f for f in ("name", *ENTRY_FIELDS) if f not in pj]
+    if missing:
+        sys.exit(f"{pj_path.relative_to(ROOT)}: missing field(s) {', '.join(missing)}")
+    entry = {"name": pj["name"], "source": source}
+    entry.update({f: pj[f] for f in ENTRY_FIELDS})
+    return entry
+
+
 def render() -> str:
     mp = json.loads(MARKETPLACE.read_text())
-    entries = []
+    # The repo root is itself a plugin — the bundle. It ships every skill
+    # namespaced <bundle>:<skill>, which is what lets this estate sit alongside
+    # another estate's same-named skills. It leads the catalog; the per-skill
+    # plugins follow, for consumers who want a minimal surface instead.
+    entries = [entry_from(ROOT / ".claude-plugin" / "plugin.json", "./")]
     for pdir in sorted(p for p in (ROOT / "skills").iterdir() if p.is_dir()):
-        pj_path = pdir / ".claude-plugin" / "plugin.json"
-        pj = json.loads(pj_path.read_text())
-        missing = [f for f in ("name", *ENTRY_FIELDS) if f not in pj]
-        if missing:
-            sys.exit(f"{pj_path.relative_to(ROOT)}: missing field(s) {', '.join(missing)}")
-        entry = {"name": pj["name"], "source": f"./skills/{pdir.name}"}
-        entry.update({f: pj[f] for f in ENTRY_FIELDS})
-        entries.append(entry)
+        entries.append(entry_from(pdir / ".claude-plugin" / "plugin.json", f"./skills/{pdir.name}"))
     mp["plugins"] = entries
     return json.dumps(mp, indent=2, ensure_ascii=False) + "\n"
 

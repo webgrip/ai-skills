@@ -110,6 +110,23 @@ def plugin_version(skill):
     return json.loads((ROOT / "skills" / skill / ".claude-plugin" / "plugin.json").read_text())["version"]
 
 
+def bump_bundle(level):
+    """Move the bundle plugin's version whenever any skill releases.
+
+    The bundle carries a repo-wide version, not a per-skill one, and consumers
+    only pull an update when the catalog version moves — so a release that left
+    it untouched would never reach anyone installed on the bundle. It is
+    versioned but deliberately never tagged: <skill>-v<X.Y.Z> stays the only
+    release tag and the only unit of pinning.
+    """
+    pj = ROOT / ".claude-plugin" / "plugin.json"
+    data = json.loads(pj.read_text())
+    old = data["version"]
+    data["version"] = bumped(old, level)
+    pj.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    print(f"  bundle {data['name']}: {old} -> {data['version']} ({level})", file=sys.stderr)
+
+
 def plan():
     out = []
     for skill in skills():
@@ -307,6 +324,9 @@ def apply():
             data["version"] = r["new"]
             pj.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
             write_changelog(r["skill"], changelog_section(r["new"], r["commits"], r["initial"]))
+        # strongest level across this run — a major anywhere makes it a major
+        bump_bundle(max((r["level"] for r in releases if r["level"] in LEVELS),
+                        key=LEVELS.index, default="patch"))
         sync_marketplace.sync()
         tags = [f"{r['skill']}-v{r['new']}" for r in releases]
         git("add", "-A")
