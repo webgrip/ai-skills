@@ -2,7 +2,7 @@
   "name": "skillsmith",
   "displayName": "Skillsmith",
   "description": "Author, edit, and audit Claude Code skills for token-efficient, high-trigger-accuracy LLM ingestion: a verified token cost model, description-as-router rules, progressive disclosure into reference files, and skill eval methodology.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

@@ -1,5 +1,10 @@
 # vikunja-product-owner
 
+## 1.2.1 (2026-08-04)
+
+Maintenance release — estate-wide re-cut; no changes to this skill.
+
+
 ## 1.2.0 (2026-07-18)
 
 ### 🚀 Features
