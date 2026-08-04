@@ -90,12 +90,23 @@ No repo-wide `vX.Y.Z` tag — the old semantic-release train is gone.
 
 - Auth: the `release` job checks out with `WEBGRIP_CI_TOKEN` (push creds for the
   commit-back + tags to protected main) and passes the same token as
-  `FORGEJO_TOKEN` for the release + package-registry API (`GITHUB_SERVER_URL` +
-  `GITHUB_REPOSITORY` give the base URL and owner/repo).
-- Idempotent: each skill bases off its own tag (read from git, not the tree),
-  `[skip ci]`/`chore(release)` commits are ignored, and a 409 from the package
-  registry or an existing release is tolerated — safe to re-run a partially
-  failed release.
+  **`GITEA_TOKEN`** for the release + package-registry API (`GITHUB_SERVER_URL` +
+  `GITHUB_REPOSITORY` give the base URL and owner/repo). Not `FORGEJO_TOKEN` —
+  Forgejo auto-injects that as the per-job token, which the package registry
+  rejects with 401 `reqPackageAccess`.
+- **Idempotent by reading before writing, never by catching the conflict.** Each
+  skill bases off its own tag (read from git, not the tree, and only tags that
+  are ancestors of HEAD — a rewrite left dangling higher-numbered ones behind);
+  `[skip ci]`/`chore(release)` commits are ignored; the registry and the release
+  list are queried first, so a run with nothing to do performs **zero** remote
+  writes. **Nothing swallows a 409.** A publish only happens where the state
+  query said the version was absent, so a 409 is a concurrent writer and fails
+  the run rather than going green. The zips are deterministic, so an already-
+  published version is verified by sha256 against a local rebuild; the
+  destructive repair path (DELETE the version, re-PUT) fires only on a genuine
+  phantom or drift, logs `WARNING`, and is summarized at the end. Never
+  re-introduce "PUT, and on 409 delete + re-PUT" — that deletes healthy
+  artifacts on every run.
 - A **red release run is fix-now**: until it's green, the changed skills aren't
   prompted to update. Recovery: the `.skill` zips are deterministic
   (`python3 scripts/build_dist.py <skill>` reproduces byte-for-byte), and a
