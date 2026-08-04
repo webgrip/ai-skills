@@ -40,8 +40,10 @@ a commit type that releases nothing (`chore:`, `docs:`) never reaches a
 skill's installs. Corollary: between a merge and its release commit, `main`
 briefly carries new content under the old version; installs converge on the
 bump. A red release run must be fixed promptly — the trains are idempotent
-(each skill bases off its own tag; a 409 on an existing release/artifact is
-tolerated), so a fixed re-run resumes cleanly.
+(each skill bases off its own tag, and every remote write is gated on a state
+query first: an artifact already published at the right sha256 is verified and
+left alone, an existing release is skipped), so a fixed re-run resumes cleanly
+without rewriting what earlier runs got right.
 
 ## skills CLI specifics
 

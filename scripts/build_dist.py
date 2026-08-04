@@ -30,7 +30,7 @@ EPOCH = (1980, 1, 1, 0, 0, 0)  # zip format's minimum timestamp
 PLUGIN_ONLY = {".claude-plugin", "README.md", "test.sh", ".mcp.json"}
 
 
-def build(skill_dir: Path):
+def build(skill_dir: Path, quiet: bool = False):
     out = DIST / f"{skill_dir.name}.skill"
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
         for f in sorted(skill_dir.rglob("*")):
@@ -41,7 +41,9 @@ def build(skill_dir: Path):
                 zi.compress_type = zipfile.ZIP_DEFLATED
                 zi.external_attr = 0o644 << 16
                 zf.writestr(zi, f.read_bytes())
-    print(f"wrote {out.relative_to(ROOT)}")
+    if not quiet:
+        print(f"wrote {out.relative_to(ROOT)}")
+    return out
 
 
 def write_checksums():
