@@ -278,6 +278,68 @@ whd_herd_has_secured() {
     herd secured 2>/dev/null | whd_herd_table_sites | grep -Fxq "$domain"
 }
 
+# --- Herd trace pruning ---------------------------------------------------------
+
+whd_herd_config_root() {
+    printf '%s/Library/Application Support/Herd/config' "$HOME"
+}
+
+# Herd appends each secured site's certificate to its PHP CA bundle
+# (config/php/cacert.pem), but `herd unsecure` leaves that entry behind.
+# Prune the block for the removed domain, plus any block whose certificate no
+# longer exists in valet's Certificates directory (leftovers of older removals).
+whd_prune_herd_cacert() {
+    local domain="$1"
+    local config_root cacert certs_dir removed
+    config_root="$(whd_herd_config_root)"
+    cacert="$config_root/php/cacert.pem"
+    certs_dir="$config_root/valet/Certificates"
+    [[ -f "$cacert" ]] || return 0
+
+    removed="$(node -e '
+        const fs = require("fs");
+        const [cacertPath, certsDir, domain] = process.argv.slice(1);
+        const content = fs.readFileSync(cacertPath, "utf8");
+        const certsDirExists = fs.existsSync(certsDir);
+        const block = /\nHerd ([^\n]+)\n=+\n-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----\n?/g;
+        const removed = [];
+        const cleaned = content.replace(block, (match, site) => {
+            const orphaned = certsDirExists && !fs.existsSync(`${certsDir}/${site}.crt`);
+            if (site === domain || orphaned) {
+                removed.push(site);
+                return "\n";
+            }
+            return match;
+        });
+        if (removed.length > 0) fs.writeFileSync(cacertPath, cleaned);
+        process.stdout.write(removed.join(" "));
+    ' "$cacert" "$certs_dir" "$domain")"
+
+    if [[ -n "$removed" ]]; then
+        whd_log "Pruned Herd CA-bundle entries: $removed"
+    fi
+}
+
+# The Herd GUI remembers the last opened site (herd.json lastSite); after a
+# cleanup it can point at the deleted worktree. Repoint it at the main repo.
+whd_prune_herd_last_site() {
+    local removed_path="$1"
+    local replacement_path="$2"
+    local herd_json
+    herd_json="$(whd_herd_config_root)/herd.json"
+    [[ -f "$herd_json" && -n "$removed_path" ]] || return 0
+
+    node -e '
+        const fs = require("fs");
+        const [path, removed, replacement] = process.argv.slice(1);
+        const data = JSON.parse(fs.readFileSync(path, "utf8"));
+        if (typeof data.lastSite === "string" && (data.lastSite === removed || data.lastSite.startsWith(removed + "/"))) {
+            data.lastSite = replacement;
+            fs.writeFileSync(path, JSON.stringify(data, null, 4) + "\n");
+        }
+    ' "$herd_json" "$removed_path" "$replacement_path"
+}
+
 # --- registry (per worktrees root) + marker (per worktree) ----------------------
 
 whd_registry_path() {

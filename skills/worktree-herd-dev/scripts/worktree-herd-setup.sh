@@ -75,6 +75,7 @@ rollback_on_failure() {
     if [[ "$did_link" -eq 1 ]] && command -v herd >/dev/null 2>&1; then
         herd unsecure "$ROLLBACK_DOMAIN" --silent 2>/dev/null || true
         herd unlink "$ROLLBACK_SITE" 2>/dev/null || true
+        whd_prune_herd_cacert "$ROLLBACK_DOMAIN" 2>/dev/null || true
     fi
 
     if [[ "$did_registry" -eq 1 ]]; then

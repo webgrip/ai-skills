@@ -74,7 +74,7 @@ Project-specific steps (seeders, admin users, extra .env rewrites) belong in exe
 
 ## Cleanup safety
 
-Teardown order is hook → Herd (verified) → database → git worktree. Cleanup refuses to run when the site can't be resolved from the marker/registry, when the path isn't a registered worktree, when another process has files open in it, or (without `--force`) when the worktree has real uncommitted changes — the tool's own artifacts don't count. `--dry-run` shows the exact plan.
+Teardown order is hook → Herd (verified) → database → git worktree. After unlinking, cleanup also prunes the traces Herd itself leaves behind: the removed site's entries in Herd's PHP CA bundle (`config/php/cacert.pem`, plus any orphaned entries from earlier removals) and a `herd.json` `lastSite` pointing at the deleted worktree. Cleanup refuses to run when the site can't be resolved from the marker/registry, when the path isn't a registered worktree, when another process has files open in it, or (without `--force`) when the worktree has real uncommitted changes — the tool's own artifacts don't count. `--dry-run` shows the exact plan.
 
 ## Browser workflow
 

@@ -164,6 +164,7 @@ main() {
         if [[ "$keep_herd" != "true" && -n "$site" ]]; then
             echo "Would run: herd unsecure $domain"
             echo "Would run: herd unlink $site"
+            echo "Would prune Herd CA-bundle entries for $domain (plus orphans) and reset herd.json lastSite"
         fi
         if [[ "$keep_db" != "true" && -n "$db_name" ]]; then
             echo "Would drop database: $db_name"
@@ -244,6 +245,9 @@ EOF
         if whd_herd_has_secured "$domain" || whd_herd_has_link "$site"; then
             whd_error "Herd still lists ${site}; fix Herd first (the worktree was NOT removed, so nginx/TLS config stays valid)."
         fi
+
+        whd_prune_herd_cacert "$domain"
+        whd_prune_herd_last_site "$worktree_path" "$main_root"
     fi
 
     if [[ "$keep_db" != "true" && -n "$db_name" ]]; then

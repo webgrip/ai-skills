@@ -148,4 +148,34 @@ echo '{"scripts": {"build": "vite build"}}' >"$MARKER_DIR/package.json"
 whd_has_npm_script "$MARKER_DIR" build || fail "has_npm_script should find build"
 whd_has_npm_script "$MARKER_DIR" nope && fail "has_npm_script must fail for missing scripts"
 
+# --- Herd trace pruning: CA bundle + lastSite ---------------------------------------------
+PRUNE_HOME="$TMP/prune-home"
+HERD_CONFIG="$PRUNE_HOME/Library/Application Support/Herd/config"
+mkdir -p "$HERD_CONFIG/php" "$HERD_CONFIG/valet/Certificates"
+cert_block() {
+    printf 'Herd %s\n==========\n-----BEGIN CERTIFICATE-----\nfake\n-----END CERTIFICATE-----\n' "$1"
+}
+{
+    printf -- '-----BEGIN CERTIFICATE-----\nmozilla-root\n-----END CERTIFICATE-----\n'
+    printf '\n'
+    cert_block "keep.test"
+    printf '\n'
+    cert_block "removed.test"
+    printf '\n'
+    cert_block "orphan.test"
+} >"$HERD_CONFIG/php/cacert.pem"
+touch "$HERD_CONFIG/valet/Certificates/keep.test.crt" "$HERD_CONFIG/valet/Certificates/removed.test.crt"
+printf '{\n    "lastSite": "/tmp/worktrees/gone"\n}\n' >"$HERD_CONFIG/herd.json"
+
+HOME="$PRUNE_HOME" whd_prune_herd_cacert "removed.test" >/dev/null
+grep -q 'Herd keep.test' "$HERD_CONFIG/php/cacert.pem" || fail "prune must keep entries with live certs"
+grep -q 'mozilla-root' "$HERD_CONFIG/php/cacert.pem" || fail "prune must not touch the stock CA bundle"
+grep -q 'Herd removed.test' "$HERD_CONFIG/php/cacert.pem" && fail "prune must drop the removed domain"
+grep -q 'Herd orphan.test' "$HERD_CONFIG/php/cacert.pem" && fail "prune must drop orphaned entries"
+
+HOME="$PRUNE_HOME" whd_prune_herd_last_site "/tmp/worktrees/gone" "/tmp/main-repo"
+grep -q '"lastSite": "/tmp/main-repo"' "$HERD_CONFIG/herd.json" || fail "lastSite must be repointed at the main repo"
+HOME="$PRUNE_HOME" whd_prune_herd_last_site "/tmp/other" "/tmp/elsewhere"
+grep -q '"lastSite": "/tmp/main-repo"' "$HERD_CONFIG/herd.json" || fail "lastSite must be untouched for other paths"
+
 echo "worktree-herd-dev: ok"

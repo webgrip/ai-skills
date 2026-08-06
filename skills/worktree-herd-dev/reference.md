@@ -60,7 +60,7 @@ Everything that hardcodes one project — multi-domain `.env` rewrites, session 
 
 ## Cleanup safety ladder
 
-In order: resolve site (marker → registry → refuse) → `--dry-run` exits after printing the plan → confirmation prompt (skipped by `--yes`) → dirty check → in-use check (`lsof`; skipped in `--current` mode, where your own shell is inside) → pre-cleanup hook → `herd unsecure` + `herd unlink`, then *re-checks Herd actually removed them* → database drop → `git worktree remove` → `git worktree prune` → registry entry removed.
+In order: resolve site (marker → registry → refuse) → `--dry-run` exits after printing the plan → confirmation prompt (skipped by `--yes`) → dirty check → in-use check (`lsof`; skipped in `--current` mode, where your own shell is inside) → pre-cleanup hook → `herd unsecure` + `herd unlink`, then *re-checks Herd actually removed them* → database drop → `git worktree remove` → `git worktree prune` → registry entry removed. After the Herd re-check, the removed domain's entries in Herd's PHP CA bundle (`config/php/cacert.pem`) are pruned — along with any entry whose certificate no longer exists in valet's `Certificates/` (orphans of earlier removals) — and `herd.json`'s `lastSite` is repointed at the main repo if it referenced the removed worktree. Setup rollback prunes the CA bundle the same way.
 
 The dirty check ignores the artifacts this tool creates (`.worktree-herd.json`, a generated `herd.yml`); anything else untracked or modified requires `--force` — interactively you're offered the escalation, but `--yes` alone refuses so automation can't destroy work silently.
 
