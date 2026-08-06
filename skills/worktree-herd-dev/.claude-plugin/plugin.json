@@ -2,7 +2,7 @@
   "name": "worktree-herd-dev",
   "displayName": "Worktree Herd Dev",
   "description": "Set up and tear down git worktrees with a dedicated Laravel Herd .test domain, isolated Vite port, and optional per-worktree database per branch — with rollback on failure, collision guards, and per-project config/hooks for parallel dev environments and browser testing.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "author": {
     "name": "Webgrip",
