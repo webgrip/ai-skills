@@ -68,6 +68,17 @@ curl --fail -sk -o /dev/null "https://shared.${WHD_HERD_DOMAIN}/login" \
 
 The worktree shares the main database by default; sessions stay isolated because the tool already sets a unique `SESSION_COOKIE` per worktree.
 
+## Recipe: multi-domain via Host-derived base domain (dr-meds)
+
+dr-meds registers routes on subdomains (`order.`, `login.`, `backapo.`, `backdoc.`, `consultation.`) of a base domain **derived from the request Host / `APP_URL`** (`App\Helpers\DomainHelper` strips the first label when the host has more than two). There are no `DOMAINS_*` env vars to rewrite — `APP_URL` (which the tool sets) drives everything — but two things still matter:
+
+1. `site_separator: "-"` is required: with a dotted site, the helper computes the **main** base domain from `slug.dr-meds.test` and every subdomain lands in the main checkout.
+2. The post-setup hook rewrites `SESSION_DOMAIN` to `.${WHD_HERD_DOMAIN}` (the copied value scopes cookies to the main domain), runs `optimize:clear` + `db:seed --class=DevelopmentSeeder` (portal logins, KYC-verified customer, orders in every state), and self-checks `https://login.${WHD_HERD_DOMAIN}/`.
+
+Beware: the subdomain routes live in `app/Domains/*/Http/Routes`, so a `grep "Route::domain" routes/` comes up empty — check `php artisan route:list` before concluding an app is single-domain. Also: `UserSeeder` only creates the login user when `SEEDER_CODE14_PASSWORD` is set in the main checkout's `.env` (it propagates via the copied `.env`).
+
+Config: `base_branch: development`, `database: per-worktree`, `build_assets: true`, `site_separator: "-"`, `editor: code`.
+
 ## Recipe fragment: per-worktree database with review data
 
 For any project where worktrees need their own data (set `database: per-worktree` — the tool creates the DB and runs `migrate` before the hook fires), append to the post-setup hook:
