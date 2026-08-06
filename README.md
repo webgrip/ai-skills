@@ -17,7 +17,6 @@ Webgrip's open-source Claude skills, shipped as one plugin marketplace hosted on
 | [skill-usage](skills/skill-usage) | Local skill-usage telemetry: a `PostToolUse` hook logs every skill invocation to a local JSONL (no network), and the skill reports which skills are used, dead, or undertriggering — the private answer to "which of our skills earn their keep?". |
 | [skillsmith](skills/skillsmith) | Author, edit, and audit agent skills for token-efficient, high-trigger-accuracy ingestion: the skill loading/token cost model, description-as-router rules, cross-tool frontmatter portability, progressive disclosure, and eval methodology. |
 | [vikunja-product-owner](skills/vikunja-product-owner) | Run a Vikunja board as product owner via the bundled `vikunja` MCP: Definition-of-Ready refinement, prioritization/do-next curation, dependency sequencing, backlog top-up/inventory, and agent claim/completion protocols. |
-| [worktree-herd-dev](skills/worktree-herd-dev) | Parallel git worktrees, each with a dedicated Laravel Herd `.test` domain, isolated Vite port, and optional per-worktree database — setup rolls back on failure, cleanup never guesses (macOS). |
 
 ## Install
 

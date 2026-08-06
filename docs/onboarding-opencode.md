@@ -53,9 +53,9 @@ aren't your thing.
 
 Try, in order:
 
-1. `what skills do you have available?` — you should see the org six
+1. `what skills do you have available?` — you should see the org five
    (adr-writer, domain-language, harvest-knowledge, skillsmith,
-   vikunja-product-owner, worktree-herd-dev) plus the repo's own.
+   vikunja-product-owner) plus the repo's own.
 2. `what should we work on next?` — the vikunja-product-owner skill reads
    the team board (LAN/VPN required).
 3. A real change: `/opsx-propose` a small idea → review the artifacts under
