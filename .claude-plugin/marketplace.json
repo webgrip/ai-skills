@@ -102,6 +102,24 @@
       ]
     },
     {
+      "name": "product-owner",
+      "source": "./skills/product-owner",
+      "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, flow metrics, and evidence-based closing.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "product-owner",
+        "backlog",
+        "tickets",
+        "definition-of-ready",
+        "agent-ready",
+        "vikunja",
+        "clickup",
+        "flow-metrics",
+        "mcp"
+      ]
+    },
+    {
       "name": "protocol-fit-research",
       "source": "./skills/protocol-fit-research",
       "description": "Evaluate an external protocol or standard against a project's architecture seams via parallel research fan-out.",
@@ -137,22 +155,6 @@
         "token-efficiency",
         "frontmatter",
         "progressive-disclosure"
-      ]
-    },
-    {
-      "name": "vikunja-product-owner",
-      "source": "./skills/vikunja-product-owner",
-      "description": "Run a Vikunja board as product owner: ticket CRUD, Definition-of-Ready refinement, prioritization, top-up, and agent work protocols over the vikunja MCP.",
-      "version": "1.2.1",
-      "license": "MIT",
-      "keywords": [
-        "vikunja",
-        "product-owner",
-        "backlog",
-        "tickets",
-        "definition-of-ready",
-        "roadmap",
-        "mcp"
       ]
     }
   ]

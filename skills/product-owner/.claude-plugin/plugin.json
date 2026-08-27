@@ -1,0 +1,22 @@
+{
+  "name": "product-owner",
+  "displayName": "Product Owner",
+  "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, flow metrics, and evidence-based closing.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "product-owner",
+    "backlog",
+    "tickets",
+    "definition-of-ready",
+    "agent-ready",
+    "vikunja",
+    "clickup",
+    "flow-metrics",
+    "mcp"
+  ]
+}

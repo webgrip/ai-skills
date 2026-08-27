@@ -13,10 +13,10 @@ Webgrip's open-source Claude skills, shipped as one plugin marketplace hosted on
 | [domain-language](skills/domain-language) | Define a project's ubiquitous language (terms, entities, rules, events) in `domain/model.yaml`; generate glossaries, entity docs with Mermaid diagrams, [Context Mapper](https://contextmapper.org) exports, a 0–10 model health score, and feature specs from it. |
 | [guard-secrets](skills/guard-secrets) | A `PreToolUse` hook that blocks plaintext-secret leaks before an edit lands (no decrypted artifacts, SOPS stays ciphertext, gitleaks scan), plus the secrets-floor knowledge behind it — the Claude Code twin of the opencode guard-secrets plugin. |
 | [harvest-knowledge](skills/harvest-knowledge) | Mine durable learnings out of Claude threads in three phases (distill → consolidate → synthesize) and land them as repo docs, CLAUDE.md rules, new skills, and memory updates. |
+| [product-owner](skills/product-owner) | Run any ticket board as product owner (Vikunja + ClickUp adapters, bundled `vikunja` MCP): research-backed Definition of Ready, binary criteria with verification, an agent-ready gate for AI-executed work, WIP anchored on review capacity, backlog sweeps, evidence-based closing, and flow metrics with an SLE — every major rule sourced in `rationale.md`. |
 | [protocol-fit-research](skills/protocol-fit-research) | Answer "does this protocol matter to us?" with a parallel research fan-out (spec crawl, source-repo dig, ecosystem adoption plus explicit absence checks, local seam map), a verdict-led report separating maturity from fit, and a dossier, ledger row and watchlist item landed in the repo with falsifiable re-evaluation triggers. |
 | [skill-usage](skills/skill-usage) | Local skill-usage telemetry: a `PostToolUse` hook logs every skill invocation to a local JSONL (no network), and the skill reports which skills are used, dead, or undertriggering — the private answer to "which of our skills earn their keep?". |
 | [skillsmith](skills/skillsmith) | Author, edit, and audit agent skills for token-efficient, high-trigger-accuracy ingestion: the skill loading/token cost model, description-as-router rules, cross-tool frontmatter portability, progressive disclosure, and eval methodology. |
-| [vikunja-product-owner](skills/vikunja-product-owner) | Run a Vikunja board as product owner via the bundled `vikunja` MCP: Definition-of-Ready refinement, prioritization/do-next curation, dependency sequencing, backlog top-up/inventory, and agent claim/completion protocols. |
 
 ## Install
 
@@ -35,7 +35,7 @@ Skills land in `~/.agents/skills/` and are symlinked into each agent's skills di
 lockfiles, and telemetry opt-out: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 
 > **The CLI ships only the SKILL.md trees.** A skill's bundled `hooks/hooks.json`
-> (`guard-secrets`, `skill-usage`) or `.mcp.json` (`vikunja-product-owner`) is copied but **not**
+> (`guard-secrets`, `skill-usage`) or `.mcp.json` (`product-owner`) is copied but **not**
 > auto-wired — register those by hand in your `settings.json` / `.mcp.json`, or use the plugin
 > route below, which wires them for you.
 

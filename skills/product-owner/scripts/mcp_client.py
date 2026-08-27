@@ -13,7 +13,7 @@ Protocol notes (the parts that are easy to get wrong):
 - Send the `notifications/initialized` notification after initialize.
 - Responses may be SSE — take the last `data:` line.
 - tools/call results arrive as text content (this MCP returns formatted text, not JSON —
-  see reference.md "Response formats").
+  see adapters/vikunja.md "Response formats").
 """
 import json
 import os
