@@ -18,7 +18,7 @@ symlink or copy), tracks them in `.skills.json` + `skills-lock.json`, and refres
 with `npx skills update` — which **overwrites local edits**. Neither the CLI nor the
 [agentskills spec](https://agentskills.io) defines overrides, config files, or
 inheritance. So extension is a *convention the skill itself implements*: the skill
-resolves a **contract** before acting. This estate's skills use the three layers below.
+resolves a **contract** before acting. This estate's skills use the four layers below.
 
 ## The four contract layers — most specific wins
 
@@ -69,18 +69,19 @@ A contract parameterizes the *same* procedure with different facts (ids, caps,
 language, policies). When a team genuinely wants a **different procedure** — its own
 Definition of Ready, an extra rework loop, different ticket types — that is a **team
 overlay skill** in the org's skills repo, composing with the base skill, not a fatter
-contract. Live example: code14's `team-c-grooming` skill layers Team C's customer-board
-workflow on top of the generic PO craft. The test: *could you express it as a
-key–value fact?* Yes → contract. No, it changes the steps → overlay skill.
+contract. The test: *could you express it as a key–value fact?* Yes → contract. No, it
+changes the steps → overlay skill. The test cuts both ways: code14's `team-c-grooming`
+skill looked like a behavior overlay, but on inspection everything in it was facts and
+parameters — it is now `code14:product-owner-contract`, a layer-4 contract skill.
 
-**Nothing secret goes in any layer** — all three are git-committed files. A contract
+**Nothing secret goes in any layer** — all four are git-committed files. A contract
 may *name* where a credential lives (the secret manager path); never the credential.
 
 ## The two live examples
 
 - **Board contract** — used by the `product-owner` skill: tracker + MCP server,
-  project/list ids, status roles, ticket language, WIP caps, DoD location. Template:
-  [skills/product-owner/README.md](../skills/product-owner/README.md)
+  project/list ids, status roles, ticket language, WIP caps, DoD location. Template +
+  layer file shapes: [skills/product-owner/contracts.md](../skills/product-owner/contracts.md)
 - **Measurement contract** — used by the `kpi-groomer` skill: where KPI definitions
   live, the measurement charter, dashboard base URL + access, teams in scope,
   person-level metrics policy. Template:
