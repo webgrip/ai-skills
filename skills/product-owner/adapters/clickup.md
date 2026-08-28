@@ -3,19 +3,19 @@
 Tools `mcp__clickup__clickup_*`; schemas are deferred: `ToolSearch
 "select:mcp__clickup__clickup_get_list,mcp__clickup__clickup_create_task"` before calling.
 Workspace/space/list ids, status sets, custom-field catalogs and tag sets are **instance
-facts** — the Board contract carries them (or you resolve them live); this file carries only
-behavior that holds on any ClickUp workspace.
+facts** — the Board contract carries them (or you resolve them live); this file carries
+only behavior that holds on any ClickUp workspace.
 
 ## How the generic concepts map here
 
 | Skill concept | ClickUp realization |
 |---|---|
 | Ticket body | `markdown_description` (create and update) — **markdown, not HTML**; sending HTML gets you literal tags |
-| Skeleton headings | `##` markdown headings; criteria as `- [ ] …` (not in ClickUp's documented list but round-trips and renders as a checklist, verified 2026-08-25) |
+| Skeleton headings | `##` markdown headings; criteria as `- [ ] …` (not in ClickUp's documented list but round-trips and renders as a checklist, verified 2026-08-25 on task `86cb92p9a`) |
 | Status/stage | real ClickUp statuses, **per list** — `clickup_get_list {list_id}` returns that list's own set; never assume two lists share one |
-| Priority | a word — `urgent\|high\|normal\|low` (+ `none` on update to clear), not the API's integer. Typical mapping: urgent=P0, high=P1, normal=P2 |
+| Priority | a word — `urgent\|high\|normal\|low` (+ `none` on update to clear), not the API's integer. Mapping: urgent=P0, high=P1, normal=P2 |
 | Taxonomy | tags (must already exist in the space — an unknown tag is **silently dropped**) + space-scoped custom fields (dropdowns take the **option UUID** as `value`, not the label) |
-| Dependencies | `clickup_add_task_dependency {task_id: <blocked>, depends_on: <blocker>, type: "waiting_on"}` — never prose |
+| Dependencies | `clickup_add_task_dependency {task_id: <blocked>, depends_on: <blocker>, type: "waiting_on"}` — never prose; check with `clickup_get_task {include:["dependencies"]}` |
 | Estimate | `time_estimate` in **minutes as a string**: `"150"` = 2h30 |
 | Children | `clickup_create_task {parent: <parent-id>}` |
 | Commit trailer | `Refs CU-<task-id>` (the short id from `app.clickup.com/t/<id>`) |
@@ -31,10 +31,11 @@ which one** when the name is ambiguous — "the backlog" can match dozens);
 closed). Teams routinely keep type-"done" statuses (e.g. `merged`, `testing`, `carryover`)
 that their working agreement treats as intermediate stations — ClickUp's own filters and
 widgets count them as done-group anyway. Any completion count must use the agreement's real
-finished status alone and say that it did. The same status name can even have different types
-on different spaces — cross-space queries must not assume one model.
+finished status alone and say that it did. The same status name can even have different
+types on different spaces (e.g. `carryover` done-typed on one, custom on another) —
+cross-space queries must not assume one model.
 
-## The payload trap (measured)
+## The payload trap (measured 2026-08-25)
 
 `clickup_get_task {include:["custom_fields"]}` returns every field *definition* with its full
 option catalog — measured on one ticket: **69,562 of 70,750 chars (98%)** was dropdown
@@ -63,28 +64,27 @@ acceptance criteria live in the description as markdown.
 
 One call is not the board. Loop until exhausted before quoting any count. Naming a
 done/closed status explicitly in `statuses` returns those tasks without `include_closed`
-(verified); `include_closed` matters for queries that don't name statuses.
+(verified 2026-08-25); `include_closed` matters for queries that don't name statuses.
 
 ## Time in status (flow-metrics source)
 
 `clickup_get_task_time_in_status` / `..._bulk_...` need the **"Total time in Status"
 ClickApp**. `since` is a millisecond epoch **string**; `total_time_minutes` an integer.
-History covers only statuses the task actually visited since tracking began — a single-entry
-history means "no measured start", not zero.
+History covers only statuses the task actually visited since tracking began — a
+single-entry history means "no measured start", not zero.
 
-Normalizing for [../scripts/flow_metrics.py](../scripts/flow_metrics.py), per task:
-`id`/`title` from the task · `state` from its status mapped to the contract's roles ·
-`started` = the `since` of the earliest started-status entry in `status_history` (absent
-entry ⇒ omit `started`, never zero) · `finished` = `date_closed` (only for the
-agreement's real finished status — the done-*typed* intermediates don't count) ·
-`created` = `date_created` (epoch-ms strings are accepted as-is).
+Save the raw tool output to files and feed it straight to
+[../scripts/flow_metrics.py](../scripts/flow_metrics.py) (`--tasks open.json done.json
+--status-history history.json`) — no normalization step; usage and interpretation in
+[../flow.md](../flow.md).
 
 ## Other behaviours worth knowing
 
 - ClickUp's public docs say the Update Task endpoint doesn't handle custom fields; the MCP's
-  `custom_fields` parameter works anyway (it uses the dedicated set-field route).
-- Task templates (`/temp`) are UI-only — no MCP tool applies one; write the skeleton from
-  [../refine.md](../refine.md) yourself.
+  `custom_fields` parameter works anyway (it uses the dedicated set-field route). Trust the
+  tool, not that sentence.
+- Task templates (`/temp`, named per space) are UI-only — no MCP tool applies one; write the
+  skeleton from [../refine.md](../refine.md) yourself.
 - `clickup_get_task` takes custom ids (`DEV-1234`) as well as the short id; boards with
   `custom_id: null` use the short id from the URL.
 - Deletion is real (`clickup_delete_task`) — prefer a rejected/won't-do status with a reason

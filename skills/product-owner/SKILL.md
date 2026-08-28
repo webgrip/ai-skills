@@ -1,12 +1,14 @@
 ---
 name: product-owner
-description: Run any ticket board as product owner — Vikunja, ClickUp, or another tracker. Refinement to the Definition of Ready, agent-ready gating for AI-executed work, review-capacity WIP limits, dependency sequencing, backlog sweeps, the Definition of Done, and flow metrics. Use when creating, updating, closing or listing tickets, "make a ticket for X", "maak een ticket (aan) voor", "wat staat er op het bord", "wat pakken we op", asking what is on the board or what to pick up next, refining or grooming a backlog, writing acceptance criteria or a verification, prioritizing or triaging, ordering pick-up, moving a ticket to another status, running a board-health or WIP audit, measuring the board's cycle time or deriving a service level expectation (SLE), preparing tickets for an AI coding agent, splitting an oversized ticket, handling a stale or obsolete ticket, or when a ticket is just a product name with no definition of finished. NOT for agile-theory questions or articles about PO practice — this runs a live board.
+description: Run any ticket board as product owner — Vikunja, ClickUp, or another tracker. Refinement to the Definition of Ready, agent-ready gating for AI-executed work, review-capacity WIP limits, the Definition of Done, and flow metrics. Use when creating, updating, closing or listing tickets, "make a ticket for X", "maak een ticket (aan) voor", "wat staat er op het bord", asking what to pick up next, refining or grooming a backlog or klantbacklog, "is dit ticket klaar voor de sprint", writing acceptance criteria or a verification, prioritizing or triaging, ordering pick-up, moving a ticket to another status, re-grooming a ticket rejected in testing or acceptance, running a board-health or WIP audit, measuring cycle time or deriving a service level expectation (SLE), preparing tickets for an AI coding agent, splitting an oversized ticket, handling a stale ticket, or when a ticket is just a product name with no definition of finished. NOT for agile-theory questions — this runs a live board.
 ---
 
 # Product owner — the board operating manual
 
 > **A ticket is done when someone else — human or AI agent — can pick it up without
-> calling you.** Evidence per rule: [rationale.md](rationale.md).
+> calling you.** Evidence per rule: [rationale.md](rationale.md). **Where a board has
+> its own agreement, that agreement wins** — say which part you're overriding, never
+> drift silently.
 
 ## Resolve the board contract first
 
@@ -17,210 +19,147 @@ guess. Then merge the **Board contract** layers, most specific fact wins:
 
 1. `.agents/contracts/product-owner.md` in the consuming repo
 2. a contract block in its `AGENTS.md`/CLAUDE.md
-3. user contracts in `~/.agents/contracts/product-owner/` — one file per context
-   (`webgrip.md`, `code14-team-c.md`), each opening with `Context:` / `Applies when:`
-   and optionally `Extends: <file>` for org→team layering
-4. an installed `product-owner-contract*` org skill (a sibling skill directory)
+3. user contracts in `~/.agents/contracts/product-owner/` — one file per context,
+   `Context:` / `Applies when:` headers, `Extends:` for org→team layering
+4. an installed `product-owner-contract*` org skill (a sibling skill an org's own
+   skills repo ships — read it like a contract layer)
 
-Contracts carry **facts and parameters**; a genuinely different *procedure* per team is
-a team overlay skill, not a contract (template + layering guide in this plugin's
-README). The contract carries: which tracker + MCP server, project/list ids, status
-roles or label taxonomy, ticket language, WIP caps, queue conventions, DoD location,
-ground-truth commands, ops-runbook pointer. Then load the matching adapter —
+Contracts carry **facts and parameters** (tracker + MCP server, ids, status roles or
+label taxonomy, ticket language, WIP caps, queue conventions, DoD location,
+ground-truth commands, ops-runbook pointer); a genuinely different *procedure* per team
+is a team overlay skill, not a contract. Template + layer file shapes:
+[contracts.md](contracts.md). Then load the matching adapter —
 [adapters/vikunja.md](adapters/vikunja.md) or [adapters/clickup.md](adapters/clickup.md) —
-for tool mechanics. Without any contract layer: see which MCP is connected, list its
+for tool mechanics. Without any layer: see which MCP is connected, list its
 projects/boards, ask which one, and suggest adding a contract.
 
 - **Never assume a list, status, field, label, or tag exists** — resolve *this* board's
   own set first and state the mapping before acting on it. A gate on a status that
-  doesn't exist is worse than no gate; a field the board lacks is not a defect to fix by
-  creating it.
+  doesn't exist is worse than no gate; a field the board lacks is not a defect to fix
+  by creating it — drop the criteria that don't apply and say so.
 - **Language: match the board** (contract says; else the language of its existing
   tickets). Everything that lands on the board — titles, headings, criteria, comments —
   in that language. Reason in any language; quotes and log lines stay original inside a
   code block.
-- **Where a board has its own agreement, that agreement wins** — follow it and say which
-  part you're overriding, rather than silently drifting.
+- Contract ids are a **cache to re-verify**, never truth — when a call behaves oddly,
+  re-resolve before believing the file.
 
-## The PO loop
+## The loop
 
-**catch** (title + Problem — deliberately cheap, nothing else) → **refine** to Ready
-([refine.md](refine.md)) → **prioritize** → **sequence** (dependencies as relations,
-never prose) → **order** (pick-up queue where the contract has one) → **execute**,
-WIP-limited (AI-agent execution → [agents.md](agents.md)) → **review** against evidence →
-**close** on the DoD. Periodic: **sweep** + flow metrics ([playbook.md](playbook.md),
-[flow.md](flow.md)). Catching is nearly free; pulling is expensive — that asymmetry is
-deliberate. **Moving a ticket back is not failure; it's the gate working.**
+**catch** (title + Problem, nothing more) → **refine** to Ready ([refine.md](refine.md))
+→ **prioritize** ([playbook.md](playbook.md)) → **sequence** (dependencies as relations,
+never prose) → **order** (pick-up queue where the contract has one) → **plan**
+(estimate/sprint where the board runs them) → **execute**, WIP-limited (AI executors →
+[agents.md](agents.md)) → **review** against evidence → **close** on the DoD. Periodic:
+**sweep** + flow metrics ([flow.md](flow.md)). Catching is nearly free, pulling is
+expensive — deliberate. **Moving a ticket back is the gate working, not failure.**
 
 ## The skeleton
 
-Headings that stay empty: **delete them**. One screen is the cap — on agent-executed
-tickets, longer descriptions measurably *reduce* success; carry **pointers, not
-payloads** (name the file to imitate, link the doc — don't paste it).
+Empty headings: **delete them**. One screen max — pointers, not payloads (longer
+descriptions measurably *reduce* agent success).
 
 | Section | When | What |
 |---|---|---|
-| **Problem** | always | What goes wrong today, for whom, what it costs — with evidence someone can check (`file:line`, metric, support ticket + date, decision record). No solution. |
-| **Outcome** | always | One sentence: the end state, not the activity. Initiative-sized work also names the existing KPI it should move — or "none, because …". Tickets never mint new KPIs; that is a KPI-set change (the `kpi-groomer` skill). |
-| **Acceptance criteria** | to be Ready | 2–7 binary checkboxes. At least one closes the cheap way out; feature work gets at least one error-path criterion. |
-| **Verification** | to be Ready | Who/what proves it, where, with which concrete case and expected result. A runnable command when an agent executes. Not the criteria restated. |
-| **Context** | to be Ready | Pointers: repo path, ADR/runbook, dashboard, support ticket. |
-| **Approach** | route not obvious; mandatory for agent-ready | 3–7 steps naming real repo paths; records the design decisions already made. Direction, not a recipe. |
-| **Not in scope** | someone could assume otherwise | With where it goes instead (separate ticket, later part). |
-| **Open questions** | anything nobody can answer now | Each with an owner (the customer may be one). Three owned open questions is an honest ticket, not a bad one. |
-| **Protected areas** | agent-bound work | Do-not-touch files/behaviors — tests, CI config, unrelated modules. The cheapest guard against silent scope drift and gamed criteria. |
-| **Rollback** | anything above the lowest risk tier | Feature flag, clean revert, or migration down-path. |
+| **Problem** | always | what goes wrong, for whom, what it costs — evidence someone can check (`file:line`, metric, support ticket + date). No solution. |
+| **Outcome** | always | one sentence: end state, not activity. New KPIs are a KPI-set change (the `kpi-groomer` skill, where installed), never a ticket side-effect. |
+| **Acceptance criteria** | to be Ready | 2–7 binary checkboxes; ≥1 closes the cheap way out; feature work: ≥1 error-path. |
+| **Verification** | to be Ready | who/what proves it, where, which concrete case, expected result. Runnable when an agent executes. Not the criteria restated. |
+| **Context** | to be Ready | pointers: repo path, ADR/runbook, dashboard, support ticket. |
+| **Approach** | route not obvious; mandatory agent-ready | 3–7 steps with real paths; decisions made. Direction, not recipe. |
+| **Not in scope** | assumable otherwise | with where it goes instead. |
+| **Open questions** | unanswerable now | each with an owner (the customer counts). Three owned questions = an honest ticket. |
+| **Protected areas** | agent-bound | do-not-touch files/behaviors — always tests + CI config. |
+| **Rollback** | above lowest risk tier | flag, clean revert, or migration down-path. |
 
-**Titles**: `area: what changes`, ≤ 70 chars — a usable commit subject. The test: can
-someone who wasn't there tell what it's about? A bare product name (`Kepler`,
-`Longhorn`) describes an installation, not a result — the most common board defect.
-The user-story line (*As a role, I want X so that Y*) may open **Problem** on end-user
-work where it reads naturally; it never replaces the skeleton, and platform work skips
-it (a story about etcd backups is a story about nobody).
+**Titles**: `area: what changes`, ≤ 70 chars — a usable commit subject; a bare product
+name describes an installation, not a result (the most common board defect —
+antipattern gallery in [refine.md](refine.md)). The user-story line may open **Problem**
+on end-user work; it never replaces the skeleton. Human-executed tickets get a
+**teaching pass** (Why-it-matters, object-links, Learn sources) → [refine.md](refine.md);
+agent tickets stay pointers-only.
 
-## Write to teach — when a human executes
+## Definition of Ready — three gates, gated separately
 
-The ticket is read by someone who wasn't in the conversation — often a junior/medior.
-On human-executed work the ticket is also the lesson:
+**1 · Ready** (understandability — the field-free kernel; a team's ratified hand-over
+copy may ship with its contract layer):
 
-- Under **Problem**, add a **`Why it matters`** sub-block: the concrete failure/attack
-  story, the mechanism behind it, and what doing this work teaches. The reader should
-  come away knowing *why the work exists*, not just what to type.
-- **Context links point at the object, not the tool** — deep-link the exact dashboard,
-  config file, or doc the ticket is about. A link the executor clicks out-earns a name
-  they must search for.
-- Add a **Learn** block when the domain carries craft: 2–4 authoritative external
-  sources, each with one clause on what it teaches (~30 min reading cap). Per-domain
-  source catalog + the pass procedure → [refine.md](refine.md).
+1. **Problem, with checkable evidence** *(spike: the one question + its occasion)*
+2. **Outcome in one sentence** *(spike: the decision to be made)*
+3. **Binary criteria — two readers, one conclusion — ≥1 closing the cheap way out.**
+   Test question: *"how do I finish this ticket WITHOUT solving the problem?"*
+4. **Verification.** Without a measuring point, a criterion is an opinion.
 
-Agent-executed tickets skip the teaching prose — longer descriptions measurably reduce
-agent success; those stay pointers-only ([agents.md](agents.md)).
+Extras where applicable: **bug** → reproduction + environment · **spike** → timebox +
+named decider; done = **decided and recorded** (the `adr-writer` skill for
+architecture) · **split-child** → own outcome + protect-what-works criterion + order as
+a dependency.
 
-## Definition of Ready — understandable, then plannable, then machine-executable
+**2 · Plannable — deliberately NOT in the DoR**: estimate, priority, sprint, assignee.
+Anything touching every ticket is DoD, not DoR.
 
-Three separate concerns; gate them separately.
+**3 · Agent-ready**: Ready plus the seven-criterion gate and human-only routing
+exclusions → [agents.md](agents.md). Read it before dispatching anything.
 
-**1 · Ready (understandability — the field-free kernel).** A ticket may be pulled when:
-
-1. **Problem stated, with checkable evidence.** *(Spike: the one question plus its occasion.)*
-2. **Outcome in one sentence.** *(Spike: the decision to be made.)*
-3. **Binary criteria — two readers, one conclusion — and at least one closes the cheap
-   way out.** The test question: *"how do I finish this ticket WITHOUT solving the
-   problem?"* — the answer is your missing criterion.
-4. **Verification stated.** Without a measuring point, a criterion is an opinion.
-
-Extras where applicable: **bug** → reproduction (expected vs actual; an executable repro
-script beats prose) + environment (where, since when, how often) · **spike** → timebox +
-named decider; done = **decided and recorded**, not researched · **split-child** → its
-own outcome + a criterion protecting what already works + order as a dependency.
-
-**2 · Plannable (deliberately NOT in the DoR):** estimate, priority, sprint/queue
-placement, assignee. Planning decisions come *after* understandability. Anything that
-touches every ticket is Definition of Done, not DoR.
-
-**3 · Agent-ready** (grants dispatch to an AI executor): Ready plus the seven-criterion
-gate — approach, runnable verification, protected areas, escalation, size,
-self-containedness, concision — and the human-only routing exclusions. The gate lives in
-[agents.md](agents.md); read it before dispatching or marking anything agent-ready.
-
-**The ten-minute rule.** Doesn't meet the gate but completable in ten minutes? Do it and
-pull it through. More → back with a comment naming exactly what's missing. This keeps
-gates conversations, not queues — and it is not a rubber stamp: a ticket missing most of
-its skeleton is a refinement conversation.
-
-Like the DoD, the DoR is **not negotiable per ticket** — only per team, in the retro —
-and structurally missing it means the definition is wrong, not the team. Evaluate it
-periodically on one number: how often work bounced because the ticket was unclear; if
-the DoR moves nothing, drop it.
+**Ten-minute rule**: unmet but completable in ten minutes → do it and pull through;
+more → back with a comment naming exactly what's missing. Not a rubber stamp — a
+missing skeleton is a refinement conversation. DoR and DoD are **not negotiable per
+ticket** (only per team, in the retro); structurally missed ⇒ the definition is wrong,
+not the team.
 
 Check mechanically: `python3 scripts/ticket_lint.py body.md --gate ready|agent-ready
---title "..."` — PASS/FAIL/WARN per criterion, MANUAL for what needs the board or a human.
+--title "..."` — PASS/FAIL/WARN per criterion (EN + NL headings), MANUAL for what needs
+the board or a human. Status-ladder boards add the contract's per-status field/gate table.
 
-## WIP — and where the limit now sits
+## WIP
 
-Enforce the contract's WIP cap (default: 3 started per executor pool). Refuse to move
-an item in over the cap; name the oldest in-flight item (by Work Item Age) as the one to
-finish first. **When AI agents execute, the binding constraint is human review capacity,
-not agent availability** — cap dispatched agent tickets per human reviewer (start at
-3–5), give the review column its own cap, and when review is full the answer to "what
-next?" is *clear the review queue*, never *start more*. Twelve items in doing means
+Enforce the contract's cap (default 3 started per executor pool). Refuse pulls over it;
+name the oldest in-flight item (Work Item Age) as the one to finish first. **When AI
+agents execute, the constraint is human review capacity, not agent availability**: 3–5
+dispatched tickets per reviewer, the review column gets its own cap, and a full review
+queue means *clear the review queue*, never *start more*. Twelve items in doing means
 nothing is in hand and everything is half done.
 
 ## Definition of Done
 
 One list per team, every ticket, regardless of size — per-ticket conditions are
-acceptance criteria, not DoD lines. The portable default (contract may point at the
-team's own):
-
-- **Result** — all acceptance criteria met · the ticket's Verification actually
-  *executed*, not promised. Green CI alone never closes a ticket.
-- **Code** — MR/PR merged, pipeline green · reviewed by someone other than the author
-  (for agent work: a fresh-context reviewer checks the diff against *intent and scope*,
-  including nothing changed outside the ticket's named files) · no new critical/high
-  vulnerabilities.
-- **Deployed** — running in the target environment and seen there *(or explicitly not
-  deployed, with the reason)* · rollback path known and written down.
-- **Knowledge** — behavior changed ⇒ runbook/ADR/docs updated *(or: not needed,
-  because …)* · commit/MR references the ticket (trailer per the contract).
-- **Accountability** — incident? cause + lessons recorded · security touched? classified
-  per the board's scheme.
-
-Three rules that keep it standing: **not negotiable per ticket** (only per team, in the
-retro) · **every rule has an escape with a reason** — "not deployed, because the
-customer wants it after the holidays" is fine; "not deployed" alone is not · **missed
-structurally ⇒ the DoD is wrong, not the team** — lower it deliberately, never ignore it.
-
-## Prioritization
-
-- **P0 = live risk or cheap correctness now.** Six simultaneous P0s means there is no
-  P0. Priority is an order, not a feeling.
-- Sequence by **cost-of-delay class** (expedite / fixed-date / standard / intangible),
-  then shortest-job-first within a class. Scoring frameworks (RICE/WSJF) structure
-  arguments; they never auto-rank — summed ordinal scores are fake math, and confidence
-  claims need an evidence tier (opinion / anecdote / data / experiment).
-- A ticket never ranks above one that blocks it. Small unblocked tickets are pick-up bait.
-- Bands are a coarse filter; the pick-up queue (where the contract has one) is the total
-  order. Don't stack-rank the whole backlog — that precision is fake and rots.
-- **Queue time is the economic lever**: an item aging past the SLE wants a decision
-  (split, swarm, unblock, or drop), not another day of ageing.
-- At a WIP/portfolio cap, **every yes names what it displaces**.
-- **A stale premise is a first-class finding, not a completion.** Work already shipped?
-  Rewrite as verify-and-close — the verification *is* the remaining work. Never silently
-  close. Invalidating stale work is refinement's chief value.
-- Keep the backlog small and honest: hold fewer tickets rather than pad toward a target.
-
-Board invariants + the audit recipe that checks them → [playbook.md](playbook.md).
+acceptance criteria, not DoD lines. The portable default (the contract may point at the
+team's own): **Result** — criteria met, Verification *executed*; green CI alone never
+closes · **Code** — MR/PR merged, reviewed by a non-author (agent work: a fresh-context
+reviewer checks the diff against intent and scope), no new critical/high vulns ·
+**Deployed** — seen running in the target environment (or explicitly not, with the
+reason), rollback written down · **Knowledge** — docs/ADR/runbook updated or "not
+needed, because …"; commit/MR carries the contract's ticket trailer ·
+**Accountability** — incident? cause + lessons recorded per the board's scheme;
+security touched? classified. Every rule has an escape *with a reason* — "not deployed"
+alone is not one.
 
 ## Writing to the board
 
 Reads are free. **Confirm before**: bulk status moves, closing anything, rewriting a
-description someone else wrote, or touching more than ~3 tickets at once — show the
-intended diff first. Single-ticket creates and requested refinements need no ceremony.
-Descriptions **replace** on write in both adapters: read → merge → write, never blind.
+description someone else wrote, touching more than ~3 tickets — show the intended diff
+first. Descriptions **replace** on write in both adapters: read → merge → write.
 
 ## Gotchas
 
-- **Never invent.** Facts come from research (repo, live state, board history) or the
-  requester; gaps become explicit MISSING questions — procedure in [refine.md](refine.md).
+- **Never invent.** Facts come from research or the requester; gaps become explicit
+  `MISSING` questions ([refine.md](refine.md)).
 - **Ceremony scales with size × risk × ambiguity.** A chore is title + Problem, done —
-  padding it with empty headings makes it worse. Full spec treatment on a one-file fix
-  is a measured 10× productivity loss.
-- **Refinement is grounded in the up-to-date repo**, stamped `researched against
-  branch @ short-sha` — grounding procedure in [refine.md](refine.md).
-- **Justify gates with wrong-work risk** — the measured cost of underspecified work
-  reaching an executor ([rationale.md](rationale.md) has the numbers and the debunked
-  folklore to avoid citing).
-- Board-specific traps (pagination lies, payload bombs, HTML vs markdown, replace-on-
-  write, position APIs) live in the adapter — read it before the first write.
+  full spec treatment on a one-file fix is a measured 10× loss.
+- **Ground refinement in the up-to-date repo**, stamped `researched against <branch> @
+  <short-sha>`. A stale premise is a finding: verify-and-close, never silently close.
+- **Justify gates with wrong-work risk** — [rationale.md](rationale.md) has the numbers
+  and the debunked folklore to avoid citing.
+- Board-specific traps (payload bombs, pagination lies, replace-on-write, done-typed
+  statuses that aren't finished) live in the adapter — read it before the first write.
 
 ## Additional resources
 
-- Refinement execution: interview, criteria craft, EARS, templates, splitting, bulk
-  fan-out → [refine.md](refine.md)
-- AI-agent execution: agent-ready gate, claim/evidence/accept protocol, risk tiers,
-  anti-reward-hacking → [agents.md](agents.md)
-- Operation recipes: create, gate-check, close, sweeps, dedupe, queue, rework →
+- Refinement: interview, criteria craft, templates, teaching pass, splitting, triage,
+  antipatterns, bulk fan-out → [refine.md](refine.md)
+- Agent execution: gate, dispatch, claim, accept, anti-reward-hacking → [agents.md](agents.md)
+- Operation recipes incl. prioritization, queue ops, audits, sweeps, dedupe, rework →
   [playbook.md](playbook.md)
-- Flow metrics and the SLE → [flow.md](flow.md) + [scripts/flow_metrics.py](scripts/flow_metrics.py)
-- Why each rule: the 2026 evidence base with sources → [rationale.md](rationale.md)
+- Flow metrics + SLE → [flow.md](flow.md) · evidence base → [rationale.md](rationale.md)
+- Contract template + layer file shapes → [contracts.md](contracts.md)
 - Tool mechanics → [adapters/vikunja.md](adapters/vikunja.md) · [adapters/clickup.md](adapters/clickup.md)
