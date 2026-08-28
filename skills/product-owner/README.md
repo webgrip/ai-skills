@@ -37,16 +37,29 @@ ClickUp MCP server to the consuming repo's `.mcp.json`. Scripts override via
 npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s product-owner -g
 ```
 
-## Board contract — three places it can live
+## Board contract — where it can live
 
-The skill resolves the contract before acting — most specific wins: (1)
-`.agents/contracts/product-owner.md` in the consuming repo (rich/bulky data you don't
-want in always-loaded context), (2) the block below in the repo's `AGENTS.md` (small,
-always-relevant facts), (3) a `product-owner-contract` skill in your org's own skills
-repo, installed alongside this one (org-wide defaults, published once). Layering guide:
-[docs/contract-pattern.md](../../docs/contract-pattern.md). Without any layer, the
-skill inspects the connected MCP, lists projects/boards, and asks. Delete lines that
-don't apply to your tracker.
+The skill first pins the *context* (which org/team/board the task is about — explicit
+mention > repo contract > user contracts' `Applies when:` headers > connected MCP; ask
+when ambiguous), then merges the layers, most specific fact wins:
+
+1. `.agents/contracts/product-owner.md` in the consuming repo — rich/bulky data you
+   don't want in always-loaded context
+2. the block below in the repo's `AGENTS.md` — small, always-relevant facts
+3. `~/.agents/contracts/product-owner/<context>.md` — **user level**, for one person
+   working across orgs/teams with globally installed skills: one file per context
+   (`webgrip.md`, `code14.md`, `code14-team-c.md`), each opening with `Context:`,
+   `Applies when:` (repo remotes, MCP names, board ids, keywords) and optionally
+   `Extends: code14.md` so a team file carries only its deltas
+4. a `product-owner-contract` skill in your org's own skills repo, installed alongside
+   this one — org-wide defaults, published once
+
+Contracts carry **facts** (ids, caps, language, policies). A team that wants different
+*behavior* — another DoR, its own rework loop — gets a **team overlay skill** that
+composes with this one (code14's `team-c-grooming` is the live example), not a bigger
+contract. Layering guide: [docs/contract-pattern.md](../../docs/contract-pattern.md).
+Without any layer, the skill inspects the connected MCP, lists projects/boards, and
+asks. Delete lines that don't apply to your tracker.
 
 ```markdown
 ## Board contract (product-owner)

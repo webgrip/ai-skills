@@ -20,17 +20,58 @@ with `npx skills update` — which **overwrites local edits**. Neither the CLI n
 inheritance. So extension is a *convention the skill itself implements*: the skill
 resolves a **contract** before acting. This estate's skills use the three layers below.
 
-## The three contract layers — most specific wins
+## The four contract layers — most specific wins
 
 | Layer | Where | Use it for |
 | --- | --- | --- |
 | **1 · Repo contract file** | `.agents/contracts/<skill>.md` in the consuming repo | Anything too big, too detailed, or too situational for always-on context: dashboard catalogs, id tables, team rosters, policy text. Loaded **only when the skill fires** — costs nothing until then. |
 | **2 · `AGENTS.md` block** | `## <Skill> contract` section in the consuming repo's `AGENTS.md`/CLAUDE.md | The handful of small facts every session benefits from (which tracker, ticket language, WIP cap). Keep it short — this file is always-loaded context. |
-| **3 · Org contract skill** | A `<skill>-contract` skill directory in your org's own skills repo (e.g. `code14/ai-skills`), installed alongside the generic skill via `npx skills add <org>/<repo>` or your marketplace | Org-wide defaults shared by *all* repos: the Grafana base URL, the standard board conventions, the measurement charter. Publish once, every repo inherits — no per-repo `AGENTS.md` edits. |
+| **3 · User contract, per context** | `~/.agents/contracts/<skill>/<context>.md` on your own machine | One person working across orgs and teams with globally installed skills — see the next section. |
+| **4 · Org contract skill** | A `<skill>-contract` skill directory in your org's own skills repo (e.g. `code14/ai-skills`), installed alongside the generic skill via `npx skills add <org>/<repo>` or your marketplace | Org-wide defaults shared by *all* repos and users: the Grafana base URL, the standard board conventions, the measurement charter. Publish once, everyone inherits. |
 
-Resolution order: the skill checks **1, then 2, then 3** — a repo-specific fact beats
-the org default. Layers combine: the org skill carries defaults, the repo file carries
-what differs here.
+Resolution order: the skill checks **1 → 2 → 3 → 4** — a repo-specific fact beats your
+personal default, which beats the org default. Layers combine: the org skill carries
+defaults, the more specific layers carry only what differs.
+
+## User level — one person, many orgs and teams
+
+Globally installed skills have no repo to read a contract from — and one person often
+works several contexts from the same terminal: base `product-owner` for webgrip, a
+code14 flavor for code14 boards, and within code14 different facts for Team C than for
+Team D. That is what layer 3 solves — a directory of **named contexts**:
+
+```text
+~/.agents/contracts/product-owner/
+├── webgrip.md
+├── code14.md          ← org base
+├── code14-team-c.md   ← Extends: code14.md — only the Team C deltas
+└── code14-team-d.md   ← Extends: code14.md — only the Team D deltas
+```
+
+Each file opens with two or three header lines the skill matches on:
+
+```markdown
+Context: code14 / Team C
+Applies when: ClickUp MCP, boards in workspace 14343555, klant boards
+  (Nijhuis, Hofman, Chugoku), or the user says "code14" or "team C"
+Extends: code14.md
+```
+
+**Context selection** happens before any merge: an explicit mention ("maak een code14
+ticket") wins; else the repo's own contract pins it; else the skill matches the
+`Applies when:` headers; else it looks at the connected MCP and its boards; still
+ambiguous → it asks one question rather than guessing. `Extends:` keeps team files
+small: the team file carries only its deltas over the org file.
+
+## Facts go in contracts — behavior goes in overlay skills
+
+A contract parameterizes the *same* procedure with different facts (ids, caps,
+language, policies). When a team genuinely wants a **different procedure** — its own
+Definition of Ready, an extra rework loop, different ticket types — that is a **team
+overlay skill** in the org's skills repo, composing with the base skill, not a fatter
+contract. Live example: code14's `team-c-grooming` skill layers Team C's customer-board
+workflow on top of the generic PO craft. The test: *could you express it as a
+key–value fact?* Yes → contract. No, it changes the steps → overlay skill.
 
 **Nothing secret goes in any layer** — all three are git-committed files. A contract
 may *name* where a credential lives (the secret manager path); never the credential.
@@ -50,6 +91,8 @@ may *name* where a credential lives (the secret manager path); never the credent
 1. Copy the template from the skill's README.
 2. Small and always-relevant? → paste as a block in your repo's `AGENTS.md`.
    Rich or bulky? → save as `.agents/contracts/<skill>.md` instead.
+   Personal, cross-repo (globally installed skills)? →
+   `~/.agents/contracts/<skill>/<context>.md` with `Context:`/`Applies when:` headers.
    Org-wide? → put it in a `<skill>-contract` skill in your org's skills repo.
 3. Unknown facts get `TBD — owner: <name>`, never a guess. Commit like any change —
    facts travel with the repo, reviewed in MRs.

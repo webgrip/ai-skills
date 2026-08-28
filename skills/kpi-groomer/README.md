@@ -12,10 +12,16 @@ resolves before acting — most specific wins:
    don't want in always-loaded context
 2. a `## Measurement contract` block in the repo's `AGENTS.md` (or CLAUDE.md) — the few
    small, always-relevant facts
-3. a `kpi-groomer-contract` skill in your org's own skills repo, installed alongside
+3. `~/.agents/contracts/kpi-groomer/<context>.md` — **user level**, for one person
+   working across orgs/teams with globally installed skills: one file per context,
+   `Context:` / `Applies when:` headers, optionally `Extends: <file>` so a team file
+   carries only its deltas
+4. a `kpi-groomer-contract` skill in your org's own skills repo, installed alongside
    this one — org-wide defaults, published once for every repo
 
-Layering guide: [docs/contract-pattern.md](../../docs/contract-pattern.md).
+Contracts carry facts; a team wanting different *behavior* gets a team overlay skill
+that composes with this one. Layering guide:
+[docs/contract-pattern.md](../../docs/contract-pattern.md).
 
 ## Measurement contract template
 

@@ -10,16 +10,26 @@ description: Run any ticket board as product owner — Vikunja, ClickUp, or anot
 
 ## Resolve the board contract first
 
-Resolve the **Board contract** — most specific wins: (1)
-`.agents/contracts/product-owner.md` in the consuming repo, (2) a contract block in its
-`AGENTS.md`/CLAUDE.md, (3) an installed `product-owner-contract` org skill (a sibling
-skill directory). It carries: which tracker + MCP server, project/list ids, status
+First pin the **context** — which org/team/board this task is about: an explicit
+mention wins, else the repo's contract, else the `Applies when:` headers of user-level
+contracts, else the connected MCP's boards; still ambiguous → ask one question, never
+guess. Then merge the **Board contract** layers, most specific fact wins:
+
+1. `.agents/contracts/product-owner.md` in the consuming repo
+2. a contract block in its `AGENTS.md`/CLAUDE.md
+3. user contracts in `~/.agents/contracts/product-owner/` — one file per context
+   (`webgrip.md`, `code14-team-c.md`), each opening with `Context:` / `Applies when:`
+   and optionally `Extends: <file>` for org→team layering
+4. an installed `product-owner-contract*` org skill (a sibling skill directory)
+
+Contracts carry **facts and parameters**; a genuinely different *procedure* per team is
+a team overlay skill, not a contract (template + layering guide in this plugin's
+README). The contract carries: which tracker + MCP server, project/list ids, status
 roles or label taxonomy, ticket language, WIP caps, queue conventions, DoD location,
-ground-truth commands, ops-runbook pointer (template + layering guide in this plugin's
-README). Then load the matching adapter — [adapters/vikunja.md](adapters/vikunja.md) or
-[adapters/clickup.md](adapters/clickup.md) — for tool mechanics. Without any contract
-layer: see which MCP is connected, list its projects/boards, ask which one, and suggest
-adding a contract.
+ground-truth commands, ops-runbook pointer. Then load the matching adapter —
+[adapters/vikunja.md](adapters/vikunja.md) or [adapters/clickup.md](adapters/clickup.md) —
+for tool mechanics. Without any contract layer: see which MCP is connected, list its
+projects/boards, ask which one, and suggest adding a contract.
 
 - **Never assume a list, status, field, label, or tag exists** — resolve *this* board's
   own set first and state the mapping before acting on it. A gate on a status that
