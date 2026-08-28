@@ -27,6 +27,9 @@ tag; `chore(release)`/`[skip ci]` commits are ignored; the package registry and
 the release list are queried first, so a run that has nothing to do performs no
 writes at all. Nothing swallows a 409 — every remote write is one the state
 query said was needed, so a conflict is a real anomaly and fails the run.
+Remote calls retry TRANSIENT failures (network-layer errors, 5xx) a few times,
+re-reading the gated state between attempts — a timed-out write may have landed,
+and blindly resending it would manufacture that very 409. 4xx never retries.
 Stdlib only. Forgejo API + push auth come from the CI env (GITHUB_SERVER_URL,
 GITHUB_REPOSITORY, GITEA_TOKEN; push creds from the token-authenticated
 checkout).
@@ -39,6 +42,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -248,23 +252,68 @@ def changelog_top(skill):
     return "\n".join(out).strip() or f"{skill} release."
 
 
+TRANSIENT_TRIES = 3
+
+
+def _remote_write(what, send, landed):
+    """One remote write, retried on TRANSIENT failures only (network-layer
+    errors, 5xx). Added after two consecutive runs (2026-08-27/28) died on a
+    single un-retried POST through the tunnel.
+
+    send() performs the raw HTTP call. landed() re-reads the server state the
+    write was gated on and returns True once the write's effect is present —
+    checked between attempts because a timed-out request may have landed
+    anyway, and blindly resending it would manufacture the exact 409 this
+    script treats as a concurrent writer. 4xx (409 included) is re-raised
+    untouched for the caller to classify — never retried."""
+    for attempt in range(1, TRANSIENT_TRIES + 1):
+        try:
+            send()
+            return
+        except urllib.error.HTTPError as e:
+            if e.code < 500:
+                raise
+            err = f"{e.code} {e.read().decode()[:200]}"
+        except (TimeoutError, urllib.error.URLError, OSError) as e:
+            err = repr(e)
+        if landed():
+            print(f"  {what}: request errored ({err}) but the write landed — continuing",
+                  file=sys.stderr)
+            return
+        if attempt == TRANSIENT_TRIES:
+            sys.exit(f"{what} failed after {TRANSIENT_TRIES} attempts: {err}")
+        wait = 3 * attempt
+        print(f"  {what}: transient failure ({err}) — retrying in {wait}s "
+              f"({attempt + 1}/{TRANSIENT_TRIES})", file=sys.stderr)
+        time.sleep(wait)
+
+
 def _get_json(url, token, timeout=30):
     """GET → parsed JSON, or None if the resource does not exist (404).
 
     The 'does it already exist?' primitive every remote write below is gated on:
     we never PUT/POST blind and recover from the conflict, because the registry's
-    conflict recovery (delete + rewrite) is destructive."""
+    conflict recovery (delete + rewrite) is destructive. Reads are idempotent,
+    so transient failures (network, 5xx) simply retry."""
     req = urllib.request.Request(url, headers={"Authorization": f"token {token}"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return json.loads(resp.read().decode())
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        sys.exit(f"GET {url} failed: {e.code} {e.read().decode()[:200]}")
+    for attempt in range(1, TRANSIENT_TRIES + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return None
+            if e.code < 500:
+                sys.exit(f"GET {url} failed: {e.code} {e.read().decode()[:200]}")
+            err = f"{e.code} {e.read().decode()[:200]}"
+        except (TimeoutError, urllib.error.URLError, OSError) as e:
+            err = repr(e)
+        if attempt == TRANSIENT_TRIES:
+            sys.exit(f"GET {url} failed after {TRANSIENT_TRIES} attempts: {err}")
+        time.sleep(3 * attempt)
 
 
-def _put_skill(url, data, token, what):
+def _put_skill(url, data, token, what, landed):
     """PUT the blob. Content-Type MUST be explicit: urllib otherwise defaults a
     body to application/x-www-form-urlencoded, and Forgejo's generic registry
     500s trying to parse the zip as a form.
@@ -272,12 +321,15 @@ def _put_skill(url, data, token, what):
     A 409 here is fatal by design. The caller only PUTs after the registry said
     the version was absent (or after deleting it), so a conflict means something
     else wrote it in between — and blindly clearing the way for our own upload
-    is exactly how a healthy artifact gets destroyed."""
-    req = urllib.request.Request(url, data=data, method="PUT",
-                                 headers={"Authorization": f"token {token}",
-                                          "Content-Type": "application/octet-stream"})
-    try:
+    is exactly how a healthy artifact gets destroyed. `landed` tells the retry
+    path whether OUR bytes are already there (see _remote_write)."""
+    def send():
+        req = urllib.request.Request(url, data=data, method="PUT",
+                                     headers={"Authorization": f"token {token}",
+                                              "Content-Type": "application/octet-stream"})
         urllib.request.urlopen(req, timeout=60)
+    try:
+        _remote_write(what, send, landed)
     except urllib.error.HTTPError as e:
         detail = e.read().decode()[:200]
         if e.code == 409:
@@ -317,11 +369,12 @@ def publish_artifact(skill, version):
     url = f"{base}/{skill}.skill"
 
     have = published_sha256(skill, version)
+    ours_landed = lambda: published_sha256(skill, version) == digest
     if have == digest:
         return "verified"
     if have is None and _get_json(f"{server}/api/v1/packages/{owner}/generic/{skill}/{version}",
                                   token) is None:
-        _put_skill(url, data, token, f"package publish {skill}@{version}")
+        _put_skill(url, data, token, f"package publish {skill}@{version}", ours_landed)
         print(f"  published {skill}.skill @ {version}", file=sys.stderr)
         return "published"
 
@@ -336,7 +389,7 @@ def publish_artifact(skill, version):
         if e.code != 404:
             sys.exit(f"delete {skill}@{version} failed: {e.code} {e.read().decode()[:200]} "
                      f"— refusing to leave a wrong artifact published")
-    _put_skill(url, data, token, f"package re-publish {skill}@{version}")
+    _put_skill(url, data, token, f"package re-publish {skill}@{version}", ours_landed)
     print(f"  re-published {skill}.skill @ {version}", file=sys.stderr)
     return "repaired"
 
@@ -377,15 +430,20 @@ def ensure_release(tag, notes):
     conflict here means a concurrent run created it between the two calls, and
     that is worth failing on rather than papering over."""
     server, owner, repo, token = _api()
-    if _get_json(f"{server}/api/v1/repos/{owner}/{repo}/releases/tags/{tag}", token) is not None:
+    exists_url = f"{server}/api/v1/repos/{owner}/{repo}/releases/tags/{tag}"
+    if _get_json(exists_url, token) is not None:
         return False
     data = json.dumps({"tag_name": tag, "name": tag, "body": notes}).encode()
-    req = urllib.request.Request(
-        f"{server}/api/v1/repos/{owner}/{repo}/releases", data=data, method="POST",
-        headers={"Authorization": f"token {token}", "Content-Type": "application/json"},
-    )
-    try:
+
+    def send():
+        req = urllib.request.Request(
+            f"{server}/api/v1/repos/{owner}/{repo}/releases", data=data, method="POST",
+            headers={"Authorization": f"token {token}", "Content-Type": "application/json"},
+        )
         urllib.request.urlopen(req, timeout=30)
+    try:
+        _remote_write(f"Forgejo release {tag}", send,
+                      landed=lambda: _get_json(exists_url, token) is not None)
         print(f"  created Forgejo release {tag}", file=sys.stderr)
         return True
     except urllib.error.HTTPError as e:
