@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -105,7 +105,7 @@
       "name": "kpi-groomer",
       "source": "./skills/kpi-groomer",
       "description": "Define, groom and facilitate KPI sets for teams and organizations.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "keywords": []
     },
@@ -113,7 +113,7 @@
       "name": "product-owner",
       "source": "./skills/product-owner",
       "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, flow metrics, and evidence-based closing.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "license": "MIT",
       "keywords": [
         "product-owner",
