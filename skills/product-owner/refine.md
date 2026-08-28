@@ -1,7 +1,8 @@
 # Refinement — raw ticket → Ready (→ agent-ready)
 
-The gates are in [SKILL.md](SKILL.md); the agent-ready specifics in [agents.md](agents.md).
-This file is the execution: procedure, criteria craft, templates, splitting, and bulk work.
+Per-ticket procedure · Binary criteria · Interview · Teaching pass · Templates ·
+Splitting · Triage · Bulk fan-out · Antipattern gallery. The gates themselves are in
+[SKILL.md](SKILL.md); agent-ready specifics in [agents.md](agents.md).
 
 ## Per-ticket procedure
 
@@ -32,7 +33,8 @@ This file is the execution: procedure, criteria craft, templates, splitting, and
 7. **Report per ticket**: one line what changed + gaps left open. **Close by asking for
    material keyed to the gaps** — not a generic "anything else?": an open question wants
    the answer or the e-mail that settles it; a Problem without evidence wants the support
-   ticket or the metric; a bug without reproduction wants a screenshot or recording.
+   ticket or the metric; a bug without reproduction wants a screenshot or recording; a
+   criterion that could not be verified wants the document defining expected behavior.
    Supplied material gets worked in, not parked: facts into the description (quotes in
    original language in a code block), files attached to the ticket, the gap list updated.
 
@@ -103,8 +105,8 @@ Open questions section) · **INVEST** as a heuristic earning its keep on one que
 
 ## The teaching pass — human-executed tickets
 
-After the skeleton is filled, one pass for the reader who learns from it (SKILL.md
-"Write to teach" has the rule; this is the execution):
+The ticket is read by someone who wasn't in the conversation — often a junior/medior;
+on human-executed work it is also the lesson. After the skeleton is filled, one pass:
 
 1. **`Why it matters` under Problem** — three ingredients: the concrete failure/attack
    story (what goes wrong, for whom), the mechanism (the thing a junior doesn't yet
@@ -133,8 +135,10 @@ Per-domain primary sources (pick 2–4, never all):
 English canonical; a board in another language uses its own headings (Dutch mapping:
 Probleem · Uitkomst · Acceptatiecriteria · Verificatie · Niet in scope · Open vragen ·
 Aanpak · Reproductie · Omgeving · Vraag · Timebox · Waarop we kiezen · Wie beslist ·
-Beschermde gebieden · Terugdraaipad — `scripts/ticket_lint.py` reads both). Render per the adapter (markdown on ClickUp,
-TipTap HTML on Vikunja — see [adapters/vikunja.md](adapters/vikunja.md)).
+Beschermde gebieden · Terugdraaipad — `scripts/ticket_lint.py` reads both). Render per
+the adapter (markdown on ClickUp, TipTap HTML on Vikunja —
+[adapters/vikunja.md](adapters/vikunja.md)). A team's fill-in skeleton and filled-in
+golden examples may ship with its contract layer — write toward those where they exist.
 
 ### Change / feature — nine out of ten tickets
 
@@ -145,9 +149,7 @@ What goes wrong today, for whom, what it costs — two sentences, with evidence
 "As a <role> I want <x> so that <y>". No solution.
 
 ## Outcome
-One sentence: the end state. Initiative-sized: also the existing KPI this should
-move, or "none — and why". A NEW KPI is a KPI-set change (kpi-groomer), never a
-ticket side-effect.
+One sentence: the end state.
 
 ## Acceptance criteria
 - [ ] Binary criterion, checkable against real state
@@ -216,15 +218,15 @@ ticket — that is precisely what makes it a chore.
 
 Split when the ticket carries more than one outcome, doesn't fit the SLE, exceeds ~a
 junior-engineer day for agent work, has more than ~7 criteria pulling in different
-directions, or wants two theme/area tags — two area tags usually means two tickets.
+directions, or wants two area tags — two area tags usually means two tickets.
 
 1. Parent keeps the outcome; children carry the criteria. An epic-typed parent never
    gets acceptance criteria of its own.
 2. Each child gets **its own outcome** — "part 1" and "part 2" are not tickets. Where
-   the board has a series convention (`<subject> - Part n/m - <sub-outcome>`), follow it.
+   the board has a series convention, follow it (the contract names it).
 3. Each child gets **a criterion protecting what already works** — when splitting, the
    cheap way out is always building the child at the expense of the rest of the series.
-4. Order as dependency relations (adapter mechanics).
+4. Order as dependency relations (adapter mechanics), never prose.
 5. Slice vertically (independently valuable), not into horizontal task layers.
    Environment/config prerequisites become their own sequenced tickets — agent tickets
    mentioning unresolved external setup measurably fail more.
@@ -236,7 +238,8 @@ Boards carry structure and bookkeeping that only looks like bad tickets: contain
 tickets (`1. Run`, `2. Change`, `<Customer> - Technical project management`),
 milestone-typed date markers, tickets mirroring contract phases. **Skip them — never
 rename, never add a skeleton.** When in doubt, skip and report the doubt: a groomed
-container is worse than an ungroomed ticket.
+container is worse than an ungroomed ticket. The Board contract lists that board's
+instances by name.
 
 More triage heuristics for an ungroomed backlog:
 
@@ -253,9 +256,11 @@ More triage heuristics for an ungroomed backlog:
 
 For a whole backlog: themed batches of ~8, or the fan-out (proven on 92 tickets / 11
 agents; **60/92 came back flagged** — stale premises, drift, real bugs — that's the
-sweep working):
+sweep working, not a problem with it):
 
-1. **Packets**: theme groups of ~7–10 as JSON files (`packet-<group>.json`).
+1. **Packets**: theme groups of ~7–10 as JSON files (`packet-<group>.json`). Resolve
+   field/option ids **once** and put them in the brief — never per task (payload trap,
+   [adapters/clickup.md](adapters/clickup.md)).
 2. **Shared brief** (`brief.md`): the DoR + template contract, research standard (cite
    `file:line`; stale premises are findings; never invent), output contract — write
    `refined-<group>.json` `[{"n", "body", "flags"}]`, validate it parses, final message
@@ -266,9 +271,28 @@ sweep working):
    repo paths exist (beware regex false-positives on basename fragments — check context
    before accusing) · spot-read 2–3 drafts for invented claims.
 5. **Apply centrally in one session** (sequential writes — parallel sessions stress MCP
-   servers; see the adapter's etiquette), swap labels/statuses, report flags grouped:
+   servers; see the adapter's etiquette), set labels/statuses, report flags grouped:
    stale premises / drift / real bugs / evidence gaps.
 
 Gotcha: a sub-agent that itself spawns children may stall after its children finish
 (their notifications bubble to the main loop) — nudge it with a message carrying the
 findings summary.
+
+## The antipattern gallery
+
+| Antipattern | Why it hurts | The fix |
+|---|---|---|
+| **The product name as a ticket** (`Kepler`, `Longhorn`, `Harbor`) | Describes an installation, not a result — nobody sees when it's finished, so in six months it's still there. | Ask what must be true afterwards; title *that*, keep the name in Problem so search works. |
+| **The complaint as a ticket** ("pipelines are slow") | Without a number there is no "done". | Number in the criteria, measurement in Verification. |
+| **Criteria without verification** | There is always a measurement where it falsely succeeds. | Verification names instrument, window, branch/environment. |
+| **Criteria that ask for a judgement** ("works well") | Two people, two conclusions, one argument at review. | Restate as an observable state or number — `ticket_lint.py` warns on these. |
+| **Two questions in one spike** | One gets answered; the other quietly disappears. | Two spikes. |
+| **Nine tickets in doing** | Nothing in hand, everything half done. | The WIP limit; finish the oldest first. |
+| **Everything urgent** | Six P0s = no P0. | Priority is an order — rank them. |
+| **The DoD copied into every ticket** | Identical rules ×100 teach people to skim. | It lives once; per-ticket conditions are acceptance criteria. |
+| **A ticket needing narration** | It's a memory aid, not a ticket. | The cold-read test below. |
+
+**The cold-read test** — the strongest verification in the method, and free: someone
+who did not write the ticket reads it and starts, and reports where they got stuck.
+Write for the colleague who picks it up in three months while you're on holiday; if
+they can start without calling you, it's right.

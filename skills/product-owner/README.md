@@ -9,13 +9,16 @@ and flow metrics (Work Item Age, Cycle Time, Throughput, SLE).
 
 The skill carries the **role** (loop, gates, heuristics, protocols — every major rule
 traced to 2026 evidence in `rationale.md`). Adapters carry the **tool mechanics**
-(Vikunja MCP, ClickUp MCP — both verified live). Your repo carries the **instance
-facts** in a Board contract (below). Instance *operations* (MCP deployment, token
-rotation) stay in your instance's ops runbook.
+(Vikunja MCP, ClickUp MCP — both verified live). Your contract layers carry the
+**instance facts** — template and layer shapes in `contracts.md`, philosophy in
+[docs/contract-pattern.md](../../docs/contract-pattern.md). Instance *operations* (MCP
+deployment, token rotation) stay in your instance's ops runbook.
 
-It consolidates and supersedes the earlier `vikunja-product-owner` plugin (this repo)
-and generalizes the craft of the code14 `clickup-product-owner` / `team-c-grooming`
-skills.
+It consolidates and supersedes the earlier `vikunja-product-owner` plugin (this repo).
+**This skill is the parent-most source of the PO craft**: org estates vendor it as-is
+(pinned + sync-checked — code14/ai-skills is the live example) and layer their facts in
+as a `product-owner-contract` sibling skill; craft improvements land here, once, for
+every downstream.
 
 ## Install
 
@@ -37,48 +40,14 @@ ClickUp MCP server to the consuming repo's `.mcp.json`. Scripts override via
 npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s product-owner -g
 ```
 
-## Board contract — where it can live
+## Board contract
 
-The skill first pins the *context* (which org/team/board the task is about — explicit
-mention > repo contract > user contracts' `Applies when:` headers > connected MCP; ask
-when ambiguous), then merges the layers, most specific fact wins:
-
-1. `.agents/contracts/product-owner.md` in the consuming repo — rich/bulky data you
-   don't want in always-loaded context
-2. the block below in the repo's `AGENTS.md` — small, always-relevant facts
-3. `~/.agents/contracts/product-owner/<context>.md` — **user level**, for one person
-   working across orgs/teams with globally installed skills: one file per context
-   (`webgrip.md`, `code14.md`, `code14-team-c.md`), each opening with `Context:`,
-   `Applies when:` (repo remotes, MCP names, board ids, keywords) and optionally
-   `Extends: code14.md` so a team file carries only its deltas
-4. a `product-owner-contract` skill in your org's own skills repo, installed alongside
-   this one — org-wide defaults, published once
-
-Contracts carry **facts** (ids, caps, language, policies). A team that wants different
-*behavior* — another DoR, its own rework loop — gets a **team overlay skill** that
-composes with this one (code14's `team-c-grooming` is the live example), not a bigger
-contract. Layering guide: [docs/contract-pattern.md](../../docs/contract-pattern.md).
-Without any layer, the skill inspects the connected MCP, lists projects/boards, and
-asks. Delete lines that don't apply to your tracker.
-
-```markdown
-## Board contract (product-owner)
-
-- Tracker: vikunja | clickup · MCP server: `vikunja` | `clickup`
-- Board: project/list `<name>` (id <N>) · [vikunja] instance list cap (maxitemsperpage): <50|250>
-- Ticket language: <en|nl|...> · ticket prefix / commit trailer: `VIK-<id>` | `Refs CU-<id>`
-- Statuses/stages: <the board's own set, mapped to caught/refining/ready/started/review/finished>
-  [vikunja default: labels needs-refinement / ready / agent-ready / review + done]
-- Taxonomy: <theme/area labels or tags> · impact/H|M|L · effort/S|M|L · time/hours|days|weeks ·
-  uncertainty/low|med|high · [custom fields the space actually has]
-- WIP caps: started ≤ <3> · agent tickets in flight per human reviewer ≤ <3-5> · review ≤ <N>
-- do-next cap: <10> · pick-up queue: <where it lives, e.g. project description> · open target: ≈<N>
-- Risk tiers: human-review-mandatory paths: <auth, billing, migrations, ...>
-- DoD: <link to the team's own, else the skill's portable default applies>
-- Top-up ground truth: `git log --oneline <last-sweep>..HEAD` · <verification scripts> ·
-  audit dimensions: <security · reliability · CI/DX · ...>
-- Instance ops (tokens, MCP deployment): <runbook path/URL>
-```
+The skill pins the context, then merges four contract layers (repo file → `AGENTS.md`
+block → user contexts → org contract skill), most specific fact wins. The template and
+what each layer's file looks like ship **inside the skill**: `contracts.md`. Facts go
+in contracts; a genuinely different per-team *procedure* is a team overlay skill in the
+org's estate. Without any layer, the skill inspects the connected MCP, lists
+projects/boards, and asks.
 
 ## Example prompts
 
@@ -86,16 +55,18 @@ asks. Delete lines that don't apply to your tracker.
 - "what should we work on next?" · "refine the next 10 tickets" · "split this, it's too big"
 - "is this ticket ready for an agent to pick up?" · "prepare these tickets for Copilot/Claude"
 - "run a board-health audit" · "what's our cycle time — can we state an SLE?"
-- "take inventory and top up the roadmap" · "groom the customer backlog"
+- "is dit ticket klaar voor de sprint?" · "groom the customer backlog"
 
 ## Files
 
-`SKILL.md` (role core: contract, loop, skeleton, gates, DoD, prioritization, invariants) ·
-`refine.md` (refinement execution: interview, criteria craft, EARS, templates, splitting,
-bulk fan-out) · `agents.md` (AI-executor layer: agent-ready gate, claim/evidence/accept,
-risk tiers, anti-reward-hacking) · `playbook.md` (operation recipes) · `flow.md` (flow
-metrics + SLE) · `rationale.md` (the 2026 evidence base, sourced) ·
-`adapters/vikunja.md` + `adapters/clickup.md` (tool mechanics) ·
-`scripts/ticket_lint.py` (offline DoR/agent-ready gate check, EN+NL, markdown+HTML) ·
-`scripts/flow_metrics.py` (offline flow metrics from normalized JSON) ·
-`scripts/mcp_client.py` (streamable-HTTP MCP client for bulk work).
+`SKILL.md` (role core: contract resolution, loop, skeleton, gates, DoD, invariants) ·
+`refine.md` (refinement execution: interview, criteria craft, EARS, templates,
+splitting, triage, bulk fan-out, antipattern gallery) · `agents.md` (AI-executor layer:
+agent-ready gate, claim/evidence/accept, risk tiers, anti-reward-hacking) ·
+`playbook.md` (operation recipes incl. prioritization and queue ops) · `flow.md` (flow
+metrics + SLE) · `contracts.md` (contract template + layer file shapes) ·
+`rationale.md` (the 2026 evidence base, sourced) · `adapters/vikunja.md` +
+`adapters/clickup.md` (tool mechanics) · `scripts/ticket_lint.py` (offline
+DoR/agent-ready gate check, EN+NL, markdown+HTML) · `scripts/flow_metrics.py` (offline
+flow metrics — raw ClickUp payloads via `--tasks`, normalized items from any tracker
+via `--items`) · `scripts/mcp_client.py` (streamable-HTTP MCP client for bulk work).

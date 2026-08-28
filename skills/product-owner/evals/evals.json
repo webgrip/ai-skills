@@ -7,7 +7,7 @@
       "prompt": "Make a ticket for the flaky deploy pipeline — it failed three times this week on the smoke-test step.",
       "expect_trigger": true,
       "assertions": [
-        "Resolves the Board contract from the consuming repo's AGENTS.md/CLAUDE.md first (or inspects the connected MCP, lists projects, and asks which board when absent)",
+        "Pins the context and resolves the Board contract layers (repo contract file, AGENTS.md block, user contexts, org contract skill) before writing — or inspects the connected MCP, lists projects, and asks which board when no layer exists",
         "Loads the matching adapter's mechanics before writing (TipTap HTML on Vikunja, markdown on ClickUp — never the wrong format for the board)",
         "Creates at the intake stage with title 'area: what changes' and at minimum a Problem section with checkable evidence — intake stays cheap, no fake refinement",
         "Applies the contract's taxonomy (theme/area + impact) and marks the ticket unrefined (e.g. needs-refinement)",
