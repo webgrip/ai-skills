@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.5.0 (2026-08-28)
+
+### 🚀 Features
+
+- **product-owner:** parent-most craft — token-diet core, contracts.md, merged flow_metrics, antipattern gallery (54aba433)
+
+
 ## 0.4.0 (2026-08-28)
 
 ### 🚀 Features

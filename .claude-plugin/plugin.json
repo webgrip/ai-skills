@@ -2,7 +2,7 @@
   "name": "webgrip",
   "displayName": "Webgrip Skills",
   "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",
