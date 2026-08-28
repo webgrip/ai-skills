@@ -102,6 +102,14 @@
       ]
     },
     {
+      "name": "kpi-groomer",
+      "source": "./skills/kpi-groomer",
+      "description": "Define, groom and facilitate KPI sets for teams and organizations.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": []
+    },
+    {
       "name": "product-owner",
       "source": "./skills/product-owner",
       "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, flow metrics, and evidence-based closing.",

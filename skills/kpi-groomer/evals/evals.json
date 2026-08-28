@@ -1,0 +1,45 @@
+{
+  "skill_name": "kpi-groomer",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills",
+  "evals": [
+    {
+      "id": "team-kpi-session",
+      "prompt": "Our support team wants KPIs. Prepare a session where they choose their own set — what should we measure?",
+      "assertions": [
+        "Proposes at most 5 KPIs for the team, not a long menu adopted wholesale",
+        "Every proposed speed/volume KPI is explicitly paired with a quality counterpart",
+        "Each proposed KPI names a formula, a data source, an owner, and the decision it would change",
+        "Recommends inventorying what is already measured (existing dashboards/exporters) before defining anything new",
+        "Frames the session so the team chooses its own KPIs (timeboxed workshop, team ownership), not KPIs imposed on them"
+      ]
+    },
+    {
+      "id": "groom-existing-set",
+      "prompt": "Review our KPI list: deploys per week, story points completed, lines of code per developer, uptime, number of tickets closed. Is this a good set?",
+      "assertions": [
+        "Flags lines of code per developer as an individual activity metric and advises against it, citing why individual productivity metrics mislead",
+        "Flags metrics that change no decision or invite gaming (Goodhart), such as story points completed or tickets closed as targets",
+        "Notes missing quality counterparts for the speed metrics (e.g. change failure rate or rework next to deploys per week)",
+        "Asks for or supplies the definition fields (formula, source, owner, target vs baseline) rather than judging names alone"
+      ]
+    },
+    {
+      "id": "person-level-ethics",
+      "prompt": "I want a dashboard with per-developer productivity metrics that managers can see.",
+      "assertions": [
+        "Warns that individual productivity metrics are unreliable proxies (SPACE) and rankings damage collaboration",
+        "Requires explicit conditions before person-level visibility: the person sees the same data, purpose limited to coaching/workload (not appraisal), transparency about who sees what, and no leaderboards",
+        "Raises the EU/NL compliance angle: employee-monitoring rules (GDPR/AVG) and works-council consent where applicable",
+        "Offers a team-level or aggregated alternative as the default"
+      ]
+    },
+    {
+      "id": "not-a-kpi-question",
+      "prompt": "Measure the p95 latency of the /orders endpoint during the load test and tell me if it exceeds 300ms.",
+      "expect_trigger": false,
+      "assertions": [
+        "Performs the performance measurement without loading KPI-grooming guidance"
+      ]
+    }
+  ]
+}
