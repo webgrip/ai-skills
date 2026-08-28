@@ -1,31 +1,39 @@
-# The contract pattern — one generic skill, your facts in your repo
+# The contract pattern — one generic skill, your facts layered in
 
 How a shared skill (like `product-owner` or `kpi-groomer`) works for *your* team
-without anyone forking or editing it.
+without anyone forking or editing it — and where to put facts you do **not** want in
+`AGENTS.md`.
 
 ## The problem it solves
 
 A skill is a procedure an AI agent loads: how to refine a ticket, how to groom a KPI
 set. That craft is the same everywhere. But the *facts* differ per organization and per
-repo: which board, which ids, which language, which dashboards, who the teams are. Bake
-one org's facts into the skill and it breaks for everyone else — and every fact change
-needs a skill release. Fork the skill per org and the copies drift apart within a month.
+repo: which board, which ids, which dashboards, which teams. Bake one org's facts into
+the skill and it breaks for everyone else. Fork the skill per org and the copies drift
+apart within a month.
 
-## The split
+The wider ecosystem has no native answer: `npx skills` ([vercel-labs/skills](https://github.com/vercel-labs/skills))
+vendors skill folders into per-agent directories (`.claude/skills/`, `.agents/skills/`,
+symlink or copy), tracks them in `.skills.json` + `skills-lock.json`, and refreshes them
+with `npx skills update` — which **overwrites local edits**. Neither the CLI nor the
+[agentskills spec](https://agentskills.io) defines overrides, config files, or
+inheritance. So extension is a *convention the skill itself implements*: the skill
+resolves a **contract** before acting. This estate's skills use the three layers below.
 
-| Layer | What lives there | Where |
+## The three contract layers — most specific wins
+
+| Layer | Where | Use it for |
 | --- | --- | --- |
-| **Skill** | The craft: procedures, gates, heuristics, gotchas. Generic, versioned, shared by everyone. | This marketplace (`skills/<name>/`) |
-| **Contract block** | Your instance facts: ids, URLs, team names, language, caps, policies. | *Your* repo's `AGENTS.md` (or CLAUDE.md) |
-| **Adapter** | Tool mechanics (Vikunja vs ClickUp API traps). | Shipped inside the skill |
+| **1 · Repo contract file** | `.agents/contracts/<skill>.md` in the consuming repo | Anything too big, too detailed, or too situational for always-on context: dashboard catalogs, id tables, team rosters, policy text. Loaded **only when the skill fires** — costs nothing until then. |
+| **2 · `AGENTS.md` block** | `## <Skill> contract` section in the consuming repo's `AGENTS.md`/CLAUDE.md | The handful of small facts every session benefits from (which tracker, ticket language, WIP cap). Keep it short — this file is always-loaded context. |
+| **3 · Org contract skill** | A `<skill>-contract` skill directory in your org's own skills repo (e.g. `code14/ai-skills`), installed alongside the generic skill via `npx skills add <org>/<repo>` or your marketplace | Org-wide defaults shared by *all* repos: the Grafana base URL, the standard board conventions, the measurement charter. Publish once, every repo inherits — no per-repo `AGENTS.md` edits. |
 
-At runtime the skill **resolves the contract first**: it reads your repo's `AGENTS.md`,
-finds the contract block, and only then acts — with your board, your dashboards, your
-rules. No contract block? The skill says so and helps you add one.
+Resolution order: the skill checks **1, then 2, then 3** — a repo-specific fact beats
+the org default. Layers combine: the org skill carries defaults, the repo file carries
+what differs here.
 
-So "extending a skill with our data" = **adding a contract block to your repo**. One
-markdown block, no skill edit, no release, and the next person (junior included) who
-runs the skill in that repo gets all of it automatically.
+**Nothing secret goes in any layer** — all three are git-committed files. A contract
+may *name* where a credential lives (the secret manager path); never the credential.
 
 ## The two live examples
 
@@ -37,23 +45,24 @@ runs the skill in that repo gets all of it automatically.
   person-level metrics policy. Template:
   [skills/kpi-groomer/README.md](../skills/kpi-groomer/README.md)
 
-## Adding one to your repo
+## Adding a contract
 
-1. Open the skill's README in this marketplace and copy its contract template.
-2. Paste it into your repo's `AGENTS.md` and fill in the facts. Unknown yet? Write
-   `not ratified yet` / `TBD — owner: <name>` rather than guessing.
-3. Done. Commit it like any other change — the facts now travel with the repo, are
-   reviewed in MRs, and stay next to the code they describe.
+1. Copy the template from the skill's README.
+2. Small and always-relevant? → paste as a block in your repo's `AGENTS.md`.
+   Rich or bulky? → save as `.agents/contracts/<skill>.md` instead.
+   Org-wide? → put it in a `<skill>-contract` skill in your org's skills repo.
+3. Unknown facts get `TBD — owner: <name>`, never a guess. Commit like any change —
+   facts travel with the repo, reviewed in MRs.
 
 ## Rules of thumb — what goes where
 
-- **Craft** (how to do the work, anywhere) → the skill. Improve it here, once, for all.
-- **Instance facts** (ids, URLs, names, policies) → the contract block in the consuming
-  repo. Never into the skill.
-- **Operational procedures** (how to restart X, rotate Y) → the origin repo's runbook;
-  the contract may point at it.
-- **Always-on repo rules** (build commands, invariants) → that repo's own
+- **Craft** (true in any organization) → the skill. Improve it upstream, once, for all.
+- **Instance facts** (only true here) → a contract layer, never the skill.
+- **Operational procedures** (how to restart X) → the origin repo's runbook; the
+  contract points at it.
+- **Always-on repo rules** (build commands, invariants) → the repo's own
   CLAUDE.md/AGENTS.md, outside the contract block.
 
-One test when you're unsure: *would this line be true in a different organization using
-the same skill?* True → skill. Only true here → contract.
+The test: *would this line be true in a different organization using the same skill?*
+True → skill. Only true here → contract. Too big for every session? → layer 1 or 3,
+not `AGENTS.md`.
