@@ -93,12 +93,16 @@ No repo-wide `vX.Y.Z` tag — the old semantic-release train is gone.
   **`GITEA_TOKEN`** for the release + package-registry API (`GITHUB_SERVER_URL` +
   `GITHUB_REPOSITORY` give the base URL and owner/repo). Not `FORGEJO_TOKEN` —
   Forgejo auto-injects that as the per-job token, which the package registry
-  rejects with 401 `reqPackageAccess`. The token needs **package write AND repo
-  write**: 2026-08-27/28 three runs went red because the release POST failed
-  while package PUTs kept succeeding — a token can lose `write:repository` (or
-  get rotated onto narrower scopes) and packages alone are not proof it is
-  healthy. Diagnose by replaying the failing call with a personal token
-  (`tea releases create`); if that succeeds, fix the CI token's scopes.
+  rejects with 401 `reqPackageAccess`.
+- **Red runs: read the job log before theorizing.** 2026-08-27/28, seven runs
+  went red and the outside-visible silhouette (packages published, releases
+  missing) perfectly mimicked a token-scope loss — the real cause was an
+  `AttributeError` in `link_package`: Forgejo 15 returns an explicit
+  `"repository": null` for unlinked packages and `.get("repository", {})`
+  doesn't cover a null value, so the "best-effort" helper crashed the walk on
+  its own target case. Lessons: guard a best-effort helper's WHOLE body, not
+  just its write; and out-of-band replay (`tea releases create`) proves an
+  endpoint works but never localizes the failure — only the traceback does.
 - Remote writes retry transients (network/5xx, 3 attempts) and re-read the gated
   state between attempts — a timed-out write may have landed. 4xx (409 included)
   never retries.

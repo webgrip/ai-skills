@@ -407,7 +407,11 @@ def link_package(skill, version):
     Best-effort: linking is cosmetic and must never fail a release."""
     server, owner, repo, token = _api()
     meta = _get_json(f"{server}/api/v1/packages/{owner}/generic/{skill}/{version}", token)
-    if (meta or {}).get("repository", {}).get("full_name") == f"{owner}/{repo}":
+    # Unlinked packages carry an explicit "repository": null (Forgejo 15) — a
+    # .get(..., {}) default only covers a MISSING key, so chain through `or {}`.
+    # 2026-08-27/28: this exact line crashed seven runs in a row on the first
+    # skill whose package was unlinked, i.e. on link_package's own target case.
+    if ((meta or {}).get("repository") or {}).get("full_name") == f"{owner}/{repo}":
         return False
     url = f"{server}/api/v1/packages/{owner}/generic/{skill}/-/link/{repo}"
     req = urllib.request.Request(url, method="POST",
