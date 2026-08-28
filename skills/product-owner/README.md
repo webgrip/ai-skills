@@ -37,10 +37,16 @@ ClickUp MCP server to the consuming repo's `.mcp.json`. Scripts override via
 npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git -s product-owner -g
 ```
 
-## Board contract (add to your repo's AGENTS.md)
+## Board contract — three places it can live
 
-The skill resolves this block first; without it, it inspects the connected MCP, lists
-projects/boards, and asks. Delete lines that don't apply to your tracker.
+The skill resolves the contract before acting — most specific wins: (1)
+`.agents/contracts/product-owner.md` in the consuming repo (rich/bulky data you don't
+want in always-loaded context), (2) the block below in the repo's `AGENTS.md` (small,
+always-relevant facts), (3) a `product-owner-contract` skill in your org's own skills
+repo, installed alongside this one (org-wide defaults, published once). Layering guide:
+[docs/contract-pattern.md](../../docs/contract-pattern.md). Without any layer, the
+skill inspects the connected MCP, lists projects/boards, and asks. Delete lines that
+don't apply to your tracker.
 
 ```markdown
 ## Board contract (product-owner)

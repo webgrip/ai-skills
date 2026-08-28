@@ -5,13 +5,21 @@ definition hygiene, Goodhart pairs, KPI-choosing workshops, dashboard traceabili
 the ethics gate for person-level metrics.
 
 The skill carries the *craft*; your organization's *instance facts* (which teams, which
-dashboards, where definitions live) belong in a **Measurement contract** block in the
-consuming repo's `AGENTS.md` (or CLAUDE.md). The skill resolves that block first, the
-same way the `product-owner` skill resolves its Board contract.
+dashboards, where definitions live) live in a **Measurement contract** the skill
+resolves before acting — most specific wins:
+
+1. `.agents/contracts/kpi-groomer.md` in the consuming repo — rich or bulky data you
+   don't want in always-loaded context
+2. a `## Measurement contract` block in the repo's `AGENTS.md` (or CLAUDE.md) — the few
+   small, always-relevant facts
+3. a `kpi-groomer-contract` skill in your org's own skills repo, installed alongside
+   this one — org-wide defaults, published once for every repo
+
+Layering guide: [docs/contract-pattern.md](../../docs/contract-pattern.md).
 
 ## Measurement contract template
 
-Copy into the consuming repo's `AGENTS.md` and fill in:
+Fill in and place per the layering above:
 
 ```markdown
 ## Measurement contract

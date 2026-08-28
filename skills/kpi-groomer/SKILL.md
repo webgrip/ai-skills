@@ -7,11 +7,14 @@ description: Define, groom and facilitate KPI sets for teams, organizations, pro
 
 ## Resolve the measurement contract first
 
-The consuming repo's `AGENTS.md` (or CLAUDE.md) carries a **Measurement contract**
-(template in this plugin's README): where KPI definitions live, the measurement
-charter, dashboard base URL + access, teams in scope, existing data sources, and the
-person-level policy. Without one: inventory the dashboards and exporters that exist,
-ask which teams are in scope, and suggest adding the block.
+Resolve the **Measurement contract** — most specific wins: (1)
+`.agents/contracts/kpi-groomer.md` in the consuming repo, (2) a contract block in its
+`AGENTS.md`/CLAUDE.md, (3) an installed `kpi-groomer-contract` org skill (a sibling
+skill directory). It carries (template + layering guide in this plugin's README): where
+KPI definitions live, the measurement charter, dashboard base URL + access, teams in
+scope, existing data sources, and the person-level policy. Without any contract layer:
+inventory the dashboards and exporters that exist, ask which teams are in scope, and
+suggest adding a contract.
 
 ## The bar: every KPI names the decision it changes
 

@@ -10,13 +10,16 @@ description: Run any ticket board as product owner — Vikunja, ClickUp, or anot
 
 ## Resolve the board contract first
 
-The consuming repo's `AGENTS.md` (or CLAUDE.md) carries a **Board contract**: which
-tracker + MCP server, project/list ids, status roles or label taxonomy, ticket language,
-WIP caps, queue conventions, DoD location, ground-truth commands, ops-runbook pointer
-(template in this plugin's README). Then load the matching adapter —
-[adapters/vikunja.md](adapters/vikunja.md) or [adapters/clickup.md](adapters/clickup.md) —
-for tool mechanics. Without a contract: see which MCP is connected, list its
-projects/boards, ask which one, and suggest adding the contract block.
+Resolve the **Board contract** — most specific wins: (1)
+`.agents/contracts/product-owner.md` in the consuming repo, (2) a contract block in its
+`AGENTS.md`/CLAUDE.md, (3) an installed `product-owner-contract` org skill (a sibling
+skill directory). It carries: which tracker + MCP server, project/list ids, status
+roles or label taxonomy, ticket language, WIP caps, queue conventions, DoD location,
+ground-truth commands, ops-runbook pointer (template + layering guide in this plugin's
+README). Then load the matching adapter — [adapters/vikunja.md](adapters/vikunja.md) or
+[adapters/clickup.md](adapters/clickup.md) — for tool mechanics. Without any contract
+layer: see which MCP is connected, list its projects/boards, ask which one, and suggest
+adding a contract.
 
 - **Never assume a list, status, field, label, or tag exists** — resolve *this* board's
   own set first and state the mapping before acting on it. A gate on a status that
