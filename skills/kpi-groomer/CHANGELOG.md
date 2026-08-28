@@ -1,5 +1,12 @@
 # kpi-groomer
 
+## 0.3.0 (2026-08-28)
+
+### 🚀 Features
+
+- add user-level contract contexts and the facts-vs-behavior rule (9db88842)
+
+
 ## 0.2.0 (2026-08-28)
 
 ### 🚀 Features
