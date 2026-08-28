@@ -93,7 +93,15 @@ No repo-wide `vX.Y.Z` tag — the old semantic-release train is gone.
   **`GITEA_TOKEN`** for the release + package-registry API (`GITHUB_SERVER_URL` +
   `GITHUB_REPOSITORY` give the base URL and owner/repo). Not `FORGEJO_TOKEN` —
   Forgejo auto-injects that as the per-job token, which the package registry
-  rejects with 401 `reqPackageAccess`.
+  rejects with 401 `reqPackageAccess`. The token needs **package write AND repo
+  write**: 2026-08-27/28 three runs went red because the release POST failed
+  while package PUTs kept succeeding — a token can lose `write:repository` (or
+  get rotated onto narrower scopes) and packages alone are not proof it is
+  healthy. Diagnose by replaying the failing call with a personal token
+  (`tea releases create`); if that succeeds, fix the CI token's scopes.
+- Remote writes retry transients (network/5xx, 3 attempts) and re-read the gated
+  state between attempts — a timed-out write may have landed. 4xx (409 included)
+  never retries.
 - **Idempotent by reading before writing, never by catching the conflict.** Each
   skill bases off its own tag (read from git, not the tree, and only tags that
   are ancestors of HEAD — a rewrite left dangling higher-numbered ones behind);
