@@ -14,6 +14,9 @@ Protocol notes (the parts that are easy to get wrong):
 - Responses may be SSE — take the last `data:` line.
 - tools/call results arrive as text content (this MCP returns formatted text, not JSON —
   see adapters/vikunja.md "Response formats").
+- Auth: the webgrip vikunja-mcp server (v1.0.0, 2026-08) authenticates per request —
+  initialize and tools/list are anonymous, every tools/call needs `Authorization: Bearer`.
+  Token comes from $VIKUNJA_API_TOKEN, else read from the file named by $VIKUNJA_TOKEN_FILE.
 """
 import json
 import os
@@ -24,9 +27,22 @@ session = {"id": None, "url": DEFAULT_URL}
 _id = [0]
 
 
+def _token():
+    tok = os.environ.get("VIKUNJA_API_TOKEN", "").strip()
+    if not tok:
+        path = os.environ.get("VIKUNJA_TOKEN_FILE", "").strip()
+        if path and os.path.exists(path):
+            with open(path) as f:
+                tok = f.read().strip()
+    return tok or None
+
+
 def post(payload, timeout=90):
     headers = {"Content-Type": "application/json",
                "Accept": "application/json, text/event-stream"}
+    tok = _token()
+    if tok:
+        headers["Authorization"] = f"Bearer {tok}"
     if session["id"]:
         headers["mcp-session-id"] = session["id"]
     req = urllib.request.Request(session["url"], data=json.dumps(payload).encode(), headers=headers)

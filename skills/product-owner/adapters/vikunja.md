@@ -74,10 +74,15 @@ spot-check with `project_get` after.
 - `tasks_list` returns **ONE server page** — check the reported count against expected
   board size; `page` continues, `filter` takes Vikunja filter syntax, `search` matches
   task text. `projects_list` hides archived unless `include_archived`.
-- Auth errors are explicit: `No token. Over HTTP, send Authorization: Bearer <token>…` —
-  token ops live with the instance (the contract's ops-runbook pointer). A connect
-  timeout means the endpoint is unreachable from here (VPN/LAN?) or the service is down
-  — also instance ops.
+- **Auth is per client since server v1.0.0 (2026-08)**: initialize and tools/list are
+  anonymous, but every tools/call needs `Authorization: Bearer <vikunja-api-token>` —
+  the server no longer holds a server-side token for HTTP callers. The plugin's
+  `.mcp.json` sends `Bearer ${VIKUNJA_API_TOKEN}` (env expansion — export it before
+  launching the client); [mcp_client.py](../scripts/mcp_client.py) reads
+  `$VIKUNJA_API_TOKEN`, else the file named by `$VIKUNJA_TOKEN_FILE`. `No token` on a
+  tool call means the header never arrived. Token minting/rotation stays with the
+  instance (the contract's ops-runbook pointer). A connect timeout means the endpoint
+  is unreachable from here (VPN/LAN?) or the service is down — also instance ops.
 - **Flow-metrics normalization** (for [../scripts/flow_metrics.py](../scripts/flow_metrics.py)):
   Vikunja records no started timestamp — use `created` from the task and `finished` from
   its done date, and label the result the lead-time proxy it is; where the claim
@@ -92,7 +97,17 @@ script. Bulk passes: **sequential calls, generous timeouts** — parallel sessio
 bridged MCP deployments (a 2026-07-18 incident crash-looped a gateway with a threaded
 sweep).
 
-## Tool catalog (the complete live surface, 2026-08-27)
+## Tool catalog (STALE — surface changed 2026-08-28)
+
+> **2026-08-28**: serverInfo now reports `vikunja-mcp` v1.0.0 with **53 tools**
+> (verified via anonymous `tools/list`) — the upstream-style catalog the intro said did
+> not apply. Renames that break the table below: `comment_create` (was
+> `task_comment_add`), `relation_create` (was `task_relation_add`); single-label ops
+> (`label_add_to_task` / `label_remove_from_task`) now exist alongside the bulk setter;
+> new: `tasks_bulk_update`, `tasks_list_all`, buckets/views/filters/assignees/
+> notifications/subscriptions; `whoami` is **gone**. Auth also changed — see the auth
+> bullet above. Until this adapter is re-verified end-to-end, trust a live `tools/list`
+> over this table.
 
 | Area | Tools |
 |---|---|

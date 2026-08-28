@@ -2,7 +2,10 @@
   "mcpServers": {
     "vikunja": {
       "type": "http",
-      "url": "https://mcp-vikunja.webgrip.dev/mcp"
+      "url": "https://mcp-vikunja.webgrip.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer ${VIKUNJA_API_TOKEN}"
+      }
     }
   }
 }

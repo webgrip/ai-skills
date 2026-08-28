@@ -48,7 +48,7 @@ payloads** (name the file to imitate, link the doc — don't paste it).
 | Section | When | What |
 |---|---|---|
 | **Problem** | always | What goes wrong today, for whom, what it costs — with evidence someone can check (`file:line`, metric, support ticket + date, decision record). No solution. |
-| **Outcome** | always | One sentence: the end state, not the activity. |
+| **Outcome** | always | One sentence: the end state, not the activity. Initiative-sized work also names the existing KPI it should move — or "none, because …". Tickets never mint new KPIs; that is a KPI-set change (the `kpi-groomer` skill). |
 | **Acceptance criteria** | to be Ready | 2–7 binary checkboxes. At least one closes the cheap way out; feature work gets at least one error-path criterion. |
 | **Verification** | to be Ready | Who/what proves it, where, with which concrete case and expected result. A runnable command when an agent executes. Not the criteria restated. |
 | **Context** | to be Ready | Pointers: repo path, ADR/runbook, dashboard, support ticket. |
@@ -64,6 +64,24 @@ someone who wasn't there tell what it's about? A bare product name (`Kepler`,
 The user-story line (*As a role, I want X so that Y*) may open **Problem** on end-user
 work where it reads naturally; it never replaces the skeleton, and platform work skips
 it (a story about etcd backups is a story about nobody).
+
+## Write to teach — when a human executes
+
+The ticket is read by someone who wasn't in the conversation — often a junior/medior.
+On human-executed work the ticket is also the lesson:
+
+- Under **Problem**, add a **`Why it matters`** sub-block: the concrete failure/attack
+  story, the mechanism behind it, and what doing this work teaches. The reader should
+  come away knowing *why the work exists*, not just what to type.
+- **Context links point at the object, not the tool** — deep-link the exact dashboard,
+  config file, or doc the ticket is about. A link the executor clicks out-earns a name
+  they must search for.
+- Add a **Learn** block when the domain carries craft: 2–4 authoritative external
+  sources, each with one clause on what it teaches (~30 min reading cap). Per-domain
+  source catalog + the pass procedure → [refine.md](refine.md).
+
+Agent-executed tickets skip the teaching prose — longer descriptions measurably reduce
+agent success; those stay pointers-only ([agents.md](agents.md)).
 
 ## Definition of Ready — understandable, then plannable, then machine-executable
 

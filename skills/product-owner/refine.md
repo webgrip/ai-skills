@@ -101,6 +101,33 @@ operates it) · **Example Mapping** (25 min; the red unanswerable-question cards
 Open questions section) · **INVEST** as a heuristic earning its keep on one question:
 "is this one ticket or three?" — never as a scored gate.
 
+## The teaching pass — human-executed tickets
+
+After the skeleton is filled, one pass for the reader who learns from it (SKILL.md
+"Write to teach" has the rule; this is the execution):
+
+1. **`Why it matters` under Problem** — three ingredients: the concrete failure/attack
+   story (what goes wrong, for whom), the mechanism (the thing a junior doesn't yet
+   know — *why* it goes wrong), and the lesson (what doing this ticket teaches). One
+   paragraph; needing three means the mechanism belongs in a doc you link instead.
+2. **Links point at the object, not the tool** — the dashboard's own URL/UID, the config
+   file path, the ADR. Say in one clause what the reader will see behind each link, and
+   note access requirements (VPN, login) so nobody searches for why a link "is broken".
+3. **Learn block** — 2–4 external sources max, each with one clause on what it teaches.
+   Prefer primary sources; cap total reading ~30 min — a reading list nobody finishes
+   teaches nothing.
+
+Per-domain primary sources (pick 2–4, never all):
+
+| Domain | Sources |
+| --- | --- |
+| Flow & delivery metrics | dora.dev/guides/dora-metrics-four-keys/ · kanbanguides.org · SPACE paper (queue.acm.org/detail.cfm?id=3454124) |
+| KPI definition & grooming | the `kpi-groomer` skill carries the full catalog — don't duplicate it here |
+| Reliability / SLOs / error budgets | sre.google/sre-book/embracing-risk/ |
+| People metrics & measurement ethics | SPACE myths table (same paper) · DevEx (queue.acm.org/detail.cfm?id=3595878) · autoriteitpersoonsgegevens.nl employee-monitoring guidance (NL) |
+| Kubernetes & network security | NSA/CISA Kubernetes Hardening Guide v1.2 · docs.cilium.io |
+| Admission policy | kyverno.io/policies · Kubernetes Pod Security Standards |
+
 ## The templates
 
 English canonical; a board in another language uses its own headings (Dutch mapping:
@@ -118,7 +145,9 @@ What goes wrong today, for whom, what it costs — two sentences, with evidence
 "As a <role> I want <x> so that <y>". No solution.
 
 ## Outcome
-One sentence: the end state.
+One sentence: the end state. Initiative-sized: also the existing KPI this should
+move, or "none — and why". A NEW KPI is a KPI-set change (kpi-groomer), never a
+ticket side-effect.
 
 ## Acceptance criteria
 - [ ] Binary criterion, checkable against real state
