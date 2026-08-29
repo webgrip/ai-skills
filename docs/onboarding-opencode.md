@@ -55,9 +55,9 @@ Try, in order:
 
 1. `what skills do you have available?` — you should see the org five
    (adr-writer, domain-language, harvest-knowledge, skillsmith,
-   vikunja-product-owner) plus the repo's own.
-2. `what should we work on next?` — the vikunja-product-owner skill reads
-   the team board (LAN/VPN required).
+   product-owner) plus the repo's own.
+2. `what should we work on next?` — the product-owner skill reads the team
+   board (LAN/VPN required).
 3. A real change: `/opsx-propose` a small idea → review the artifacts under
    `openspec/changes/` → `/opsx-apply`.
 
@@ -147,4 +147,4 @@ The estate pins an EXACT beta build (`OPENCODE_VERSION` in
 | Your personal overrides | `~/.config/opencode/opencode.json` (yours survive re-runs) |
 | Per-repo config (MCP, permissions) | `<repo>/opencode.json` + `.opencode/` |
 | Auth story | [docs/auth.md](auth.md) |
-| Board workflow (tickets, DoR, claims) | the `vikunja-product-owner` skill |
+| Board workflow (tickets, DoR, claims) | the `product-owner` skill |
