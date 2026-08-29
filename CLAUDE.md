@@ -66,10 +66,10 @@ skillsmith plugin documents the skill-authoring craft these rules come from.
 Beyond `skills/`, a plugin may ship (all at plugin root): `.mcp.json` (MCP servers — enabling the
 plugin wires them for the consumer; a same-named repo-level entry overrides), `hooks/hooks.json`,
 `agents/`, `.lsp.json`, `monitors/`, `bin/` (PATH), `settings.json` (`agent`/`subagentStatusLine`
-only). `vikunja-product-owner` ships the org vikunja MCP this way. Test locally:
+only). `product-owner` ships the org vikunja MCP this way. Test locally:
 `claude --plugin-dir ./skills/<name>` + `/reload-plugins`.
 
-**Genericizing a repo-born skill** (the vikunja-product-owner pattern): the plugin carries the
+**Genericizing a repo-born skill** (the product-owner pattern): the plugin carries the
 *role* (procedures, heuristics, API mechanics); each consumer repo carries the *instance facts*
 in a contract block in its `AGENTS.md` (the skill resolves it first, and its README ships the
 template); instance *operations* stay in the origin repo's runbook. Never bake one repo's ids,
