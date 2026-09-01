@@ -1,5 +1,12 @@
 # guard-secrets
 
+## 1.0.3 (2026-09-01)
+
+### ♻️ Refactoring
+
+- **guard-secrets:** cut narration from the body (6c084d60)
+
+
 ## 1.0.2 (2026-08-04)
 
 Maintenance release — estate-wide re-cut; no changes to this skill.

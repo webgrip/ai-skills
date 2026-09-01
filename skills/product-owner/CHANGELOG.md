@@ -1,5 +1,20 @@
 # product-owner
 
+## 0.6.0 (2026-09-01)
+
+### 🚀 Features
+
+- **product-owner:** cross-references go on the board as complete links (f25a0dbf)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** read ClickUp descriptions with include, or lose the tail (0436e237)
+
+### ♻️ Refactoring
+
+- **product-owner:** drop dated provenance from adapters and rationale (2fbf48f5)
+
+
 ## 0.5.0 (2026-08-28)
 
 ### 🚀 Features

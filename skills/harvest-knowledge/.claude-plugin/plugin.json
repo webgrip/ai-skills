@@ -2,7 +2,7 @@
   "name": "harvest-knowledge",
   "displayName": "Harvest Knowledge",
   "description": "Mine durable, reusable knowledge out of Claude conversation threads with a three-phase workflow — distill each thread into a self-contained digest, consolidate many digests into one deduplicated truth-checked knowledge set, then synthesize repo docs, CLAUDE.md rules, new-skill candidates, and memory updates from it.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

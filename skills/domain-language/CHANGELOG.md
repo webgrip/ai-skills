@@ -1,5 +1,12 @@
 # domain-language
 
+## 1.0.3 (2026-09-01)
+
+### ♻️ Refactoring
+
+- **domain-language:** cut motivation and self-reference from the body (4cb03f8e)
+
+
 ## 1.0.2 (2026-08-04)
 
 Maintenance release — estate-wide re-cut; no changes to this skill.

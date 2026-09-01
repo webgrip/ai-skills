@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -59,7 +59,7 @@
       "name": "domain-language",
       "source": "./skills/domain-language",
       "description": "Define and maintain a project's ubiquitous language (terms, entities, rules, events) in docs/domain/model.yaml, and generate documentation, diagrams, Context Mapper exports, health scores, and feature specs from it.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "keywords": [
         "ddd",
@@ -75,7 +75,7 @@
       "name": "guard-secrets",
       "source": "./skills/guard-secrets",
       "description": "PreToolUse hook that hard-blocks plaintext-secret leaks before an edit/write runs: no decrypted secret artifacts, SOPS files must stay ciphertext, and a best-effort gitleaks scan. The Claude Code twin of the estate's opencode guard-secrets plugin — same secrets floor, both tools.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "keywords": [
         "security",
@@ -89,7 +89,7 @@
       "name": "harvest-knowledge",
       "source": "./skills/harvest-knowledge",
       "description": "Mine durable, reusable knowledge out of Claude conversation threads with a three-phase workflow — distill each thread into a self-contained digest, consolidate many digests into one deduplicated truth-checked knowledge set, then synthesize repo docs, CLAUDE.md rules, new-skill candidates, and memory updates from it.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "keywords": [
         "knowledge-management",
@@ -113,7 +113,7 @@
       "name": "product-owner",
       "source": "./skills/product-owner",
       "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, flow metrics, and evidence-based closing.",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "license": "MIT",
       "keywords": [
         "product-owner",
@@ -153,7 +153,7 @@
       "name": "skillsmith",
       "source": "./skills/skillsmith",
       "description": "Author, edit, and audit Claude Code skills for token-efficient, high-trigger-accuracy LLM ingestion: a verified token cost model, description-as-router rules, progressive disclosure into reference files, and skill eval methodology.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "keywords": [
         "skills",
