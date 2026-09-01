@@ -22,6 +22,7 @@ runbook — the Board contract points there.
 | Evidence comment | `task_comment_add {task_id, comment}` — TipTap HTML |
 | Completion | `task_complete {id}` (agents never complete their own work — [agents.md](../agents.md)) |
 | Commit trailer | `<PREFIX>-<taskID>` from the contract (webgrip default `VIK`); bare task URLs autolink in Forgejo/Gitea |
+| Cross-reference | full URL `<task web base><taskID>` from the contract, in descriptions and comments |
 
 Titles are **plain text, no links**; rename only with a reason + a comment (others
 reference tickets by title).

@@ -15,6 +15,7 @@ never a guess.
 - Tracker: vikunja | clickup · MCP server: `vikunja` | `clickup`
 - Board: project/list `<name>` (id <N>) · [vikunja] instance list cap (maxitemsperpage): <50|250>
 - Ticket language: <en|nl|...> · ticket prefix / commit trailer: `VIK-<id>` | `Refs CU-<id>`
+- Task web base (cross-references): `https://app.clickup.com/t/` | `<instance>/tasks/`
 - Statuses/stages: <the board's own set, mapped to caught/refining/ready/started/review/finished>
   [vikunja default: labels needs-refinement / ready / agent-ready / review + done]
 - Taxonomy: <theme/area labels or tags> · impact/H|M|L · effort/S|M|L · time/hours|days|weeks ·

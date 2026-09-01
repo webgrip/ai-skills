@@ -140,6 +140,12 @@ Reads are free. **Confirm before**: bulk status moves, closing anything, rewriti
 description someone else wrote, touching more than ~3 tickets — show the intended diff
 first. Descriptions **replace** on write in both adapters: read → merge → write.
 
+**Cross-references are complete links.** Every ticket named in a description or comment
+— blocker, split child, "not in scope, that's X", related work — goes in as the full
+URL from the adapter, so it resolves for a reader who is not already inside that board's
+UI. Bare ids survive in exactly two places, both deliberate: **titles** (plain text) and
+the **commit trailer** (the token the tracker's own integration parses).
+
 ## Gotchas
 
 - **Never invent.** Facts come from research or the requester; gaps become explicit

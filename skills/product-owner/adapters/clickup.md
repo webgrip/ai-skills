@@ -19,6 +19,7 @@ only behavior that holds on any ClickUp workspace.
 | Estimate | `time_estimate` in **minutes as a string**: `"150"` = 2h30 |
 | Children | `clickup_create_task {parent: <parent-id>}` |
 | Commit trailer | `Refs CU-<task-id>` (the short id from `app.clickup.com/t/<id>`) |
+| Cross-reference | full URL `https://app.clickup.com/t/<task-id>` in descriptions and comments; a markdown link when you need inline label text |
 
 ## Resolving this board's vocabulary
 
