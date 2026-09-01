@@ -6,11 +6,9 @@ user-invocable: false
 
 # Guard secrets — the floor, and why your write was blocked
 
-This plugin ships a PreToolUse hook (`scripts/guard_secrets.py`) that **blocks
-an edit/write before it lands** when it would leak a plaintext secret. The
-hook is a backstop; this skill is so you don't hit it. The opencode twin
-(`opencode/plugins/guard-secrets.js`) enforces the same floor — one rule set,
-both tools.
+A PreToolUse hook (`scripts/guard_secrets.py`, opencode twin
+`opencode/plugins/guard-secrets.js`) **blocks an edit/write before it lands**
+when it would leak a plaintext secret. Same rule set in both tools.
 
 ## The three hard rules (the hook denies on all three)
 
@@ -32,7 +30,7 @@ both tools.
   a k8s `Secret`, never an inline value.
 - Provisioning a *new* secret: write the non-secret wiring, and tell the
   human exactly what to `sops --encrypt` and where — a human provisions the
-  ciphertext (this mirrors the org guideline "secrets need a human").
+  ciphertext.
 - Config templates carry **placeholders**, not values (`API_KEY: ${API_KEY}`
   from the environment, not the literal key).
 
@@ -40,7 +38,5 @@ both tools.
 
 Read which rule fired (the message names it), then fix the *cause*, don't
 route around it: move the plaintext into SOPS, replace the value with a
-secret reference, or hand the provisioning step to a human. The hook is
-fail-open on its own errors (a same-machine convenience guard, not a security
-boundary — MR review and protected branches are that), so a green write is
-not proof of compliance; these rules are.
+secret reference, or hand the provisioning step to a human. The hook is fail-open on its own
+errors, so a green write is not proof of compliance; these rules are.
