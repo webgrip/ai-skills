@@ -5,19 +5,15 @@ description: Mine durable, reusable knowledge out of Claude conversation threads
 
 # Harvest Knowledge — distill Claude threads into docs + skills
 
-Mine durable learnings out of Claude conversations and fold them into a repository. Three
-phases, each **run in a different context**. Pick by where you are and what you have, open the
-matching prompt file, and adopt it **VERBATIM** as your task — the prompts are tuned and their
-output format is load-bearing (uniform digests are what let Phase 2 consolidate cleanly).
+Three phases, each **run in a different context**. Pick by where you are, open the matching
+prompt file, and adopt it **VERBATIM** as your task — the output format is load-bearing:
+uniform digests are what let Phase 2 consolidate.
 
 | Phase | Run it in | Input | Produces | Prompt (use verbatim) |
 |---|---|---|---|---|
 | **1 · Distill** | the working thread you want to mine (at its end) | the whole current conversation | one self-contained thread digest | [prompt-1-distill.md](prompt-1-distill.md) |
 | **2 · Consolidate** | a fresh "integration" thread | every Phase-1 digest, pasted together | one deduped, truth-checked knowledge set | [prompt-2-consolidate.md](prompt-2-consolidate.md) |
 | **3 · Synthesize** | the repo being documented (write access) | the Phase-2 knowledge set | doc / CLAUDE.md / skill / memory updates + new-skill candidates | [prompt-3-synthesize.md](prompt-3-synthesize.md) |
-
-The Phase-1 digest is the unit that flows downstream: collect digests from many threads → paste
-into Phase 2 → feed Phase 2's knowledge set into Phase 3.
 
 ## Run a phase
 
@@ -42,12 +38,9 @@ preferences / incident state → memory (`MEMORY.md` index) · open items → a 
 
 ## Gotchas
 
-- **Verbatim is the whole point.** The three prompts are the deliverable; reproduce them
-  unchanged.
 - **Phase 2 is read-only** — "Output only — modify no files." Don't let it touch the repo.
 - **Phase 3 never writes before the PLAN is approved.** LOW-confidence / "needs verification"
   items are proposals — verify against the repo or leave them out (deferred); never enshrine
   guesses.
-- **Don't collapse the phases into one pass.** They run in separate contexts on purpose
-  (Phase 1 sees a thread; Phase 2 sees only digests; Phase 3 writes the repo). Skipping the
-  digest step loses the self-contained, uniform structure consolidation depends on.
+- **Don't collapse the phases into one pass** — skipping the digest step loses the uniform
+  structure Phase 2 consolidates on.

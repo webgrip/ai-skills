@@ -3,9 +3,7 @@ name: domain-language
 description: Define, maintain, and publish a project's domain language (ubiquitous language) — the shared vocabulary of terms, entities, relationships, business rules, and events — and generate specs and documentation from it. Use when the user wants to build a glossary, define domain terms or concepts, model entities and their lifecycles, capture business rules, resolve naming ambiguity, write a feature spec grounded in domain vocabulary, generate domain documentation or diagrams, check the health/quality of a domain model, or audit a codebase/docs for inconsistent terminology. Trigger even if the user doesn't say "domain model" — phrases like "we keep calling this thing three different names", "grill me about my domain", "document our concepts", "define what an Order means here", "score our glossary", or "turn our terminology into docs" all apply.
 ---
 
-# Domain Language
-
-Help teams build and maintain a **ubiquitous language**: one agreed vocabulary for a project, kept in a single structured file, from which all documentation and specs are generated. The core idea (from Domain-Driven Design) is that when the same word means the same thing in conversation, code, and docs, misunderstandings and rework drop dramatically. Agents benefit as much as humans: a shared language lets one precise term replace a twenty-word description, session after session.
+# Domain Language — one vocabulary, one YAML file, generated docs
 
 ## The single source of truth
 
@@ -32,7 +30,7 @@ Figure out which of these the user needs; they often chain together (grill → g
 
 ### 1. Bootstrap or sharpen the model by grilling
 
-The most valuable thing this skill does is *extract* language the team hasn't articulated yet. Do this as a grilling session, not a form-filling exercise.
+Extract the language the team hasn't articulated yet — a grilling session, not form-filling.
 
 **Gather raw material first.** Scan whatever is available — the current conversation, code (entity/model/type definitions, database schemas, API routes), READMEs, wikis, specs. Collect candidate terms: domain-relevant nouns and verbs, not generic programming concepts (skip "array", "endpoint") unless they carry domain meaning. Code often contains legacy names the team wants to kill, so never assume code naming is the desired language.
 
@@ -43,7 +41,7 @@ The most valuable thing this skill does is *extract* language the team hasn't ar
 - **Edge-case stress tests**: pick a lifecycle or rule and push on it ("what happens to a Shipment if its Order is cancelled mid-transit?", "can an Order have zero line items, even transiently?"). These questions surface states, rules, and events the user didn't know they knew.
 - **Vagueness attacks**: when the user says "the thing that tracks status" or an overloaded word like "job" or "process", stop and name it properly.
 
-**Be opinionated.** When multiple words exist for one concept, propose the best canonical name yourself with a one-line reason, and demote the rest to `synonyms` or `avoid` — asking "which do you prefer?" with no recommendation wastes the user's time. They can overrule.
+**Be opinionated.** When multiple words exist for one concept, propose the best canonical name yourself with a one-line reason, and demote the rest to `synonyms` or `avoid`. They can overrule.
 
 **Record what isn't settled.** When the user can't resolve a collision on the spot, don't force it: add an `ambiguities` entry with the options and your recommendation, and move on. Open ambiguities render prominently in the generated docs so they can't be quietly forgotten.
 

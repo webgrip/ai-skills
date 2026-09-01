@@ -43,6 +43,9 @@ Its one job: load this skill **exactly when relevant, never otherwise**.
 - **Decision first, procedure second.** Lead with the branch ("if X do Y"); models act top-down.
 - **Imperative, present tense, articles dropped** where unambiguous. No intro/overview/summary/motivation.
 - **State what to do, not how or why** — one clause of *why* only when it changes the action.
+- **No history, no dates.** A skill states the rule as it stands now. No `(2026-01-01)` stamp,
+  no `verified <date>` / `(accepted <date>)`, no "this overrides X", "two exceptions, both
+  deliberate", "we decided …" — cut every line that narrates the rule instead of being it.
 - **Concrete beats abstract:** exact paths, field names, commands, `file:line`. A path the model can
   open out-earns a paragraph describing it.
 - **One real in-repo example by path** beats an inlined synthetic template (which rots and costs tokens).
@@ -110,7 +113,7 @@ levers (`paths`, `context: fork`/`agent`, dynamic bang-backtick shell injection)
 ## Edit / audit
 
 - **Trigger to update:** a gotcha cost a failure loop, a recommended pattern proved wrong, paths drifted.
-  Bake the **root cause** as a `Never`/gotcha at the relevant step. Date incident-derived rules.
+  Bake the **root cause** as a `Never`/gotcha at the relevant step — as the rule, not as its story.
 - **Token-diet pass:** cut human-only prose, generic LLM knowledge, duplication (apply single-source),
   stale paths. Tighten description/when_to_use. Confirm cited examples still exist (`test -e`).
 - **Measure, don't guess:** the `skill-creator` plugin runs with/without A/B on real prompts and reports
@@ -139,13 +142,12 @@ description: <verb> <what it does> + highest-signal nouns. Use when <trigger phr
 
 - `## Overview` / `## Introduction` / "This skill helps you…"
 - Inlined templates duplicating a real file; a fact restated in another skill.
-- A paragraph of *why* where one clause suffices.
+- A paragraph of *why* where one clause suffices; a date or a `verified …` stamp on a rule.
+- Anything that reads as a changelog, decision log, or justification of the skill's own text.
 - A description that summarizes instead of triggering, or repeats the skill name.
 - A `Never`/`don't` guarding a pattern the model wouldn't reach for anyway — the prohibition *is* the baggage. Show the right thing; omit the wrong one.
 - Walls of prose where a table or bullets parse faster.
 - A lookup table or link list sitting in the always-on body instead of a sibling.
-
-This skill obeys its own rules (lean body; full catalog in reference.md).
 
 ## Sources
 
