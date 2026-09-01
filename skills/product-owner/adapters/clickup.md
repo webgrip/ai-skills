@@ -11,7 +11,7 @@ only behavior that holds on any ClickUp workspace.
 | Skill concept | ClickUp realization |
 |---|---|
 | Ticket body | `markdown_description` (create and update) — **markdown, not HTML**; sending HTML gets you literal tags |
-| Skeleton headings | `##` markdown headings; criteria as `- [ ] …` (not in ClickUp's documented list but round-trips and renders as a checklist, verified 2026-08-25 on task `86cb92p9a`) |
+| Skeleton headings | `##` markdown headings; criteria as `- [ ] …` (not in ClickUp's documented list but round-trips and renders as a checklist) |
 | Status/stage | real ClickUp statuses, **per list** — `clickup_get_list {list_id}` returns that list's own set; never assume two lists share one |
 | Priority | a word — `urgent\|high\|normal\|low` (+ `none` on update to clear), not the API's integer. Mapping: urgent=P0, high=P1, normal=P2 |
 | Taxonomy | tags (must already exist in the space — an unknown tag is **silently dropped**) + space-scoped custom fields (dropdowns take the **option UUID** as `value`, not the label) |
@@ -37,11 +37,11 @@ finished status alone and say that it did. The same status name can even have di
 types on different spaces (e.g. `carryover` done-typed on one, custom on another) —
 cross-space queries must not assume one model.
 
-## The payload trap (measured 2026-08-25)
+## The payload trap
 
 `clickup_get_task {include:["custom_fields"]}` returns every field *definition* with its full
-option catalog — measured on one ticket: **69,562 of 70,750 chars (98%)** was dropdown
-options, none of them set. `clickup_get_custom_fields {space_id}` is likewise ~67k chars.
+option catalog — **98% of a 70k-char response** was dropdown options, none of them set.
+`clickup_get_custom_fields {space_id}` is likewise ~67k chars.
 
 - Resolve field and option ids **once per session** (from the contract, else one
   `clickup_get_custom_fields` call) and reuse them.
@@ -65,8 +65,8 @@ acceptance criteria live in the description as markdown.
 | `clickup_get_bulk_tasks_time_in_status` | 100 ids per call | chunk the id list yourself |
 
 One call is not the board. Loop until exhausted before quoting any count. Naming a
-done/closed status explicitly in `statuses` returns those tasks without `include_closed`
-(verified 2026-08-25); `include_closed` matters for queries that don't name statuses.
+done/closed status explicitly in `statuses` returns those tasks without `include_closed`;
+`include_closed` matters for queries that don't name statuses.
 
 ## Time in status (flow-metrics source)
 

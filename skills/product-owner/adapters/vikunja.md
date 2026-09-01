@@ -1,9 +1,9 @@
 # Vikunja adapter — MCP mechanics (instance-independent)
 
 Tools `mcp__vikunja__*`, served by the webgrip `mcp-vikunja` server (the plugin's
-`.mcp.json` default; **tool surface verified via tools/list 2026-08-27** — 17 tools,
-listed below; this is NOT the upstream `@aimbitgmbh/vikunja-mcp`, whose larger catalog
-and tool names do not apply). Schemas are deferred:
+`.mcp.json` default — not the upstream `@aimbitgmbh/vikunja-mcp`). The tool surface
+varies by server version: **resolve it with a live `tools/list`**; the catalog below is
+indicative. Schemas are deferred:
 `ToolSearch "select:mcp__vikunja__tasks_list,mcp__vikunja__task_create"` before calling.
 Instance operations (deployment, token creation/rotation) belong to the instance's ops
 runbook — the Board contract points there.
@@ -75,7 +75,7 @@ spot-check with `project_get` after.
 - `tasks_list` returns **ONE server page** — check the reported count against expected
   board size; `page` continues, `filter` takes Vikunja filter syntax, `search` matches
   task text. `projects_list` hides archived unless `include_archived`.
-- **Auth is per client since server v1.0.0 (2026-08)**: initialize and tools/list are
+- **Auth is per client since server v1.0.0**: initialize and tools/list are
   anonymous, but every tools/call needs `Authorization: Bearer <vikunja-api-token>` —
   the server no longer holds a server-side token for HTTP callers. The plugin's
   `.mcp.json` sends `Bearer ${VIKUNJA_API_TOKEN}` (env expansion — export it before
@@ -95,20 +95,14 @@ Run [../scripts/mcp_client.py](../scripts/mcp_client.py) — minimal streamable-
 client (`init()` + `call(tool, args)`); handles the session-id handshake and SSE
 parsing. Endpoint: `VIKUNJA_MCP_URL` env, else the webgrip default baked into the
 script. Bulk passes: **sequential calls, generous timeouts** — parallel sessions stress
-bridged MCP deployments (a 2026-07-18 incident crash-looped a gateway with a threaded
-sweep).
+bridged MCP deployments — a threaded sweep has crash-looped a gateway.
 
-## Tool catalog (STALE — surface changed 2026-08-28)
+## Tool catalog (indicative — `tools/list` is the truth)
 
-> **2026-08-28**: serverInfo now reports `vikunja-mcp` v1.0.0 with **53 tools**
-> (verified via anonymous `tools/list`) — the upstream-style catalog the intro said did
-> not apply. Renames that break the table below: `comment_create` (was
-> `task_comment_add`), `relation_create` (was `task_relation_add`); single-label ops
-> (`label_add_to_task` / `label_remove_from_task`) now exist alongside the bulk setter;
-> new: `tasks_bulk_update`, `tasks_list_all`, buckets/views/filters/assignees/
-> notifications/subscriptions; `whoami` is **gone**. Auth also changed — see the auth
-> bullet above. Until this adapter is re-verified end-to-end, trust a live `tools/list`
-> over this table.
+Names vary by server version: `task_comment_add` may be `comment_create`,
+`task_relation_add` may be `relation_create`, `whoami` may be absent, and a newer surface
+adds `tasks_bulk_update`, `tasks_list_all`, single-label `label_add_to_task` /
+`label_remove_from_task`, and buckets/views/filters/assignees/notifications.
 
 | Area | Tools |
 |---|---|
@@ -119,5 +113,4 @@ sweep).
 | Labels | `labels_list`, `label_create`, `label_delete`*, `labels_bulk_set_on_task` |
 | Session | `whoami` |
 
-\* safe-mode behavior as above. A tool not in this table does not exist on this server —
-don't dial names from the upstream README.
+\* safe-mode behavior as above. Never call a name `tools/list` did not return.

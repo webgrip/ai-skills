@@ -1,9 +1,8 @@
-# Rationale — the evidence behind each rule (researched 2026-08)
+# Rationale — the evidence behind each rule
 
 Why the skill's rules are what they are, with sources. Labels: **EVIDENCE** (study/RCT/
 large-N dataset), **CONSENSUS** (independent vendors/practitioners converge),
 **CONTESTED** (credible published disagreement), **VENDOR** (self-reported, unaudited).
-Distilled from a 7-stream parallel research sweep, 2026-08-27.
 
 ## The ticket is the agent's prompt
 
