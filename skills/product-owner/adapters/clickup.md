@@ -20,6 +20,7 @@ only behavior that holds on any ClickUp workspace.
 | Children | `clickup_create_task {parent: <parent-id>}` |
 | Commit trailer | `Refs CU-<task-id>` (the short id from `app.clickup.com/t/<id>`) |
 | Cross-reference | full URL `https://app.clickup.com/t/<task-id>` in descriptions and comments; a markdown link when you need inline label text |
+| Reading a description | **`include: ["description"]`, always.** Without it `markdown_description` is silently cut at 10k chars and ends `[truncated]` — writing that back deletes every section past the cut |
 
 ## Resolving this board's vocabulary
 
