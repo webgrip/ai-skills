@@ -51,7 +51,7 @@ events:                    # domain events (things that happened)
     entity: string         # optional — the entity it primarily concerns
     triggers: string       # optional — what the event causes downstream
 
-ambiguities:               # unresolved naming conflicts / vague concepts
+ambiguities:               # unresolved naming conflicts / vague concepts — DELETE once decided
   - phrase: string         # required — the contested word or vague phrase
     issue: string          # required — what's ambiguous about it
     options: [string]      # candidate resolutions (canonical names, splits)

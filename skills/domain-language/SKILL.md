@@ -5,6 +5,19 @@ description: Define, maintain, and publish a project's domain language (ubiquito
 
 # Domain Language — one vocabulary, one YAML file, generated docs
 
+## The model holds state, never history
+
+The model describes the language **as it is now**. It is not a decision log, a changelog, or a record of what a term used to mean. Strip anything that only explains how the present came about:
+
+- No dates on definitions or rules ("since 2026-09-02", "agreed on the 4th"), and no attribution ("Ryan decided"). If a date is genuinely part of the concept — a cutoff a rule turns on, a version a term applies from — it belongs in the statement, not as provenance.
+- No "was X, is now Y", no "formerly called", no "this replaced". A superseded name goes in `avoid`, which is the state ("do not use this word"), and the reason it was dropped is not the model's business.
+- **Delete resolved `ambiguities` entirely.** They are working memory for open questions. Once decided, the decision shows up as a definition, a synonym, or an `avoid` entry, and the entry itself is history — remove it. Keeping it re-litigates a settled question every time someone reads the file.
+- `rationale` on a rule answers "why does this constraint exist", not "what went wrong that made us add it". "Readers book travel off these fields" is state. "In August these drifted across four pages" is an anecdote.
+
+The reason is cost, not tidiness: this file is loaded as context whenever anyone reasons about the domain. Every sentence of provenance is context spent on something that no longer constrains a decision, and it invites readers and models to treat an old meaning as still live. Version control already holds the history, and holds it better.
+
+Say this out loud when a user hands you dated material to record: the fact goes in the model, the story goes in the commit message.
+
 ## The single source of truth
 
 Everything lives in one YAML file in the user's project, by convention at `docs/domain/model.yaml` (respect an existing location if the project already has one). Docs are *generated* from it — never hand-edit generated docs; edit the model and regenerate.
@@ -43,7 +56,7 @@ Extract the language the team hasn't articulated yet — a grilling session, not
 
 **Be opinionated.** When multiple words exist for one concept, propose the best canonical name yourself with a one-line reason, and demote the rest to `synonyms` or `avoid`. They can overrule.
 
-**Record what isn't settled.** When the user can't resolve a collision on the spot, don't force it: add an `ambiguities` entry with the options and your recommendation, and move on. Open ambiguities render prominently in the generated docs so they can't be quietly forgotten.
+**Record what isn't settled.** When the user can't resolve a collision on the spot, don't force it: add an `ambiguities` entry with the options and your recommendation, and move on. Open ambiguities render prominently in the generated docs so they can't be quietly forgotten. When one is later settled, delete the entry rather than marking it resolved — the decision lives on in the definitions it produced.
 
 Write the confirmed result to `docs/domain/model.yaml`. Start small — 5–15 well-defined terms beat 60 vague ones. Also capture one or two `dialogues`: short (3–5 exchange) dev/domain-expert conversations demonstrating boundary cases between related terms. These teach new readers faster than definitions alone.
 
@@ -61,7 +74,8 @@ When the user defines a new term, renames something, or refines a definition: ed
 - One name for two concepts → split them, scope each with a bounded `context`, or file an ambiguity.
 - A term used in a definition, rule, or spec that isn't itself defined → add it or flag it.
 - Renames → grep the model (and, if asked, the docs/codebase) for the old name.
-- An ambiguity that this edit resolves → mark it `resolved` with a `resolution`.
+- An ambiguity that this edit resolves → delete the entry, and check the decision is visible in a definition, a `synonym` or an `avoid`.
+- Provenance that crept in ("since March", "we used to call this…", "per the 2026 review") → strip it; the model is state, not a log.
 
 ### 3. Generate documentation
 
@@ -112,4 +126,5 @@ When asked to check a codebase, docs, or a document against the model: search fo
 - Keep the model in version control alongside the code; suggest regenerating docs in the same commit that changes the model.
 - Definitions in the model are prose for humans; the structure (attributes, states, relationships) is for generation and consistency. Don't cram structure into prose or prose into structure.
 - Bounded contexts are the escape hatch for genuine ambiguity: if Sales and Support legitimately mean different things by "Ticket", define it twice with different `context` values rather than forcing a mushy shared definition.
-- Ambiguities are working memory, not a graveyard: revisit open ones at the start of each grilling session.
+- Ambiguities are working memory, not a graveyard: revisit open ones at the start of each grilling session, and delete them once decided.
+- Re-read the model periodically for provenance that has crept back in. Dated clauses accumulate one edit at a time, and each one costs context for every future reader.
