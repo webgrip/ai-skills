@@ -1,5 +1,12 @@
 # domain-language
 
+## 1.1.0 (2026-09-04)
+
+### 🚀 Features
+
+- **domain-language:** het model draagt state, geen geschiedenis (f7081958)
+
+
 ## 1.0.3 (2026-09-01)
 
 ### ♻️ Refactoring
