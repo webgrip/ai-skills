@@ -19,6 +19,7 @@ always wins where it disagrees — this is the baseline, not an override.
 - **Apps follow `application-template`** — the canonical layout for a deployable service. Copy a comparable existing app rather than scaffolding from scratch.
 - **Shared Helm building blocks:** `common-charts` and `helm-dependency-values`. Reach for these before hand-rolling chart plumbing.
 - **Observability labels matter.** ServiceMonitor/PrometheusRule resources need `release: kube-prometheus-stack` (or the cluster's documented selector) or they're silently not scraped.
+- **No comments in code.** Intent is carried by a precise name, a type, a smaller function, or a test that states the case; anything that outlives a single expression goes to `docs/` or an ADR. Machine-read directives stay because the toolchain acts on them as syntax: shebangs, `# syntax=`, `# renovate:`, schema hints, `@ts-*`/`eslint-*`/`prettier-ignore`, `# shellcheck`, `# noqa`, `//go:*`, and doc comments a tool reads. `@webgrip/comment-ban` gates the delta in CI. Per [ai-skills ADR-0001](https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/org/adrs/adr-0001-no-comments-in-code.md).
 - **Docs as TechDocs** — MkDocs under `docs/` (see `mkdocs-techdocs-core` / `techdocs-runner`). Update docs alongside behavior changes; don't hardcode environment-specific values that drift.
 
 ## Working style
