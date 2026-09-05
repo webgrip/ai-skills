@@ -2,7 +2,7 @@
   "name": "domain-language",
   "displayName": "Domain Language",
   "description": "Define and maintain a project's ubiquitous language (terms, entities, rules, events) in docs/domain/model.yaml, and generate documentation, diagrams, Context Mapper exports, health scores, and feature specs from it.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

@@ -1,5 +1,12 @@
 # guard-secrets
 
+## 1.0.4 (2026-09-05)
+
+### 🐛 Bug Fixes
+
+- **guard-secrets:** de hook meldt een ontbrekende gitleaks in plaats van stil over te slaan (47a789d6)
+
+
 ## 1.0.3 (2026-09-01)
 
 ### ♻️ Refactoring

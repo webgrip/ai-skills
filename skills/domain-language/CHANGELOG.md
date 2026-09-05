@@ -1,5 +1,16 @@
 # domain-language
 
+## 1.2.0 (2026-09-05)
+
+### 🚀 Features
+
+- **domain-language:** een vervallen naam wordt afgedwongen in plaats van onthouden (1dd09b7e)
+
+### 🐛 Bug Fixes
+
+- **domain-language:** de wacht kijkt naar wat gecommit is, en de hook overleeft een symlink (ae3aeb21)
+
+
 ## 1.1.0 (2026-09-04)
 
 ### 🚀 Features
