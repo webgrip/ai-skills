@@ -15,6 +15,7 @@ the same reason, so pass the generated docs directory with --exempt.
 import argparse
 import os
 import re
+import subprocess
 import sys
 
 try:
@@ -43,16 +44,39 @@ def retired_words(model_path):
     return words
 
 
+def tracked(root):
+    """Files git knows about, or None when this is not a work tree.
+
+    An ignored file is not part of the product, so scanning it reports words in
+    scratch notes and local artifacts that never ship.
+    """
+    try:
+        out = subprocess.run(
+            ["git", "-C", root, "ls-files", "-z"],
+            capture_output=True, text=True, timeout=30, check=True,
+        ).stdout
+    except (subprocess.SubprocessError, OSError):
+        return None
+    return [p for p in out.split("\0") if p]
+
+
 def walk(root, exempt):
-    for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
-        for name in filenames:
-            path = os.path.join(dirpath, name)
-            rel = os.path.relpath(path, root)
-            if any(rel == e or rel.startswith(e.rstrip("/") + os.sep) for e in exempt):
-                continue
-            if os.path.splitext(name)[1].lower() in TEXT_SUFFIXES:
-                yield rel, path
+    listed = tracked(root)
+    if listed is None:
+        listed = []
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+            listed.extend(
+                os.path.relpath(os.path.join(dirpath, n), root) for n in filenames
+            )
+    for rel in listed:
+        if any(rel == e or rel.startswith(e.rstrip("/") + os.sep) for e in exempt):
+            continue
+        if os.path.splitext(rel)[1].lower() not in TEXT_SUFFIXES:
+            continue
+        path = os.path.join(root, rel)
+        if os.path.exists(path):
+            yield rel, path
 
 
 def main():

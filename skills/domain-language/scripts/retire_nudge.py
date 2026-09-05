@@ -42,13 +42,14 @@ def names(model):
 
 
 def head_version(path):
-    repo = os.path.dirname(os.path.abspath(path)) or "."
+    real = os.path.realpath(path)
+    repo = os.path.dirname(real) or "."
     try:
         top = subprocess.run(
             ["git", "-C", repo, "rev-parse", "--show-toplevel"],
             capture_output=True, text=True, timeout=5, check=True,
         ).stdout.strip()
-        rel = os.path.relpath(os.path.abspath(path), top)
+        rel = os.path.relpath(real, os.path.realpath(top))
         blob = subprocess.run(
             ["git", "-C", top, "show", f"HEAD:{rel}"],
             capture_output=True, text=True, timeout=5, check=True,
