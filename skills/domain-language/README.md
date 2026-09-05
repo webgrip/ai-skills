@@ -19,6 +19,7 @@ dialogues:     # example exchanges showing precise term usage
 
 - **Documentation** — glossary, entity reference with attribute tables, business rules with rationale, plus Mermaid ER and state diagrams (`scripts/generate_docs.py`)
 - **Context Mapper export** — a `.cml` file mapping contexts → BoundedContexts and entities → Aggregates, unlocking [Context Mapper](https://contextmapper.org)'s PlantUML generators and refactorings (`scripts/generate_cml.py`)
+- **Retirement guard** — a `retired` list in the model turns a rename into an enumerable cleanup: `scripts/check_retired.py` fails on every surviving occurrence, and a PostToolUse hook reports a name that left the model without being retired (`scripts/retire_nudge.py`)
 - **Health score** — an objective 0–10 scorecard across coverage, definition quality, structure, rules, and hygiene, with the findings that cost points (`scripts/health_check.py`)
 - **Feature specs** — written in the canonical vocabulary, citing rules by id, refusing to build on unresolved terms (`assets/spec-template.md`)
 - **Grilling sessions** — Claude interviews you with collision hunting, boundary probing, and edge-case stress tests to extract language your team hasn't articulated yet

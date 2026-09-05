@@ -10,7 +10,8 @@ description: Define, maintain, and publish a project's domain language (ubiquito
 The model describes the language **as it is now**. It is not a decision log, a changelog, or a record of what a term used to mean. Strip anything that only explains how the present came about:
 
 - No dates on definitions or rules ("since 2026-09-02", "agreed on the 4th"), and no attribution ("Ryan decided"). If a date is genuinely part of the concept — a cutoff a rule turns on, a version a term applies from — it belongs in the statement, not as provenance.
-- No "was X, is now Y", no "formerly called", no "this replaced". A superseded name goes in `avoid`, which is the state ("do not use this word"), and the reason it was dropped is not the model's business.
+- No "was X, is now Y", no "formerly called", no "this replaced". A superseded name goes in `avoid` or `retired`, which are the state ("do not use this word"), never in a sentence that narrates the change.
+- **`retired` is state, not history.** A `because` there answers "why is this word forbidden", the same test a rule's `rationale` has to pass. "Two labels for one concept on a bilingual site" is state. "We renamed it on the 4th after a discussion" is an anecdote — strip it.
 - **Delete resolved `ambiguities` entirely.** They are working memory for open questions. Once decided, the decision shows up as a definition, a synonym, or an `avoid` entry, and the entry itself is history — remove it. Keeping it re-litigates a settled question every time someone reads the file.
 - `rationale` on a rule answers "why does this constraint exist", not "what went wrong that made us add it". "Readers book travel off these fields" is state. "In August these drifted across four pages" is an anecdote.
 
@@ -59,6 +60,28 @@ Extract the language the team hasn't articulated yet — a grilling session, not
 **Record what isn't settled.** When the user can't resolve a collision on the spot, don't force it: add an `ambiguities` entry with the options and your recommendation, and move on. Open ambiguities render prominently in the generated docs so they can't be quietly forgotten. When one is later settled, delete the entry rather than marking it resolved — the decision lives on in the definitions it produced.
 
 Write the confirmed result to `docs/domain/model.yaml`. Start small — 5–15 well-defined terms beat 60 vague ones. Also capture one or two `dialogues`: short (3–5 exchange) dev/domain-expert conversations demonstrating boundary cases between related terms. These teach new readers faster than definitions alone.
+
+### 1b. Retire a name
+
+Renaming is the operation that rots a codebase, because the old word survives in filenames,
+CSS classes, generated artifacts and prose that nobody greps. The model is what makes the
+cleanup enumerable, so **retire first, sweep second**:
+
+1. Add the dead word to `retired` with the `use` that replaces it and a `because` that states
+   why the constraint exists.
+2. Run `python3 scripts/check_retired.py <repo-root>` (or the consumer's CI step). It prints
+   every surviving occurrence, and that list *is* the cleanup list.
+3. Sweep, re-run until it prints nothing, and wire the check into CI so a regression fails.
+
+`retired` differs from a term's `avoid` in scope, and the distinction is load-bearing. `avoid`
+is per-term and contextual: "field report" on `Talk`'s avoid list means *do not call a Talk a
+field report*, while Field Report is a perfectly good term of its own. Banning `avoid` entries
+mechanically produces noise. `retired` is global: the word is gone from the product, and the
+only place it may still appear is the list that forbids it — plus, unavoidably, whatever the
+doc generator renders from it.
+
+Exempt paths belong to the consumer, not here. A decision register that explains a rename and
+a personal planning note are the usual two; pass them with `--exempt`.
 
 ### 2. Add or change language
 

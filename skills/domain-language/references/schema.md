@@ -11,6 +11,11 @@ contexts:                  # optional — bounded contexts
   - name: string           # e.g. "Ordering", "Fulfillment"
     description: string    # what this subarea covers and why it's separate
 
+retired:                   # optional — words that are gone from the product entirely
+  - word: string           # required — the dead word, matched case-insensitively
+    use: string            # required — the term that replaces it
+    because: string        # required — why the constraint exists, in the present tense
+
 terms:                     # the glossary
   - name: string           # canonical name (required)
     definition: string     # required — see SKILL.md for what makes a good one
