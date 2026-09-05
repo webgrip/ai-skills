@@ -4,7 +4,7 @@
  * Blocks plaintext-secret leaks before the edit/write tool runs:
  *   1. never create decrypted secret artifacts (*.decrypted*, *decrypted~*)
  *   2. a *.sops.yaml / *.sops.yml write must contain SOPS ciphertext (ENC[)
- *   3. best-effort plaintext-secret scan via gitleaks (skipped silently
+ *   3. best-effort plaintext-secret scan via gitleaks (warns and continues
  *      when gitleaks isn't installed)
  * Blocking = throw; a hook failure fails the operation it intercepts and
  * the message surfaces to the model (v2 equivalent of v1's throw / the
@@ -64,7 +64,10 @@ export default Plugin.define({
       // 3) Best-effort plaintext-secret scan.
       if (content) {
         const gl = await gitleaksPath();
-        if (!gl) return;
+        if (!gl) {
+          console.warn("guard-secrets: gitleaks not on PATH; plaintext scan skipped. Pin it in .mise.toml.");
+          return;
+        }
         const tmp = `${tmpdir()}/guard-secrets-${process.pid}-${Date.now()}`;
         try {
           await writeFile(tmp, content);

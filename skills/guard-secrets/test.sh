@@ -24,4 +24,9 @@ fire 0 '{"tool_input":{"file_path":"values.yaml","content":"replicas: 3"}}'
 fire 0 '{"tool_input":{}}'
 fire 0 'not json at all'
 
+# absent gitleaks: still allowed (rc=0) and the skip is reported, not silent
+PY3="$(command -v python3)"
+out="$(printf '%s' '{"tool_input":{"file_path":"values.yaml","content":"replicas: 3"}}' | PATH=/nonexistent "$PY3" "$HOOK" 2>&1 >/dev/null)" || { echo "FAIL: absent gitleaks must not block" >&2; exit 1; }
+case "$out" in *gitleaks*) ;; *) echo "FAIL: absent gitleaks must be reported on stderr" >&2; exit 1 ;; esac
+
 echo "guard-secrets: ok"

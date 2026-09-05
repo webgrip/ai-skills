@@ -4,7 +4,7 @@
 Hard-blocks plaintext-secret leaks before an Edit/Write/MultiEdit runs:
   1. never create decrypted secret artifacts (*.decrypted*, *decrypted~*)
   2. a *.sops.yaml / *.sops.yml write must contain SOPS ciphertext (ENC[)
-  3. best-effort plaintext-secret scan via gitleaks (skipped when absent)
+  3. best-effort plaintext-secret scan via gitleaks (warns and continues when absent)
 
 Blocking = exit 2 with a reason on stderr (Claude Code's deny contract, the
 analogue of the opencode plugin's throw). Any other error path exits 0
@@ -57,7 +57,9 @@ def main() -> None:
     if base.endswith((".sops.yaml", ".sops.yml")) and content and "ENC[" not in content:
         deny(f"{base} is a SOPS file but the content isn't encrypted. Edit plaintext elsewhere, then 'sops --encrypt'.")
 
-    # 3) best-effort gitleaks scan (skip silently when absent)
+    # 3) best-effort gitleaks scan (warn, never block, when absent)
+    if content and not shutil.which("gitleaks"):
+        print("guard-secrets: gitleaks not on PATH; plaintext scan skipped. Pin it in .mise.toml.", file=sys.stderr)
     if content and shutil.which("gitleaks"):
         tmp = None
         try:

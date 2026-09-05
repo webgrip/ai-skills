@@ -25,14 +25,19 @@ when it would leak a plaintext secret. Same rule set in both tools.
 
 ## The compliant path
 
-- A real secret lives **only** in a `*.sops.yaml` (SOPS-encrypted). Wire it
-  into workloads by reference — Helm `existingSecret` / `envFromSecret` /
-  a k8s `Secret`, never an inline value.
-- Provisioning a *new* secret: write the non-secret wiring, and tell the
-  human exactly what to `sops --encrypt` and where — a human provisions the
-  ciphertext.
+- Which level a value belongs at (floor, vault, cluster, bridge, short-lived,
+  person) and the manifest that puts it there: the `secrets-levels` skill.
+  Almost every value is a vault (OpenBao) original read by an `ExternalSecret`;
+  a new `*.sops.yaml` is only ever the floor, by ADR.
+- Wire by reference — Helm `existingSecret` / `envFromSecret` / a k8s `Secret`,
+  never an inline value.
+- Provisioning a *new* value: write the non-secret wiring, then hand the seed
+  to a human (`just bao-login` + `bao kv put`, or `sops --encrypt` for the
+  floor). A human enters the value; the agent never does.
 - Config templates carry **placeholders**, not values (`API_KEY: ${API_KEY}`
   from the environment, not the literal key).
+- Rule 3 needs `gitleaks` on `PATH`; pin it in the repo's `.mise.toml`. The hook
+  prints a warning and continues when it is missing.
 
 ## When a BLOCKED message appears
 
