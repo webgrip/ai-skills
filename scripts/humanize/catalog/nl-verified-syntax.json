@@ -1,0 +1,1012 @@
+{
+ "categorie": "syntax",
+ "entries": [
+  {
+   "id": "negative-parallelism",
+   "naam": "Negatief parallellisme (het is geen X, het is Y)",
+   "definitie": "Een punt wordt gebracht als correctie op een bewering die niemand deed: de zwakkere lezing wordt ontkend en de echte in dezelfde adem gegeven. Vormen: het scharnier binnen één zin (het is niet X, het is Y), de optellende variant (niet alleen X, maar ook Y), de gesplitste variant (Dat is geen X. Dat is Y. / De vraag is niet X. De vraag is Y.), de oorzaakvariant (niet omdat X, maar omdat Y), de omgekeerde slogan (X, geen Y) en de opwaardering meer dan alleen X. In gewoon Nederlands is een enkele maar-tegenstelling normaal; de tell is het geënsceneerde sjabloon met herhaald koppelwerkwoord, en de herhaling ervan door de tekst.",
+   "cues": [
+    "het is niet X, het is Y",
+    "het is geen X, het is Y",
+    "dat is geen X, dat is Y",
+    "dit is geen tool, dit is een manier van denken",
+    "niet X, maar Y",
+    "X, geen Y",
+    "niet alleen ..., maar ook",
+    "het gaat niet alleen om ..., maar",
+    "het gaat niet om X, het gaat om Y",
+    "dit gaat niet over X, maar over Y",
+    "de vraag is niet X, de vraag is Y",
+    "niet omdat X, maar omdat Y",
+    "niet zomaar een ..., maar",
+    "meer dan alleen",
+    "het draait niet om",
+    "niet ..., maar juist",
+    "eerder X dan Y"
+   ],
+   "regex": [
+    "(?:het|dat|dit|die) is geen [^.,;:!?]{2,40}[.,] (?:het|dat|dit|die) is(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:het gaat|het draait) niet om [^.;:!?]{2,50}, (?:het gaat|het draait|maar) ",
+    "(?<![a-zà-ÿ])niet alleen [^.;:!?]{2,60}, maar ook(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])niet omdat [^.;:!?]{1,60}, maar omdat(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])de vraag is niet [^.;:!?]{1,50}[.,] de vraag is(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])meer dan alleen(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het gaat niet om efficiëntie, het gaat om transformatie.",
+     "na": "De winst zit in een andere manier van werken. Sneller gaat het ook, dat is bijvangst."
+    },
+    {
+     "voor": "Dit is geen tool. Dit is een manier van denken.",
+     "na": "Het is een editor met een ingebouwde takenlijst."
+    },
+    {
+     "voor": "De meetup is niet alleen een netwerkmoment, maar ook een plek om te leren.",
+     "na": "Op de meetup zijn twee talks van twintig minuten, en daarna is er borrel."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "en_id": "negative-parallelism",
+   "bronnen": [
+    "de-wikipedia-ki-inhalte",
+    "nl-artikelen",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Negatief parallellisme",
+    "Tegenstellingsconstructie (Niet X, maar Y)",
+    "Niet alleen ..., maar ook ...",
+    "Negatief parallellisme (het is geen X, het is Y)"
+   ],
+   "valse_positieven": "Een gewone correctie waarin het ontkende deel echt in de lucht hing ('Hij kwam niet uit Hengelo, maar uit Borne') is geen tell. Ook niet: citaten, juridische of contracttekst waarin een afbakening telt, en een enkele maar-tegenstelling zonder herhaald koppelwerkwoord. Markeer pas bij het gesloten sjabloon of bij twee of meer gevallen in één stuk."
+  },
+  {
+   "id": "negation-countdown",
+   "naam": "Ontkenningsaftelling (Geen X. Geen Y. Gewoon Z.)",
+   "definitie": "Twee of meer ontkende zaken worden opgestapeld voor het bevestigde antwoord, zodat daadkracht wordt gespeeld door opties weg te vegen die niemand voorstelde. Vormen: het fragmentaftellen (Geen gedoe. Geen kosten. Gewoon werken.), de komma-keten (geen gedoe, geen gezeur, geen kleine lettertjes), de hele-zinvariant (Het is niet de prijs. Het is niet de functie. Het is het vertrouwen.) en de drieslag met tegenstelling (Niet links, niet rechts, maar recht door zee). Eén ontkenning verdient haar plek alleen als de lezer anders het tegendeel aanneemt.",
+   "cues": [
+    "Geen X. Geen Y. Gewoon Z.",
+    "geen gedoe, geen gezeur, geen kleine lettertjes",
+    "Niet X. Niet Y. Wel Z.",
+    "Het is niet A. Het is niet B. Het is C.",
+    "Noem het geen X. Noem het Y.",
+    "Niet links, niet rechts maar recht door zee",
+    "Niet Copilot, niet Claude, maar jijzelf"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])geen [^.;:!?]{1,30}\\. geen [^.;:!?]{1,30}\\.",
+    "(?<![a-zà-ÿ])geen [^.;:!?,]{2,25}, geen [^.;:!?,]{2,25}, (?:geen|gewoon|wel)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])niet [^.;:!?,]{2,25}, niet [^.;:!?,]{2,25},? (?:maar|wel)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Geen gedoe, geen opvulling, geen jargon.",
+     "na": "In elk hoofdstuk staat iets wat je kunt nakijken."
+    },
+    {
+     "voor": "Niet Copilot, niet Claude, maar jijzelf.",
+     "na": "Je schrijft de tekst zelf; het model doet alleen de spelcheck."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "negation-countdown",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Ontkenningsaftelling (Geen X. Geen Y. Gewoon Z.)",
+    "Drieslag met tegenstelling (Niet X, niet Y, maar Z)"
+   ],
+   "valse_positieven": "Een opsomming van dingen die echt ontbreken en die de lezer moet weten (een productpagina die 'geen abonnement, geen account' meldt omdat concurrenten die wel eisen) is informatie. Ook overslaan: opsommingen in contracten en voorwaarden, en citaten van bestaande leuzen."
+  },
+  {
+   "id": "tailing-negation",
+   "naam": "Ontkennend staartje (, geen gedoe)",
+   "definitie": "Een zin eindigt op een komma en een kort ontkennend staartje in plaats van een volledige bijzin: , geen gedoe, , geen giswerk, , zonder gedoe, , en niets meer. Het staartje voegt niets toe aan de mededeling en leest als slotslag uit reclametekst. Schrijf de beperking als echte bijzin of laat hem weg.",
+   "cues": [
+    ", geen gedoe",
+    ", geen giswerk",
+    ", geen verrassingen",
+    ", zonder gedoe",
+    ", en niets meer",
+    ", niet meer dan dat",
+    ", geen kleine lettertjes",
+    ", geen poespas"
+   ],
+   "regex": [
+    ", (?:geen|zonder) (?:gedoe|giswerk|verrassingen|poespas|kleine lettertjes|omwegen|excuses)\\s*[.!?]",
+    ", (?:en niets meer|niet meer dan dat|meer niet)\\s*(?:[.!?]|$)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De opties komen uit het geselecteerde item, geen giswerk.",
+     "na": "De opties komen uit het geselecteerde item, dus de gebruiker hoeft niets te raden."
+    },
+    {
+     "voor": "Je koppelt de agenda in twee klikken, geen gedoe.",
+     "na": "Je koppelt de agenda in twee klikken. Instellen hoeft niet."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "tailing-negation",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Ontkennend staartje (, geen gedoe)"
+   ],
+   "valse_positieven": "Een staartje dat een echte beperking noemt die de lezer nodig heeft ('werkt in de browser, geen app nodig') is inhoud. Ook overslaan in gesproken taal, ondertitels en citaten, en bij één enkel geval in een lange tekst."
+  },
+  {
+   "id": "litotes-confidence",
+   "naam": "Zekerheid via dubbele ontkenning (niet onbelangrijk, niet optioneel)",
+   "definitie": "Een bewering wordt gedaan door haar tegendeel te ontkennen: niet onbelangrijk, niet ongewoon, niet optioneel, niet te onderschatten. De claim wordt zo verondersteld in plaats van beweerd, en komt daarmee buiten discussie te staan. Waar een gewoon bevestigend woord bestaat, gebruik dat en geef de reden.",
+   "cues": [
+    "niet onbelangrijk",
+    "niet ongewoon",
+    "niet onlogisch",
+    "niet optioneel",
+    "niet te onderschatten",
+    "niet zonder reden",
+    "geen onverstandige keuze",
+    "niet onverdienstelijk"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])niet on(?:belangrijk|gewoon|logisch|verdienstelijk|terecht|omstreden)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])niet (?:te onderschatten|optioneel|zonder reden|zonder gevolgen)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])geen (?:onverstandige|onlogische|slechte) (?:keuze|zet|stap)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Blind taggen is niet optioneel.",
+     "na": "Iedereen tagt blind, want anders wordt de steekproef scheef."
+    },
+    {
+     "voor": "De invloed van de fabriek op het dorp is niet te onderschatten.",
+     "na": "De fabriek gaf in 1960 werk aan een op de drie inwoners."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "litotes-confidence",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Zekerheid via dubbele ontkenning (niet onbelangrijk, niet optioneel)"
+   ],
+   "valse_positieven": "Litotes is een oud stijlmiddel en in ironie of understatement precies de bedoeling. Ook overslaan: vaste uitdrukkingen ('niet voor niets', 'niet zonder slag of stoot'), citaten, en één enkel geval. Markeer bij twee of meer in dezelfde passage, of waar een gewoon bijvoeglijk naamwoord voorhanden was."
+  },
+  {
+   "id": "mirrored-clause-symmetry",
+   "naam": "Gespiegelde zinnen en herhaalde zinsvormen",
+   "definitie": "Twee of meer zinnen staan op hetzelfde grammaticale frame met alleen andere invulling, naast elkaar gezet voor contrast of een tweede geval. Daarnaast keert dezelfde zinsopbouw door de hele tekst terug, vaak met dezelfde woorden erin, wat langere stukken vlak maakt. Eén gespiegeld paar kan werken; de herhaling is de tell. Voeg de gevallen samen in één zin, of laat de helften in lengte en vorm verschillen.",
+   "cues": [
+    "Een winkelwagen is een object. Een chatruimte is een object.",
+    "Producten maken indruk; platforms geven ruimte.",
+    "De eerste fout kost tijd, de tweede kost vertrouwen.",
+    "twee zinnen met hetzelfde skelet naast elkaar",
+    "herhalende zinsstructuren",
+    "steeds terugkerende woorden"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Een winkelwagen is een object in het systeem. Een chatruimte is een object in het systeem.",
+     "na": "Winkelwagens en chatruimtes zijn allebei objecten in het systeem."
+    },
+    {
+     "voor": "De eerste fout kost tijd. De tweede fout kost vertrouwen.",
+     "na": "De eerste fout kostte ons een dag. Na de tweede belde de klant."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "mirrored-clause-symmetry",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Gespiegelde zinnen (hetzelfde skelet, twee keer)",
+    "Herhaalde woorden en zinsstructuren"
+   ],
+   "valse_positieven": "Bewuste parallellie in een slotalinea, een gedicht, een spreuk of een juridische opsomming waarin de vorm de gelijkwaardigheid draagt. Ook: technische documentatie waarin elke regel per opzet dezelfde vorm heeft (API-beschrijvingen, changelogs). Geen regex: dit is een vormvergelijking tussen naburige zinnen, geen woordpatroon."
+  },
+  {
+   "id": "same-opener-runs",
+   "naam": "Anafoor: drie zinnen met dezelfde opening",
+   "definitie": "Drie of meer opeenvolgende zinnen beginnen met hetzelfde woord of dezelfde woordgroep (Misschien ... Misschien ... Misschien ...; Het is ... Het is ...). Bewuste anafoor is een stijlfiguur, maar een reeks die geen overtuigingswerk doet is een machinepatroon. Houd de eerste zin, voeg de rest samen of begin bij de handeling.",
+   "cues": [
+    "Misschien ... Misschien ... Misschien ...",
+    "Ze gaan ervan uit dat ... Ze gaan ervan uit dat ...",
+    "Het is ... Het is ... Het is ...",
+    "Wij geloven ... Wij geloven ...",
+    "Elke ... Elke ... Elke ..."
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s+)(misschien|wij geloven|het is|elke|iedere) [^.!?]{5,90}[.!?]\\s+\\1 [^.!?]{5,90}[.!?]\\s+\\1(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Misschien had niemand het nodig. Misschien loste het het verkeerde probleem op. Misschien klopte de timing niet.",
+     "na": "Misschien had niemand het nodig, of loste het het verkeerde probleem op. De timing hielp ook niet mee."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "same-opener-runs",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Anafoor: drie zinnen met dezelfde opening"
+   ],
+   "valse_positieven": "Anafoor in een toespraak, een gedicht of een bewust ritmische passage doet echt werk. Ook overslaan: opsommingen en bullets die per opzet gelijk beginnen, notulen en changelogs, en twee zinnen achter elkaar (pas vanaf drie is het een reeks)."
+  },
+  {
+   "id": "same-ending-runs",
+   "naam": "Zinnen op rij met dezelfde eindgroep",
+   "definitie": "Drie of meer opeenvolgende zinnen sluiten op dezelfde werkwoordelijke eindgroep: kan worden verlaagd, moet worden aangepast, wordt mogelijk gemaakt. Het Nederlands zet het werkwoord toch al achteraan, dus zo'n reeks maakt het einde van elke zin identiek. Varieer de zinseinden en zet de lijdende vorm terug naar een bedrijvende zin met een handelende persoon.",
+   "cues": [
+    "kan worden ... / kan worden ... / kan worden ...",
+    "... mogelijk maakt. ... mogelijk maakt.",
+    "... wordt gedaan. ... wordt gedaan.",
+    "vier zinnen die op hetzelfde werkwoord eindigen",
+    "... te worden gerealiseerd. ... te worden gerealiseerd."
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:kan|kunnen|moet|moeten) (?:te )?worden [a-zà-ÿ]+\\.\\s+[^.!?]{2,60}(?:kan|kunnen|moet|moeten) (?:te )?worden [a-zà-ÿ]+\\."
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het proces kan worden versneld. De kosten kunnen worden verlaagd. De invoering kan worden vereenvoudigd.",
+     "na": "Het proces gaat sneller, kost minder en is makkelijker in te voeren."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "same-ending-runs",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "valse_positieven": "Beleidsstukken, normen en handleidingen herhalen de vorm soms met opzet, omdat elke regel dezelfde verplichting draagt. Ook overslaan: opsommingen, en twee zinnen achter elkaar. Het Koreaanse origineel gaat over zinseindmorfemen; in het Nederlands telt alleen de herhaalde werkwoordelijke eindgroep.",
+   "samengevoegd_uit": [
+    "Vier zinnen op rij met hetzelfde einde"
+   ]
+  },
+  {
+   "id": "rule-of-three",
+   "naam": "Drieslag",
+   "definitie": "Opsommingen komen stelselmatig in drieën, ook waar de werkelijkheid er twee of vier heeft: drie bijvoeglijke naamwoorden (snel, eenvoudig en betrouwbaar), drie abstracte zelfstandige naamwoorden (innovatie, inspiratie en inzicht), drie parallelle woordgroepen, een dubbele punt gevolgd door precies drie leden, of drie eenwoordzinnen met een punt ertussen (Snel. Simpel. Slim.). Een enkele drieslag is gewoon stijl; de tell is dat het aantal in de intro, de tussenkop en de slotzin drie blijft, en dat het derde lid niets toevoegt.",
+   "cues": [
+    "snel, eenvoudig en betrouwbaar",
+    "sneller, goedkoper, slimmer",
+    "helder, concreet en meetbaar",
+    "Helder, krachtig, overtuigend.",
+    "innovatie, inspiratie en inzicht",
+    "lezingen, panels en netwerkmogelijkheden",
+    "Snel. Simpel. Slim.",
+    "razendsnel, foutloos en verrassend goed opgebouwd",
+    "drie leden in elke opsomming in het stuk",
+    "X, Y én Z"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])snel(?:ler)?, (?:eenvoudig|simpel|makkelijk|goedkoop|goedkoper)(?:er)?(?:,| en) (?:betrouwbaar|efficiënt|effectief|slim|slimmer|beter)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])helder, (?:krachtig|concreet|scherp)(?:,| en) (?:overtuigend|meetbaar|duidelijk)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:innovatie|inspiratie|verbinding), (?:inspiratie|innovatie|kennis|verbinding) en (?:inzicht|verbinding|innovatie|groei)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het platform is snel, eenvoudig en betrouwbaar.",
+     "na": "Het platform laadt binnen 200 ms en draait sinds mei zonder storing."
+    },
+    {
+     "voor": "Bezoekers kunnen rekenen op innovatie, inspiratie en inzicht.",
+     "na": "Er zijn twee lezingen en een panel, met tussendoor tijd om te praten."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "rule-of-three",
+   "bronnen": [
+    "de-wikipedia-ki-inhalte",
+    "nl-artikelen",
+    "nl-translationese",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Drieslag",
+    "Staccato-drieslag"
+   ],
+   "valse_positieven": "Een drieslag is een oud en legitiem Nederlands stijlmiddel, en Nederlandse tekstschrijvers gebruiken er zonder blikken of blozen één per stuk. Ook overslaan: echte opsommingen van precies drie dingen, vaste uitdrukkingen (Zon, zee, strand), slogans van derden en citaten. Markeer op dichtheid, en toets of het derde lid iets toevoegt."
+  },
+  {
+   "id": "staccato-fragments",
+   "naam": "Staccato-fragmenten (Snel. Simpel.)",
+   "definitie": "Twee of meer korte zinnen zonder werkwoord staan achter elkaar als dramatische tikken: het paar (Snel. Simpel.), de reeks, en het slotduo (Dat is het. Meer is het niet.). Eén kort fragment kan nadruk dragen; een rij fragmenten die allemaal als quote bedoeld zijn is de tell. Houd het ene fragment dat de nadruk verdient en maak van de rest hele zinnen.",
+   "cues": [
+    "Snel. Simpel.",
+    "Geen gedoe. Gewoon antwoord.",
+    "Punt.",
+    "Klaar.",
+    "Dat is het. Meer is het niet.",
+    "En dat werkt.",
+    "Zo simpel is het."
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s+)(?:snel|simpel|eenvoudig|helder|krachtig|slim|klaar|gedaan|mooi)\\.\\s+(?:snel|simpel|eenvoudig|helder|krachtig|slim|effectief|klaar|gedaan|punt)\\.",
+    "(?:^|[.!?]\\s+)(?:zo simpel is het|dat is het, meer is het niet|meer is het niet|en dat werkt)\\s*[.!]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Snel. Simpel.",
+     "na": "Het is snel, en je hebt het in vijf minuten draaien."
+    },
+    {
+     "voor": "Je zet het aan en het loopt. Zo simpel is het.",
+     "na": "Je zet het aan en het loopt. Instellen hoeft niet."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "staccato-fragments",
+   "bronnen": [
+    "nl-translationese",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Staccato-fragmenten (Snel. Simpel.)"
+   ],
+   "valse_positieven": "Fragmenten horen bij ondertitels, dialoog, notulen, changelogs en spreektaal. Eén los fragment als nadruk in een verder lopende tekst is stijl. Markeer bij twee of meer op rij die als klapper bedoeld zijn, en in zakelijke of encyclopedische tekst eerder dan in copy."
+  },
+  {
+   "id": "copula-avoidance",
+   "naam": "Koppelwerkwoord vermijden (fungeert als, beschikt over, herbergt)",
+   "definitie": "Het gewone is, zijn of heeft wordt vervangen door een zwaardere stand-in die precies hetzelfde zegt: fungeert als, dient als, geldt als, vormt, staat symbool voor, kenmerkt zich door, beschikt over, herbergt, huisvest, is gelegen. Dezelfde opwaardering treft gewone werkwoorden: gebruikte wordt hanteerde, gaf wordt verstrekte, hielp wordt ondersteunde. Zet het koppelwerkwoord of hebben terug, tenzij een specifieker werkwoord echt betekenis toevoegt.",
+   "cues": [
+    "fungeert als",
+    "dient als",
+    "geldt als",
+    "vormt een belangrijk onderdeel van",
+    "staat symbool voor",
+    "kenmerkt zich door",
+    "wordt gekenmerkt door",
+    "beschikt over",
+    "herbergt",
+    "huisvest",
+    "biedt onderdak aan",
+    "is gelegen",
+    "vertegenwoordigt"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:fungeert|fungeren|fungeerde) als(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:kenmerkt zich door|wordt gekenmerkt door|staat symbool voor|biedt onderdak aan)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])vormt een (?:belangrijk|essentieel|onmisbaar|wezenlijk) (?:onderdeel|element|schakel)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het pand fungeert als ontmoetingsplek en beschikt over een zaal voor tachtig personen.",
+     "na": "In het pand komt de meetup samen. De zaal heeft tachtig stoelen."
+    },
+    {
+     "voor": "De bibliotheek kenmerkt zich door een ruime collectie.",
+     "na": "De bibliotheek heeft 40.000 boeken."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "copula-avoidance",
+   "bronnen": [
+    "de-wikipedia-ki-inhalte",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Koppelwerkwoordvermijding",
+    "Koppelwerkwoord vermijden (fungeert als, beschikt over, herbergt)"
+   ],
+   "valse_positieven": "In encyclopedische en juridische tekst zijn 'is gelegen', 'geldt als' en 'beschikt over' gangbaar Nederlands; 'herbergt' en 'huisvest' zeggen bij gebouwen iets specifieks. Markeer alleen waar is of heeft hetzelfde zou zeggen, en bij dichtheid: drie of meer stand-ins in één alinea. Vakjargon en vaste juridische formules blijven staan."
+  },
+  {
+   "id": "nominalization-inflation",
+   "naam": "Naamwoordstijl (het nemen van een besluit, overgaan tot)",
+   "definitie": "Eén direct werkwoord wordt vervangen door een werkwoord plus abstract zelfstandig naamwoord: overgaan tot invoering voor invoeren, het nemen van een besluit voor besluiten, een bijdrage leveren aan voor helpen. De zin wordt langer en de handelende persoon verdwijnt vaak mee. Zet de werkwoordstam terug en noem wie wat doet.",
+   "cues": [
+    "het nemen van een besluit",
+    "overgaan tot",
+    "tot stand brengen",
+    "een bijdrage leveren aan",
+    "in staat zijn om",
+    "de uitvoering van",
+    "de realisatie van",
+    "de implementatie van",
+    "overgaan tot invoering"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:overgaan tot|over te gaan tot|(?:is|zijn) overgegaan tot|ging over tot)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])het nemen van een (?:besluit|beslissing)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:een bijdrage (?:te )?leveren aan|in staat (?:te )?zijn om|tot stand (?:te )?brengen)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het team is overgegaan tot uitstel van de lancering.",
+     "na": "Het team stelde de lancering uit."
+    },
+    {
+     "voor": "De gemeente levert een bijdrage aan de verbetering van de wijk.",
+     "na": "De gemeente betaalt de helft van het nieuwe pleinontwerp."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "nominalization-inflation",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Naamwoordstijl (het nemen van een besluit, overgaan tot)"
+   ],
+   "valse_positieven": "Naamwoordstijl is in ambtelijk en juridisch Nederlands zo dominant dat een treffer daar niets over de herkomst zegt; gebruik het patroon dan als schrijfregel, niet als machinebewijs. Ook overslaan: vaste vaktermen (de uitvoering van een vonnis, de realisatie van een bouwproject als projectterm) en citaten."
+  },
+  {
+   "id": "participial-tail",
+   "naam": "Duidingsstaart (wat het belang onderstreept)",
+   "definitie": "Aan een gewoon feit wordt een staart geplakt die er een betekenis aan geeft die de bron niet levert: belang (wat het belang onderstreept, wat de noodzaak benadrukt), een trend (wat past in een bredere trend), symboliek (waarmee het bedrijf laat zien dat) of een doel (en zo een bijdrage levert aan). Het Engels doet dit met een tegenwoordig deelwoord, het Nederlands met een bijzin op wat of waarmee. Schrap de staart, of maak er een aparte zin van met een bron en een concreet gevolg.",
+   "cues": [
+    ", wat het belang onderstreept",
+    ", wat de noodzaak benadrukt",
+    ", waarmee wordt benadrukt dat",
+    ", wat aantoont dat",
+    ", wat bijdraagt aan",
+    ", wat past in een bredere trend",
+    ", waarmee het bedrijf laat zien dat",
+    ", wat de veelzijdigheid illustreert",
+    ", waardoor wordt gewaarborgd dat",
+    "daarmee benadrukkend"
+   ],
+   "regex": [
+    ", (?:wat|waarmee|hetgeen) [^.!?]{2,70}(?:onderstreept|benadrukt|illustreert|weerspiegelt|aantoont|waarborgt|markeert)(?![a-zà-ÿ])",
+    ", wat (?:bijdraagt aan|past in een bredere trend|de noodzaak|het belang)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])daarmee (?:benadrukkend|onderstrepend|illustrerend)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De meetup vindt maandelijks plaats, wat het belang van regelmaat voor de gemeenschap onderstreept.",
+     "na": "De meetup vindt elke derde donderdag van de maand plaats."
+    },
+    {
+     "voor": "De update voegt zoeken toe, wat de aandacht van het team voor gebruiksgemak onderstreept.",
+     "na": "De update voegt zoeken toe, zodat je oude concepten terugvindt zonder de editor te verlaten."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "en_id": "participial-tail",
+   "bronnen": [
+    "de-wikipedia-ki-inhalte",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Oppervlakkige analyse als aanhangsel",
+    "Duidingsstaart (wat het belang onderstreept)"
+   ],
+   "valse_positieven": "Een bijzin die echt nieuwe informatie draagt ('wat de gemeente 40.000 euro kostte') is geen duidingsstaart. Ook overslaan: een geciteerd oordeel met bron ('wat volgens de rekenkamer het toezicht ondermijnt'), en juridische of normatieve tekst waarin 'waardoor wordt gewaarborgd dat' de norm zelf is."
+  },
+  {
+   "id": "false-range",
+   "naam": "Valse reeks (van X tot Y)",
+   "definitie": "Twee voorbeelden uit een verzameling worden gepresenteerd als de uiteinden van een spectrum, terwijl er geen spectrum is: van startups tot multinationals, van de oerknal tot donkere materie. De toets: vraag wat er tussen X en Y ligt, of vervang X en Y door een willekeurig ander paar; blijft de zin overeind, dan is de reeks leeg. Noem de echte onderwerpen of kies er één.",
+   "cues": [
+    "van startups tot multinationals",
+    "van beginners tot experts",
+    "van klein tot groot",
+    "variërend van ... tot ...",
+    "uiteenlopend van ... tot ...",
+    "van de oerknal tot donkere materie",
+    "van A tot Z"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:variërend|variëren|uiteenlopend|uiteenlopen) van [^.!?]{2,50} tot(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])van (?:startups?|start-ups?|beginners?|starters?|studenten|hobbyisten|zzp'?ers|kleine bedrijven) tot (?:multinationals?|experts?|professionals?|architecten|grote|doorgewinterde|beursgenoteerde)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De meetup trekt bezoekers van studenten tot doorgewinterde architecten.",
+     "na": "Bij de laatste editie kwamen achttien studenten en vierentwintig werkende ontwikkelaars."
+    },
+    {
+     "voor": "Het boek behandelt alles, van de oerknal tot donkere materie.",
+     "na": "Het boek behandelt de oerknal en de vorming van sterren, en eindigt bij de theorieën over donkere materie."
+    },
+    {
+     "voor": "De sessies variëren van korte demo's tot diepgaande workshops.",
+     "na": "Er zijn twee demo's van tien minuten en een workshop van een uur."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "en_id": "false-range",
+   "bronnen": [
+    "de-wikipedia-ki-inhalte",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Valse reeks 'van X tot Y'",
+    "Valse reeks (van X tot Y)"
+   ],
+   "valse_positieven": "Letterlijke reeksen in tijd, ruimte, maat of alfabet zijn geen tell: van 2019 tot 2023, van Enschede tot Almelo, van maandag tot vrijdag, van A tot Z als vaste uitdrukking voor volledigheid. Behandel treffers als kandidaten en pas de tussenruimte-toets toe voor je markeert."
+  },
+  {
+   "id": "rhetorical-self-question",
+   "naam": "Retorische zelfvraag (Het resultaat? Verwoestend.)",
+   "definitie": "De schrijver stelt zichzelf een vraag en beantwoordt hem meteen, of vuurt vragen af als uitstel: de beantwoorde zelfvraag (Het resultaat? Verwoestend.), de overgangsvraag (Wat betekent dit voor jou?), het nagespeelde vraaggesprek (Is het snel? Ja. Is het goedkoop? Ook.) en de vragenketen. Het trucje zelf is prima; de frequentie verraadt de machine, en de antwoorden slaan soms niet eens terug op de vraag. Maak er een mededeling van; weet je het antwoord, zeg het dan.",
+   "cues": [
+    "Het resultaat?",
+    "Het mooiste?",
+    "Het ergste?",
+    "Zou ik het opnieuw doen? Zeker.",
+    "Wat betekent dit voor jou?",
+    "Waarom? Omdat",
+    "Klinkt goed, toch?",
+    "Is het snel? Ja.",
+    "Herkenbaar?"
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s+)(?:het resultaat|het mooiste|het ergste|de uitkomst|het gevolg|het gekke|het gevolg daarvan)\\?",
+    "(?<![a-zà-ÿ])(?:klinkt goed, toch|wat betekent dit voor jou|waarom zou je dat willen|herkenbaar)\\?",
+    "\\?\\s+(?:ja|nee|zeker|absoluut|precies|jazeker)[.,!]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het resultaat? Verwoestend.",
+     "na": "De storing kostte het bedrijf twee dagen omzet."
+    },
+    {
+     "voor": "Werkt het ook offline? Ja, dat werkt.",
+     "na": "Offline werkt het ook; de app synchroniseert zodra je weer verbinding hebt."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "en_id": "rhetorical-self-question",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Vraag-antwoordconstructie zonder reden",
+    "Retorische zelfvraag (Het resultaat? Verwoestend.)"
+   ],
+   "valse_positieven": "Een echte vraag aan de lezer die onbeantwoord blijft, een FAQ, een interview, een quiz of een didactische opbouw waarin de vraag de stof structureert. Ook: één zelfvraag in een lang stuk. Markeer bij herhaling, bij een vraag die geen lezer stelt, of waar het antwoord in de volgende halve zin al staat."
+  },
+  {
+   "id": "agentless-passive-subjectless-fragment",
+   "naam": "Lijdende vorm zonder handelende persoon en zinnen zonder onderwerp",
+   "definitie": "De handelende persoon wordt verstopt of het onderwerp weggelaten: lijdende vormen zonder door-bepaling (De resultaten worden automatisch bewaard, Ondersteuning is toegevoegd) en zinnen zonder onderwerp of werkwoord (Geen configuratiebestand nodig). Vaak staat de constructie er om te vermijden dat gezegd moet worden wie iets deed. Noem wie het doet en schrijf bedrijvend.",
+   "cues": [
+    "wordt automatisch bewaard",
+    "is toegevoegd",
+    "er wordt gewerkt aan",
+    "er wordt gekeken naar",
+    "Geen configuratiebestand nodig.",
+    "Zonder installatie te gebruiken.",
+    "wordt ondersteund"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])er (?:wordt|worden) (?:gewerkt aan|gekeken naar|gestreefd naar|nagedacht over)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])wordt (?:automatisch|standaard) (?:bewaard|opgeslagen|verwerkt|bijgewerkt|gesynchroniseerd)(?![a-zà-ÿ])",
+    "(?:^|[.!?]\\s+)geen [a-zà-ÿ]+(?:bestand|account|installatie|configuratie|creditcard)[a-zà-ÿ]* nodig\\."
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Geen configuratiebestand nodig. De resultaten worden automatisch bewaard.",
+     "na": "Je hebt geen configuratiebestand nodig. De cli bewaart de resultaten zelf."
+    },
+    {
+     "voor": "Er wordt gewerkt aan een oplossing.",
+     "na": "Twee ontwikkelaars werken aan een oplossing; de fix staat gepland voor 1 oktober."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "agentless-passive-subjectless-fragment",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Passieve en omslachtige zinsbouw",
+    "Lijdende vorm zonder handelende persoon en zinnen zonder onderwerp"
+   ],
+   "valse_positieven": "De lijdende vorm is gewoon Nederlands en soms de enige juiste keuze: als de handelende persoon onbekend is, niet ter zake doet, of als het lijdend voorwerp het onderwerp van de alinea is. Vakteksten, wetgeving en wetenschappelijk proza gebruiken hem per conventie. Markeer op dichtheid, niet op de losse zin."
+  },
+  {
+   "id": "inanimate-agent",
+   "naam": "Levenloos onderwerp met een menselijk werkwoord",
+   "definitie": "Een abstractie of een ding wordt onderwerp van een werkwoord dat alleen mensen uitvoeren: de data vertelt ons, het rapport laat ons zien, de techniek vraagt om, het besluit ontstond. De handelende persoon verdwijnt en het ding krijgt een wil. Herschrijf met de persoon of organisatie die handelde, of kies een zwakker werkwoord.",
+   "cues": [
+    "de data vertelt ons",
+    "de cijfers zeggen",
+    "het rapport laat ons zien",
+    "de techniek vraagt om",
+    "de tijd roept om",
+    "de code nodigt je uit",
+    "het besluit ontstond"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])de (?:data|cijfers|resultaten|grafiek|statistieken) (?:vertelt|vertellen|zegt|zeggen|laat zien|laten zien|leert|leren) (?:ons|je|u)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:de techniek|de tijd|de markt|de samenleving|het moment) (?:vraagt|roept|schreeuwt) om(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])het (?:besluit|idee|inzicht|plan) ontstond(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het besluit ontstond na weken van overleg.",
+     "na": "Het team besloot het na weken van overleg."
+    },
+    {
+     "voor": "De cijfers vertellen ons dat het bezoek daalt.",
+     "na": "Uit de cijfers blijkt dat het bezoek daalt."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "inanimate-agent",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Levenloos onderwerp met een menselijk werkwoord"
+   ],
+   "valse_positieven": "Vaste metonymie is gewoon Nederlands: het kabinet besloot, de gemeente meldt, de wet bepaalt, het contract zegt. Ook: een bewust literair beeld, en vakjargon waarin een systeem echt een handeling uitvoert ('de scheduler kiest de volgende taak'). Markeer waar het werkwoord bewustzijn onderstelt."
+  },
+  {
+   "id": "orphaned-demonstrative",
+   "naam": "Verweesd aanwijzend voornaamwoord (Dit onderstreept ...)",
+   "definitie": "Dit, dat of deze opent een zin als onderwerp zonder duidelijke verwijzing, meestal in de vorm Dit onderstreept of Dit laat zien na een alinea met meerdere beweringen. De lezer moet raden waar het naar terugslaat, en meestal slaat het nergens precies op terug. Noem waar het naar verwijst, of maak het echte onderwerp ook het grammaticale onderwerp.",
+   "cues": [
+    "Dit onderstreept",
+    "Dit laat zien dat",
+    "Dit betekent dat",
+    "Dat maakt duidelijk",
+    "Hiermee wordt",
+    "Dit alles",
+    "Dit toont aan dat"
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s+)(?:dit|dat) (?:onderstreept|laat zien dat|maakt duidelijk|benadrukt|illustreert|toont aan|bewijst)(?![a-zà-ÿ])",
+    "(?:^|[.!?]\\s+)(?:hiermee wordt|dit alles)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Lezers volgen een tekst beter als het onderwerp klopt. Dit onderstreept het belang van de onderwerpskeuze.",
+     "na": "Wie het juiste onderwerp kiest, houdt de tekst helder."
+    },
+    {
+     "voor": "De wachttijd liep op tot vier minuten. Dit laat zien dat de cache niet werkt.",
+     "na": "De wachttijd liep op tot vier minuten, want de cache was koud."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "orphaned-demonstrative",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Verweesd aanwijzend voornaamwoord (Dit onderstreept ...)"
+   ],
+   "valse_positieven": "Een aanwijzend voornaamwoord dat onmiskenbaar naar de vorige zin verwijst is gewoon goed Nederlands en houdt alinea's aan elkaar. Ook overslaan: notulen en verslagen waarin 'dit' naar een genoemd besluit wijst. Markeer waar de vorige alinea meerdere kandidaten bevat, of waar de zin alleen betekenis toekent."
+  },
+  {
+   "id": "modal-flattening",
+   "naam": "Alle twijfel als kan",
+   "definitie": "Elke schakering van onzekerheid wordt met hetzelfde hulpwerkwoord uitgedrukt, in het Nederlands vrijwel altijd kan of zou kunnen, zodat de hele tekst één toon van voorbehoud krijgt. Ook de mate verdwijnt: wat vrijwel zeker is en wat hoogst onwaarschijnlijk is krijgen dezelfde vorm. De oplossing is de twijfel variëren, niet weghalen: waarschijnlijk, vermoedelijk, naar verwachting, in de meeste gevallen, het is de vraag of.",
+   "cues": [
+    "kan",
+    "kunnen",
+    "zou kunnen",
+    "kan leiden tot",
+    "kan zorgen voor",
+    "kan bijdragen aan",
+    "kan helpen bij"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])kan (?:leiden tot|zorgen voor|bijdragen aan|helpen bij|resulteren in)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Deze aanpak kan mislukken. De kosten kunnen oplopen. De planning kan uitlopen.",
+     "na": "Deze aanpak mislukt waarschijnlijk. De kosten lopen op, en de planning schuift vermoedelijk een maand."
+    },
+    {
+     "voor": "Een goede briefing kan bijdragen aan een beter resultaat.",
+     "na": "Met een goede briefing gaat er in de tweede ronde minder mis."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "modal-flattening",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Alle twijfel als kan"
+   ],
+   "valse_positieven": "Losse gevallen zijn gewoon Nederlands; 'kan' betekent daarnaast ook mogen en in staat zijn, en die betekenissen tellen niet mee. Poort op dichtheid: vier of meer voorbehoudsvormen met kan in één passage. In wetenschappelijke en juridische tekst is voorbehoud verplicht en zegt de dichtheid niets."
+  },
+  {
+   "id": "template-phrase",
+   "naam": "Sjabloonzin (Of je nu X bent of Y)",
+   "definitie": "Een invulzin met verwisselbare zelfstandige naamwoorden: het valse-breedtepaar (Of je nu starter bent of doorgewinterd architect), de vage stap (een belangrijke stap richting, een mooie stap vooruit) en de aforismeformule (de Uber van de hondenuitlaatbranche). De zin dekt iedereen af en zegt daarmee niets over deze lezer of deze verandering. Kies het publiek dat je echt aanspreekt, of noem de concrete verandering.",
+   "cues": [
+    "Of je nu X bent of Y",
+    "Of het nu gaat om X of Y",
+    "voor iedereen die",
+    "een belangrijke stap richting",
+    "een mooie stap vooruit",
+    "de Uber van",
+    "de X van de Y-wereld"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])of je nu [^.!?]{2,60}(?:bent|hebt|doet|werkt) of(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])of het nu gaat om(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])een (?:belangrijke|mooie|volgende|grote|eerste) stap (?:richting|vooruit|in de goede richting)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])de (?:uber|netflix|airbnb|tesla|spotify) van(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Of je nu starter bent of doorgewinterd architect, deze gids is voor jou.",
+     "na": "Deze gids is voor engineers die hun eigen deploypijplijn beheren."
+    },
+    {
+     "voor": "De nieuwe versie is een belangrijke stap richting een beter product.",
+     "na": "In de nieuwe versie werkt zoeken in bijlagen, waar gebruikers al twee jaar om vroegen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "template-phrase",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Sjabloonzin (Of je nu X bent of Y)"
+   ],
+   "valse_positieven": "Een echte tweedeling die de tekst daarna ook bedient ('Of je nu op Windows of macOS werkt, de stappen hieronder verschillen') is inhoud. Ook overslaan: citaten uit marketing van derden die je bespreekt, en vergelijkingen met een bedrijf die echt worden uitgewerkt."
+  },
+  {
+   "id": "stranded-auxiliary-contrast",
+   "naam": "Elliptische omslag (de data niet.)",
+   "definitie": "Een omkering landt op een kaal ontkennend restje: De tool verdween, de data niet. Lezen ging goed. Schrijven niet. Het Engels strandt een hulpwerkwoord, het Nederlands laat het hele gezegde weg en houdt alleen niet over. Eén keer is prima; als terugkerend ritme gaat de afgeknipte tegenstelling voor verdiend inzicht door. Staat er al een in het stuk, schrijf de volgende dan voluit.",
+   "cues": [
+    "De tool verdween, de data niet.",
+    "Lezen ging goed. Schrijven niet.",
+    "Het team bleef. De afdeling niet.",
+    ", de rest niet."
+   ],
+   "regex": [
+    ", (?:de|het|die|dat|zijn|haar|hun) [a-zà-ÿ]{3,20} niet\\.",
+    "(?:^|[.!?]\\s+)(?:de|het|dat|die) [a-zà-ÿ]{3,20} niet\\."
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De tool verdween, de data niet.",
+     "na": "De tool verdween en de data bleef staan."
+    },
+    {
+     "voor": "De storing raakte de website. De betalingen niet.",
+     "na": "De storing raakte de website; betalen bleef werken."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "stranded-auxiliary-contrast",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Elliptische omslag (de data niet.)"
+   ],
+   "valse_positieven": "Ellips is normaal in spreektaal, dialoog en ondertitels, en één keer in een stuk is stijl. Ook overslaan: een antwoord op een vraag ('Werkte de back-up? De database niet.') en citaten. Markeer bij een tweede geval in dezelfde tekst."
+  },
+  {
+   "id": "synonym-doubling",
+   "naam": "Synoniemenverdubbeling (een belangrijke en cruciale rol)",
+   "definitie": "Twee bijna-synonieme bepalingen of abstracte zelfstandige naamwoorden worden op één kern gekoppeld, zodat de woordgroep hetzelfde twee keer zegt: een belangrijke en cruciale rol, nieuw en innovatief, snel en efficiënt, de rol en functie van, kennis en kunde. De verdubbeling voelt als nadruk maar voegt geen betekenis toe. Houd er één.",
+   "cues": [
+    "een belangrijke en cruciale rol",
+    "nieuw en innovatief",
+    "duidelijk en helder",
+    "snel en efficiënt",
+    "veilig en betrouwbaar",
+    "de rol en functie van",
+    "de betekenis en waarde van",
+    "kennis en kunde"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:belangrijke en cruciale|cruciale en belangrijke|nieuwe? en innovatieve?|duidelijk en helder|snel en efficiënt|veilig en betrouwbaar|uniek en onderscheidend)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])de (?:rol en functie|betekenis en waarde|opzet en inrichting) van(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het team speelt een belangrijke en cruciale rol in het project.",
+     "na": "Het team bouwt de betaalmodule en beslist over de planning."
+    },
+    {
+     "voor": "Een nieuwe en innovatieve aanpak.",
+     "na": "Een aanpak die niemand in de sector eerder probeerde."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "synonym-doubling",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Synoniemenverdubbeling (een belangrijke en cruciale rol)"
+   ],
+   "valse_positieven": "Vaste woordparen en juridische tweelingen zijn geen verdubbeling maar idioom of vakterm: kennis en kunde in een cao, 'goed en deugdelijk werk' in een bestek, 'baat en schade'. Ook overslaan als de twee woorden echt verschillen (veilig gaat over de gebruiker, betrouwbaar over de uptime) en dat verschil in de tekst wordt gebruikt."
+  },
+  {
+   "id": "prescriptive-agentless-necessity",
+   "naam": "Voorschrift zonder handelende persoon (er moet worden gekeken naar)",
+   "definitie": "Verplichtingen stapelen zich op zonder dat iemand wordt genoemd: er moet worden gekeken naar, er is behoefte aan, het is noodzakelijk dat, verandering is nodig, hier valt winst te behalen. Niemand is aanspreekbaar, dus er verandert niets. Zet de handelende persoon en de handeling als onderwerp en gezegde, en wissel af met voorwaardelijke zinnen.",
+   "cues": [
+    "er moet worden gekeken naar",
+    "er dient te worden",
+    "er is behoefte aan",
+    "het is noodzakelijk dat",
+    "verandering is nodig",
+    "innovatie is nodig",
+    "hier valt winst te behalen",
+    "dient te worden"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])er (?:moet|moeten|dient|dienen) (?:te )?worden(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:dient|dienen) te worden(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:het is noodzakelijk dat|er is behoefte aan|hier valt winst te behalen|(?:verandering|innovatie|actie) is nodig)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Er moet worden gekeken naar het proces, en verandering is nodig.",
+     "na": "Het ontwikkelteam past de deployprocedure aan voor 1 oktober."
+    },
+    {
+     "voor": "Er is behoefte aan een betere handleiding.",
+     "na": "Drie klanten vroegen deze maand om een handleiding met schermafbeeldingen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "prescriptive-agentless-necessity",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Voorschrift zonder handelende persoon (er moet worden gekeken naar)"
+   ],
+   "valse_positieven": "In wetteksten, normen, bestekken en procedures is 'dient te worden' de conventie en staat de handelende persoon elders in het document. Ook overslaan: citaten uit beleidsstukken die je juist bespreekt. Markeer in gewoon proza, en vooral bij twee of meer verplichtingen zonder eigenaar in één alinea."
+  },
+  {
+   "id": "cleft-dummy-noun",
+   "naam": "Cleft en loze kernwoorden (waar het om gaat is, het punt is dat)",
+   "definitie": "Een bewering wordt naar voren geschoven via een cleft of een loos kernwoord in plaats van gewoon gezegd: Waar het om gaat is, Het punt is dat, Het feit is dat, De kern is dat, Wat opvalt is dat. De aanloop belooft nadruk die de mededeling zelf moet dragen. Schrijf de directe zin.",
+   "cues": [
+    "Waar het om gaat is",
+    "Het punt is dat",
+    "Wat belangrijk is, is dat",
+    "Het feit is dat",
+    "De kern is dat",
+    "Wat opvalt is dat",
+    "Belangrijk hierbij is",
+    "Het is zo dat"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:waar het om gaat is|het punt is dat|het feit is dat|de kern is dat|wat opvalt is dat|belangrijk hierbij is|wat belangrijk is, is dat)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Waar het om gaat is dat de cache warm is. Het punt is dat niemand hem met de hand warm houdt.",
+     "na": "De cache is warm, en niemand houdt hem met de hand warm."
+    },
+    {
+     "voor": "Het feit is dat de levertijd opliep tot zes weken.",
+     "na": "De levertijd liep op tot zes weken."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "cleft-dummy-noun",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Cleft en loze kernwoorden (waar het om gaat is, het punt is dat)"
+   ],
+   "valse_positieven": "Een cleft die echt contrasteert met iets wat eerder stond ('Wat opvalt is niet de omzet, maar het aantal klachten' in een tekst die de omzet net besprak) doet werk. Ook overslaan: spreektaal, interviews en debatverslagen, waar de aanloop de beurt markeert."
+  },
+  {
+   "id": "past-tense-avoidance",
+   "naam": "Perfectum waar de verleden tijd hoort",
+   "definitie": "Gebeurtenissen worden verteld in de voltooid tegenwoordige tijd (heeft besloten, is gestegen, hebben gekeken) waar verhalend of rapporterend Nederlands de onvoltooid verleden tijd gebruikt (besloot, steeg, keken). Het is de Engelse present perfect die één op één is overgezet. Drie of meer opeenvolgende zinnen in het perfectum is de tell; zet de verleden tijd terug waar de tekst vertelt wat er gebeurd is.",
+   "cues": [
+    "heeft besloten",
+    "hebben gekeken naar",
+    "is gestegen",
+    "zijn overgestapt",
+    "heeft ervoor gezorgd dat",
+    "drie zinnen op rij in het perfectum"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "De vergadering heeft lang geduurd. We hebben geen besluit genomen.",
+     "na": "De vergadering duurde lang. We namen geen besluit."
+    },
+    {
+     "voor": "Het bedrijf heeft in 2019 een tweede vestiging geopend en heeft toen dertig mensen aangenomen.",
+     "na": "Het bedrijf opende in 2019 een tweede vestiging en nam er dertig mensen aan."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "past-tense-avoidance",
+   "bronnen": [
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Voltooid tegenwoordige tijd waar de verleden tijd hoort"
+   ],
+   "valse_positieven": "In spreektaal, in nieuwsberichten over iets wat net gebeurde en bij een resultaat dat nu nog geldt is het perfectum juist de goede tijd. Eén of twee perfecta zeggen niets. Geen regex: alleen de dichtheid over drie of meer opeenvolgende verhalende zinnen telt, en die moet een lezer wegen."
+  },
+  {
+   "id": "hypotactic-smoothness",
+   "naam": "Eén zinsvorm door de hele tekst (te glad, even lang)",
+   "definitie": "Elke zin loopt netjes af en is ongeveer even lang: geen fragment, geen zin die met En, Maar of Dus begint, geen afgebroken constructie, en bijzinnen die met komma's en 'en' aan elkaar worden geplakt tot een keten zonder duidelijk doel. Menselijke tekst is grillig: een korte zin, dan een lange die afdwaalt. Dit is vooral een bewaarregel, laat de ruige vormen staan waar de stem ze zou gebruiken, en repareer de vlakheid nooit met opzettelijke fouten.",
+   "cues": [
+    "geen zin begint met En",
+    "geen zin begint met Maar",
+    "geen zin begint met Dus",
+    "geen enkel fragment",
+    "zinnen van 15 tot 25 woorden",
+    "weinig variatie in zinslengte",
+    "onnatuurlijk lange zinnen aan elkaar geplakt met ', en'"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "De build faalde; daarom is de commit teruggedraaid, waarna deze alsnog slaagde.",
+     "na": "De build faalde. Dus draaiden we de commit terug. En toen ging hij wel door."
+    },
+    {
+     "voor": "Hoewel het model grammaticaal correcte zinnen produceert, kunnen die zinnen onnatuurlijk lang worden, zonder dat dit een doel dient, en zonder dat er een fout in staat.",
+     "na": "Het model schrijft foutloze zinnen. Alleen worden ze soms veel te lang."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "nl-bron",
+   "en_id": "hypotactic-smoothness",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en"
+   ],
+   "samengevoegd_uit": [
+    "Te gladde grammatica",
+    "Uniforme zinslengte (geen burstiness)",
+    "Onnatuurlijk lange zinnen met komma voor 'en'"
+   ],
+   "valse_positieven": "Formele registers vragen om gelijkmatige, afgeronde zinnen: wetgeving, normen, wetenschappelijke artikelen, jaarverslagen. Ook: vertaald werk en tekst die door een redacteur is gladgestreken. De komma voor 'en' tussen twee hoofdzinnen is correct Nederlands en op zichzelf geen signaal. Geen regex: dit is een afwezigheidspatroon dat een lezer moet vaststellen over een hele tekst."
+  }
+ ],
+ "rapport": "Zeven regexen uit het concept sneuvelden op het controlecorpus (6.747 woorden Wikipedia over Rijssen en Enschede): de generieke drieslag (woord, woord en woord) raakte 25,2 keer per 10.000 woorden, de generieke lijdende vorm 14,8, 'van X tot Y' zonder woordfilter 8,9, de komma-en-keten en het generieke perfectum elk 5,9, en de brede koppelwerkwoordlijst (beschikt over, geldt als, dient als, herbergt) 4,5, net als het kale 'kan'. Wat overbleef is toegespitst op de geënsceneerde vormen (fungeert als, kenmerkt zich door, variëren van ... tot, of je nu ... of) en haalt nul treffers op dat menselijke Nederlands, terwijl elke regex zijn eigen cue of voor-voorbeeld raakt. Samengevoegd: de vier contrastvarianten uit de Duitse, Nederlandse en Engelse stroom werden één negative-parallelism, de drie drieslagen (inclusief de staccato-drieslag uit de translationese-laag) één rule-of-three, de twee duidingsstaarten en de twee valse reeksen elk één entry, en uniforme zinslengte plus de doorlopende ', en'-ketenzin gingen op in hypotactic-smoothness; geschrapt is invented-contrast-pair, waarvan het diagnostische deel Engelse woordvorming is en het mechanisme al onder negatief parallellisme valt.",
+ "regex_verwijderd": 7,
+ "geschrapt": [
+  "Verzonnen contrastpaar (invented-contrast-pair). Het diagnostische deel is Engels: een verzonnen tegenhanger die alleen door woordvorming als vakterm doorgaat ('pseudo-precision' tegenover 'genuine accuracy'). In het Nederlands valt de constructie samen met gewoon negatief parallellisme ('eerder X dan Y', 'in plaats van echte X'), en de cues zijn letterlijk vertaald Engels dat een Nederlands model zelden zo schrijft. Het mechanisme is gedekt door negative-parallelism."
+ ]
+}

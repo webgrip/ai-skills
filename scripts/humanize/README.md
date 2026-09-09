@@ -3,8 +3,8 @@
 Everything the [`humanize`](../../skills/humanize) skill is generated from. None of this ships:
 `build_dist.py` zips the skill directory, and this tree lives outside it.
 
-**Mid-build:** the Dutch catalog is unfinished. [`HANDOFF.md`](HANDOFF.md) says what is done, what
-is not, and what to run.
+[`HANDOFF.md`](HANDOFF.md) carries the decisions and the open ends; [`COMPARISON.md`](COMPARISON.md)
+measures the result against the tools it was built from.
 
 `skills/humanize/patterns-en.md`, `patterns-nl.md` and `scripts/patterns.json` are **generated**.
 Edit `catalog/catalog-<lang>.json` (or `pipeline/additions.json`) and rebuild; never hand-edit the
@@ -26,7 +26,7 @@ scanner's pattern file for that language, leaving the other language untouched.
 | Path | What |
 | --- | --- |
 | `catalog/catalog-en.json` | 229 canonical English entries. The source of truth for `patterns-en.md`. |
-| `catalog/catalog-nl.json` | The Dutch equivalent. |
+| `catalog/catalog-nl.json` | 251 canonical Dutch entries, 218 mapped onto an English id. |
 | `catalog/nl-verified-<category>.json` | Per-category Dutch merge output, before cross-category dedup. |
 | `catalog/methodology-raw.md` | The synthesised procedure with its per-source provenance brackets, before they were stripped into `skills/humanize/method.md`. |
 | `pipeline/clean.py` | Drops junk cues (bare function words, foreign script, over-long), house-specific references and duplicate ids. |

@@ -1,8 +1,8 @@
-# Handoff: finishing the humanize skill
+# Handoff: the humanize skill
 
-Written 2026-09-09, mid-build. The English half is finished and shipped; the Dutch half is
-mid-merge. Everything needed to finish it is committed. Read
-[`README.md`](README.md) for the layout, this file for what is done, what is not, and what to run.
+Both halves are finished and the gates are green. Read [`README.md`](README.md) for the layout,
+[`COMPARISON.md`](COMPARISON.md) for how it measures against the tools it was built from, and this
+file for the decisions and the open ends.
 
 ## Where it stands
 
@@ -10,52 +10,27 @@ mid-merge. Everything needed to finish it is committed. Read
 | --- | --- |
 | `skills/humanize/SKILL.md`, `method.md`, `README.md`, `NOTICE.md`, manifest | Done |
 | `patterns-en.md` — 229 entries, 167 in the scanner as 716 regexes | Done, generated |
+| `patterns-nl.md` — 251 entries, 209 in the scanner as 579 regexes | Done, generated |
 | `whats-new.md` — the 168 entries the house did not already have | Done, generated |
-| `scripts/scan.py`, `scripts/patterns.json` | Done, English rows only |
-| `fixtures/` — 2 clean, 2 slop, `en-slop.expect` | Done except `nl-slop.expect` |
-| `evals/evals.json` — 6 cases, one should-not-trigger | Done |
-| `test.sh` | Written; **cannot pass until the Dutch half lands** (it scans both catalogs) |
-| `patterns-nl.md`, `catalog/catalog-nl.json` | **Not yet** — the merge was running when this was written |
+| `scripts/scan.py`, `scripts/patterns.json` — 376 rows, 1,295 regexes | Done |
+| `fixtures/` — 2 clean, 2 slop, both `.expect` files | Done |
+| `evals/evals.json` — 6 cases, one should-not-trigger | Written, never run |
+| `test.sh` | Passes |
+| `npm run check && npm test`, `claude plugin validate` | Green |
 
-The repo lint fails on exactly one thing: three links to `patterns-nl.md` that does not exist yet.
-Nothing else is outstanding.
+Rebuild either half with `bash scripts/humanize/pipeline/build.sh <en|nl>`; the pipeline reproduces
+the shipped files byte for byte from `catalog/`.
 
-## Finish the Dutch half
+## If you pick this up
 
-1. **Check what the merge produced.** Per-category output lands in
-   `catalog/nl-verified-<category>.json`, the consolidated catalog in `catalog/catalog-nl.json`.
+Two things are worth doing and neither blocks anything: run the evals, and give the Dutch catalog a
+native-speaker read. Both are described under "Known gaps".
 
-2. **If the merge did not finish**, re-run it. It reads only committed files:
-
-   ```
-   Workflow({scriptPath: "scripts/humanize/workflows/merge-consolidate-nl.js"})
-   ```
-
-   Eight agents, one per category, each reading its own `extracts/nl/nl-raw-<category>.json`, then
-   one consolidation agent. Regenerate the raw files with `python3 pipeline/split_nl.py` if you
-   change the extracts.
-
-3. **Build and test:**
-
-   ```bash
-   bash scripts/humanize/pipeline/build.sh nl
-   cd skills/humanize && ./test.sh
-   ```
-
-4. **Write `fixtures/nl-slop.expect`** — the ids the Dutch slop fixture must trigger. Do it by
-   hand from the tells deliberately written into `fixtures/nl-slop.md` (the *in de snel
-   veranderende wereld* opener, *niet zomaar X, het is Y*, *laten we erin duiken*, the bold-stem
-   bullets, *Experts zijn het erover eens*, *cruciaal*/*baanbrekend*/*benutten*, *Kortom*, the
-   engagement question, the hashtags), then check the scanner finds each. An id it misses is a
-   real coverage gap, not a reason to weaken the file: that is how the two English gaps were
-   found.
-
-5. **Sanity-read 30 entries as a native speaker.** The failure mode to hunt is a *Na:* example
-   that is translated English or civil-service Dutch, and a cue that no Dutch model actually
-   writes. This was originally a three-editor judge panel; it was cut for cost, so it is now a
-   human read.
-
-6. `npm run check && npm test`, then commit.
+To rebuild or extend, see [`README.md`](README.md). One rule that is not obvious: **a `.expect`
+file is written by hand, never from scanner output.** List the tells you deliberately put in the
+fixture, then check the scanner finds each. An id it misses is a coverage gap worth fixing, and
+that is how `Let's dive into`, the adjectival triad and the Dutch inflected adjectives were all
+found.
 
 ## Decisions a successor should know
 
@@ -89,7 +64,15 @@ Nothing else is outstanding.
   `verse-form-defaults`, `pro-authoritarian-bias`). They are harmless but noisy for our use; nobody
   has decided whether to prune them.
 - **`evals/evals.json` has never been run.** `python3 scripts/run_evals.py humanize` costs tokens
-  and needs a headless Claude Code. The trigger phrasings in the description are untested.
+  and needs a headless Claude Code. The trigger phrasings in the description are untested. This is
+  the largest open end.
+- **The Dutch catalog has not had a native-speaker read.** A three-editor judge panel was cut for
+  cost. The failure mode to hunt is a *Na:* example that is translated English or civil-service
+  Dutch, and a cue no Dutch model actually writes. Roughly 30 entries spread across the categories
+  would be a fair sample; start with `translationese` and `punctuation-format`.
+- **The Dutch control corpus is two Wikipedia articles**, about 9,100 words of encyclopedic prose.
+  The top Dutch AI adjectives score zero hits there, which is why they are in the scanner at cluster
+  severity; a wider corpus (opinion, business, forum) would justify or refute that.
 - **`whats-new.md` is a one-shot artifact**, not regenerated by `build.sh`. If the catalog changes
   substantially it goes stale; the generator is a dozen lines and lives only in this session's
   history.

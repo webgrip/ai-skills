@@ -1,0 +1,824 @@
+{
+ "categorie": "punctuation-format",
+ "entries": [
+  {
+   "id": "em-dash-density",
+   "naam": "Gedachtestreepje als standaardsplitsing",
+   "definitie": "Het lange streepje wordt de vaste manier om een zin te splitsen: een enkel streepje dat een pointe aanplakt, een gepaarde tussenzin, of een streepje waar een komma of een punt hoort. In het Nederlands weegt dit zwaarder dan in het Engels, want de Nederlandse typografie zet een half kastlijntje met spaties eromheen en de kastlijn zonder spaties is een Engelse gewoonte. De ASCII-vorm met twee koppeltekens hoort er ook bij. Vervang door een punt, een komma of een voegwoord, en gebruik in feitregels de huisseparator // of het middelpunt.",
+   "cues": [
+    "—",
+    " — ",
+    "—maar",
+    "— en dat is",
+    "— niet omdat",
+    " -- ",
+    "em-dash",
+    "gedachtestreepje",
+    "het eenzame gedachtestreepje",
+    "lang koppelteken",
+    "streepje voor een slotpointe",
+    "gepaarde tussenzin tussen twee streepjes",
+    "streepje waar een komma of punt hoort",
+    "meerdere streepjes per alinea",
+    "**Vet** — zin"
+   ],
+   "regex": [
+    "\\u2014",
+    "[a-zà-ÿ]\\u2014[a-zà-ÿ]",
+    "\\s--\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De meetup groeit—en dat betekent een nieuwe zaal.",
+     "na": "De meetup groeit. Daarom zoeken we een grotere zaal."
+    },
+    {
+     "voor": "Nederland is nog niet voorbereid op AI op de werkvloer — training en betrokkenheid blijven aandachtspunten.",
+     "na": "Nederland is nog niet voorbereid op AI op de werkvloer. Training en betrokkenheid van werknemers blijven achter."
+    },
+    {
+     "voor": "twente.dev — meetup 001 — 7 oktober",
+     "na": "twente.dev // meetup 001 // 7 oktober"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "en_id": "em-dash-density",
+   "bronnen": [
+    "de.wikipedia.org Wikipedia:Anzeichen für KI-generierte Inhalte (gelezen 2026-09-06), met humanizer-de muster-katalog.md",
+    "nl-artikelen",
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Gedachtestreepjes",
+    "Los gedachtestreepje op zijn Engels (em-dash)",
+    "Gedachtestreepje als standaardsplitsing"
+   ],
+   "valse_positieven": "Het halve kastlijntje met spaties eromheen (–) is gewoon Nederlands en telt niet mee. Ook niet markeren: koppeltekens in samenstellingen en getalbereiken, citaten uit een Engelse bron, code en commandoregels, en beeldmateriaal dat al is vastgesteld, zoals de banners van twente.dev die het streepje in datavorm dragen. Eén streepje in een lange tekst is geen patroon."
+  },
+  {
+   "id": "bold-overuse",
+   "naam": "Vet als standaardnadruk",
+   "definitie": "Vet wordt mechanisch uitgedeeld in plaats van als accent gezet: losse kernwoorden midden in een alinea, een vette frase in elke zin, elk voorkomen van hetzelfde woord, of een vet label vooraan elke bullet. Ook vet op een cijfer of jaartal, en vet dat de plek van een kop inneemt, horen erbij. Haal het vet bij de meeste frases weg en bouw de zin zo dat het belangrijke vooraan staat.",
+   "cues": [
+    "**",
+    "'''",
+    "vetgedrukte kernwoorden midden in een alinea",
+    "elke bullet begint met een vet label",
+    "vet in plaats van een kop",
+    "meerdere vette frasen per alinea",
+    "vet op een cijfer of jaartal",
+    "meer dan drie vette stukken in een tekst",
+    "vet op elk voorkomen van hetzelfde woord"
+   ],
+   "regex": [
+    "\\*\\*[^*\\n]{1,40}\\*\\*",
+    "\\*\\*[^*\\n]{1,60}\\*\\*[^*\\n]{0,80}\\*\\*[^*\\n]{1,60}\\*\\*"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "**Belangrijk:** de meetup is **gratis** en vindt plaats in **Enschede**.",
+     "na": "De meetup is gratis en vindt plaats in Enschede."
+    },
+    {
+     "voor": "Het combineert **OKR's** en **KPI's** met **visuele strategiemiddelen**.",
+     "na": "Het combineert OKR's en KPI's met visuele strategiemiddelen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "bold-overuse",
+   "bronnen": [
+    "de.wikipedia.org Wikipedia:Anzeichen für KI-generierte Inhalte (gelezen 2026-09-06), met humanizer-de muster-katalog.md",
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Overmatig vet",
+    "Vetdichtheid"
+   ],
+   "valse_positieven": "Eén vette frase per hoofdsectie is normaal, en een vet label in een echte definitielijst of een woordenlijst hoort daar. Niet markeren in tabelkoppen, in een leesbaar samengevatte checklist waar het vet de sleutel is, of in wikitext waar drie apostrofs de opmaaksyntaxis zijn. Nieuwe modellen zijn hierop bijgestuurd, dus de afwezigheid van vet zegt niets."
+  },
+  {
+   "id": "emoji-decoration",
+   "naam": "Emoji als versiering",
+   "definitie": "Emoji staan stelselmatig voor een kop, voor een vet label of als opsommingsteken, uit een kleine vaste favorietenset. Het signaal is de systematiek en de plek: precies één emoji per kop of lijstitem, of een post die met een emoji opent en na de eerste zin met een emoji afsluit. Ook een losse sprankel aan het eind van een alinea in een rapport of README hoort erbij. Haal ze uit koppen en lopende tekst.",
+   "cues": [
+    "🚀",
+    "💡",
+    "✨",
+    "🎯",
+    "🙌",
+    "🤖",
+    "🧠",
+    "👉",
+    "📚",
+    "✅",
+    "⚠️",
+    "❌",
+    "🔥",
+    "emoji direct voor een kop",
+    "emoji als opsommingsteken",
+    "vaste emoji per sectie",
+    "🚀 **Lanceerfase:**",
+    "✅ voor elk lijstitem",
+    "✨ aan het eind van een alinea"
+   ],
+   "regex": [
+    "[\\U0001f300-\\U0001faff\\u2705\\u2728\\u274c\\u2757\\u2b50]",
+    "(?m)^\\s*[\\U0001f300-\\U0001faff\\u2705\\u2728]\\s*\\S"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "🚀 Wat je kunt verwachten\n✅ Twee talks\n✅ Borrel",
+     "na": "Programma: twee talks van twintig minuten, daarna borrel."
+    },
+    {
+     "voor": "💡 **Kerninzicht:** gebruikers willen eenvoud",
+     "na": "Uit het gebruikersonderzoek kwam vooral de vraag om eenvoud."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "emoji-decoration",
+   "bronnen": [
+    "de.wikipedia.org Wikipedia:Anzeichen für KI-generierte Inhalte (gelezen 2026-09-06), met humanizer-de muster-katalog.md",
+    "nl-artikelen",
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Emoji voor koppen en bullets",
+    "Emoji-overdaad, vaste favorieten en vaste plek",
+    "Emoji als versiering"
+   ],
+   "valse_positieven": "Op sociale media, in chat en in issue-reacties is een emoji gewoon taal en zegt hij niets. Ook niet markeren: emoji in een statusregel die het team zelf heeft afgesproken, in een changelog-conventie, in commitprefixen, of in een citaat. Een enkele emoji aan het eind van een socialpost is geen patroon."
+  },
+  {
+   "id": "oxford-comma-nl",
+   "naam": "Seriekomma voor 'en' of 'of'",
+   "definitie": "Een komma voor het laatste lid van een opsomming van drie of meer: appels, peren, en bananen. Die komma is standaard in het Britse Engels en ongebruikelijk in het Nederlands, dus in een Nederlandse opsomming is hij een vertaalspoor. Fout is hij niet, maar bij herhaling in dezelfde tekst is het een tell.",
+   "cues": [
+    ", en ",
+    ", of ",
+    "Oxford-komma",
+    "seriekomma",
+    "serial comma",
+    "appels, peren, en bananen"
+   ],
+   "regex": [
+    "(?:[a-zà-ÿ]+,\\s+){2,}(?:en|of)\\s+[a-zà-ÿ]+"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ik kocht appels, peren, en bananen.",
+     "na": "Ik kocht appels, peren en bananen."
+    },
+    {
+     "voor": "We ondersteunen je bij SEO, tone of voice, contentcreatie, en workshops.",
+     "na": "We ondersteunen je bij SEO, tone of voice, contentcreatie en workshops."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "bronnen": [
+    "nl-artikelen"
+   ],
+   "samengevoegd_uit": [
+    "Oxford-komma (komma voor 'en' of 'of')"
+   ],
+   "valse_positieven": "Een komma voor 'en' tussen twee hoofdzinnen met verschillende onderwerpen is in het Nederlands juist wel correct, net als een komma die een bijzin afsluit voor het voegwoord. Niet markeren in juridische of technische opsommingen waar de komma dubbelzinnigheid wegneemt, in citaten, of bij één losse instantie.",
+   "en_id": ""
+  },
+  {
+   "id": "comma-density",
+   "naam": "Kommadichtheid",
+   "definitie": "Kommaoverschot op documentniveau: het aandeel zinnen met minstens één komma ligt ver boven wat mensen schrijven, en er staat een komma op elke syntactische grens. Vaak samen met een komma tussen onderwerp en persoonsvorm, en met ingelaste bijstellingen die de zin uit elkaar trekken. Splits zinnen, absorbeer de komma in een voegwoord, of schrap hem.",
+   "cues": [
+    "meer dan de helft van de zinnen bevat een komma",
+    "komma op elke syntactische grens",
+    "komma tussen onderwerp en persoonsvorm",
+    "drie of meer komma’s in een zin van gemiddelde lengte"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Het team, dat snel gegroeid was, kwam maandag bijeen, nam het plan door, en besloot, in beginsel, door te gaan.",
+     "na": "Het team was snel gegroeid. Maandag nam het het plan door en besloot voorlopig door te gaan."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "comma-density",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Kommadichtheid"
+   ],
+   "valse_positieven": "Dit is een maat over een hele tekst, geen oordeel over één zin. Juridisch, wetenschappelijk en ambtelijk Nederlands zetten van nature meer komma’s, en een lange opsomming of een reeks bijzinnen is gewoon correct. De seriekomma zit apart onder oxford-comma-nl; markeer die hier niet nog een keer."
+  },
+  {
+   "id": "hashtag-stuffing",
+   "naam": "Hashtagstapel onder de post",
+   "definitie": "Een staartblok van zes of meer hashtags onder een korte post, meestal een specifieke tag plus brede categorietags. De Nederlandse variant schrijft elke tag met een hoofdletter aan het begin van elk woord. Breng het terug tot twee of drie tags die een lezer echt naar verwant werk brengen.",
+   "cues": [
+    "#AI #innovatie #technologie #toekomst",
+    "#digitalisering",
+    "#ondernemen #groei",
+    "#Elk #Woord #Hoofdletter",
+    "zes of meer hashtags onder een korte post"
+   ],
+   "regex": [
+    "(?:#[\\wà-ÿ]+[ \\t]+){5,}#[\\wà-ÿ]+"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "#AI #Innovatie #Technologie #Toekomst #Digitalisering #Ondernemen",
+     "na": "#twentedev #meetup"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "hashtag-stuffing",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Hashtagketen met hoofdletters",
+    "Hashtagstapeling"
+   ],
+   "valse_positieven": "Een lanceerpost, een vacature of een evenementpost met veel tags is normaal marketinggedrag, en op Instagram en TikTok is een lange tagrij de conventie. Ook niet markeren: hoofdletters in een tag die een eigennaam of een acroniem is (#TwenteDev, #AI). Buiten sociale media geldt dit patroon niet."
+  },
+  {
+   "id": "stress-accents-nl",
+   "naam": "Klemtoonaccent en willekeurige nadruk",
+   "definitie": "Nadrukmarkering op woorden die geen nadruk dragen: klemtoonaccenten als té, wél en én, of cursief en kapitalen op willekeurige plekken. Het accent zelf is een gewoon Nederlands middel, het patroon is de toepassing te pas en te onpas. Zet alleen iets in de spotlight als de betekenis dat vraagt.",
+   "cues": [
+    "té",
+    "wél",
+    "én",
+    "te pas én te onpas",
+    "HOOFDLETTERS voor nadruk",
+    "cursief op een willekeurig woord"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:té|wél)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het gebeurt te pas én te onpas, en dat is té veel.",
+     "na": "Het gebeurt te pas en te onpas, en dat is te vaak."
+    },
+    {
+     "voor": "Dit is ECHT belangrijk voor *iedereen* die meedoet.",
+     "na": "Dit geldt voor iedereen die meedoet."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "bronnen": [
+    "nl-artikelen"
+   ],
+   "samengevoegd_uit": [
+    "Onnodige nadruk: accenten, vet, cursief, kapitalen"
+   ],
+   "valse_positieven": "Het klemtoonaccent is correct Nederlands waar het betekenisverschil draagt: 'één' tegenover 'een', 'vóór' tegenover 'voor', en een tegenstelling die anders verkeerd wordt gelezen. Niet markeren in citaten, in leermateriaal over spelling, of bij één losse instantie. Vet valt onder bold-overuse.",
+   "en_id": ""
+  },
+  {
+   "id": "curly-quotes",
+   "naam": "Krulaanhalingstekens op een recht-aanhalingsvlak",
+   "definitie": "Typografische aanhalingstekens op een vlak waarvan de conventie recht is: code, commitberichten, Markdown, mail, chat. Het sterkere signaal is de menging, krullend en recht door elkaar in één tekst of zelfs één zin, want krullende software is consequent en een plakje uit een chatvenster niet. In het Nederlands komt erbij dat de Engelse paren worden uitgestoten terwijl de Nederlandse conventie „…” of ‘…’ is.",
+   "cues": [
+    "“",
+    "”",
+    "‘",
+    "’",
+    "slimme aanhalingstekens",
+    "curly quotes",
+    "rechte aanhalingstekens",
+    "krullend en recht door elkaar in één tekst",
+    "Engels krulpaar in Nederlandse tekst"
+   ],
+   "regex": [
+    "[\\u201c][^\\u201c\\u201d\\n]{1,120}[\\u201d]",
+    "(?s)\"[^\"\\n]{1,80}\"[^\"]{0,400}?[\\u201c\\u201d]|[\\u201c\\u201d][^\\u201c\\u201d]{0,400}?\"[^\"\\n]{1,80}\""
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Hij zei “het project ligt op schema”, maar zijn collega zei \"dat halen we niet\".",
+     "na": "Hij zei \"het project ligt op schema\", maar zijn collega zei \"dat halen we niet\"."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "curly-quotes",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Slimme versus rechte aanhalingstekens",
+    "Krulaanhalingstekens op een recht-aanhalingsvlak"
+   ],
+   "valse_positieven": "In gezette tekst, in Word, in een tijdschrift of op een site met een typografische pipeline zijn krullende tekens de norm en zegt dit niets. De krulapostrof in ’t, ’n en z’n is gewoon Nederlands en wordt nooit gemeld. Een losse krulapostrof of een enkel krulpaar is geen patroon."
+  },
+  {
+   "id": "unicode-typography-nl",
+   "naam": "Typografische Unicode-vervangingen",
+   "definitie": "Unicode-varianten van gewone leestekens waar een mens de toetsenbordvorm typt: het ellipsis-teken in plaats van drie punten, de harde spatie, het lange streepje in plaats van een koppelteken. Typografisch zijn ze correcter, en juist dat is het spoor: ze staan er allemaal, overal, zonder dat iemand ze heeft ingetypt. Zet ze terug naar de gewone vorm op vlakken die geen zetwerk doen.",
+   "cues": [
+    "…",
+    "ellipsis-karakter",
+    "non-breaking space",
+    "harde spatie",
+    "typografisch correcte tekens die niemand intypt"
+   ],
+   "regex": [
+    "\\u2026",
+    "\\u00a0"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De aanmelding loopt nog… en de zaal telt 60 plaatsen.",
+     "na": "De aanmelding loopt nog... en de zaal telt 60 plaatsen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "bronnen": [
+    "nl-artikelen"
+   ],
+   "samengevoegd_uit": [
+    "Typografische Unicode-vervangingen"
+   ],
+   "valse_positieven": "In gezette tekst, in LaTeX-uitvoer, in een CMS met een typografiefilter en in PDF’s zijn deze tekens de bedoeling. De harde spatie hoort bij een getal met eenheid en in een naam die niet mag afbreken. Het gedachtestreepje zelf valt onder em-dash-density; meld het hier niet dubbel.",
+   "en_id": ""
+  },
+  {
+   "id": "zero-width-characters-nl",
+   "naam": "Zero-width tekens en onzichtbare Unicode",
+   "definitie": "Tekens zonder zichtbare breedte in de tekst: zero-width space, zero-width joiner en non-joiner, word joiner, byte order mark. Ze komen mee uit generatie of uit een watermerk en zijn alleen zichtbaar in een code-editor of hex-viewer. Ze horen in gewone Nederlandse lopende tekst nooit thuis.",
+   "cues": [
+    "U+200B",
+    "U+200C",
+    "U+200D",
+    "U+2060",
+    "U+FEFF",
+    "Zero-Width Space",
+    "Zero-Width Non-Joiner",
+    "Zero-Width Joiner",
+    "Word Joiner",
+    "onzichtbaar teken in een hex-viewer"
+   ],
+   "regex": [
+    "[\\u200b-\\u200d\\u2060\\ufeff]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De zaal​ is open vanaf 18.30 uur.",
+     "na": "De zaal is open vanaf 18.30 uur."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "bronnen": [
+    "nl-artikelen"
+   ],
+   "samengevoegd_uit": [
+    "Zero-width characters en onzichtbare Unicode"
+   ],
+   "valse_positieven": "In Arabisch, Perzisch, Hindi en emoji-samenstellingen doen deze tekens echt werk, en in HTML en JavaScript worden ze bewust gebruikt om een afbreekpunt te zetten. Een BOM aan het begin van een bestand komt van de editor. Buiten die gevallen is er geen reden voor.",
+   "en_id": ""
+  },
+  {
+   "id": "immaculate-typography",
+   "naam": "Onberispelijke typografie in een ruw register",
+   "definitie": "Perfecte spatiering, interpunctie en spelling op plekken waar mensen snel typen: issue- en PR-reacties, chat, DM’s, korte mailtjes. De stapel is de handtekening: krulaanhalingstekens plus een gedachtestreepje plus machinale netheid over tachtig woorden of meer, zonder d/t-twijfel, zonder samentrekking als z’n of ’t, zonder los zinsdeel. Omgekeerd geldt bij het redigeren van andermans losse tekst dat de typefouten en eigenaardigheden blijven staan.",
+   "cues": [
+    "geen d/t-fouten",
+    "geen typefouten",
+    "geen dubbele spaties",
+    "geen samentrekkingen (z'n, 't, 'n)",
+    "krulaanhalingstekens plus gedachtestreepje plus foutloze zinnen in 80 of meer woorden",
+    "volledige woorden waar mensen afkorten"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Ik waardeer de grondige analyse en de snelle reactie. Het voorstel is doordacht en ik steun het van harte.",
+     "na": "thanks voor het uitzoekwerk, lijkt me prima zo. ben voor"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "immaculate-typography",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Onberispelijke typografie in een ruw register"
+   ],
+   "valse_positieven": "Mensen die netjes schrijven bestaan, en in een formeel register (een rapport, een offerte, een brief aan de gemeente) is verzorgde typografie de eis. Ook niet markeren: tekst die door een spellingchecker of een redacteur is gegaan, en niet-moedertaalsprekers die bewust volledige vormen schrijven. Alleen de hele stapel in een informeel register telt."
+  },
+  {
+   "id": "list-label-periods",
+   "naam": "Punt achter het bulletlabel",
+   "definitie": "In een lijst waarvan de items met een kort label openen, eindigt dat label met een punt en loopt de toelichting als losse zin door, waar iemand een dubbele punt zou zetten. Met vet label is het signaal het sterkst, zonder vet blijft het zichtbaar. Maak er een dubbele punt van en ga klein verder, of schrijf een gewone zin.",
+   "cues": [
+    "- **Introducties.** Jaren aan conferenties",
+    "- **Bereik.** Ons netwerk",
+    "- **Contentdistributie.**",
+    "label met punt in plaats van dubbele punt"
+   ],
+   "regex": [
+    "(?m)^\\s*[-*]\\s+\\*\\*[^*\\n]{1,26}\\.\\*\\*\\s+\\S"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "- **Introducties.** Jaren aan conferenties en een netwerk van operators.",
+     "na": "- **Introducties:** jaren aan conferenties en een netwerk van operators."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "list-label-periods",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Punt achter het bulletlabel"
+   ],
+   "valse_positieven": "Een label dat zelf een volledige zin is, hoort met een punt te eindigen, en in een echte definitielijst of een changelog is de punt de huisstijl. Ook niet markeren: een afkorting met punt aan het eind van het label, en lijsten waarin elk item uit losse zinnen bestaat zonder labelvorm."
+  },
+  {
+   "id": "capitalized-after-colon",
+   "naam": "Hoofdletter na de dubbele punt",
+   "definitie": "Het zinsdeel na een dubbele punt begint met een hoofdletter terwijl de grammatica dat niet vraagt. Het Nederlands schrijft na een dubbele punt klein, behalve bij een citaat, een eigennaam of meer dan één volledige zin, dus de hoofdletter komt uit de Engelse conventie. Meestal staat hij aan het eind van een dubbelepunt-onthulling, waar de aanloop de clou aankondigt.",
+   "cues": [
+    "Er blijven twee opties over: We leveren nu",
+    "Het antwoord is simpel: Je moet kiezen",
+    "hoofdletter na dubbele punt zonder eigennaam of citaat"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Er blijven twee opties over: We leveren nu of we wachten op de fix.",
+     "na": "Er blijven twee opties over: we leveren nu of we wachten op de fix."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "capitalized-after-colon",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Hoofdletter na de dubbele punt"
+   ],
+   "valse_positieven": "Correct zijn de hoofdletter voor een citaat, voor een eigennaam, voor een titel en voor twee of meer volledige zinnen na de dubbele punt. Ook niet markeren in koppen, in tabelcellen, in code en in bibliografische verwijzingen. Er staat hier geen regex: de scanner draait hoofdletterongevoelig, dus dit patroon vraagt een leesbeurt."
+  },
+  {
+   "id": "scare-quotes",
+   "naam": "Aanhalingstekens als distantie",
+   "definitie": "Aanhalingstekens om gewone woorden voor nadruk of ironische afstand, en dan vijf of meer keer in één document. De woorden die er het vaakst tussen staan zijn reclamewoorden. Houd echte citaten en schrijf de rest als gewone tekst.",
+   "cues": [
+    "een \"naadloze\" ervaring",
+    "\"innovatieve\" oplossingen",
+    "\"echte\" resultaten",
+    "vijf of meer paar aanhalingstekens om gewone woorden"
+   ],
+   "regex": [
+    "[\"\\u201c](?:naadloze|innovatieve|echte|moderne|unieke|slimme|krachtige)[\"\\u201d]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het \"innovatieve\" platform biedt \"naadloze\" onboarding voor \"moderne\" teams.",
+     "na": "Met het platform kan een nieuw team dezelfde dag beginnen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "scare-quotes",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Aanhalingstekens als distantie"
+   ],
+   "valse_positieven": "Een echt citaat, een term die als term wordt genoemd, een titel, een bijnaam en een omstreden woord dat de schrijver expliciet op afstand zet, zijn alle vier legitiem. Vakteksten die een begrip introduceren zetten het terecht één keer tussen aanhalingstekens. De poort is de telling, niet het losse paar."
+  },
+  {
+   "id": "parenthetical-gloss-overload",
+   "naam": "Verklarende haakjes op een rij",
+   "definitie": "Verklarende haakjes van de vorm (dit betekent dat …) die claim na claim worden aangeplakt. De tell is de formule, niet het haakje: gegenereerd proza gebruikt juist minder terzijdes tussen haakjes dan menselijk proza. Zet de uitleg in de lopende tekst of laat hem weg.",
+   "cues": [
+    "(dit betekent dat …)",
+    "(wat betekent dat …)",
+    "(ofwel: …)",
+    "(met andere woorden: …)",
+    "(dat wil zeggen: …)"
+   ],
+   "regex": [
+    "\\((?:dit betekent|wat betekent|met andere woorden|dat wil zeggen|ofwel)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De omzet groeide 40 procent (dit betekent dat de strategie werkt). Het verloop daalde (wat betekent dat klanten tevredener zijn).",
+     "na": "De omzet groeide 40 procent en het verloop daalde, wat erop wijst dat de strategie werkt."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "parenthetical-gloss-overload",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Verklarende haakjes op een rij"
+   ],
+   "valse_positieven": "Eén verduidelijking bij een term die de lezer niet kent is gewoon goed schrijven, en in juridische en technische teksten is de formule \"dat wil zeggen\" staande taal. Terzijdes tussen haakjes zijn juist een menselijk teken en worden nooit weggeschreven. Alleen de opeenstapeling telt."
+  },
+  {
+   "id": "parenthetical-stage-directions",
+   "naam": "Regieaanwijzing tussen haakjes in dialoog",
+   "definitie": "Dialoog met een emotie tussen haakjes voor de regel, als in een scenario, in proza dat geen scenario is. Het is een toneelconventie die in verhalend Nederlands het werk van de zin overneemt. Leg de emotie in de woorden zelf of in een handeling.",
+   "cues": [
+    "(verdedigend)",
+    "(geïrriteerd)",
+    "(zuchtend)",
+    "(lachend)",
+    "(aarzelend)",
+    "Bob: (verdedigend) Waarom zou ik?"
+   ],
+   "regex": [
+    "(?m)^[a-zà-ÿ]+:\\s*\\((?:verdedigend|geïrriteerd|zuchtend|lachend|aarzelend|fluisterend|glimlachend|schouderophalend)\\)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bob: (verdedigend) Waarom zou ik?\nTonny: (geïrriteerd) Luister nou.",
+     "na": "Bob sloeg zijn armen over elkaar. \"Waarom zou ik?\" Tonny wreef in zijn ogen. \"Luister nou.\""
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "parenthetical-stage-directions",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Regieaanwijzing tussen haakjes in dialoog"
+   ],
+   "valse_positieven": "In een scenario, een toneeltekst, een hoorspel, een podcastscript of een interviewtranscriptie is dit de juiste vorm. Ook niet markeren in ondertitelbestanden en in notulen die een reactie noteren."
+  },
+  {
+   "id": "unicode-arrows",
+   "naam": "Pijlen als voegwoord",
+   "definitie": "Typografische pijlen of hun ASCII-vormen midden in lopende tekst, waar een schrijver \"leidt tot\" of \"dus\" zou zeggen of gewoon een zin zou maken. Vaak als kettinkje: invoer, verwerking, uitvoer. Schrijf de relatie uit.",
+   "cues": [
+    "→",
+    "->",
+    "=>",
+    "Invoer → Verwerking → Uitvoer",
+    "betere resultaten → meer betrokkenheid"
+   ],
+   "regex": [
+    "\\u2192",
+    "(?<![-<=!])->(?!>)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dat leidt tot betere resultaten → dus tot meer betrokkenheid.",
+     "na": "Betere resultaten zorgen ervoor dat meer mensen meedoen."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "unicode-arrows",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Pijlen als voegwoord"
+   ],
+   "valse_positieven": "In code, in commitberichten, in diagrammen, in wiskunde en in taalkundige afleidingen (Latijn → Frans) is de pijl vaknotatie. Ook niet markeren in een migratieregel, in een routebeschrijving en in een menupad zoals Instellingen → Profiel."
+  },
+  {
+   "id": "unicode-math-bold-and-bullets",
+   "naam": "Wiskundig vet en bulletglyphs",
+   "definitie": "Vet nagemaakt met Unicode-wiskundetekens in plaats van met opmaak, en lijstitems gemarkeerd met het losse bulletteken op een vlak dat echte lijstsyntaxis heeft. Het komt uit sociale platforms zonder opmaakknop en blijft daarna hangen. Gebruik de opmaak van het vlak zelf.",
+   "cues": [
+    "𝗵𝗲𝘁",
+    "•",
+    "unicode-vet in plaats van opmaak",
+    "• als bullet op een vlak met echte lijstsyntaxis"
+   ],
+   "regex": [
+    "[\\U0001d400-\\U0001d7ff]",
+    "(?m)^\\s*\\u2022\\s+\\S"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "𝐕𝐢𝐞𝐦𝐬\n• kleinere batches\n• minder rollbacks",
+     "na": "Lever wekelijks. Kleinere batches leiden tot minder rollbacks."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "unicode-math-bold-and-bullets",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Wiskundig vet en bulletglyphs"
+   ],
+   "valse_positieven": "In wiskundige tekst zijn de blackboard- en fraktuurtekens echte notatie, en op LinkedIn, Instagram en in een plain-text mail is het bulletteken de enige beschikbare vorm. Ook niet markeren in ASCII-art, in een terminalbanner en in gegenereerde tabeluitvoer van een tool."
+  },
+  {
+   "id": "unnecessary-tables",
+   "naam": "Overbodige kleine tabellen",
+   "definitie": "Een tabel van een paar rijen met feiten die als zin beter lezen: twee kolommen Metriek en Waarde, of Naam en Functie, vaak met een bijschrift als Kerncijfers. De mismatch tussen de tabelvorm en de kleine, prozavormige inhoud is de tell. Vouw de feiten in de tekst.",
+   "cues": [
+    "| Metriek | Waarde |",
+    "| Kenmerk | A | B |",
+    "| Naam | Functie |",
+    "Kerncijfers",
+    "Vergelijking van X en Y"
+   ],
+   "regex": [
+    "\\|\\s*(?:metriek|kenmerk|waarde|naam|functie|aspect)\\s*\\|\\s*(?:waarde|functie|omschrijving|toelichting|a)\\s*\\|"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "| Metriek | Waarde |\n| --- | --- |\n| Marktwaarde (2024) | circa 2,1 miljard euro |\n| Aantal locaties | 4 |",
+     "na": "De markt was in 2024 ongeveer 2,1 miljard euro waard, verdeeld over vier locaties."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "unnecessary-tables",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Overbodige kleine tabellen"
+   ],
+   "valse_positieven": "Een tabel met meer dan een handvol rijen, met echte kolomvergelijking of met getallen die de lezer naast elkaar wil leggen, verdient zijn vorm. Ook niet markeren: infoboxen, API-parameterlijsten, prijstabellen en roosters. Documentatieconventies die alles in tabellen zetten zijn een huisstijl."
+  },
+  {
+   "id": "heading-level-skipping",
+   "naam": "Overgeslagen kopniveaus",
+   "definitie": "Secties beginnen op het derde kopniveau zonder kop van het tweede niveau erboven, of een kop staat meer dan één stap onder zijn ouder. Dat druist in tegen toegankelijkheidsconventies op elk vlak, dus een met de hand opgemaakte pagina heeft die eigenaardigheid bijna nooit. Nummer de hiërarchie zo dat elk niveau één stap dieper is dan zijn ouder.",
+   "cues": [
+    "### als eerste kop zonder ## erboven",
+    "kopniveau springt twee stappen",
+    "=== zonder =="
+   ],
+   "regex": [
+    "(?ms)\\A(?:(?!^##\\s)[\\s\\S])*?^###\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "### Achtergrond\nHet project startte in 2024.\n### Methode\nWe spraken twaalf teams.",
+     "na": "## Achtergrond\nHet project startte in 2024.\n## Methode\nWe spraken twaalf teams."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "heading-level-skipping",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Overgeslagen kopniveaus"
+   ],
+   "valse_positieven": "Een fragment dat uit een groter document is geknipt mist zijn ouderkop terecht, en een template of partial begint vaak bewust op een dieper niveau. Ook niet markeren in code, in wikitext waar de sjabloon de kop levert, en in een README waar de titel uit de metadata komt."
+  },
+  {
+   "id": "level-1-heading-overuse",
+   "naam": "H1 voor gewone secties",
+   "definitie": "Koppen van niveau 1 voor gewone secties op een vlak dat niveau 1 voor de paginatitel reserveert, zoals een wiki, de meeste CMS’en en HTML met een gerenderde titel. Het komt van Markdown-koppen die één op één naar de doelopmaak zijn overgezet. Zet de secties een niveau lager.",
+   "cues": [
+    "meerdere # koppen in een document",
+    "= Geschiedenis =",
+    "# Geschiedenis",
+    "H1 waar de pagina zelf al een titel toont"
+   ],
+   "regex": [
+    "(?ms)^#\\s+[^\\n#]{2,60}$.*?^#\\s+[^\\n#]{2,60}$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "# Geschiedenis\n\n# Programmering\n\n# Externe links",
+     "na": "## Geschiedenis\n\n## Programmering\n\n## Externe links"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "level-1-heading-overuse",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "H1 voor gewone secties"
+   ],
+   "valse_positieven": "Eén H1 als documenttitel is juist de bedoeling, en in een los Markdown-bestand zonder eigen titelweergave is een tweede H1 soms een bewuste paginascheiding. Ook niet markeren in slidedecks, in changelogs met een kop per versie, en in bestanden die een generator later herschrijft."
+  },
+  {
+   "id": "thematic-breaks",
+   "naam": "Scheidingslijn voor elke sectie",
+   "definitie": "Een horizontale lijn boven elke sectie of subsectie, standaard in Markdown-uitvoer. Eén lijn die een echte wending markeert is normaal, het patroon is er één voor elke kop. Haal ze weg en laat de koppen de structuur dragen.",
+   "cues": [
+    "---",
+    "***",
+    "----",
+    "<hr>",
+    "een streep boven elke kop"
+   ],
+   "regex": [
+    "(?ms)^\\s*(?:---|\\*\\*\\*|___)\\s*$\\n+#{1,4}\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De oudste woordenboeken kennen die betekenis niet.\n\n---\n\n## Geschiedenis\n\nHoofddoeken staan in de bronnen.",
+     "na": "De oudste woordenboeken kennen die betekenis niet.\n\n## Geschiedenis\n\nHoofddoeken staan in de bronnen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "thematic-breaks",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Scheidingslijn voor elke sectie"
+   ],
+   "valse_positieven": "YAML-frontmatter wordt door dezelfde drie streepjes begrensd, vandaar dat de regex een kop erna eist. Ook niet markeren: een enkele lijn die een echte wending markeert, een scheiding tussen brieffragmenten of dagboeknotities, en een huisstijl waarin de lijn onder een kop hoort."
+  },
+  {
+   "id": "semicolon-colon-skew",
+   "naam": "Scheve puntkomma-inzet",
+   "definitie": "Het gebruik van de puntkomma wijkt af van menselijk proza, in een richting die van het model afhangt. Of het teken komt nergens voor en komma’s en streepjes doen het werk, of de puntkomma verbindt hoofdzinnen op een tempo dat ver boven gewoon Nederlands ligt en vervangt punt en voegwoord. Nederlands proza gebruikt de puntkomma zeldzamer dan Engels, dus drie in één alinea is hier al veel.",
+   "cues": [
+    "puntkomma als standaardsplitsing tussen hoofdzinnen",
+    "drie of meer puntkomma’s in één alinea",
+    "puntkomma komt nergens voor"
+   ],
+   "regex": [
+    ";[^;\\n]{1,120};[^;\\n]{1,120};"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De build faalde; de logs waren leeg; niemand kreeg een melding; de piketregeling was verlopen.",
+     "na": "De build faalde en de logs waren leeg. Niemand kreeg een melding, want de piketregeling was verlopen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "semicolon-colon-skew",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Scheve puntkomma- en dubbelepuntinzet"
+   ],
+   "valse_positieven": "In code, CSS, CSV-achtige regels, bibliografieën en lange opsommingen met interne komma’s is de puntkomma functioneel. Wetenschappelijk en juridisch Nederlands gebruiken hem vaker en correct. De afwezigheid van puntkomma’s is op zichzelf niets om te melden."
+  },
+  {
+   "id": "redundant-acronym-expansion",
+   "naam": "Overbodige afkortingsuitleg",
+   "definitie": "Elke afkorting wordt bij het eerste gebruik tussen haakjes uitgeschreven, ook als het publiek de term dagelijks gebruikt, vaak in de omgekeerde volgorde met de afkorting voorop en met de meervoudsapostrof erbij. Meestal staat het ook nog in vet, en dan voor elke term in dezelfde zin. Laat de uitleg weg waar de lezer de term kent.",
+   "cues": [
+    "KPI's (Key Performance Indicators)",
+    "OKR's (Objectives and Key Results)",
+    "AVG (Algemene verordening gegevensbescherming)",
+    "API (Application Programming Interface)",
+    "elke afkorting uitgeschreven bij eerste gebruik"
+   ],
+   "regex": [
+    "(?:kpi|okr|api|avg|bmc|roi|crm|saas|kmo|mkb)'?s?\\s*\\((?:[a-zà-ÿ]+\\s+){1,4}[a-zà-ÿ]+\\)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het combineert KPI's (Key Performance Indicators) met het Business Model Canvas (BMC).",
+     "na": "Het combineert KPI's met het Business Model Canvas."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "redundant-acronym-expansion",
+   "bronnen": [
+    "catalog-en.json (Engelse catalogus, categorie punctuation-format)"
+   ],
+   "samengevoegd_uit": [
+    "Overbodige afkortingsuitleg"
+   ],
+   "valse_positieven": "Bij een publiek dat de term niet kent is uitschrijven precies goed, en in wetenschappelijke, juridische en overheidsteksten schrijft de stijlgids het voor bij eerste gebruik. Ook niet markeren in een begrippenlijst, in een norm of in een tekst voor buitenstaanders. Eén uitleg per document is geen patroon."
+  }
+ ],
+ "rapport": "32 ruwe patronen zijn 24 canonieke ingangen geworden. Samengevoegd: de drie streepje-ingangen tot em-dash-density (ernst always, met de huisseparator // in het na-voorbeeld), twee vet-ingangen tot bold-overuse, drie emoji-ingangen tot emoji-decoration, twee hashtag-ingangen tot hashtag-stuffing en twee aanhalingsteken-ingangen tot curly-quotes; de seriekomma is uit comma-density gelicht als eigen Nederlandse ingang oxford-comma-nl. Geschrapt is het Koreaanse komma-na-verbindingsuitgang-patroon, dat op morfologie leunt die het Nederlands niet heeft. Vijf regexen zijn gesneuveld: de tekenklasse met alle krultekens (6,26 per 10.000 woorden, want ’t en ’n zijn gewoon Nederlands), de smallere klasse met alleen de dubbele krultekens (2,09), de kale puntkomma (26,09), een losse variant op de seriekomma die elke komma voor 'en' ving, en het hoofdletter-na-dubbele-punt-patroon, dat niet kan werken omdat de scanner hoofdletterongevoelig draait. Alle 29 overgebleven regexen compileren, blijven onder 2 treffers per 10.000 woorden op de Wikipedia-artikelen over Rijssen en Enschede (hoogste: 1,04 voor het Engelse krulpaar, één echt citaat) en raken elk een eigen cue of voor-voorbeeld.",
+ "regex_verwijderd": 5,
+ "geschrapt": [
+  "Komma na een Koreaanse verbindingsuitgang (niet van toepassing). Geschrapt: het mechanisme leunt volledig op Koreaanse werkwoordsmorfologie (-go, -myeo, -jiman) en heeft in het Nederlands geen tegenhanger; het Nederlands verbindt met voegwoorden en zet daar juist wel een komma. De dichtstbijzijnde Nederlandse vorm, de seriekomma voor 'en', staat als eigen ingang onder oxford-comma-nl."
+ ]
+}

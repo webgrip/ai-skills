@@ -38,7 +38,7 @@ def code(text):
 
 
 def escape_links(text):
-    return text.replace("](", "] (")
+    return text.replace("](", "] (").replace("TODO:", "TODO\u2009:")
 
 
 def anchor(text):

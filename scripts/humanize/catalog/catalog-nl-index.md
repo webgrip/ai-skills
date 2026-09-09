@@ -1,0 +1,278 @@
+# Catalogus NL — index
+
+251 entries in 8 categorieën.
+
+## vocabulary (32)
+
+- ai-vocabulary-lexicon (cluster, transfer): AI-woordenlijst (cruciaal, naadloos, duiken in)
+- vague-praise-adjectives (cluster, transfer): Vage lofadjectieven (jeukwoorden)
+- elevated-vocabulary-cluster (cluster, transfer): Opgepoetste en beleidswerkwoorden (twee of meer in één alinea)
+- boilerplate-phrase-stack (cluster, transfer): Stapel standaardfrasen en consultancyjargon
+- social-ad-boilerplate (cluster, nl-bron): Wervende socialtaal en LinkedIn-clichés
+- latinate-inflation (cluster, transfer): Deftige en ambtelijke woordkeus (dienen te, alvorens, derhalve)
+- wordy-circumlocution (always, transfer): Omhaal van woorden (teneinde, vanwege het feit dat)
+- it-is-worth-noting-frame (always, translationese): Aankondigingsframe (het is belangrijk om op te merken)
+- confidence-calibration-adverb (cluster, transfer): Sturende zinsbijwoorden (opvallend genoeg, nog belangrijker)
+- topic-framing-filler (always, transfer): Onderwerpsaanloop (als het gaat om, in de kern)
+- generic-scene-setting-opener (always, transfer): Holle openingszin over de veranderende wereld
+- additive-transition-pileup (cluster, nl-bron): Opeenstapeling van voegwoorden (Daarnaast, Bovendien, Tevens)
+- restatement-gloss (cluster, transfer): Herhaling met aankondiging (met andere woorden, oftewel)
+- hollow-intensifier (always, transfer): Holle nadruk (oprecht, daadwerkelijk, eerlijk gezegd)
+- degree-adverb-padding (context, transfer): Graadbijwoorden als vulling (ontzettend, simpelweg, uiterst)
+- understated-significance-adverb (cluster, transfer): Bijwoord van stille betekenis (stilletjes, diepgeworteld)
+- hedging (context, transfer): Lege slagen om de arm (wellicht, zou kunnen, enigszins)
+- synonym-cycling (cluster, transfer): Synoniemenroulatie (elegante variatie)
+- real-actual-adjective-inflation (context, transfer): Echt en werkelijk als lege versterker
+- ontological-slop-assumptions (context, transfer): Aanname die niet langer waar is
+- dev-blog-boilerplate (context, transfer): Ontwikkelaarsslogans (het werkt gewoon, zonder gedoe)
+- vague-endorsement-worth-verbing (always, transfer): Vage aanbeveling (de moeite waard)
+- trendy-colloquialism (context, transfer): Modewoord uit de tijdlijn (hits different, next level)
+- canned-stock-sentence (always, transfer): Kant-en-klare standaardzin (ik hoop dat dit bericht je goed bereikt)
+- lets-invitation-opener (always, translationese): Uitnodigende opening (laten we erin duiken)
+- uncontracted-forms (context, transfer): Te formeel register: de partikels ontbreken
+- english-variety-drift (context, transfer): Wisseling van taalvariëteit (Belgisch-Nederlands en Nederlands-Nederlands door elkaar)
+- undefined-jargon (context, transfer): Onverklaard jargon
+- flat-lexical-statistics (cluster, transfer): Vlakke woordstatistiek (lage TTR, uniforme n-grammen)
+- dense-ai-vocabulary-composite (cluster, transfer): Dichte AI-woordenschat (bevestiger)
+- ai-poetry-register (cluster, transfer): Machinepoëzieregister (fluisteren, echo, breekbaar)
+- reflective-adverb-formula (cluster, transfer): Bespiegelend slotbijwoord (misschien is dat wel, langzaam maar zeker)
+
+## syntax (25)
+
+- negative-parallelism (always, nl-bron): Negatief parallellisme (het is geen X, het is Y)
+- negation-countdown (always, transfer): Ontkenningsaftelling (Geen X. Geen Y. Gewoon Z.)
+- tailing-negation (cluster, transfer): Ontkennend staartje (, geen gedoe)
+- litotes-confidence (context, transfer): Zekerheid via dubbele ontkenning (niet onbelangrijk, niet optioneel)
+- mirrored-clause-symmetry (cluster, transfer): Gespiegelde zinnen en herhaalde zinsvormen
+- same-opener-runs (context, transfer): Anafoor: drie zinnen met dezelfde opening
+- same-ending-runs (cluster, transfer): Zinnen op rij met dezelfde eindgroep
+- rule-of-three (cluster, nl-bron): Drieslag
+- staccato-fragments (always, transfer): Staccato-fragmenten (Snel. Simpel.)
+- copula-avoidance (cluster, transfer): Koppelwerkwoord vermijden (fungeert als, beschikt over, herbergt)
+- nominalization-inflation (cluster, nl-bron): Naamwoordstijl (het nemen van een besluit, overgaan tot)
+- participial-tail (always, nl-bron): Duidingsstaart (wat het belang onderstreept)
+- false-range (always, nl-bron): Valse reeks (van X tot Y)
+- rhetorical-self-question (always, nl-bron): Retorische zelfvraag (Het resultaat? Verwoestend.)
+- agentless-passive-subjectless-fragment (context, transfer): Lijdende vorm zonder handelende persoon en zinnen zonder onderwerp
+- inanimate-agent (always, transfer): Levenloos onderwerp met een menselijk werkwoord
+- orphaned-demonstrative (cluster, transfer): Verweesd aanwijzend voornaamwoord (Dit onderstreept ...)
+- modal-flattening (cluster, transfer): Alle twijfel als kan
+- template-phrase (always, translationese): Sjabloonzin (Of je nu X bent of Y)
+- stranded-auxiliary-contrast (cluster, transfer): Elliptische omslag (de data niet.)
+- synonym-doubling (cluster, transfer): Synoniemenverdubbeling (een belangrijke en cruciale rol)
+- prescriptive-agentless-necessity (cluster, transfer): Voorschrift zonder handelende persoon (er moet worden gekeken naar)
+- cleft-dummy-noun (cluster, transfer): Cleft en loze kernwoorden (waar het om gaat is, het punt is dat)
+- past-tense-avoidance (context, transfer): Perfectum waar de verleden tijd hoort
+- hypotactic-smoothness (context, nl-bron): Eén zinsvorm door de hele tekst (te glad, even lang)
+
+## rhetoric (37)
+
+- importance-labelling (cluster, nl-bron): Belang en symboliek aanplakken
+- stakes-inflation (always, transfer): Opgeblazen inzet
+- significance-signaling (always, transfer): Betekenis aankondigen en eigen punten rangschikken
+- sycophancy (always, transfer): Vleierij vooraf
+- meta-signposting (always, transfer): De tekst aankondigen in plaats van schrijven
+- candor-flag-opener (always, transfer): Oprechtheidsvlag
+- false-suspense-hook (always, transfer): Valse spanning en uitgestelde clou
+- colon-reveal (cluster, transfer): Aanloop, dubbele punt, clou
+- deeper-truth-framing (cluster, transfer): Diepere-waarheidsframe
+- announced-interest (always, transfer): Aangekondigde interesse
+- aphoristic-ender (always, transfer): Aforistische slotzin
+- aphorism-formula (always, transfer): Aforismesjabloon
+- pull-quote-density (cluster, transfer): Elke zin een quote
+- false-profundity-truism (always, transfer): Schijndiepzinnigheid
+- generic-conclusion (always, transfer): Nietszeggend slot
+- speculative-scenario-opener (cluster, transfer): Hypothetische opening
+- phantom-rebuttal (cluster, transfer): Schijntegenwerping
+- invented-crowd-contrast (context, transfer): Verzonnen massa als contrast
+- scarcity-of-knowledge-claim (always, transfer): Claim van verzwegen kennis
+- launch-copy-introduction (context, transfer): Lanceringsintro
+- performed-insight-phrase (cluster, transfer): Gespeeld inzicht
+- fake-casual-register (cluster, transfer): Nagespeelde spreektaal
+- metaphor-overuse (cluster, transfer): Doorgevoerde metafoor
+- patronizing-analogy (context, transfer): Betuttelende vergelijking
+- historical-analogy-stacking (cluster, transfer): Stapel historische vergelijkingen
+- clean-consequence-connector (cluster, transfer): Gladde gevolgtrekking
+- reflexive-ai-humility (always, transfer): Reflexmatige AI-bescheidenheid
+- review-process-deflection (cluster, transfer): Afleiden naar het proces bij kritiek
+- register-mismatch (context, transfer): Register dat niet bij de tekst past
+- flat-affect (cluster, transfer): Vlak affect
+- contrast-slogan-opener (always, nl-bron): Contrastslogan als opening of kop
+- stacked-hedges (always, transfer): Gestapelde slagen om de arm
+- reflexive-hedging (cluster, transfer): Reflexmatig relativeren
+- didactic-disclaimers (context, transfer): Belerende voorbehouden
+- both-sides-hedge (cluster, transfer): Gespeelde balans
+- booster-density-nl (cluster, nl-bron): Stellige toon zonder grond
+- call-to-action-closer (always, nl-bron): Slot dat de lezer om een reactie of een handeling vraagt
+
+## structure (27)
+
+- signposted-conclusion (always, nl-bron): Aangekondigde conclusie (Kortom-slot)
+- fractal-summaries (cluster, transfer): Fractale samenvattingen
+- despite-challenges-outlook (always, nl-bron): Ondanks-de-uitdagingen-slot
+- circular-return-ending (cluster, transfer): Cirkelslot
+- formulaic-section-headers (cluster, nl-bron): Sjabloonkoppen
+- headers-over-short-text (cluster, transfer): Koppen boven te korte tekst
+- colon-subtitle-headings (cluster, nl-bron): Dubbelepuntkop
+- heading-restated-below (always, transfer): Kop herhaald in de eerste regel
+- title-heading-duplicate (context, transfer): Titelkop boven de tekst herhaald
+- empty-parent-headings (cluster, transfer): Koppen die alleen koppen bevatten
+- inline-header-lists (always, transfer): Vetgedrukte bullet-openers
+- bare-noun-phrase-bullets (cluster, transfer): Opsomming van kale naamwoordgroepen
+- numbered-list-inflation (context, transfer): Opgepompte genummerde lijst
+- bullets-instead-of-prose (cluster, nl-bron): Bullets waar proza hoort
+- listicle-in-prose (cluster, transfer): Lijstje als proza
+- five-paragraph-essay (cluster, transfer): Vijfparagrafenopstel en drieslagsteiger
+- uniform-paragraph-length (cluster, transfer): Gelijke alinealengte
+- repeated-sentence-shapes (cluster, translationese): Herhaalde zins- en alineavormen
+- topic-sentence-every-paragraph (cluster, transfer): Kernzin aan het begin van elke alinea
+- preamble-before-the-point (always, transfer): Aanloop voor het punt
+- paragraph-reshuffle-immunity (context, transfer): Verwisselbare alinea's
+- wall-of-text-replies (context, transfer): Muur van tekst als reactie
+- concede-salvage-rebut-template (cluster, transfer): Toegeven-redden-weerleggen
+- canned-profile-page (cluster, transfer): Sjabloon-profielpagina
+- verse-form-defaults (context, transfer): Standaardvormen in poëzie
+- narrative-flatness (cluster, transfer): Verhaaldefaults: vast perspectief, vlak tempo, alles rond
+- sentence-rhythm-uniformity (cluster, transfer): Vlak zinsritme
+
+## punctuation-format (23)
+
+- em-dash-density (always, nl-bron): Gedachtestreepje als standaardsplitsing
+- bold-overuse (cluster, nl-bron): Vet als standaardnadruk
+- emoji-decoration (cluster, nl-bron): Emoji als versiering
+- oxford-comma-nl (cluster, nl-bron): Seriekomma voor 'en' of 'of'
+- comma-density (cluster, transfer): Kommadichtheid
+- hashtag-stuffing (cluster, translationese): Hashtagstapel onder de post
+- stress-accents-nl (cluster, nl-bron): Klemtoonaccent en willekeurige nadruk
+- curly-quotes (cluster, nl-bron): Krulaanhalingstekens op een recht-aanhalingsvlak
+- unicode-typography-nl (cluster, nl-bron): Typografische Unicode-vervangingen
+- immaculate-typography (cluster, transfer): Onberispelijke typografie in een ruw register
+- list-label-periods (always, transfer): Punt achter het bulletlabel
+- scare-quotes (cluster, transfer): Aanhalingstekens als distantie
+- parenthetical-gloss-overload (cluster, transfer): Verklarende haakjes op een rij
+- parenthetical-stage-directions (always, transfer): Regieaanwijzing tussen haakjes in dialoog
+- unicode-arrows (context, transfer): Pijlen als voegwoord
+- unicode-math-bold-and-bullets (always, transfer): Wiskundig vet en bulletglyphs
+- unnecessary-tables (context, transfer): Overbodige kleine tabellen
+- heading-level-skipping (always, transfer): Overgeslagen kopniveaus
+- level-1-heading-overuse (context, transfer): H1 voor gewone secties
+- thematic-breaks (cluster, transfer): Scheidingslijn voor elke sectie
+- semicolon-colon-skew (cluster, transfer): Scheve puntkomma-inzet
+- redundant-acronym-expansion (context, transfer): Overbodige afkortingsuitleg
+- capitalized-after-colon (cluster, translationese): Hoofdletter na de dubbele punt
+
+## content (35)
+
+- significance-inflation (cluster, transfer): Opgeblazen betekenis
+- unnamed-debate-situating (cluster, transfer): Plaatsing in een niet-benoemd debat
+- ecosystem-heritage-padding (cluster, transfer): Ecosysteem- en erfgoedvulling
+- promotional-language (cluster, nl-bron): Brochuretaal
+- vague-attribution (always, nl-bron): Vage bronvermelding
+- source-count-inflation (cluster, transfer): Opgeblazen bronnentelling
+- notability-name-dropping (cluster, transfer): Relevantie bewijzen met namen
+- vague-association (cluster, transfer): Vage verbinding
+- speculative-gap-fill (always, nl-bron): Speculatie als feit gepresenteerd
+- abstraction-over-specifics (cluster, transfer): Abstractie waar een concreet gegeven bestaat
+- missing-concrete-detail (cluster, transfer): Geen concreet detail (verplaatsbare zin)
+- missing-first-hand-detail (context, transfer): Geen eerstehands detail of standpunt
+- absent-human-friction (context, transfer): Ontbrekende menselijke wrijving
+- fake-first-person (always, transfer): Verzonnen eigen ervaring
+- invented-concept-labels (cluster, transfer): Bedachte conceptlabels
+- empty-caveat-slot (cluster, transfer): Lege kanttekening
+- treadmill-redundancy (cluster, transfer): Tredmolen (herhalen zonder vooruit te komen)
+- diff-anchored-writing (cluster, transfer): Schrijven vanaf de wijziging
+- hallucinated-citations (always, nl-bron): Verzonnen of oncontroleerbare bronvermelding
+- misattributed-source-analysis (always, transfer): Eigen duiding toegeschreven aan een bron
+- list-title-as-entity (cluster, transfer): Werktitel behandeld als bestaand ding
+- gratuitous-universals-and-category-errors (cluster, transfer): Gratis universalia en categoriefouten
+- vague-numeric-range (cluster, transfer): Geschatte marge in plaats van een meting
+- flat-dialogue-and-exposition (cluster, transfer): Vlakke dialoog en uitleg voor de lezer
+- pathetic-fallacy-mood-setting (cluster, transfer): Decor als stemmingsspiegel
+- off-metaphor (cluster, transfer): Scheve of gemengde metafoor
+- cliche-and-purple-prose (cluster, transfer): Cliché en overdadig proza
+- sudden-polish-jump (context, nl-bron): Plotselinge stijl- en niveausprong
+- lost-thread-context (cluster, transfer): Verloren context uit de draad of de opdracht
+- fabricated-bylines-and-datelines (always, transfer): Verzonnen auteursregels en plaatsdatums
+- pro-authoritarian-bias (context, transfer): Autoritair gekleurde framing
+- confident-fabrication-nl (always, nl-bron): Zelfverzekerde onjuistheden en anachronismen
+- exposition-instead-of-argument-nl (cluster, nl-bron): Uitleg in plaats van betoog
+- fabricated-colloquialism-nl (cluster, nl-bron): Verzonnen spreektaal
+- thin-citation-practice-nl (context, nl-bron): Dunne of scheve bronnenpraktijk
+
+## artifacts (27)
+
+- chatbot-opener (always, transfer): Chatbotopening en assistenttaal vooraf
+- collaborative-closer (always, transfer): Behulpzaam slot en aanbod om door te gaan
+- acknowledgment-loop (always, transfer): De vraag herhaald voor het antwoord
+- reasoning-chain-leak (always, transfer): Gelekte redeneerstappen
+- cutoff-disclaimer-and-ai-self-identification (always, transfer): Kennisgrensdisclaimer en AI-zelfbenoeming
+- citation-markup-leak (always, transfer): Gelekte citatiemarkup uit de chattool
+- ai-url-tracking-parameter (always, transfer): AI-trackingparameter in een URL
+- unfilled-placeholder (always, transfer): Niet-ingevulde plaatshouder
+- placeholder-in-metadata-field (always, transfer): Plaatshouder in een gestructureerd veld
+- outline-plan-left-in-body (always, transfer): Opzet gepubliceerd in plaats van de sectie
+- markdown-in-non-markdown-surface (context, transfer): Markdown op een vlak dat het niet rendert
+- broken-target-markup (always, transfer): Verzonnen of kapotte opmaak voor het doelsysteem
+- stale-boilerplate-metadata (cluster, transfer): Verouderde of onmogelijke sjabloonmetadata
+- instructions-to-the-handler (always, transfer): Instructies aan degene die het plaatst
+- self-certification-of-compliance (cluster, transfer): Eigen verklaring dat het aan de regels voldoet
+- brief-vocabulary-and-destination-naming (always, transfer): Briefingtaal en bestemming in het product
+- templated-change-note (cluster, transfer): Sjabloonmatige wijzigingsnotitie
+- letter-register-on-non-correspondence (context, transfer): Briefregister waar geen brief hoort
+- content-duplication (always, transfer): Verdubbelde sectie of alinea
+- abrupt-cutoff (always, transfer): Tekst die middenin stopt
+- bypass-trick-characters (always, nl-bron): Onzichtbare en lookalike-tekens
+- roleplay-action-markers (cluster, transfer): Rollenspel-regieaanwijzingen
+- generation-wrapper-and-speaker-label (always, transfer): Generatorwikkel en sprekerlabel
+- out-of-text-provenance-signal (context, transfer): Herkomstsignalen buiten de tekst
+- assistant-self-correction-nl (always, nl-bron): Chatbot die zijn eigen antwoord terugneemt
+- generated-engagement-reply-nl (always, nl-bron): Gegenereerde reactie onder een post
+- paste-whitespace-residue-nl (cluster, nl-bron): Spatie- en plakresten uit het chatvenster
+
+## translationese (45)
+
+- title-case-headings (always, nl-bron): Engelse titelhoofdletters in koppen
+- english-number-date-format-nl (always, translationese): Engelse getal-, datum- en tijdnotatie
+- american-quote-and-genitive-nl (cluster, translationese): Amerikaanse leestekenplaatsing en de Engelse bezitsapostrof
+- english-abbreviation-and-citation-nl (cluster, translationese): Engelse afkortingen, ampersand en bronvermelding
+- noun-stacking-particle-drop (always, translationese): Engelse ziekte: samenstellingen los of met een streepje
+- untranslated-marketing-loanword (cluster, nl-bron): Onvertaald Engels marketingwoord in Nederlandse tekst
+- english-stem-dutch-inflection-nl (always, translationese): Engelse stam met Nederlandse vervoeging
+- language-switch-mid-text-nl (always, nl-bron): Engelse brok midden in Nederlandse tekst
+- embedded-english-quotation (context, translationese): Engelse zin ingeplakt met de vertaling erbij
+- parenthetical-english-gloss (cluster, translationese): Engelse term tussen haakjes bij elke herhaling
+- known-as-appositive-calque (cluster, translationese): Bekend als en de zogenaamde
+- calque-dive-in-nl (always, nl-bron): Duiken en delven in een onderwerp
+- calqued-marketing-verbs-nl (cluster, translationese): Letterlijk vertaalde Engelse marketingwerkwoorden
+- calque-landscape-journey-nl (always, nl-bron): Landschap-, reis- en ecosysteemmetafoor
+- offer-verb-overuse-nl (cluster, nl-bron): Bieden als vertaling van offer en provide
+- driven-powered-suffix-nl (cluster, translationese): Gedreven en aangedreven door als achtervoegsel
+- calqued-imagery-nl (always, translationese): Beeldspraak en waardeclaims zonder Nederlandse traditie
+- calqued-idiom-nl (always, nl-bron): Letterlijk vertaalde Engelse uitdrukkingen en discoursformules
+- quantity-calques-nl (cluster, translationese): Kwantiteitscalques
+- light-verb-literalism (always, translationese): Letterlijk vertaalde lichte werkwoorden
+- beyond-mere-escalation (always, translationese): Meer dan alleen X
+- here-is-why-nl (always, nl-bron): Hier is waarom en Dit is hoe
+- at-brand-we-understand-nl (always, translationese): Bij merknaam begrijpen we
+- overformal-register-nl (cluster, translationese): Valse formaliteit en archaïsche voegwoorden
+- honorific-register-drift (always, translationese): Je en u door elkaar
+- free-conjunction-clause-linking (always, translationese): Echter aan het zinsbegin met komma
+- missing-inversion-after-fronting-nl (always, translationese): Geen inversie na een aanloop
+- english-clause-order-nl (context, nl-bron): Engelse volgorde in de bijzin
+- existential-there-are-nl (cluster, translationese): Er zijn X die-constructie
+- agentive-by-passive (cluster, translationese): Lijdende vorm met door-bepaling
+- agentless-automated-passive (cluster, translationese): Lijdende vorm zonder enige handelende partij
+- stacked-double-passive (always, translationese): Gestapelde hulpwerkwoorden aan het zinseind
+- passive-progressive-calque (cluster, translationese): Aan het doen zijn en wordt steeds
+- modal-ability-overuse (cluster, translationese): Kan en kunnen op elk gezegde
+- in-terms-of-frame (always, translationese): In termen van
+- calqued-preposition-periphrasis (cluster, translationese): Zware voorzetseluitdrukking als leenvertaling
+- periphrastic-superlative-nl (cluster, translationese): Omschrijvende overtreffende trap met meest
+- die-dat-confusion-nl (cluster, translationese): Die-dat-verwarring uit het Engelse that
+- english-determiner-transfer-nl (context, translationese): Lidwoord weg, bezittelijk voornaamwoord erbij
+- pronoun-over-translation (context, translationese): Voornaamwoorden één op één overgezet
+- mechanical-plural-marking (context, translationese): Mechanisch meervoud op niet-telbare woorden
+- left-branching-modifier-stack (cluster, translationese): Lange voorbepaling voor het zelfstandig naamwoord
+- stacked-particles (cluster, translationese): Van-ketens
+- abstract-subject-all-purpose-verb (cluster, translationese): Abstract onderwerp met een kleurloos werkwoord
+- translationese-interference-index (context, translationese): Interferentie-index

@@ -20,7 +20,40 @@
    ]
   }
  },
- "nl": {},
+ "nl": {
+  "ai-vocabulary-lexicon": {
+   "cues": [
+    "cruciaal",
+    "cruciale",
+    "essentieel",
+    "essentiële",
+    "robuust",
+    "robuuste",
+    "innovatief",
+    "innovatieve",
+    "impactvol",
+    "impactvolle",
+    "wendbaarheid",
+    "holistisch",
+    "holistische",
+    "datagedreven",
+    "schaalbaar",
+    "schaalbare",
+    "transformatie",
+    "transformeren",
+    "benutten",
+    "ontsluiten",
+    "faciliteren",
+    "een breed scala aan",
+    "naar nieuwe hoogten"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:cruciaal|cruciale|essentieel|essentiële|robuust|robuuste|innovatief|innovatieve|impactvol|impactvolle|wendbaarheid|holistisch|holistische|datagedreven|schaalbaar|schaalbare)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:benutten|ontsluiten|faciliteren|revolutioneren|transformeren)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:een breed scala aan|naar nieuwe hoogten|de sleutel tot)(?![a-zà-ÿ])"
+   ]
+  }
+ },
  "flags": {
   "markdown-in-non-markdown-surface": {
    "skip_on_markdown": true

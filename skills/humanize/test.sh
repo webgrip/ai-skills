@@ -43,17 +43,37 @@ print(f"{lang}: clean fixture quiet, slop fixture hit all {len(expected)} expect
 PY
 done
 python3 - <<'PY'
-import json, re, subprocess, sys, tempfile, os, collections
+import collections
+import json
+import os
+import re
+import subprocess
+import sys
+import tempfile
+
+EXAMPLES_THAT_MUST_CARRY_ANOTHER_SURFACE = {
+    ("list-label-periods", "inline-header-lists"),
+    ("empty-parent-headings", "heading-level-skipping"),
+    ("bypass-trick-characters", "ai-vocabulary-lexicon"),
+}
+
 findings = collections.Counter()
 total = 0
 for lang, catalog in (("en", "patterns-en.md"), ("nl", "patterns-nl.md")):
     label = "Na: " if lang == "nl" else "After: "
-    afters = [l[len(label):].strip() for l in open(catalog) if l.startswith(label)]
-    total += len(afters)
-    if not afters:
+    owner, examples = None, []
+    for line in open(catalog):
+        heading = re.match(r"^### .*`([a-z0-9-]+)`\s*$", line)
+        if heading:
+            owner = heading.group(1)
+        elif line.startswith(label):
+            examples.append((owner, line[len(label):].strip()))
+    total += len(examples)
+    if not examples:
         sys.exit(f"{catalog}: no rewritten examples found")
+
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
-        f.write("\n\n".join(afters))
+        f.write("\n\n".join(text for _, text in examples))
         path = f.name
     out = subprocess.run(["python3", "scripts/scan.py", "--json", "--lang", lang, "--fail-on", "never", path],
                          capture_output=True, text=True)
@@ -61,14 +81,33 @@ for lang, catalog in (("en", "patterns-en.md"), ("nl", "patterns-nl.md")):
     if out.returncode:
         sys.exit(out.stderr)
     result = json.loads(out.stdout)[0]
-    hits = [f for f in result["findings"] if f["severity"] == "always"]
-    for f in hits:
-        findings[f"{lang}/{f['id']}"] += 1
+
+    body = "\n\n".join(text for _, text in examples).split("\n")
+    line_owner = {}
+    cursor = 1
+    for entry_id, text in examples:
+        for _ in text.split("\n"):
+            line_owner[cursor] = entry_id
+            cursor += 1
+        cursor += 1
+
+    for finding in result["findings"]:
+        if finding["severity"] != "always":
+            continue
+        owner_id = line_owner.get(finding["line"])
+        if finding["id"] == owner_id:
+            continue
+        if (owner_id, finding["id"]) in EXAMPLES_THAT_MUST_CARRY_ANOTHER_SURFACE:
+            continue
+        findings[f"{lang}/{finding['id']}"] += 1
+        print(f"  {catalog}:{finding['line']} {finding['id']} in an example owned by "
+              f"{owner_id}: {finding['match']!r}")
     if result["metrics"]["em_dashes_per_500_words"] > 0:
         sys.exit(f"{catalog}: the rewritten examples contain em dashes")
-    if len(hits) > len(afters) * 0.02:
-        sys.exit(f"{catalog}: {len(hits)} always-severity tells across {len(afters)} rewritten examples: {findings}")
-print(f"catalog self-scan: {total} rewritten examples, {sum(findings.values())} always-severity hits, no em dashes")
+
+if findings:
+    sys.exit(f"rewritten examples still carry tells they do not themselves demonstrate: {dict(findings)}")
+print(f"catalog self-scan: {total} rewritten examples, no stray always-severity tells, no em dashes")
 PY
 
 echo "humanize: OK"

@@ -1,0 +1,1386 @@
+{
+ "categorie": "rhetoric",
+ "entries": [
+  {
+   "id": "importance-labelling",
+   "naam": "Belang en symboliek aanplakken",
+   "definitie": "Een etiket beweert dat het onderwerp belangrijk, cruciaal of symbolisch is, in plaats van te laten zien waarom. Subvormen: het gewichtwoord op de bewering geplakt (van cruciaal belang, essentieel, van onschatbare waarde), de rolzin (speelt een cruciale rol, onderstreept het belang van, kan niet genoeg benadrukt worden) en de symboolzin die een gewoon feit tot teken van iets groters maakt (staat symbool voor, is tekenend voor, getuigt van een rijke traditie). Het repertoire is klein: dezelfde tien frasen keren terug over totaal verschillende onderwerpen. Schrap het etiket en houd het feit met het gevolg dat het gewicht geeft.",
+   "cues": [
+    "van cruciaal belang",
+    "cruciaal",
+    "essentieel",
+    "belangrijker dan ooit",
+    "speelt een cruciale rol",
+    "speelt een belangrijke rol",
+    "onderstreept het belang van",
+    "kan niet genoeg benadrukt worden",
+    "van onschatbare waarde",
+    "niet te onderschatten belang",
+    "een van de belangrijkste",
+    "past in een bredere trend",
+    "staat symbool voor",
+    "geldt als een symbool van",
+    "is tekenend voor",
+    "getuigt van",
+    "diepgeworteld",
+    "rijke traditie",
+    "onwrikbare toewijding",
+    "een blijvende erfenis",
+    "laat een blijvende indruk achter",
+    "blijft tot de verbeelding spreken",
+    "bevestigt zijn positie als",
+    "keerpunt",
+    "sleutelmoment"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:van\\s+cruciaal\\s+belang|speelt\\s+een\\s+cruciale\\s+rol|onderstreept\\s+het\\s+belang\\s+van|kan\\s+niet\\s+genoeg\\s+(?:benadrukt|onderschat)\\s+worden|van\\s+onschatbare\\s+waarde|staat\\s+symbool\\s+voor|is\\s+tekenend\\s+voor|onwrikbare\\s+toewijding|laat\\s+een\\s+blijvende\\s+indruk\\s+achter|bevestigt\\s+(?:zijn|haar)\\s+positie\\s+als|past\\s+in\\s+een\\s+bredere\\s+trend|een\\s+rijke\\s+traditie)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De meetup speelt een cruciale rol in de regio en onderstreept het belang van kennisdeling.",
+     "na": "Op de meetup staan twee talks. De vorige keer kwamen er 38 mensen."
+    },
+    {
+     "voor": "Het initiatief staat symbool voor de diepgewortelde samenwerking in Twente.",
+     "na": "Vier bedrijven uit Hengelo betalen samen de zaalhuur."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "importance-labelling",
+   "bronnen": [
+    "de-wikipedia-anzeichen-ki",
+    "nl-artikelen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Opgeblazen betekenis en symboliek",
+    "Opgeblazen belang (van cruciaal belang)",
+    "Belang aanplakken (speelt een cruciale rol)"
+   ],
+   "valse_positieven": "Niet markeren als het gewicht wordt onderbouwd in dezelfde alinea (een cijfer, een gevolg, een besluit dat eruit volgde). Vakteksten mogen iets cruciaal noemen als het uitvalsrisico dat aantoont. Eén losse instantie in een lang stuk is geen patroon; de tell is de herhaling. Historische artikelen mogen een gebeurtenis een keerpunt noemen als de bron dat doet."
+  },
+  {
+   "id": "stakes-inflation",
+   "naam": "Opgeblazen inzet",
+   "definitie": "Het belang van het onderwerp wordt opgeblazen tot ver voorbij wat de inhoud draagt: een kleine wijziging verandert alles, een stuk over prijzen wordt een beschouwing over de toekomst van de samenleving. Subvormen: de wereldschaalclaim (zet de wereld op zijn kop, bepaalt het komende decennium, fundamenteel veranderen hoe we), de urgentiestempel (nu meer dan ooit, de inzet was nog nooit zo hoog) en de alledaagse blunder als levensdrama. De belofte wordt nooit ingelost in de rest van de tekst.",
+   "cues": [
+    "verandert alles",
+    "veranderde alles",
+    "zet de wereld op zijn kop",
+    "bepaalt het komende decennium",
+    "de inzet was nog nooit zo hoog",
+    "nu meer dan ooit",
+    "fundamenteel veranderen hoe we",
+    "in een wereld waarin alles",
+    "ongekend",
+    "drastisch veranderen",
+    "superkrachten",
+    "Wat. Een. DRAMA."
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:verander(?:t|de)\\s+alles|zet\\s+(?:de\\s+wereld|alles)\\s+op\\s+(?:zijn|z'n)\\s+kop|bepaalt\\s+het\\s+(?:komende|volgende)\\s+decennium|de\\s+inzet\\s+(?:was|is)\\s+nog\\s+nooit\\s+zo\\s+hoog|nu\\s+meer\\s+dan\\s+ooit|fundamenteel\\s+verander\\w*\\s+hoe\\s+we)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Deze update verandert alles aan hoe we software bouwen. De inzet was nog nooit zo hoog.",
+     "na": "Na deze update draait de build in vier minuten in plaats van elf."
+    },
+    {
+     "voor": "Twintig jaar deden we het zo. Eén kleine wijziging veranderde alles.",
+     "na": "We zetten de cache een laag hoger. Sindsdien haalt de pagina 200 ms."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "stakes-inflation",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Dramatisering en overdrijving",
+    "Opgeblazen belang"
+   ],
+   "valse_positieven": "Niet markeren bij een gebeurtenis die aantoonbaar van schaal veranderde en waar het stuk dat ook laat zien met cijfers. Citaten uit marketingmateriaal die je aanhaalt blijven staan. In fictie en column is overdrijving een stijlmiddel; daar telt alleen de herhaling."
+  },
+  {
+   "id": "significance-signaling",
+   "naam": "Betekenis aankondigen en eigen punten rangschikken",
+   "definitie": "De tekst vertelt de lezer dat iets opmerkelijk of belangrijk is in plaats van het te laten zien. Subvormen: het redactionele commentaar dat aankondigt dat iets vermeld gaat worden (het is belangrijk om op te merken dat, het is vermeldenswaard dat), de rechtvaardiging die vóór de bewering komt die ze moet dragen (dit is belangrijk, omdat, zoals je ziet) en de zelfrangschikking waarin de schrijver aanwijst welk van zijn eigen punten het slimme of verrassende is (het belangrijkste punt is, dat is precies het punt, en dat telt). Zet de bewering vooraan en schrap de aankondiging.",
+   "cues": [
+    "het is belangrijk om op te merken dat",
+    "het is belangrijk te beseffen dat",
+    "het is vermeldenswaard dat",
+    "opmerkelijk genoeg",
+    "het is goed om te bedenken dat",
+    "geen bespreking is compleet zonder",
+    "men mag niet vergeten dat",
+    "het valt niet te ontkennen dat",
+    "dit is belangrijk, omdat",
+    "dat laatste is belangrijker dan het klinkt",
+    "zoals je ziet",
+    "het belangrijkste punt is",
+    "dit onderscheid doet ertoe",
+    "en dat doet ertoe",
+    "dit is het interessantste stuk",
+    "dat laatste is het verrassende",
+    "dat is precies het punt",
+    "en dat telt",
+    "dit is waar het spannend wordt",
+    "het slimste eraan is"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:het\\s+is\\s+(?:belangrijk|goed)\\s+(?:om\\s+)?(?:op\\s+te\\s+merken|te\\s+beseffen|te\\s+bedenken)\\s+dat|het\\s+is\\s+vermeldenswaard\\s+dat|geen\\s+bespreking\\s+is\\s+compleet\\s+zonder|het\\s+valt\\s+niet\\s+te\\s+ontkennen\\s+dat|dit\\s+is\\s+belangrijk,?\\s+omdat|dat\\s+laatste\\s+is\\s+belangrijker\\s+dan\\s+het\\s+(?:klinkt|lijkt)|het\\s+(?:belangrijkste|interessantste|slimste|verrassendste)\\s+(?:punt|deel|stuk|eraan)\\s+is|dat\\s+is\\s+precies\\s+het\\s+punt|dit\\s+onderscheid\\s+doet\\s+ertoe|en\\s+dat\\s+(?:telt|doet\\s+ertoe))(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het is belangrijk om op te merken dat de meetup gratis is. Dit is belangrijk, omdat drempels mensen weghouden.",
+     "na": "De meetup is gratis en aanmelden hoeft niet."
+    },
+    {
+     "voor": "Het belangrijkste punt is dat de agenda openstaat. En dat telt.",
+     "na": "De agenda staat open. Wie een talk wil geven, mailt hallo@twente.dev."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "significance-signaling",
+   "bronnen": [
+    "de-wikipedia-anzeichen-ki",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Redactioneel commentaar",
+    "Betekenis vooraf aankondigen (dit is belangrijk, omdat)",
+    "Zelfrangschikking (dit is het belangrijkste punt)"
+   ],
+   "valse_positieven": "Handleidingen en juridische teksten mogen aandacht vestigen op een uitzondering die de lezer anders mist. In lesmateriaal is 'let hier op' functioneel als het echt om een valkuil gaat. Niet markeren waar de aankondiging informatie draagt die de zin zonder haar verliest."
+  },
+  {
+   "id": "sycophancy",
+   "naam": "Vleierij vooraf",
+   "definitie": "Lof voor de vrager, zijn vraag of zijn gevoel gaat vooraf aan het antwoord: Goede vraag, Wat een mooie vraag, Je hebt helemaal gelijk, Dat is een scherpe observatie. Bijvormen: de gespeelde inleving (Ik begrijp helemaal hoe je je voelt) en het stempel dat een correctie bevestigt en meteen een betere versie belooft. Schrap de lof en geef antwoord.",
+   "cues": [
+    "Goede vraag!",
+    "Goede en terechte vraag",
+    "Wat een goede vraag",
+    "Wat een mooie vraag",
+    "Je hebt helemaal gelijk",
+    "Dat is een scherpe observatie",
+    "Terecht punt",
+    "Goed dat je dit aankaart",
+    "fijn dat je dat kritisch vraagt",
+    "Ik begrijp helemaal hoe je je voelt",
+    "Interessant perspectief"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:goede\\s+vraag|wat\\s+een\\s+(?:goede|mooie|scherpe|interessante)\\s+vraag|je\\s+hebt\\s+(?:helemaal\\s+)?gelijk|dat\\s+is\\s+een\\s+(?:scherpe|goede|terechte)\\s+(?:observatie|opmerking|vraag)|terecht\\s+punt|goed\\s+dat\\s+je\\s+dit\\s+(?:aankaart|noemt|vraagt)|ik\\s+begrijp\\s+(?:helemaal\\s+)?(?:hoe\\s+je\\s+je\\s+voelt|je\\s+frustratie))(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Goede vraag! Je hebt helemaal gelijk dat dit vaak misgaat. De oorzaak zit in de cache.",
+     "na": "De oorzaak zit in de cache."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "sycophancy",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Vleierij bij de opening (Goede vraag)",
+    "Vleierij (de lezer eerst gelijk geven)"
+   ],
+   "valse_positieven": "In een echt gesprek mag iemand instemmen: 'je hebt gelijk' na een aangewezen fout is gewoon toegeven. De tell is de lof vóór de inhoud, als opening, zonder dat er iets mee gebeurt. Citaten uit een chatlog die je analyseert blijven staan."
+  },
+  {
+   "id": "meta-signposting",
+   "naam": "De tekst aankondigen in plaats van schrijven",
+   "definitie": "De tekst vertelt wat hij gaat doen in plaats van het te doen. Subvormen: de openingsaankondiging (In dit artikel verkennen we, In deze gids behandelen we, We behandelen achtereenvolgens), de gezamenlijke overgang (Laten we beginnen, Nu naar het volgende punt), de structuurpraat in de tekst zelf (zoals eerder genoemd, hieronder een overzicht, dit valt uiteen in drie delen), en het antwoord dat de vraag eerst parafraseert en daarna samenvat wat er net stond (Kortom, Samengevat). Begin gewoon.",
+   "cues": [
+    "In dit artikel verkennen we",
+    "Dit artikel verkent",
+    "In dit artikel bespreken we",
+    "In deze gids behandelen we",
+    "In dit blog leer je",
+    "In deze blog neem ik je mee",
+    "In deze blog vertel ik",
+    "Hieronder bespreken we",
+    "We behandelen achtereenvolgens",
+    "Hieronder een overzicht",
+    "Zoals eerder genoemd",
+    "Dit valt uiteen in drie delen",
+    "Laten we beginnen",
+    "Allereerst kijken we naar",
+    "Vier kanttekeningen vooraf",
+    "Kortom",
+    "Samengevat",
+    "Je vraagt je af of"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:in\\s+(?:dit\\s+artikel|deze\\s+blog|dit\\s+blog|deze\\s+gids|dit\\s+stuk)\\s+(?:verkennen|bespreken|behandelen|leer|neem|vertel|kijken)|dit\\s+artikel\\s+verkent|we\\s+behandelen\\s+achtereenvolgens|hieronder\\s+(?:een|vind\\s+je\\s+een)\\s+overzicht|zoals\\s+(?:eerder|hierboven)\\s+(?:genoemd|beschreven|vermeld)|(?:dit|het)\\s+valt\\s+uiteen\\s+in|laten\\s+we\\s+beginnen|allereerst\\s+kijken\\s+we)(?![a-zà-ÿ])",
+    "(?m)(?:^|[.!?]\\s+)(?:kortom|samengevat|samenvattend)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In dit artikel verkennen we hoe je een meetup organiseert. We behandelen achtereenvolgens locatie, sprekers en catering. Laten we beginnen.",
+     "na": "Een meetup vraagt om een zaal en twee sprekers; de broodjes bestel je een week vooraf."
+    },
+    {
+     "voor": "Je vraagt hoe laat de meetup begint. Kortom: om 19:00 gaat de deur open.",
+     "na": "De deur gaat om 19:00 open."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "meta-signposting",
+   "bronnen": [
+    "nl-artikelen",
+    "nl-translationese-bronnen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "De vraag herhalen en netjes samenvatten",
+    "‘In dit artikel verkennen we’",
+    "Metabewegwijzering (de tekst aankondigen in plaats van schrijven)"
+   ],
+   "valse_positieven": "Een inhoudsopgave, een leeswijzer in een rapport of een abstract is bewegwijzering met een functie. Wetenschappelijke artikelen kondigen hun opzet af in de inleiding; dat is genrenorm. Een terugverwijzing die de lezer echt nodig heeft ('de tabel in hoofdstuk 2') is geen tell."
+  },
+  {
+   "id": "candor-flag-opener",
+   "naam": "Oprechtheidsvlag",
+   "definitie": "Een geënsceneerde pauze of aangekondigde openhartigheid gaat vooraf aan een gewoon punt: Eerlijk?, Even eerlijk, Kijk, Laten we eerlijk zijn, De harde waarheid is. Bijvorm: de schrijver kondigt zijn openheid aan in plaats van open te zijn (Ik wil vooraf eerlijk zijn:, Volledige transparantie:, Ik had dit kunnen weglaten, maar). Het frame suggereert dat de rest minder eerlijk was en is los te knippen van de inhoud: haal het weg en de zin verliest geen informatie.",
+   "cues": [
+    "Eerlijk?",
+    "Eerlijk gezegd",
+    "Even eerlijk",
+    "Kijk,",
+    "Laten we eerlijk zijn",
+    "Ik zal eerlijk zijn",
+    "De harde waarheid is",
+    "Om maar meteen met de deur in huis te vallen",
+    "Het zit zo:",
+    "Het eerlijke antwoord is",
+    "Ik wil vooraf eerlijk zijn:",
+    "Voor de volledigheid:",
+    "Volledige transparantie:",
+    "die ik liever nu noem dan dat je ze later ontdekt",
+    "Ik had dit kunnen weglaten, maar",
+    "En ja, ik ben"
+   ],
+   "regex": [
+    "(?m)(?:^|[.!?]\\s+)(?:eerlijk\\?|eerlijk\\s+gezegd|even\\s+eerlijk|kijk,|laten\\s+we\\s+eerlijk\\s+zijn|ik\\s+(?:zal|wil)\\s+(?:vooraf\\s+)?(?:eerlijk|transparant)\\s+zijn|de\\s+(?:harde|ongemakkelijke)\\s+waarheid\\s+is|om\\s+maar\\s+meteen\\s+met\\s+de\\s+deur\\s+in\\s+huis\\s+te\\s+vallen|volledige\\s+transparantie|ik\\s+had\\s+dit\\s+kunnen\\s+weglaten)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Eerlijk? De eerste editie liep niet lekker. Volledige transparantie: we hadden te weinig stoelen.",
+     "na": "De eerste editie liep niet lekker. We hadden te weinig stoelen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "candor-flag-opener",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Oprechtheidsvlag (Eerlijk? Kijk,)",
+    "Aangekondigde openheid"
+   ],
+   "valse_positieven": "In gesproken taal en in een interviewcitaat is 'eerlijk gezegd' gewoon spreektaal; laat citaten staan. Als de zin daarna echt iets toegeeft dat de schrijver schaadt, doet de vlag werk. 'Voor de volledigheid' in een notulen of changelog waar echt een ontbrekend punt volgt is functioneel."
+  },
+  {
+   "id": "false-suspense-hook",
+   "naam": "Valse spanning en uitgestelde clou",
+   "definitie": "Een kort zinsdeel maakt spanning rond informatie die dat niet nodig had: Het addertje?, Hier komt het:, En nu wordt het interessant, Het mooiste?, En dan komt de clou. Bijvorm: de tekst praat om het onderwerp heen en bouwt op naar een punt dat pas laat of nooit komt, met achtergrond die niemand vroeg. Schrap de haak en zeg het.",
+   "cues": [
+    "Het addertje?",
+    "Hier komt het:",
+    "En nu wordt het interessant",
+    "Het mooiste?",
+    "Het gekke?",
+    "En dan komt de clou",
+    "Wat de meeste mensen missen",
+    "En dan dit:",
+    "eerst wat achtergrond",
+    "een opbouw creëren",
+    "om het onderwerp heen praten"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:het\\s+addertje\\??|hier\\s+komt\\s+(?:het|de\\s+clou)|en\\s+nu\\s+wordt\\s+het\\s+(?:interessant|leuk)|het\\s+(?:mooiste|beste|gekke|rare|ergste)\\s*[:?]|en\\s+dan\\s+komt\\s+de\\s+clou|en\\s+dan\\s+dit\\s*:)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "We probeerden van alles. Het addertje? De DNS stond nog op de oude server.",
+     "na": "We probeerden van alles. De DNS stond nog op de oude server."
+    },
+    {
+     "voor": "Voordat ik het antwoord geef, eerst wat achtergrond over hoe wij naar hosting kijken.",
+     "na": "De site draait op Cloudflare Pages."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "false-suspense-hook",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Opbouw creëren en om het onderwerp heen praten",
+    "Valse spanning (Het addertje? Hier komt het.)"
+   ],
+   "valse_positieven": "Verhalende journalistiek en column mogen spanning opbouwen als er ook echt een onthulling volgt. Niet markeren in een tekst die per genre op suspense draait (recensie van een thriller, reportage). Eén haak in een lang stuk is stijl; drie is een sjabloon."
+  },
+  {
+   "id": "colon-reveal",
+   "naam": "Aanloop, dubbele punt, clou",
+   "definitie": "Een aanloopzin, een dubbele punt en dan een keurig ingepakte onthulling in kleine letters. De dubbele punt wordt gebruikt voor spanning in plaats van om een lijst, een label of een citaat in te leiden, en het patroon herhaalt zich alinea na alinea. Schrijf het als een gewone zin.",
+   "cues": [
+    "Het detail dat het laat werken:",
+    "Wat het verschil maakt:",
+    "De reden dat het werkt:",
+    "En dat brengt ons bij het echte punt:",
+    "zelfstandig naamwoord plus dubbele punt plus onthulling in kleine letters"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:het\\s+detail\\s+dat\\s+het\\s+laat\\s+werken|wat\\s+het\\s+verschil\\s+maakt|de\\s+reden\\s+dat\\s+het\\s+werkt|en\\s+dat\\s+brengt\\s+ons\\s+bij)\\s*:"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wat het verschil maakt: de zaal is gratis.",
+     "na": "De zaal is gratis."
+    },
+    {
+     "voor": "De reden dat het werkt: iedereen kent elkaar al van de vorige keer.",
+     "na": "Het werkt omdat iedereen elkaar al van de vorige keer kent."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "colon-reveal",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Aanloop, dubbele punt, clou"
+   ],
+   "valse_positieven": "Een dubbele punt vóór een opsomming, een citaat, een definitie of een label (Datum: 7 oktober) is normale interpunctie. Koppen met een ondertitel na de dubbele punt zijn genrenorm. Eén onthullende dubbele punt in een stuk is geen patroon; tel ze per duizend woorden."
+  },
+  {
+   "id": "deeper-truth-framing",
+   "naam": "Diepere-waarheidsframe",
+   "definitie": "Een vaste frase presenteert een gewoon punt als verborgen of fundamenteel inzicht, of beweert dat de zaak duidelijk is in plaats van het te laten zien: De echte vraag is, Waar het werkelijk om draait, Vergis je niet, De waarheid is, Het echte verhaal is, De kern van de zaak is. Laat het frame vallen en zeg het punt.",
+   "cues": [
+    "De echte vraag is",
+    "Waar het werkelijk om draait",
+    "In werkelijkheid",
+    "Vergis je niet",
+    "De waarheid is",
+    "De realiteit is simpeler",
+    "Het echte verhaal is",
+    "De kern van de zaak is"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:de\\s+echte\\s+vraag\\s+is|waar\\s+het\\s+(?:werkelijk|echt)\\s+om\\s+(?:gaat|draait)|vergis\\s+je\\s+niet|de\\s+realiteit\\s+is\\s+simpeler|het\\s+echte\\s+verhaal\\s+is|de\\s+kern\\s+van\\s+de\\s+zaak\\s+is)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De echte vraag is niet welke tool je kiest. Waar het werkelijk om draait, is wie hem onderhoudt.",
+     "na": "Welke tool je kiest maakt minder uit dan wie hem onderhoudt."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "deeper-truth-framing",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Diepere-waarheidsframe (waar het werkelijk om gaat)"
+   ],
+   "valse_positieven": "In een betoog dat een aangewezen misverstand corrigeert, doet 'in werkelijkheid' echt werk; laat het staan als er een concrete tegenspraak volgt. Niet markeren in citaten of in polemiek waar de schrijver een genoemde tegenstander weerlegt."
+  },
+  {
+   "id": "announced-interest",
+   "naam": "Aangekondigde interesse",
+   "definitie": "Een aankondiging claimt een reactie die de tekst nog niet heeft verdiend: Wat mij opviel, Wat me verbaasde, Hier wordt het interessant, Ik was verrast te zien dat. Bijvorm: het deelbericht dat opent met de claim dat het onderwerp de schrijver al dagen bezighoudt (de zin die bij me blijft hangen, hier denk ik al de hele week over na) voordat de lezer een reden heeft om te kijken. Het werkt alleen als er echt verrassende gegevens volgen; begin anders bij het ding zelf.",
+   "cues": [
+    "Wat mij opviel",
+    "Wat me verbaasde",
+    "Wat me raakte",
+    "Dit vond ik interessant",
+    "Hier wordt het interessant",
+    "Ik was verrast te zien dat",
+    "Het interessantste deel",
+    "de zin die bij me blijft hangen",
+    "ik moet hier steeds aan denken",
+    "hier denk ik al de hele week over na",
+    "dit blijft door mijn hoofd spelen"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:wat\\s+(?:mij|me)\\s+(?:opviel|verbaasde|raakte|verraste)|dit\\s+vond\\s+ik\\s+(?:interessant|opvallend)|hier\\s+wordt\\s+het\\s+interessant|ik\\s+was\\s+verrast\\s+te\\s+zien|ik\\s+moet\\s+hier\\s+steeds\\s+aan\\s+denken|blijft\\s+door\\s+mijn\\s+hoofd\\s+(?:spelen|gaan)|hier\\s+denk\\s+ik\\s+al\\s+(?:de\\s+hele\\s+week|dagen)\\s+over\\s+na)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wat mij opviel: de helft van de aanmeldingen kwam uit Hengelo. Ik moet hier steeds aan denken.",
+     "na": "De helft van de aanmeldingen kwam uit Hengelo."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "announced-interest",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Aangekondigde interesse (Wat mij opviel)",
+    "Claim van blijvende aandacht (deze zin blijft bij me hangen)"
+   ],
+   "valse_positieven": "In een persoonlijk verslag of een leeslog is de eigen reactie het onderwerp; daar hoort ze. Niet markeren als er meteen een cijfer of feit volgt dat de verbazing rechtvaardigt en de lezer die deelt."
+  },
+  {
+   "id": "aphoristic-ender",
+   "naam": "Aforistische slotzin",
+   "definitie": "Een alinea of stuk landt op een compacte spreuk die het punt als wijsheid herhaalt in plaats van iets toe te voegen: En dat telt. Zo simpel is het. De toekomst is al begonnen. Daar begint het pas. Bijvormen zijn het contrastslot (X, geen Y) en de oproep tot actie. Schrap hem in plaats van hem te herschrijven naar een betere beeldspraak, en eindig op de helderste concrete zin die al in het stuk staat.",
+   "cues": [
+    "En dat telt.",
+    "Zo simpel is het.",
+    "De toekomst is al begonnen.",
+    "Daar begint het pas.",
+    "Nu is het moment om",
+    "En dat is precies het punt."
+   ],
+   "regex": [
+    "(?m)(?:^|[.!?]\\s+)(?:en\\s+dat\\s+telt\\.|zo\\s+simpel\\s+is\\s+het\\.|de\\s+toekomst\\s+(?:is\\s+al\\s+begonnen|begint\\s+nu)\\.|daar\\s+begint\\s+het\\s+pas\\.|nu\\s+is\\s+het\\s+moment\\s+om)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De zaal zat vol en de talks liepen uit. En dat telt.",
+     "na": "De zaal zat vol en de talks liepen uit."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "aphoristic-ender",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Aforistische slotzin"
+   ],
+   "valse_positieven": "Een spreekwoord in een citaat of een slogan die het onderwerp van het stuk is, blijft staan. Een column mag op een grap eindigen; de tell is de spreuk die alleen herhaalt wat er al stond."
+  },
+  {
+   "id": "aphorism-formula",
+   "naam": "Aforismesjabloon",
+   "definitie": "Een gewone bewering wordt omgegoten tot citeerbare wetmatigheid door een invulmetafoor: X is de taal van Y, de munt van Z, de architectuur van vertrouwen, X is de Excel van de agents. Bijvorm: het transformatieframe dat een verschuiving dramatiseert (van X naar Y, voorbij X richting Y). De vorm doet het overtuigingswerk in plaats van bewijs.",
+   "cues": [
+    "is de taal van",
+    "is de munt van",
+    "de architectuur van vertrouwen",
+    "wordt een valkuil",
+    "is geen tool maar een spiegel",
+    "de Excel van",
+    "van X naar Y",
+    "voorbij X richting Y"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])is\\s+de\\s+(?:taal|munt|valuta|architectuur|ruggengraat|brandstof)\\s+van(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:is\\s+)?de\\s+excel\\s+van(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])voorbij\\s+\\w+\\s+richting\\s+\\w+"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Documentatie is de munt van vertrouwen in een open source-project.",
+     "na": "Wie de documentatie bijhoudt, krijgt bruikbare bugmeldingen terug."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "aphorism-formula",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Aforismesjabloon (X is de taal van Y)"
+   ],
+   "valse_positieven": "Een gevestigde vakterm die toevallig deze vorm heeft ('de taal van het web' over HTML) is geen sjabloon. Citaten en boektitels blijven staan. In poëzie en reclame is de vorm het doel."
+  },
+  {
+   "id": "pull-quote-density",
+   "naam": "Elke zin een quote",
+   "definitie": "Regel na regel is geschreven om eruit geknipt te worden: overgepolijste citeerbare zinnen in elke alinea, gestapelde spreuken zonder verbindend weefsel, en losse regels als alinea voor het effect. De tell is de dichtheid, niet die ene goede regel. Houd de sterkste en laat de rest gewone zinnen zijn die het betoog dragen.",
+   "cues": [
+    "elke regel citeerbaar",
+    "gestapelde spreuken",
+    "losse regel als alinea",
+    "geen verbindende zinnen tussen de uitsmijters"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Code veroudert. Documentatie liegt. Alleen tests vertellen de waarheid. Daar begint alles.",
+     "na": "Tests zeggen wat de code nu doet. De documentatie in deze repo is van twee jaar geleden."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "pull-quote-density",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Elke zin een quote"
+   ],
+   "valse_positieven": "Structureel patroon, geen frase: alleen te zien over een hele tekst. Aforismenbundels, LinkedIn-posts en reclame draaien hier per genre op. Eén sterke losse regel als alinea is een keuze, geen tell."
+  },
+  {
+   "id": "false-profundity-truism",
+   "naam": "Schijndiepzinnigheid",
+   "definitie": "Een zin heeft de vorm van inzicht, een tegenstelling of een omkering, maar bevat niets waar een lezer iets mee kan of het mee oneens kan zijn: Verandering is de enige constante. Uiteindelijk zijn we allemaal mensen. Niets is zwart-wit. Het zijn de veiligst mogelijke zinnen, waar van iedereen en dus van niemand. Vervang door de concrete bewering, of schrap.",
+   "cues": [
+    "Verandering is de enige constante.",
+    "Uiteindelijk zijn we allemaal mensen.",
+    "Iedereen twijfelt weleens.",
+    "Het begint bij jezelf.",
+    "Niets is zwart-wit."
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:verandering\\s+is\\s+de\\s+enige\\s+constante|uiteindelijk\\s+zijn\\s+we\\s+allemaal\\s+(?:maar\\s+)?mensen|iedereen\\s+twijfelt\\s+weleens|het\\s+begint\\s+(?:allemaal\\s+)?bij\\s+jezelf|niets\\s+is\\s+(?:ooit\\s+)?zwart[- ]wit)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bij het organiseren van een meetup komt veel kijken. Niets is zwart-wit.",
+     "na": "Bij een meetup gaat de meeste tijd naar de zaal en de sprekers."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "false-profundity-truism",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Schijndiepzinnigheid (open deur in inzichtvorm)"
+   ],
+   "valse_positieven": "Als citaat of als aangehaalde dooddoener die de schrijver vervolgens afbreekt, blijft de zin staan. In troostende of ceremoniële teksten (condoleance, toespraak) is de open deur het genre."
+  },
+  {
+   "id": "generic-conclusion",
+   "naam": "Nietszeggend slot",
+   "definitie": "Een slotzin wijst naar de toekomst of naar zekerheid zonder een bewering die iemand kan nakijken: De toekomst ziet er rooskleurig uit, De tijd zal het leren, Eén ding is zeker, We kijken uit naar wat komt. De toekomstvariant heeft een vaste vorm: hulpwerkwoord plus worden plus een vaag kernwoord (wordt misschien wel hét verhaal van de komende jaren, belooft de standaard te worden). Vervang door een toetsbare versie of schrap.",
+   "cues": [
+    "De toekomst ziet er rooskleurig uit",
+    "De tijd zal het leren",
+    "De toekomst zal het uitwijzen",
+    "Eén ding is zeker",
+    "We kijken uit naar wat komt",
+    "wordt misschien wel hét verhaal van",
+    "belooft de standaard te worden",
+    "Wordt ongetwijfeld vervolgd"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:de\\s+(?:toekomst|tijd)\\s+zal\\s+het\\s+(?:leren|uitwijzen)|de\\s+toekomst\\s+(?:ziet\\s+er\\s+rooskleurig\\s+uit|is\\s+veelbelovend)|(?:één|een)\\s+ding\\s+is\\s+zeker|we\\s+kijken\\s+uit\\s+naar\\s+wat\\s+(?:er\\s+)?komt|wordt\\s+ongetwijfeld\\s+vervolgd|belooft\\s+(?:de|het|een)\\s+\\w+\\s+te\\s+worden)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Of dit werkt, de tijd zal het leren. Eén ding is zeker: de vraag is er.",
+     "na": "Of dit werkt, weten we na de derde editie. We tellen de aanmeldingen per keer."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "generic-conclusion",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Nietszeggend slot (de tijd zal het leren)"
+   ],
+   "valse_positieven": "In een nieuwsbericht over een lopende zaak mag een slot open blijven als de onzekerheid het onderwerp is en de tekst benoemt wat er beslist gaat worden. Citaten blijven staan."
+  },
+  {
+   "id": "call-to-action-closer",
+   "naam": "Slot dat de lezer opdrachten geeft",
+   "definitie": "Een slotregel geeft de lezer een instructie in plaats van iets te zeggen: de aanbeveling (Zeker de moeite waard:, Bewaar deze post., Doe jezelf een plezier en lees dit.), de uitnodiging (Laten we connecten!, Stuur me gerust een bericht, Volg mij voor meer) en het beleidsstuk dat alinea na alinea eindigt op er moet iets gebeuren. Zeg wat het ding is en voor wie, en laat de oproep weg.",
+   "cues": [
+    "Zeker de moeite waard:",
+    "Bewaar deze post.",
+    "Doe jezelf een plezier en lees dit.",
+    "Laten we connecten!",
+    "Stuur me gerust een bericht",
+    "Volg mij voor meer",
+    "Deel het in de reacties",
+    "er moet iets gebeuren"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:zeker\\s+de\\s+moeite\\s+waard|bewaar\\s+(?:deze|dit)\\s+(?:post|bericht|artikel)|doe\\s+jezelf\\s+een\\s+plezier|laten\\s+we\\s+(?:connecten|verbinden)|stuur\\s+me\\s+gerust\\s+een\\s+(?:bericht|dm)|volg\\s+(?:mij|ons)\\s+voor\\s+meer|deel\\s+(?:het|je\\s+ervaring)\\s+in\\s+de\\s+reacties)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bewaar deze post. Laten we connecten!",
+     "na": "De volgende editie is op 7 oktober."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "call-to-action-closer",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Slot dat de lezer opdrachten geeft"
+   ],
+   "valse_positieven": "Een handleiding hoort de lezer op te dragen wat te doen. Een aanmeldknop of nieuwsbrieffooter is functioneel. De tell is de oproep die niets toevoegt aan een informatieve tekst, of die alleen de schrijver dient."
+  },
+  {
+   "id": "speculative-scenario-opener",
+   "naam": "Hypothetische opening",
+   "definitie": "Een betoog opent met een verzonnen wereld die wenselijke uitkomsten opsomt in plaats van een bewering te doen: Stel je een wereld voor waarin, Stel je voor dat, Beeld je in dat, Wat als. Het scenario doet het overtuigingswerk en er volgt geen bewijs. Schrap de hypothese en zeg de echte bewering.",
+   "cues": [
+    "Stel je een wereld voor waarin",
+    "Stel je voor dat",
+    "Beeld je in dat",
+    "Wat als je",
+    "In die wereld"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:stel\\s+je\\s+(?:eens\\s+)?(?:voor\\s+dat|een\\s+wereld\\s+voor)|beeld\\s+je\\s+in\\s+dat)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Stel je een wereld voor waarin iedere ontwikkelaar in Twente elkaar kent.",
+     "na": "Ontwikkelaars in Twente werken vaak bij kleine bedrijven en komen elkaar zelden tegen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "speculative-scenario-opener",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Hypothetische opening (Stel je een wereld voor waarin)"
+   ],
+   "valse_positieven": "Een gedachte-experiment in een wetenschappelijke of filosofische tekst is een methode, geen tell. Fictie en scenarioplanning openen zo per definitie. Niet markeren als de hypothese daarna wordt doorgerekend."
+  },
+  {
+   "id": "phantom-rebuttal",
+   "naam": "Schijntegenwerping",
+   "definitie": "De tekst discussieert met een gesprekspartner die hij zelf verzon: het ontkennen van een standpunt dat niemand innam (Begrijp me niet verkeerd, Om duidelijk te zijn, Ik zeg niet dat), de stroman die in één bijzin wordt opgeworpen en weggezet (Een voor de hand liggende aanpak zou zijn ..., maar) en het geënsceneerde zelfgesprek. Meestal een restant van een eerdere versie. Haal de verzonnen tegenwerping weg en noem de echte beperking.",
+   "cues": [
+    "Begrijp me niet verkeerd",
+    "Om duidelijk te zijn",
+    "Dit gaat niet zozeer over",
+    "Ik zeg niet dat",
+    "Je zou kunnen tegenwerpen dat",
+    "Een voor de hand liggende aanpak zou zijn",
+    "Sommigen zullen zeggen"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:begrijp\\s+me\\s+niet\\s+verkeerd|om\\s+(?:heel\\s+)?duidelijk\\s+te\\s+zijn|dit\\s+gaat\\s+niet\\s+zozeer\\s+over|ik\\s+(?:zeg|beweer)\\s+niet\\s+dat|je\\s+zou\\s+kunnen\\s+tegenwerpen\\s+dat|een\\s+voor\\s+de\\s+hand\\s+liggende\\s+(?:aanpak|oplossing)\\s+zou\\s+zijn|sommigen\\s+zullen\\s+zeggen)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Begrijp me niet verkeerd, ik zeg niet dat frameworks slecht zijn. Om duidelijk te zijn: het gaat om onderhoud.",
+     "na": "Het framework kost ons twee dagen onderhoud per maand."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "phantom-rebuttal",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Schijntegenwerping en correctieve draai"
+   ],
+   "valse_positieven": "In een discussie waar iemand het standpunt echt innam, is de weerlegging terecht; noem dan wie het zei. Academische teksten mogen een bekende tegenwerping benoemen met bron. De tell is de tegenstander zonder naam."
+  },
+  {
+   "id": "invented-crowd-contrast",
+   "naam": "Verzonnen massa als contrast",
+   "definitie": "Een bewering leunt op een achterblijvende menigte die niemand benoemt: Iedereen zegt X, maar, de gangbare wijsheid klopt niet, terwijl de rest nog vergaderde, terwijl de markt nog nadacht. De tegenstander is verzonnen, dus het contrast kost niets. Noem het feit en schrap de menigte, of noem de echte concurrent en wat die deed.",
+   "cues": [
+    "terwijl de rest nog vergaderde",
+    "terwijl anderen nog discussieerden",
+    "terwijl de markt nog nadacht",
+    "Iedereen zegt X, maar",
+    "de gangbare wijsheid",
+    "men denkt vaak dat"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])terwijl\\s+(?:de\\s+rest|iedereen|anderen|de\\s+markt|de\\s+branche)\\s+nog\\s+(?:vergaderde|nadacht|discussieerde|twijfelde)",
+    "(?<![a-zà-ÿ])de\\s+gangbare\\s+(?:wijsheid|opvatting)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Terwijl de rest nog vergaderde, hadden wij de zaal al geboekt.",
+     "na": "We boekten de zaal in juni, vier maanden voor de datum."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "invented-crowd-contrast",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Verzonnen massa als contrast"
+   ],
+   "valse_positieven": "Als de menigte benoembaar is en de tekst haar benoemt (een aangehaald rapport, een concurrent met naam), is het contrast gewoon een vergelijking. In wetenschapsjournalistiek is 'lang werd gedacht dat' correct als er een bron bij staat."
+  },
+  {
+   "id": "scarcity-of-knowledge-claim",
+   "naam": "Claim van verzwegen kennis",
+   "definitie": "De tekst beweert dat haar punt onopgemerkt, verborgen of weggemoffeld is terwijl daar geen sprake van is: wat niemand je vertelt, waar niemand het over heeft, het punt dat iedereen mist, wat de meeste mensen fout doen, dit slaat bijna iedereen over. Het vleit de schrijver als enige kenner en blaast de nieuwswaarde op.",
+   "cues": [
+    "wat niemand je vertelt",
+    "waar niemand het over heeft",
+    "het punt dat iedereen mist",
+    "wat de meeste mensen fout doen",
+    "dit slaat bijna iedereen over",
+    "het stuk dat vaak vergeten wordt"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:wat\\s+niemand\\s+je\\s+vertelt|waar\\s+niemand\\s+het\\s+over\\s+heeft|het\\s+(?:punt|stuk)\\s+dat\\s+(?:iedereen|bijna\\s+niemand)\\s+(?:mist|ziet|vergeet)|wat\\s+de\\s+meeste\\s+mensen\\s+(?:fout\\s+doen|missen)|dit\\s+slaat\\s+bijna\\s+iedereen\\s+over)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wat niemand je vertelt over meetups: de catering is het lastigste.",
+     "na": "De catering kost de meeste tijd bij het organiseren van een meetup."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "scarcity-of-knowledge-claim",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Claim van verzwegen kennis (wat niemand je vertelt)"
+   ],
+   "valse_positieven": "Bij echt weinig gedocumenteerde kennis mag de schrijver dat zeggen, als hij erbij zet waar hij het wél vandaan heeft. Onderzoeksjournalistiek die aantoont dat iets verzwegen werd, doet precies dat."
+  },
+  {
+   "id": "launch-copy-introduction",
+   "naam": "Lanceringsintro",
+   "definitie": "Een product wordt aangekondigd als een deelnemer aan een spelshow in plaats van beschreven: Maak kennis met X, Zeg hallo tegen X, je nieuwe favoriete Y, Denk aan Notion, maar dan voor teams, dé nieuwe standaard. Bijna vaste vorm in korte lanceringscopy. Zeg wat het ding doet en voor wie.",
+   "cues": [
+    "Maak kennis met",
+    "Zeg hallo tegen",
+    "je nieuwe favoriete",
+    "Denk aan Notion, maar dan voor",
+    "dé nieuwe standaard",
+    "dé nieuwe manier om"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:maak\\s+kennis\\s+met|zeg\\s+hallo\\s+tegen|denk\\s+aan\\s+\\w+,?\\s+maar\\s+dan\\s+(?:voor|met)|je\\s+nieuwe\\s+favoriete|dé\\s+nieuwe\\s+(?:standaard|manier|thuisbasis))(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Maak kennis met twente.dev, je nieuwe favoriete plek voor developers in de regio.",
+     "na": "Op twente.dev staan de meetups en de vacatures uit de regio."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "launch-copy-introduction",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Lanceringsintro (Maak kennis met X)"
+   ],
+   "valse_positieven": "In reclame is dit het genre; markeer het alleen als de tekst informatief hoort te zijn (documentatie, release notes, een nieuwsbericht). Een kennismakingszin in een handleiding die daarna uitlegt wat het ding doet is bruikbaar."
+  },
+  {
+   "id": "performed-insight-phrase",
+   "naam": "Gespeeld inzicht",
+   "definitie": "Essayistische tics die diepzinnigheid aankondigen in plaats van leveren: laat dat even bezinken, en dat is niet niks, je weet het antwoord al, geloof me niet op mijn woord, blijkt maar weer. Elk ensceneert een onthulling en voegt geen feit toe. Zeg de bewering waar de frase naar wijst: en dat is niet niks wordt de werkelijke omvang van het ding.",
+   "cues": [
+    "laat dat even bezinken",
+    "en dat is niet niks",
+    "je weet het antwoord al",
+    "de clou is",
+    "geloof me niet op mijn woord",
+    "blijkt maar weer"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:laat\\s+dat\\s+even\\s+(?:bezinken|op\\s+je\\s+inwerken)|en\\s+dat\\s+is\\s+niet\\s+niks|je\\s+weet\\s+het\\s+antwoord\\s+al|geloof\\s+me\\s+niet\\s+op\\s+mijn\\s+woord|blijkt\\s+maar\\s+weer)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De helft haakte af na de eerste mail. Laat dat even bezinken.",
+     "na": "De helft haakte af na de eerste mail."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "performed-insight-phrase",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Gespeeld inzicht (laat dat even bezinken)"
+   ],
+   "valse_positieven": "In gesproken presentaties is een pauzezin een retorisch middel dat werkt; in geschreven tekst zelden. Citaten blijven staan. Eén keer in een lang essay is stijl."
+  },
+  {
+   "id": "fake-casual-register",
+   "naam": "Nagespeelde spreektaal",
+   "definitie": "Het kostuum dat een model aantrekt als om een losse toon wordt gevraagd: een kist met rekwisieten die het drama uitbesteden aan de rekwisiet. Terugkerende vormen zijn het eenwoordoordeel als slot (bizar., waanzinnig.), de regieaanwijzing tussen sterretjes (*checkt notities*), het knipoogje tussen haakjes (ja, echt), de labelopening (hot take:, leuk weetje:, pro tip:) en het nagespeelde vraaggesprek. Vervang de rekwisiet door de concrete verrassing.",
+   "cues": [
+    "bizar.",
+    "waanzinnig.",
+    "*checkt notities*",
+    "*mic drop*",
+    "(ja, echt)",
+    "(nee, serieus)",
+    "hot take:",
+    "leuk weetje:",
+    "pro tip:",
+    "onpopulaire mening:",
+    "want natuurlijk"
+   ],
+   "regex": [
+    "\\*[a-zà-ÿ][a-zà-ÿ ']{2,20}\\*",
+    "\\((?:ja|nee),?\\s+(?:echt|serieus)\\)",
+    "(?<![a-zà-ÿ])(?:hot\\s+take|leuk\\s+weetje|pro\\s+tip|onpopulaire\\s+mening|even\\s+serieus)\\s*:"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Pro tip: zet de aanmelding open voordat je de sprekers rond hebt. (Ja, echt.) Bizar.",
+     "na": "Zet de aanmelding open voordat de sprekers rond zijn. Dan weet je of er animo is."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "fake-casual-register",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Nagespeelde spreektaal (rekwisieten in plaats van een stem)"
+   ],
+   "valse_positieven": "In chatlogs, forumcitaten en ondertitels is dit gewoon hoe mensen schrijven; laat citaten staan. Markdown-nadruk met sterretjes in broncode of documentatie is opmaak, geen regieaanwijzing. Eén losse 'bizar' na een echt bizar cijfer is stem, geen rekwisiet."
+  },
+  {
+   "id": "metaphor-overuse",
+   "naam": "Doorgevoerde metafoor",
+   "definitie": "Eén beeld wordt geïntroduceerd en daarna nooit meer losgelaten: hetzelfde figuurlijke woord keert vijf tot tien keer terug in een stuk (ecosysteem, reis, kompas, fundament, motor, bouwstenen, rode draad, stip op de horizon), waar een mens het één keer gebruikt en doorloopt. Gebruik het beeld één keer en zeg het daarna gewoon.",
+   "cues": [
+    "ecosysteem",
+    "reis",
+    "kompas",
+    "fundament",
+    "motor",
+    "bouwstenen",
+    "rode draad",
+    "kruispunt",
+    "paraplu",
+    "stip op de horizon"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "De community is een ecosysteem waarin elke bijdrage een bouwsteen is; wie de reis meemaakt, vindt zijn kompas.",
+     "na": "Wie een keer komt spreken, brengt meestal de volgende spreker mee."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "metaphor-overuse",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Doorgevoerde metafoor"
+   ],
+   "valse_positieven": "Dichtheidspatroon: een enkel figuurlijk woord is normaal Nederlands en mag nooit op zichzelf gemarkeerd worden. In vakteksten zijn ecosysteem, motor en fundament letterlijke termen (biologie, techniek, bouw). Tel het aantal keren dat hetzelfde beeld terugkeert in één stuk."
+  },
+  {
+   "id": "patronizing-analogy",
+   "naam": "Betuttelende vergelijking",
+   "definitie": "Een ongevraagde vergelijking komt in de plaats van de bewering of de instructie: Zie het als een zakmes voor je workflow, Het is een beetje als een snelweg voor data, Minder een hamer, meer een scalpel. De lezer krijgt twee plaatjes en geen advies. Zeg wat het ding doet, of wat je moet doen.",
+   "cues": [
+    "Zie het als",
+    "Het is een beetje als",
+    "Vergelijk het met",
+    "Minder een hamer, meer een scalpel",
+    "Stel je een X voor die"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:zie\\s+het\\s+als|het\\s+is\\s+een\\s+beetje\\s+als|minder\\s+een\\s+\\w+,\\s*meer\\s+een\\s+\\w+)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Zie het als een zakmes voor je workflow. Het is een beetje als een snelweg voor data.",
+     "na": "De tool haalt de logs op en zet ze in één tabel."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "patronizing-analogy",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Betuttelende vergelijking (Zie het als ...)"
+   ],
+   "valse_positieven": "In lesmateriaal voor beginners is een vergelijking vaak het snelste pad naar begrip; markeer alleen als ze de uitleg vervangt in plaats van voorbereidt. Eén analogie die daarna wordt uitgewerkt is didactiek."
+  },
+  {
+   "id": "historical-analogy-stacking",
+   "naam": "Stapel historische vergelijkingen",
+   "definitie": "Een snelle opsomming van vroegere technieken, bedrijven of omwentelingen wordt aangehaald om hun gewicht te lenen: net als de boekdrukkunst, de telegraaf en het internet, elke grote technologische omwenteling, denk aan Spotify, of aan Uber. De montage vervangt het argument en geen enkele parallel wordt onderzocht. Noem de ene vergelijking die werk doet en zeg wat ze verklaart.",
+   "cues": [
+    "net als de boekdrukkunst",
+    "de telegraaf",
+    "de stoommachine",
+    "elke grote technologische omwenteling",
+    "volgde hetzelfde patroon",
+    "denk aan Spotify",
+    "net zoals Uber"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:net\\s+als\\s+de\\s+(?:boekdrukkunst|stoommachine|telegraaf)|elke\\s+(?:grote\\s+)?technologische\\s+(?:omwenteling|revolutie)|denk\\s+aan\\s+spotify|net\\s+zoals\\s+uber)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Net als de boekdrukkunst en de stoommachine verandert dit alles; elke grote technologische omwenteling volgde hetzelfde patroon.",
+     "na": "Redacteuren gebruiken het nu vooral om ruwe transcripties op te schonen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "historical-analogy-stacking",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Stapel historische vergelijkingen"
+   ],
+   "valse_positieven": "Historische en technologiehistorische artikelen noemen de boekdrukkunst en de stoommachine als onderwerp; dat is geen vergelijking. Eén uitgewerkte parallel met bron is een argument. De tell is de reeks zonder analyse."
+  },
+  {
+   "id": "clean-consequence-connector",
+   "naam": "Gladde gevolgtrekking",
+   "definitie": "Een verbindingswoord beweert dat de conclusie vanzelf uit het voorgaande volgt en leent daarmee onvermijdelijkheid die het betoog niet heeft verdiend: volgt direct uit, komt hier rechtstreeks uit voort, leidt uiteindelijk tot, daarmee is het duidelijk. Laat de redenering zien, of vervang het verbindingswoord door de stap die de conclusie oplevert.",
+   "cues": [
+    "volgt direct uit",
+    "komt hier rechtstreeks uit voort",
+    "vloeit voort uit",
+    "leidt uiteindelijk tot",
+    "daarmee is het duidelijk",
+    "en dus is"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:volgt\\s+(?:direct|rechtstreeks|logisch)\\s+uit|komt\\s+hier\\s+rechtstreeks\\s+uit\\s+voort|leidt\\s+uiteindelijk\\s+tot|daarmee\\s+is\\s+(?:het\\s+)?duidelijk)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Uit de cijfers volgt direct dat de campagne werkte. Daarmee is het duidelijk.",
+     "na": "Na de campagne kwamen er 40 aanmeldingen bij, tegen 12 in de maand ervoor."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "clean-consequence-connector",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Gladde gevolgtrekking (volgt direct uit)"
+   ],
+   "valse_positieven": "In wiskunde, logica en juridische redeneringen volgt iets soms echt direct uit het voorgaande; daar is de formulering vakjargon. Niet markeren als de tussenstap in dezelfde alinea staat."
+  },
+  {
+   "id": "reflexive-ai-humility",
+   "naam": "Reflexmatige AI-bescheidenheid",
+   "definitie": "De schrijver meldt dat hij zelf een taalmodel is, of dat zijn beweringen wel eens onjuist kunnen zijn, als gebaar van bescheidenheid in plaats van als grens om een concrete bewering: als taalmodel, dit stuk is geschreven door een van de systemen die het beschrijft, het meeste hierboven is een indruk en kan onjuist zijn. Zelfidentificatie hoort nooit in een tekst met een menselijke stem; vervang de tweede vorm door de bewering die onzeker is, met de reden.",
+   "cues": [
+    "als taalmodel",
+    "als AI",
+    "geschreven door een taalmodel",
+    "dit is een indruk en kan onjuist zijn",
+    "ik kan me hierin vergissen"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:als\\s+taalmodel|geschreven\\s+door\\s+(?:een\\s+)?(?:taalmodel|ai)|ik\\s+kan\\s+me\\s+hierin\\s+vergissen|is\\s+(?:vooral\\s+)?een\\s+indruk\\s+en\\s+kan\\s+onjuist\\s+zijn)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Als taalmodel kan ik me hierin vergissen, maar de meetup is op 7 oktober.",
+     "na": "De meetup is op 7 oktober. De datum staat in de aankondiging van 2 september."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "reflexive-ai-humility",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Reflexmatige AI-bescheidenheid"
+   ],
+   "valse_positieven": "Een tekst die over taalmodellen gaat mag 'als taalmodel' citeren of bespreken. Een expliciete AI-disclosure onderaan een document is beleid, geen tell; het gaat om de bescheidenheidsfrase midden in de lopende tekst."
+  },
+  {
+   "id": "review-process-deflection",
+   "naam": "Afleiden naar het proces bij kritiek",
+   "definitie": "Als de herkomst of kwaliteit van een bijdrage ter discussie staat, gaat het antwoord over het proces in plaats van over de tekst: de criticus vragen precies aan te wijzen wat er mis is, het bezwaar afdoen als ongefundeerde speculatie, doorverwijzen naar samenwerking (laten we samen het artikel verbeteren), of melden dat de feedback is verwerkt zonder te zeggen wat er veranderde. Beantwoord de inhoud.",
+   "cues": [
+    "geef precies aan welke delen",
+    "laat me weten wat er precies mis is",
+    "ongefundeerde speculatie",
+    "laten we samen het artikel verbeteren",
+    "zonder te onderbouwen waarom",
+    "feedback verwerkt"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:geef\\s+(?:alsjeblieft\\s+)?precies\\s+aan\\s+welke|laat\\s+me\\s+weten\\s+welke\\s+(?:delen|onderdelen)|ongefundeerde\\s+speculatie|laten\\s+we\\s+samen\\s+(?:het\\s+artikel|de\\s+tekst)\\s+verbeteren)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Laten we samen het artikel verbeteren; geef precies aan welke delen je onjuist vindt.",
+     "na": "Twee van de drie bronnen noemen het onderwerp niet. Ik heb ze vervangen door het provinciale register uit 2019."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "review-process-deflection",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Afleiden naar het proces bij kritiek"
+   ],
+   "valse_positieven": "Om verduidelijking vragen is legitiem als de kritiek echt vaag was en de vraag concreet is. In moderatie- en overlegpagina's is procesverwijzing soms de juiste route. De tell is de procesbeweging in plaats van een inhoudelijk antwoord dat wel te geven was."
+  },
+  {
+   "id": "register-mismatch",
+   "naam": "Register dat niet bij de tekst past",
+   "definitie": "Het register komt uit gewoonte en niet uit de context. Subvormen: het gepolijste bedrijfsantwoord op een losse vraag, zinnen die hardop gelezen als persbericht klinken (Wij zijn verheugd te kunnen aankondigen, Met trots presenteren wij, Hierbij delen wij u mede), en de registerwissel binnen één tekst, waarbij de toon van spreektaal naar ambtelijk springt of de spelling plotseling foutloos is na eerdere fouten. Lees het hardop; klinkt een zin als communicatie in plaats van als een mens, schrijf hem zoals je het zou zeggen.",
+   "cues": [
+    "Wij zijn verheugd te kunnen aankondigen",
+    "Met trots presenteren wij",
+    "Hierbij delen wij u mede",
+    "In het kader van onze doorlopende inspanningen",
+    "Wij streven ernaar om",
+    "dient te worden opgemerkt",
+    "spreektalige tussenwerpsels in verder formele tekst",
+    "plotseling foutloze spelling na eerdere fouten"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:wij\\s+zijn\\s+(?:verheugd|trots|verblijd)|met\\s+trots\\s+presenteren\\s+wij|hierbij\\s+delen\\s+wij\\s+u\\s+mede|in\\s+het\\s+kader\\s+van\\s+onze\\s+(?:doorlopende|voortdurende)|wij\\s+streven\\s+ernaar\\s+om|dient\\s+te\\s+worden\\s+opgemerkt)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wij zijn verheugd te kunnen aankondigen dat de inschrijving is geopend. Vet trouwens.",
+     "na": "De inschrijving is open."
+    },
+    {
+     "voor": "Eerlijk gezegd is dit gewoon vet. Vervolgens dient te worden opgemerkt dat de organisatie een significante bijdrage levert.",
+     "na": "De organisatie regelt de zaal en de sprekers, en verstuurt de aankondiging."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "register-mismatch",
+   "bronnen": [
+    "de-wikipedia-anzeichen-ki",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Registerwissel binnen één tekst",
+    "Registermismatch (persbericht als standaard)"
+   ],
+   "valse_positieven": "Een persbericht mag als persbericht klinken en een notariële akte als akte; het gaat om register dat niet bij de plek past. Meertalige of geciteerde passages verklaren een wissel. Bij een tekst met meerdere auteurs is toonverschil normaal."
+  },
+  {
+   "id": "flat-affect",
+   "naam": "Vlak affect",
+   "definitie": "Eén toon wordt een heel stuk lang vastgehouden zonder verschuiving van analytisch naar boos naar zacht, de cadans varieert nooit, en de tekenen van een sprekende stem worden dunner: minder vragen, minder terzijdes, minder directe aanspraak. Naast menselijk schrijven in hetzelfde genre leest het tegelijk gelijkmatig warm en gelijkmatig afstandelijk. Laat het register meebewegen met het onderwerp.",
+   "cues": [
+    "geen registerwissel",
+    "cadans varieert nooit",
+    "weinig terzijdes",
+    "geen directe aanspraak",
+    "overal dezelfde zinslengte"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "De storing duurde drie uur. Wij betreuren het ongemak. De oorzaak lag in de databaselaag. Wij nemen maatregelen.",
+     "na": "De storing duurde drie uur en het was onze eigen schuld. We hadden de back-up nooit getest. Sinds vorige week gebeurt dat elke maandag."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "flat-affect",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Vlak affect (één toon van begin tot eind)"
+   ],
+   "valse_positieven": "Structureel patroon over een hele tekst; nooit op één zin te markeren. Handleidingen, normen en juridische teksten horen vlak te zijn. Vergelijk met menselijk schrijven in hetzelfde genre voordat je dit noteert."
+  },
+  {
+   "id": "contrast-slogan-opener",
+   "naam": "Contrastslogan als opening of kop",
+   "definitie": "Een tweedelige contrastslogan staat als eerste regel of kop van een tekst en bepaalt het ding door te zeggen wat het niet is: Eén avond, geen verkooppraatje. De opening hoort te zeggen wat er gebeurt; wat het niet is hoort verderop in een eigen blok, als het al ergens hoort. De constructie zelf staat onder syntax; deze regel gaat over het gebruik op de kopregel.",
+   "cues": [
+    "X, geen Y",
+    "Eén avond, geen verkooppraatje.",
+    "Gewoon code, geen praatjes.",
+    "Geen praatjes, wel werkende software."
+   ],
+   "regex": [
+    "(?m)^\\s*[a-zà-ÿ0-9][^.!?\\n]{3,40},\\s+geen\\s+[^.!?\\n]{3,40}\\.?\\s*$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Eén avond, geen verkooppraatje.",
+     "na": "Twee talks, wat te eten, en daarna tijd om bij te praten."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "nl-bron",
+   "en_id": "contrast-slogan-opener",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Contrastslogan als opening of kop"
+   ],
+   "valse_positieven": "Middenin een tekst is een contrast gewoon een contrast; deze regel geldt voor de eerste regel, de kop of de ondertitel. Een opsommingsregel in een lijst met kenmerken is geen slogan. Bestaande, geratificeerde slogans van een merk blijven staan."
+  },
+  {
+   "id": "stacked-hedges",
+   "naam": "Gestapelde slagen om de arm",
+   "definitie": "Twee of meer voorbehouden op één gezegde tot het niets meer zegt: het zou mogelijk kunnen zijn dat, er is wellicht een kans dat het misschien, hoewel dit kan verschillen is het over het algemeen in de meeste gevallen goed om op te merken. Bijvormen: de gestapelde voorspelling (zou uiteindelijk kunnen), het terzijde tussen haakjes (en, in toenemende mate, Z) en het etiket dit is een aanname. Houd precies één voorbehoud dat de bron ondersteunt.",
+   "cues": [
+    "zou mogelijk kunnen",
+    "er is wellicht een kans dat",
+    "hoewel dit kan verschillen",
+    "over het algemeen, in de meeste gevallen",
+    "zou uiteindelijk kunnen",
+    "(en, in toenemende mate, ...)",
+    "dit is een aanname"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])zou(?:den)?\\s+(?:mogelijk|wellicht|misschien|uiteindelijk)\\s+kunnen(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])er\\s+is\\s+wellicht\\s+een\\s+kans\\s+dat(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])over\\s+het\\s+algemeen[^.!?]{0,40}\\s+in\\s+(?:de\\s+meeste|veel)\\s+gevallen(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het zou mogelijk kunnen dat de opkomst wellicht iets lager uitvalt.",
+     "na": "De opkomst valt misschien lager uit; in oktober kwamen er minder aanmeldingen binnen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "stacked-hedges",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Gestapelde slagen om de arm"
+   ],
+   "valse_positieven": "Wetenschappelijke en medische teksten stapelen soms terecht: onzekerheid over de meting én over het effect zijn twee dingen. Juridische teksten hedgen per conventie. Markeer alleen als de voorbehouden dezelfde onzekerheid herhalen."
+  },
+  {
+   "id": "reflexive-hedging",
+   "naam": "Reflexmatig relativeren",
+   "definitie": "Kalibratiewoorden (vrijwel, grotendeels, veelal, doorgaans, ruwweg, op enkele uitzonderingen na) en getuigenisvormen (lijkt, blijkt, wordt geacht, naar het zich laat aanzien) worden op elke bewering geplakt, zodat ze een reflex worden in plaats van echte onzekerheid te volgen. Ook de modale slag om de arm (kan, mag, zou kunnen) op uitspraken die de bron gewoon doet. Meet de dichtheid per zin en de herhaling van hetzelfde woord. Het spiegelbeeld is een menselijke tegenindicator: stellige uitspraken (de enige, de eerste, de beste) komen juist vaker van mensen, dus relativeer die niet weg.",
+   "cues": [
+    "lijkt",
+    "blijkt",
+    "wordt geacht",
+    "grotendeels",
+    "veelal",
+    "doorgaans",
+    "in grote lijnen",
+    "op het eerste gezicht",
+    "naar het zich laat aanzien",
+    "vrijwel altijd",
+    "op enkele uitzonderingen na",
+    "kan",
+    "mag",
+    "zou kunnen",
+    "mogelijk",
+    "wellicht"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:lijkt|blijkt|grotendeels|veelal|doorgaans|vrijwel)(?![a-zà-ÿ])[^.!?]{0,60}(?<![a-zà-ÿ])(?:lijkt|blijkt|grotendeels|veelal|doorgaans|vrijwel|op\\s+het\\s+eerste\\s+gezicht)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])naar\\s+het\\s+zich\\s+laat\\s+aanzien(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De opkomst lijkt doorgaans grotendeels stabiel, al blijkt dat op het eerste gezicht per editie te verschillen.",
+     "na": "De opkomst schommelt tussen de 25 en 40 mensen per editie."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "reflexive-hedging",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Afgezwakte beweringen (kan, mag, zou kunnen)",
+    "Reflexmatig relativeren (overal lijkt en grotendeels)"
+   ],
+   "valse_positieven": "Losse kalibratie is gewoon Nederlands: 'doorgaans' in één zin is geen tell. Encyclopedische en wetenschappelijke teksten relativeren per conventie waar de bron dat doet. Markeer op dichtheid, niet op één woord, en nooit een voorbehoud dat een echte onzekerheid dekt die in de bron staat."
+  },
+  {
+   "id": "didactic-disclaimers",
+   "naam": "Belerende voorbehouden",
+   "definitie": "Waarschuwingen aan de lezer in een tekst die gewoon feiten zou moeten melden: het is belangrijk om te onthouden, houd er rekening mee dat, dit kan per situatie verschillen, raadpleeg altijd een deskundige, controleer dit altijd zelf. Haal voorbehouden weg die de lezer niet vroeg en die de bewering niet nodig heeft; houd er één als het verandert wat de lezer moet doen.",
+   "cues": [
+    "het is belangrijk om te onthouden",
+    "houd er rekening mee dat",
+    "dit kan per situatie verschillen",
+    "raadpleeg altijd een deskundige",
+    "controleer dit altijd zelf",
+    "Let op:",
+    "ter voorkoming van verwarring"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:het\\s+is\\s+(?:belangrijk|goed)\\s+om\\s+te\\s+onthouden|houd\\s+er\\s+rekening\\s+mee\\s+dat|dit\\s+kan\\s+per\\s+(?:situatie|land|geval)\\s+verschillen|raadpleeg\\s+(?:altijd\\s+)?een\\s+(?:deskundige|specialist|arts|adviseur)|controleer\\s+dit\\s+altijd\\s+zelf|ter\\s+voorkoming\\s+van\\s+verwarring)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Houd er rekening mee dat dit per situatie kan verschillen. Raadpleeg altijd een deskundige.",
+     "na": "Voor bedrijven met meer dan 50 werknemers gelden andere regels. Die staan in artikel 7."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "didactic-disclaimers",
+   "bronnen": [
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Belerende voorbehouden"
+   ],
+   "valse_positieven": "Medische, juridische en financiële teksten hebben verplichte disclaimers; die blijven. In een handleiding is een waarschuwing bij een onomkeerbare stap functioneel. De tell is het voorbehoud dat niets verandert aan wat de lezer doet."
+  },
+  {
+   "id": "both-sides-hedge",
+   "naam": "Gespeelde balans",
+   "definitie": "De symmetrische beweging critici zeggen X, voorstanders zeggen Y, de waarheid ligt in het midden speelt nuance zonder iets te beweren, samen met de veilige woordenschat van niet-kiezen (beide kanten, voor- en nadelen, het is een kwestie van balans) vanaf vier keer per document. Bijvorm: de tekst mijdt elke controverse en blijft afstandelijk objectief, ook waar een standpunt het interessant zou maken, en maakt voor- en nadelenlijstjes even lang terwijl het bewijs scheef ligt. Kies een kant, geef een concrete vergelijking, of maak de bewering afhankelijk van iets wat de lezer kan nakijken.",
+   "cues": [
+    "de waarheid ligt in het midden",
+    "beide kanten hebben een punt",
+    "aan de ene kant ... aan de andere kant",
+    "voor- en nadelen",
+    "critici stellen ... voorstanders wijzen op",
+    "het is een kwestie van balans",
+    "neutraal en objectief van toon",
+    "zelden een controversieel standpunt"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:de\\s+waarheid\\s+ligt\\s+(?:ergens\\s+)?in\\s+het\\s+midden|beide\\s+(?:kanten|partijen)\\s+hebben\\s+een\\s+punt|het\\s+is\\s+een\\s+kwestie\\s+van\\s+balans)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])critici\\s+(?:stellen|zeggen|wijzen)[^.!?]{0,80}voorstanders(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Critici stellen dat het te duur is, voorstanders wijzen op de voordelen. De waarheid ligt in het midden.",
+     "na": "Het kost 400 euro per editie. Voor dat bedrag heb je de zaal en het eten."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "both-sides-hedge",
+   "bronnen": [
+    "nl-artikelen",
+    "catalog-en.json"
+   ],
+   "samengevoegd_uit": [
+    "Neutraliteit zonder standpunt",
+    "Twee-kanten-opvulling (gespeelde balans)"
+   ],
+   "valse_positieven": "Encyclopedische en journalistieke neutraliteit is een norm, geen tell: hoor en wederhoor met bronnen blijft staan. Een echte afweging met twee onderbouwde kanten is een argument. Markeer de symmetrie die geen bron heeft en niets kiest."
+  },
+  {
+   "id": "promotional-tone-nl",
+   "naam": "Reclametoon zonder claim",
+   "definitie": "De hele tekst baadt in een positieve sfeer die aan een verkooppraatje of een zelfhulpverhaal doet denken, zonder dat er iets wordt beweerd dat je kunt narekenen: uniek, adembenemend, baanbrekend, naar een hoger niveau tillen. De lof gaat over het onderwerp in het algemeen en verwijst nergens naar een feit, een cijfer of een bron.",
+   "cues": [
+    "uniek",
+    "adembenemend",
+    "baanbrekend",
+    "naar een hoger niveau tillen",
+    "een must voor iedereen die",
+    "onmisbaar",
+    "de perfecte oplossing"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:naar\\s+een\\s+hoger\\s+niveau\\s+(?:tillen|getild)|de\\s+perfecte\\s+oplossing\\s+voor|een\\s+must\\s+voor\\s+iedereen\\s+die|adembenemend|baanbrekend)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Een adembenemende, baanbrekende meetup die de regio naar een hoger niveau tilt.",
+     "na": "Een meetup met twee talks en tijd om na te praten."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "promotional-tone-nl",
+   "bronnen": [
+    "nl-artikelen"
+   ],
+   "samengevoegd_uit": [
+    "Overoptimistische marketing- en goeroetoon"
+   ],
+   "valse_positieven": "In reclame en productcopy is dit het genre; markeer het waar de tekst informatief hoort te zijn. Een geciteerde recensie mag superlatieven bevatten. Eén enthousiast bijvoeglijk naamwoord in een persoonlijk verslag is stem."
+  },
+  {
+   "id": "booster-density-nl",
+   "naam": "Stellige toon zonder grond",
+   "definitie": "Beweringen worden versterkt met zekerheidswoorden waar geen bewijs bij staat, en zelden voorzichtig geformuleerd, waardoor de tekst overmoedig klinkt: ongetwijfeld, zonder twijfel, absoluut, uiteraard, zeker weten. Verwant zijn de holle versterkers die alleen als vulling staan (echt, gewoon, simpelweg). De tell is de dichtheid en het ontbreken van de onderbouwing waar het versterkte woord om vraagt.",
+   "cues": [
+    "ongetwijfeld",
+    "zonder twijfel",
+    "zonder enige twijfel",
+    "zeker weten",
+    "absoluut",
+    "uiteraard",
+    "echt",
+    "gewoon",
+    "simpelweg"
+   ],
+   "regex": [
+    "(?<![a-zà-ÿ])(?:zonder\\s+(?:enige\\s+)?twijfel|ongetwijfeld\\s+de\\s+(?:beste|snelste|grootste|meest)|zeker\\s+weten\\s+de)(?![a-zà-ÿ])"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit is ongetwijfeld de beste aanpak en zonder twijfel de snelste route.",
+     "na": "Deze aanpak was in onze test de snelste. We hebben er twee vergeleken."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "nl-bron",
+   "en_id": "booster-density-nl",
+   "bronnen": [
+    "nl-artikelen"
+   ],
+   "samengevoegd_uit": [
+    "Zelfverzekerde toon: veel boosters, weinig hedges"
+   ],
+   "valse_positieven": "Een stellige uitspraak met bewijs in dezelfde alinea is gewoon een bewering; stelligheid op zich is eerder een menselijke tegenindicator. 'Gewoon' en 'echt' zijn in spreektaal normale partikels. Markeer op dichtheid en op het ontbreken van grond."
+  }
+ ],
+ "rapport": "Vier regexen sneuvelden op het controlecorpus (Rijssen plus Enschede, 8.544 woorden): de generieke aanloop-dubbelepunt-clou raakte 18,73 keer per 10.000 woorden, de kalibratielijst grotendeels/veelal/doorgaans 5,85 en het kale lijkt/blijkt 2,34, en de metafoorwoordenlijst (ecosysteem, reis, motor) raakt gewoon Nederlands; de eerste leeft verder als nauwe cue-regex, het relativeren als co-occurrentieregex binnen zestig tekens, de metafoor als dichtheidspatroon zonder regex. 52 ruwe patronen werden 38 entries: de drie belang-patronen vielen samen in importance-labelling, redactioneel commentaar plus zelfrangschikking in significance-signaling, registerwissel in register-mismatch, neutraliteit zonder standpunt in both-sides-hedge, de kan/mag-hedges in reflexive-hedging, en de vraagherhaling plus 'In dit artikel verkennen we' in meta-signposting. Er is niets geschrapt: elk transfer-patroon heeft een echte Nederlandse vorm; wel zijn Engelse cues (certainly, undoubtedly, by far) en encyclopedische frasen als 'speelt een belangrijke rol', 'de boekdrukkunst' en 'vloeit voort uit' uit de regexen gehaald en alleen als cue bewaard.",
+ "regex_verwijderd": 4,
+ "geschrapt": []
+}
