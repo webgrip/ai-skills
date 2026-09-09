@@ -35,7 +35,7 @@ sources, negative parallelism in 14, meta-signposting and signposted conclusions
 
 No source repo covers Dutch. There are humanizers for Korean, Chinese, Japanese, Russian and
 German; the single occurrence of "Dutch" in blader/humanizer is the word inside an English example
-sentence. Our Dutch catalog holds **251 entries, 218 mapped onto an English counterpart and 33 with
+sentence. Our Dutch catalog holds **306 entries, 219 mapped onto an English counterpart and 87 with
 no English equivalent at all**, because they describe things that can only go wrong in Dutch:
 
 | Entry | What it catches |
@@ -49,7 +49,7 @@ no English equivalent at all**, because they describe things that can only go wr
 | `american-quote-and-genitive-nl` | Punctuation inside the closing quote, and *Peter's* for *Peters* |
 | `language-switch-mid-text-nl` | An untranslated English chunk mid-paragraph |
 
-Twenty-eight more of the same kind. A translated English catalog cannot produce these, which is why
+Another 79 of the same kind. A translated English catalog cannot produce these, which is why
 the Dutch half was built from Dutch sources, the German sister catalogs, and a transfer step that
 asked what form each English pattern actually takes in Dutch rather than what it translates to.
 
@@ -65,9 +65,9 @@ session.
 | im-not-ai (Korean) | 331 lines, 29 KB |
 | humanizer-de | 177 lines, 21 KB |
 | no-ai-slop | 97 lines, 11 KB |
-| **ours** | **51 lines, 6 KB** |
+| **ours** | **56 lines, 7 KB** |
 
-Ours defers 480 entries across two languages to `patterns-en.md`, `patterns-nl.md` and
+Ours defers 535 entries across two languages to `patterns-en.md`, `patterns-nl.md` and
 `method.md`, which cost nothing until opened.
 
 **Measurement.** Every regex is run against human-written prose before it ships: Strunk and Twain
@@ -81,10 +81,34 @@ a flag raised on human writing is a false positive by construction, so provenanc
 truth and no judge is needed. It keeps hashes only; we commit public-domain text so the check runs
 offline.
 
-**Self-consistency.** The catalogs' own 457 rewritten examples are scanned with the catalogs' own
+**Self-consistency.** The catalogs' own 511 rewritten examples are scanned with the catalogs' own
 scanner on every test run. Zero stray tells, zero em dashes. An entry is allowed to contain the
 surface it demonstrates, and three sibling pairs are allowlisted by name; everything else fails the
 build. No source repo tests its own prose this way.
+
+## Does it actually write better?
+
+Measured, and the answer is qualified. Three realistic slop texts were rewritten twice — once by an
+agent following this skill, once by an agent told only "make it sound human" — and graded blind by
+a reader who did not know which was which, weighting fact fidelity above polish.
+
+| | First run | After the fixes |
+| --- | ---: | ---: |
+| Cases the skill won | 0 of 3 | 2 of 3 |
+| Facts invented | 3 | 0 |
+| Naturalness (1-5) | 3, 3, 3 | 4, 4, 3 |
+| Voice flattened | 3 of 3 | 2 of 3 |
+
+The skill is reliably better on fidelity: it keeps every protected number and invents nothing, where
+the naive baseline twice invented product behaviour to make a sentence read well. It is still worse
+at rhythm. The remaining loss has one shape, and the graders name it the same way each time: the
+skill removes a tell by deletion and leaves a stump where the content was, then returns uniformly
+clipped declaratives. Three rounds of fixes moved that (return the text not the notes; rewrite
+rather than delete; check the skeleton, not only the surface) without closing it.
+
+The first run is what made the rest of this file honest. It found the skill shipping its own process
+notes as the deliverable and quoting scanner counts it had never run — chatbot residue and
+fabricated specifics, the two things the catalog exists to catch.
 
 ## What we did not take
 
@@ -102,5 +126,15 @@ build. No source repo tests its own prose this way.
 
 ## Shipped size
 
-988 KB total: 6 KB always-on, the rest opened on demand. 1,295 regexes across 376 scanner rows,
-167 English and 209 Dutch.
+6 KB always-on, the rest opened on demand. 1390 regexes across 430 scanner rows,
+169 English and 261 Dutch.
+
+## What review changed
+
+The catalogs were reviewed after they were built, and the review is the reason to trust them. Seven
+adversarial readers found 180 problems in 208 English entries; sixteen Dutch judges, two per
+category, found 282 in 251. What both reviews kept finding was the same class of defect: a cue list
+that named the *correction* as the tell, a severity of "always" over words the entry's own
+false-positive note excuses, and a rewritten example that fixed vagueness by inventing a number.
+660 English cues and 102 Dutch ones came out; 55 Dutch entries went in for registers no transfer
+could reach. The catalog now practises what it documents, and `test.sh` keeps it that way.

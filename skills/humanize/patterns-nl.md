@@ -2,7 +2,7 @@
 
 Eén entry per patroon: wat het is, de letterlijke signalen, één voor/na, de ernst en wanneer je het niet markeert. Ernst: **always** (één treffer volstaat), **cluster** (alleen een tell bij opeenhoping), **context** (het register beslist). Signalen die een regex kan vangen staan ook in `scripts/patterns.json` onder hetzelfde id; `en_id` koppelt aan de Engelse catalogus.
 
-Inhoud: [Zinsconstructies](#zinsconstructies) (25) · [Retorische zetten en toon](#retorische-zetten-en-toon) (37) · [Woordkeus](#woordkeus) (32) · [Alinea- en documentstructuur](#alinea-en-documentstructuur) (27) · [Interpunctie en opmaak](#interpunctie-en-opmaak) (23) · [Inhoud en bewijs](#inhoud-en-bewijs) (35) · [Machinesporen](#machinesporen) (27) · [Translationese: Engelsvormig Nederlands](#translationese-engelsvormig-nederlands) (45)
+Inhoud: [Zinsconstructies](#zinsconstructies) (31) · [Retorische zetten en toon](#retorische-zetten-en-toon) (44) · [Woordkeus](#woordkeus) (37) · [Alinea- en documentstructuur](#alinea-en-documentstructuur) (32) · [Interpunctie en opmaak](#interpunctie-en-opmaak) (30) · [Inhoud en bewijs](#inhoud-en-bewijs) (42) · [Machinesporen](#machinesporen) (35) · [Translationese: Engelsvormig Nederlands](#translationese-engelsvormig-nederlands) (55)
 
 ## Zinsconstructies
 
@@ -10,29 +10,15 @@ Inhoud: [Zinsconstructies](#zinsconstructies) (25) · [Retorische zetten en toon
 
 Ernst: **always** · Herkomst: nl-bron · en: `false-range`
 
-Twee voorbeelden uit een verzameling worden gepresenteerd als de uiteinden van een spectrum, terwijl er geen spectrum is: van startups tot multinationals, van de oerknal tot donkere materie. De toets: vraag wat er tussen X en Y ligt, of vervang X en Y door een willekeurig ander paar; blijft de zin overeind, dan is de reeks leeg. Noem de echte onderwerpen of kies er één.
+Twee voorbeelden uit een verzameling worden gepresenteerd als de uiteinden van een spectrum, terwijl er geen spectrum is: van startups tot multinationals, van de oerknal tot donkere materie. De toets: vraag wat er tussen X en Y ligt, of vervang X en Y door een willekeurig ander paar; blijft de zin overeind, dan is de reeks leeg. Noem de echte onderwerpen of kies er één. Gebruik bij het herschrijven alleen cijfers die in de bron staan; heb je ze niet, noem dan de onderwerpen zonder reeks.
 
-Signalen: `van startups tot multinationals` · `van beginners tot experts` · `van klein tot groot` · `variërend van ... tot ...` · `uiteenlopend van ... tot ...` · `van de oerknal tot donkere materie` · `van A tot Z`
+Signalen: `van startups tot multinationals` · `van beginners tot experts` · `van klein tot groot` · `variërend van ... tot ...` · `uiteenlopend van ... tot ...` · `van de oerknal tot donkere materie` · `van strategie tot uitvoering` · `van idee tot oplevering`
 
 Voor: De meetup trekt bezoekers van studenten tot doorgewinterde architecten.
 
-Na: Bij de laatste editie kwamen achttien studenten en vierentwintig werkende ontwikkelaars.
+Na: De meetup trekt studenten en werkende ontwikkelaars.
 
 Niet markeren: Letterlijke reeksen in tijd, ruimte, maat of alfabet zijn geen tell: van 2019 tot 2023, van Enschede tot Almelo, van maandag tot vrijdag, van A tot Z als vaste uitdrukking voor volledigheid. Behandel treffers als kandidaten en pas de tussenruimte-toets toe voor je markeert.
-
-### Levenloos onderwerp met een menselijk werkwoord `inanimate-agent`
-
-Ernst: **always** · Herkomst: transfer · en: `inanimate-agent`
-
-Een abstractie of een ding wordt onderwerp van een werkwoord dat alleen mensen uitvoeren: de data vertelt ons, het rapport laat ons zien, de techniek vraagt om, het besluit ontstond. De handelende persoon verdwijnt en het ding krijgt een wil. Herschrijf met de persoon of organisatie die handelde, of kies een zwakker werkwoord.
-
-Signalen: `de data vertelt ons` · `de cijfers zeggen` · `het rapport laat ons zien` · `de techniek vraagt om` · `de tijd roept om` · `de code nodigt je uit` · `het besluit ontstond`
-
-Voor: Het besluit ontstond na weken van overleg.
-
-Na: Het team besloot het na weken van overleg.
-
-Niet markeren: Vaste metonymie is gewoon Nederlands: het kabinet besloot, de gemeente meldt, de wet bepaalt, het contract zegt. Ook: een bewust literair beeld, en vakjargon waarin een systeem echt een handeling uitvoert ('de scheduler kiest de volgende taak'). Markeer waar het werkwoord bewustzijn onderstelt.
 
 ### Ontkenningsaftelling (Geen X. Geen Y. Gewoon Z.) `negation-countdown`
 
@@ -42,53 +28,25 @@ Twee of meer ontkende zaken worden opgestapeld voor het bevestigde antwoord, zod
 
 Signalen: `Geen X. Geen Y. Gewoon Z.` · `geen gedoe, geen gezeur, geen kleine lettertjes` · `Niet X. Niet Y. Wel Z.` · `Het is niet A. Het is niet B. Het is C.` · `Noem het geen X. Noem het Y.` · `Niet links, niet rechts maar recht door zee` · `Niet Copilot, niet Claude, maar jijzelf`
 
-Voor: Geen gedoe, geen opvulling, geen jargon.
+Voor: Geen gedoe, geen opsmuk, geen jargon.
 
-Na: In elk hoofdstuk staat iets wat je kunt nakijken.
+Na: Elk hoofdstuk sluit af met een voorbeeld dat je zelf kunt natrekken.
 
 Niet markeren: Een opsomming van dingen die echt ontbreken en die de lezer moet weten (een productpagina die 'geen abonnement, geen account' meldt omdat concurrenten die wel eisen) is informatie. Ook overslaan: opsommingen in contracten en voorwaarden, en citaten van bestaande leuzen.
-
-### Negatief parallellisme (het is geen X, het is Y) `negative-parallelism`
-
-Ernst: **always** · Herkomst: nl-bron · en: `negative-parallelism`
-
-Een punt wordt gebracht als correctie op een bewering die niemand deed: de zwakkere lezing wordt ontkend en de echte in dezelfde adem gegeven. Vormen: het scharnier binnen één zin (het is niet X, het is Y), de optellende variant (niet alleen X, maar ook Y), de gesplitste variant (Dat is geen X. Dat is Y. / De vraag is niet X. De vraag is Y.), de oorzaakvariant (niet omdat X, maar omdat Y), de omgekeerde slogan (X, geen Y) en de opwaardering meer dan alleen X. In gewoon Nederlands is een enkele maar-tegenstelling normaal; de tell is het geënsceneerde sjabloon met herhaald koppelwerkwoord, en de herhaling ervan door de tekst.
-
-Signalen: `het is niet X, het is Y` · `het is geen X, het is Y` · `dat is geen X, dat is Y` · `dit is geen tool, dit is een manier van denken` · `niet X, maar Y` · `X, geen Y` · `niet alleen ..., maar ook` · `het gaat niet alleen om ..., maar` · `het gaat niet om X, het gaat om Y` · `dit gaat niet over X, maar over Y` · `de vraag is niet X, de vraag is Y` · `niet omdat X, maar omdat Y` · `niet zomaar een ..., maar` · `meer dan alleen` · `het draait niet om` · `niet ..., maar juist` · `eerder X dan Y`
-
-Voor: Het gaat niet om efficiëntie, het gaat om transformatie.
-
-Na: De winst zit in een andere manier van werken. Sneller gaat het ook, dat is bijvangst.
-
-Niet markeren: Een gewone correctie waarin het ontkende deel echt in de lucht hing ('Hij kwam niet uit Hengelo, maar uit Borne') is geen tell. Ook niet: citaten, juridische of contracttekst waarin een afbakening telt, en een enkele maar-tegenstelling zonder herhaald koppelwerkwoord. Markeer pas bij het gesloten sjabloon of bij twee of meer gevallen in één stuk.
 
 ### Duidingsstaart (wat het belang onderstreept) `participial-tail`
 
 Ernst: **always** · Herkomst: nl-bron · en: `participial-tail`
 
-Aan een gewoon feit wordt een staart geplakt die er een betekenis aan geeft die de bron niet levert: belang (wat het belang onderstreept, wat de noodzaak benadrukt), een trend (wat past in een bredere trend), symboliek (waarmee het bedrijf laat zien dat) of een doel (en zo een bijdrage levert aan). Het Engels doet dit met een tegenwoordig deelwoord, het Nederlands met een bijzin op wat of waarmee. Schrap de staart, of maak er een aparte zin van met een bron en een concreet gevolg. Dezelfde staart vat ook het gevolg samen, overgezet uit het Engelse resulting in, leading to en allowing you to: wat resulteert in kortere wachttijden, waardoor je tijd bespaart.
+Aan een gewoon feit wordt een staart geplakt die er een betekenis aan geeft die de bron niet levert: belang (wat het belang onderstreept, wat de noodzaak benadrukt), een trend (wat past in een bredere trend), symboliek (waarmee het bedrijf laat zien dat) of een doel (en zo een bijdrage levert aan). Het Engels doet dit met een tegenwoordig deelwoord, het Nederlands met een bijzin op wat of waarmee. Schrap de staart, of maak er een aparte zin van met een bron en een concreet gevolg. De gevolgstaart (wat resulteert in, waardoor je) staat apart bij gevolgstaart-nl, omdat een gevolgzin in het Nederlands vaak de beste formulering is en pas op dichtheid telt.
 
-Signalen: `, wat het belang onderstreept` · `, wat de noodzaak benadrukt` · `, waarmee wordt benadrukt dat` · `, wat aantoont dat` · `, wat bijdraagt aan` · `, wat past in een bredere trend` · `, waarmee het bedrijf laat zien dat` · `, wat de veelzijdigheid illustreert` · `, waardoor wordt gewaarborgd dat` · `daarmee benadrukkend` · `, wat resulteert in` · `, wat leidt tot` · `, waardoor je` · `, wat betekent dat` · `, waardoor het team` · `, wat zorgt voor`
+Signalen: `, wat het belang onderstreept` · `, wat de noodzaak benadrukt` · `, waarmee wordt benadrukt dat` · `, wat aantoont dat` · `, wat bijdraagt aan` · `, wat past in een bredere trend` · `, waarmee het bedrijf laat zien dat` · `, wat de veelzijdigheid illustreert` · `, waardoor wordt gewaarborgd dat` · `daarmee benadrukkend`
 
 Voor: De meetup vindt maandelijks plaats, wat het belang van regelmaat voor de gemeenschap onderstreept.
 
 Na: De meetup vindt elke derde donderdag van de maand plaats.
 
-Niet markeren: Een bijzin die echt nieuwe informatie draagt ('wat de gemeente 40.000 euro kostte') is geen duidingsstaart. Ook overslaan: een geciteerd oordeel met bron ('wat volgens de rekenkamer het toezicht ondermijnt'), en juridische of normatieve tekst waarin 'waardoor wordt gewaarborgd dat' de norm zelf is. Een gevolgzin met 'waardoor' is gewoon Nederlands en vaak de beste formulering, zeker als het gevolg concreet is. Het signaal is de herhaling, elke alinea dezelfde staart, en een staart die niets nieuws zegt.
-
-### Retorische zelfvraag (Het resultaat? Verwoestend.) `rhetorical-self-question`
-
-Ernst: **always** · Herkomst: nl-bron · en: `rhetorical-self-question`
-
-De schrijver stelt zichzelf een vraag en beantwoordt hem meteen, of vuurt vragen af als uitstel: de beantwoorde zelfvraag (Het resultaat? Verwoestend.), de overgangsvraag (Wat betekent dit voor jou?), het nagespeelde vraaggesprek (Is het snel? Ja. Is het goedkoop? Ook.) en de vragenketen. Het trucje zelf is prima; de frequentie verraadt de machine, en de antwoorden slaan soms niet eens terug op de vraag. Maak er een mededeling van; weet je het antwoord, zeg het dan.
-
-Signalen: `Het resultaat?` · `Het mooiste?` · `Het ergste?` · `Zou ik het opnieuw doen? Zeker.` · `Wat betekent dit voor jou?` · `Waarom? Omdat` · `Klinkt goed, toch?` · `Is het snel? Ja.` · `Herkenbaar?`
-
-Voor: Het resultaat? Verwoestend.
-
-Na: De storing kostte het bedrijf twee dagen omzet.
-
-Niet markeren: Een echte vraag aan de lezer die onbeantwoord blijft, een FAQ, een interview, een quiz of een didactische opbouw waarin de vraag de stof structureert. Ook: één zelfvraag in een lang stuk. Markeer bij herhaling, bij een vraag die geen lezer stelt, of waar het antwoord in de volgende halve zin al staat.
+Niet markeren: Een bijzin die echt nieuwe informatie draagt ('wat de gemeente 40.000 euro kostte') is geen duidingsstaart. Ook overslaan: een geciteerd oordeel met bron ('wat volgens de rekenkamer het toezicht ondermijnt'), en juridische of normatieve tekst waarin 'waardoor wordt gewaarborgd dat' de norm zelf is. Het signaal is de herhaling, elke alinea dezelfde staart, en een staart die niets nieuws zegt.
 
 ### Staccato-fragmenten (Snel. Simpel.) `staccato-fragments`
 
@@ -128,7 +86,7 @@ Signalen: `Waar het om gaat is` · `Het punt is dat` · `Wat belangrijk is, is d
 
 Voor: Waar het om gaat is dat de cache warm is. Het punt is dat niemand hem met de hand warm houdt.
 
-Na: De cache is warm, en niemand houdt hem met de hand warm.
+Na: De cache moet warm blijven, en dat doet niemand handmatig.
 
 Niet markeren: Een cleft die echt contrasteert met iets wat eerder stond ('Wat opvalt is niet de omzet, maar het aantal klachten' in een tekst die de omzet net besprak) doet werk. Ook overslaan: spreektaal, interviews en debatverslagen, waar de aanloop de beurt markeert.
 
@@ -142,9 +100,51 @@ Signalen: `fungeert als` · `dient als` · `geldt als` · `vormt een belangrijk 
 
 Voor: Het pand fungeert als ontmoetingsplek en beschikt over een zaal voor tachtig personen.
 
-Na: In het pand komt de meetup samen. De zaal heeft tachtig stoelen.
+Na: In dit pand houden we de meetup. De zaal heeft tachtig stoelen.
 
 Niet markeren: In encyclopedische en juridische tekst zijn 'is gelegen', 'geldt als' en 'beschikt over' gangbaar Nederlands; 'herbergt' en 'huisvest' zeggen bij gebouwen iets specifieks. Markeer alleen waar is of heeft hetzelfde zou zeggen, en bij dichtheid: drie of meer stand-ins in één alinea. Vakjargon en vaste juridische formules blijven staan.
+
+### Doelstaart met om ervoor te zorgen dat `doelstaart-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Aan een handeling wordt een doelbijzin geplakt die het gevolg nog eens abstract herhaalt, gebouwd op het Engelse in order to ensure en to make sure that: om ervoor te zorgen dat, om te garanderen dat, met als doel om, om zo bij te dragen aan. Het gevolg staat meestal al in de hoofdzin, en waar het echt nieuw is zegt het Nederlands zodat, met een concreet resultaat erachter. Als vaste staart krijgt elke alinea dezelfde tweede helft.
+
+Signalen: `om ervoor te zorgen dat` · `om te garanderen dat` · `met als doel om` · `om zo bij te dragen aan` · `om te kunnen blijven voldoen aan` · `om optimaal gebruik te maken van`
+
+Voor: We draaien de tests nu ook op de preview, om ervoor te zorgen dat er geen fouten in productie terechtkomen.
+
+Na: We draaien de tests nu ook op de preview, zodat een fout niet pas in productie opvalt.
+
+Niet markeren: Een doelzin die echt een doel noemt dat niet uit de hoofdzin volgt is gewoon Nederlands ("we bellen vooraf om te controleren of de zaal vrij is"). In beleidsstukken, kwaliteitshandboeken en normen is "om te garanderen dat" de vaste formulering. Het signaal is de staart in elke alinea, of het doel dat de hoofdzin al zei.
+
+### Gevolgstaart aan elke zin (wat resulteert in, waardoor je) `gevolgstaart-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Aan elke mededeling hangt een bijzin die het gevolg samenvat, overgezet uit het Engelse resulting in, leading to en allowing you to: wat resulteert in kortere wachttijden, waardoor je tijd bespaart, wat betekent dat je sneller klaar bent. Anders dan de duidingsstaart bij participial-tail is de losse gevolgzin gewoon Nederlands en vaak de beste formulering. Het signaal is de dichtheid en het gevolg dat niets toevoegt: drie of meer van deze staarten in één stuk, of een gevolg dat de hoofdzin al zei. Maak er een aparte zin van met een maat erin, of schrap de staart.
+
+Signalen: `, wat resulteert in` · `, wat leidt tot` · `, waardoor je` · `, wat betekent dat` · `, waardoor het team` · `, wat zorgt voor` · `, waardoor u` · `, wat ervoor zorgt dat`
+
+Voor: We hebben de build gesplitst, wat resulteert in kortere wachttijden.
+
+Na: We hebben de build gesplitst. De wachttijd zakte van negen naar drie minuten.
+
+Niet markeren: Een gevolgzin met waardoor is gewoon Nederlands en vaak de duidelijkste formulering, zeker als het gevolg meetbaar is. Ook overslaan: handleidingen en releasenotes waarin elke regel het gevolg van een instelling beschrijft, en één staart in een lang stuk. Het signaal is drie of meer per stuk, of een gevolg dat niets toevoegt aan wat de hoofdzin al zei.
+
+### Levenloos onderwerp met een menselijk werkwoord `inanimate-agent`
+
+Ernst: **cluster** · Herkomst: transfer · en: `inanimate-agent`
+
+Een abstractie of een ding wordt onderwerp van een werkwoord dat alleen mensen uitvoeren: de data vertelt ons, het rapport laat ons zien, de techniek vraagt om, het besluit ontstond. De handelende persoon verdwijnt en het ding krijgt een wil. Herschrijf met de persoon of organisatie die handelde, of kies een zwakker werkwoord.
+
+Signalen: `de data vertelt ons` · `het rapport laat ons zien` · `de techniek vraagt om` · `de tijd roept om` · `de code nodigt je uit` · `het besluit ontstond` · `het rapport wil`
+
+Voor: Het besluit ontstond na weken van overleg.
+
+Na: Het team besloot het na weken van overleg.
+
+Niet markeren: Vaste metonymie is gewoon Nederlands: het kabinet besloot, de gemeente meldt, de wet bepaalt, het contract zegt. Ook: een bewust literair beeld, en vakjargon waarin een systeem echt een handeling uitvoert ('de scheduler kiest de volgende taak'). Markeer waar het werkwoord bewustzijn onderstelt. Bronwerkwoorden bij documenten en cijfers zijn gewoon Nederlands en in rapportage de normale vorm: uit het rapport blijkt, de cijfers wijzen op, het onderzoek toont aan, de meting geeft aan. Markeer alleen werkwoorden die bewustzijn of wil onderstellen (vertelt ons, nodigt uit, vraagt om, wil, begrijpt). Voor het kleurloze abstracte onderwerp bij een leeg werkwoord: zie translationese/abstract-subject-all-purpose-verb.
 
 ### Gespiegelde zinnen en herhaalde zinsvormen `mirrored-clause-symmetry`
 
@@ -164,7 +164,7 @@ Niet markeren: Bewuste parallellie in een slotalinea, een gedicht, een spreuk of
 
 Ernst: **cluster** · Herkomst: transfer · en: `modal-flattening`
 
-Elke schakering van onzekerheid wordt met hetzelfde hulpwerkwoord uitgedrukt, in het Nederlands vrijwel altijd kan of zou kunnen, zodat de hele tekst één toon van voorbehoud krijgt. Ook de mate verdwijnt: wat vrijwel zeker is en wat hoogst onwaarschijnlijk is krijgen dezelfde vorm. De oplossing is de twijfel variëren, niet weghalen: waarschijnlijk, vermoedelijk, naar verwachting, in de meeste gevallen, het is de vraag of.
+Elke schakering van onzekerheid wordt met hetzelfde hulpwerkwoord uitgedrukt, in het Nederlands vrijwel altijd kan of zou kunnen, zodat de hele tekst één toon van voorbehoud krijgt. Ook de mate verdwijnt: wat vrijwel zeker is en wat hoogst onwaarschijnlijk is krijgen dezelfde vorm. De oplossing is de twijfel variëren, niet weghalen: waarschijnlijk, vermoedelijk, naar verwachting, in de meeste gevallen, het is de vraag of. Deze entry meet de vervlakking zelf: vier of meer voorbehoudsvormen in één passage, zodat vrijwel zeker en hoogst onwaarschijnlijk dezelfde vorm krijgen. Het afzwakken van een losse claim die je plat kunt stellen staat bij translationese/modal-ability-overuse.
 
 Signalen: `zou kunnen` · `kan leiden tot` · `kan zorgen voor` · `kan bijdragen aan` · `kan helpen bij`
 
@@ -174,13 +174,27 @@ Na: Deze aanpak mislukt waarschijnlijk. De kosten lopen op, en de planning schui
 
 Niet markeren: Losse gevallen zijn gewoon Nederlands; 'kan' betekent daarnaast ook mogen en in staat zijn, en die betekenissen tellen niet mee. Poort op dichtheid: vier of meer voorbehoudsvormen met kan in één passage. In wetenschappelijke en juridische tekst is voorbehoud verplicht en zegt de dichtheid niets.
 
+### Negatief parallellisme (het is geen X, het is Y) `negative-parallelism`
+
+Ernst: **cluster** · Herkomst: nl-bron · en: `negative-parallelism`
+
+Een punt wordt gebracht als correctie op een bewering die niemand deed: de zwakkere lezing wordt ontkend en de echte in dezelfde adem gegeven. Vormen: het scharnier binnen één zin (het is niet X, het is Y), de optellende variant (niet alleen X, maar ook Y), de gesplitste variant (Dat is geen X. Dat is Y. / De vraag is niet X. De vraag is Y.), de oorzaakvariant (niet omdat X, maar omdat Y). In gewoon Nederlands is een enkele maar-tegenstelling normaal; de tell is het geënsceneerde sjabloon met herhaald koppelwerkwoord, en de herhaling ervan door de tekst. De opwaardering (meer dan alleen X, niet zomaar een X) staat bij translationese/beyond-mere-escalation en de kopregelvariant bij rhetoric/contrast-slogan-opener; markeer één keer.
+
+Signalen: `het is niet X, het is Y` · `het is geen X, het is Y` · `dat is geen X, dat is Y` · `dit is geen tool, dit is een manier van denken` · `niet X, maar Y` · `X, geen Y` · `niet alleen ..., maar ook` · `het gaat niet alleen om ..., maar` · `het gaat niet om X, het gaat om Y` · `dit gaat niet over X, maar over Y` · `de vraag is niet X, de vraag is Y` · `niet omdat X, maar omdat Y` · `het draait niet om` · `niet ..., maar juist` · `niet zozeer X als wel Y`
+
+Voor: Het gaat niet om efficiëntie, het gaat om transformatie.
+
+Na: We plannen nu per week in plaats van per kwartaal. Dat het ook sneller gaat, merkten we pas later.
+
+Niet markeren: Een gewone correctie waarin het ontkende deel echt in de lucht hing ('Hij kwam niet uit Hengelo, maar uit Borne') is geen tell. Ook niet: citaten, juridische of contracttekst waarin een afbakening telt, en een enkele maar-tegenstelling zonder herhaald koppelwerkwoord. Markeer pas bij het gesloten sjabloon of bij twee of meer gevallen in één stuk.
+
 ### Naamwoordstijl (het nemen van een besluit, overgaan tot) `nominalization-inflation`
 
 Ernst: **cluster** · Herkomst: nl-bron · en: `nominalization-inflation`
 
 Eén direct werkwoord wordt vervangen door een werkwoord plus abstract zelfstandig naamwoord: overgaan tot invoering voor invoeren, het nemen van een besluit voor besluiten, een bijdrage leveren aan voor helpen. De zin wordt langer en de handelende persoon verdwijnt vaak mee. Zet de werkwoordstam terug en noem wie wat doet. De vorm die in het Nederlands het hardst opvalt is het naamwoord met het en van, overgezet uit een Engelse -ing-vorm of een -tion-woord: helpen met het groeien van, bijdragen aan het waarborgen van.
 
-Signalen: `het nemen van een besluit` · `tot stand brengen` · `een bijdrage leveren aan` · `in staat zijn om` · `de uitvoering van` · `de realisatie van` · `de implementatie van` · `overgaan tot invoering` · `het bieden van` · `het creëren van` · `het waarborgen van` · `het verbeteren van` · `bij het optimaliseren van` · `helpen met het groeien van` · `het navigeren van`
+Signalen: `het nemen van een besluit` · `tot stand brengen` · `een bijdrage leveren aan` · `de uitvoering van` · `de realisatie van` · `de implementatie van` · `overgaan tot invoering` · `het bieden van` · `het creëren van` · `het waarborgen van` · `het verbeteren van` · `bij het optimaliseren van` · `helpen met het groeien van` · `het navigeren van` · `het doorvoeren van` · `het opzetten van` · `de totstandkoming van` · `het aanbrengen van`
 
 Voor: Het team is overgegaan tot uitstel van de lancering.
 
@@ -198,7 +212,7 @@ Signalen: `Dit onderstreept` · `Dit laat zien dat` · `Dit betekent dat` · `Da
 
 Voor: Lezers volgen een tekst beter als het onderwerp klopt. Dit onderstreept het belang van de onderwerpskeuze.
 
-Na: Wie het juiste onderwerp kiest, houdt de tekst helder.
+Na: Lezers volgen een tekst beter als het onderwerp klopt. De onderwerpskeuze is dus het eerste wat ik vastleg.
 
 Niet markeren: Een aanwijzend voornaamwoord dat onmiskenbaar naar de vorige zin verwijst is gewoon goed Nederlands en houdt alinea's aan elkaar. Ook overslaan: notulen en verslagen waarin 'dit' naar een genoemd besluit wijst. Markeer waar de vorige alinea meerdere kandidaten bevat, of waar de zin alleen betekenis toekent.
 
@@ -215,6 +229,20 @@ Voor: Er moet worden gekeken naar het proces, en verandering is nodig.
 Na: Het ontwikkelteam past de deployprocedure aan voor 1 oktober.
 
 Niet markeren: In wetteksten, normen, bestekken en procedures is 'dient te worden' de conventie en staat de handelende persoon elders in het document. Ook overslaan: citaten uit beleidsstukken die je juist bespreekt. Markeer in gewoon proza, en vooral bij twee of meer verplichtingen zonder eigenaar in één alinea.
+
+### Retorische zelfvraag (Het resultaat? Verwoestend.) `rhetorical-self-question`
+
+Ernst: **cluster** · Herkomst: nl-bron · en: `rhetorical-self-question`
+
+De schrijver stelt zichzelf een vraag en beantwoordt hem meteen, of vuurt vragen af als uitstel: de beantwoorde zelfvraag (Het resultaat? Verwoestend.), de overgangsvraag (Wat betekent dit voor jou?), het nagespeelde vraaggesprek (Is het snel? Ja. Is het goedkoop? Ook.) en de vragenketen. Het trucje zelf is prima; de frequentie verraadt de machine, en de antwoorden slaan soms niet eens terug op de vraag. Maak er een mededeling van; weet je het antwoord, zeg het dan.
+
+Signalen: `Het resultaat?` · `Het mooiste?` · `Het ergste?` · `Zou ik het opnieuw doen? Zeker.` · `Wat betekent dit voor jou?` · `Waarom? Omdat` · `Klinkt goed, toch?` · `Is het snel? Ja.` · `Herkenbaar?`
+
+Voor: Het resultaat? Verwoestend.
+
+Na: De storing kostte het bedrijf twee dagen omzet.
+
+Niet markeren: Een echte vraag aan de lezer die onbeantwoord blijft, een FAQ, een interview, een quiz of een didactische opbouw waarin de vraag de stof structureert. Ook: één zelfvraag in een lang stuk. Markeer bij herhaling, bij een vraag die geen lezer stelt, of waar het antwoord in de volgende halve zin al staat.
 
 ### Drieslag `rule-of-three`
 
@@ -240,9 +268,9 @@ Signalen: `kan worden ... / kan worden ... / kan worden ...` · `... mogelijk ma
 
 Voor: Het proces kan worden versneld. De kosten kunnen worden verlaagd. De invoering kan worden vereenvoudigd.
 
-Na: Het proces gaat sneller, kost minder en is makkelijker in te voeren.
+Na: Het proces gaat sneller en kost minder. Invoeren duurt nu een dag in plaats van een week.
 
-Niet markeren: Beleidsstukken, normen en handleidingen herhalen de vorm soms met opzet, omdat elke regel dezelfde verplichting draagt. Ook overslaan: opsommingen, en twee zinnen achter elkaar. Het Koreaanse origineel gaat over zinseindmorfemen; in het Nederlands telt alleen de herhaalde werkwoordelijke eindgroep.
+Niet markeren: Beleidsstukken, normen en handleidingen herhalen de vorm soms met opzet, omdat elke regel dezelfde verplichting draagt. Ook overslaan: opsommingen, en twee zinnen achter elkaar. API-referenties, changelogs en releasenotes waarin elke regel per opzet op dezelfde werkwoordsvorm eindigt blijven staan.
 
 ### Elliptische omslag (de data niet.) `stranded-auxiliary-contrast`
 
@@ -256,7 +284,7 @@ Voor: De tool verdween, de data niet.
 
 Na: De tool verdween en de data bleef staan.
 
-Niet markeren: Ellips is normaal in spreektaal, dialoog en ondertitels, en één keer in een stuk is stijl. Ook overslaan: een antwoord op een vraag ('Werkte de back-up? De database niet.') en citaten. Markeer bij een tweede geval in dezelfde tekst.
+Niet markeren: Ellips is normaal in spreektaal, dialoog en ondertitels, en één keer in een stuk is stijl. Ook overslaan: een antwoord op een vraag ('Draaide alles weer? De zoekfunctie niet.') en citaten. Markeer bij een tweede geval in dezelfde tekst.
 
 ### Synoniemenverdubbeling (een belangrijke en cruciale rol) `synonym-doubling`
 
@@ -264,7 +292,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `synonym-doubling`
 
 Twee bijna-synonieme bepalingen of abstracte zelfstandige naamwoorden worden op één kern gekoppeld, zodat de woordgroep hetzelfde twee keer zegt: een belangrijke en cruciale rol, nieuw en innovatief, snel en efficiënt, de rol en functie van, kennis en kunde. De verdubbeling voelt als nadruk maar voegt geen betekenis toe. Houd er één.
 
-Signalen: `een belangrijke en cruciale rol` · `nieuw en innovatief` · `duidelijk en helder` · `snel en efficiënt` · `veilig en betrouwbaar` · `de rol en functie van` · `de betekenis en waarde van` · `kennis en kunde`
+Signalen: `een belangrijke en cruciale rol` · `nieuw en innovatief` · `duidelijk en helder` · `snel en efficiënt` · `veilig en betrouwbaar` · `de rol en functie van` · `de betekenis en waarde van` · `krachtig en veelzijdig` · `modern en toekomstbestendig` · `transparant en open`
 
 Voor: Het team speelt een belangrijke en cruciale rol in het project.
 
@@ -282,17 +310,45 @@ Signalen: `, geen gedoe` · `, geen giswerk` · `, geen verrassingen` · `, zond
 
 Voor: De opties komen uit het geselecteerde item, geen giswerk.
 
-Na: De opties komen uit het geselecteerde item, dus de gebruiker hoeft niets te raden.
+Na: De opties komen uit het item dat je hebt aangeklikt, dus je hoeft niets te raden.
 
 Niet markeren: Een staartje dat een echte beperking noemt die de lezer nodig heeft ('werkt in de browser, geen app nodig') is inhoud. Ook overslaan in gesproken taal, ondertitels en citaten, en bij één enkel geval in een lange tekst.
+
+### Uitleggende bijstelling bij elke eigennaam `uitleggende-bijstelling-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Elke eigennaam krijgt bij het noemen een bijstelling tussen komma's die uitlegt wat of wie het is, ook wanneer het publiek dat evident weet: Enschede, de grootste stad van Twente, ... Het model schrijft voor een lezer zonder context en glost daarom alles, inclusief namen die twee alinea's eerder al zijn ingevoerd. De tell is dat elke naam dezelfde behandeling krijgt en dat de bijstelling generiek is.
+
+Signalen: `Enschede, de grootste stad van Twente,` · `Kubernetes, het populaire orkestratieplatform,` · `X, een van de bekendste Y in Z,` · `elke eigennaam gevolgd door een bijstelling tussen komma's` · `een bijstelling die alleen een categorie noemt`
+
+Voor: Tijdens de meetup in Enschede, de grootste stad van Twente, sprak Jan Jansen, een ervaren softwareontwikkelaar, over Kubernetes, het populaire orkestratieplatform.
+
+Na: Tijdens de meetup in Enschede sprak Jan Jansen over Kubernetes. Hij bouwt er sinds 2019 clusters mee.
+
+Niet markeren: Een bijstelling die de lezer echt nodig heeft is gewoon goede journalistiek, zeker bij de eerste vermelding van een naam die het publiek niet kent. In encyclopedische tekst is de definiërende bijstelling de norm. Het signaal is de gloss bij elke naam, ook bij namen die de tekst al heeft ingevoerd, en de bijstelling die alleen een categorie noemt.
+
+### Waarbij-lijm (elke tweede mededeling als bijzin) `waarbij-aanhaakzin-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Een tweede mededeling wordt niet als zelfstandige zin geschreven maar met waarbij, waarin of waarbinnen aan de vorige geplakt, zodat elke alinea uit koppelzinnen bestaat. Vaak draagt de bijzin een handeling zonder handelende persoon (waarbij gebruik wordt gemaakt van, waarbij rekening wordt gehouden met), en soms hangt er een tweede waarbij aan de eerste. In gewoon Nederlands is waarbij een normale aansluiting; de tell is dat het model er standaard naar grijpt in plaats van een punt te zetten.
+
+Signalen: `, waarbij gebruik wordt gemaakt van` · `, waarbij rekening wordt gehouden met` · `, waarin de nadruk ligt op` · `twee waarbij-bijzinnen in dezelfde zin` · `drie of meer waarbij in één alinea`
+
+Voor: We werken in sprints van twee weken, waarbij elke sprint wordt afgesloten met een demo, waarbij ook de klant aanschuift.
+
+Na: We werken in sprints van twee weken. Elke sprint sluiten we af met een demo, en daar zit de klant bij.
+
+Niet markeren: Eén waarbij-bijzin per alinea is gewoon Nederlands en vaak de kortste manier om een omstandigheid te noemen. In juridische en bestuurlijke tekst is de constructie de norm. Het signaal is de dichtheid: twee waarbij in dezelfde zin, of drie of meer in één alinea, en de bijzin zonder handelende persoon.
 
 ### Lijdende vorm zonder handelende persoon en zinnen zonder onderwerp `agentless-passive-subjectless-fragment`
 
 Ernst: **context** · Herkomst: transfer · en: `agentless-passive-subjectless-fragment`
 
-De handelende persoon wordt verstopt of het onderwerp weggelaten: lijdende vormen zonder door-bepaling (De resultaten worden automatisch bewaard, Ondersteuning is toegevoegd) en zinnen zonder onderwerp of werkwoord (Geen configuratiebestand nodig). Vaak staat de constructie er om te vermijden dat gezegd moet worden wie iets deed. Noem wie het doet en schrijf bedrijvend.
+De handelende persoon wordt verstopt of het onderwerp weggelaten: lijdende vormen zonder door-bepaling (De resultaten worden automatisch bewaard, Ondersteuning is toegevoegd) en zinnen zonder onderwerp of werkwoord (Geen configuratiebestand nodig). Vaak staat de constructie er om te vermijden dat gezegd moet worden wie iets deed. Noem wie het doet en schrijf bedrijvend. Deze entry houdt het onderwerploze fragment en de lijdende vorm zonder door-bepaling; de er-passief zonder handelende partij staat bij translationese/agentless-automated-passive en de verplichting bij syntax/prescriptive-agentless-necessity. Markeer één keer.
 
-Signalen: `wordt automatisch bewaard` · `is toegevoegd` · `er wordt gewerkt aan` · `er wordt gekeken naar` · `Geen configuratiebestand nodig.` · `Zonder installatie te gebruiken.` · `wordt ondersteund`
+Signalen: `wordt automatisch bewaard` · `is toegevoegd` · `Geen configuratiebestand nodig.` · `Zonder installatie te gebruiken.` · `wordt ondersteund`
 
 Voor: Geen configuratiebestand nodig. De resultaten worden automatisch bewaard.
 
@@ -300,11 +356,25 @@ Na: Je hebt geen configuratiebestand nodig. De cli bewaart de resultaten zelf.
 
 Niet markeren: De lijdende vorm is gewoon Nederlands en soms de enige juiste keuze: als de handelende persoon onbekend is, niet ter zake doet, of als het lijdend voorwerp het onderwerp van de alinea is. Vakteksten, wetgeving en wetenschappelijk proza gebruiken hem per conventie. Markeer op dichtheid, niet op de losse zin.
 
+### Door plus te-infinitief als vaste zinsopening `door-infinitief-opener-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+De zin opent met een middel- of oorzaakaanloop op Door ... te ..., met correcte inversie erna, als overzetting van het Engelse By doing X. Eén zo'n opening is gewoon Nederlands. De tell is dat een groot deel van de alinea's er zo mee begint, dat de aanloop het onderwerp naar achteren duwt en dat de hoofdzin daarna een vaag voordeel meldt in plaats van een feit.
+
+Signalen: `Door te investeren in` · `Door slim gebruik te maken van` · `Door dit proces te automatiseren` · `Door te kiezen voor` · `twee alinea's op rij die met Door openen`
+
+Voor: Door slim gebruik te maken van automatisering bespaart het team kostbare tijd en houdt het ruimte over voor complexere vraagstukken.
+
+Na: Het team automatiseerde de export. Dat scheelt een half uur per dag.
+
+Niet markeren: Een aanloop met Door is correct Nederlands en soms de duidelijkste volgorde, zeker als het middel het onderwerp van de alinea is. In een instructie of een oorzaakanalyse hoort de constructie erbij. Het signaal is de herhaling, twee of meer alinea's op rij, en de vage hoofdzin erachter.
+
 ### Eén zinsvorm door de hele tekst (te glad, even lang) `hypotactic-smoothness`
 
 Ernst: **context** · Herkomst: nl-bron · en: `hypotactic-smoothness`
 
-Elke zin loopt netjes af en is ongeveer even lang: geen fragment, geen zin die met En, Maar of Dus begint, geen afgebroken constructie, en bijzinnen die met komma's en 'en' aan elkaar worden geplakt tot een keten zonder duidelijk doel. Menselijke tekst is grillig: een korte zin, dan een lange die afdwaalt. Dit is vooral een bewaarregel, laat de ruige vormen staan waar de stem ze zou gebruiken, en repareer de vlakheid nooit met opzettelijke fouten.
+Elke zin loopt netjes af en is ongeveer even lang: geen fragment, geen zin die met En, Maar of Dus begint, geen afgebroken constructie, en bijzinnen die met komma's en 'en' aan elkaar worden geplakt tot een keten zonder duidelijk doel. Menselijke tekst is grillig: een korte zin, dan een lange die afdwaalt. Dit is vooral een bewaarregel, laat de ruige vormen staan waar de stem ze zou gebruiken, en repareer de vlakheid nooit met opzettelijke fouten. De meting (spreiding gedeeld door gemiddelde zinslengte, plus het aandeel inversies) staat bij structure/sentence-rhythm-uniformity; hier gaat het om de bewaarregel en de keten met komma en en.
 
 Signalen: `geen zin begint met En` · `geen zin begint met Maar` · `geen zin begint met Dus` · `geen enkel fragment` · `zinnen van 15 tot 25 woorden` · `weinig variatie in zinslengte` · `onnatuurlijk lange zinnen aan elkaar geplakt met ', en'`
 
@@ -314,17 +384,31 @@ Na: De build faalde. Dus draaiden we de commit terug. En toen ging hij wel door.
 
 Niet markeren: Formele registers vragen om gelijkmatige, afgeronde zinnen: wetgeving, normen, wetenschappelijke artikelen, jaarverslagen. Ook: vertaald werk en tekst die door een redacteur is gladgestreken. De komma voor 'en' tussen twee hoofdzinnen is correct Nederlands en op zichzelf geen signaal. Geen regex: dit is een afwezigheidspatroon dat een lezer moet vaststellen over een hele tekst.
 
+### Instructie in de kun-je-vorm `instructie-kun-je-vorm-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Stappen in een handleiding worden gegeven als mogelijkheid in plaats van als opdracht: Vervolgens kun je de map openen, Daarna kan je opslaan. Nederlandse instructies staan in de gebiedende wijs. Als elke stap zo begint, wordt de volgorde vrijblijvend en staat er in elke zin een hulpwerkwoord dat niets doet. Zet de gebiedende wijs terug.
+
+Signalen: `Vervolgens kun je` · `Je kunt nu` · `Daarna kan je` · `Hier kun je` · `Je zou kunnen beginnen met` · `Je kunt ervoor kiezen om`
+
+Voor: Vervolgens kun je het bestand openen. Daarna kun je de sleutel invullen.
+
+Na: Open het bestand. Vul daarna de sleutel in.
+
+Niet markeren: Waar de stap echt optioneel is, is "je kunt" de juiste vorm ("je kunt de standaardwaarde laten staan"). In een uitlegstuk dat mogelijkheden beschrijft in plaats van stappen hoort de aantonende wijs. Het signaal is de reeks: twee of meer opeenvolgende stappen die allebei met kun je openen.
+
 ### Zekerheid via dubbele ontkenning (niet onbelangrijk, niet optioneel) `litotes-confidence`
 
 Ernst: **context** · Herkomst: transfer · en: `litotes-confidence`
 
 Een bewering wordt gedaan door haar tegendeel te ontkennen: niet onbelangrijk, niet ongewoon, niet optioneel, niet te onderschatten. De claim wordt zo verondersteld in plaats van beweerd, en komt daarmee buiten discussie te staan. Waar een gewoon bevestigend woord bestaat, gebruik dat en geef de reden.
 
-Signalen: `niet onbelangrijk` · `niet ongewoon` · `niet onlogisch` · `niet optioneel` · `niet te onderschatten` · `niet zonder reden` · `geen onverstandige keuze` · `niet onverdienstelijk`
+Signalen: `niet onbelangrijk` · `niet ongewoon` · `niet onlogisch` · `niet optioneel` · `niet te onderschatten` · `niet zonder reden` · `geen onverstandige keuze` · `geen overbodige luxe` · `niet zonder risico`
 
 Voor: Blind taggen is niet optioneel.
 
-Na: Iedereen tagt blind, want anders wordt de steekproef scheef.
+Na: Blind taggen is verplicht, anders wordt de steekproef scheef.
 
 Niet markeren: Litotes is een oud stijlmiddel en in ironie of understatement precies de bedoeling. Ook overslaan: vaste uitdrukkingen ('niet voor niets', 'niet zonder slag of stoot'), citaten, en één enkel geval. Markeer bij twee of meer in dezelfde passage, of waar een gewoon bijvoeglijk naamwoord voorhanden was.
 
@@ -340,7 +424,7 @@ Voor: De vergadering heeft lang geduurd. We hebben geen besluit genomen.
 
 Na: De vergadering duurde lang. We namen geen besluit.
 
-Niet markeren: In spreektaal, in nieuwsberichten over iets wat net gebeurde en bij een resultaat dat nu nog geldt is het perfectum juist de goede tijd. Eén of twee perfecta zeggen niets. Geen regex: alleen de dichtheid over drie of meer opeenvolgende verhalende zinnen telt, en die moet een lezer wegen.
+Niet markeren: In spreektaal, in nieuwsberichten over iets wat net gebeurde en bij een resultaat dat nu nog geldt is het perfectum juist de goede tijd. Eén of twee perfecta zeggen niets. Geen regex: alleen de dichtheid over drie of meer opeenvolgende verhalende zinnen telt, en die moet een lezer wegen. In Belgisch Nederlands is de voltooide tijd de gewone verteltijd; markeer daar niet, of stel eerst de variëteit vast voordat je de dichtheidsdrempel van drie zinnen toepast.
 
 ### Anafoor: drie zinnen met dezelfde opening `same-opener-runs`
 
@@ -350,27 +434,13 @@ Drie of meer opeenvolgende zinnen beginnen met hetzelfde woord of dezelfde woord
 
 Signalen: `Misschien ... Misschien ... Misschien ...` · `Ze gaan ervan uit dat ... Ze gaan ervan uit dat ...` · `Het is ... Het is ... Het is ...` · `Wij geloven ... Wij geloven ...` · `Elke ... Elke ... Elke ...`
 
-Voor: Misschien had niemand het nodig. Misschien loste het het verkeerde probleem op. Misschien klopte de timing niet.
+Voor: Misschien had niemand het nodig. Misschien loste het een probleem op dat niemand had. Misschien klopte de timing niet.
 
-Na: Misschien had niemand het nodig, of loste het het verkeerde probleem op. De timing hielp ook niet mee.
+Na: Misschien had niemand het nodig, of loste het een probleem op dat niemand had. De timing hielp ook niet mee.
 
 Niet markeren: Anafoor in een toespraak, een gedicht of een bewust ritmische passage doet echt werk. Ook overslaan: opsommingen en bullets die per opzet gelijk beginnen, notulen en changelogs, en twee zinnen achter elkaar (pas vanaf drie is het een reeks).
 
 ## Retorische zetten en toon
-
-### Aangekondigde interesse `announced-interest`
-
-Ernst: **always** · Herkomst: transfer · en: `announced-interest`
-
-Een aankondiging claimt een reactie die de tekst nog niet heeft verdiend: Wat mij opviel, Wat me verbaasde, Hier wordt het interessant, Ik was verrast te zien dat. Bijvorm: het deelbericht dat opent met de claim dat het onderwerp de schrijver al dagen bezighoudt (de zin die bij me blijft hangen, hier denk ik al de hele week over na) voordat de lezer een reden heeft om te kijken. Het werkt alleen als er echt verrassende gegevens volgen; begin anders bij het ding zelf.
-
-Signalen: `Wat mij opviel` · `Wat me verbaasde` · `Wat me raakte` · `Dit vond ik interessant` · `Hier wordt het interessant` · `Ik was verrast te zien dat` · `Het interessantste deel` · `de zin die bij me blijft hangen` · `ik moet hier steeds aan denken` · `hier denk ik al de hele week over na` · `dit blijft door mijn hoofd spelen`
-
-Voor: Wat mij opviel: de helft van de aanmeldingen kwam uit Hengelo. Ik moet hier steeds aan denken.
-
-Na: De helft van de aanmeldingen kwam uit Hengelo.
-
-Niet markeren: In een persoonlijk verslag of een leeslog is de eigen reactie het onderwerp; daar hoort ze. Niet markeren als er meteen een cijfer of feit volgt dat de verbazing rechtvaardigt en de lezer die deelt.
 
 ### Aforismesjabloon `aphorism-formula`
 
@@ -378,7 +448,7 @@ Ernst: **always** · Herkomst: transfer · en: `aphorism-formula`
 
 Een gewone bewering wordt omgegoten tot citeerbare wetmatigheid door een invulmetafoor: X is de taal van Y, de munt van Z, de architectuur van vertrouwen, X is de Excel van de agents. Bijvorm: het transformatieframe dat een verschuiving dramatiseert (van X naar Y, voorbij X richting Y). De vorm doet het overtuigingswerk in plaats van bewijs.
 
-Signalen: `is de taal van` · `is de munt van` · `de architectuur van vertrouwen` · `wordt een valkuil` · `is geen tool maar een spiegel` · `de Excel van` · `van X naar Y` · `voorbij X richting Y`
+Signalen: `is de taal van` · `is de munt van` · `de architectuur van vertrouwen` · `de Excel van` · `voorbij X richting Y` · `X is de nieuwe Y` · `de heilige graal van` · `de ruggengraat van` · `het cement tussen`
 
 Voor: Documentatie is de munt van vertrouwen in een open source-project.
 
@@ -406,7 +476,7 @@ Ernst: **always** · Herkomst: nl-bron · en: `call-to-action-closer`
 
 De post eindigt met een vraag aan de lezer die op elke post zou passen en niets over het onderwerp vraagt. Nederlandse vormen zijn vaak letterlijke vertalingen van 'What do you think? Share your thoughts in the comments'. Vaak volgt er een even voorspelbare reactie onder: 'Interessant perspectief, dank voor het delen'. Naast de vraag staan de instructie en de uitnodiging: Bewaar deze post, Doe jezelf een plezier en lees dit, Laten we connecten, Volg mij voor meer, en het beleidsstuk dat elke alinea op een oproep laat eindigen.
 
-Signalen: `Wat denk jij?` · `Wat is jouw ervaring?` · `Deel je gedachten in de reacties` · `Laat het weten in de comments` · `Herkenbaar?` · `Ben jij het ermee eens?` · `Thoughts?` · `Agree?` · `Hoe zie jij dat?` · `Zeker de moeite waard:` · `Bewaar deze post.` · `Doe jezelf een plezier en lees dit.` · `Laten we connecten!` · `Stuur me gerust een bericht` · `Volg mij voor meer` · `Deel het in de reacties` · `er moet iets gebeuren`
+Signalen: `Wat denk jij?` · `Wat is jouw ervaring?` · `Deel je gedachten in de reacties` · `Laat het weten in de comments` · `Herkenbaar?` · `Ben jij het ermee eens?` · `Thoughts?` · `Agree?` · `Hoe zie jij dat?` · `Zeker de moeite waard:` · `Bewaar deze post.` · `Doe jezelf een plezier en lees dit.` · `Laten we connecten!` · `Stuur me gerust een bericht` · `Volg mij voor meer` · `Deel het in de reacties` · `Ik ben benieuwd naar jouw kijk hierop` · `Laat je het me weten?` (+1)
 
 Voor: Wat denk jij? Deel je gedachten in de reacties!
 
@@ -420,19 +490,19 @@ Ernst: **always** · Herkomst: transfer · en: `candor-flag-opener`
 
 Een geënsceneerde pauze of aangekondigde openhartigheid gaat vooraf aan een gewoon punt: Eerlijk?, Even eerlijk, Kijk, Laten we eerlijk zijn, De harde waarheid is. Bijvorm: de schrijver kondigt zijn openheid aan in plaats van open te zijn (Ik wil vooraf eerlijk zijn:, Volledige transparantie:, Ik had dit kunnen weglaten, maar). Het frame suggereert dat de rest minder eerlijk was en is los te knippen van de inhoud: haal het weg en de zin verliest geen informatie.
 
-Signalen: `Eerlijk?` · `Eerlijk gezegd` · `Even eerlijk` · `Kijk,` · `Laten we eerlijk zijn` · `Ik zal eerlijk zijn` · `De harde waarheid is` · `Om maar meteen met de deur in huis te vallen` · `Het zit zo:` · `Het eerlijke antwoord is` · `Ik wil vooraf eerlijk zijn:` · `Voor de volledigheid:` · `Volledige transparantie:` · `die ik liever nu noem dan dat je ze later ontdekt` · `Ik had dit kunnen weglaten, maar` · `En ja, ik ben`
+Signalen: `Eerlijk?` · `Eerlijk gezegd` · `Even eerlijk` · `Kijk,` · `Laten we eerlijk zijn` · `Ik zal eerlijk zijn` · `De harde waarheid is` · `Om maar meteen met de deur in huis te vallen` · `Het zit zo:` · `Het eerlijke antwoord is` · `Ik wil vooraf eerlijk zijn:` · `Voor de volledigheid:` · `Volledige transparantie:` · `Ik had dit kunnen weglaten, maar` · `Ik zal open kaart spelen` · `Even zonder omhaal` · `Ik ga het niet mooier maken dan het is`
 
 Voor: Eerlijk? De eerste editie liep niet lekker. Volledige transparantie: we hadden te weinig stoelen.
 
 Na: De eerste editie liep niet lekker. We hadden te weinig stoelen.
 
-Niet markeren: In gesproken taal en in een interviewcitaat is 'eerlijk gezegd' gewoon spreektaal; laat citaten staan. Als de zin daarna echt iets toegeeft dat de schrijver schaadt, doet de vlag werk. 'Voor de volledigheid' in een notulen of changelog waar echt een ontbrekend punt volgt is functioneel.
+Niet markeren: In gesproken taal en in een interviewcitaat is 'eerlijk gezegd' gewoon spreektaal; laat citaten staan. Als de zin daarna echt iets toegeeft dat de schrijver schaadt, doet de vlag werk. 'Voor de volledigheid' in een notulen of changelog waar echt een ontbrekend punt volgt is functioneel. 'Kijk,' en 'Het zit zo:' zijn ook Nederlandse uitleg- en discoursmarkeerders; in een column of een citaat zijn ze stem. Markeer ze alleen aan het begin van een alinea en alleen als er daarna geen uitleg of toegeving volgt maar een gewone bewering.
 
 ### Contrastslogan als opening of kop `contrast-slogan-opener`
 
 Ernst: **always** · Herkomst: nl-bron · en: `contrast-slogan-opener`
 
-Een tweedelige contrastslogan staat als eerste regel of kop van een tekst en bepaalt het ding door te zeggen wat het niet is: Eén avond, geen verkooppraatje. De opening hoort te zeggen wat er gebeurt; wat het niet is hoort verderop in een eigen blok, als het al ergens hoort. De constructie zelf staat onder syntax; deze regel gaat over het gebruik op de kopregel.
+Een tweedelige contrastslogan staat als eerste regel of kop van een tekst en bepaalt het ding door te zeggen wat het niet is: Eén avond, geen verkooppraatje. De opening hoort te zeggen wat er gebeurt; wat het niet is hoort verderop in een eigen blok, als het al ergens hoort. De constructie zelf staat onder syntax; deze regel gaat over het gebruik op de kopregel. Deze entry is de enige eigenaar van de constructie op de kopregel; structure/preamble-before-the-point gaat alleen over de brede aanloopalinea.
 
 Signalen: `X, geen Y` · `Eén avond, geen verkooppraatje.` · `Gewoon code, geen praatjes.` · `Geen praatjes, wel werkende software.`
 
@@ -448,9 +518,9 @@ Ernst: **always** · Herkomst: transfer · en: `false-profundity-truism`
 
 Een zin heeft de vorm van inzicht, een tegenstelling of een omkering, maar bevat niets waar een lezer iets mee kan of het mee oneens kan zijn: Verandering is de enige constante. Uiteindelijk zijn we allemaal mensen. Niets is zwart-wit. Het zijn de veiligst mogelijke zinnen, waar van iedereen en dus van niemand. Vervang door de concrete bewering, of schrap.
 
-Signalen: `Verandering is de enige constante.` · `Uiteindelijk zijn we allemaal mensen.` · `Iedereen twijfelt weleens.` · `Het begint bij jezelf.` · `Niets is zwart-wit.`
+Signalen: `Verandering is de enige constante.` · `Uiteindelijk zijn we allemaal mensen.` · `Iedereen twijfelt weleens.` · `Het begint bij jezelf.` · `Niets is zwart-wit.` · `Uiteindelijk draait het allemaal om mensen.`
 
-Voor: Bij het organiseren van een meetup komt veel kijken. Niets is zwart-wit.
+Voor: Bij het organiseren van een meetup komt veel kijken. Uiteindelijk draait het allemaal om mensen.
 
 Na: Bij een meetup gaat de meeste tijd naar de zaal en de sprekers.
 
@@ -462,13 +532,13 @@ Ernst: **always** · Herkomst: transfer · en: `false-suspense-hook`
 
 Een kort zinsdeel maakt spanning rond informatie die dat niet nodig had: Het addertje?, Hier komt het:, En nu wordt het interessant, Het mooiste?, En dan komt de clou. Bijvorm: de tekst praat om het onderwerp heen en bouwt op naar een punt dat pas laat of nooit komt, met achtergrond die niemand vroeg. Schrap de haak en zeg het.
 
-Signalen: `Het addertje?` · `Hier komt het:` · `En nu wordt het interessant` · `Het mooiste?` · `Het gekke?` · `En dan komt de clou` · `Wat de meeste mensen missen` · `En dan dit:` · `eerst wat achtergrond` · `een opbouw creëren` · `om het onderwerp heen praten`
+Signalen: `Het addertje?` · `Hier komt het:` · `En nu wordt het interessant` · `Het mooiste?` · `Het gekke?` · `En dan komt de clou` · `Wat de meeste mensen missen` · `En dan dit:` · `eerst wat achtergrond` · `Maar er is meer.` · `Maar er zit een addertje onder het gras.` · `Wacht, het wordt beter.`
 
 Voor: We probeerden van alles. Het addertje? De DNS stond nog op de oude server.
 
 Na: We probeerden van alles. De DNS stond nog op de oude server.
 
-Niet markeren: Verhalende journalistiek en column mogen spanning opbouwen als er ook echt een onthulling volgt. Niet markeren in een tekst die per genre op suspense draait (recensie van een thriller, reportage). Eén haak in een lang stuk is stijl; drie is een sjabloon.
+Niet markeren: Verhalende journalistiek en column mogen spanning opbouwen als er ook echt een onthulling volgt. Niet markeren in een tekst die per genre op suspense draait (recensie van een thriller, reportage). Eén haak in een lang stuk is stijl; drie is een sjabloon. 'Het mooiste?' en 'Het resultaat?' staan ook bij syntax/rhetorical-self-question; markeer die span één keer.
 
 ### Nietszeggend slot `generic-conclusion`
 
@@ -488,9 +558,9 @@ Niet markeren: In een nieuwsbericht over een lopende zaak mag een slot open blij
 
 Ernst: **always** · Herkomst: transfer · en: `meta-signposting`
 
-De tekst vertelt wat hij gaat doen in plaats van het te doen. Subvormen: de openingsaankondiging (In dit artikel verkennen we, In deze gids behandelen we, We behandelen achtereenvolgens), de gezamenlijke overgang (Laten we beginnen, Nu naar het volgende punt), de structuurpraat in de tekst zelf (zoals eerder genoemd, hieronder een overzicht, dit valt uiteen in drie delen), en het antwoord dat de vraag eerst parafraseert en daarna samenvat wat er net stond (Kortom, Samengevat). Begin gewoon.
+De tekst vertelt wat hij gaat doen in plaats van het te doen. Subvormen: de openingsaankondiging (In dit artikel verkennen we, In deze gids behandelen we, We behandelen achtereenvolgens), de gezamenlijke overgang (Laten we beginnen, Nu naar het volgende punt), de structuurpraat in de tekst zelf (zoals eerder genoemd, hieronder een overzicht, dit valt uiteen in drie delen). Begin gewoon. Het samenvattende slot (Kortom, Samengevat, Al met al) staat bij structure/signposted-conclusion; markeer het daar en niet hier.
 
-Signalen: `In dit artikel verkennen we` · `Dit artikel verkent` · `In dit artikel bespreken we` · `In deze gids behandelen we` · `In dit blog leer je` · `In deze blog neem ik je mee` · `In deze blog vertel ik` · `Hieronder bespreken we` · `We behandelen achtereenvolgens` · `Hieronder een overzicht` · `Zoals eerder genoemd` · `Dit valt uiteen in drie delen` · `Laten we beginnen` · `Allereerst kijken we naar` · `Vier kanttekeningen vooraf` · `Kortom` · `Samengevat` · `Je vraagt je af of`
+Signalen: `In dit artikel verkennen we` · `Dit artikel verkent` · `In dit artikel bespreken we` · `In deze gids behandelen we` · `In dit blog leer je` · `In deze blog neem ik je mee` · `In deze blog vertel ik` · `Hieronder bespreken we` · `We behandelen achtereenvolgens` · `Hieronder een overzicht` · `Zoals eerder genoemd` · `Dit valt uiteen in drie delen` · `Laten we beginnen` · `Allereerst kijken we naar` · `Vier kanttekeningen vooraf` · `Je vraagt of` · `Je wilt weten of` · `Om je vraag te beantwoorden:`
 
 Voor: In dit artikel verkennen we hoe je een meetup organiseert. We behandelen achtereenvolgens locatie, sprekers en catering. Laten we beginnen.
 
@@ -538,7 +608,7 @@ Voor: Het is belangrijk om op te merken dat de meetup gratis is. Dit is belangri
 
 Na: De meetup is gratis en aanmelden hoeft niet.
 
-Niet markeren: Handleidingen en juridische teksten mogen aandacht vestigen op een uitzondering die de lezer anders mist. In lesmateriaal is 'let hier op' functioneel als het echt om een valkuil gaat. Niet markeren waar de aankondiging informatie draagt die de zin zonder haar verliest.
+Niet markeren: Handleidingen en juridische teksten mogen aandacht vestigen op een uitzondering die de lezer anders mist. In lesmateriaal is 'let hier op' functioneel als het echt om een valkuil gaat. Niet markeren waar de aankondiging informatie draagt die de zin zonder haar verliest. 'Zoals je ziet' blijft staan als er een verwijzing naar een figuur, tabel of codeblok op volgt, en 'opmerkelijk genoeg' als de tekst daarna zegt waarom het opmerkelijk is (een cijfer, een tegenverwachting). Die twee dragen de always-ernst niet; de zwaardere aankondigingsfrasen wel.
 
 ### Gestapelde slagen om de arm `stacked-hedges`
 
@@ -546,7 +616,7 @@ Ernst: **always** · Herkomst: transfer · en: `stacked-hedges`
 
 Twee of meer voorbehouden op één gezegde tot het niets meer zegt: het zou mogelijk kunnen zijn dat, er is wellicht een kans dat het misschien, hoewel dit kan verschillen is het over het algemeen in de meeste gevallen goed om op te merken. Bijvormen: de gestapelde voorspelling (zou uiteindelijk kunnen), het terzijde tussen haakjes (en, in toenemende mate, Z) en het etiket dit is een aanname. Houd precies één voorbehoud dat de bron ondersteunt.
 
-Signalen: `zou mogelijk kunnen` · `er is wellicht een kans dat` · `hoewel dit kan verschillen` · `over het algemeen, in de meeste gevallen` · `zou uiteindelijk kunnen` · `(en, in toenemende mate, ...)` · `dit is een aanname`
+Signalen: `zou mogelijk kunnen` · `er is wellicht een kans dat` · `hoewel dit kan verschillen` · `over het algemeen, in de meeste gevallen` · `zou uiteindelijk kunnen` · `dit is een aanname` · `en, in toenemende mate,` · `het is niet ondenkbaar dat mogelijk` · `hoewel dit per situatie verschilt, geldt in het algemeen dat`
 
 Voor: Het zou mogelijk kunnen dat de opkomst wellicht iets lager uitvalt.
 
@@ -560,7 +630,7 @@ Ernst: **always** · Herkomst: transfer · en: `stakes-inflation`
 
 Het belang van het onderwerp wordt opgeblazen tot ver voorbij wat de inhoud draagt: een kleine wijziging verandert alles, een stuk over prijzen wordt een beschouwing over de toekomst van de samenleving. Subvormen: de wereldschaalclaim (zet de wereld op zijn kop, bepaalt het komende decennium, fundamenteel veranderen hoe we), de urgentiestempel (nu meer dan ooit, de inzet was nog nooit zo hoog) en de alledaagse blunder als levensdrama. De belofte wordt nooit ingelost in de rest van de tekst.
 
-Signalen: `verandert alles` · `veranderde alles` · `zet de wereld op zijn kop` · `bepaalt het komende decennium` · `de inzet was nog nooit zo hoog` · `nu meer dan ooit` · `fundamenteel veranderen hoe we` · `in een wereld waarin alles` · `ongekend` · `drastisch veranderen` · `superkrachten` · `Wat. Een. DRAMA.`
+Signalen: `verandert alles` · `veranderde alles` · `zet de wereld op zijn kop` · `bepaalt het komende decennium` · `de inzet was nog nooit zo hoog` · `nu meer dan ooit` · `fundamenteel veranderen hoe we` · `in een wereld waarin alles` · `drastisch veranderen` · `superkrachten` · `dit verandert het speelveld` · `hier ligt de toekomst van` · `een keerpunt in hoe we werken`
 
 Voor: Deze update verandert alles aan hoe we software bouwen. De inzet was nog nooit zo hoog.
 
@@ -582,11 +652,53 @@ Na: De oorzaak zit in de cache.
 
 Niet markeren: In een echt gesprek mag iemand instemmen: 'je hebt gelijk' na een aangewezen fout is gewoon toegeven. De tell is de lof vóór de inhoud, als opening, zonder dat er iets mee gebeurt. Citaten uit een chatlog die je analyseert blijven staan.
 
+### Achterblijversdreiging (wie nu niet begint, mist de boot) `achterblijversdreiging-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Het argument bestaat uit een dreigend gevolg voor wie niet meedoet, zonder één genoemd geval waarin dat gevolg optrad: wie nu niet begint mist de boot, bedrijven die hier niet in investeren verliezen de aansluiting. Het is de FOMO-variant van bewijs en kost de schrijver niets, omdat de voorspelling pas over jaren toetsbaar is. Noem het bedrijf dat het overkwam en wat het kostte, of laat de claim weg.
+
+Signalen: `wie nu niet begint` · `mist de boot` · `verliest de aansluiting` · `wordt links ingehaald` · `blijft achter bij de concurrentie` · `de achterblijvers`
+
+Voor: Teams die hun releaseproces nu niet automatiseren, verliezen over twee jaar de aansluiting.
+
+Na: Bij drie van onze klanten duurde een handmatige release vorig jaar gemiddeld vier uur; na het automatiseren twintig minuten.
+
+Niet markeren: Een voorspelling met een bron, een termijn en een mechanisme erbij is een bewering en geen dreigement. In een risicoparagraaf of een investeringsvoorstel hoort het gevolg van niets doen erbij. Het signaal is de dreiging zonder één genoemd geval.
+
+### Aangekondigde interesse `announced-interest`
+
+Ernst: **cluster** · Herkomst: transfer · en: `announced-interest`
+
+Een aankondiging claimt een reactie die de tekst nog niet heeft verdiend: Wat mij opviel, Wat me verbaasde, Hier wordt het interessant, Ik was verrast te zien dat. Bijvorm: het deelbericht dat opent met de claim dat het onderwerp de schrijver al dagen bezighoudt (de zin die bij me blijft hangen, hier denk ik al de hele week over na) voordat de lezer een reden heeft om te kijken. Het werkt alleen als er echt verrassende gegevens volgen; begin anders bij het ding zelf. De melding telt pas als er geen cijfer, citaat of waarneming volgt die de verbazing draagt; de LinkedIn-varianten (hier denk ik al de hele week over na) tellen ook los.
+
+Signalen: `Wat mij opviel` · `Wat me verbaasde` · `Wat me raakte` · `Dit vond ik interessant` · `Hier wordt het interessant` · `Ik was verrast te zien dat` · `Het interessantste deel` · `de zin die bij me blijft hangen` · `ik moet hier steeds aan denken` · `hier denk ik al de hele week over na` · `dit blijft door mijn hoofd spelen`
+
+Voor: Wat mij opviel: de helft van de aanmeldingen kwam uit Hengelo. Ik moet hier steeds aan denken.
+
+Na: De helft van de aanmeldingen kwam uit Hengelo.
+
+Niet markeren: In een persoonlijk verslag of een leeslog is de eigen reactie het onderwerp; daar hoort ze. Niet markeren als er meteen een cijfer of feit volgt dat de verbazing rechtvaardigt en de lezer die deelt.
+
+### Bekentenis als aanloop naar de les `bekentenis-als-aanloop-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Het stuk opent met een toegegeven fout of een jarenlange dwaling die alleen bestaat om de omslag naar het advies te dragen: Jarenlang deed ik dit fout, Tot ik ontdekte dat, Toen viel het kwartje. De boog is vast: bekentenis, omslagmoment, regel voor de lezer. De schaal van de fout wordt bijna nooit onderbouwd en het omslagmoment valt samen met het punt dat de schrijver toch al wilde maken. Zet de uitkomst vooraan en laat de bekering weg.
+
+Signalen: `Jarenlang deed ik het fout` · `Ik heb deze fout te vaak gemaakt` · `Tot ik ontdekte dat` · `Toen viel het kwartje` · `Dat was mijn wake-upcall` · `Sindsdien doe ik het anders`
+
+Voor: Jarenlang plande ik mijn sprints tot op het uur. Tot ik ontdekte dat niemand die planning haalde.
+
+Na: Van de veertien sprints die ik tot op het uur plande, haalden we er drie. Sindsdien plannen we per week.
+
+Niet markeren: Een echte fout met een aanwijsbaar gevolg is inhoud, geen sjabloon: een postmortem hoort zo te beginnen. In een persoonlijk essay is de bekering het onderwerp. Het signaal is de boog zonder cijfer of gevolg, waarbij het omslagmoment precies het advies oplevert dat de schrijver toch al gaf.
+
 ### Stellige toon zonder grond `booster-density-nl`
 
 Ernst: **cluster** · Herkomst: nl-bron
 
-Beweringen worden versterkt met zekerheidswoorden waar geen bewijs bij staat, en zelden voorzichtig geformuleerd, waardoor de tekst overmoedig klinkt: ongetwijfeld, zonder twijfel, absoluut, uiteraard, zeker weten. Verwant zijn de holle versterkers die alleen als vulling staan (echt, gewoon, simpelweg). De tell is de dichtheid en het ontbreken van de onderbouwing waar het versterkte woord om vraagt.
+Beweringen worden versterkt met zekerheidswoorden waar geen bewijs bij staat, en zelden voorzichtig geformuleerd, waardoor de tekst overmoedig klinkt: ongetwijfeld, zonder twijfel, absoluut, uiteraard, zeker weten. Verwant zijn de holle versterkers die alleen als vulling staan (echt, gewoon, simpelweg). De tell is de dichtheid en het ontbreken van de onderbouwing waar het versterkte woord om vraagt. Poort de holle versterkers (echt, gewoon, simpelweg) op dichtheid: meer dan drie per honderd woorden. De zekerheidswoorden (ongetwijfeld, zonder twijfel, zeker weten) tellen ook los.
 
 Signalen: `ongetwijfeld` · `zonder twijfel` · `zonder enige twijfel` · `zeker weten` · `absoluut` · `uiteraard` · `echt` · `gewoon` · `simpelweg`
 
@@ -594,7 +706,7 @@ Voor: Dit is ongetwijfeld de beste aanpak en zonder twijfel de snelste route.
 
 Na: Deze aanpak was in onze test de snelste. We hebben er twee vergeleken.
 
-Niet markeren: Een stellige uitspraak met bewijs in dezelfde alinea is gewoon een bewering; stelligheid op zich is eerder een menselijke tegenindicator. 'Gewoon' en 'echt' zijn in spreektaal normale partikels. Markeer op dichtheid en op het ontbreken van grond.
+Niet markeren: Een stellige uitspraak met bewijs in dezelfde alinea is gewoon een bewering; stelligheid op zich is eerder een menselijke tegenindicator. 'Gewoon' en 'echt' zijn in spreektaal normale partikels. Markeer op dichtheid en op het ontbreken van grond. 'Gewoon' als focuspartikel (doe maar gewoon, het is gewoon kapot) en 'echt' als bevestiging na een tegenwerping blijven staan; dat zijn de gewoonste partikels van het Nederlands.
 
 ### Gespeelde balans `both-sides-hedge`
 
@@ -602,7 +714,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `both-sides-hedge`
 
 De symmetrische beweging critici zeggen X, voorstanders zeggen Y, de waarheid ligt in het midden speelt nuance zonder iets te beweren, samen met de veilige woordenschat van niet-kiezen (beide kanten, voor- en nadelen, het is een kwestie van balans) vanaf vier keer per document. Bijvorm: de tekst mijdt elke controverse en blijft afstandelijk objectief, ook waar een standpunt het interessant zou maken, en maakt voor- en nadelenlijstjes even lang terwijl het bewijs scheef ligt. Kies een kant, geef een concrete vergelijking, of maak de bewering afhankelijk van iets wat de lezer kan nakijken.
 
-Signalen: `de waarheid ligt in het midden` · `beide kanten hebben een punt` · `aan de ene kant ... aan de andere kant` · `voor- en nadelen` · `critici stellen ... voorstanders wijzen op` · `het is een kwestie van balans` · `neutraal en objectief van toon` · `zelden een controversieel standpunt`
+Signalen: `de waarheid ligt in het midden` · `beide kanten hebben een punt` · `aan de ene kant ... aan de andere kant` · `voor- en nadelen` · `critici stellen ... voorstanders wijzen op` · `het is een kwestie van balans`
 
 Voor: Critici stellen dat het te duur is, voorstanders wijzen op de voordelen. De waarheid ligt in het midden.
 
@@ -616,13 +728,13 @@ Ernst: **cluster** · Herkomst: transfer · en: `clean-consequence-connector`
 
 Een verbindingswoord beweert dat de conclusie vanzelf uit het voorgaande volgt en leent daarmee onvermijdelijkheid die het betoog niet heeft verdiend: volgt direct uit, komt hier rechtstreeks uit voort, leidt uiteindelijk tot, daarmee is het duidelijk. Laat de redenering zien, of vervang het verbindingswoord door de stap die de conclusie oplevert.
 
-Signalen: `volgt direct uit` · `komt hier rechtstreeks uit voort` · `vloeit voort uit` · `leidt uiteindelijk tot` · `daarmee is het duidelijk` · `en dus is`
+Signalen: `volgt direct uit` · `komt hier rechtstreeks uit voort` · `vloeit voort uit` · `leidt uiteindelijk tot` · `daarmee is het duidelijk`
 
-Voor: Uit de cijfers volgt direct dat de campagne werkte. Daarmee is het duidelijk.
+Voor: Uit de cijfers volgt direct dat de campagne werkte. Daarmee is duidelijk dat we deze aanpak aanhouden.
 
 Na: Na de campagne kwamen er 40 aanmeldingen bij, tegen 12 in de maand ervoor.
 
-Niet markeren: In wiskunde, logica en juridische redeneringen volgt iets soms echt direct uit het voorgaande; daar is de formulering vakjargon. Niet markeren als de tussenstap in dezelfde alinea staat.
+Niet markeren: In wiskunde, logica en juridische redeneringen volgt iets soms echt direct uit het voorgaande; daar is de formulering vakjargon. Niet markeren als de tussenstap in dezelfde alinea staat. Een verbindingswoord met de tussenstap in dezelfde zin blijft staan. Vloeit voort uit is in juridische tekst de vaste formule (de aansprakelijkheid vloeit voort uit artikel 6:162).
 
 ### Aanloop, dubbele punt, clou `colon-reveal`
 
@@ -630,7 +742,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `colon-reveal`
 
 Een aanloopzin, een dubbele punt en dan een keurig ingepakte onthulling in kleine letters. De dubbele punt wordt gebruikt voor spanning in plaats van om een lijst, een label of een citaat in te leiden, en het patroon herhaalt zich alinea na alinea. Schrijf het als een gewone zin.
 
-Signalen: `Het detail dat het laat werken:` · `Wat het verschil maakt:` · `De reden dat het werkt:` · `En dat brengt ons bij het echte punt:` · `zelfstandig naamwoord plus dubbele punt plus onthulling in kleine letters`
+Signalen: `Het detail dat het laat werken:` · `Wat het verschil maakt:` · `De reden dat het werkt:` · `En dat brengt ons bij het echte punt:` · `Het echte probleem:` · `De oorzaak:` · `Het punt is dit:` · `En daar zit het probleem:`
 
 Voor: Wat het verschil maakt: de zaal is gratis.
 
@@ -644,13 +756,27 @@ Ernst: **cluster** · Herkomst: transfer · en: `deeper-truth-framing`
 
 Een vaste frase presenteert een gewoon punt als verborgen of fundamenteel inzicht, of beweert dat de zaak duidelijk is in plaats van het te laten zien: De echte vraag is, Waar het werkelijk om draait, Vergis je niet, De waarheid is, Het echte verhaal is, De kern van de zaak is. Laat het frame vallen en zeg het punt.
 
-Signalen: `De echte vraag is` · `Waar het werkelijk om draait` · `In werkelijkheid` · `Vergis je niet` · `De waarheid is` · `De realiteit is simpeler` · `Het echte verhaal is` · `De kern van de zaak is`
+Signalen: `De echte vraag is` · `Waar het werkelijk om draait` · `In werkelijkheid` · `Vergis je niet` · `De waarheid is` · `De realiteit is simpeler` · `Het echte verhaal is` · `De kern van de zaak is` · `De realiteit is genuanceerder` · `De werkelijkheid is weerbarstiger` · `Het ligt genuanceerder dan dat`
 
 Voor: De echte vraag is niet welke tool je kiest. Waar het werkelijk om draait, is wie hem onderhoudt.
 
 Na: Welke tool je kiest maakt minder uit dan wie hem onderhoudt.
 
 Niet markeren: In een betoog dat een aangewezen misverstand corrigeert, doet 'in werkelijkheid' echt werk; laat het staan als er een concrete tegenspraak volgt. Niet markeren in citaten of in polemiek waar de schrijver een genoemde tegenstander weerlegt.
+
+### Dienstjarenopener naar een dooddoener `dienstjarenopener-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Een claim over jaren ervaring of aantallen opent de tekst en dient alleen als aanloop naar een algemene wijsheid: na tien jaar in dit vak weet ik één ding zeker, gevolgd door een zin waar niemand het mee oneens kan zijn. Het getal is niet te controleren en doet geen werk in het argument. Vervang het door het geval waaraan je die les leerde, met jaartal en afloop.
+
+Signalen: `Na tien jaar in het vak` · `In vijftien jaar heb ik geleerd dat` · `weet ik één ding zeker` · `Als iemand die al jaren` · `Eén ding heb ik in die jaren geleerd`
+
+Voor: Na twaalf jaar pipelines bouwen weet ik één ding zeker: tooling lost geen cultuurprobleem op.
+
+Na: Bij de vierde klant op rij hielp de nieuwe pipeline niet, omdat niemand de reviews oppakte.
+
+Niet markeren: Ervaringsjaren die het argument dragen zijn inhoud: een verslag over hoe het vak in twintig jaar veranderde mag zo openen. Ook overslaan in een biografische regel of een sprekersintroductie. Het signaal is de combinatie van dienstjaren, dubbele punt en een uitspraak waar niemand het mee oneens kan zijn.
 
 ### Nagespeelde spreektaal `fake-casual-register`
 
@@ -670,15 +796,29 @@ Niet markeren: In chatlogs, forumcitaten en ondertitels is dit gewoon hoe mensen
 
 Ernst: **cluster** · Herkomst: transfer · en: `flat-affect`
 
-Eén toon wordt een heel stuk lang vastgehouden zonder verschuiving van analytisch naar boos naar zacht, de cadans varieert nooit, en de tekenen van een sprekende stem worden dunner: minder vragen, minder terzijdes, minder directe aanspraak. Naast menselijk schrijven in hetzelfde genre leest het tegelijk gelijkmatig warm en gelijkmatig afstandelijk. Laat het register meebewegen met het onderwerp.
+Eén toon wordt een heel stuk lang vastgehouden zonder verschuiving van analytisch naar boos naar zacht, de cadans varieert nooit, en de tekenen van een sprekende stem worden dunner: minder vragen, minder terzijdes, minder directe aanspraak. Naast menselijk schrijven in hetzelfde genre leest het tegelijk gelijkmatig warm en gelijkmatig afstandelijk. Laat het register meebewegen met het onderwerp. Overlapt met structure/sentence-rhythm-uniformity en structure/uniform-paragraph-length; meld het één keer.
 
-Signalen: `geen registerwissel` · `cadans varieert nooit` · `weinig terzijdes` · `geen directe aanspraak` · `overal dezelfde zinslengte`
+Signalen: `standaardafwijking van de zinslengte onder vier woorden over het hele stuk` · `geen enkele vraagzin en geen enkel terzijde in meer dan achthonderd woorden` · `geen enkele je of we in een tekst die de lezer aanspreekt` · `dezelfde toon van de eerste tot de laatste alinea`
 
 Voor: De storing duurde drie uur. Wij betreuren het ongemak. De oorzaak lag in de databaselaag. Wij nemen maatregelen.
 
 Na: De storing duurde drie uur en het was onze eigen schuld. We hadden de back-up nooit getest. Sinds vorige week gebeurt dat elke maandag.
 
 Niet markeren: Structureel patroon over een hele tekst; nooit op één zin te markeren. Handleidingen, normen en juridische teksten horen vlak te zijn. Vergelijk met menselijk schrijven in hetzelfde genre voordat je dit noteert.
+
+### Geruststellende toestemming (En dat is oké) `geruststellende-toestemming-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Een korte regel geeft de lezer toestemming voor iets waar niemand om vroeg: En dat is oké, Dat mag, Je hoeft niet alles te weten, Neem gerust de tijd. De vorm komt uit het Engelse And that's okay en staat meestal als losse zin achter een opsomming van tekortkomingen. Ze voegt geen informatie toe en zet de schrijver in de rol van coach. Schrap de regel.
+
+Signalen: `En dat is oké` · `En dat is helemaal oké` · `Dat mag.` · `Je hoeft niet alles te weten` · `Je hoeft dit niet in je eentje te doen` · `Wees lief voor jezelf` · `Neem gerust de tijd`
+
+Voor: Misschien snap je de helft van de release notes niet. En dat is helemaal oké.
+
+Na: De release notes gaan over de interne API. Wie alleen de site gebruikt, hoeft ze niet te lezen.
+
+Niet markeren: In zorg-, hulpverlenings- en onderwijsteksten is geruststellen het doel van de tekst en hoort de regel erbij. Ook overslaan in een persoonlijk verslag waarin de schrijver het over zichzelf heeft, en in een citaat. Het signaal is de losse toestemming in een informatieve tekst.
 
 ### Stapel historische vergelijkingen `historical-analogy-stacking`
 
@@ -698,15 +838,15 @@ Niet markeren: Historische en technologiehistorische artikelen noemen de boekdru
 
 Ernst: **cluster** · Herkomst: nl-bron · en: `importance-labelling`
 
-Een etiket beweert dat het onderwerp belangrijk, cruciaal of symbolisch is, in plaats van te laten zien waarom. Subvormen: het gewichtwoord op de bewering geplakt (van cruciaal belang, essentieel, van onschatbare waarde), de rolzin (speelt een cruciale rol, onderstreept het belang van, kan niet genoeg benadrukt worden) en de symboolzin die een gewoon feit tot teken van iets groters maakt (staat symbool voor, is tekenend voor, getuigt van een rijke traditie). Het repertoire is klein: dezelfde tien frasen keren terug over totaal verschillende onderwerpen. Schrap het etiket en houd het feit met het gevolg dat het gewicht geeft.
+Een etiket beweert dat het onderwerp belangrijk, cruciaal of symbolisch is, in plaats van te laten zien waarom. Subvormen: het gewichtwoord op de bewering geplakt (van cruciaal belang, essentieel, van onschatbare waarde), de rolzin (speelt een cruciale rol, onderstreept het belang van, kan niet genoeg benadrukt worden) en de symboolzin die een gewoon feit tot teken van iets groters maakt (staat symbool voor, is tekenend voor, getuigt van een rijke traditie). Het repertoire is klein: dezelfde tien frasen keren terug over totaal verschillende onderwerpen. Schrap het etiket en houd het feit met het gevolg dat het gewicht geeft. Grens met content/significance-inflation: daar staat de duiding die aan een concreet feit wordt vastgeplakt, hier het kale etiket op de bewering.
 
-Signalen: `van cruciaal belang` · `essentieel` · `belangrijker dan ooit` · `speelt een cruciale rol` · `speelt een belangrijke rol` · `onderstreept het belang van` · `kan niet genoeg benadrukt worden` · `van onschatbare waarde` · `niet te onderschatten belang` · `een van de belangrijkste` · `past in een bredere trend` · `staat symbool voor` · `geldt als een symbool van` · `is tekenend voor` · `getuigt van` · `diepgeworteld` · `rijke traditie` · `onwrikbare toewijding` (+6)
+Signalen: `van cruciaal belang` · `belangrijker dan ooit` · `speelt een cruciale rol` · `speelt een belangrijke rol` · `onderstreept het belang van` · `kan niet genoeg benadrukt worden` · `van onschatbare waarde` · `niet te onderschatten belang` · `een van de belangrijkste` · `past in een bredere trend` · `staat symbool voor` · `geldt als een symbool van` · `is tekenend voor` · `diepgeworteld` · `rijke traditie` · `onwrikbare toewijding` · `een blijvende erfenis` · `laat een blijvende indruk achter` (+6)
 
 Voor: De meetup speelt een cruciale rol in de regio en onderstreept het belang van kennisdeling.
 
 Na: Op de meetup staan twee talks. De vorige keer kwamen er 38 mensen.
 
-Niet markeren: Niet markeren als het gewicht wordt onderbouwd in dezelfde alinea (een cijfer, een gevolg, een besluit dat eruit volgde). Vakteksten mogen iets cruciaal noemen als het uitvalsrisico dat aantoont. Eén losse instantie in een lang stuk is geen patroon; de tell is de herhaling. Historische artikelen mogen een gebeurtenis een keerpunt noemen als de bron dat doet.
+Niet markeren: Niet markeren als het gewicht wordt onderbouwd in dezelfde alinea (een cijfer, een gevolg, een besluit dat eruit volgde). Vakteksten mogen iets cruciaal noemen als het uitvalsrisico dat aantoont. Eén losse instantie in een lang stuk is geen patroon; de tell is de herhaling. Historische artikelen mogen een gebeurtenis een keerpunt noemen als de bron dat doet. Getuigt van met een handelende persoon en een concrete eigenschap is gewoon Nederlands (de brief getuigt van slordigheid) en blijft staan; alleen de vaste collocaties tellen. Deze entry houdt het kale etiket op de bewering; de duiding die aan een concreet feit wordt geplakt staat bij content/significance-inflation. Markeer één keer.
 
 ### Doorgevoerde metafoor `metaphor-overuse`
 
@@ -722,19 +862,33 @@ Na: Wie een keer komt spreken, brengt meestal de volgende spreker mee.
 
 Niet markeren: Dichtheidspatroon: een enkel figuurlijk woord is normaal Nederlands en mag nooit op zichzelf gemarkeerd worden. In vakteksten zijn ecosysteem, motor en fundament letterlijke termen (biologie, techniek, bouw). Tel het aantal keren dat hetzelfde beeld terugkeert in één stuk.
 
+### Opgelegde herkenning (Je kent het wel) `opgelegde-herkenning-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+De tekst schrijft de lezer een ervaring of een gevoel toe alsof dat vaststaat: Je kent het wel, We hebben het allemaal weleens meegemaakt, Je herkent het vast. Anders dan de retorische zelfvraag staat het in de mededelende vorm, zodat er niets te beantwoorden valt en de instemming al is ingeboekt. Beschrijf het geval zelf, met wie het overkwam en wanneer, en laat de lezer bepalen of hij het herkent.
+
+Signalen: `Je kent het wel` · `Je kent het gevoel` · `We kennen het allemaal` · `We hebben het allemaal weleens meegemaakt` · `Je hebt het vast wel eens` · `Je herkent het vast` · `Elke ontwikkelaar heeft dit`
+
+Voor: Je kent het wel: je begint aan een migratie en halverwege blijkt de documentatie van twee jaar geleden.
+
+Na: Halverwege onze migratie bleek de documentatie van twee jaar geleden te zijn.
+
+Niet markeren: In een column of een persoonlijk verslag is de aanspraak stem, en in een workshop of presentatie werkt ze omdat de spreker het publiek voor zich heeft. Ook overslaan waar de ervaring meteen concreet wordt gemaakt met een geval, een cijfer of een citaat. Het signaal is de opening die instemming veronderstelt en daarna niets levert.
+
 ### Gespeeld inzicht `performed-insight-phrase`
 
 Ernst: **cluster** · Herkomst: transfer · en: `performed-insight-phrase`
 
 Essayistische tics die diepzinnigheid aankondigen in plaats van leveren: laat dat even bezinken, en dat is niet niks, je weet het antwoord al, geloof me niet op mijn woord, blijkt maar weer. Elk ensceneert een onthulling en voegt geen feit toe. Zeg de bewering waar de frase naar wijst: en dat is niet niks wordt de werkelijke omvang van het ding.
 
-Signalen: `laat dat even bezinken` · `en dat is niet niks` · `je weet het antwoord al` · `de clou is` · `geloof me niet op mijn woord` · `blijkt maar weer`
+Signalen: `laat dat even bezinken` · `en dat is niet niks` · `je weet het antwoord al` · `geloof me niet op mijn woord` · `blijkt maar weer` · `Laat dat even landen.` · `Dat zegt genoeg.` · `Lees die zin nog eens.`
 
 Voor: De helft haakte af na de eerste mail. Laat dat even bezinken.
 
 Na: De helft haakte af na de eerste mail.
 
-Niet markeren: In gesproken presentaties is een pauzezin een retorisch middel dat werkt; in geschreven tekst zelden. Citaten blijven staan. Eén keer in een lang essay is stijl.
+Niet markeren: In gesproken presentaties is een pauzezin een retorisch middel dat werkt; in geschreven tekst zelden. Citaten blijven staan. Eén keer in een lang essay is stijl. 'Blijkt maar weer' blijft staan in een column of een verslag met een eigen waarneming.
 
 ### Schijntegenwerping `phantom-rebuttal`
 
@@ -756,7 +910,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `pull-quote-density`
 
 Regel na regel is geschreven om eruit geknipt te worden: overgepolijste citeerbare zinnen in elke alinea, gestapelde spreuken zonder verbindend weefsel, en losse regels als alinea voor het effect. De tell is de dichtheid, niet die ene goede regel. Houd de sterkste en laat de rest gewone zinnen zijn die het betoog dragen.
 
-Signalen: `elke regel citeerbaar` · `gestapelde spreuken` · `losse regel als alinea` · `geen verbindende zinnen tussen de uitsmijters`
+Signalen: `drie of meer alinea's van één zin per vijfhonderd woorden` · `twee spreukzinnen achter elkaar zonder een zin die iets toevoegt` · `een alinea waarin elke zin korter is dan tien woorden` · `geen verbindende zinnen tussen de uitsmijters`
 
 Voor: Code veroudert. Documentatie liegt. Alleen tests vertellen de waarheid. Daar begint alles.
 
@@ -768,15 +922,15 @@ Niet markeren: Structureel patroon, geen frase: alleen te zien over een hele tek
 
 Ernst: **cluster** · Herkomst: transfer · en: `reflexive-hedging`
 
-Kalibratiewoorden (vrijwel, grotendeels, veelal, doorgaans, ruwweg, op enkele uitzonderingen na) en getuigenisvormen (lijkt, blijkt, wordt geacht, naar het zich laat aanzien) worden op elke bewering geplakt, zodat ze een reflex worden in plaats van echte onzekerheid te volgen. Ook de modale slag om de arm (kan, mag, zou kunnen) op uitspraken die de bron gewoon doet. Meet de dichtheid per zin en de herhaling van hetzelfde woord. Het spiegelbeeld is een menselijke tegenindicator: stellige uitspraken (de enige, de eerste, de beste) komen juist vaker van mensen, dus relativeer die niet weg.
+Kalibratiewoorden (vrijwel, grotendeels, veelal, doorgaans, ruwweg, op enkele uitzonderingen na) en getuigenisvormen (lijkt, blijkt, wordt geacht, naar het zich laat aanzien) worden op elke bewering geplakt, zodat ze een reflex worden in plaats van echte onzekerheid te volgen. Meet de dichtheid per zin en de herhaling van hetzelfde woord. Het spiegelbeeld is een menselijke tegenindicator: stellige uitspraken (de enige, de eerste, de beste) komen juist vaker van mensen, dus relativeer die niet weg. De modale slag om de arm (kan, zou kunnen) staat bij syntax/modal-flattening en translationese/modal-ability-overuse; markeer die daar.
 
-Signalen: `blijkt` · `wordt geacht` · `grotendeels` · `veelal` · `doorgaans` · `in grote lijnen` · `op het eerste gezicht` · `naar het zich laat aanzien` · `vrijwel altijd` · `op enkele uitzonderingen na` · `zou kunnen` · `mogelijk` · `wellicht`
+Signalen: `blijkt` · `wordt geacht` · `grotendeels` · `veelal` · `doorgaans` · `in grote lijnen` · `op het eerste gezicht` · `naar het zich laat aanzien` · `vrijwel altijd` · `op enkele uitzonderingen na` · `in zekere zin` · `enigszins` · `relatief` · `zou erop kunnen wijzen dat`
 
 Voor: De opkomst lijkt doorgaans grotendeels stabiel, al blijkt dat op het eerste gezicht per editie te verschillen.
 
 Na: De opkomst schommelt tussen de 25 en 40 mensen per editie.
 
-Niet markeren: Losse kalibratie is gewoon Nederlands: 'doorgaans' in één zin is geen tell. Encyclopedische en wetenschappelijke teksten relativeren per conventie waar de bron dat doet. Markeer op dichtheid, niet op één woord, en nooit een voorbehoud dat een echte onzekerheid dekt die in de bron staat.
+Niet markeren: Losse kalibratie is gewoon Nederlands: 'doorgaans' in één zin is geen tell. Encyclopedische en wetenschappelijke teksten relativeren per conventie waar de bron dat doet. Markeer op dichtheid, niet op één woord, en nooit een voorbehoud dat een echte onzekerheid dekt die in de bron staat. 'Mag' drukt in het Nederlands toestemming uit en telt nooit als voorbehoud. 'Blijkt' is factief en beweert juist meer dan het kale werkwoord; markeer het alleen in een stapeling met lijkt, doorgaans of grotendeels.
 
 ### Afleiden naar het proces bij kritiek `review-process-deflection`
 
@@ -784,13 +938,13 @@ Ernst: **cluster** · Herkomst: transfer · en: `review-process-deflection`
 
 Als de herkomst of kwaliteit van een bijdrage ter discussie staat, gaat het antwoord over het proces in plaats van over de tekst: de criticus vragen precies aan te wijzen wat er mis is, het bezwaar afdoen als ongefundeerde speculatie, doorverwijzen naar samenwerking (laten we samen het artikel verbeteren), of melden dat de feedback is verwerkt zonder te zeggen wat er veranderde. Beantwoord de inhoud.
 
-Signalen: `geef precies aan welke delen` · `laat me weten wat er precies mis is` · `ongefundeerde speculatie` · `laten we samen het artikel verbeteren` · `zonder te onderbouwen waarom` · `feedback verwerkt`
+Signalen: `geef precies aan welke delen` · `laat me weten wat er precies mis is` · `ongefundeerde speculatie` · `laten we samen het artikel verbeteren` · `zonder te onderbouwen waarom` · `feedback verwerkt zonder te noemen wat er veranderde`
 
 Voor: Laten we samen het artikel verbeteren; geef precies aan welke delen je onjuist vindt.
 
 Na: Twee van de drie bronnen noemen het onderwerp niet. Ik heb ze vervangen door het provinciale register uit 2019.
 
-Niet markeren: Om verduidelijking vragen is legitiem als de kritiek echt vaag was en de vraag concreet is. In moderatie- en overlegpagina's is procesverwijzing soms de juiste route. De tell is de procesbeweging in plaats van een inhoudelijk antwoord dat wel te geven was.
+Niet markeren: Om verduidelijking vragen is legitiem als de kritiek echt vaag was en de vraag concreet is. In moderatie- en overlegpagina's is procesverwijzing soms de juiste route. De tell is de procesbeweging in plaats van een inhoudelijk antwoord dat wel te geven was. In een PR-beschrijving, changelog of commit is 'feedback verwerkt' een statusregel en staat de wijziging in de diff. De tell is de melding in een discussie waarin de inhoudelijke vraag onbeantwoord blijft.
 
 ### Hypothetische opening `speculative-scenario-opener`
 
@@ -805,6 +959,34 @@ Voor: Stel je een wereld voor waarin iedere ontwikkelaar in Twente elkaar kent.
 Na: Ontwikkelaars in Twente werken vaak bij kleine bedrijven en komen elkaar zelden tegen.
 
 Niet markeren: Een gedachte-experiment in een wetenschappelijke of filosofische tekst is een methode, geen tell. Fictie en scenarioplanning openen zo per definitie. Niet markeren als de hypothese daarna wordt doorgerekend.
+
+### Volledigheidsbelofte (Alles wat je moet weten) `volledigheidsbelofte-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+De intro of de hook belooft uitputtendheid of een gegarandeerd resultaat binnen een tijdsbestek, terwijl de tekst een selectie is die niemand kan narekenen: alles wat je moet weten, de complete gids, in vijf minuten weet je genoeg. De belofte vervangt de reden om verder te lezen en wordt nooit ingelost. Zeg wat er wel in staat en wat er bewust buiten blijft.
+
+Signalen: `Alles wat je moet weten over` · `In dit artikel lees je alles over` · `alles wat je nodig hebt om` · `in vijf minuten weet je` · `dit is het enige artikel dat je hoeft te lezen`
+
+Voor: Alles wat je moet weten over Cloudflare Workers, in vijf minuten uitgelegd.
+
+Na: Wat een Worker is, hoe je er een deployt en waar de gratis limieten zitten. Over caching gaat een apart stuk.
+
+Niet markeren: Een naslagwerk of een referentiepagina die echt alle gevallen behandelt mag dat zeggen, en een leerroute mag een tijdsindicatie geven die klopt. De kopvorm met dubbele punt ("De complete gids: alles over X") staat bij structure/colon-subtitle-headings; markeer die span één keer. Het signaal is de belofte boven een selectie.
+
+### Wending naar de eigen oplossing `wending-naar-eigen-oplossing-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Een informatief stuk analyseert een probleem en draait halverwege naar de dienst of het product van de schrijver met een verbindingszin die de wending als logisch presenteert: En precies daarom bouwden wij, Dat is de reden dat we zijn begonnen met, Daar hebben wij iets op bedacht. Het bewijs voor het probleem gaat daarmee dienstdoen als bewijs voor de oplossing. Zet de aanbieding in een eigen blok, of noem het stuk wat het is.
+
+Signalen: `En precies daarom bouwden wij` · `Daarom zijn we begonnen met` · `Dat is precies waarom wij` · `Daar hebben wij iets op bedacht` · `En laat dat nou net zijn wat wij doen`
+
+Voor: Teams verliezen dus uren aan handmatige overdracht. En precies daarom bouwden wij een dashboard dat dit automatisch bijhoudt.
+
+Na: Teams verliezen uren aan handmatige overdracht. Wij verkopen een dashboard dat die overdracht overneemt; hieronder staat wat het kost.
+
+Niet markeren: In openlijke productcopy, een release-aankondiging of een casebeschrijving is de wending het genre en geen tell. Ook overslaan als het stuk vooraf zegt dat het over het eigen product gaat. Het signaal is de wending in een stuk dat zich als onafhankelijke analyse presenteert.
 
 ### Belerende voorbehouden `didactic-disclaimers`
 
@@ -840,7 +1022,7 @@ Ernst: **context** · Herkomst: transfer · en: `launch-copy-introduction`
 
 Een product wordt aangekondigd als een deelnemer aan een spelshow in plaats van beschreven: Maak kennis met X, Zeg hallo tegen X, je nieuwe favoriete Y, Denk aan Notion, maar dan voor teams, dé nieuwe standaard. Bijna vaste vorm in korte lanceringscopy. Zeg wat het ding doet en voor wie.
 
-Signalen: `Maak kennis met` · `Zeg hallo tegen` · `je nieuwe favoriete` · `Denk aan Notion, maar dan voor` · `dé nieuwe standaard` · `dé nieuwe manier om`
+Signalen: `Maak kennis met` · `Zeg hallo tegen` · `je nieuwe favoriete` · `dé nieuwe standaard` · `dé nieuwe manier om` · `Denk aan X, maar dan voor Y` · `vanaf vandaag beschikbaar` · `speciaal gebouwd voor`
 
 Voor: Maak kennis met devmeetup.nl, je nieuwe favoriete plek voor developers in de regio.
 
@@ -868,11 +1050,11 @@ Ernst: **context** · Herkomst: transfer · en: `register-mismatch`
 
 Het register komt uit gewoonte en niet uit de context. Subvormen: het gepolijste bedrijfsantwoord op een losse vraag, zinnen die hardop gelezen als persbericht klinken (Wij zijn verheugd te kunnen aankondigen, Met trots presenteren wij, Hierbij delen wij u mede), en de registerwissel binnen één tekst, waarbij de toon van spreektaal naar ambtelijk springt of de spelling plotseling foutloos is na eerdere fouten. Lees het hardop; klinkt een zin als communicatie in plaats van als een mens, schrijf hem zoals je het zou zeggen.
 
-Signalen: `Wij zijn verheugd te kunnen aankondigen` · `Met trots presenteren wij` · `Hierbij delen wij u mede` · `In het kader van onze doorlopende inspanningen` · `Wij streven ernaar om` · `dient te worden opgemerkt` · `spreektalige tussenwerpsels in verder formele tekst` · `plotseling foutloze spelling na eerdere fouten`
+Signalen: `Wij zijn verheugd te kunnen aankondigen` · `Met trots presenteren wij` · `Hierbij delen wij u mede` · `In het kader van onze doorlopende inspanningen` · `Wij streven ernaar om` · `dient te worden opgemerkt`
 
-Voor: Wij zijn verheugd te kunnen aankondigen dat de inschrijving is geopend. Vet trouwens.
+Voor: Wij zijn verheugd te kunnen aankondigen dat de inschrijving is geopend. Zorg dat je er snel bij bent, want vol is vol!
 
-Na: De inschrijving is open.
+Na: De inschrijving is open. Er is plek voor zestig mensen.
 
 Niet markeren: Een persbericht mag als persbericht klinken en een notariële akte als akte; het gaat om register dat niet bij de plek past. Meertalige of geciteerde passages verklaren een wissel. Bij een tekst met meerdere auteurs is toonverschil normaal.
 
@@ -902,23 +1084,9 @@ Signalen: `In de snel veranderende wereld van vandaag` · `In de huidige digital
 
 Voor: In de snel veranderende wereld van vandaag is goede tooling niet meer weg te denken.
 
-Na: Onze release duurde vrijdag vier uur, dus hebben we de pijplijn opnieuw gebouwd.
+Na: Onze release duurde vrijdag vier uur, dus hebben we de pipeline opnieuw opgezet.
 
 Niet markeren: In een historisch overzicht kan in een tijd waarin een echte periode aanwijzen die daarna wordt ingevuld. Steeds meer bedrijven met een bronvermelding en een getal erachter is een bewering, geen sfeerzin. De frase midden in een stuk, na de aanleiding, weegt lichter dan als eerste zin.
-
-### Holle nadruk (oprecht, daadwerkelijk, eerlijk gezegd) `hollow-intensifier`
-
-Ernst: **always** · Herkomst: transfer · en: `hollow-intensifier`
-
-Woorden die overtuiging beweren in plaats van een feit te leveren: oprecht, werkelijk, daadwerkelijk, eerlijk gezegd, om eerlijk te zijn, laten we eerlijk zijn, in feite, feitelijk, plus echt en gewoon zodra ze als versterker op een bewering staan. Schrap het woord en noem het feit; de standaardoplossing is weglaten, niet vervangen.
-
-Signalen: `oprecht` · `daadwerkelijk` · `eerlijk gezegd` · `om eerlijk te zijn` · `laten we eerlijk zijn` · `in feite` · `feitelijk` · `gewoon`
-
-Voor: Dit maakt het proces eigenlijk gewoon echt eenvoudiger.
-
-Na: Dit scheelt twee handelingen per bestelling.
-
-Niet markeren: Echt en gewoon staan bewust niet in de regex: als modaal partikel zijn ze juist een teken van natuurlijk Nederlands (doe maar gewoon, dat is echt zo). Daadwerkelijk in een juridische of onderzoekscontext zet een gemeten waarde tegenover een geraamde en is dan inhoudelijk. In feite dat een echte tegenstelling met de schijn markeert, blijft staan.
 
 ### Aankondigingsframe (het is belangrijk om op te merken) `it-is-worth-noting-frame`
 
@@ -944,7 +1112,7 @@ Signalen: `laten we erin duiken` · `laten we duiken in` · `laten we dit uitpak
 
 Voor: Laten we erin duiken hoe de scheduler werkt.
 
-Na: De scheduler kijkt elke 200 milliseconde en gooit alles ouder dan een minuut weg.
+Na: De scheduler kijkt elke 200 milliseconden in de wachtrij en gooit alles weg dat ouder is dan een minuut.
 
 Niet markeren: In een workshopscript of een presentatie waar de spreker het publiek echt meeneemt naar de volgende oefening, is de uitnodiging functioneel. Laten we beginnen bij in een uitgeschreven college markeert een echte volgorde. 'Laten we' is gewoon Nederlands in een echt voorstel aan een groep ('Laten we dat volgende week bespreken') en in notulen en gespreksverslagen. Het signaal is het gebruik als vaste sectieopener, twee keer of vaker per tekst.
 
@@ -980,9 +1148,9 @@ Niet markeren: In een recensie is een aanbeveling het genre; daar telt alleen of
 
 Ernst: **always** · Herkomst: transfer · en: `wordy-circumlocution`
 
-Een constructie van meerdere woorden op de plek van één: teneinde voor om, vanwege het feit dat voor omdat, op dit moment in de tijd voor nu, in het geval dat voor als, de mogelijkheid hebben om voor kunnen, overgaan tot voor doen. De correctie is mechanisch en de zin wordt er alleen korter van. Een treffer is een breedsprakigheidsfout, niet op zichzelf bewijs van een machine.
+Een constructie van meerdere woorden op de plek van één: teneinde voor om, vanwege het feit dat voor omdat, op dit moment in de tijd voor nu, in het geval dat voor als, de mogelijkheid hebben om voor kunnen, overgaan tot voor doen. De correctie is mechanisch en de zin wordt er alleen korter van. Een treffer is een breedsprakigheidsfout, niet op zichzelf bewijs van een machine. In termen van staat bij translationese/in-terms-of-frame; markeer die frase daar en niet hier.
 
-Signalen: `teneinde` · `vanwege het feit dat` · `op dit moment in de tijd` · `in het geval dat` · `de mogelijkheid hebben om` · `overgaan tot` · `tot uitvoering brengen` · `met betrekking tot` · `ten aanzien van` · `in termen van`
+Signalen: `teneinde` · `vanwege het feit dat` · `op dit moment in de tijd` · `in het geval dat` · `de mogelijkheid hebben om` · `overgaan tot` · `tot uitvoering brengen` · `met betrekking tot` · `ten aanzien van` · `in staat zijn om`
 
 Voor: Teneinde dit doel te bereiken gaan wij over tot een herziening van het proces.
 
@@ -1032,6 +1200,20 @@ Na: De koppeling scheelt de klantenservice ongeveer twee uur per dag. We bouwen 
 
 Niet markeren: Cruciaal en essentieel zijn gewone Nederlandse woorden; markeer ze pas vanaf twee treffers per alinea of samen met een tweede woord uit de lijst. In kaart brengen is in onderzoek- en beleidscontext de vakterm voor wat er letterlijk gebeurt. Mijlpaal in een projectplanning en hoeksteen in een bouwkundige tekst zijn letterlijk bedoeld. Citaten, productnamen en aangehaalde reclametekst blijven staan.
 
+### Ambtelijke lijm- en verwijswoorden (middels, inzake, welke) `ambtelijke-lijmwoorden-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+De formele lijmwoorden waarmee Nederlandse modeltekst een brief of een beleidsstuk nabootst: middels voor met of via, inzake voor over, hetgeen voor wat, zulks, alsook, bij dezen, en vooral het betrekkelijk voornaamwoord welke waar die of dat hoort. Ze maken de zin langer en niet preciezer. Zet het gewone woord terug.
+
+Signalen: `middels deze weg` · `inzake` · `hetgeen` · `welke als betrekkelijk voornaamwoord` · `zulks` · `alsook` · `bij dezen`
+
+Voor: Middels deze brief informeren wij u inzake de wijzigingen welke per 1 januari van kracht worden.
+
+Na: In deze brief leest u wat er op 1 januari verandert.
+
+Niet markeren: In wetteksten, notariële akten, statuten, vonnissen en officiële besluiten is dit register voorgeschreven; markeer daar niets. "Welke" is correct in een vraagzin ("welke optie kies je") en na een voorzetsel in formele tekst. "Inzake" is in juridische stukken de vaste formule. In een blog, nieuwsbrief of interne notitie is het wel een signaal, zeker bij twee of meer van deze woorden bij elkaar.
+
 ### Stapel standaardfrasen en consultancyjargon `boilerplate-phrase-stack`
 
 Ernst: **cluster** · Herkomst: transfer · en: `boilerplate-phrase-stack`
@@ -1042,7 +1224,7 @@ Signalen: `het snijvlak van` · `de integratie van` · `opkomende sector` · `co
 
 Voor: Een community-gedreven project op het snijvlak van AI en infrastructuur, gebouwd voor duurzame groei.
 
-Na: De knooppunten stemmen zelf over de kostenverdeling, en de vergoeding komt uit de transactiekosten.
+Na: Vijf teams delen één GPU-cluster en verdelen de rekening elke maand.
 
 Niet markeren: Stakeholder, randvoorwaarde en ecosysteem zijn in een projectplan, een aanbesteding of de biologie gewone vaktermen. Best practices in een technische standaard verwijst naar een echt document. Eén frase in een verder concrete tekst is geen treffer; de drempel is herhaling of stapeling.
 
@@ -1078,7 +1260,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `elevated-vocabulary-cluster`
 
 Werkwoorden die een duurdere variant zijn van een gewoon werkwoord en die in AI-output stelselmatig opduiken: benutten, ontsluiten, faciliteren, stroomlijnen, optimaliseren, revolutioneren, identificeren, in staat stellen. De Nederlandse subvorm is de beleids- en subsidietaal, waarin elke handeling wordt ingevuld met versterken, borgen, waarborgen, verankeren, vormgeven, stimuleren, ontzorgen of inzetten op, steeds met een abstract lijdend voorwerp. De eenheid is de alinea, niet het woord: vanaf twee treffers in één alinea herschrijf je hem rond de concrete handeling en degene die hem uitvoert.
 
-Signalen: `ontsluiten` · `faciliteren` · `stroomlijnen` · `optimaliseren` · `revolutioneren` · `identificeren` · `opereren` · `transformeren` · `maximaliseren` · `navigeren` · `leveragen` · `in staat stellen` · `meenemen in` · `versterken` · `waarborgen` · `verankeren` · `vormgeven` · `stimuleren` (+10)
+Signalen: `ontsluiten` · `faciliteren` · `stroomlijnen` · `optimaliseren` · `revolutioneren` · `identificeren` · `opereren` · `transformeren` · `maximaliseren` · `navigeren` · `in staat stellen` · `meenemen in` · `versterken` · `waarborgen` · `verankeren` · `vormgeven` · `stimuleren` · `aanjagen` (+12)
 
 Voor: Het platform stelt teams in staat om het ecosysteem te benutten en de samenwerking te versterken.
 
@@ -1100,6 +1282,34 @@ Na: Vervang dat hergebruikte abstracte woord per alinea door het geval waar het 
 
 Niet markeren: Nederlandse samenstellingen worden aan elkaar geschreven en verhogen daarmee het aantal types: meet op lemma's en houd een lagere drempel aan dan de Engelse 0,50 tot 0,65. Korte teksten, handleidingen, juridische stukken en teksten in eenvoudige taal zijn van nature vlak. Onder de 200 tokens zegt de maat niets.
 
+### Handvattentaal uit coaching en nieuwsbrieven `handvattentaal-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Het beloftevocabulaire van Nederlandse trainers, coaches en nieuwsbriefschrijvers, dat vooruitwijst naar bruikbaarheid zonder iets bruikbaars te leveren: praktische handvatten, concrete handvatten, hiermee kun je direct aan de slag, in vijf stappen, tips en tricks, do's en don'ts. De toets is de vervangproef: het aanbod staat er nog steeds als je het onderwerp vervangt. Zeg wat de lezer na afloop kan of anders doet.
+
+Signalen: `praktische handvatten` · `concrete handvatten` · `handvatten bieden` · `hiermee kun je direct aan de slag` · `in vijf stappen` · `tips en tricks` · `do's en don'ts` · `een concreet stappenplan`
+
+Voor: In deze nieuwsbrief geef ik je vijf praktische handvatten waarmee je direct aan de slag kunt.
+
+Na: Hieronder staan vijf instellingen die je vandaag kunt aanpassen, met wat elke instelling doet.
+
+Niet markeren: In een cursusbeschrijving of een programma is "handvatten" soms de gangbare term voor het lesmateriaal. Een echt stappenplan met genummerde stappen die je kunt uitvoeren is inhoud, geen belofte. Het signaal is de belofte in de inleiding of het slot zonder dat er één handeling wordt genoemd.
+
+### Holle nadruk (oprecht, daadwerkelijk, eerlijk gezegd) `hollow-intensifier`
+
+Ernst: **cluster** · Herkomst: transfer · en: `hollow-intensifier`
+
+Woorden die overtuiging beweren in plaats van een feit te leveren: oprecht, werkelijk, daadwerkelijk, eerlijk gezegd, om eerlijk te zijn, laten we eerlijk zijn, in feite, feitelijk, plus echt en gewoon zodra ze als versterker op een bewering staan. Schrap het woord en noem het feit; de standaardoplossing is weglaten, niet vervangen.
+
+Signalen: `oprecht` · `daadwerkelijk` · `eerlijk gezegd` · `om eerlijk te zijn` · `laten we eerlijk zijn` · `in feite` · `feitelijk` · `gewoon`
+
+Voor: Wij geloven oprecht dat deze aanpak het proces daadwerkelijk vereenvoudigt.
+
+Na: Deze aanpak scheelt twee handelingen per bestelling.
+
+Niet markeren: Echt en gewoon staan bewust niet in de regex: als modaal partikel zijn ze juist een teken van natuurlijk Nederlands (doe maar gewoon, dat is echt zo). Daadwerkelijk in een juridische of onderzoekscontext zet een gemeten waarde tegenover een geraamde en is dan inhoudelijk. In feite dat een echte tegenstelling met de schijn markeert, blijft staan. Eerlijk gezegd, om eerlijk te zijn en laten we eerlijk zijn horen bij het column-, blog- en spreekregister; daar tellen ze pas vanaf twee keer per stuk of samen met oprecht of daadwerkelijk in dezelfde alinea.
+
 ### Deftige en ambtelijke woordkeus (dienen te, alvorens, derhalve) `latinate-inflation`
 
 Ernst: **cluster** · Herkomst: transfer · en: `latinate-inflation`
@@ -1110,7 +1320,7 @@ Signalen: `dienen te` · `dient te` · `alvorens` · `aanvangen` · `vervaardige
 
 Voor: Het team dient de pijplijn te benutten alvorens men aanvangt met testen.
 
-Na: Het team gebruikt de nieuwe pijplijn en begint dan met testen.
+Na: Het team gebruikt de pipeline en begint daarna met testen.
 
 Niet markeren: In wetteksten, notariële akten, statuten en vonnissen zijn derhalve, voornoemd en dienen te het voorgeschreven register; markeer daar niets. Beschikt over, is gelegen, diverse en talrijke zijn in encyclopedische en journalistieke tekst gewoon Nederlands en staan daarom niet in de regex. Citaten uit oudere bronnen blijven staan.
 
@@ -1122,9 +1332,9 @@ De vaste bijwoordformule van essayeindes en inzichtmomenten: misschien is dat we
 
 Signalen: `misschien is dat wel` · `misschien is dat precies` · `en misschien is dat maar goed ook` · `langzaam maar zeker` · `pas toen werd duidelijk` · `uiteindelijk bleek`
 
-Voor: Misschien is dat wel het echte antwoord.
+Voor: Misschien is dat wel de belangrijkste les van dit project.
 
-Na: Daarom kozen we voor die aanpak.
+Na: We hadden de eerste versie een maand eerder moeten weggooien. Dat was de belangrijkste les.
 
 Niet markeren: Langzaam maar zeker en uiteindelijk bleek zijn gewoon Nederlands over een proces dat echt langzaam ging en staan daarom niet in de regex. In een persoonlijk essay mag één bespiegeling staan; de tell is de formule aan het eind van elke sectie.
 
@@ -1136,9 +1346,9 @@ Een vaste frase kondigt een parafrase aan van wat er net stond, zodat hetzelfde 
 
 Signalen: `met andere woorden` · `anders gezegd` · `oftewel` · `dat wil zeggen` · `ofwel` · `ter verduidelijking`
 
-Voor: De wachtrij loopt langzaam leeg. Met andere woorden: berichten stapelen zich op.
+Voor: De doorlooptijd is gehalveerd. Met andere woorden: het duurt nu half zo lang.
 
-Na: De wachtrij loopt langzamer leeg dan hij volloopt, dus berichten stapelen zich op.
+Na: De doorlooptijd is gehalveerd.
 
 Niet markeren: Oftewel en dat wil zeggen introduceren vaak een echte vertaling of definitie (de OR, oftewel de ondernemingsraad) en staan daarom niet in de regex. In lesmateriaal is een tweede formulering soms de bedoeling. Eén keer per stuk is geen patroon.
 
@@ -1148,7 +1358,7 @@ Ernst: **cluster** · Herkomst: nl-bron · en: `social-ad-boilerplate`
 
 Versleten advertentie- en podiumtaal van sociale media en bedrijfsblogs, in de plaats van iets wat je kunt laten zien: ontgrendel het potentieel, haal het maximale eruit, til je X naar een hoger niveau, link in bio, volg voor meer, trots om te delen, ongekende kansen. Verwante subvorm is de wervende opening of afsluiting van een artikel: De sleutel tot, Ontdek nu zelf, In dit artikel onthullen we, Bij [merknaam] begrijpen we, Ben je klaar om. Zeg wat de lezer krijgt en waar hij het vindt. Dezelfde taal levert de koppen en de knoppen: een gebiedende wijs of een klaar-om-vraag uit Amerikaanse advertentietaal (ontdek nu, klaar om te transformeren, start vandaag nog, mis het niet), plus de SEO-titelformule Van X naar Y: Hoe Z.
 
-Signalen: `ontgrendel het potentieel` · `haal het maximale uit` · `naar een hoger niveau tillen` · `naar the next level` · `link in bio` · `stuur me een DM` · `volg voor meer` · `trots om te delen` · `het verschil maken` · `ongekende kansen` · `De sleutel tot` · `Ontdek nu zelf` · `geheimen ontdekken` · `In dit artikel onthullen we` · `Naar nieuwe hoogten tillen` · `Ben je klaar om` · `Bij [merknaam] begrijpen we` · `Dit artikel verkent` (+10)
+Signalen: `ontgrendel het potentieel` · `haal het maximale uit` · `naar een hoger niveau tillen` · `naar the next level` · `link in bio` · `stuur me een DM` · `volg voor meer` · `trots om te delen` · `het verschil maken` · `ongekende kansen` · `De sleutel tot` · `Ontdek nu zelf` · `geheimen ontdekken` · `In dit artikel onthullen we` · `Naar nieuwe hoogten tillen` · `Ben je klaar om` · `Bij [merknaam] begrijpen we` · `Dit artikel verkent` (+11)
 
 Voor: Til je data naar een hoger niveau. Link in bio.
 
@@ -1196,7 +1406,49 @@ Voor: Een innovatief platform van wereldklasse met indrukwekkende resultaten.
 
 Na: Het platform verwerkte in de test van maart 40.000 verzoeken per seconde, vier keer zoveel als het oude.
 
-Niet markeren: Uniek, gedreven en efficiënt zijn in Nederlandse bedrijfscopy zo gewoon dat ze pas bij verzadiging tellen. In een productspecificatie is hoogwaardig soms een gedefinieerde kwaliteitsklasse. Eén los adjectief in een verder concrete tekst is geen treffer; citaten en aangehaalde slogans blijven staan.
+Niet markeren: Uniek, gedreven en efficiënt zijn in Nederlandse bedrijfscopy zo gewoon dat ze pas bij verzadiging tellen. In een productspecificatie is hoogwaardig soms een gedefinieerde kwaliteitsklasse. Eén los adjectief in een verder concrete tekst is geen treffer; citaten en aangehaalde slogans blijven staan. Schaalbaar en schaalbaarheid zijn in architectuur- en infrastructuurteksten vaktermen; markeer ze alleen als er niet bij staat waarop iets schaalt (gebruikers, verzoeken, nodes, datavolume). Opmerkelijk in een onderzoeksverslag markeert vaak een echt afwijkend resultaat.
+
+### Voorbeeldaankondiging (denk hierbij aan) `voorbeeldaankondiging-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Een vaste frase kondigt aan dat er voorbeelden komen in plaats van ze te noemen: denk hierbij aan, denk daarbij aan, voorbeelden hiervan zijn, te denken valt aan, om er een paar te noemen. In gegenereerd Nederlands staat de frase voor bijna elke opsomming, en ze is verwijderbaar zonder dat er iets wegvalt: de dubbele punt doet het werk al. Schrap de aanloop en zet de voorbeelden er direct neer.
+
+Signalen: `denk hierbij aan` · `denk daarbij aan` · `hierbij kun je denken aan` · `voorbeelden hiervan zijn` · `te denken valt aan` · `om er een paar te noemen` · `zoals bijvoorbeeld`
+
+Voor: Er zijn verschillende aandachtspunten. Denk hierbij aan snelheid, veiligheid en gebruiksgemak.
+
+Na: Let op de snelheid, de beveiliging en het gemak waarmee iemand zich aanmeldt.
+
+Niet markeren: "Denk aan" met één concreet geval erachter is gewoon Nederlands en vaak de duidelijkste vorm ("denk aan een release op vrijdagmiddag"). In lesmateriaal kan de aankondiging didactisch werk doen. Het signaal is de vaste aanloop voor elke opsomming in dezelfde tekst.
+
+### Welzijns- en beleidsadjectieven (laagdrempelig, verbindend, inclusief) `welzijnsadjectieven-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+De vaste set waarderende bijvoeglijke naamwoorden uit het Nederlandse gemeente-, onderwijs-, zorg- en verenigingsregister, waar een model in valt zodra de tekst over mensen samenbrengen gaat: laagdrempelig, toegankelijk, inclusief, verbindend, betrokken, duurzaam, toekomstgericht, sociaal veilig. Ze beweren een sfeer en beschrijven geen eigenschap, en ze komen nooit uit een Engelse bron. Vervang door wat er praktisch geregeld is: geen aanmelding vooraf, gratis, tien minuten lopen van het station, ook zonder ervaring welkom.
+
+Signalen: `laagdrempelig` · `toegankelijk voor iedereen` · `inclusief` · `verbindend` · `toekomstgericht` · `sociaal veilig` · `een plek waar iedereen zich welkom voelt` · `met oog voor elkaar`
+
+Voor: Een laagdrempelige en inclusieve plek waar iedereen zich welkom voelt en we samen bouwen aan een verbindende community.
+
+Na: Aanmelden hoeft niet, de zaal is gelijkvloers en er komen elke keer mensen die nog nooit zijn geweest.
+
+Niet markeren: In subsidieaanvragen, schoolplannen en gemeentelijke nota's zijn dit de gevraagde termen; daar telt alleen de dichtheid. "Laagdrempelig" over een voorziening met een aanwijsbare drempel die verdwijnt (geen wachtlijst, geen verwijzing nodig) is inhoudelijk, en het woord komt ook in gewone encyclopedische tekst voor. Markeer vanaf twee van deze woorden in dezelfde alinea zonder één narekenbaar feit.
+
+### Dé en hét als merkclaim `beklemtoond-lidwoord-claim-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Het beklemtoonde lidwoord als kortere weg naar een superlatief: dé plek voor, hét platform voor, dé partner in, hét antwoord op, dé specialist in. Het claimt exclusiviteit zonder één vergelijking of getal, en het is een puur Nederlands middel: het Engels heeft er geen vorm voor. Vervang door de afbakening die de claim waarmaakt, of laat het lidwoord onbeklemtoond.
+
+Signalen: `dé plek voor` · `dé partner in` · `dé specialist in` · `hét platform voor` · `hét antwoord op` · `dé community voor` · `dé oplossing voor`
+
+Voor: Wij zijn dé partner voor bedrijven die willen groeien, en hét platform voor iedereen die met data werkt.
+
+Na: We werken voor twaalf bedrijven in Oost-Nederland, allemaal met een eigen datateam.
+
+Niet markeren: In reclametekst en in een citaat is het beklemtoonde lidwoord een bewuste stijlfiguur en gewoon Nederlands; tel het pas als de claim verder nergens wordt onderbouwd. In een tekst die twee dingen tegenover elkaar zet is het accent juist nodig ("niet een aanbieder, maar dé aanbieder van deze dienst").
 
 ### Graadbijwoorden als vulling (ontzettend, simpelweg, uiterst) `degree-adverb-padding`
 
@@ -1206,9 +1458,9 @@ Versterkende graadbijwoorden op gezegdes die ze niet nodig hebben: ontzettend, o
 
 Signalen: `ontzettend` · `ongelooflijk` · `simpelweg` · `letterlijk` · `uiterst` · `bijzonder` · `heel erg` · `best wel` · `volledig` · `compleet` · `enorm`
 
-Voor: Het is eigenlijk heel erg simpel, echt waar.
+Voor: De installatie is ontzettend eenvoudig en het resultaat is simpelweg ongelooflijk.
 
-Na: Het kost één commando.
+Na: Je installeert het met één commando; daarna draait het.
 
 Niet markeren: Heel, erg, zeer, uiterst en bijzonder los zijn te gewoon voor een regex; poort ze op dichtheid per alinea. Letterlijk dat echt letterlijk betekent (hij vertaalde het letterlijk) is inhoudelijk. In gesproken en informele registers hoort een graadbijwoord bij de stem: markeer daar alleen de stapeling.
 
@@ -1232,11 +1484,11 @@ Ernst: **context** · Herkomst: transfer · en: `english-variety-drift`
 
 Een mismatch tussen de lezer, het onderwerp en de gekozen variëteit: Belgisch-Nederlandse woorden in een tekst voor een Nederlandse lezer of andersom (gsm naast mobiel, plezant, goesting, seffens, kuisen, ambetant, enkel voor alleen), of een wisseling halverwege hetzelfde document. Kies één variëteit en houd hem vast.
 
-Signalen: `gsm naast mobiel` · `plezant` · `goesting` · `seffens` · `kuisen` · `ambetant` · `enkel voor alleen` · `wisseling halverwege de tekst`
+Signalen: `plezant` · `goesting` · `seffens` · `kuisen` · `ambetant` · `enkel`
 
-Voor: Een tekst voor een Nederlandse klant die halverwege van mobiel op gsm overstapt.
+Voor: Neem je gsm mee naar de meetup; bij de ingang laat je op je mobiel de QR-code zien.
 
-Na: Eén variëteit door de hele tekst, passend bij de lezer.
+Na: Neem je telefoon mee naar de meetup; bij de ingang laat je de QR-code zien.
 
 Niet markeren: Geen regex: voor een Vlaamse schrijver of een Vlaams publiek is gsm, goesting of plezant gewoon de juiste variëteit. Controleer eerst wie de tekst schreef en voor wie hij bedoeld is. Spelling geeft in het Nederlands geen tweede as zoals -ize en -ise in het Engels, dus alleen woordkeuze telt.
 
@@ -1258,9 +1510,9 @@ Niet markeren: In wetenschappelijke en medische tekst is voorzichtig formuleren 
 
 Ernst: **context** · Herkomst: transfer · en: `ontological-slop-assumptions`
 
-Een aanname of vuistregel beschrijven alsof die van waar naar onwaar omklapt. Aannames verliezen hun bruikbaarheid, niet hun waarheidswaarde. Schrijf dat de aanname niet meer opgaat, dat hij het begeeft, of noem de schaal waarop hij stukloopt.
+Een aanname of vuistregel beschrijven alsof die van waar naar onwaar omklapt. Aannames verliezen hun bruikbaarheid, niet hun waarheidswaarde. Schrijf dat de aanname niet meer opgaat, dat hij het begeeft, of noem de schaal waarop hij stukloopt. "Niet langer" is zelf een leenvertaling van no longer; in het Nederlands staat daar niet meer.
 
-Signalen: `de aanname is niet langer waar` · `die veronderstelling is niet meer waar` · `houdt op waar te zijn`
+Signalen: `de aanname is niet langer waar` · `die veronderstelling is niet meer waar` · `die aanname is niet langer geldig` · `die vuistregel is niet langer van toepassing` · `deze regel gaat niet langer op`
 
 Voor: Op schaal is die aanname niet langer waar.
 
@@ -1290,9 +1542,9 @@ Een geleende trendfrase als kortere weg naar herkenbaarheid, zonder de emotie te
 
 Signalen: `hits different` · `raakt anders` · `next level` · `gaat hard` · `is een vibe` · `geen woorden voor` · `chef's kiss`
 
-Voor: Die changelog lezen hits different.
+Voor: Deze release gaat hard en de nieuwe editor is echt next level.
 
-Na: In die changelog stond precies de bug waar ik dinsdag op vastliep.
+Na: De nieuwe editor opent een bestand van 200 MB zonder te haperen.
 
 Niet markeren: In een post die zelf over internettaal gaat, of in een citaat van een deelnemer, is de frase het onderwerp. Voor een schrijver die zo praat en dat door de hele tekst volhoudt, is het stem en geen tell: de tell is de losse frase in verder neutrale tekst.
 
@@ -1302,7 +1554,7 @@ Ernst: **context** · Herkomst: transfer · en: `uncontracted-forms`
 
 Spreektaalcopy zonder de woordjes die Nederlands gesproken maken. Het Engelse mechanisme (geen samentrekkingen als isn't en won't) bestaat hier niet; de Nederlandse tegenhanger is dat de modale partikels wegvallen (even, maar, toch, nou, hoor, hè, eens, wel) en dat men dient, alsmede, het verdient aanbeveling en zich bevindt ervoor in de plaats komen. Schrijf zoals je het zou zeggen en zet de partikels terug.
 
-Signalen: `men dient` · `men kan` · `alsmede` · `dan wel` · `zich bevindt` · `het verdient aanbeveling` · `ontbrekende partikels: even, maar, toch, nou, hoor, hè, eens`
+Signalen: `men dient` · `men kan` · `alsmede` · `dan wel` · `zich bevindt` · `het verdient aanbeveling`
 
 Voor: Men dient zich vooraf aan te melden, alsmede de betaling te voldoen.
 
@@ -1318,9 +1570,9 @@ Een vakterm gebruikt zonder uitleg waar je niet mag aannemen dat de lezer hem ke
 
 Signalen: `afkorting zonder uitleg` · `vakterm zonder bijzin` · `interne projectnaam zonder toelichting`
 
-Voor: We hebben de reconciliatielus achter de CRD gezet.
+Voor: We hebben de reconcile-loop achter de CRD gezet.
 
-Na: We hebben de reconciliatielus, de controller die de echte toestand gelijk houdt aan de configuratie, achter een eigen Kubernetes-resource gezet.
+Na: De reconcile-loop draait nu achter een eigen Kubernetes-resource, een CRD. Die loop vergelijkt de echte toestand met de configuratie en trekt het verschil recht.
 
 Niet markeren: Geen regex: welke term jargon is, hangt af van de lezer. In documentatie voor vakgenoten is de vakterm juist het precieze woord en kost uitleg alleen ruimte. Schrap nooit een term omdat hij moeilijk is; leg hem uit of laat hem staan.
 
@@ -1338,7 +1590,7 @@ Voor: Ondanks deze successen staat de meetup voor verschillende uitdagingen, waa
 
 Na: De meetup zoekt sinds juni een grotere zaal, want bij zestig aanmeldingen zit de huidige locatie vol.
 
-Niet markeren: 'Ondanks de uitdagingen' met daarna een uitdaging die een naam, een datum en een gevolg heeft, is gewoon proza. Een subsidieaanvraag, beleidsstuk of jaarverslag heeft een voorgeschreven vooruitblik; daar is de kop geen signaal, de leegte eronder wel. Ook een echte risicoparagraaf met genoemde risico's telt niet mee.
+Niet markeren: 'Ondanks de uitdagingen' met daarna een uitdaging die een naam, een datum en een gevolg heeft, is gewoon proza. Een subsidieaanvraag, beleidsstuk of jaarverslag heeft een voorgeschreven vooruitblik; daar is de kop geen signaal, de leegte eronder wel. Ook een echte risicoparagraaf met genoemde risico's telt niet mee. 'Vooruitblik' is de vaste kop boven een wedstrijdvoorbeschouwing, een kwartaalbericht en een jaarplan; markeer die kop alleen als er geen datum, bedrag of naam onder staat.
 
 ### Kop herhaald in de eerste regel `heading-restated-below`
 
@@ -1360,48 +1612,33 @@ Wie een trage pagina opent, klikt weg.
 
 Niet markeren: Een definiërende openingszin in een lemma of glossarium herhaalt het kopwoord met opzet: 'Rijssen is een stad in Overijssel.' Die vorm is de norm, want de zin voegt een categorie en een plaats toe. Het signaal is de herhaling die niets toevoegt behalve een oordeel over het belang.
 
-### Vetgedrukte bullet-openers `inline-header-lists`
-
-Ernst: **always** · Herkomst: transfer · en: `inline-header-lists`
-
-Elk lijstitem opent met een kort vet label en een dubbele punt, gevolgd door een zin die het label meestal herhaalt. Subvormen: dezelfde vorm zonder leesteken, de genummerde variant, en de aankondigende regel boven de lijst ('De belangrijkste punten:', 'bestaat uit drie kernonderdelen:'). In dezelfde familie hoort het vet in de lopende tekst dat losse woorden benadrukt.
-
-Signalen: `- **Gebruikerservaring:**` · `- **Prestaties:**` · `- **Veiligheid:**` · `**Kernpunt**:` · `- **Wat het is:**` · `- **Waarom het werkt:**` · `De belangrijkste punten:` · `bestaat uit drie kernonderdelen:` · `1. Kop: tekst` · `1. **Aanpak:** uitleg` · `bullet points met vetgedrukte koppen` · `overmatig vetgedrukte woorden`
-
-Voor: - **Gebruikerservaring:** De gebruikerservaring is sterk verbeterd met een nieuwe interface.
-- **Prestaties:** De prestaties zijn verbeterd door geoptimaliseerde algoritmes.
-
-Na: De update brengt een nieuwe interface, en pagina's laden sneller omdat de sortering herschreven is.
-
-Niet markeren: Een definitielijst, een glossarium, een changelog en een parameter- of optietabel dragen het label met opzet, want de lezer zoekt op het label. Dat geldt ook voor releasenotes en een FAQ. Het signaal is het label dat de zin erna gewoon herhaalt. Let bij wikitext ook op geneste opsommingen, die met twee sterretjes beginnen.
-
 ### Aanloop voor het punt `preamble-before-the-point`
 
 Ernst: **always** · Herkomst: transfer · en: `preamble-before-the-point`
 
-Het stuk opent met brede context voordat het iets specifieks zegt: een wijdse openingszin over de wereld van vandaag, achtergrondalinea's die niets toevoegen, of onderbouwing die vóór het punt staat dat ze onderbouwt. Ook de tweeledige slogan-opener hoort hier: een openingsregel die zegt wat het niet is in plaats van wat er gebeurt. Schrap de wijdse zin en begin bij de tweede.
+Het stuk opent met brede context voordat het iets specifieks zegt: een wijdse openingszin over de wereld van vandaag, achtergrondalinea's die niets toevoegen, of onderbouwing die vóór het punt staat dat ze onderbouwt. Schrap de wijdse zin en begin bij de tweede. De tweeledige slogan-opener op de kopregel staat bij rhetoric/contrast-slogan-opener; markeer hem daar.
 
-Signalen: `In de snel veranderende wereld van vandaag` · `In het huidige digitale landschap` · `In een tijd waarin` · `In de wereld van vandaag` · `belangrijker dan ooit` · `Het is geen geheim dat` · `Sinds jaar en dag` · `In een steeds digitaler wordende samenleving` · `slogan-opener die zegt wat het niet is`
+Signalen: `In de snel veranderende wereld van vandaag` · `In het huidige digitale landschap` · `In een tijd waarin` · `In de wereld van vandaag` · `belangrijker dan ooit` · `Het is geen geheim dat` · `Sinds jaar en dag` · `In een steeds digitaler wordende samenleving`
 
 Voor: In de snel veranderende digitale wereld van vandaag hebben teams snellere builds nodig. Wij brachten de onze terug van veertig naar zes minuten.
 
 Na: We brachten onze build terug van veertig naar zes minuten.
 
-Niet markeren: Een openingsanekdote die spanning, context of karakter oplevert is geen aanloop. In een wetenschappelijk artikel hoort de brede inleiding bij het genre, mits ze naar de vraagstelling toe werkt. Ook een lemma opent met een definiërende zin. Het signaal is de openingszin die je kunt schrappen zonder dat er iets verdwijnt.
+Niet markeren: Een openingsanekdote die spanning, context of karakter oplevert is geen aanloop. In een wetenschappelijk artikel hoort de brede inleiding bij het genre, mits ze naar de vraagstelling toe werkt. Ook een lemma opent met een definiërende zin. Het signaal is de openingszin die je kunt schrappen zonder dat er iets verdwijnt. 'Sinds jaar en dag' is een gewone Nederlandse uitdrukking over duur en staat niet in de regex; tel hem alleen mee als de openingszin verder geen naam, datum of getal bevat.
 
-### Aangekondigde conclusie (Kortom-slot) `signposted-conclusion`
+### Vertaalde conclusiemarkeerder (In conclusie, Aan het eind van de dag) `vertaalde-conclusiemarkeerder-nl`
 
-Ernst: **always** · Herkomst: nl-bron · en: `signposted-conclusion`
+Ernst: **always** · Herkomst: translationese
 
-De tekst of de alinea sluit af met een gemarkeerde samenvatting die herhaalt wat er net stond. Subvormen: het signaalwoord aan het begin van de slotalinea (Kortom, Samenvattend, Concluderend, Al met al), de alinea die met een samenvattende zin dichtklapt in plaats van door te stoten, en de vertaalrest In conclusie of Als conclusie, die als Nederlandse formule niet bestaat. De lezer was er net; het slot voegt niets toe.
+Slotformules die woordelijk uit het Engels komen en in spontaan Nederlands niet bestaan: In conclusie (in conclusion), Als conclusie, Om het samen te vatten (to summarize) en Aan het eind van de dag (at the end of the day). Anders dan Kortom of Al met al, die gewoon Nederlands zijn en pas op dichtheid tellen, is één van deze vormen al genoeg. Schrijf de slotzin gewoon op, of laat hem weg.
 
-Signalen: `Kortom` · `Samenvattend kunnen we zeggen` · `Kort samengevat` · `Concluderend` · `Resumerend` · `Al met al` · `Alles bij elkaar genomen` · `Om het samen te vatten` · `Om af te sluiten` · `Tot slot kunnen we stellen` · `In conclusie` · `Als conclusie` · `Uiteindelijk komt het erop neer dat` · `Onthoud dat` · `Aan het eind van de dag`
+Signalen: `In conclusie` · `Als conclusie` · `Om het samen te vatten` · `Om dit samen te vatten` · `Aan het eind van de dag` · `Ter conclusie`
 
-Voor: Kortom, de meetup is een waardevolle toevoeging aan de regio.
+Voor: In conclusie: de meetup draait nu op eigen kracht.
 
-Na: (zin schrappen; de alinea erboven zegt het al)
+Na: De meetup draait nu op eigen kracht.
 
-Niet markeren: In een scriptie, onderzoeksrapport, jaarverslag of juridische tekst is een aangekondigde conclusie voorgeschreven en geen signaal. 'Tot slot' als laatste item van een opsomming of als overgang naar een echt nieuw punt is gewoon Nederlands. 'Samenvattend' in een abstract of managementsamenvatting hoort daar. Eén slotmarkeerder in een lang stuk is geen tell; het patroon is de markeerder boven een alinea die niets nieuws zegt.
+Niet markeren: 'Aan het eind van de dag' als letterlijke tijdsaanduiding (de kassa wordt aan het eind van de dag opgemaakt) is gewoon Nederlands. In een vertaald citaat blijft de vorm staan. De inheemse markeerders Kortom, Samenvattend, Al met al en Tot slot horen bij structure/signposted-conclusion en tellen daar pas op dichtheid.
 
 ### Opsomming van kale naamwoordgroepen `bare-noun-phrase-bullets`
 
@@ -1450,7 +1687,7 @@ Voor: == Over mij ==
 == Laten we connecten! ==
 Neem gerust contact met mij op als je wilt samenwerken!
 
-Na: Ik schrijf over techbedrijven in Twente, meestal over de maakindustrie. Een stuk of twintig artikelen inmiddels, en mijn overlegpagina staat open.
+Na: Ik schrijf over techbedrijven in Twente, meestal over de maakindustrie. Een stuk of twintig artikelen inmiddels. Vragen of correcties kun je op mijn overlegpagina kwijt.
 
 Niet markeren: 'Over mij' is op een portfolio of een website een gangbare, verwachte kop, en 'neem gerust contact op' hoort in zakelijke copy op een contactpagina. Een sollicitatiebrief mag een opgewekte afsluiter hebben. Het signaal is het hele sjabloon: de vaste koppenreeks met emoji-bullets en aantallen zonder inhoud.
 
@@ -1460,7 +1697,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `circular-return-ending`
 
 De slotzin keert terug naar het openingsbeeld of de openingsvraag in plaats van ergens nieuws te landen. Symmetrie vervangt het punt: de tekst voelt af omdat hij rond is, niet omdat er iets is beslist. In het Nederlands meestal korter dan in het Engels, vaak als 'daarmee is de cirkel rond'.
 
-Signalen: `En zo zijn we terug bij het begin` · `Daarmee zijn we terug bij de vraag waarmee we begonnen` · `Terug bij af` · `Zoals we aan het begin al zeiden` · `En daarmee is de cirkel rond`
+Signalen: `En zo zijn we terug bij het begin` · `Daarmee zijn we terug bij de vraag waarmee we begonnen` · `Zoals we aan het begin al zeiden` · `En daarmee is de cirkel rond` · `Daarmee komen we weer uit bij` · `Zo komt alles samen` · `Daarmee komen we terug bij de vraag uit de inleiding`
 
 Voor: En zo zijn we terug bij het begin: is de tool het waard?
 
@@ -1495,6 +1732,24 @@ Voor: Je hebt gelijk dat de cache helpt. Hij halveert de p95 nog steeds. Maar da
 Na: Klopt, de cache verbergt ook de retry-bug. Ik pak de retry eerst aan.
 
 Niet markeren: 'Je hebt gelijk dat' is in een gewoon gesprek een normale opening, zeker als er daarna iets concreets volgt dat de ander niet wist. Een echte nuancering met een eigen argument is geen sjabloon. Het signaal is de drieslag als geheel, en de slotzin die de correctie terugkaatst als lof.
+
+### Eén zin per alinea (tijdlijnopmaak) `een-zin-per-alinea-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+De tekst is opgemaakt als een reeks losse regels met een witregel ertussen: elke zin, soms elk zinsdeel, is een eigen alinea. Op een tijdlijn is dat een aangeleerde vorm, maar in gegenereerd Nederlands is het de standaardopmaak zodra om een post of een lekker leesbare tekst wordt gevraagd, en die opmaak lekt door naar nieuwsbrieven, intranetberichten en README's. De witregel valt dan op vaste afstand en niet op een gedachtegrens. Poort: zes of meer opeenvolgende alinea's van één zin in lopend proza, of een witregel tussen twee zinnen die samen één gedachte zijn.
+
+Signalen: `zes of meer alinea's van één zin achter elkaar` · `witregel na elke zin` · `geen enkele alinea van meer dan één zin` · `witregel tussen twee zinnen die één gedachte vormen` · `een los "En ja." of "Precies." als eigen alinea` · `alinea's van minder dan tien woorden in lopend proza`
+
+Voor: We hadden een probleem.
+
+Een groot probleem.
+
+En toen bedachten we iets.
+
+Na: We hadden een probleem met de wachtrij: hij liep elke ochtend vol. Daar hebben we een tweede worker op gezet.
+
+Niet markeren: Op LinkedIn, Instagram en in een nieuwsbrief die als tijdlijnbericht is geschreven is dit de vorm van het medium en geen tell. Ook overslaan: gedichten, songteksten, chatlogs, ondertitels en een opsomming zonder opsommingstekens. Structure/uniform-paragraph-length meet het spiegelbeeld (alle alinea's drie tot vijf zinnen); syntax/staccato-fragments gaat over de zin en niet over de opmaak. Meet alleen op lopend proza van één auteur.
 
 ### Koppen die alleen koppen bevatten `empty-parent-headings`
 
@@ -1536,13 +1791,13 @@ Ernst: **cluster** · Herkomst: nl-bron · en: `formulaic-section-headers`
 
 Koppen die een vakje uit het sjabloon benoemen in plaats van de inhoud eronder: Inleiding, Overzicht, Samenvatting, Conclusie, Belangrijkste punten, Prijzen en erkenning. Twee subvormen: de verplichte combinatie van een inleidende en een afsluitende sectie ongeacht het genre, en de woordelijk vertaalde Amerikaanse artikelkop (Waarom dit ertoe doet, Wat je moet weten, De bottom line). De kop zegt niets wat de lezer niet al ziet.
 
-Signalen: `## Inleiding` · `## Overzicht` · `## Samenvatting` · `## Conclusie` · `## Belangrijkste punten` · `## Kernpunten` · `## Kerncijfers` · `## Achtergrond` · `## Tot slot` · `## Prijzen en erkenning` · `## Vragen om over na te denken` · `Waarom dit ertoe doet` · `Wat je moet weten` · `Belangrijkste inzichten` · `Wat betekent dit voor jou` · `De bottom line` · `Key takeaways`
+Signalen: `## Inleiding` · `## Overzicht` · `## Samenvatting` · `## Conclusie` · `## Belangrijkste punten` · `## Kernpunten` · `## Achtergrond` · `## Tot slot` · `## Prijzen en erkenning` · `## Vragen om over na te denken` · `Waarom dit ertoe doet` · `Wat je moet weten` · `Belangrijkste inzichten` · `Wat betekent dit voor jou` · `De bottom line` · `Key takeaways`
 
 Voor: ## Belangrijkste punten
 
 Na: ## Wat de migratie kostte
 
-Niet markeren: In een scriptie, onderzoeksrapport, offerte, ADR of beleidsnota zijn 'Inleiding' en 'Conclusie' de voorgeschreven kopnamen. Op een productpagina is 'Hoe het werkt' een gangbare Nederlandse kop. Eén sjabloonkop in een lang document is geen tell; het signaal is de reeks, of de kop in een genre dat er geen kent, zoals een lemma, een blogpost of een README.
+Niet markeren: In een scriptie, onderzoeksrapport, offerte, ADR of beleidsnota zijn 'Inleiding' en 'Conclusie' de voorgeschreven kopnamen. Op een productpagina is 'Hoe het werkt' een gangbare Nederlandse kop. Eén sjabloonkop in een lang document is geen tell; het signaal is de reeks, of de kop in een genre dat er geen kent, zoals een lemma, een blogpost of een README. In een jaarverslag, postmortem, adviesnota of gemeentelijke rapportage zijn Achtergrond en Kerncijfers de voorgeschreven kopnamen; daar is de kop geen signaal en de leegte eronder wel.
 
 ### Fractale samenvattingen `fractal-summaries`
 
@@ -1564,7 +1819,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `headers-over-short-text`
 
 Kopjes worden opgelegd aan tekst die te kort is om navigatie nodig te hebben: een kop boven twee zinnen, meer dan drie koppen in minder dan driehonderd woorden, of getitelde secties in een reactie of een e-mail. Subvormen: het tussenkopje dat alleen het onderwerp van de volgende alinea benoemt, en het kopje in een essay of column, waar kopjes ongebruikelijk zijn. De koppen dienen het sjabloon, niet de lezer.
 
-Signalen: `weinig zinnen onder een tussenkopje` · `meer dan drie koppen in minder dan 300 woorden` · `kopjes in een reactie of comment` · `kopjes die het onderwerp van de volgende alinea aankondigen` · `## Context` · `## Analyse` · `## Aanleiding` · `## Aanpak` · `## Resultaat`
+Signalen: `weinig zinnen onder een tussenkopje` · `meer dan drie koppen in minder dan 300 woorden` · `kopjes in een reactie of comment` · `kopjes die het onderwerp van de volgende alinea aankondigen`
 
 Voor: ## Context
 
@@ -1580,21 +1835,56 @@ We verzetten hem.
 
 Na: We zagen een piek. Die kwam van de cronjob, dus we hebben hem naar 03:00 verzet.
 
-Niet markeren: Naslagwerk, documentatie en runbooks worden gescand en niet gelezen; daar is een kop boven drie regels functioneel. FAQ's, changelogs en formulieren bestaan uit korte secties met een kop. Een handleiding met genummerde stappen valt er ook buiten. De poort is de verhouding koppen tot woorden in lopende tekst.
+Niet markeren: Naslagwerk, documentatie en runbooks worden gescand en niet gelezen; daar is een kop boven drie regels functioneel. FAQ's, changelogs en formulieren bestaan uit korte secties met een kop. Een handleiding met genummerde stappen valt er ook buiten. De poort is de verhouding koppen tot woorden in lopende tekst. In een postmortem, adviesnota, ADR of projectplan zijn Aanleiding, Aanpak, Analyse en Resultaat de voorgeschreven kopnamen; daar telt alleen de verhouding koppen tot woorden lopende tekst.
+
+### Inhoudsopgave boven een kort stuk `inhoudsopgave-boven-kort-stuk-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Boven een document van een paar honderd woorden staat een gegenereerde inhoudsopgave met ankerlinks, of een lijst "Wat je in dit artikel leest" die de koppen letterlijk herhaalt. Het is de opzet van het model die als tekst is meegeleverd: de lezer ziet de koppen toch al op één scherm, en op vlakken die zelf een inhoudsopgave renderen staat hij twee keer. Poort: een inhoudsopgave boven minder dan achthonderd woorden, of een die de koppen woordelijk kopieert.
+
+Signalen: `## Inhoudsopgave` · `In dit artikel:` · `Wat je in dit artikel leest` · `Snel naar:` · `lijst met ankerlinks die de koppen letterlijk herhaalt`
+
+Voor: ## Inhoudsopgave
+
+1. Inleiding
+2. Hoe het werkt
+3. Conclusie
+
+(boven een stuk van 400 woorden met precies die drie koppen)
+
+Na: (de inhoudsopgave weggehaald; de drie koppen staan een half scherm lager)
+
+Niet markeren: In een handboek, een norm, een scriptie en elke tekst van meer dan een paar duizend woorden is een inhoudsopgave functioneel, en veel CMS'en en documentatiegeneratoren maken er zelf een. Ook overslaan als het vlak geen koppen rendert. Structure/headers-over-short-text meet de verhouding koppen tot woorden; dit gaat over de opgave zelf.
+
+### Vetgedrukte bullet-openers `inline-header-lists`
+
+Ernst: **cluster** · Herkomst: transfer · en: `inline-header-lists`
+
+Elk lijstitem opent met een kort vet label en een dubbele punt, gevolgd door een zin die het label meestal herhaalt. Subvormen: dezelfde vorm zonder leesteken, de genummerde variant, en de aankondigende regel boven de lijst ('De belangrijkste punten:', 'bestaat uit drie kernonderdelen:'). In dezelfde familie hoort het vet in de lopende tekst dat losse woorden benadrukt. De poort: het vette label wordt in de zin erachter herhaald, of drie of meer labelbullets op rij in lopend proza.
+
+Signalen: `- **Gebruikerservaring:**` · `- **Prestaties:**` · `- **Veiligheid:**` · `**Kernpunt**:` · `- **Wat het is:**` · `- **Waarom het werkt:**` · `De belangrijkste punten:` · `bestaat uit drie kernonderdelen:` · `1. Kop: tekst` · `1. **Aanpak:** uitleg` · `bullet points met vetgedrukte koppen` · `overmatig vetgedrukte woorden`
+
+Voor: - **Gebruikerservaring:** De gebruikerservaring is sterk verbeterd met een nieuwe interface.
+- **Prestaties:** De prestaties zijn verbeterd door geoptimaliseerde algoritmes.
+
+Na: De interface is nieuw en pagina's laden sneller, omdat we de sortering hebben herschreven.
+
+Niet markeren: Een definitielijst, een glossarium, een changelog en een parameter- of optietabel dragen het label met opzet, want de lezer zoekt op het label. Dat geldt ook voor releasenotes en een FAQ. Het signaal is het label dat de zin erna gewoon herhaalt. Let bij wikitext ook op geneste opsommingen, die met twee sterretjes beginnen.
 
 ### Lijstje als proza `listicle-in-prose`
 
 Ernst: **cluster** · Herkomst: transfer · en: `listicle-in-prose`
 
-Genummerde punten vermomd als lopende tekst: opeenvolgende zinnen of alinea's die elk met een rangtelwoord openen, of inline-markeringen 1) 2) 3) binnen één alinea. Vaak het gevolg van de opdracht om te stoppen met lijstjes: de vorm verdwijnt, de steiger blijft staan. In geschreven Nederlands zijn 'eerst' en 'daarna' gewoner dan 'ten eerste' en 'ten tweede'.
+Genummerde punten vermomd als lopende tekst: opeenvolgende zinnen of alinea's die elk met een rangtelwoord openen, of inline-markeringen 1) 2) 3) binnen één alinea. Vaak het gevolg van de opdracht om te stoppen met lijstjes: de vorm verdwijnt, de steiger blijft staan. Bij twee of drie argumenten is ten eerste/ten tweede gewoon Nederlands; vanaf vier rangtelwoorden op rij is het een lijst die zich als proza voordoet.
 
-Signalen: `Ten eerste` · `Ten tweede` · `Ten derde` · `Allereerst` · `Vervolgens` · `Daarnaast` · `Tot slot` · `De eerste reden is` · `De tweede stap is` · `1) ... 2) ... 3)`
+Signalen: `Ten eerste` · `Ten tweede` · `Ten derde` · `De eerste reden is` · `De tweede stap is` · `1) ... 2) ... 3)`
 
 Voor: De eerste muur is het ontbreken van een gratis API. De tweede muur is het ontbreken van gedelegeerde toegang. De derde muur is het ontbreken van scopes.
 
-Na: De echte muur zijn de ontbrekende scopes. Zonder die heb je aan een gratis API weinig.
+Na: Het echte obstakel is dat er geen scopes zijn. Zonder scopes heb je aan een gratis API niets.
 
-Niet markeren: In een betoog, een juridische tekst of een vergadernotitie zijn 'ten eerste' en 'ten tweede' de nette manier om twee argumenten uit elkaar te houden, zeker bij twee of drie items. Een echte procedure mag genummerd zijn. Het signaal is de reeks van vier of meer, of het rangtelwoord boven punten die niet parallel zijn.
+Niet markeren: In een betoog, een juridische tekst of een vergadernotitie zijn 'ten eerste' en 'ten tweede' de nette manier om twee argumenten uit elkaar te houden, zeker bij twee of drie items. Een echte procedure mag genummerd zijn. Het signaal is de reeks van vier of meer, of het rangtelwoord boven punten die niet parallel zijn. Daarnaast, Vervolgens, Allereerst en Tot slot zijn gewone Nederlandse verbindingswoorden en zeggen los niets; ze tellen pas als vier of meer opeenvolgende zinnen er zinsinitieel mee openen, en dan onder vocabulary/additive-transition-pileup.
 
 ### Verhaaldefaults: vast perspectief, vlak tempo, alles rond `narrative-flatness`
 
@@ -1614,9 +1904,9 @@ Niet markeren: Genres met een eigen belofte sluiten hun draden af: een detective
 
 Ernst: **cluster** · Herkomst: translationese · en: `repeated-sentence-shapes`
 
-Mechanische symmetrie voorbij lengte: hetzelfde alineasjabloon dat terugkeert, dezelfde volgorde van zetten, dezelfde soort slotzin, en een leestekendichtheid die van alinea tot alinea gelijk blijft. Daarbij hoort de stijl die van begin tot eind exact gelijk blijft, in toon, aanspreekvorm en woordkeus, consistenter dan een mens volhoudt. Elke zin is af, in balans en netjes, zonder ruwheid of terzijde. De vertaalde variant is mechanisch parallellisme: elke zin dezelfde bouw en ongeveer dezelfde lengte, elk onderdeel van een opsomming evenveel woorden, en alinea's die met hetzelfde woord beginnen.
+Mechanische symmetrie voorbij lengte: hetzelfde alineasjabloon dat terugkeert, dezelfde volgorde van zetten, dezelfde soort slotzin, en een leestekendichtheid die van alinea tot alinea gelijk blijft. Daarbij hoort de stijl die van begin tot eind exact gelijk blijft, in toon, aanspreekvorm en woordkeus, consistenter dan een mens volhoudt. Elke zin is af, in balans en netjes, zonder ruwheid of terzijde. De vertaalde variant is mechanisch parallellisme: elke zin dezelfde bouw en ongeveer dezelfde lengte, elk onderdeel van een opsomming evenveel woorden, en alinea's die met hetzelfde woord beginnen. De maat: genormaliseerde trigramentropie over de zestig frequentste Nederlandse functiewoorden, gemeten over minstens zes alinea's van één auteur, onder 0,82 ten opzichte van een menselijk referentiecorpus. De zinsvormen zelf (elke zin dezelfde opener, de drieslag) staan bij syntax/same-opener-runs en syntax/rule-of-three; deze entry gaat over het alineasjabloon.
 
-Signalen: `elke alinea dezelfde volgorde van zetten` · `elke zin af, netjes en in balans` · `geen enkele terzijde of onafgemaakte zin` · `dezelfde aanspreekvorm van begin tot eind` · `tekst is te constant` · `trigramentropie functiewoorden onder 0,82` · `leestekendichtheid vlak over alle alinea's` · `drie of meer zinnen achter elkaar met dezelfde opbouw` · `bullets van gelijke lengte` · `elke alinea drie zinnen` · `elke zin begint met hetzelfde woord` · `elke tussenkop even lang` · `drieslag van gelijkgevormde woorden (sneller, slimmer, goedkoper)`
+Signalen: `elke alinea dezelfde volgorde van zetten` · `elke zin af, netjes en in balans` · `geen enkele terzijde of onafgemaakte zin` · `dezelfde aanspreekvorm van begin tot eind` · `tekst is te constant` · `leestekendichtheid vlak over alle alinea's` · `drie of meer zinnen achter elkaar met dezelfde opbouw` · `bullets van gelijke lengte` · `elke alinea drie zinnen` · `elke tussenkop even lang`
 
 Voor: (elke alinea: stelling, uitleg, voorbeeld, afsluitende zin met dezelfde cadans)
 
@@ -1637,6 +1927,20 @@ Voor: De service start. Hij laadt de configuratie. Hij opent een socket. Hij wac
 Na: De service laadt zijn configuratie, opent een socket en wacht dan op verzoeken.
 
 Niet markeren: Eenvoudig Nederlands (B1), kindertekst, ondertiteling en instructies zijn met opzet kort en gelijkmatig. Juridische en ambtelijke tekst is met opzet lang en gelijkmatig. Meet over minstens vijftien zinnen van één auteur, en niet op citaten, opsommingen of code.
+
+### Aangekondigde conclusie (Kortom-slot) `signposted-conclusion`
+
+Ernst: **cluster** · Herkomst: nl-bron · en: `signposted-conclusion`
+
+De tekst of de alinea sluit af met een gemarkeerde samenvatting die herhaalt wat er net stond. Subvormen: het signaalwoord aan het begin van de slotalinea (Kortom, Samenvattend, Concluderend, Al met al), de alinea die met een samenvattende zin dichtklapt in plaats van door te stoten,. De lezer was er net; het slot voegt niets toe. De vertaalresten (In conclusie, Als conclusie, Om het samen te vatten, Aan het eind van de dag) staan apart bij vertaalde-conclusiemarkeerder-nl; die bestaan als Nederlandse formule niet en tellen wel los. Kortom en Samengevat staan alleen hier en niet meer bij rhetoric/meta-signposting.
+
+Signalen: `Kortom` · `Samenvattend kunnen we zeggen` · `Kort samengevat` · `Concluderend` · `Resumerend` · `Al met al` · `Alles bij elkaar genomen` · `Om af te sluiten` · `Tot slot kunnen we stellen` · `Uiteindelijk komt het erop neer dat` · `Onthoud dat`
+
+Voor: Kortom, de meetup is een waardevolle toevoeging aan de regio.
+
+Na: (zin schrappen; de alinea erboven zegt het al)
+
+Niet markeren: In een scriptie, onderzoeksrapport, jaarverslag of juridische tekst is een aangekondigde conclusie voorgeschreven en geen signaal. 'Tot slot' als laatste item van een opsomming of als overgang naar een echt nieuw punt is gewoon Nederlands. 'Samenvattend' in een abstract of managementsamenvatting hoort daar. Eén slotmarkeerder in een lang stuk is geen tell; het patroon is de markeerder boven een alinea die niets nieuws zegt.
 
 ### Kernzin aan het begin van elke alinea `topic-sentence-every-paragraph`
 
@@ -1666,6 +1970,40 @@ Na: (een alinea van één zin, daarna een van zeven)
 
 Niet markeren: Nieuwsberichten, persberichten en encyclopedische lemma's hebben van huis uit korte, gelijkmatige alinea's; die vorm komt van de huisstijl. Vertaalde en geredigeerde tekst wordt ook gladder. Meet alleen op lopend proza van één auteur, en niet op een tekst korter dan vier alinea's.
 
+### Verplicht vervolgstappen- of aanbevelingenblok `vervolgstappenblok-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Een informerende tekst (verslag, notulen, analyse, adviesnota, projectplan) eindigt met een blok Vervolgstappen, Aanbevelingen of Actiepunten waarin geen enkele actie een eigenaar, een datum of een drempel heeft: evalueer periodiek, betrek de stakeholders, monitor de voortgang. Het blok komt uit het sjabloon en niet uit het stuk; de acties volgen nergens uit wat erboven staat. Zet er een naam en een datum bij, of laat het blok weg.
+
+Signalen: `## Vervolgstappen` · `## Aanbevelingen` · `## Actiepunten` · `## Hoe nu verder` · `Evalueer periodiek` · `Betrek de betrokken stakeholders` · `Monitor de voortgang` · `Zorg voor voldoende draagvlak` · `actiepunt zonder naam en zonder datum`
+
+Voor: Vervolgstappen: evalueer het proces periodiek, betrek de betrokken stakeholders en monitor de voortgang.
+
+Na: Vervolgstappen: Sanne vraagt voor 1 oktober twee offertes op, en we bespreken ze in het overleg van 8 oktober.
+
+Niet markeren: In een adviesnota, auditrapport of onderzoeksverslag is een aanbevelingenparagraaf voorgeschreven en hoort de kop erbij; daar is de leegte eronder het signaal en niet de kop. Een actielijst met namen en datums is precies wat zo'n blok hoort te zijn. Het signaal is de actie zonder eigenaar, datum of drempel.
+
+### Vraagkoppen door de hele tekst `vraagkoppen-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Alle tussenkoppen zijn vragen in de vorm die een zoekmachine indexeert (Wat is X? Waarom is X belangrijk? Hoe werkt X?), meestal in de vaste volgorde wat-waarom-hoe en vaak met een sectie Veelgestelde vragen die dezelfde vragen nog een keer stelt. De koppenreeks volgt de zoekintentie in plaats van de opbouw van het stuk, zodat het artikel geen lijn heeft maar een rij losse antwoorden. Zet in de kop wat er onder staat.
+
+Signalen: `## Wat is ...?` · `## Waarom is ... belangrijk?` · `## Hoe werkt ...?` · `## Wat kost ...?` · `## Veelgestelde vragen` · `elke tussenkop in het document is een vraag` · `vaste volgorde wat-waarom-hoe` · `eerste zin onder de kop herhaalt de vraag`
+
+Voor: ## Wat is een developer meetup?
+
+Een developer meetup is een bijeenkomst waar ontwikkelaars samenkomen.
+
+## Waarom is een meetup belangrijk?
+
+Na: ## Twee talks en een borrel
+
+De avond duurt van 19.00 tot 22.00 uur. Er zijn twee talks van twintig minuten.
+
+Niet markeren: Een FAQ, een helpcentrum en een supportpagina bestaan per opzet uit vraagkoppen; daar is het de vorm van het genre. Eén vraagkop in een verder beschrijvend stuk is een keuze. Syntax/rhetorical-self-question gaat over de zelfvraag binnen de lopende tekst; markeer die span daar. Het signaal is dat alle koppen de vraagvorm hebben, ook waar niemand die vraag stelt.
+
 ### Opgepompte genummerde lijst `numbered-list-inflation`
 
 Ernst: **context** · Herkomst: transfer · en: `numbered-list-inflation`
@@ -1690,7 +2028,7 @@ Signalen: `alinea's kunnen van plek wisselen zonder dat de lezer het merkt` · `
 
 Voor: Alinea over kosten. Alinea over snelheid. Alinea over vertrouwen. (elke volgorde leest hetzelfde)
 
-Na: We keken vanwege de kosten en vonden snelheid. Die winst houdt alleen stand als de cache te vertrouwen is, en daar gaat de volgende alinea over.
+Na: We gingen kijken omdat het goedkoper moest, en vonden vooral snelheidswinst. Die winst houdt alleen stand zolang de cache klopt, en juist daar ging het mis.
 
 Niet markeren: Naslagwerk, een FAQ, een productoverzicht en een lemma bestaan met opzet uit losse blokken die je in elke volgorde kunt lezen. Ook een verzameling korte portretten of een linkdump hoeft geen lijn te hebben. De test geldt voor betogend en verhalend proza.
 
@@ -1714,9 +2052,9 @@ Niet markeren: In een los markdownbestand, een README of een e-mail rendert niet
 
 Ernst: **context** · Herkomst: transfer · en: `verse-form-defaults`
 
-Gegenereerde poëzie valt in de standaardinstellingen van het model, wat de opdracht ook was: eindrijm waar niemand erom vroeg, strofen van vier regels, en oppervlakkige trouw aan een vorm. Een sonnet haalt veertien regels, een sestine negenendertig, maar de interne regel klopt niet. In het Nederlands neigt de default bovendien naar rijmparen op -aar en -en, wat het geheel nog voorspelbaarder maakt.
+Gegenereerde poëzie valt in de standaardinstellingen van het model, wat de opdracht ook was: eindrijm waar niemand erom vroeg, strofen van vier regels, en oppervlakkige trouw aan een vorm. Een sonnet haalt veertien regels, een sestine negenendertig, maar de interne regel klopt niet. In het Nederlands valt de default terug op rijm op -en, op -acht (nacht, kracht, zacht), op -and (hand, land, verstand) en op abstracta op -heid.
 
-Signalen: `sonnet` · `villanelle` · `sestine` · `kwatrijn` · `rijm zonder dat erom gevraagd is` · `vier regels per strofe` · `jambisch` · `rijmparen op -aar en -en`
+Signalen: `eindrijm zonder dat erom gevraagd is` · `elke strofe precies vier regels` · `jambisch metrum waar niemand om vroeg` · `rijmparen op -en, -acht, -and en -heid`
 
 Voor: Een 'sestine' van 39 regels waarvan de zes eindwoorden nooit rouleren, in rijmende jamben.
 
@@ -1746,45 +2084,25 @@ Ernst: **always** · Herkomst: nl-bron · en: `em-dash-density`
 
 Het lange streepje wordt de vaste manier om een zin te splitsen: een enkel streepje dat een pointe aanplakt, een gepaarde tussenzin, of een streepje waar een komma of een punt hoort. In het Nederlands weegt dit zwaarder dan in het Engels, want de Nederlandse typografie zet een half kastlijntje met spaties eromheen en de kastlijn zonder spaties is een Engelse gewoonte. De ASCII-vorm met twee koppeltekens hoort er ook bij. Vervang door een punt, een komma of een voegwoord, en gebruik in feitregels de huisseparator // of het middelpunt. De Amerikaanse zetting hoort bij het patroon: het lange streepje zonder spaties tegen de woorden aan, waar het Nederlands een gespatieerd half streepje, een komma, haakjes of een dubbele punt zet.
 
-Signalen: `—maar` · `— en dat is` · `— niet omdat` · `em-dash` · `het eenzame gedachtestreepje` · `lang koppelteken` · `streepje voor een slotpointe` · `gepaarde tussenzin tussen twee streepjes` · `streepje waar een komma of punt hoort` · `meerdere streepjes per alinea` · `**Vet** — zin` · `woord—woord` · `zin—en dan` · `lang streepje zonder spaties eromheen` · `– en dat is precies het punt.` · `streepje zonder tweede streepje` · `streepje in de laatste vier woorden van de zin` · `één accentstreepje per alinea`
+Signalen: `—maar` · `— en dat is` · `— niet omdat` · `em-dash` · `het eenzame gedachtestreepje` · `lang koppelteken` · `streepje voor een slotpointe` · `gepaarde tussenzin tussen twee streepjes` · `streepje waar een komma of punt hoort` · `meerdere streepjes per alinea` · `**Vet** — zin` · `woord—woord` · `zin—en dan` · `lang streepje zonder spaties eromheen` · `streepje zonder tweede streepje` · `streepje in de laatste vier woorden van de zin`
 
 Voor: De meetup groeit—en dat betekent een nieuwe zaal.
 
 Na: De meetup groeit. Daarom zoeken we een grotere zaal.
 
-Niet markeren: Het halve kastlijntje met spaties eromheen (–) is gewoon Nederlands en telt niet mee. Ook niet markeren: koppeltekens in samenstellingen en getalbereiken, citaten uit een Engelse bron, code en commandoregels, en beeldmateriaal dat al is vastgesteld, zoals een vastgesteld huismiddel dat het streepje in datavorm draagt. Eén streepje in een lange tekst is geen patroon. Het gespatieerde half streepje is gewoon Nederlands, en een streepjespaar rond een echte tussenzin telt niet mee. Geen tell in geciteerd Engels, in overgenomen uitgeverstypografie, in getalsbereiken en bij schrijvers die het streepje aantoonbaar al voor 2023 zo gebruikten. Eén los accentstreepje is een normaal stijlmiddel; het patroon zit in de herhaling.
-
-### Overgeslagen kopniveaus `heading-level-skipping`
-
-Ernst: **always** · Herkomst: transfer · en: `heading-level-skipping`
-
-Secties beginnen op het derde kopniveau zonder kop van het tweede niveau erboven, of een kop staat meer dan één stap onder zijn ouder. Dat druist in tegen toegankelijkheidsconventies op elk vlak, dus een met de hand opgemaakte pagina heeft die eigenaardigheid bijna nooit. Nummer de hiërarchie zo dat elk niveau één stap dieper is dan zijn ouder.
-
-Signalen: `### als eerste kop zonder ## erboven` · `kopniveau springt twee stappen` · `=== zonder ==`
-
-Voor: ### Achtergrond
-Het project startte in 2024.
-### Methode
-We spraken twaalf teams.
-
-Na: ## Achtergrond
-Het project startte in 2024.
-## Methode
-We spraken twaalf teams.
-
-Niet markeren: Een fragment dat uit een groter document is geknipt mist zijn ouderkop terecht, en een template of partial begint vaak bewust op een dieper niveau. Ook niet markeren in code, in wikitext waar de sjabloon de kop levert, en in een README waar de titel uit de metadata komt.
+Niet markeren: Het halve kastlijntje met spaties eromheen (–) is gewoon Nederlands en telt niet mee, net als een streepjespaar rond een echte tussenzin. Eén los accentstreepje is een normaal stijlmiddel; het patroon zit in de herhaling van het lange streepje. Ook niet markeren: koppeltekens in samenstellingen en getalbereiken, citaten uit een Engelse bron, code en commandoregels, overgenomen uitgeverstypografie, en schrijvers die het streepje aantoonbaar al voor 2023 zo gebruikten. De separator in feitregels is per project vastgelegd: de eigen organisatie gebruikt //, elders is het middelpunt of de komma net zo goed.
 
 ### Punt achter het bulletlabel `list-label-periods`
 
 Ernst: **always** · Herkomst: transfer · en: `list-label-periods`
 
-In een lijst waarvan de items met een kort label openen, eindigt dat label met een punt en loopt de toelichting als losse zin door, waar iemand een dubbele punt zou zetten. Met vet label is het signaal het sterkst, zonder vet blijft het zichtbaar. Maak er een dubbele punt van en ga klein verder, of schrijf een gewone zin.
+In een lijst waarvan de items met een kort label openen, eindigt dat label met een punt en loopt de toelichting als losse zin door, waar iemand een dubbele punt zou zetten. Met vet label is het signaal het sterkst, zonder vet blijft het zichtbaar. Maak er een dubbele punt van en ga klein verder, of schrijf een gewone zin. Het vette label zelf blijft alleen staan in een echte definitielijst of woordenlijst; zie punctuation-format/bold-overuse en structure/inline-header-lists.
 
 Signalen: `- **Introducties.** Jaren aan conferenties` · `- **Bereik.** Ons netwerk` · `- **Contentdistributie.**` · `label met punt in plaats van dubbele punt`
 
 Voor: - **Introducties.** Jaren aan conferenties en een netwerk van operators.
 
-Na: - **Introducties:** jaren aan conferenties en een netwerk van operators.
+Na: - Introducties: jaren aan conferenties en een netwerk van operators.
 
 Niet markeren: Een label dat zelf een volledige zin is, hoort met een punt te eindigen, en in een echte definitielijst of een changelog is de punt de huisstijl. Ook niet markeren: een afkorting met punt aan het eind van het label, en lijsten waarin elk item uit losse zinnen bestaat zonder labelvorm.
 
@@ -1803,21 +2121,34 @@ Na: Bob sloeg zijn armen over elkaar. "Waarom zou ik?" Tonny wreef in zijn ogen.
 
 Niet markeren: In een scenario, een toneeltekst, een hoorspel, een podcastscript of een interviewtranscriptie is dit de juiste vorm. Ook niet markeren in ondertitelbestanden en in notulen die een reactie noteren.
 
-### Wiskundig vet en bulletglyphs `unicode-math-bold-and-bullets`
+### Unicode-wiskundevet in plaats van opmaak `unicode-math-bold-and-bullets`
 
 Ernst: **always** · Herkomst: transfer · en: `unicode-math-bold-and-bullets`
 
-Vet nagemaakt met Unicode-wiskundetekens in plaats van met opmaak, en lijstitems gemarkeerd met het losse bulletteken op een vlak dat echte lijstsyntaxis heeft. Het komt uit sociale platforms zonder opmaakknop en blijft daarna hangen. Gebruik de opmaak van het vlak zelf.
+Vet nagemaakt met Unicode-wiskundetekens in plaats van met opmaak. Het komt uit sociale platforms zonder opmaakknop en blijft daarna hangen. Gebruik de opmaak van het vlak zelf. Het losse bulletteken staat apart bij los-bulletteken-nl, omdat dat teken ook uit Word en Outlook meekomt en daar niets over de schrijver zegt.
 
-Signalen: `unicode-vet in plaats van opmaak` · `• als bullet op een vlak met echte lijstsyntaxis`
+Signalen: `unicode-vet in plaats van opmaak`
 
-Voor: 𝐕𝐢𝐞𝐦𝐬
-• kleinere batches
-• minder rollbacks
+Voor: 𝐋𝐞𝐯𝐞𝐫 𝐰𝐞𝐤𝐞𝐥𝐢𝐣𝐤𝐬
+𝐊𝐥𝐞𝐢𝐧𝐞𝐫𝐞 𝐛𝐚𝐭𝐜𝐡𝐞𝐬 𝐰𝐞𝐫𝐤𝐞𝐧
 
 Na: Lever wekelijks. Kleinere batches leiden tot minder rollbacks.
 
 Niet markeren: In wiskundige tekst zijn de blackboard- en fraktuurtekens echte notatie, en op LinkedIn, Instagram en in een plain-text mail is het bulletteken de enige beschikbare vorm. Ook niet markeren in ASCII-art, in een terminalbanner en in gegenereerde tabeluitvoer van een tool.
+
+### Beletselteken als spanningspauze `beletselteken-als-spanningspauze-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Drie puntjes worden ingezet als dramatische pauze of als cliffhanger, terwijl er niets wordt weggelaten: midden in een zin voor de clou, of aan het eind van een alinea om spanning vast te houden. In het Nederlands markeert het beletselteken een weglating of een zin die de spreker niet afmaakt; als spanningsmiddel is het een marketinggewoonte die gegenereerde tekst overneemt. Maak er een punt van en zeg wat er staat.
+
+Signalen: `En toen gebeurde er iets…` · `Maar er is meer...` · `Klinkt simpel, toch…` · `alinea die eindigt op drie puntjes zonder weglating` · `beletselteken vlak voor de clou van de zin`
+
+Voor: We dachten dat de zaal te klein was… tot de aanmeldingen binnenkwamen.
+
+Na: We dachten dat de zaal te klein was. Er meldden zich uiteindelijk 38 mensen aan voor 60 stoelen.
+
+Niet markeren: Een echte weglating in een citaat, een afgebroken zin in dialoog en een aposiopese in literaire tekst zijn precies waar het teken voor is. In ondertitels en chatlogs hoort het bij het register. Punctuation-format/unicode-typography-nl gaat over het teken zelf (… tegenover drie punten); deze entry gaat over waar het staat en wat het doet.
 
 ### Vet als standaardnadruk `bold-overuse`
 
@@ -1825,7 +2156,7 @@ Ernst: **cluster** · Herkomst: nl-bron · en: `bold-overuse`
 
 Vet wordt mechanisch uitgedeeld in plaats van als accent gezet: losse kernwoorden midden in een alinea, een vette frase in elke zin, elk voorkomen van hetzelfde woord, of een vet label vooraan elke bullet. Ook vet op een cijfer of jaartal, en vet dat de plek van een kop inneemt, horen erbij. Haal het vet bij de meeste frases weg en bouw de zin zo dat het belangrijke vooraan staat.
 
-Signalen: `vetgedrukte kernwoorden midden in een alinea` · `elke bullet begint met een vet label` · `vet in plaats van een kop` · `meerdere vette frasen per alinea` · `vet op een cijfer of jaartal` · `meer dan drie vette stukken in een tekst` · `vet op elk voorkomen van hetzelfde woord`
+Signalen: `vetgedrukte kernwoorden midden in een alinea` · `elke bullet begint met een vet label` · `vet in plaats van een kop` · `meerdere vette frasen per alinea` · `vet op een cijfer of jaartal` · `meer dan drie vette stukken in een tekst` · `vet op elk voorkomen van hetzelfde woord` · `'''vetgedrukt kernwoord''' midden in een alinea van een verder vetloos artikel`
 
 Voor: **Belangrijk:** de meetup is **gratis** en vindt plaats in **Enschede**.
 
@@ -1857,7 +2188,7 @@ Signalen: `meer dan de helft van de zinnen bevat een komma` · `komma op elke sy
 
 Voor: Het team, dat snel gegroeid was, kwam maandag bijeen, nam het plan door, en besloot, in beginsel, door te gaan.
 
-Na: Het team was snel gegroeid. Maandag nam het het plan door en besloot voorlopig door te gaan.
+Na: Het team was snel gegroeid. Maandag namen ze het plan door en besloten ze voorlopig door te gaan.
 
 Niet markeren: Dit is een maat over een hele tekst, geen oordeel over één zin. Juridisch, wetenschappelijk en ambtelijk Nederlands zetten van nature meer komma’s, en een lange opsomming of een reeks bijzinnen is gewoon correct. De seriekomma zit apart onder oxford-comma-nl; markeer die hier niet nog een keer.
 
@@ -1865,7 +2196,7 @@ Niet markeren: Dit is een maat over een hele tekst, geen oordeel over één zin.
 
 Ernst: **cluster** · Herkomst: nl-bron · en: `curly-quotes`
 
-Typografische aanhalingstekens op een vlak waarvan de conventie recht is: code, commitberichten, Markdown, mail, chat. Het sterkere signaal is de menging, krullend en recht door elkaar in één tekst of zelfs één zin, want krullende software is consequent en een plakje uit een chatvenster niet. In het Nederlands komt erbij dat de Engelse paren worden uitgestoten terwijl de Nederlandse conventie „…” of ‘…’ is.
+Typografische aanhalingstekens op een vlak waarvan de conventie recht is: code, commitberichten, Markdown, mail, chat. Het sterkere signaal is de menging, krullend en recht door elkaar in één tekst of zelfs één zin, want krullende software is consequent en een plakje uit een chatvenster niet. De tell is het vlak en de menging, niet de krulrichting: recht hoort op code-, chat-, commit- en Markdown-vlakken, en in gezette Nederlandse tekst zijn zowel “…” als „…” gangbaar, dus de keuze daartussen zegt niets.
 
 Signalen: `slimme aanhalingstekens` · `curly quotes` · `rechte aanhalingstekens` · `krullend en recht door elkaar in één tekst` · `Engels krulpaar in Nederlandse tekst`
 
@@ -1873,7 +2204,7 @@ Voor: Hij zei “het project ligt op schema”, maar zijn collega zei "dat halen
 
 Na: Hij zei "het project ligt op schema", maar zijn collega zei "dat halen we niet".
 
-Niet markeren: In gezette tekst, in Word, in een tijdschrift of op een site met een typografische pipeline zijn krullende tekens de norm en zegt dit niets. De krulapostrof in ’t, ’n en z’n is gewoon Nederlands en wordt nooit gemeld. Een losse krulapostrof of een enkel krulpaar is geen patroon.
+Niet markeren: In gezette tekst, in Word, in een tijdschrift of op een site met een typografische pipeline zijn krullende tekens de norm en zegt dit niets. De krulapostrof in ’t, ’n en z’n is gewoon Nederlands en wordt nooit gemeld. Een losse krulapostrof of een enkel krulpaar is geen patroon. Word, Google Docs, Outlook en de tekstinvoer van macOS en iOS zetten rechte aanhalingstekens automatisch om naar krullende, zonder dat de schrijver het merkt. In tekst die daarvandaan komt is het teken bewijs van de editor en niet van de schrijver.
 
 ### Emoji als versiering `emoji-decoration`
 
@@ -1913,7 +2244,7 @@ Perfecte spatiering, interpunctie en spelling op plekken waar mensen snel typen:
 
 Signalen: `geen d/t-fouten` · `geen typefouten` · `geen dubbele spaties` · `geen samentrekkingen (z'n, 't, 'n)` · `volledige woorden waar mensen afkorten`
 
-Voor: Ik waardeer de grondige analyse en de snelle reactie. Het voorstel is doordacht en ik steun het van harte.
+Voor: Dank voor de grondige analyse; ik heb de argumentatie zorgvuldig gelezen. Het voorstel is doordacht en de afweging tussen doorlooptijd en kwaliteit is helder gemaakt — met name het punt over de terugvaloptie overtuigt mij. Zoals je terecht opmerkt, ligt de “bottleneck” bij de reviewcapaciteit en niet bij de implementatie. Ik steun het voorstel van harte en verneem graag wanneer de uitvoering start.
 
 Na: thanks voor het uitzoekwerk, lijkt me prima zo. ben voor
 
@@ -1925,7 +2256,7 @@ Ernst: **cluster** · Herkomst: nl-bron
 
 Een komma voor het laatste lid van een opsomming van drie of meer: appels, peren, en bananen. Die komma is standaard in het Britse Engels en ongebruikelijk in het Nederlands, dus in een Nederlandse opsomming is hij een vertaalspoor. Fout is hij niet, maar bij herhaling in dezelfde tekst is het een tell. In een uit het Engels overgezette tekst lekt de serial comma systematisch mee, en dan is de regelmaat de tell, niet de losse komma.
 
-Signalen: `, of` · `Oxford-komma` · `seriekomma` · `serial comma` · `appels, peren, en bananen` · `schrijven, lezen, en films kijken` · `snel, eenvoudig, en efficiënt` · `A, B, en C` · `komma voor 'en' in een opsomming` · `e-mailmarketing, social media, en SEO`
+Signalen: `Oxford-komma` · `seriekomma` · `serial comma` · `appels, peren, en bananen` · `schrijven, lezen, en films kijken` · `snel, eenvoudig, en efficiënt` · `A, B, en C` · `komma voor 'en' in een opsomming` · `e-mailmarketing, social media, en SEO` · `dezelfde komma in meer dan één opsomming in dezelfde tekst`
 
 Voor: Ik kocht appels, peren, en bananen.
 
@@ -1957,7 +2288,7 @@ Signalen: `een "naadloze" ervaring` · `innovatieve" oplossingen` · `echte" res
 
 Voor: Het "innovatieve" platform biedt "naadloze" onboarding voor "moderne" teams.
 
-Na: Met het platform kan een nieuw team dezelfde dag beginnen.
+Na: Het platform verzorgt de onboarding van nieuwe teams.
 
 Niet markeren: Een echt citaat, een term die als term wordt genoemd, een titel, een bijnaam en een omstreden woord dat de schrijver expliciet op afstand zet, zijn alle vier legitiem. Vakteksten die een begrip introduceren zetten het terecht één keer tussen aanhalingstekens. De poort is de telling, niet het losse paar.
 
@@ -1965,15 +2296,15 @@ Niet markeren: Een echt citaat, een term die als term wordt genoemd, een titel, 
 
 Ernst: **cluster** · Herkomst: transfer · en: `semicolon-colon-skew`
 
-Het gebruik van de puntkomma wijkt af van menselijk proza, in een richting die van het model afhangt. Of het teken komt nergens voor en komma’s en streepjes doen het werk, of de puntkomma verbindt hoofdzinnen op een tempo dat ver boven gewoon Nederlands ligt en vervangt punt en voegwoord. Nederlands proza gebruikt de puntkomma zeldzamer dan Engels, dus drie in één alinea is hier al veel.
+De puntkomma verbindt hoofdzinnen op een tempo dat ver boven gewoon Nederlands ligt en vervangt punt en voegwoord. Nederlands proza gebruikt de puntkomma zeldzamer dan Engels, dus drie in één alinea is hier al veel. De dubbele punt heeft zijn eigen entries: de onthullende dubbele punt staat bij rhetoric/colon-reveal en de hoofdletter erna bij punctuation-format/capitalized-after-colon.
 
-Signalen: `puntkomma als standaardsplitsing tussen hoofdzinnen` · `drie of meer puntkomma’s in één alinea` · `puntkomma komt nergens voor`
+Signalen: `puntkomma als standaardsplitsing tussen hoofdzinnen` · `drie of meer puntkomma’s in één alinea`
 
 Voor: De build faalde; de logs waren leeg; niemand kreeg een melding; de piketregeling was verlopen.
 
 Na: De build faalde en de logs waren leeg. Niemand kreeg een melding, want de piketregeling was verlopen.
 
-Niet markeren: In code, CSS, CSV-achtige regels, bibliografieën en lange opsommingen met interne komma’s is de puntkomma functioneel. Wetenschappelijk en juridisch Nederlands gebruiken hem vaker en correct. De afwezigheid van puntkomma’s is op zichzelf niets om te melden.
+Niet markeren: In code, CSS, CSV-achtige regels, bibliografieën en lange opsommingen met interne komma’s is de puntkomma functioneel. Wetenschappelijk en juridisch Nederlands gebruiken hem vaker en correct.
 
 ### Klemtoonaccent en willekeurige nadruk `stress-accents-nl`
 
@@ -1981,13 +2312,13 @@ Ernst: **cluster** · Herkomst: nl-bron
 
 Nadrukmarkering op woorden die geen nadruk dragen: klemtoonaccenten als té, wél en én, of cursief en kapitalen op willekeurige plekken. Het accent zelf is een gewoon Nederlands middel, het patroon is de toepassing te pas en te onpas. Zet alleen iets in de spotlight als de betekenis dat vraagt.
 
-Signalen: `te pas én te onpas` · `HOOFDLETTERS voor nadruk` · `cursief op een willekeurig woord`
+Signalen: `HOOFDLETTERS voor nadruk` · `cursief op een willekeurig woord`
 
-Voor: Het gebeurt te pas én te onpas, en dat is té veel.
+Voor: Dit is écht een kans die je niet wíl missen, en wél nu.
 
-Na: Het gebeurt te pas en te onpas, en dat is te vaak.
+Na: Dit is een kans die je niet wilt missen, en je moet er nu bij zijn.
 
-Niet markeren: Het klemtoonaccent is correct Nederlands waar het betekenisverschil draagt: 'één' tegenover 'een', 'vóór' tegenover 'voor', en een tegenstelling die anders verkeerd wordt gelezen. Niet markeren in citaten, in leermateriaal over spelling, of bij één losse instantie. Vet valt onder bold-overuse.
+Niet markeren: Het klemtoonaccent is correct Nederlands waar het betekenisverschil draagt: 'één' tegenover 'een', 'vóór' tegenover 'voor', en een tegenstelling die anders verkeerd wordt gelezen. Niet markeren in citaten, in leermateriaal over spelling, of bij één losse instantie. Vet valt onder bold-overuse. 'Én' bij een echte optelling of tegenstelling ('snel én goedkoop') is standaard Nederlands en wordt nooit gemeld.
 
 ### Scheidingslijn voor elke sectie `thematic-breaks`
 
@@ -2013,19 +2344,81 @@ Hoofddoeken staan in de bronnen.
 
 Niet markeren: YAML-frontmatter wordt door dezelfde drie streepjes begrensd, vandaar dat de regex een kop erna eist. Ook niet markeren: een enkele lijn die een echte wending markeert, een scheiding tussen brieffragmenten of dagboeknotities, en een huisstijl waarin de lijn onder een kop hoort.
 
+### Uitroeptekendichtheid `uitroeptekendichtheid-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Het uitroepteken wordt het standaard eindteken van enthousiaste tekst: meer dan één per alinea, aan het eind van een kop, achter een lijstitem, of drie op rij aan het slot van een bericht. In Nederlands zakelijk proza is het uitroepteken zeldzaam en draagt het echte verbazing of een aansporing; gegenereerde Nederlandse marketingtekst deelt het uit bij elke mededeling. Haal ze weg en laat er hoogstens één staan waar iemand echt roept.
+
+Signalen: `twee of meer uitroeptekens in één alinea` · `uitroepteken aan het eind van een kop` · `Tot snel!` · `Veel leesplezier!` · `Meld je snel aan!` · `Wat een mooie avond!` · `uitroepteken achter een lijstitem`
+
+Voor: Wat een geslaagde avond! Dank aan alle sprekers! Tot de volgende editie!
+
+Na: Er kwamen 38 mensen. Dank aan Sanne en Ruben voor de talks. De volgende editie is op 7 oktober.
+
+Niet markeren: In dialoog, in een citaat, in reclame en op sociale media hoort het uitroepteken bij het register. Waarschuwingen ("Let op!") en aansporingen op een knop mogen er een dragen. In het Duits en in vertaald Duits staat het uitroepteken na een aanhef; dat is genrenorm. Het signaal is de dichtheid in verder zakelijke tekst.
+
 ### Typografische Unicode-vervangingen `unicode-typography-nl`
 
 Ernst: **cluster** · Herkomst: nl-bron
 
-Unicode-varianten van gewone leestekens waar een mens de toetsenbordvorm typt: het ellipsis-teken in plaats van drie punten, de harde spatie, het lange streepje in plaats van een koppelteken. Typografisch zijn ze correcter, en juist dat is het spoor: ze staan er allemaal, overal, zonder dat iemand ze heeft ingetypt. Zet ze terug naar de gewone vorm op vlakken die geen zetwerk doen.
+Unicode-varianten van gewone leestekens waar een mens de toetsenbordvorm typt: het ellipsis-teken in plaats van drie punten, de harde spatie, het lange streepje in plaats van een koppelteken. Typografisch zijn ze correcter, en juist dat is het spoor: ze staan er allemaal, overal, zonder dat iemand ze heeft ingetypt. Zet ze terug naar de gewone vorm op vlakken die geen zetwerk doen. De harde spatie komt meestal uit een plakactie; die kant staat bij artifacts/paste-whitespace-residue-nl.
 
-Signalen: `ellipsis-karakter` · `non-breaking space` · `harde spatie` · `typografisch correcte tekens die niemand intypt`
+Signalen: `ellipsis-karakter` · `harde spatie op een plek waar niets aan elkaar hoeft te blijven` · `typografisch correcte tekens die niemand intypt` · `lang streepje in plaats van een koppelteken`
 
-Voor: De aanmelding loopt nog… en de zaal telt 60 plaatsen.
+Voor: “Ik dacht dat het al klaar was…” zei ze.
 
-Na: De aanmelding loopt nog... en de zaal telt 60 plaatsen.
+Na: "Ik dacht dat het al klaar was..." zei ze.
 
-Niet markeren: In gezette tekst, in LaTeX-uitvoer, in een CMS met een typografiefilter en in PDF’s zijn deze tekens de bedoeling. De harde spatie hoort bij een getal met eenheid en in een naam die niet mag afbreken. Het gedachtestreepje zelf valt onder em-dash-density; meld het hier niet dubbel.
+Niet markeren: In gezette tekst, in LaTeX-uitvoer, in een CMS met een typografiefilter en in PDF’s zijn deze tekens de bedoeling. De harde spatie hoort bij een getal met eenheid en in een naam die niet mag afbreken. Het gedachtestreepje zelf valt onder em-dash-density; meld het hier niet dubbel. Word, Google Docs, Outlook en de tekstinvoer van macOS en iOS vervangen deze tekens automatisch; daar is het teken bewijs van de editor. Alleen op vlakken zonder autocorrectie (een terminal, een commitbericht, een code-editor) is het een aanwijzing. Het beletselteken als spanningspauze staat bij beletselteken-als-spanningspauze-nl.
+
+### Backticks om gewone woorden `backticks-om-gewone-woorden-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Inline code-opmaak op woorden die geen code zijn: vaktermen, productnamen, maanden, gewone Nederlandse woorden. Gegenereerde documentatie zet backticks als nadrukmiddel omdat het vlak Markdown accepteert, waar een schrijver de term gewoon zou laten staan of hem één keer zou introduceren. Houd backticks voor wat je letterlijk kunt kopiëren en plakken: een commando, een pad, een identifier, een sleutel.
+
+Signalen: `` `meetup` tussen backticks `` · `` `oktober` `` · `` `productie` waar geen identifier staat `` · `elke vakterm in code-opmaak` · `backticks om een woord dat je nergens kunt intypen`
+
+Voor: We hebben de `meetup` verplaatst naar `oktober` en de `aanmeldingen` lopen door.
+
+Na: We hebben de meetup naar oktober verplaatst; de aanmeldingen lopen door.
+
+Niet markeren: Een commando, een bestandsnaam, een pad, een sleutel, een veldnaam, een HTTP-status en een letterlijke waarde horen tussen backticks; dat is de conventie van technische documentatie. Ook een woord dat als string wordt aangehaald ("de waarde `true`") blijft staan. Het signaal is de code-opmaak op een woord dat nergens is in te typen.
+
+### Cijfers waar het Nederlands het getal uitschrijft `cijfers-in-lopende-tekst-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Kleine getallen in lopende tekst staan in cijfers waar de Nederlandse redactionele stijl ze uitschrijft, en het procentteken staat waar "procent" hoort. Nederlandse stijl schrijft getallen tot twintig en ronde getallen voluit in proza en houdt cijfers voor tabellen, bedragen, maten en datums. Gegenereerde tekst neemt de Angelsaksische lijstgewoonte mee en zet overal cijfers, ook midden in een zin die verder geen data bevat.
+
+Signalen: `We spraken 12 teams` · `in 2 stappen` · `Er waren 3 sprekers` · `50% van de bedrijven` · `cijfer onder de twintig midden in een lopende zin` · `% in plaats van procent in proza`
+
+Voor: We spraken 12 teams en bij 3 daarvan bleek 40% van de builds te falen.
+
+Na: We spraken twaalf teams. Bij drie daarvan faalde veertig procent van de builds.
+
+Niet markeren: In tabellen, prijzen, maten, datums, versienummers, meetwaarden en technische documentatie horen cijfers, en veel huisstijlen schrijven ze ook in proza voor. Een getal boven de twintig staat in cijfers. Translationese/english-number-date-format-nl gaat over de notatie van hetzelfde getal (decimaalteken, datumvolgorde); dit gaat over de keuze tussen cijfer en woord. Toets eerst de huisstijl.
+
+### Overgeslagen kopniveaus `heading-level-skipping`
+
+Ernst: **context** · Herkomst: transfer · en: `heading-level-skipping`
+
+Secties beginnen op het derde kopniveau zonder kop van het tweede niveau erboven, of een kop staat meer dan één stap onder zijn ouder. Nummer de hiërarchie zo dat elk niveau één stap dieper is dan zijn ouder. Op vlakken met een redacteur of een lintingstap is de sprong zeldzaam; in een handgeschreven README of notitie komt hij gewoon voor. Het signaal is de sprong in een verder machinaal nette structuur.
+
+Signalen: `### als eerste kop zonder ## erboven` · `kopniveau springt twee stappen` · `=== zonder ==`
+
+Voor: ### Achtergrond
+Het project startte in 2024.
+### Methode
+We spraken twaalf teams.
+
+Na: ## Achtergrond
+Het project startte in 2024.
+## Methode
+We spraken twaalf teams.
+
+Niet markeren: Een fragment dat uit een groter document is geknipt mist zijn ouderkop terecht, en een template of partial begint vaak bewust op een dieper niveau. Ook niet markeren in code, in wikitext waar de sjabloon de kop levert, en in een README waar de titel uit de metadata komt. Een handgeschreven README of notitie kiest kopniveaus op het oog; daar zegt de sprong niets.
 
 ### H1 voor gewone secties `level-1-heading-overuse`
 
@@ -2049,11 +2442,45 @@ Na: ## Geschiedenis
 
 Niet markeren: Eén H1 als documenttitel is juist de bedoeling, en in een los Markdown-bestand zonder eigen titelweergave is een tweede H1 soms een bewuste paginascheiding. Ook niet markeren in slidedecks, in changelogs met een kop per versie, en in bestanden die een generator later herschrijft.
 
+### Los bulletteken op een vlak met echte lijstsyntaxis `los-bulletteken-nl`
+
+Ernst: **context** · Herkomst: transfer · en: `unicode-math-bold-and-bullets`
+
+Lijstitems worden gemarkeerd met het losse bulletteken • op een vlak dat zelf lijstopmaak kent: een Markdown-bestand, een issue, een wiki, een CMS-veld. Op LinkedIn, Instagram en in een plain-text mail is het teken de enige beschikbare vorm en zegt het niets; het signaal is het teken op een vlak waar een streepje of een cijfer de lijst had gemaakt. Zet de lijstsyntaxis van het vlak zelf terug.
+
+Signalen: `• als bullet in een Markdown-bestand` · `• als bullet in een issue of pull request` · `• in een wiki met echte lijstopmaak` · `een lijst die uit Word of Outlook is geplakt`
+
+Voor: • kleinere batches
+• minder rollbacks
+
+Na: - kleinere batches
+- minder rollbacks
+
+Niet markeren: Op LinkedIn, Instagram, in een plain-text mail en in een terminalbanner is • de enige beschikbare vorm. Een lijst die uit Word, Outlook of Google Docs is geplakt draagt • omdat het bronprogramma dat teken meestuurt; dat zegt niets over de schrijver. Ook niet markeren in ASCII-art en in gegenereerde tabeluitvoer van een tool.
+
+### Punt achter elke fragmentbullet `punt-achter-fragmentbullet-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Elk lijstitem sluit af met een punt terwijl het geen zin is, of alle items dragen mechanisch dezelfde eindinterpunctie ongeacht hun vorm. Nederlandse schrijvers laten de punt weg bij losse naamwoordgroepen en zetten hem alleen als het item een zin is; de uniformiteit over items van ongelijke soort is de tell. Laat de punt weg bij fragmenten, of maak er zinnen van.
+
+Signalen: `- Kortere feedbackloop.` · `- Minder handwerk.` · `elk item zonder persoonsvorm eindigt op een punt` · `punt achter een item van twee woorden` · `alle items dezelfde eindinterpunctie, ongeacht of het een zin is`
+
+Voor: - Kortere feedbackloop.
+- Minder handwerk.
+- Betere logging.
+
+Na: - kortere feedbackloop
+- minder handwerk
+- betere logging
+
+Niet markeren: Een item dat zelf een volledige zin is hoort met een punt te eindigen, en veel huisstijlen schrijven een punt achter elk item voor, ook achter fragmenten; dat is een keuze en geen fout. In een changelog, een releasenote en een definitielijst is de punt gebruikelijk. Punctuation-format/list-label-periods gaat over de punt achter een kort vet label; markeer die span daar. Het signaal is de mechanische punt achter items van ongelijke soort.
+
 ### Overbodige afkortingsuitleg `redundant-acronym-expansion`
 
 Ernst: **context** · Herkomst: transfer · en: `redundant-acronym-expansion`
 
-Elke afkorting wordt bij het eerste gebruik tussen haakjes uitgeschreven, ook als het publiek de term dagelijks gebruikt, vaak in de omgekeerde volgorde met de afkorting voorop en met de meervoudsapostrof erbij. Meestal staat het ook nog in vet, en dan voor elke term in dezelfde zin. Laat de uitleg weg waar de lezer de term kent.
+Elke afkorting wordt bij het eerste gebruik tussen haakjes uitgeschreven, ook als het publiek de term dagelijks gebruikt, vaak in de omgekeerde volgorde met de afkorting voorop. Meestal staat het ook nog in vet, en dan voor elke term in dezelfde zin. Laat de uitleg weg waar de lezer de term kent.
 
 Signalen: `KPI's (Key Performance Indicators)` · `OKR's (Objectives and Key Results)` · `AVG (Algemene verordening gegevensbescherming)` · `API (Application Programming Interface)` · `elke afkorting uitgeschreven bij eerste gebruik`
 
@@ -2061,7 +2488,7 @@ Voor: Het combineert KPI's (Key Performance Indicators) met het Business Model C
 
 Na: Het combineert KPI's met het Business Model Canvas.
 
-Niet markeren: Bij een publiek dat de term niet kent is uitschrijven precies goed, en in wetenschappelijke, juridische en overheidsteksten schrijft de stijlgids het voor bij eerste gebruik. Ook niet markeren in een begrippenlijst, in een norm of in een tekst voor buitenstaanders. Eén uitleg per document is geen patroon.
+Niet markeren: Bij een publiek dat de term niet kent is uitschrijven precies goed, en in wetenschappelijke, juridische en overheidsteksten schrijft de stijlgids het voor bij eerste gebruik. Ook niet markeren in een begrippenlijst, in een norm of in een tekst voor buitenstaanders. Eén uitleg per document is geen patroon. De apostrof in KPI's, API's en cao's is de Nederlandse meervoudsspelling en nooit een signaal; het weglaten ervan valt onder translationese/american-quote-and-genitive-nl.
 
 ### Pijlen als voegwoord `unicode-arrows`
 
@@ -2071,9 +2498,9 @@ Typografische pijlen of hun ASCII-vormen midden in lopende tekst, waar een schri
 
 Signalen: `Invoer → Verwerking → Uitvoer` · `betere resultaten → meer betrokkenheid`
 
-Voor: Dat leidt tot betere resultaten → dus tot meer betrokkenheid.
+Voor: Meer oefening → betere resultaten → meer betrokkenheid.
 
-Na: Betere resultaten zorgen ervoor dat meer mensen meedoen.
+Na: Wie vaker oefent haalt betere resultaten, en dan blijven mensen meedoen.
 
 Niet markeren: In code, in commitberichten, in diagrammen, in wiskunde en in taalkundige afleidingen (Latijn → Frans) is de pijl vaknotatie. Ook niet markeren in een migratieregel, in een routebeschrijving en in een menupad zoals Instellingen → Profiel.
 
@@ -2090,11 +2517,53 @@ Voor: | Metriek | Waarde |
 | Marktwaarde (2024) | circa 2,1 miljard euro |
 | Aantal locaties | 4 |
 
-Na: De markt was in 2024 ongeveer 2,1 miljard euro waard, verdeeld over vier locaties.
+Na: De markt was in 2024 ongeveer 2,1 miljard euro waard. Er zijn vier locaties.
 
-Niet markeren: Een tabel met meer dan een handvol rijen, met echte kolomvergelijking of met getallen die de lezer naast elkaar wil leggen, verdient zijn vorm. Ook niet markeren: infoboxen, API-parameterlijsten, prijstabellen en roosters. Documentatieconventies die alles in tabellen zetten zijn een huisstijl.
+Niet markeren: Een tabel met meer dan een handvol rijen, met echte kolomvergelijking of met getallen die de lezer naast elkaar wil leggen, verdient zijn vorm. Ook niet markeren: infoboxen, API-parameterlijsten, prijstabellen en roosters. Documentatieconventies die alles in tabellen zetten zijn een huisstijl. Het invouwen mag geen relatie toevoegen die de tabel niet legt: twee losse rijen blijven twee losse mededelingen.
+
+### Vet bovenop de kop `vet-bovenop-de-kop-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Een kop draagt naast zijn kopniveau ook nog vetopmaak, of elke genummerde kop krijgt vet mee. De opmaaktaal maakt een kop al zwaar, dus het vet doet niets; het is een restant van chatuitvoer waarin het model kop en nadruk tegelijk zet. Haal het vet weg en laat het kopniveau het werk doen.
+
+Signalen: `## **Aanpak**` · `### **Stap 1: voorbereiding**` · `#### **Conclusie**` · `elke kop draagt naast het kopniveau ook vet` · `genummerde kop met vet erin`
+
+Voor: ## **Wat we hebben geleerd**
+
+Na: ## Wat we hebben geleerd
+
+Niet markeren: Op een vlak dat geen kopniveaus rendert maar wel vet (een chatvenster, een plain-text mail, sommige CMS-velden) is vet de enige manier om een kop te maken; daar valt het onder markdown-in-non-markdown-surface. In een tabelkop of een definitielijst is vet de opmaak. Punctuation-format/bold-overuse gaat over vet in lopende tekst; markeer die span daar.
 
 ## Inhoud en bewijs
+
+### Amerikaanse realia in een Nederlandse context `amerikaanse-realia-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+Een Nederlandse tekst over een Nederlandse situatie haalt instellingen, regelingen, opleidingsniveaus, maten of gebruiken uit de Verenigde Staten binnen: de FDA in plaats van de IGJ, high school in plaats van de middelbare school, dollars, mijlen, een 401(k). Het instituut bestaat, alleen niet hier, en de zin klopt verder, dus de fout valt niet op. Vervang de instantie, de wet en het voorbeeldbedrijf door het Nederlandse equivalent, of schrap het voorbeeld.
+
+Signalen: `goedkeuring van de FDA` · `de IRS` · `de FTC` · `high school` · `een 401(k)` · `bedragen in dollars in een Nederlandse context` · `mijlen of Fahrenheit` · `OSHA-voorschriften` · `denk aan bedrijven als Netflix en Airbnb`
+
+Voor: Wie in Nederland een medisch hulpmiddel op de markt brengt, heeft goedkeuring van de FDA nodig.
+
+Na: Wie in Nederland een medisch hulpmiddel op de markt brengt, heeft een CE-markering nodig; de IGJ houdt toezicht.
+
+Niet markeren: In een tekst die over de Verenigde Staten gaat, in een vergelijking tussen stelsels, in een vertaald citaat en in internationale regelgeving horen deze namen er gewoon. Ook een Nederlands bedrijf dat aantoonbaar met de FDA te maken heeft (export naar de VS) valt erbuiten. Translationese/english-number-date-format-nl dekt de notatie (dollars, datumvolgorde); deze entry gaat over de verkeerde jurisdictie of het verkeerde stelsel.
+
+### Bijna-juiste namen van Nederlandse instellingen `bijna-juiste-instellingsnaam-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+De naam van een bestaande Nederlandse instelling, regeling of bestuurslaag staat er net verkeerd, meestal met een ingevoegd "van" of een verkeerde bestuurlijke soortaanduiding: Universiteit van Twente in plaats van Universiteit Twente, het Centraal Bureau van de Statistiek, de provincie Twente. De bewering klopt, de naam niet, en juist die naam is met één zoekopdracht te controleren.
+
+Signalen: `Universiteit van Twente` · `provincie Twente` · `gemeente Twente` · `het Centraal Bureau van de Statistiek` · `de Autoriteit voor Persoonsgegevens` · `Hogeschool Saxion` · `de Nederlandse Kamer van Koophandel`
+
+Voor: Het onderzoek werd uitgevoerd door de Universiteit van Twente in opdracht van de provincie Twente.
+
+Na: Het onderzoek werd uitgevoerd door de Universiteit Twente in opdracht van de provincie Overijssel.
+
+Niet markeren: Historische namen kloppen voor hun periode, en een citaat blijft staan zoals het is geschreven, desnoods met [sic]. Sommige instellingen dragen "van" of "voor" wel degelijk in hun naam, dus controleer per geval bij de organisatie zelf. Regio Twente is een echt samenwerkingsverband; "provincie Twente" bestaat niet.
 
 ### Zelfverzekerde onjuistheden en anachronismen `confident-fabrication-nl`
 
@@ -2176,23 +2645,37 @@ Signalen: `er is weinig bekend over` · `hoewel hierover weinig bekend is` · `h
 
 Voor: Over haar jeugd is weinig bekend, wat erop wijst dat zij zich bewust op de achtergrond houdt. Waarschijnlijk groeide zij op in een middenklassegezin.
 
-Na: De bronnen die ik heb gebruikt zeggen niets over haar jeugd.
+Na: Over haar jeugd is niets gedocumenteerd.
 
-Niet markeren: 'Vermoedelijk' en 'naar verluidt' zijn in journalistiek en in historisch onderzoek legitieme markeringen als de onzekerheid zelf uit een bron komt; daarom staan ze hier als cue en niet in de regex. Niet markeren in een methodeparagraaf die eerlijk beschrijft wat wel en niet gevonden is, zolang er daarna geen invulling volgt.
+Niet markeren: 'Vermoedelijk' en 'naar verluidt' zijn in journalistiek en in historisch onderzoek legitieme markeringen als de onzekerheid zelf uit een bron komt; daarom staan ze hier als cue en niet in de regex. Niet markeren in een methodeparagraaf die eerlijk beschrijft wat wel en niet gevonden is, zolang er daarna geen invulling volgt. Losse hedges (vermoedelijk, naar alle waarschijnlijkheid, het valt aan te nemen dat) staan daarom niet meer in de regex: ze tellen pas vanaf twee in dezelfde alinea, of samen met een expliciete bewering over de leegte. De combinatie leegte plus invulling blijft altijd fout.
 
-### Vage bronvermelding `vague-attribution`
+### Verzonnen citaat van een genoemde spreker `verzonnen-citaat-nl`
 
-Ernst: **always** · Herkomst: nl-bron · en: `vague-attribution`
+Ernst: **always** · Herkomst: nl-bron
 
-Een bewering wordt toegeschreven aan een gezag dat de tekst nooit benoemt: experts, deskundigen, onderzoek, studies, waarnemers, critici, analisten, branchekenners. Subvormen zijn de vage externe bevestiging waarbij een ongenoemde partij een superlatief levert (wordt algemeen beschouwd als) en het oordeel zonder oordelaar (velen vinden, men zegt dat). Noem de bron met naam en jaar, of haal de zin weg.
+Een letterlijk citaat tussen aanhalingstekens wordt toegeschreven aan een met naam en functie genoemde persoon, woordvoerder of organisatie, zonder dat de uitspraak ooit is gedaan. Het klinkt precies zoals zo iemand zou praten, en dat is het probleem. Kenmerkend is dat medium, datum en aanleiding ontbreken en dat het citaat exact de stelling van de alinea herhaalt in plaats van er iets aan toe te voegen. Controle per citaat: waar en wanneer is dit gezegd, en staat het daar letterlijk zo. Zonder bron gaat het citaat eruit.
 
-Signalen: `experts zeggen` · `deskundigen stellen` · `onderzoek toont aan dat` · `uit onderzoek blijkt` · `uit studies blijkt` · `studies laten zien` · `volgens critici` · `sommige critici stellen` · `wordt algemeen beschouwd als` · `het wordt algemeen erkend dat` · `branchekenners melden` · `kenners wijzen erop` · `men zegt dat` · `velen beschouwen` · `waarnemers merken op` · `steeds meer organisaties kiezen voor` · `veel bedrijven merken dat`
+Signalen: `aldus wethouder` · `zoals hij het zelf verwoordde` · `in zijn eigen woorden` · `een woordvoerder laat weten` · `citaat zonder medium en datum` · `citaat dat de kop van de alinea letterlijk herhaalt`
 
-Voor: Deskundigen stellen dat hybride werken de productiviteit verhoogt, en uit onderzoek blijkt dat werknemers tevredener zijn.
+Voor: "We willen de regio op de kaart zetten", aldus wethouder De Boer.
 
-Na: TNO mat in 2024 bij 1.200 kantoorwerkers geen verschil in productiviteit tussen twee en vier kantoordagen.
+Na: (citaat geschrapt; het college schreef in de raadsbrief van 14 mei dat de subsidie doorloopt tot 2028)
 
-Niet markeren: Niet markeren als de bron in dezelfde of de vorige zin met naam staat (onderzoekers van de UT stellen), en niet in een samenvatting van een debat waarin de tekst juist zegt dat de partijen ongenoemd blijven. In wetenschappelijke tekst met een verwijzing erachter is 'uit onderzoek blijkt (Kok, 2021)' gewoon correct.
+Niet markeren: Een citaat met medium, datum en vindplaats erbij is gewoon bronvermelding, ook als het kort is. In fictie, in een geschreven scène en in een openlijk hypothetisch voorbeeld ("stel dat een wethouder zegt") is het geen fabricatie. Content/hallucinated-citations gaat over bibliografische verwijzingen en content/misattributed-source-analysis over eigen duiding die aan een bestaande bron wordt geplakt; markeer één keer.
+
+### Verzonnen optie, veld of menupad in documentatie `verzonnen-optie-of-menupad-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+Gegenereerde documentatie beschrijft een vlag, configuratiesleutel, menupad of endpoint dat niet bestaat, of een standaardwaarde die het systeem niet heeft. Het klinkt plausibel omdat het uit vergelijkbare projecten komt. De controle is niet inhoudelijk redeneren maar kijken: draai het commando met --help, zoek de sleutel in de repository, open het scherm. Wat je niet kunt aanwijzen, gaat eruit.
+
+Signalen: `met de optie --verbose kun je` · `ga naar Instellingen > Geavanceerd` · `zet cache.enabled op false` · `standaard staat deze waarde op true` · `een sleutel die nergens in de repository voorkomt` · `een endpoint dat niet in de routes staat`
+
+Voor: Zet in de configuratie cache.enabled op false om de build opnieuw te forceren.
+
+Na: Draai `just build --no-cache`; een sleutel voor de cache staat er niet in de configuratie.
+
+Niet markeren: Een optie die net is toegevoegd of net verwijderd, of documentatie die op een andere versie slaat, is verouderd en geen fabricatie; de datum en het versienummer zeggen dat. Ook een geplande functie die als gepland is aangekondigd valt erbuiten. Content/confident-fabrication-nl richt zich op prozaclaims; hier is de controle het commando draaien of het scherm openen.
 
 ### Abstractie waar een concreet gegeven bestaat `abstraction-over-specifics`
 
@@ -2207,6 +2690,20 @@ Voor: De koppeling verbeterde de efficiëntie aanzienlijk.
 Na: Door de koppeling ging de deploytijd van 40 naar 4 minuten.
 
 Niet markeren: Niet markeren als het abstracte woord het onderwerp is (een definitie van efficiëntie) of als de meting elders in het stuk staat. In samenvattingen en abstracts hoort een zekere mate van abstractie bij het genre, en 'in hoge mate' is in juridisch en wetenschappelijk register gewoon de gangbare formulering; de tell is de abstractie waar de schrijver het getal had.
+
+### Verzonnen of oncontroleerbare klantcasus `anonieme-klantcasus-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Bewijs in de vorm van een geanonimiseerde casus die niemand kan natrekken: een middelgroot bedrijf in de maakindustrie, een van onze klanten in de zorg, een gemeente in het oosten van het land, meestal met een rond resultaat erachter. De casus is met opzet onnavolgbaar en doet toch het overtuigingswerk. Noem de klant met toestemming, of vervang de casus door een getal uit je eigen administratie.
+
+Signalen: `een van onze klanten` · `bij een middelgroot productiebedrijf zagen we` · `een gemeente in het oosten van het land` · `een klant uit de logistiek` · `resultaat in een rond percentage zonder nulmeting` · `de casus heeft geen naam, geen jaartal en geen contactpersoon`
+
+Voor: Bij een middelgrote zorgorganisatie brachten we de doorlooptijd van aanvragen met dertig procent terug.
+
+Na: Bij Carint in Hengelo ging de doorlooptijd van aanvragen in 2025 van elf naar zeven dagen.
+
+Niet markeren: Anonimiseren is vaak verplicht: een geheimhoudingsverklaring, medisch of juridisch beroepsgeheim, of een klant die geen naam wil. Dan hoort er wel een jaartal, een sector en een meetbare uitkomst bij, en de tekst zegt waarom de naam ontbreekt. Het signaal is de casus zonder naam, zonder jaartal en zonder nulmeting, met een rond percentage.
 
 ### Cliché en overdadig proza `cliche-and-purple-prose`
 
@@ -2260,7 +2757,7 @@ Signalen: `ondanks de uitdagingen blijft` · `er blijven uitdagingen bestaan` ·
 
 Voor: Ondanks de uitdagingen blijft de coöperatie groeien.
 
-Na: De coöperatie verloor in 2024 haar grootste afnemer en verving dat volume met drie regionale groothandels.
+Na: De coöperatie verloor in 2024 haar grootste afnemer en bracht dat volume onder bij drie regionale groothandels.
 
 Niet markeren: Niet markeren als de uitdaging in dezelfde alinea benoemd staat, en niet in een bestuurlijk stuk waarin de kanttekeningen in een eigen paragraaf uitgewerkt worden.
 
@@ -2284,13 +2781,13 @@ Ernst: **cluster** · Herkomst: nl-bron
 
 Een poging tot informele toon die niemand zo zegt: bedachte spreektaal in plaats van gehoorde. In het Nederlands zijn de vaakst voorkomende vormen letterlijke vertalingen van Engelse gemeenplaatsen (aan het eind van de dag, impact maken, het verschil maken) die in een gesproken Nederlandse zin nooit zo vallen. Vervang ze door wat je iemand hier echt hoort zeggen, of laat de zin gewoon zakelijk.
 
-Signalen: `aan het eind van de dag draait het om impact maken` · `het verschil maken` · `je moet er gewoon voor gaan`
+Signalen: `aan het eind van de dag draait het om impact maken` · `het is geen raketwetenschap` · `dat is een game changer` · `het verschil maken voor onze klanten`
 
 Voor: Aan het eind van de dag draait het om impact maken voor de klant.
 
 Na: Uiteindelijk telt of de klant er iets aan heeft.
 
-Niet markeren: 'Aan het einde van de dag' in de letterlijke betekenis van tijd is gewoon Nederlands en valt buiten de regex, die een figuurlijk vervolg eist (draait, telt, gaat het om). Niet markeren in een citaat waarin iemand het zelf zegt, en niet in marketingtekst die dit register bewust hanteert.
+Niet markeren: 'Aan het einde van de dag' in de letterlijke betekenis van tijd is gewoon Nederlands en valt buiten de regex, die een figuurlijk vervolg eist (draait, telt, gaat het om). Niet markeren in een citaat waarin iemand het zelf zegt, en niet in marketingtekst die dit register bewust hanteert. 'Het verschil maken' over een aanwijsbare persoon in een aanwijsbare wedstrijd of vergadering is gewoon Nederlands; alleen de abstracte bedrijfsvariant zonder onderwerp of gebeurtenis is de tell.
 
 ### Vlakke dialoog en uitleg voor de lezer `flat-dialogue-and-exposition`
 
@@ -2302,7 +2799,7 @@ Signalen: `zoals je weet` · `zoals u weet` · `zoals we allemaal weten` · `all
 
 Voor: Zoals je weet, dokter, is de reactor in 1974 gebouwd en sindsdien nooit nagekeken, zei ze.
 
-Na: Negentienvierenzeventig, zei ze. Sindsdien heeft niemand hem opengemaakt. Hij wist het al en liet haar het zeggen.
+Na: "Vierenzeventig," zei ze. "Sindsdien heeft niemand hem opengemaakt." Hij wist het allang en liet het haar toch zeggen.
 
 Niet markeren: 'Zoals je weet' is in gewone correspondentie en in lesmateriaal een normale beleefdheidsformule; de tell is de vorm in dialoog waar de spreker informatie geeft die de ander al heeft. Niet markeren in toneel waar het personage die formule met opzet gebruikt.
 
@@ -2312,11 +2809,11 @@ Ernst: **cluster** · Herkomst: transfer · en: `gratuitous-universals-and-categ
 
 Gezag wordt geleend van een bereik dat de schrijver niet kan nagaan (elke ontwikkelaar weet, wordt in elk eerstejaarscollege behandeld, niemand betwist dat), en morele of waarderende bijvoeglijke naamwoorden komen terecht op dingen die ze niet kunnen dragen, tot en met aannames en abstracties die intenties of deugden krijgen. Vervang de kwantor door het echte bereik en het morele bijvoeglijk naamwoord door de eigenschap die je bedoelt.
 
-Signalen: `elke ontwikkelaar weet` · `iedereen weet dat` · `in elk eerstejaarscollege` · `wordt overal onderwezen` · `niemand betwist dat` · `een eerlijke aanname` · `een moedige architectuur`
+Signalen: `elke ontwikkelaar weet` · `iedereen weet dat` · `in elk eerstejaarscollege` · `wordt overal onderwezen` · `niemand betwist dat` · `een moedige keuze voor microservices` · `een eerlijke oplossing` · `een gezonde codebase` · `het model is eerlijk over zijn beperkingen`
 
-Voor: Wordt in elk eerstejaarscollege biochemie behandeld, iedereen weet dat.
+Voor: Dit wordt in elk eerstejaarscollege biochemie behandeld; iedereen weet het.
 
-Na: Staat in de inleiding biochemie van de UT, tweede blok.
+Na: Het staat in de UT-cursus Inleiding biochemie, tweede blok.
 
 Niet markeren: Niet markeren als het bereik echt universeel en controleerbaar is (elke Nederlandse gemeente heeft een raad), en niet in een citaat of in openlijk hyperbolisch taalgebruik zoals een column.
 
@@ -2326,13 +2823,13 @@ Ernst: **cluster** · Herkomst: transfer · en: `invented-concept-labels`
 
 Een pseudo-analytische samenstelling wordt halverwege de zin gemunt en nooit gedefinieerd (de supervisieparadox, de contextval, een coördinatiebelasting), of een bestaand begrip wordt aan het onderwerp toegeschreven als vondst (hij introduceerde de term). Iets een naam geven is geen verklaring. In het Nederlands plakt het label meestal aaneen tot één samenstelling, wat het makkelijker te herkennen maakt. Beschrijf het mechanisme in gewone woorden, of laat de bron de naam leveren.
 
-Signalen: `de supervisieparadox` · `het contextprobleem` · `een coördinatiebelasting` · `-paradox` · `-spagaat` · `-kloof` · `wat ik de contextval noem` · `de zogeheten ...` · `hij introduceerde de term`
+Signalen: `de supervisieparadox` · `het contextprobleem` · `een coördinatiebelasting` · `-paradox` · `wat ik de contextval noem` · `hij introduceerde de term` · `het aandachtsgat`
 
 Voor: Dit is de supervisieparadox: hoe meer je automatiseert, hoe meer je moet meekijken.
 
 Na: Door de controles te automatiseren verschoof het werk. Iemand leest nu 200 samenvattingen per week in plaats van er 20 te schrijven.
 
-Niet markeren: Niet markeren bij ingeburgerde begrippen met een vindbare herkomst (de tweelingparadox, de paradox van Simpson, de digitale kloof) en niet als de tekst het label direct definieert en er daarna mee werkt.
+Niet markeren: Niet markeren bij ingeburgerde begrippen met een vindbare herkomst (de tweelingparadox, de paradox van Simpson, de digitale kloof) en niet als de tekst het label direct definieert en er daarna mee werkt. Gelexicaliseerde samenstellingen op -kloof en -spagaat (loonkloof, generatiekloof, kenniskloof) vallen buiten het patroon, en "de zogeheten X" met een vindbare X is correcte bronvermelding.
 
 ### Werktitel behandeld als bestaand ding `list-title-as-entity`
 
@@ -2344,7 +2841,7 @@ Signalen: `verwijst naar de verzameling` · `is een samengesteld overzicht van` 
 
 Voor: De "Lijst van liedjes over Twente" is een samengesteld overzicht van muziekwerken die naar Twente verwijzen.
 
-Na: Liedjes over Twente lopen van de Daglichtploeg tot Normaal.
+Na: Tientallen Nederlandse en Twentstalige liedjes gaan over Twente; hieronder staan ze op jaar van uitgave.
 
 Niet markeren: Niet markeren bij echte namen die toevallig als een titel klinken (De Nachtwacht, de Lijst Pim Fortuyn) en niet in metadocumentatie die met opzet over een lijst gaat, zoals een onderhoudspagina.
 
@@ -2372,7 +2869,7 @@ Signalen: `geen eigennaam, geen getal, geen datum in de hele alinea` · `geen en
 
 Voor: Loop een paar straten van het centrum en je ontdekt een rustiger, authentieker kant van de stad: sfeervolle gevels en vriendelijke bewoners.
 
-Na: Twee straten omhoog vanaf de markt hangt het wasgoed nog buiten en staan de ramen open bij de wedstrijd.
+Na: Twee straten achter de markt hangt de was nog buiten en staan de ramen open als Heracles speelt.
 
 Niet markeren: Geen lexicale cues mogelijk, dus geen regex: dit is een oordeel over een alinea. Niet markeren in inleidingen, definities en samenvattingen die met opzet algemeen zijn, en niet bij één algemene zin tussen concrete alinea's.
 
@@ -2382,7 +2879,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `notability-name-dropping`
 
 Belang wordt aangetoond door op te sommen waar het onderwerp is verschenen in plaats van wat er gezegd is: een rij prestigieuze titels, een classificatie daarvan (onafhankelijke berichtgeving, landelijke media) of een volgersaantal. Een verwante vorm prijst een bewerking omdat die goed gebrond is, in plaats van te zeggen wat eraan is toegevoegd. Houd een verwijzing met inhoud en laat de opsomming weg.
 
-Signalen: `werd geciteerd in NRC, de Volkskrant en het FD` · `onafhankelijke berichtgeving` · `landelijke media` · `regionale media` · `een actieve aanwezigheid op sociale media` · `meer dan 500.000 volgers` · `vakbladen`
+Signalen: `werd geciteerd in NRC, de Volkskrant en het FD` · `een actieve aanwezigheid op sociale media` · `meer dan 500.000 volgers` · `kwam uitgebreid aan bod in de landelijke media` · `werd besproken in diverse vakbladen` · `kreeg brede aandacht in de media`
 
 Voor: Haar opvattingen werden geciteerd in NRC, de Volkskrant, het FD en Trouw, en ze heeft een actieve aanwezigheid op sociale media met meer dan 500.000 volgers.
 
@@ -2400,7 +2897,7 @@ Signalen: `twee onverenigbare beelden in één zin` · `beeld dat uit elkaar val
 
 Voor: Het algoritme fluisterde door de circuits, een rivier van logica die opbloeide in de tuin van haar geest.
 
-Na: Het algoritme liep zoals water een scheur vindt. Het nam de goedkoopste weg en maakte die breder.
+Na: Het algoritme deed wat water doet: het nam de goedkoopste weg en maakte die breder.
 
 Niet markeren: Oordeel, geen cues, dus geen regex. Niet markeren bij vaste uitdrukkingen die technisch gemengd zijn maar ingeburgerd (de kar trekken, het roer omgooien) en niet in surrealistische of komische tekst waar de botsing het effect is.
 
@@ -2430,19 +2927,19 @@ Voor: Gelegen in het bruisende hart van Twente is Almelo een levendige stad met 
 
 Na: Almelo ligt in Twente en heeft 73.000 inwoners.
 
-Niet markeren: Niet markeren in tekst die openlijk reclame is: een advertentie, een wervingspagina of een citaat uit een persbericht. In een reisgids of VVV-tekst hoort een deel van dit register erbij; de tell is het register in een encyclopedisch of journalistiek stuk. Eigennamen die het woord bevatten (Bruisend Twente, De Gerenommeerde) blijven staan. In reclame en productcopy is dit het genre; markeer het waar de tekst informatief hoort te zijn. Een geciteerde recensie mag superlatieven bevatten. Eén enthousiast bijvoeglijk naamwoord in een persoonlijk verslag is stem.
+Niet markeren: Niet markeren in tekst die openlijk reclame is: een advertentie, een wervingspagina of een citaat uit een persbericht. In een reisgids of VVV-tekst hoort een deel van dit register erbij; de tell is het register in een encyclopedisch of journalistiek stuk. Eigennamen die het woord bevatten (Bruisend Twente, De Gerenommeerde) blijven staan. In reclame en productcopy is dit het genre; markeer het waar de tekst informatief hoort te zijn. Een geciteerde recensie mag superlatieven bevatten. Eén enthousiast bijvoeglijk naamwoord in een persoonlijk verslag is stem. Gerenommeerd, toonaangevend en baanbrekend zijn in berichtgeving over derden vaak gewoon beschrijvend. Markeer ze als een tekst ze over zichzelf of de eigen organisatie gebruikt, of als er twee of meer waarderende bijvoeglijke naamwoorden in één alinea staan zonder één narekenbaar feit.
 
 ### Opgeblazen betekenis `significance-inflation`
 
 Ernst: **cluster** · Herkomst: transfer · en: `significance-inflation`
 
-Een gewoon feit krijgt het gewicht van een keerpunt, een erfenis of het bewijs van een brede trend, met een kleine vaste set duidingswerkwoorden: markeert een keerpunt, speelt een cruciale rol, onderstreept het belang van, getuigt van. Twee subvormen: de zelfbenoemde betekenis (dit is een belangrijk inzicht) en duiding vastgeplakt aan een alledaags gegeven zoals een etymologie of een inwonertal. De reparatie is het feit laten staan en de duiding schrappen, of hem vervangen door een gevolg dat je kunt aanwijzen.
+Een gewoon feit krijgt het gewicht van een keerpunt, een erfenis of het bewijs van een brede trend, met een kleine vaste set duidingswerkwoorden: markeert een keerpunt, speelt een cruciale rol, onderstreept het belang van, getuigt van. Twee subvormen: de zelfbenoemde betekenis (dit is een belangrijk inzicht) en duiding vastgeplakt aan een alledaags gegeven zoals een etymologie of een inwonertal. De reparatie is het feit laten staan en de duiding schrappen, of hem vervangen door een gevolg dat je kunt aanwijzen. De vervangende zin moet uit dezelfde bron komen; verzin er geen context bij. Grens met rhetoric/importance-labelling: daar staat het kale etiket op de bewering, hier de duiding die aan een concreet feit wordt vastgeplakt.
 
-Signalen: `markeert een keerpunt` · `vormt een mijlpaal` · `speelt een cruciale rol` · `onderstreept het belang van` · `getuigt van` · `blijvende nalatenschap` · `zet de toon voor` · `laat een onuitwisbare indruk achter` · `in het snel veranderende landschap` · `is van onschatbare waarde` · `vormt de basis voor` · `weerspiegelt een bredere ontwikkeling`
+Signalen: `markeert een keerpunt` · `vormt een mijlpaal` · `speelt een cruciale rol` · `onderstreept het belang van` · `getuigt van` · `blijvende nalatenschap` · `zet de toon voor` · `laat een onuitwisbare indruk achter` · `in het snel veranderende landschap` · `is van onschatbare waarde` · `weerspiegelt een bredere ontwikkeling` · `legde het fundament voor` · `vormde de opmaat naar een nieuw tijdperk`
 
 Voor: Het bureau werd in 1899 opgericht, wat een keerpunt markeerde in de Nederlandse statistiek en getuigt van een blijvende nalatenschap.
 
-Na: Het bureau werd in 1899 opgericht, tijdens een reeks bestuurlijke hervormingen.
+Na: Het bureau werd in 1899 opgericht.
 
 Niet markeren: Niet markeren in een tekst waarin de betekenis het onderwerp zelf is, zoals een herdenkingsrede of een juryrapport, en niet bij een gedocumenteerd keerpunt met bron erbij. Een enkele keer 'speelde een belangrijke rol' in een historisch overzicht is gewoon Nederlands; het patroon is de opeenstapeling.
 
@@ -2452,7 +2949,7 @@ Ernst: **cluster** · Herkomst: transfer · en: `source-count-inflation`
 
 Er staan bronnen in de tekst, maar hun aantal of hun breedte klopt niet: de mening van een persoon wordt breed gedeeld genoemd, meervoudige recensenten of publicaties staan voor een enkele naam, en 'meerdere bronnen' verschijnt boven twee verwijzingen. Ook 'zoals' suggereert een langere lijst dan de bronnen dragen. Laat het meervoud kloppen met het aantal verwijzingen, of noem de ene bron die je hebt.
 
-Signalen: `meerdere bronnen` · `verschillende publicaties` · `diverse media` · `meerdere onderzoeken` · `veel wetenschappers` · `wordt breed geïnterpreteerd` · `recensenten noemden`
+Signalen: `meerdere bronnen` · `verschillende publicaties` · `diverse media` · `meerdere onderzoeken` · `veel wetenschappers` · `recensenten noemden` · `wordt breed gedragen` · `wordt breed gedeeld` · `wordt algemeen aangenomen`
 
 Voor: Verschillende publicaties noemden het apparaat een onderwijsplatform.
 
@@ -2468,7 +2965,7 @@ Alinea's herformuleren het uitgangspunt in nieuwe woorden in plaats van het verd
 
 Signalen: `dezelfde stelling in andere woorden` · `alinea die 40 tot 60 procent korter kan zonder verlies` · `verband beweerd in plaats van gelegd` · `met andere woorden, ...` · `nietszeggende opvulzinnen` · `veel herhaling in andere bewoordingen`
 
-Voor: Testen is belangrijk. Zonder tests kan een team niet met vertrouwen wijzigen. Dat gebrek aan vertrouwen vertraagt de levering, omdat engineers aarzelen om code aan te passen die ze niet kunnen verifiëren.
+Voor: Testen is belangrijk. Zonder tests kan een team de code niet met vertrouwen aanpassen. Dat gebrek aan vertrouwen vertraagt de levering, omdat engineers aarzelen om code te wijzigen die ze niet kunnen verifiëren.
 
 Na: Zonder tests durven engineers de code niet aan te raken, en onze mediane PR bleef drie dagen liggen.
 
@@ -2486,7 +2983,7 @@ Voor: Het initiatief heeft geleid tot discussie over toegankelijkheid en roept v
 
 Na: In de raadsvergadering van 14 mei stemde de VVD tegen de subsidie omdat de zaal geen lift heeft.
 
-Niet markeren: Niet markeren als het debat in dezelfde alinea wordt benoemd met deelnemer, plek of datum, en niet in een verslag van een vergadering waar de discussie zelf het onderwerp is.
+Niet markeren: Niet markeren als het debat in dezelfde alinea wordt benoemd met deelnemer, plek of datum, en niet in een verslag van een vergadering waar de discussie zelf het onderwerp is. Niet markeren als de vraag zelf in de volgende zin staat en de tekst hem behandelt; het patroon is de aangekondigde vraag die nooit gesteld wordt.
 
 ### Vage verbinding `vague-association`
 
@@ -2502,19 +2999,33 @@ Na: Jan de Vries was in 2017 directeur van het bedrijf.
 
 Niet markeren: 'Verbonden aan' plus een instelling is in het Nederlands een precieze en gangbare formulering (verbonden aan de Universiteit Twente) en staat daarom niet in de regex. 'Geassocieerd met' is in medische en statistische tekst een vakterm voor correlatie; daar niet markeren. In berichtgeving over een strafzaak is 'in verband gebracht met' soms juist de zorgvuldige formulering.
 
+### Vage bronvermelding `vague-attribution`
+
+Ernst: **cluster** · Herkomst: nl-bron · en: `vague-attribution`
+
+Een bewering wordt toegeschreven aan een gezag dat de tekst nooit benoemt: experts, deskundigen, onderzoek, studies, waarnemers, critici, analisten, branchekenners. Subvormen zijn de vage externe bevestiging waarbij een ongenoemde partij een superlatief levert (wordt algemeen beschouwd als) en het oordeel zonder oordelaar (velen vinden, men zegt dat). Noem de bron met naam en jaar, of haal de zin weg. Derde subvorm is de trendclaim zonder teller (steeds meer organisaties, in toenemende mate, een groeiend aantal). De poort: er staat in dezelfde alinea geen naam, instelling of jaartal, of er staan twee of meer vage toeschrijvingen in één stuk.
+
+Signalen: `experts zeggen` · `deskundigen stellen` · `onderzoek toont aan dat` · `uit onderzoek blijkt` · `uit studies blijkt` · `studies laten zien` · `volgens critici` · `sommige critici stellen` · `wordt algemeen beschouwd als` · `het wordt algemeen erkend dat` · `branchekenners melden` · `kenners wijzen erop` · `men zegt dat` · `velen beschouwen` · `waarnemers merken op` · `steeds meer organisaties kiezen voor` · `veel bedrijven merken dat`
+
+Voor: Deskundigen stellen dat hybride werken de productiviteit verhoogt, en uit onderzoek blijkt dat werknemers tevredener zijn.
+
+Na: TNO vond in 2024 bij 1.200 kantoorwerkers geen productiviteitsverschil tussen mensen met twee en mensen met vier kantoordagen.
+
+Niet markeren: Niet markeren als de bron in dezelfde of de vorige zin met naam staat (onderzoekers van de UT stellen), en niet in een samenvatting van een debat waarin de tekst juist zegt dat de partijen ongenoemd blijven. In wetenschappelijke tekst met een verwijzing erachter is 'uit onderzoek blijkt (Kok, 2021)' gewoon correct. Een trendclaim met een cijfer erbij is een bewering en geen tell (het aantal leden groeide van 40 naar 90 in twee jaar).
+
 ### Geschatte marge in plaats van een meting `vague-numeric-range`
 
 Ernst: **cluster** · Herkomst: transfer · en: `vague-numeric-range`
 
 Er staat een marge waar een enkel waargenomen getal had gestaan als de schrijver het echt had gedaan: duurt 5 tot 10 minuten, tussen de 20 en 30 verzoeken, een uur of twee. De marge verklapt dat het cijfer geraden is. Noem het getal dat je gemeten hebt, of zeg dat je niet gemeten hebt.
 
-Signalen: `duurt 5 tot 10 minuten` · `tussen de 20 en 30` · `ongeveer 10 tot 15 procent` · `een uur of twee, drie` · `5 à 10 minuten`
+Signalen: `duurt 5 tot 10 minuten` · `tussen de 20 en 30` · `ongeveer 10 tot 15 procent` · `5 à 10 minuten`
 
 Voor: De installatie duurt 5 tot 10 minuten.
 
 Na: De installatie duurde 7 minuten op een schone machine.
 
-Niet markeren: Niet markeren waar de spreiding zelf het gegeven is: een meetreeks, een prognose, een dienstregeling, een dosering of een bandbreedte uit een bron. Een historische periode (van 1940 tot 1945) valt buiten de regex omdat er geen eenheid achter staat.
+Niet markeren: Niet markeren waar de spreiding zelf het gegeven is: een meetreeks, een prognose, een dienstregeling, een dosering of een bandbreedte uit een bron. Een historische periode (van 1940 tot 1945) valt buiten de regex omdat er geen eenheid achter staat. Een uur of twee, een minuut of tien en een stuk of vijf zijn gewone Nederlandse schattingen in spreektaal en in informeel proza; markeer die alleen als de zin claimt dat er gemeten is (de installatie duurt, we hebben getest, gemiddeld).
 
 ### Ontbrekende menselijke wrijving `absent-human-friction`
 
@@ -2544,6 +3055,20 @@ Na: We draaiden acht maanden follow-the-sun en dat kostte ons twee engineers. Vo
 
 Niet markeren: Niet markeren in registers die juist geen stem hebben: encyclopedie, norm, handleiding, notulen, productdocumentatie. En let op de tegenovergestelde fout: het gat vullen met een verzonnen ervaring is erger dan het gat (zie fake-first-person). In dit repo worden veldverslagen opgetekend uit interviews, dus de stem hoort van de geïnterviewde te komen.
 
+### Ongevraagde basisuitleg (het 101-blok) `ongevraagde-basisuitleg-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Midden in een stuk voor vakgenoten staat een alinea die het onderwerp uitlegt aan iemand die het allang weet: eerst een definitie, dan de voordelen, dan pas verder. Het niveau zakt onder dat van de lezer en de alinea voegt niets toe aan de vraag die voorlag. Schrap het blok, of vervang het door de ene aanname die voor dit stuk echt nodig is.
+
+Signalen: `Maar eerst: wat is ... eigenlijk?` · `Voordat we verder gaan, een korte introductie` · `De voordelen van X op een rij` · `een definitie van het begrip dat al in de titel staat` · `uitleg van een term die het publiek dagelijks gebruikt`
+
+Voor: Voordat we naar de migratie kijken: Kubernetes is een opensourceplatform voor het automatiseren van het uitrollen, schalen en beheren van containers.
+
+Na: De migratie liep vast op de ingress-controller; die stond nog op de oude API-versie.
+
+Niet markeren: Voor een gemengd publiek, in lesmateriaal, in een introductiehoofdstuk en in een tekst die zich expliciet tot beginners richt is de uitleg precies goed. Eén zin die een aanname expliciet maakt is geen 101-blok. Vocabulary/undefined-jargon is het spiegelbeeld (te weinig uitleg). Het signaal is de definitie van een term die het publiek dagelijks gebruikt.
+
 ### Autoritair gekleurde framing `pro-authoritarian-bias`
 
 Ernst: **context** · Herkomst: transfer · en: `pro-authoritarian-bias`
@@ -2566,9 +3091,9 @@ Woordkeus, zinsbouw en interpunctie springen binnen een stuk of tussen twee opee
 
 Signalen: `foutloze d/t na een tekst vol fouten` · `plotseling geen enkele typefout` · `register springt van spreektaal naar ambtelijk` · `woorden als cruciaal of essentieel in een verder eenvoudige tekst` · `hoogwaardige tekst maar matige communicatie eromheen` · `beweringen boven het kennisniveau van de schrijver`
 
-Voor: (een alinea gewone, foutgevoelige tekst gevolgd door een vlekkeloze volzin met puntkomma en drie bijzinnen)
+Voor: we hebben t formulier aangepast, ging niet helemaal soepel maar t staat nu. Deze aanpassing waarborgt de consistentie van de gegevensinvoer en reduceert de kans op onvolledige aanvragen aanzienlijk.
 
-Na: (vraag de schrijver naar de sprong en vergelijk met drie eerdere stukken voordat je iets concludeert)
+Na: (de tweede zin komt niet van dezelfde schrijver: vraag ernaar en leg drie eerdere stukken ernaast)
 
 Niet markeren: Geen regex: dit is alleen zichtbaar tegen eerder werk. Niet markeren bij een tekst die door een redacteur of een spellingchecker is gegaan, bij een schrijver die in één taal veel sterker is dan in de andere, of bij een stuk waar dagen aan gewerkt is. In het Nederlands is de d/t-foutloosheid het scherpste deelsignaal, en tegelijk het makkelijkst te verklaren door een corrector.
 
@@ -2578,13 +3103,27 @@ Ernst: **context** · Herkomst: nl-bron
 
 Het genre vraagt om verwijzingen en de tekst geeft er minder dan gebruikelijk, vooral in essays en scripties. Wat er wel staat, leunt daarnaast op obscure of oude publicaties waar recentere voor de hand liggen. Anders dan bij verzonnen bronnen bestaan deze bronnen wel; de keuze en het aantal zijn het signaal. Vraag naar de gebruikte literatuur en vergelijk met wat in het vak gangbaar is.
 
-Signalen: `minder verwijzingen dan het genre vraagt` · `alleen bronnen uit de jaren negentig` · `obscure publicaties waar een standaardwerk bestaat` · `geen enkele verwijzing in een betoog van vier pagina's`
+Signalen: `minder verwijzingen dan het genre vraagt` · `alleen bronnen uit de jaren negentig` · `obscure publicaties waar een standaardwerk bestaat` · `geen enkele verwijzing in een betoog van vier pagina's` · `een link naar google.com/search?q= als bron` · `een link naar chatgpt.com/share/ als bron`
 
 Voor: Een betoog van vijf pagina's over privacywetgeving met één voetnoot naar een handboek uit 1998.
 
 Na: Hetzelfde betoog met de AVG-tekst, twee uitspraken van de Autoriteit Persoonsgegevens uit 2024 en het handboek waar het die uitleg vandaan haalt.
 
 Niet markeren: Niet markeren in vakgebieden waar oude bronnen de standaard zijn (wiskunde, taalkunde, rechtsgeschiedenis) en niet in genres zonder verwijzingsplicht: een column, een blog, een interne notitie. Een enkele oude bron zegt niets.
+
+### Verzonnen meting `verzonnen-meting-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+Een concreet getal met de vorm van een meetresultaat waar niets is gemeten: een percentage verbetering, een doorlooptijd voor en na, een besparing per week. Het getal is niet te weerleggen en ook nooit vastgesteld. Het patroon ontstaat vaak juist bij het repareren van vage taal, waarbij een getal wordt ingevuld om concreet te klinken. De tekens zijn een ronde verhouding, een besparing per week of per maand zonder meetperiode, en het ontbreken van hoe en waarmee is gemeten. Noem het getal dat je hebt, of noem de bewering zonder cijfer.
+
+Signalen: `40 procent sneller` · `de bouwtijd halveerde` · `bespaart het team twaalf uur per week` · `een besparing van 30 procent op de kosten` · `tien keer sneller` · `een rond percentage zonder nulmeting`
+
+Voor: Na de migratie daalde de bouwtijd met 40 procent en bespaart het team twaalf uur per week.
+
+Na: Na de migratie duurt de build vier minuten in plaats van elf; gemeten op de pipeline van 3 september.
+
+Niet markeren: Een getal met een meetmoment, een meetmethode of een bron erbij is gewoon een bevinding. Ronde getallen komen ook echt voor, en in een offerte of een prognose is een schatting expliciet een schatting. Content/vague-numeric-range gaat over marges; deze entry gaat over het enkele precieze getal dat nergens vandaan komt. Het signaal is de meetvorm zonder meetmoment.
 
 ## Machinesporen
 
@@ -2608,7 +3147,7 @@ Ernst: **always** · Herkomst: transfer · en: `acknowledgment-loop`
 
 De tekst opent door de vraag terug te formuleren naar degene die hem stelde: "Om je vraag te beantwoorden", "Je vraagt je af of", "Als ik je vraag goed begrijp". In een zelfstandige tekst heeft de lezer niets gevraagd, dus de parafrase zegt niets en vertraagt de opening. Schrap de aanloop en begin bij het antwoord.
 
-Signalen: `Om je vraag te beantwoorden` · `Je vraagt je af of` · `Je vraagt naar` · `Als ik je vraag goed begrijp` · `Wat je vraagt is` · `Even samengevat wat je vroeg`
+Signalen: `Om je vraag te beantwoorden` · `Je vraagt je af of` · `Je vraagt naar` · `Als ik je vraag goed begrijp` · `Wat je vraagt is` · `Je vraag komt erop neer dat` · `Even terug naar je vraag:`
 
 Voor: Om je vraag te beantwoorden: de cache wordt bij elke schrijfactie ongeldig gemaakt.
 
@@ -2622,7 +3161,7 @@ Ernst: **always** · Herkomst: transfer · en: `ai-url-tracking-parameter`
 
 Een queryparameter die een AI-tool aan de links plakt die het schrijft: utm_source=chatgpt.com, utm_source=openai, utm_source=copilot.com, utm_source=claude.ai, utm_source=perplexity.ai, referrer=grok.com. De parameter is de handtekening van de herkomst, wat de omringende tekst ook beweert. Haal de AI-verwijzer uit de URL en laat de rest van de querystring staan.
 
-Signalen: `utm_source=chatgpt.com` · `utm_source=copilot.com` · `utm_source=openai` · `utm_source=claude.ai` · `utm_source=perplexity.ai` · `referrer=grok.com` · `google.com/search?q= als bronlink` · `chatgpt.com/share/ als bron`
+Signalen: `utm_source=chatgpt.com` · `utm_source=copilot.com` · `utm_source=openai` · `utm_source=claude.ai` · `utm_source=perplexity.ai` · `referrer=grok.com` · `?ref=chatgpt.com` · `utm_source=deepseek` · `utm_medium=chatgpt` · `chatgpt.com/share/`
 
 Voor: https://www.nrc.nl/nieuws/2026/02/11/interview?utm_source=chatgpt.com
 
@@ -2634,9 +3173,9 @@ Niet markeren: Een stuk over AI-verkeer of over utm-tagging mag de parameter als
 
 Ernst: **always** · Herkomst: nl-bron
 
-De tekst spreekt als assistent over zijn eigen eerdere antwoord: hij prijst de vraag, geeft toe dat een claim niet klopte en herformuleert met een sturende overgang. Vaste vormen zijn "Goede en terechte vraag", "Ik zei dat omdat", "Ik had dat niet mogen presenteren" en "Dus om het helder te zeggen:". Dit is een gespreksbeurt, geen tekst; in een gepubliceerd stuk hoort er alleen de gecorrigeerde bewering te staan, met haar bron.
+De tekst spreekt als assistent over zijn eigen eerdere antwoord: hij prijst de vraag, geeft toe dat een claim niet klopte en herformuleert met een sturende overgang. Vaste vormen zijn "Goede en terechte vraag", "Ik zei dat omdat", "Ik had dat niet mogen presenteren" en "Dus om het helder te zeggen:". Dit is een gespreksbeurt, geen tekst; in een gepubliceerd stuk hoort er alleen de gecorrigeerde bewering te staan, met haar bron. Het vraagcompliment vooraf ("Goede en terechte vraag") staat bij artifacts/chatbot-opener; de twee komen vaak samen aan, maar markeer die span daar.
 
-Signalen: `Goede en terechte vraag` · `Ik zei dat omdat` · `Ik had dat niet mogen presenteren` · `Dus om het helder te zeggen:` · `Je hebt gelijk dat ik` · `Excuses, dat klopt niet` · `Dat had ik zorgvuldiger moeten formuleren`
+Signalen: `Ik zei dat omdat` · `Ik had dat niet mogen presenteren` · `Dus om het helder te zeggen:` · `Je hebt gelijk dat ik` · `Excuses, dat klopt niet` · `Dat had ik zorgvuldiger moeten formuleren`
 
 Voor: Goede en terechte vraag. Ik zei dat omdat ik de observatie wilde illustreren, maar ik had dat niet als bestaand onderzoek mogen presenteren. Dus om het helder te zeggen: dat onderzoek bestaat niet.
 
@@ -2662,9 +3201,9 @@ Niet markeren: Op een overlegpagina of in een verantwoording mag je uitleggen wa
 
 Ernst: **always** · Herkomst: transfer · en: `broken-target-markup`
 
-Opmaak die het model niet beheerst komt er verzonnen, verminkt of half toegepast uit. Subvormen: sjabloon- en parameternamen die op het echte schema lijken maar niet bestaan, zodat ze als rode link renderen of niets doen; verhaspelde sjabloonsyntaxis; en verwijzingstags die niet sluiten. Controleer elke sjabloonnaam tegen het doelsysteem voordat je publiceert.
+Opmaak die het model niet beheerst komt er verzonnen, verminkt of half toegepast uit. Subvormen: sjabloon- en parameternamen die op het echte schema lijken maar niet bestaan, zodat ze als rode link renderen of niets doen; verhaspelde sjabloonsyntaxis; en verwijzingstags die niet sluiten. Controleer elke sjabloonnaam tegen het doelsysteem voordat je publiceert. Buiten een wiki is de dagelijkse vorm een verzonnen component of shortcode: een <Callout> in een project dat dat component niet heeft, een Hugo-shortcode in een Astro-site, of Jira-opmaak in een issue dat Markdown rendert.
 
-Signalen: `{{Infobox oude bevolking | regio = IJsseldal` · `| archeologische_vindplaatsen =` · `<ref name="bron1">Twentse Courant` · `<sup>[1]</sup>` · `[[Categorie:Nederlandse gemeente]]` · `een sjabloonnaam die op de doelwiki niet bestaat`
+Signalen: `{{Infobox oude bevolking | regio = IJsseldal` · `| archeologische_vindplaatsen =` · `<ref name="bron1">Twentse Courant` · `<sup>[1]</sup>` · `[[Categorie:Nederlandse gemeente]]` · `een sjabloonnaam die op de doelwiki niet bestaat` · `<Callout type="info"> in een repo zonder dat component` · `{{< figure src=... >}} in een site die geen Hugo draait` · `{code:java} of {panel} in een Markdown-issue` · `::: tip in een bestand waarvan de opmaaktaal geen admonitions kent` · `een import-regel voor een component dat nergens bestaat`
 
 Voor: {{Infobox oude bevolking | regio = IJsseldal | archeologische_vindplaatsen = Hunebed D27 }}
 
@@ -2680,9 +3219,9 @@ Onzichtbare of gelijkende tekens die zijn ingevoegd om AI-detectors te misleiden
 
 Signalen: `U+200B zero-width space` · `U+200C ZWNJ` · `U+200D ZWJ` · `U+FEFF BOM` · `U+2060 word joiner` · `Zero-Width Non-Joiner` · `Zero-Width Joiner` · `onzichtbaar teken in een hex-viewer`
 
-Voor: duikеn in de logs (de tweede e is Cyrillisch, midden in een verder Latijns woord)
+Voor: de logs uitpluizеn (de tweede e is Cyrillisch, midden in een verder Latijns woord)
 
-Na: duiken in de logs, opnieuw getypt op je eigen toetsenbord
+Na: de logs uitpluizen
 
 Niet markeren: Een zero-width joiner hoort in emoji-reeksen en in schriften die ligaturen sturen. Een tekst die Russisch, Bulgaars of Grieks citeert bevat die letters legitiem; de regel zoekt naar een enkele vreemde letter tussen Latijnse letters in hetzelfde woord. In Arabisch, Perzisch, Hindi en emoji-samenstellingen doen deze tekens echt werk, en in HTML en JavaScript worden ze bewust gebruikt om een afbreekpunt te zetten. Een BOM aan het begin van een bestand komt van de editor. Buiten die gevallen is er geen reden voor.
 
@@ -2692,13 +3231,13 @@ Ernst: **always** · Herkomst: transfer · en: `chatbot-opener`
 
 De aanloop van de assistent naar het eigenlijke antwoord blijft in de afgeleverde tekst staan. Subvormen: het instemmende woord vooraf ("Natuurlijk!", "Zeker!", "Uiteraard!", "Goede vraag!", "Je hebt helemaal gelijk"), de aankondiging van wat er nu volgt ("Hier is een overzicht van", "Hieronder vind je", "Hieronder volgt"), de verwijzing naar de opdracht ("Zoals gevraagd", "Op basis van wat je hebt gedeeld") en het voorbehoud over wat het model wel en niet kan. De tekst hoort te beginnen bij de eerste zin die inhoud draagt.
 
-Signalen: `Natuurlijk!` · `Uiteraard!` · `Absoluut!` · `Jazeker!` · `Goede vraag!` · `Wat een goede vraag` · `Scherpe vraag` · `Je hebt helemaal gelijk` · `Je hebt volkomen gelijk` · `Hier is een overzicht van` · `Hier is een opzet` · `Hieronder vind je` · `Hieronder volgt` · `Zoals gevraagd` · `Op basis van wat je hebt gedeeld` · `Ik kan je daarbij helpen` · `een gedetailleerdere uitsplitsing`
+Signalen: `Natuurlijk!` · `Uiteraard!` · `Absoluut!` · `Jazeker!` · `Goede vraag!` · `Wat een goede vraag` · `Scherpe vraag` · `Je hebt helemaal gelijk` · `Je hebt volkomen gelijk` · `Hier is een overzicht van` · `Hier is een opzet` · `Hieronder vind je` · `Hieronder volgt` · `Zoals gevraagd` · `Op basis van wat je hebt gedeeld` · `Ik kan je daarbij helpen` · `Leuk dat je dit vraagt` · `Ik help je graag`
 
 Voor: Natuurlijk! Hier is een overzicht van de Twentse tech-meetups. De oudste loopt sinds 2015.
 
 Na: Twente heeft vier terugkerende tech-meetups. De oudste loopt sinds 2015.
 
-Niet markeren: "Natuurlijk" midden in een zin is gewoon een bijwoord ("dat gaat natuurlijk niet vanzelf"); alleen als eerste woord met uitroepteken is het een tell. "Hieronder vind je" mag in een echte handleiding of nieuwsbrief die de lezer aanspreekt. In een chatlog dat je bewust citeert hoort de opening erbij: markeer geciteerde gesprekken niet. 'Hieronder staat' is gewoon Nederlands en telt niet mee; alleen 'hieronder vind je' en 'hieronder volgt' zijn de assistentvorm.
+Niet markeren: "Natuurlijk" midden in een zin is gewoon een bijwoord ("dat gaat natuurlijk niet vanzelf"); alleen als eerste woord met uitroepteken is het een tell. "Hieronder vind je" mag in een echte handleiding of nieuwsbrief die de lezer aanspreekt. In een chatlog dat je bewust citeert hoort de opening erbij: markeer geciteerde gesprekken niet. 'Hieronder staat' is gewoon Nederlands en telt niet mee; alleen 'hieronder vind je' en 'hieronder volgt' zijn de assistentvorm. 'Goede vraag.' of 'Terechte vraag.' direct na een vraag die de schrijver zelf heeft gesteld is een retorische zet in een column of blog en geen restant; de tell is de opening van een tekst waarin niemand iets heeft gevraagd, meestal met uitroepteken en met een tweede aanloopzin erachter.
 
 ### Gelekte citatiemarkup uit de chattool `citation-markup-leak`
 
@@ -2706,7 +3245,7 @@ Ernst: **always** · Herkomst: transfer · en: `citation-markup-leak`
 
 Interne verwijzingstokens uit een chatinterface overleven het kopieren en staan op de plaats van een echte bronvermelding. Bekende vormen: de contentReference- en oai_citation-tokens, de citeturn- en turn0search-reeksen, kale afsluitende cijfers of Unicode-bolletjes die overblijven nadat de onzichtbare omhulsels zijn gestript, en een verwijzing naar een zoekopdracht ("ga naar zoekopdracht nr. 3") in plaats van naar het document. Vervang door een echte bronvermelding of haal ze weg.
 
-Signalen: `citeturn0search0` · `turn0search1` · `citeturn0news0` · `turn0file` · `:contentReference[oaicite:20]{index=20}` · `[oai_citation:3]` · `turn0image0` · `(ga naar zoekopdracht nr.)` · `<ref name="0search12">`
+Signalen: `citeturn0search0` · `turn0search1` · `citeturn0news0` · `turn0file` · `:contentReference[oaicite:20]{index=20}` · `[oai_citation:3]` · `turn0image0` · `<ref name="0search12">` · `navigate to search result` · `turn0navlist`
 
 Voor: De vereniging werd in 1998 opgericht :contentReference[oaicite:20]{index=20}.
 
@@ -2720,7 +3259,7 @@ Ernst: **always** · Herkomst: transfer · en: `collaborative-closer`
 
 De afsluiting die aan de opdrachtgever is gericht blijft onder de tekst staan. Subvormen: de behulpzaamheidsafsluiter ("Ik hoop dat dit helpt", "Hopelijk heb je hier wat aan"), het vervolgaanbod als vraag ("Wil je dat ik er voorbeelden bij zet?", "Zal ik het korter maken?") en de open uitnodiging ("Laat het me weten als je nog vragen hebt", "Is er nog iets waarmee ik kan helpen?"). Het hele blok gaat weg; het staat los van de inhoud.
 
-Signalen: `Ik hoop dat dit helpt!` · `Hopelijk heb je hier wat aan` · `Laat het me weten als je nog vragen hebt` · `Laat gerust weten of ik ergens dieper op in moet gaan` · `Wil je dat ik` · `Zal ik er voorbeelden bij zetten?` · `Veel succes ermee!` · `Stel gerust je vragen` · `Is er nog iets waarmee ik kan helpen`
+Signalen: `Ik hoop dat dit helpt!` · `Hopelijk heb je hier wat aan` · `Laat het me weten als je nog vragen hebt` · `Laat gerust weten of ik ergens dieper op in moet gaan` · `Zal ik er voorbeelden bij zetten?` · `Veel succes ermee!` · `Stel gerust je vragen` · `Is er nog iets waarmee ik kan helpen` · `Wil je dat ik het verder uitsplits?` · `Zal ik er een uitgebreider overzicht van maken?`
 
 Voor: De migratie loopt in twee fasen. Ik hoop dat dit helpt! Laat het me weten als je wilt dat ik een onderdeel verder uitwerk.
 
@@ -2756,34 +3295,51 @@ Na: Actuele bezoekersaantallen zijn niet gepubliceerd.
 
 Niet markeren: Een colofon of verantwoording die eerlijk vermeldt dat een tekst met AI-hulp is gemaakt is beleid, geen restant; dat hoort er juist te staan. Een artikel over taalmodellen mag de frase "als AI-taalmodel" citeren.
 
+### Interfacetekst uit het chatvenster meegeplakt `gelekte-interfacetekst-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+Knop- en statusteksten van de chatinterface zijn met het antwoord mee gekopieerd en staan als losse regels in de afgeleverde tekst: de kopieerknop boven een codeblok, de statusregel van een redeneermodel, de antwoordteller van een opnieuw gegenereerd antwoord, en de voettekst van de aanbieder. Ze zeggen niets over het onderwerp en verraden uit welk venster de tekst komt. Ze overleven het plakken vaker dan de tokens uit citation-markup-leak, juist omdat het gewone woorden zijn die niemand als markup herkent. Haal de regels weg en houd de inhoud.
+
+Signalen: `Kopieer code` · `Copy code` · `Kopiëren` · `Bewerken` · `Regenereren` · `Antwoord opnieuw genereren` · `2 / 2` · `Nagedacht gedurende 8 seconden` · `ChatGPT kan fouten maken. Controleer belangrijke informatie.`
+
+Voor: Kopieer code
+docker compose up -d
+2 / 2
+De omgeving draait daarna op poort 8080.
+
+Na: Start de omgeving met `docker compose up -d`. Hij draait daarna op poort 8080.
+
+Niet markeren: Een artikel of runbook dat deze knoppen beschrijft bevat ze noodzakelijk; markeer alleen regels die als inhoud zijn geplakt. Een teller als "2 / 2" kan in een tabel of een uitslag een echte score zijn. Artifacts/generation-wrapper-and-speaker-label dekt de containerdirectief en het sprekerlabel, artifacts/citation-markup-leak de bronnentokens; markeer één keer.
+
 ### Gegenereerde reactie onder een post `generated-engagement-reply-nl`
 
 Ernst: **always** · Herkomst: nl-bron
 
 Een gegenereerde reactie op een bericht die de auteur bij naam prijst, bedankt voor het delen en verder niets toevoegt: "Interessant perspectief, Piet! Dank voor het delen van deze waardevolle inzichten." De vorm is altijd dezelfde: compliment met naam, dankwoord, een samenvatting van wat er al stond. Een reactie die niets toevoegt hoort niet geplaatst te worden.
 
-Signalen: `Interessant perspectief, Piet!` · `Dank voor het delen van deze waardevolle inzichten` · `Wat een sterk stuk!` · `Helemaal mee eens!` · `Goed punt, dit raakt de kern`
+Signalen: `Interessant perspectief, Piet!` · `Dank voor het delen van deze waardevolle inzichten` · `Goed punt, dit raakt de kern` · `compliment met de voornaam van de auteur plus een dankwoord` · `dankwoord plus een parafrase van de post zonder eigen inbreng`
 
 Voor: Interessant perspectief, Piet! Dank voor het delen van deze waardevolle inzichten.
 
 Na: Piet, hoe ging dat bij jullie met de oude Jenkins-pipeline?
 
-Niet markeren: Een oprecht bedankje onder een gastbijdrage of een nieuwsbrief is normaal, zeker als er iets concreets bij staat. De tell is de reactie die alleen prijst, de naam van de schrijver invoegt en de post samenvat zonder een vraag, een ervaring of een bezwaar toe te voegen.
+Niet markeren: Een oprecht bedankje onder een gastbijdrage of een nieuwsbrief is normaal, zeker als er iets concreets bij staat. De tell is de reactie die alleen prijst, de naam van de schrijver invoegt en de post samenvat zonder een vraag, een ervaring of een bezwaar toe te voegen. Een korte instemming zonder toevoeging ("Helemaal mee eens", "Herkenbaar") is gewoon hoe mensen op sociale media reageren; markeer pas als er ook een naamcompliment of een samenvatting van de post bij staat.
 
 ### Generatorwikkel en sprekerlabel `generation-wrapper-and-speaker-label`
 
 Ernst: **always** · Herkomst: transfer · en: `generation-wrapper-and-speaker-label`
 
-De transportverpakking rond het antwoord is met de inhoud mee geplakt. Subvormen: een containerdirectief boven het geleverde stuk (:::writing{variant="document" id="68427"} met een willekeurig vijfcijferig id, gelokaliseerd als :::schrijven{variant=...} en vaak gesloten met een kale :::), en een sprekerlabel uit een transcript dat het model bij naam noemt ("Claude antwoordde:", "ChatGPT: Ik heb de tekst herschreven"). Haal de wikkel weg en houd wat erin stond.
+De transportverpakking rond het antwoord is met de inhoud mee geplakt. Subvormen: een containerdirectief boven het geleverde stuk (:::writing{variant="document" id="68427"} met een willekeurig vijfcijferig id, gelokaliseerd als :::schrijven{variant=...} en vaak gesloten met een kale :::), en een sprekerlabel uit een transcript dat het model bij naam noemt ("Claude antwoordde:", "ChatGPT: Ik heb de tekst herschreven"). Haal de wikkel weg en houd wat erin stond. Derde subvorm is het codehek om het hele geleverde stuk: het antwoord opent met ```markdown of ```html en sluit met een kale ```, omdat het model de tekst als codeblok afleverde en iemand het complete antwoord kopieerde.
 
-Signalen: `:::writing{variant="document" id="68427"}` · `:::schrijven{variant=` · `Claude antwoordde:` · `ChatGPT: Ik heb de tekst herschreven` · `Gemini zei:`
+Signalen: `:::writing{variant="document" id="68427"}` · `:::schrijven{variant=` · `Claude antwoordde:` · `ChatGPT: Ik heb de tekst herschreven` · `Gemini zei:` · `` ```markdown als eerste regel `` · `` ```html om een e-mailtekst heen `` · ``een losse ``` als laatste regel van het document``
 
 Voor: :::writing{variant="document" id="68427"}
 AK7 is een Belgische rapper.
 
 Na: AK7 is een Belgische rapper.
 
-Niet markeren: Een artikel dat een chatgesprek weergeeft heeft sprekerlabels nodig; daar zijn ze opmaak. Drie dubbele punten zijn in sommige documentatiedialecten een geldig blok (admonitions in MkDocs, Docusaurus), dus toets tegen de opmaaktaal van het bestand.
+Niet markeren: Een artikel dat een chatgesprek weergeeft heeft sprekerlabels nodig; daar zijn ze opmaak. Drie dubbele punten zijn in sommige documentatiedialecten een geldig blok (admonitions in MkDocs, Docusaurus), dus toets tegen de opmaaktaal van het bestand. In documentatie over markdown zelf is het geneste hek de inhoud; toets het hek tegen wat het bestand beschrijft.
 
 ### Instructies aan degene die het plaatst `instructions-to-the-handler`
 
@@ -2799,11 +3355,74 @@ Na: (het blok is geschrapt; het artikel begint bij zijn eerste regel)
 
 Niet markeren: In een sjabloon, een checklist of een redactiehandleiding zijn instructies aan de plaatser precies de inhoud. Een insteltekst in een CMS die de redacteur uitlegt wat er in een veld hoort is ook geen restant.
 
+### Lengteaanwijzing in de opgeleverde tekst `lengteaanwijzing-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+De tekst draagt de meting van zijn eigen lengte, omdat de opdracht een aantal woorden of tekens vroeg: een telling tussen haakjes onder een sectie, een teller per variant, of de mededeling dat de tekst binnen de limiet blijft. Het is een antwoord aan de opdrachtgever en geen zin voor de lezer, dus het hele haakje gaat weg.
+
+Signalen: `(ongeveer 300 woorden)` · `[ca. 150 woorden]` · `Woordenaantal: 412` · `Aantal tekens: 1.180` · `binnen de gevraagde 300 woorden`
+
+Voor: De meetup begint om 19.00 uur en duurt tot ongeveer 22.00 uur. (ongeveer 120 woorden)
+
+Na: De meetup begint om 19.00 uur en duurt tot ongeveer 22.00 uur.
+
+Niet markeren: In een schrijfopdracht, een redactiebrief, een inzendformulier of een stijlgids is de lengte-eis de inhoud. Een tijdschrift dat de leestijd boven een artikel zet doet dat voor de lezer. Het signaal is de telling die aan de opdrachtgever is gericht en in het product is blijven staan.
+
+### Zichtbare naad na een voortgezette generatie `naad-na-voortgezette-generatie-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+Het stuk is in twee beurten gegenereerd en de naad is blijven staan: de eerste beurt breekt af, de tweede begint opnieuw met een halve zin die het laatste stuk anders herformuleert, of er staat letterlijk "Vervolg" middenin. Kenmerkend is de overlap van een paar woorden en een dubbele aanloop naar hetzelfde punt, vaak met een tweede kop met dezelfde titel eronder. Snijd terug tot de laatste hele zin van het eerste deel en plak het tweede deel daarachter.
+
+Signalen: `Vervolg:` · `(vervolg van hierboven)` · `Verder gaand waar we gebleven waren` · `dezelfde kop twee keer met alleen de eerste alinea verschillend` · `een halve zin gevolgd door dezelfde zin in andere woorden`
+
+Voor: De migratie draait in twee fasen, waarbij de eerste fase de
+
+Vervolg: de migratie draait in twee fasen. De eerste fase verplaatst de DNS-records.
+
+Na: De migratie draait in twee fasen. De eerste fase verplaatst de DNS-records.
+
+Niet markeren: Een feuilleton, een serie blogposts en een document met een expliciet "deel 2" gebruiken "vervolg" met opzet. Notulen van een geschorste vergadering dragen het woord terecht. Artifacts/abrupt-cutoff dekt de tekst die aan het eind middenin stopt en artifacts/content-duplication de sectie die woordelijk twee keer voorkomt; de naad zit middenin en de herhaling is maar een halve zin lang.
+
+### Opdrachtparameters in het geleverde stuk `opdrachtparameters-in-tekst-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+Het instructieblok waarmee de tekst is besteld staat boven, onder of tussen de tekst zelf: rol, doelgroep, toon, lengte, verboden woorden. Ook de losse stijlregel die het model kreeg opgelegd komt zo mee. Het blok is een leesbaar recept van hoe het stuk is gemaakt en hoort in het gesprek met de opdrachtgever, niet in het product. Herkenbaar aan twee of meer regels met een label en een dubbele punt boven de eerste inhoudelijke zin.
+
+Signalen: `Rol:` · `Doelgroep:` · `Toon:` · `Lengte: 400 woorden` · `Doel van deze tekst:` · `Schrijfstijl: zakelijk, actief, geen jargon` · `Gebruik geen gedachtestreepjes` · `Schrijf in het Nederlands`
+
+Voor: Doelgroep: developers in Twente
+Toon: zakelijk, geen emoji
+Lengte: 400 woorden
+
+Twente kent sinds 2015 een vaste meetupcultuur rond software.
+
+Na: Twente kent sinds 2015 een vaste meetupcultuur rond software.
+
+Niet markeren: In een briefing, een stijlgids, een contentkalender of een promptbibliotheek zijn dit de gevraagde velden. Een colofon dat de doelgroep van een publicatie benoemt is redactionele informatie. Artifacts/instructions-to-the-handler gaat over instructies aan de mens die het stuk plaatst en artifacts/brief-vocabulary-and-destination-naming over criteriumwoorden in het proza; hier staat het letterlijke parameterblok.
+
+### Optiemenu meegeleverd in plaats van één versie `optiemenu-meegeleverd-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+Het model levert drie varianten van een kop, een openingszin of een slot, en het hele menu inclusief de labels en de karakteriseringen wordt geplaatst. Herkenbaar aan genummerde of geletterde varianten met een typering tussen haakjes, gevolgd door dezelfde boodschap in andere woorden. Kies er één en schrap de rest.
+
+Signalen: `Optie 1:` · `Optie 2 (zakelijker):` · `Variant A:` · `Alternatieve kop:` · `Of, wat directer:` · `Kies degene die het beste past` · `Versie 1 (kort) / Versie 2 (uitgebreid)`
+
+Voor: Optie 1: Twente heeft een eigen meetupcultuur.
+Optie 2 (zakelijker): Sinds 2015 komen Twentse ontwikkelaars maandelijks bijeen.
+
+Na: Sinds 2015 komen Twentse ontwikkelaars maandelijks bijeen.
+
+Niet markeren: In een concept dat expliciet ter keuze wordt voorgelegd, in een A/B-testopzet en in een stijlgids met voorbeelden horen varianten naast elkaar. Ook een changelog die twee formuleringen vergelijkt valt erbuiten. Het signaal is het menu in een tekst die als eindversie is opgeleverd.
+
 ### Opzet gepubliceerd in plaats van de sectie `outline-plan-left-in-body`
 
 Ernst: **always** · Herkomst: transfer · en: `outline-plan-left-in-body`
 
-Een zin die beschrijft wat een sectie zou bevatten, geleverd in plaats van die inhoud: "In deze sectie zou worden ingegaan op mogelijke ontwikkelingen", "Hier komt nog een beschrijving van het bestuur". De opzet van het model is blijven staan waar de tekst had moeten komen. Schrijf de sectie of haal de kop weg.
+Een zin die beschrijft wat een sectie zou bevatten, geleverd in plaats van die inhoud: "In deze sectie zou worden ingegaan op mogelijke ontwikkelingen", "Hier komt nog een beschrijving van het bestuur". De opzet van het model is blijven staan waar de tekst had moeten komen. Schrijf de sectie of haal de kop weg. "Nader uit te werken" en "nog aan te vullen" staan daarom niet meer in de regex: in een projectplan, een concept-ADR of een RFC zijn dat gewone bestuurlijke formuleringen. Ze tellen alleen mee in een document dat zich als af presenteert; de vormen die over een niet-geleverde sectie spreken tellen wel los.
 
 Signalen: `In deze sectie zou worden ingegaan op` · `Hier zou een beschrijving komen van` · `Hier komt nog` · `Dit hoofdstuk behandelt straks` · `nader uit te werken` · `nog aan te vullen`
 
@@ -2817,9 +3436,9 @@ Niet markeren: Een werkdocument of een openbaar concept mag "nog aan te vullen" 
 
 Ernst: **always** · Herkomst: transfer · en: `placeholder-in-metadata-field`
 
-Een bron-, infobox- of frontmatterveld draagt een stomp in plaats van een waarde: "url=URL", "BRON_URL_HIER", "uitgever=UITGEVER", "datum=onbekend". Datumstompen als "2025-XX-XX" horen hier ook bij; ze duiken vooral op in geraadpleegd-op en veroorzaken gereedschapsfouten. Vul het veld of haal de hele verwijzing weg, want een bron die niet naar iets wijst onderbouwt niets.
+Een bron-, infobox- of frontmatterveld draagt een stomp in plaats van een waarde: "url=URL", "BRON_URL_HIER", "uitgever=UITGEVER", "datum=onbekend". Datumstompen als "2025-XX-XX" horen hier ook bij; ze duiken vooral op in geraadpleegd-op en veroorzaken gereedschapsfouten. Vul het veld of haal de hele verwijzing weg, want een bron die niet naar iets wijst onderbouwt niets. Het geldt net zo goed voor frontmatter in een statische site of een headless CMS: title: Untitled, description: TODO, author: Your Name, date: 1970-01-01.
 
-Signalen: `geraadpleegd op 2025-XX-XX` · `url=URL` · `BRON_URL_HIER` · `uitgever=UITGEVER` · `titel=Titel` · `datum=onbekend`
+Signalen: `geraadpleegd op 2025-XX-XX` · `url=URL` · `BRON_URL_HIER` · `uitgever=UITGEVER` · `titel=Titel` · `datum=onbekend` · `title: Untitled` · `description: TODO` · `author: Your Name` · `date: 1970-01-01` · `slug: mijn-eerste-post` · `tags: [tag1, tag2]`
 
 Voor: {{Citeer web |url=BRON_URL_HIER |uitgever=UITGEVER |datum=2022-11-XX}}
 
@@ -2833,21 +3452,53 @@ Ernst: **always** · Herkomst: transfer · en: `reasoning-chain-leak`
 
 De denksteiger van het model is als proza blijven staan: "Laten we dit stap voor stap bekijken", "Om dit systematisch aan te pakken", genummerde stappen die als innerlijke monoloog lezen in plaats van als betoog. Een subvorm vertelt de eigen werkwijze in plaats van een bron te noemen ("Mijn analyse is gebaseerd op de beschikbare titels"). Houd de conclusie met haar onderbouwing en haal de steiger weg.
 
-Signalen: `Laten we dit stap voor stap bekijken` · `Laat me dit stap voor stap doorlopen` · `Om dit systematisch aan te pakken` · `Ik ontleed dit even` · `Mijn gedachtegang` · `Laten we eerst kijken naar` · `Mijn analyse is gebaseerd op`
+Signalen: `Laten we dit stap voor stap bekijken` · `Laat me dit stap voor stap doorlopen` · `Om dit systematisch aan te pakken` · `Mijn gedachtegang` · `Laten we eerst kijken naar` · `Mijn analyse is gebaseerd op` · `Laat me dit even opsplitsen` · `Ik pak het even uit elkaar` · `Ik loop het even na`
 
 Voor: Laten we dit stap voor stap bekijken. Kijk eerst naar het schrijfpad. De cache wordt bij elke schrijfactie ongeldig gemaakt.
 
 Na: De cache wordt bij elke schrijfactie ongeldig gemaakt.
 
-Niet markeren: Een handleiding of installatiegids mag "Stap 1" en "Stap 2" als koppen dragen; dat is de vorm van het stuk. Een didactisch artikel dat de lezer echt meeneemt door een berekening is ook geen restant, zolang de stappen voor de lezer zijn geschreven en niet voor de schrijver.
+Niet markeren: Een handleiding of installatiegids mag "Stap 1" en "Stap 2" als koppen dragen; dat is de vorm van het stuk. Een didactisch artikel dat de lezer echt meeneemt door een berekening is ook geen restant, zolang de stappen voor de lezer zijn geschreven en niet voor de schrijver. "Laten we eerst kijken naar" en "Laten we beginnen bij" zijn gewone Nederlandse overgangen tussen secties in een blog, een presentatie of een uitlegstuk; ze tellen pas mee samen met een tweede procesvorm in de eerste persoon. Alleen de ik-vorm over het eigen redeneren is op zichzelf al een restant.
+
+### Verwijzing naar een bestand in de sandbox van het model `sandboxpad-verwijzing-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+De tekst biedt een download of verwijst naar een bestandspad dat alleen binnen de werkomgeving van het model bestond: een link met het schema sandbox:, een pad onder /mnt/data/, of de zin "Je kunt het bestand hier downloaden" met een link die nergens heen gaat. Voor de lezer is het een dode link, en het pad verraadt precies waar de tekst vandaan komt. Voeg het bestand echt toe of haal de verwijzing weg.
+
+Signalen: `sandbox:/mnt/data/` · `Je kunt het bestand hier downloaden` · `Download het volledige overzicht hier` · `het bijgevoegde bestand`
+
+Voor: Het volledige overzicht van de meetups staat in [dit bestand] (sandbox:/mnt/data/meetups-2026.xlsx).
+
+Na: Het volledige overzicht van de meetups staat op devmeetup.nl/meetups.
+
+Niet markeren: Een echt pad onder /mnt/data op een server of in een containerdefinitie is gewone infrastructuur; toets of het pad in de omgeving van de lezer bestaat. Documentatie over de sandbox zelf noemt het schema noodzakelijk. Artifacts/ai-url-tracking-parameter dekt de utm-parameter aan een werkende link; dit gaat over een link die nooit buiten de sessie bestond.
+
+### SEO-veldblok als lopende tekst `seo-veldblok-nl`
+
+Ernst: **always** · Herkomst: nl-bron
+
+De velden die een SEO-briefing vraagt worden als tekstblok boven of onder het artikel afgeleverd en zo gepubliceerd: metatitel, metabeschrijving, slug, focuszoekwoord, een rijtje secundaire zoekwoorden, soms de kopstructuur met H1- en H2-labels erbij. Het zijn CMS-velden en horen in het CMS, niet in de eerste alinea.
+
+Signalen: `Metatitel:` · `Meta description:` · `Metabeschrijving:` · `URL-slug:` · `Focuszoekwoord:` · `Zoekwoorden:` · `Alt-tekst:`
+
+Voor: Metatitel: Meetups in Twente (2026)
+Metabeschrijving: Ontdek de vier terugkerende tech-meetups in Twente.
+Focuszoekwoord: meetup Twente
+
+Twente heeft vier terugkerende tech-meetups.
+
+Na: Twente heeft vier terugkerende tech-meetups.
+
+Niet markeren: In een SEO-briefing, een contentplanning of een CMS-veldenoverzicht zijn dit de gevraagde regels. Ook documentatie over frontmatter toont de veldnamen. Artifacts/placeholder-in-metadata-field gaat over een stomp ín zo'n veld; deze entry gaat over het hele veldblok dat als proza is geplakt.
 
 ### Niet-ingevulde plaatshouder `unfilled-placeholder`
 
 Ernst: **always** · Herkomst: transfer · en: `unfilled-placeholder`
 
-Een invulplek die de schrijver had moeten vervangen, gepubliceerd zoals hij is. Subvormen: plaatshouders tussen blokhaken ("[jouw naam]", "[bedrijfsnaam]", "[datum]", "[link naar bron]"), instructies tussen haken ("[beschrijf hier het onderdeel]", "(vul hier je kanaal-URL in)"), een openstaande takenmarkering ("TODO :") en vulmateriaal als "Lorem ipsum" of "XYZ". Vul de waarde in of schrap de regel.
+Een invulplek die de schrijver had moeten vervangen, gepubliceerd zoals hij is. Subvormen: plaatshouders tussen blokhaken ("[jouw naam]", "[bedrijfsnaam]", "[datum]", "[link naar bron]"), instructies tussen haken ("[beschrijf hier het onderdeel]", "(vul hier je kanaal-URL in)"), een openstaande takenmarkering ("TODO :") en vulmateriaal als "Lorem ipsum" of "XYZ". Vul de waarde in of schrap de regel. Vierde subvorm is het ongevulde samenvoegveld uit een mailtool, dat als verstuurde mail live gaat: {{voornaam}}, *|FNAME|*, %%naam%%.
 
-Signalen: `[naam invullen]` · `[jouw naam]` · `[bedrijfsnaam]` · `[datum]` · `[link naar bron]` · `[vul hier in]` · `(vul hier je kanaal-URL in)` · `[functietitel]` · `[plaats]` · `[voorbeeld toevoegen]` · `TODO :` · `Lorem ipsum`
+Signalen: `[naam invullen]` · `[jouw naam]` · `[bedrijfsnaam]` · `[datum]` · `[link naar bron]` · `[vul hier in]` · `(vul hier je kanaal-URL in)` · `[functietitel]` · `[plaats]` · `[voorbeeld toevoegen]` · `TODO :` · `Lorem ipsum` · `{{voornaam}}` · `{{bedrijf}}` · `*|FNAME|*` · `%%naam%%` · `[[first_name]]` · `$klantnaam`
 
 Voor: Neem contact op met [naam contactpersoon] via [e-mailadres] voor meer over de meetup op [datum].
 
@@ -2859,15 +3510,15 @@ Niet markeren: Een sjabloonbestand dat bedoeld is om ingevuld te worden hoort de
 
 Ernst: **cluster** · Herkomst: nl-bron
 
-Witruimte die niet uit een toetsenbord komt maar uit het kopieren: dubbele spaties midden in een zin, een of meer spaties aan het begin van een regel of zin, en een spatie voor een leesteken. Ze ontstaan doordat een chatvenster zijn eigen opmaak meestuurt en het doelveld die niet opruimt. Op zichzelf zwak, in combinatie met andere plakresten een goede aanwijzing om de ruwe tekst na te kijken.
+Witruimte die niet uit een toetsenbord komt maar uit het kopieren: dubbele spaties midden in een zin, een of meer spaties aan het begin van een regel of zin, en een spatie voor een leesteken. Ze ontstaan doordat een chatvenster zijn eigen opmaak meestuurt en het doelveld die niet opruimt. Op zichzelf zwak, in combinatie met andere plakresten een goede aanwijzing om de ruwe tekst na te kijken. Daar hoort de harde spatie (U+00A0) bij: onzichtbaar in elk gewoon tekstveld, meegekomen uit het chatvenster of uit Word, en hij breekt regelafbreking en zoekopdrachten.
 
-Signalen: `extra spaties aan het begin van een nieuwe zin of regel` · `twee spaties tussen twee woorden` · `een spatie voor de komma of de punt` · `onterechte spaties`
+Signalen: `extra spaties aan het begin van een nieuwe zin of regel` · `twee spaties tussen twee woorden` · `een spatie voor de komma of de punt` · `onterechte spaties` · `een harde spatie (U+00A0) tussen twee woorden, bijvoorbeeld 18.30 uur` · `harde spatie na een getal of voor een eenheid`
 
 Voor: De inloop begint om 19.00 uur  en de eerste talk om 19.30 uur .
 
 Na: De inloop begint om 19.00 uur en de eerste talk om 19.30 uur.
 
-Niet markeren: In code, in een codeblok, in tabellen en in uitgelijnde configuratiebestanden is meervoudige witruimte betekenisdragend. Franse typografie zet een spatie voor de dubbele punt en het uitroepteken, dus in geciteerd Frans klopt het. Een enkele dubbele spatie na een punt is bij oudere schrijvers een gewoonte uit het typemachinetijdperk.
+Niet markeren: In code, in een codeblok, in tabellen en in uitgelijnde configuratiebestanden is meervoudige witruimte betekenisdragend. Franse typografie zet een spatie voor de dubbele punt en het uitroepteken, dus in geciteerd Frans klopt het. Een enkele dubbele spatie na een punt is bij oudere schrijvers een gewoonte uit het typemachinetijdperk. In HTML, tussen een getal en zijn eenheid en tussen een initiaal en een achternaam zet een zorgvuldige zetter bewust een harde spatie; het teken is dan gewenst. De tell is dat ze willekeurig door de lopende tekst staan.
 
 ### Rollenspel-regieaanwijzingen `roleplay-action-markers`
 
@@ -2893,7 +3544,7 @@ Signalen: `Neutraal van toon` · `voorzien van betrouwbare bronnen` · `in lijn 
 
 Voor: Sectie herzien voor helderheid en conform de richtlijnen; promotionele formuleringen gecorrigeerd en bronvermelding en neutraliteit verbeterd.
 
-Na: overbodige links weggehaald
+Na: plotsectie ingekort, vier wervende zinnen geschrapt
 
 Niet markeren: In een auditrapport, een aanbesteding of een compliancedocument is "voldoet aan de richtlijnen" de kern van de mededeling en hoort er een verwijzing bij welke richtlijn. De tell is de losse verzekering zonder norm, in een tekst die er verder niets mee doet.
 
@@ -2901,15 +3552,15 @@ Niet markeren: In een auditrapport, een aanbesteding of een compliancedocument i
 
 Ernst: **cluster** · Herkomst: transfer · en: `stale-boilerplate-metadata`
 
-Een nieuw document draagt metadata die het niet verdiend kan hebben: een onderhouds- of stijlsjabloon met een datum van voor het bestaan van het document, een inzendkop die de inzending alvast afwijst, of een geraadpleegd-op-datum die niet kan kloppen. Het model kopieert de vorm inclusief een datum die het uit zijn trainingsmateriaal kent. Zet de datum op de dag van aanmaak of haal het sjabloon weg.
+Een nieuw document draagt metadata die het niet verdiend kan hebben: een onderhouds- of stijlsjabloon met een datum van voor het bestaan van het document, een inzendkop die de inzending alvast afwijst, of een geraadpleegd-op-datum die niet kan kloppen. Het model kopieert de vorm inclusief een datum die het uit zijn trainingsmateriaal kent. Zet de datum op de dag van aanmaak of haal het sjabloon weg. Het geldt net zo goed buiten een wiki: een verse pagina met een voettekst, een versieregel of een lastmod-veld dat ouder is dan de pagina zelf, geërfd uit het trainingsmateriaal.
 
-Signalen: `{{Wikify|datum=september 2022}} op een pagina van 2026` · `{{Beginnetje}}` · `|bezochtdatum=12 december 2024` · `|datum=februari 2025 op een nieuw artikel` · `{{Meebezig}}`
+Signalen: `{{Wikify|datum=september 2022}} op een pagina van 2026` · `|bezochtdatum=12 december 2024` · `|datum=februari 2025 op een nieuw artikel` · `{{Meebezig}}` · `{{Wikificatie|datum=september 2022}} op een pagina van 2026` · `Laatst bijgewerkt: januari 2025 op een pagina van 2026` · `© 2023 in de voettekst van een nieuwe site` · `lastmod dat ouder is dan date in dezelfde frontmatter` · `Versie 1.0, februari 2024 boven een net geschreven document`
 
 Voor: Een pagina die in februari 2026 is aangemaakt en opent met {{Wikify|datum=september 2022}}
 
 Na: Een pagina die in februari 2026 is aangemaakt en opent met {{Wikify|datum=februari 2026}}
 
-Niet markeren: Een oud artikel dat al jaren een onderhoudssjabloon draagt hoort die oude datum te hebben. Een geraadpleegd-op-datum in het verleden is normaal bij een bron die eerder is nagekeken; de tell is dat de datum ouder is dan het document zelf.
+Niet markeren: Een oud artikel dat al jaren een onderhoudssjabloon draagt hoort die oude datum te hebben. Een geraadpleegd-op-datum in het verleden is normaal bij een bron die eerder is nagekeken; de tell is dat de datum ouder is dan het document zelf. Een beginnetje- of meebezigsjabloon op een kort nieuw artikel is normale wikipraktijk en zegt niets.
 
 ### Sjabloonmatige wijzigingsnotitie `templated-change-note`
 
@@ -2924,6 +3575,20 @@ Voor: Verbeterde duidelijkheid, structuur en leesbaarheid van de plotsectie; her
 Na: plot ingekort
 
 Niet markeren: Een release-aankondiging of changelog voor gebruikers mag uitleggen wat er beter is geworden. In een refactorcommit is "zonder gedragswijziging" een nuttige en precieze mededeling; de tell is de opgestapelde, niet-specifieke opsomming.
+
+### Dode interne verwijzing `dode-interne-verwijzing-nl`
+
+Ernst: **context** · Herkomst: nl-bron
+
+De tekst verwijst naar een eigen onderdeel dat er niet is: hierboven staat niets, punt 3 bestaat niet in een lijst van twee, de vorige sectie is de eerste sectie, de aangekondigde tabel volgt nooit. De verwijzing komt uit een opzet die onderweg is ingekort of anders geordend, en hij is alleen te betrappen door hem na te lopen. Herstel de verwijzing of schrap hem.
+
+Signalen: `zoals hierboven beschreven` · `zie punt 3` · `in de vorige sectie` · `de tabel hieronder` · `zie bijlage B` · `in hoofdstuk 4` · `verderop in dit stuk`
+
+Voor: Zoals hierboven beschreven loopt de aanmelding via het formulier. (dit is de eerste alinea; er staat niets hierboven)
+
+Na: De aanmelding loopt via het formulier op devmeetup.nl/meetup.
+
+Niet markeren: In een lang document verwijst "zoals hierboven beschreven" gewoon naar iets wat er staat; dat is normale bewegwijzering. In een fragment dat uit een groter geheel is geknipt mist de verwijzing terecht zijn doel. Het signaal is de verwijzing die je naloopt en die nergens uitkomt. Structure/fractal-summaries gaat over de aankondiging als sjabloon; markeer één keer.
 
 ### Briefregister waar geen brief hoort `letter-register-on-non-correspondence`
 
@@ -3004,9 +3669,9 @@ Niet markeren: 'Meer dan alleen' is in een gewone vergelijking correct Nederland
 
 Ernst: **always** · Herkomst: nl-bron
 
-Een onderwerp wordt 'ingedoken' of 'in gedolven', letterlijk uit dive into en delve into. In het Nederlands duik je in water, zelden in een tekst. Subvormen: de opening 'laten we erin duiken', de kop 'een diepe duik in', en het aangekondigde 'laten we ons verdiepen in'.
+Een onderwerp wordt 'ingedoken'. In het Nederlands duik je in water, zelden in een tekst. Subvormen: de opening 'laten we erin duiken', de kop 'een diepe duik in', en het aangekondigde 'laten we ons verdiepen in'. De vorm komt letterlijk uit dive into en delve into.
 
-Signalen: `Laten we erin duiken` · `laten we duiken in` · `we duiken dieper in` · `een diepe duik in` · `delven in` · `laten we ons verdiepen in` · `een deep dive` · `Duik in de wereld van`
+Signalen: `Laten we erin duiken` · `laten we duiken in` · `we duiken dieper in` · `een diepe duik in` · `laten we ons verdiepen in` · `een deep dive` · `Duik in de wereld van`
 
 Voor: Laten we erin duiken en de mogelijkheden verkennen.
 
@@ -3014,33 +3679,19 @@ Na: De drie opties staan hieronder, met wat elke optie kost.
 
 Niet markeren: Gewoon Nederlands bij duiksport en letterlijk water, en in oudere vaste uitdrukkingen als 'de boeken in duiken' of 'het archief in duiken'. 'Zich verdiepen in' is normaal Nederlands en pas een signaal in de aankondigende vorm 'laten we ons verdiepen in'.
 
-### Landschap-, reis- en ecosysteemmetafoor `calque-landscape-journey-nl`
-
-Ernst: **always** · Herkomst: nl-bron
-
-Het onderwerp krijgt een Engelse ruimtemetafoor: een landschap waar je doorheen beweegt, een reis die je aflegt, een ecosysteem waar je deel van bent. De metafoor draagt geen informatie en dekt elk onderwerp even goed. Landschap is in de Nederlandse detectiepraktijk het meest gemelde AI-woord: bijna altijd met huidige, dynamische, complexe of veranderende ervoor, en bijna altijd in de eerste zin. Schrappen kan meestal zonder vervanging; anders noem je de markt, de sector of de club waar het over gaat.
-
-Signalen: `in dit snel veranderende landschap` · `een veranderend landschap` · `het AI-landschap` · `een dynamisch landschap` · `de reis van` · `jouw AI-reis` · `het ecosysteem` · `in ons huidige dynamische tijdperk` · `in het huidige landschap` · `het huidige medialandschap` · `navigeren door het landschap` · `het complexe AI-landschap` · `het digitale landschap`
-
-Voor: In het huidige landschap is de digitale reis van elke organisatie anders.
-
-Na: Elk bedrijf begint hier op een ander punt.
-
-Niet markeren: 'Landschap' is gewoon Nederlands in aardrijkskunde en beeldende kunst, en in vaste termen als medialandschap en onderwijslandschap, die ouder zijn dan de modellen. 'Reis' is normaal bij een echte reis en bij 'klantreis' als vakterm met een gedefinieerde betekenis. 'Ecosysteem' hoort thuis in de biologie en in software waar het een afgebakende verzameling koppelingen aanduidt. Landschap in de letterlijke zin (het Twentse landschap, landschapsbeheer, een landschapsschilder) is gewoon Nederlands en komt in regionale teksten veel voor. Alleen de figuurlijke koppeling aan een markt, sector of vakgebied telt.
-
 ### Letterlijk vertaalde Engelse uitdrukkingen en discoursformules `calqued-idiom-nl`
 
 Ernst: **always** · Herkomst: nl-bron
 
-Een Engelse vaste uitdrukking wordt woordelijk vertaald en levert een zin op die grammaticaal klopt en in Nederlandse spraak niet bestaat: de olifant in de kamer, buiten de doos denken, op dezelfde pagina zitten, de bal ligt bij jou. Daar horen de gespreksformules bij die uit Engelse spraak komen: aan het eind van de dag, dat gezegd hebbende, maak geen vergissing, in alle eerlijkheid. Ook valse vrienden vallen eronder, zoals 'eventueel' voor eventually en 'actueel' voor actually.
+Een Engelse vaste uitdrukking wordt woordelijk vertaald en levert een zin op die grammaticaal klopt en in Nederlandse spraak niet bestaat: de olifant in de kamer, buiten de doos denken, op dezelfde pagina zitten, de bal ligt bij jou. Daar horen de gespreksformules bij die uit Engelse spraak komen: aan het eind van de dag, dat gezegd hebbende, maak geen vergissing, in alle eerlijkheid. Valse vrienden (eventueel voor eventually, actueel voor actually) staan apart bij valse-vrienden-nl.
 
-Signalen: `aan het eind van de dag` · `aan het einde van de dag` · `dat gezegd hebbende` · `maak geen vergissing` · `het is wat het is` · `in alle eerlijkheid` · `aan de andere kant` · `de olifant in de kamer` · `buiten de doos denken` · `buiten de kaders denken` · `op de radar` · `de bal ligt bij jou` · `een win-winsituatie` · `het beste van beide werelden` · `op dezelfde pagina zitten` · `aan boord zijn` · `de onderste regel` · `op een dagelijkse basis`
+Signalen: `aan het eind van de dag` · `aan het einde van de dag` · `dat gezegd hebbende` · `maak geen vergissing` · `het is wat het is` · `in alle eerlijkheid` · `de olifant in de kamer` · `buiten de doos denken` · `buiten de kaders denken` · `op de radar` · `de bal ligt bij jou` · `een win-winsituatie` · `het beste van beide werelden` · `op dezelfde pagina zitten` · `aan boord zijn` · `de onderste regel` · `op een dagelijkse basis`
 
 Voor: Laten we de olifant in de kamer benoemen: de bal ligt bij jou.
 
 Na: Het punt dat niemand aansnijdt is dat jij nu aan zet bent.
 
-Niet markeren: 'Aan het einde van de dag' is gewoon Nederlands als het letterlijk over het einde van een werkdag gaat, en 'het is wat het is' en 'win-winsituatie' zijn in spreektaal doorgedrongen. 'Buiten de gebaande paden treden' is een oude Nederlandse uitdrukking en geen calque. Losse anglicismen in vaktaal (deployen, commit, stack) horen hier niet.
+Niet markeren: 'Aan het einde van de dag' is gewoon Nederlands als het letterlijk over het einde van een werkdag gaat, en 'het is wat het is' en 'win-winsituatie' zijn in spreektaal doorgedrongen. 'Buiten de gebaande paden treden' is een oude Nederlandse uitdrukking en geen calque. Losse anglicismen in vaktaal (deployen, commit, stack) horen hier niet. "Aan de andere kant", "op de radar" en "in alle eerlijkheid" zijn ingeburgerd Nederlands; ze tellen alleen mee als er in dezelfde alinea twee harde calques uit de regex staan.
 
 ### Beeldspraak en waardeclaims zonder Nederlandse traditie `calqued-imagery-nl`
 
@@ -3048,13 +3699,13 @@ Ernst: **always** · Herkomst: translationese
 
 Nederlandse woorden staan in een betekenis die alleen in het Engels bestaat: een baken van hoop, het rijke tapijt van de gemeenschap, een testament aan vakmanschap, een symfonie van kleuren, resoneert met de lezer. Dezelfde familie levert de vaste waardeformules: de sleutel tot, een gamechanger, een lichtend voorbeeld van. Het beeld is een letterlijke vertaling en heeft in het Nederlands geen traditie.
 
-Signalen: `baken van hoop` · `een baken van` · `in de diepten van` · `een standvastige toewijding` · `hubs van` · `lichtend voorbeeld van` · `tapestry` · `het rijke tapijt van` · `testament aan` · `een testament van` · `realm` · `een symfonie van` · `symboliseert` · `resoneert met` · `weerspiegelt` · `de sleutel tot` · `naar nieuwe hoogten`
+Signalen: `baken van hoop` · `een baken van` · `in de diepten van` · `een standvastige toewijding` · `hubs van` · `lichtend voorbeeld van` · `tapestry` · `het rijke tapijt van` · `testament aan` · `een testament van` · `realm` · `een symfonie van` · `symboliseert` · `resoneert met` · `weerspiegelt` · `een onwrikbare inzet voor`
 
 Voor: Dit draagt bij aan het rijke tapijt van de gemeenschap.
 
 Na: Hier komen mensen uit de hele regio op af.
 
-Niet markeren: 'Weerspiegelen' is normaal Nederlands voor een spiegelbeeld en voor cijfers die iets laten zien, 'resoneren' is een natuurkundige term, 'testament' is een juridisch document en 'baken' is een navigatiemiddel. In poëzie en literaire tekst is beeldspraak het middel zelf. Het signaal is het figuurlijke gebruik in een gewone zakelijke of journalistieke zin.
+Niet markeren: 'Weerspiegelen' is normaal Nederlands voor een spiegelbeeld en voor cijfers die iets laten zien, 'resoneren' is een natuurkundige term, 'testament' is een juridisch document en 'baken' is een navigatiemiddel. In poëzie en literaire tekst is beeldspraak het middel zelf. Het signaal is het figuurlijke gebruik in een gewone zakelijke of journalistieke zin. "Naar nieuwe hoogten tillen" staat bij translationese/calqued-marketing-verbs-nl; markeer die span daar en niet hier.
 
 ### Engelse getal-, datum- en tijdnotatie `english-number-date-format-nl`
 
@@ -3076,27 +3727,13 @@ Ernst: **always** · Herkomst: translationese
 
 Een Engels werkwoord wordt Nederlands vervoegd terwijl er een gangbaar Nederlands werkwoord bestaat, of terwijl de vorm in het Nederlands helemaal niet bestaat: superchargeer, leveragen, unlocken, empoweren, gedisrupt, gecraft. Het is de morfologische variant van het onvertaalde leenwoord.
 
-Signalen: `superchargeer` · `leveragen` · `unlocken` · `empoweren` · `geleveraged` · `gedisrupt` · `onboarden` · `gecraft`
+Signalen: `superchargeer` · `leveragen` · `unlocken` · `empoweren` · `geleveraged` · `gedisrupt` · `gecraft` · `geboost`
 
 Voor: Superchargeer je online aanwezigheid en leverage je data.
 
 Na: Zorg dat mensen je site vinden en gebruik de cijfers die je al hebt.
 
-Niet markeren: Ingeburgerde Engelse werkwoorden met Nederlandse vervoeging zijn gewoon Nederlands: mailen, downloaden, deployen, mergen, updaten, rebasen. Het signaal is de vervoeging van een marketingwerkwoord met een gangbaar Nederlands equivalent.
-
-### Echter aan het zinsbegin met komma `free-conjunction-clause-linking`
-
-Ernst: **always** · Herkomst: translationese · en: `free-conjunction-clause-linking`
-
-Een tegenstellend of optellend bijwoord opent de zin met een komma erachter, naar het Engelse However, en Nevertheless,. Het Nederlands zet echter in de zin met inversie, of laat de komma weg. Dezelfde beweging plakt hoofdzinnen los aan elkaar met 'en' waar het Nederlands zou onderschikken.
-
-Signalen: `Echter,` · `Desalniettemin,` · `Bovendien,` · `Daarnaast,` · `Uiteindelijk,` · `Ten slotte,` · `Sterker nog,` · `Bovenal,`
-
-Voor: Echter, de resultaten vielen tegen.
-
-Na: De resultaten vielen echter tegen.
-
-Niet markeren: Een komma hoort wel na een langere bijwoordelijke aanloop met inversie erachter, en na 'Kortom' en 'Met andere woorden', die in het Nederlands wel een komma krijgen. In geciteerde spraak en in oudere teksten komt de komma na 'Echter' voor als eigen stijl. Het signaal is de combinatie van komma en Engelse woordvolgorde.
+Niet markeren: Ingeburgerde Engelse werkwoorden met Nederlandse vervoeging zijn gewoon Nederlands: mailen, downloaden, deployen, mergen, updaten, rebasen. Het signaal is de vervoeging van een marketingwerkwoord met een gangbaar Nederlands equivalent. Onboarden hoort in die rij van ingeburgerde vormen thuis: "we onboarden de nieuwe collega maandag" is gewoon Nederlands.
 
 ### Hier is waarom en Dit is hoe `here-is-why-nl`
 
@@ -3111,6 +3748,20 @@ Voor: Hier is waarom dat belangrijk is.
 Na: Dat is belangrijk omdat de build dan twee keer draait.
 
 Niet markeren: 'Daarom' en 'Zo werkt het' zijn de Nederlandse vormen en geen signaal. In ondertiteling en in weergegeven spraak kan de directe vorm voorkomen, en in een letterlijk citaat blijft hij staan.
+
+### Hoe te plus infinitief als kop `hoe-te-infinitiefkop-nl`
+
+Ernst: **always** · Herkomst: translationese
+
+De Engelse how-to-kop wordt structureel overgezet als infinitiefkop: "Hoe te beginnen met Astro", "Hoe je website te optimaliseren", "Hoe een leverancier te kiezen". Het Nederlands maakt daar een zin van, met "zo" of met "hoe je". De vorm duikt ook op in inhoudsopgaven, documentatiekoppen en menu-items, en markeert daarmee een hele pagina als vertaald.
+
+Signalen: `Hoe te beginnen met` · `Hoe te installeren` · `Hoe een leverancier te kiezen` · `Hoe je website te optimaliseren` · `Hoe deze fout te voorkomen`
+
+Voor: Hoe een sponsor te vinden voor je meetup
+
+Na: Zo vind je een sponsor voor je meetup
+
+Niet markeren: De infinitiefconstructie is correct Nederlands in een vraagzin binnen een zin ("hij wist niet hoe te beginnen") en in formele of literaire stijl. In een vertaalde titel die als titel wordt aangehaald blijft de vorm staan. Het signaal is de kop of het menu-item.
 
 ### Je en u door elkaar `honorific-register-drift`
 
@@ -3132,13 +3783,13 @@ Ernst: **always** · Herkomst: translationese · en: `in-terms-of-frame`
 
 Het frame 'in termen van' leidt een onderwerp of domein in, als letterlijke weergave van in terms of, when it comes to en with respect to. Het Nederlands gebruikt daar een gewoon voorzetsel, een onderwerpszin, of laat het frame weg. Eén voorkomen is genoeg, anders dan bij de zwaardere voorzetselomschrijvingen die op dichtheid gepoort worden.
 
-Signalen: `in termen van` · `als het gaat om` · `wanneer het aankomt op` · `wat betreft`
+Signalen: `in termen van` · `wanneer het aankomt op`
 
 Voor: In termen van snelheid scoort deze aanpak goed.
 
 Na: Deze aanpak is sneller.
 
-Niet markeren: 'Wat betreft', 'qua' en 'als het gaat om' zijn gewoon Nederlands en staan bewust niet in de regex. In wiskunde en logica is 'in termen van' een vakterm ('uitgedrukt in termen van x'), en daar is het correct.
+Niet markeren: 'Wat betreft', 'qua' en 'als het gaat om' zijn gewoon Nederlands en staan bewust niet in de regex. In wiskunde en logica is 'in termen van' een vakterm ('uitgedrukt in termen van x'), en daar is het correct. 'Wat betreft', 'qua' en 'als het gaat om' zijn de gewone Nederlandse vervangingen en horen daarom niet in de cues.
 
 ### Engelse brok midden in Nederlandse tekst `language-switch-mid-text-nl`
 
@@ -3166,7 +3817,7 @@ Voor: Het team maakt een beslissing over de datum en wil impact maken.
 
 Na: Het team kiest de datum en wil dat het iets oplevert.
 
-Niet markeren: 'Een foto maken' en 'een beslissing nemen' zijn de Nederlandse vormen; het gaat om de omgekeerde koppeling. In Vlaamse spreektaal komt 'een foto nemen' voor als eigen variant, dus let op de variëteit van de schrijver. Vakjargon met een vaste vorm ('een beslissing forceren' in schaken) valt erbuiten.
+Niet markeren: 'Een foto maken' en 'een beslissing nemen' zijn de Nederlandse vormen; het gaat om de omgekeerde koppeling. In Vlaamse spreektaal komt 'een foto nemen' voor als eigen variant, dus let op de variëteit van de schrijver. Vakjargon met een vaste vorm ('een beslissing forceren' in schaken) valt erbuiten. 'Ergens een punt van maken' is gewoon Nederlands met een andere betekenis; het signaal is 'hij maakte een goed punt' in de betekenis van make a point. 'Sense maken' is spreektaalcodewisseling van Nederlandse ontwikkelaars en komt in geschreven proza nauwelijks voor.
 
 ### Geen inversie na een aanloop `missing-inversion-after-fronting-nl`
 
@@ -3194,19 +3845,47 @@ Voor: Wij zijn een content marketing bureau met veel data analyse ervaring.
 
 Na: Wij zijn een contentmarketingbureau met veel ervaring in data-analyse.
 
-Niet markeren: Engelse productnamen die officieel los staan blijven los (Visual Studio Code, Machine Learning als vaknaam in een Engelse titel). Woordgroepen die geen samenstelling zijn ('een lange termijn' als zelfstandige woordgroep, 'de data die we analyseren') vallen erbuiten, en 'datagedreven' aaneen is gewoon Nederlands. In citaten en in code blijft de spelling zoals ze is.
+Niet markeren: Engelse productnamen die officieel los staan blijven los (Visual Studio Code, Machine Learning als vaknaam in een Engelse titel). Woordgroepen die geen samenstelling zijn ('een lange termijn' als zelfstandige woordgroep, 'de data die we analyseren') vallen erbuiten, en 'datagedreven' aaneen is gewoon Nederlands. In citaten en in code blijft de spelling zoals ze is. De gedreven-vormen als sierwoord staan bij translationese/driven-powered-suffix-nl; hier telt alleen de spelling.
+
+### Dit is waar X om de hoek komt kijken `om-de-hoek-komt-kijken-nl`
+
+Ernst: **always** · Herkomst: translationese
+
+De Engelse scharnierzin This is where X comes in wordt vertaald tot "dit is waar X om de hoek komt kijken", "hier komt X om de hoek kijken" of "hier komt X in beeld", als vaste overgang tussen de beschrijving van het probleem en de introductie van het product. Het Nederlandse idioom is onpersoonlijk ("er komt veel bij kijken"); de vorm met een onderwerp dat zelf om de hoek komt kijken bestaat in spontaan Nederlands niet. Noem gewoon wat het ding doet.
+
+Signalen: `en dit is waar` · `dit is precies waar` · `om de hoek komt kijken` · `hier komt X om de hoek kijken` · `hier komt X in beeld`
+
+Voor: Handmatig sorteren kost uren, en dit is precies waar onze tool om de hoek komt kijken.
+
+Na: Handmatig sorteren kost uren. Onze tool doet het sorteren.
+
+Niet markeren: "Er komt veel bij kijken" en "daar komt nog bij" zijn gewone Nederlandse uitdrukkingen zonder onderwerp dat zelf kijkt. In een citaat blijft de vorm staan. Het signaal is het onderwerp dat om de hoek komt kijken, als scharnier tussen probleem en product.
+
+### Over en onder als Engelse maatvoorzetsels `over-onder-maatvoorzetsel-nl`
+
+Ernst: **always** · Herkomst: translationese
+
+Het Engelse over en under bij een hoeveelheid worden woord voor woord overgezet: over 20 jaar ervaring, over 500 klanten, in onder 30 minuten. In het Nederlands betekent "over 20 jaar" over twintig jaar vanaf nu, dus de zin zegt iets anders dan bedoeld en soms het tegenovergestelde. Het Nederlands schrijft ruim, meer dan, bijna of binnen.
+
+Signalen: `over 20 jaar ervaring` · `met over 500 klanten` · `over 1.000 downloads` · `in over 90 procent van de gevallen` · `in onder 30 minuten`
+
+Voor: Ons bureau heeft over 20 jaar ervaring en heeft over 500 klanten geholpen.
+
+Na: Ons bureau bestaat ruim twintig jaar en heeft meer dan vijfhonderd klanten geholpen.
+
+Niet markeren: "Over" is correct als tijdsaanduiding vooruit ("over twintig jaar zijn we met z'n allen gepensioneerd") en als voorzetsel van onderwerp ("een boek over 20 jaar Twente"). "Onder" is correct bij een grens die niet gehaald wordt ("kinderen onder de twaalf"). Het signaal is de betekenis "meer dan" of "minder dan" bij een hoeveelheid.
 
 ### Gestapelde hulpwerkwoorden aan het zinseind `stacked-double-passive`
 
 Ernst: **always** · Herkomst: translationese · en: `stacked-double-passive`
 
-Drie of meer hulpwerkwoorden op één gezegde, meestal omdat een Engelse modale plus lijdende constructie hulpwerkwoord voor hulpwerkwoord is nagebouwd: zou moeten kunnen worden opgeleverd, zal moeten worden bekeken, had kunnen worden voorkomen. De lezer moet de hele eindgroep vasthouden voor hij weet wat er gebeurt.
+Drie of meer hulpwerkwoorden op één gezegde, meestal omdat een Engelse modale plus lijdende constructie hulpwerkwoord voor hulpwerkwoord is nagebouwd: zou moeten kunnen worden opgeleverd, zal moeten worden bekeken, had kunnen worden voorkomen. De lezer moet de hele eindgroep vasthouden voor hij weet wat er gebeurt. De ingreep brengt de eindgroep terug tot hooguit twee werkwoorden en laat de modaliteit staan die er stond.
 
 Signalen: `zou moeten kunnen worden` · `zal moeten worden` · `had kunnen worden` · `zou kunnen worden gedaan` · `dient te kunnen worden`
 
 Voor: Het rapport zou vóór maart moeten kunnen worden opgeleverd.
 
-Na: We leveren het rapport vóór maart op.
+Na: Het rapport kan vóór maart klaar zijn.
 
 Niet markeren: Twee hulpwerkwoorden ('kan worden gebruikt', 'moet worden bekeken') zijn gewoon Nederlands en horen niet in dit patroon; de regex begint pas bij drie. In wetgeving en normteksten is de zware eindgroep de gangbare vorm.
 
@@ -3228,7 +3907,7 @@ Niet markeren: Eigennamen, merk- en productnamen en aangehaalde Engelse titels h
 
 Ernst: **cluster** · Herkomst: translationese · en: `abstract-subject-all-purpose-verb`
 
-Drie mechanismen met dezelfde oorzaak: een abstract of levenloos onderwerp met een kleurloos werkwoord (dit onderzoek laat zien, het rapport biedt inzicht), de letterlijk overgezette Engelse causatief (X brengt risico's met zich mee, in plaats van door X ontstaan risico's), en denk- en spreekwerkwoorden met een niet-menselijk onderwerp (de data suggereert). Zet een mens of een organisatie terug als onderwerp, of noem de bron.
+Drie mechanismen met dezelfde oorzaak: een abstract of levenloos onderwerp met een kleurloos werkwoord (dit onderzoek laat zien, het rapport biedt inzicht), en denk- en spreekwerkwoorden met een niet-menselijk onderwerp (de data suggereert). Zet een mens of een organisatie terug als onderwerp, of noem de bron. "Met zich meebrengen" is oud, gewoon Nederlands idioom en telt hier niet mee; bij dichtheid hoort dat bij vocabulary/wordy-circumlocution.
 
 Signalen: `dit onderzoek laat zien` · `het rapport biedt inzicht` · `de data suggereert` · `brengt risico's met zich mee` · `zorgt ervoor dat` · `leidt ertoe dat` · `maakt het mogelijk om`
 
@@ -3256,7 +3935,7 @@ Niet markeren: De lijdende vorm met door-bepaling is correct Nederlands en in en
 
 Ernst: **cluster** · Herkomst: translationese · en: `agentless-automated-passive`
 
-Een gebeurtenis wordt gemeld als iets dat is gebeurd, met een kleurloze lijdende vorm en zonder dat iemand het doet: er is overeenstemming bereikt, er wordt gewerkt aan, er is besloten. Anders dan bij de door-variant is de handelende partij helemaal verdwenen. De Nederlandse er-constructie vult de onderwerpsplek zonder iemand te noemen.
+Een gebeurtenis wordt gemeld als iets dat is gebeurd, met een kleurloze lijdende vorm en zonder dat iemand het doet: er is overeenstemming bereikt, er wordt gewerkt aan, er is besloten. Anders dan bij de door-variant is de handelende partij helemaal verdwenen. De Nederlandse er-constructie vult de onderwerpsplek zonder iemand te noemen. De ingreep is: noem de partij die je kent. Ken je die niet, dan is de onpersoonlijke vorm de eerlijke vorm en blijft de zin staan.
 
 Signalen: `er is overeenstemming bereikt` · `er wordt gewerkt aan` · `er is besloten` · `er wordt gekeken naar` · `de norm is opgesteld` · `er wordt gesproken over`
 
@@ -3278,7 +3957,21 @@ Voor: Hij noemde het “een goede avond,” en vertrok. Dat was Peter's idee.
 
 Na: Hij noemde het ‘een goede avond’ en vertrok. Dat was Peters idee.
 
-Niet markeren: Wel een apostrof bij namen en woorden op een klinkerletter ('Anna's boek', 'foto's', 'API's') en bij merknamen die officieel een apostrof dragen. De keuze tussen enkele en dubbele aanhalingstekens is een huisstijlkwestie en geen signaal; het gaat om de plaatsing van het leesteken en om het mengen van beide vormen in dezelfde tekst. Bij een volledige aangehaalde zin staat de punt in het Nederlands ook binnen het sluitteken.
+Niet markeren: Wel een apostrof bij namen en woorden op een klinkerletter ('Anna's boek', 'foto's', 'API's') en bij merknamen die officieel een apostrof dragen. De keuze tussen enkele en dubbele aanhalingstekens is een huisstijlkwestie en geen signaal; het gaat om de plaatsing van het leesteken en om het mengen van beide vormen in dezelfde tekst. Bij een volledige aangehaalde zin staat de punt in het Nederlands ook binnen het sluitteken. Bij een aangehaalde zin met een zegwerkwoord erachter hoort de komma in het Nederlands binnen het sluitteken ("Dat doen we morgen," zei hij); alleen bij een aangehaald zinsdeel is de komma binnen de quote een anglicisme.
+
+### Landschap-, reis- en ecosysteemmetafoor `calque-landscape-journey-nl`
+
+Ernst: **cluster** · Herkomst: nl-bron
+
+Het onderwerp krijgt een Engelse ruimtemetafoor: een landschap waar je doorheen beweegt, een reis die je aflegt, een ecosysteem waar je deel van bent. De metafoor draagt geen informatie en dekt elk onderwerp even goed. Landschap is in de Nederlandse detectiepraktijk het meest gemelde AI-woord: bijna altijd met huidige, dynamische, complexe of veranderende ervoor, en bijna altijd in de eerste zin. Schrappen kan meestal zonder vervanging; anders noem je de markt, de sector of de club waar het over gaat.
+
+Signalen: `in dit snel veranderende landschap` · `een veranderend landschap` · `het AI-landschap` · `een dynamisch landschap` · `de reis van` · `jouw AI-reis` · `het ecosysteem` · `in ons huidige dynamische tijdperk` · `in het huidige landschap` · `het huidige medialandschap` · `navigeren door het landschap` · `het complexe AI-landschap` · `het digitale landschap`
+
+Voor: In het huidige landschap is de digitale reis van elke organisatie anders.
+
+Na: Elk bedrijf begint hier op een ander punt.
+
+Niet markeren: 'Landschap' is gewoon Nederlands in aardrijkskunde en beeldende kunst, en in vaste termen als medialandschap en onderwijslandschap, die ouder zijn dan de modellen. 'Reis' is normaal bij een echte reis en bij 'klantreis' als vakterm met een gedefinieerde betekenis. 'Ecosysteem' hoort thuis in de biologie en in software waar het een afgebakende verzameling koppelingen aanduidt. Landschap in de letterlijke zin (het Twentse landschap, landschapsbeheer, een landschapsschilder) is gewoon Nederlands en komt in regionale teksten veel voor. Alleen de figuurlijke koppeling aan een markt, sector of vakgebied telt.
 
 ### Letterlijk vertaalde Engelse marketingwerkwoorden `calqued-marketing-verbs-nl`
 
@@ -3286,7 +3979,7 @@ Ernst: **cluster** · Herkomst: translationese
 
 Vier families werkwoorden komen woord voor woord uit het Engels en staan waar een gewoon Nederlands werkwoord hoort. Ontsluiten, ontgrendelen en ontketenen uit unlock, unleash en empower, met potentieel of mogelijkheden als lijdend voorwerp. Faciliteren, stroomlijnen, benutten, optimaliseren en maximaliseren uit facilitate, streamline, leverage en optimize. Transformeren, revolutioneren en superchargen uit de Engelse hyperbool, en navigeren, verkennen en omarmen uit navigate, explore en embrace.
 
-Signalen: `ontsluit het potentieel` · `ontsluiten` · `ontgrendelen` · `empoweren` · `stelt je in staat om` · `de kracht van X ontketenen` · `de kracht van je data benutten` · `haal het maximale uit` · `een oplossing faciliteren` · `processen stroomlijnen` · `kansen benutten` · `optimaliseren` · `maximaliseren` · `transformeren` · `transformatief` · `revolutioneren` · `superchargeer` · `boosten` (+10)
+Signalen: `ontsluit het potentieel` · `empoweren` · `stelt je in staat om` · `de kracht van X ontketenen` · `de kracht van je data benutten` · `haal het maximale uit` · `een oplossing faciliteren` · `processen stroomlijnen` · `kansen benutten` · `transformatief` · `revolutioneren` · `superchargeer` · `boosten` · `naar een hoger niveau tillen` · `naar nieuwe hoogten tillen` · `in een stroomversnelling brengen` · `navigeren door` · `het navigeren van het landschap` (+5)
 
 Voor: Ontsluit nieuw groeipotentieel en til je marketing naar een hoger niveau.
 
@@ -3308,27 +4001,13 @@ Na: Uit de data blijkt waar de doorlooptijd blijft hangen, en dat lossen we op.
 
 Niet markeren: In juridische, ambtelijke en beleidsteksten zijn 'met betrekking tot', 'ten behoeve van' en 'ten aanzien van' de gangbare vormen en geen signaal; ze bestonden ruim voor de modellen. 'Op basis van' is normaal Nederlands en staat daarom niet in de regex. Markeer pas bij drie of meer in dezelfde alinea, of als de omweg één bijwoord vervangt.
 
-### Die-dat-verwarring uit het Engelse that `die-dat-confusion-nl`
-
-Ernst: **cluster** · Herkomst: translationese
-
-Het betrekkelijk voornaamwoord klopt niet met het geslacht van het antecedent, omdat het Engels maar één vorm heeft en het model die op goed geluk overzet: het model die, de tool dat. Bij dezelfde oorzaak horen de kleine Nederlandse missers waar het Engels niet stuurt, zoals hetgeen wat en een komma op de verkeerde plek.
-
-Signalen: `het model die` · `de tool dat` · `het bedrijf die` · `de organisatie dat` · `hetgeen wat` · `het systeem die`
-
-Voor: Het model die de tekst genereert, kent geen Nederlands.
-
-Na: Het model dat de tekst genereert, kent geen Nederlands.
-
-Niet markeren: Nederlandse schrijvers maken deze fout ook, en in gesproken taal en dialect is de afwijking normaal, dus dit telt alleen mee samen met andere signalen uit deze laag. Bij verwijzing naar personen achter een het-woord ('het meisje die') is 'die' een aparte kwestie en geen vertaalfout.
-
 ### Gedreven en aangedreven door als achtervoegsel `driven-powered-suffix-nl`
 
 Ernst: **cluster** · Herkomst: translationese
 
-Het Engelse -driven en -powered worden productief als Nederlands achtervoegsel op elk zelfstandig naamwoord geplakt: AI-gedreven, resultaatgedreven, aangedreven door machine learning. Het sierwoord zegt niet wat er aandrijft.
+Het Engelse -driven en -powered worden productief als Nederlands achtervoegsel op elk zelfstandig naamwoord geplakt: AI-gedreven, resultaatgedreven, aangedreven door machine learning. Het sierwoord zegt niet wat er aandrijft. De spelling met streepje (data-gedreven, klant-gedreven) hoort bij translationese/noun-stacking-particle-drop; hier gaat het om het sierwoordgebruik. Markeer één keer.
 
-Signalen: `AI-gedreven` · `datagedreven` · `data-gedreven` · `resultaatgedreven` · `aangedreven door AI` · `door AI aangedreven` · `AI-powered`
+Signalen: `AI-gedreven` · `data-gedreven` · `resultaatgedreven` · `aangedreven door AI` · `door AI aangedreven` · `AI-powered`
 
 Voor: Een AI-gedreven aanpak, aangedreven door machine learning.
 
@@ -3342,13 +4021,13 @@ Ernst: **cluster** · Herkomst: translationese
 
 Engelse afkortingen en het en-teken staan in Nederlandse lopende tekst waar het Nederlands eigen vormen heeft. Dezelfde overzetting raakt de bronvermelding: Engelse signaalwoorden, Engelse datumvolgorde en Engelse verwijsafkortingen in een Nederlandse literatuurlijst.
 
-Signalen: `e.g.` · `i.e.` · `ASAP` · `TL;DR` · `& in lopende tekst` · `Retrieved from` · `Accessed on` · `n.d.` · `pp. in plaats van p.` · `Ibid.` · `vol. 3, no. 2 zonder vertaling`
+Signalen: `e.g.` · `i.e.` · `& in lopende tekst` · `Retrieved from` · `Accessed on` · `n.d.` · `pp. in plaats van p.` · `Ibid.` · `vol. 3, no. 2 zonder vertaling`
 
 Voor: Kies een statische generator, e.g. Astro of Hugo, & test lokaal.
 
 Na: Kies een statische generator, bijvoorbeeld Astro of Hugo, en test lokaal.
 
-Niet markeren: De ampersand hoort in bedrijfsnamen, in codenotatie en in vaste combinaties, en staat daarom niet in de regex. 'vs.' is in sportuitslagen en vergelijkende koppen ingeburgerd, en 'et al.' is in wetenschappelijke literatuurlijsten de norm. In een Engelstalige bronvermelding horen de Engelse vormen gewoon.
+Niet markeren: De ampersand hoort in bedrijfsnamen, in codenotatie en in vaste combinaties, en staat daarom niet in de regex. 'vs.' is in sportuitslagen en vergelijkende koppen ingeburgerd, en 'et al.' is in wetenschappelijke literatuurlijsten de norm. In een Engelstalige bronvermelding horen de Engelse vormen gewoon. Asap, fyi en TL;DR zijn in dev-, forum- en kantoortaal ingeburgerd Nederlands en tellen daar niet mee; e.g., i.e. en n.d. wel, want daar heeft het Nederlands bijv., d.w.z. en z.j.
 
 ### Er zijn X die-constructie `existential-there-are-nl`
 
@@ -3363,6 +4042,34 @@ Voor: Er zijn veel organisaties die worstelen met dit probleem.
 Na: Veel organisaties worstelen hiermee.
 
 Niet markeren: De bestaanszin is gewoon Nederlands als er echt iets wordt geïntroduceerd dat de lezer nog niet kent ('Er staat iemand voor de deur') en in encyclopedische opsommingen. Het signaal is het gebruik als vaste opening, drie of meer keer per tekst.
+
+### Echter aan het zinsbegin met komma `free-conjunction-clause-linking`
+
+Ernst: **cluster** · Herkomst: translationese · en: `free-conjunction-clause-linking`
+
+Een tegenstellend of optellend bijwoord opent de zin met een komma erachter, naar het Engelse However, en Nevertheless,. Het Nederlands zet echter in de zin met inversie, of laat de komma weg. Dezelfde beweging plakt hoofdzinnen los aan elkaar met 'en' waar het Nederlands zou onderschikken.
+
+Signalen: `Echter,` · `Desalniettemin,` · `Bovendien,` · `Daarnaast,` · `Bovenal,`
+
+Voor: Echter, de resultaten vielen tegen.
+
+Na: De resultaten vielen echter tegen.
+
+Niet markeren: Een komma hoort wel na een langere bijwoordelijke aanloop met inversie erachter, en na 'Kortom' en 'Met andere woorden', die in het Nederlands wel een komma krijgen. In geciteerde spraak en in oudere teksten komt de komma na 'Echter' voor als eigen stijl. Het signaal is de combinatie van komma en Engelse woordvolgorde. Sterker nog, kortom en met andere woorden krijgen in het Nederlands wel een komma, want inversie is daar onmogelijk. Alleen bijwoorden waar inversie op kan volgen (echter, bovendien, daarnaast, niettemin) tellen mee.
+
+### Jouw waar het Nederlands je zegt `jouw-voor-je-nl`
+
+Ernst: **cluster** · Herkomst: translationese
+
+Het Engelse your wordt overal met de beklemtoonde vorm "jouw" vertaald, terwijl het Nederlands standaard het onbeklemtoonde "je" gebruikt en "jouw" bewaart voor contrast. Drie of meer keer "jouw" in een alinea, of "jouw" waar geen tegenstelling wordt bedoeld, laat een tekst klinken als vertaalde advertentiecopy. Zet "je" terug, behalve waar de nadruk echt ergens tegenover staat.
+
+Signalen: `jouw bedrijf` · `jouw team` · `jouw doelen` · `jouw uitdagingen` · `drie of meer keer jouw in één alinea` · `jouw zonder contrast in een kop of knoptekst`
+
+Voor: Wij helpen jouw bedrijf om jouw doelen te halen en jouw klanten sneller te bedienen.
+
+Na: Wij helpen je bedrijf je doelen te halen en je klanten sneller te bedienen.
+
+Niet markeren: "Jouw" is correct waar het contrast draagt ("niet mijn probleem, maar jouw probleem") en waar het woord anders als "je" van "jij" wordt gelezen. In een persoonlijke aanspreking of een quiz kan de beklemtoonde vorm gewenst zijn. Syntax/honorific-register-drift gaat over de wissel tussen je en u; deze entry gaat over de keuze binnen het je-register.
 
 ### Bekend als en de zogenaamde `known-as-appositive-calque`
 
@@ -3382,7 +4089,7 @@ Niet markeren: 'Bekend als' en 'de zogenaamde' zijn gewoon Nederlands en staan d
 
 Ernst: **cluster** · Herkomst: translationese · en: `left-branching-modifier-stack`
 
-Een Engelse betrekkelijke bijzin achter het zelfstandig naamwoord wordt in het Nederlands als lange voorbepaling ervóór gezet: het vorig jaar in Europa gepubliceerde en door de commissie aangepaste rapport. De lezer moet de hele bepaling vasthouden voor hij weet waar ze bij hoort. Dit is de Nederlandse tangconstructie.
+Een lange voorbepaling wordt tussen lidwoord en kernwoord geschoven: het vorig jaar in Europa gepubliceerde en door de commissie aangepaste rapport. De lezer moet de hele bepaling vasthouden voor hij weet waar ze bij hoort. Dit is de Nederlandse tangconstructie, geen spiegeling van het Engels: het Engels vertakt juist naar rechts, met de bijzin achter de kern. Het model neemt de vorm over uit ambtelijk Nederlands. Knip de bepaling los en zet er een eigen zin van.
 
 Signalen: `de vorig jaar gepubliceerde nieuwe regels` · `het door de commissie aangepaste rapport` · `drie of meer woorden voor het kernwoord` · `lange afstand tussen onderwerp en persoonsvorm`
 
@@ -3396,13 +4103,13 @@ Niet markeren: Een korte voorbepaling is gewoon Nederlands ('de vorig jaar gebou
 
 Ernst: **cluster** · Herkomst: translationese · en: `modal-ability-overuse`
 
-Elk gezegde wordt verzacht met kan of kunnen omdat het Engelse origineel can, could of be able to zei: deze tool kan je tijd besparen, terwijl de bewering is dat hij tijd bespaart. Vaak staan er twee afzwakkers gestapeld: zou mogelijk kunnen bijdragen. Daardoor krijgen gerechtvaardigde beweringen en echte voorbehouden dezelfde vorm.
+Elk gezegde wordt verzacht met kan of kunnen omdat het Engelse origineel can, could of be able to zei: deze tool kan je tijd besparen, terwijl de bewering is dat hij tijd bespaart. Vaak staan er twee afzwakkers gestapeld: zou mogelijk kunnen bijdragen. Daardoor krijgen gerechtvaardigde beweringen en echte voorbehouden dezelfde vorm. De ingreep haalt de gestapelde afzwakking weg en laat de modaliteit staan die er stond; vul geen getal in dat niet gemeten is.
 
 Signalen: `kan mogelijk` · `zou kunnen helpen` · `kan bijdragen aan` · `kunnen ervoor zorgen dat` · `kan een rol spelen bij` · `mogelijk zou kunnen` · `in sommige gevallen kan` · `kan je tijd besparen` · `kan zorgen voor`
 
 Voor: Dit zou mogelijk kunnen bijdragen aan een betere doorlooptijd.
 
-Na: Dit verkort de doorlooptijd met een dag.
+Na: Dit moet de doorlooptijd verkorten; hoeveel precies weten we na een maand meten.
 
 Niet markeren: Eén afzwakking per bewering is normaal en in medische, juridische en wetenschappelijke tekst vaak verplicht. 'Kan leiden tot' is in risicobeschrijvingen de precieze formulering. Het signaal is de stapeling van twee afzwakkers op dezelfde bewering, en de afzwakking op een feit dat vaststaat.
 
@@ -3414,9 +4121,9 @@ Bied, biedt en bieden staan overal waar het Engels offer, provide of deliver zeg
 
 Signalen: `biedt een reeks` · `biedt een breed scala aan` · `wij bieden` · `biedt inzicht in` · `biedt de mogelijkheid om` · `biedt ondersteuning bij` · `biedt oplossingen voor`
 
-Voor: Een dienstenbedrijf biedt een reeks software aan die inzicht biedt in je processen.
+Voor: Ons bureau biedt een breed scala aan diensten en biedt inzicht in je processen.
 
-Na: Een dienstenbedrijf verkoopt software die laat zien waar je processen vastlopen.
+Na: Ons bureau doet e-mailmarketing en SEO, en laat zien waar je processen vastlopen.
 
 Niet markeren: 'Bieden' is gewoon Nederlands bij een bod op een veiling of een huis, bij hulp bieden en bij een aanbod met een prijs erbij. Het signaal is de dichtheid, drie of meer vormen per tekst, telkens met een abstract lijdend voorwerp.
 
@@ -3424,7 +4131,7 @@ Niet markeren: 'Bieden' is gewoon Nederlands bij een bod op een veiling of een h
 
 Ernst: **cluster** · Herkomst: translationese
 
-Beleefdheid en blijdschap komen in een register dat in het Nederlands vrijwel niemand meer gebruikt, als overzetting van delighted, excited en pleased: wij zijn verheugd, het doet ons genoegen, wij informeren u graag. Dezelfde beweging kiest voor therefore, thus en nevertheless de zwaarste Nederlandse vorm: derhalve, teneinde, bijgevolg, desalniettemin. Het is het register van vertaalde Engelse bedrijfscommunicatie.
+Beleefdheid en blijdschap komen in een register dat in gewone Nederlandse tekst niet meer voorkomt: wij zijn verheugd, het doet ons genoegen, wij informeren u graag. Daarbij hoort de zwaarste vorm van de verbindingswoorden: derhalve, teneinde, bijgevolg, desalniettemin. Deze vormen zijn inheems Nederlands en ouder dan de Engelse bedrijfscommunicatie; het model kopieert ze uit Nederlandse bronteksten en zet ze op plekken waar niemand ze meer schrijft. Zeg het gewoon.
 
 Signalen: `wij zijn verheugd` · `verheugd om aan te kondigen` · `wij zijn opgetogen` · `het doet ons genoegen` · `wij informeren u graag over` · `in de hedendaagse maatschappij` · `Beste klant` · `derhalve` · `zodoende` · `desalniettemin` · `voorts` · `teneinde` · `bijgevolg` · `aangaande` · `betreffende` · `voornoemd` · `welke als betrekkelijk voornaamwoord`
 
@@ -3468,7 +4175,7 @@ Ernst: **cluster** · Herkomst: translationese
 
 De trappen van vergelijking worden met 'meer' en 'meest' omschreven zoals in het Engels, terwijl het Nederlands het achtervoegsel -er en -ste gebruikt: de meest belangrijke stap in plaats van de belangrijkste stap.
 
-Signalen: `meest belangrijke` · `meest simpele` · `meest snelle` · `meest makkelijke` · `meer simpel` · `een van de meest`
+Signalen: `meest belangrijke` · `meest simpele` · `meest snelle` · `meest makkelijke` · `meer simpel` · `een van de meest` · `de meest optimale` · `de meest ideale`
 
 Voor: Dit is de meest belangrijke stap.
 
@@ -3504,19 +4211,103 @@ Na: De gemeente liet haar beleid evalueren, en de uitkomst is bekend.
 
 Niet markeren: Twee keer 'van' achter elkaar is gewoon Nederlands ('de voorzitter van de raad van bestuur' is zelfs een vaste term). In genealogische, juridische en bestuurlijke namen hoort de keten er nu eenmaal bij. Het signaal begint bij drie.
 
+### Succesvol als bijwoord bij een voltooide handeling `succesvol-als-bijwoord-nl`
+
+Ernst: **cluster** · Herkomst: translationese
+
+Het Engelse successfully wordt letterlijk meegenomen bij een handeling die alleen maar gelukt kan zijn: de update is succesvol geïnstalleerd, je aanmelding is succesvol verwerkt, de migratie is succesvol afgerond. In het Nederlands is "succesvol" een bijvoeglijk naamwoord bij een persoon of een onderneming; bij een handeling zegt het Nederlands niets ("de migratie is afgerond") of "met succes". Het duikt vooral op in releasenotes, statusmeldingen en bevestigingsmails die uit Engelse logregels zijn geschreven.
+
+Signalen: `succesvol geïnstalleerd` · `succesvol verwerkt` · `succesvol afgerond` · `succesvol aangemeld` · `succesvol uitgevoerd` · `succesvol opgeslagen` · `succesvol gelanceerd`
+
+Voor: Je aanmelding is succesvol verwerkt en de bevestiging is succesvol verzonden.
+
+Na: Je aanmelding staat genoteerd. De bevestiging is onderweg.
+
+Niet markeren: "Succesvol" bij een persoon, een bedrijf, een project of een carrière is gewoon Nederlands ("een succesvolle ondernemer"). Waar de tekst geslaagde en mislukte pogingen tegenover elkaar zet, doet het woord echt werk ("drie succesvolle en twee mislukte deploys"). Het signaal is het bijwoord bij een handeling die niet anders dan geslaagd kan zijn.
+
 ### Onvertaald Engels marketingwoord in Nederlandse tekst `untranslated-marketing-loanword`
 
 Ernst: **cluster** · Herkomst: nl-bron · en: `untranslated-marketing-loanword`
 
 Engelse marketing- en managementwoorden blijven onvertaald staan terwijl het Nederlands een even kort en gangbaar woord heeft: insights, learnings, seamless, key takeaways, deep dive, quick wins, alignment, gamechanger, cutting-edge. Het breekt het ritme van de zin en leest als vertoon. De tegenregel hoort erbij: gewone vaktermen blijven wél Engels, en die vertalen is zelf een fout.
 
-Signalen: `insights` · `learnings` · `key takeaways` · `actionable` · `seamless` · `leverage` · `delve` · `tapestry` · `realm` · `cutting-edge` · `next-level` · `gamechanger` · `game-changer` · `value proposition` · `customer journey` · `best practices` · `deep dive` · `quick wins` (+9)
+Signalen: `insights` · `learnings` · `key takeaways` · `actionable` · `seamless` · `leverage` · `cutting-edge` · `next-level` · `gamechanger` · `game-changer` · `value proposition` · `customer journey` · `best practices` · `deep dive` · `quick wins` · `low hanging fruit` · `alignment` · `commitment` (+10)
 
 Voor: De key takeaways van deze deep dive: onze seamless customer journey is cutting-edge.
 
-Na: Klanten hoeven nu geen formulier meer in te vullen.
+Na: De belangrijkste punten uit dit gesprek: klanten doorlopen de bestelling zonder ergens vast te lopen.
 
 Niet markeren: Vaktermen zonder Nederlands equivalent blijven staan: API, prompt, token, pipeline, container, repository, commit, deploy, meetup, framework, stakeholder. In een Engelstalig team is codeswitching de normale werktaal, en in citaten blijft het Engels staan. Het onderscheid is of een gewoon Nederlands woord hetzelfde zegt; 'mindset' en 'commitment' staan daarom niet in de regex.
+
+### Valse vrienden (adresseren, eventueel, dramatisch) `valse-vrienden-nl`
+
+Ernst: **cluster** · Herkomst: translationese
+
+Een bestaand Nederlands woord staat in de betekenis van zijn Engelse gelijkenis: we adresseren dit probleem (address is aanpakken), eventueel voor eventually, actueel voor actually, de kosten controleren voor beheersen, een dramatische stijging voor een sterke stijging, consistent voor consequent. De zin klopt, het woord bestaat en geen spellingcontrole reageert; alleen een lezer die de Engelse bron herkent ziet dat er iets anders staat dan bedoeld. Zet het bedoelde Nederlandse woord terug.
+
+Signalen: `we adresseren dit probleem` · `het probleem adresseren` · `eventueel in de betekenis van uiteindelijk` · `actueel in de betekenis van eigenlijk` · `de kosten controleren in de betekenis van beheersen` · `een dramatische stijging` · `consistent in de betekenis van consequent`
+
+Voor: In het volgende hoofdstuk adresseren we deze uitdaging, die eventueel tot een dramatische kostenstijging leidt.
+
+Na: Het volgende hoofdstuk gaat over dit probleem, dat uiteindelijk tot een sterke kostenstijging leidt.
+
+Niet markeren: Elk van deze woorden heeft een correcte Nederlandse betekenis die vaak voorkomt: eventueel als "mogelijk", actueel als "van nu", controleren als "nakijken", dramatisch over een gebeurtenis met echte drama's, en adresseren als "van een adres voorzien". In een citaat blijft het woord staan. Het signaal is de Engelse betekenis op een plek waar het Nederlands een ander woord heeft; toets door het Engelse origineel terug te vertalen.
+
+### Voel je vrij om en aarzel niet om `voel-je-vrij-nl`
+
+Ernst: **cluster** · Herkomst: translationese
+
+De Engelse beleefdheidsformules feel free to en don't hesitate to worden woordelijk vertaald tot "voel je vrij om" en "aarzel niet om", bijna altijd in de slotzin van een mail, een readme, een contactblok of een uitnodiging. In spontaan Nederlands staat daar "je mag", "neem gerust" of helemaal niets.
+
+Signalen: `voel je vrij om` · `aarzel niet om contact op te nemen` · `schroom niet om`
+
+Voor: Voel je vrij om je vragen te stellen tijdens de sessie, en aarzel niet om daarna contact op te nemen.
+
+Na: Vragen stel je gewoon tijdens de sessie. Daarna mag je me altijd mailen.
+
+Niet markeren: "Aarzelen" in de letterlijke betekenis is gewoon Nederlands ("hij aarzelde even"). In een formele brief is "schroom niet" een bestaande, iets ouderwetse wending die sommige schrijvers echt gebruiken. Artifacts/collaborative-closer dekt de afsluiter die aan de opdrachtgever is gericht; deze entry gaat om de vertaalde beleefdheidsformule in gewone gebruikstekst.
+
+### Zullen als vertaling van will `zullen-als-will-nl`
+
+Ernst: **cluster** · Herkomst: translationese
+
+Het Engelse will wordt stelselmatig met zullen of zal weergegeven, terwijl het Nederlands toekomst gewoon met de tegenwoordige tijd uitdrukt. Elke aankondiging, elk gevolg en elke belofte krijgt daardoor een hulpwerkwoord dat er niet hoort te staan. De tell is de dichtheid, en vooral de aankondigende openingszin van een artikel of hoofdstuk.
+
+Signalen: `in dit artikel zullen we bespreken` · `dit zal ervoor zorgen dat` · `dit zal je helpen om` · `dit zal resulteren in` · `we zullen kijken naar` · `zal het mogelijk maken`
+
+Voor: In dit artikel zullen we drie manieren bespreken die je tijd zullen besparen.
+
+Na: Hieronder staan drie manieren die je tijd besparen.
+
+Niet markeren: "Zullen" is correct waar het een belofte, een voornemen of een voorspelling met nadruk uitdrukt ("we zullen het nakijken", "dat zal wel meevallen"), en in juridische tekst is de toekomende tijd de vaste vorm van een verplichting. Eén "zal" zegt niets. Het signaal is drie of meer in één alinea, en de aankondigende openingszin.
+
+### Engelse volgorde van tijd-, manier- en plaatsbepalingen `bepalingsvolgorde-nl`
+
+Ernst: **context** · Herkomst: translationese
+
+Het Nederlands zet bijwoordelijke bepalingen in de volgorde tijd, manier, plaats; het Engels doet het omgekeerd, manier, plaats, tijd. Bij vertaald of Engels gedacht Nederlands blijft de Engelse volgorde staan: "We werkten hard in Enschede vorige week." De zin is grammaticaal foutloos en geen speller haalt hem eruit, maar geen Nederlander zegt het zo. Dit is een van de zuiverste bronnen van het gevoel dat een tekst vertaald klinkt, juist omdat de lezer niet kan aanwijzen wat er mis is. Zet de tijdsbepaling vooraan of vlak achter de persoonsvorm.
+
+Signalen: `plaatsbepaling vóór de tijdsbepaling` · `tijdsbepaling helemaal aan het zinseind` · `We werkten hard in Enschede vorige week` · `de meetup vindt plaats in Hengelo op 12 juni` · `hij sprak rustig in de zaal gisteren`
+
+Voor: We bespraken het uitgebreid in Enschede vorige week.
+
+Na: We hebben het vorige week in Enschede uitgebreid besproken.
+
+Niet markeren: De volgorde is een voorkeur en geen regel: in spreektaal, bij nadruk en bij een lange plaatsbepaling schuift de tijdsbepaling gerust naar achteren. In poëzie en in een citaat blijft de volgorde zoals ze is. Geen regex: dit is per zin te beoordelen, en het signaal is de systematiek over een hele tekst.
+
+### Die-dat-verwarring uit het Engelse that `die-dat-confusion-nl`
+
+Ernst: **context** · Herkomst: translationese
+
+Het betrekkelijk voornaamwoord klopt niet met het geslacht van het antecedent, omdat het Engels maar één vorm heeft en het model die op goed geluk overzet: het model die, de tool dat. Bij dezelfde oorzaak horen de kleine Nederlandse missers waar het Engels niet stuurt, zoals hetgeen wat en een komma op de verkeerde plek.
+
+Signalen: `het model die` · `de tool dat` · `het bedrijf die` · `de organisatie dat` · `hetgeen wat` · `het systeem die`
+
+Voor: Het model die de tekst genereert, kent geen Nederlands.
+
+Na: Het model dat de tekst genereert, kent geen Nederlands.
+
+Niet markeren: Een die-dat-fout weegt in de richting van een menselijke auteur: Nederlandse schrijvers maken hem dagelijks en in spreektaal en dialect is de afwijking normaal. Gebruik hem nooit als bewijs voor AI en tel hem alleen mee als de alinea al andere harde signalen uit deze laag draagt. Bij verwijzing naar personen achter een het-woord ("het meisje die") is "die" een aparte kwestie en geen vertaalfout.
 
 ### Engelse zin ingeplakt met de vertaling erbij `embedded-english-quotation`
 
@@ -3532,13 +4323,27 @@ Na: Volgens het rapport gaat de invoering de komende twee jaar sneller.
 
 Niet markeren: Als de precieze bewoording ertoe doet, is het citaat plus vertaling juist zorgvuldig: in juridische, wetenschappelijke en journalistieke tekst hoort een letterlijk citaat bij de bronvermelding. Het signaal is de dubbeling zonder reden.
 
+### Engelse spelling in het Nederlandse voltooid deelwoord `engels-deelwoord-spelling-nl`
+
+Ernst: **context** · Herkomst: translationese
+
+Een Engels leenwerkwoord dat in het Nederlands volstrekt gangbaar is, houdt zijn Engelse verledentijdsvorm in het deelwoord: gefixed in plaats van gefixt, gecrashed in plaats van gecrasht, geüpdate in plaats van geüpdatet, gedeployed in plaats van gedeployd. Het Nederlands past 't kofschip toe op de uitspraak van de Engelse stam. De fout is bij uitstek zichtbaar in commitberichten, releasenotes en incidentverslagen.
+
+Signalen: `gefixed` · `gecrashed` · `gechecked` · `geüpdate` · `gedeleted` · `gedeployed` · `gemerget` · `geswitched`
+
+Voor: De bug is gefixed, maar daarna is de staging-omgeving gecrashed en heb ik de branch opnieuw gedeployed.
+
+Na: De bug is gefixt, maar daarna is de staging-omgeving gecrasht en heb ik de branch opnieuw gedeployd.
+
+Niet markeren: In Engelstalige commitberichten, in code, in logregels en in een citaat blijft de Engelse vorm staan. De spelling van leenwerkwoorden is in beweging en sommige huisstijlen kiezen bewust de Engelse vorm. Translationese/english-stem-dutch-inflection-nl gaat over een Engelse stam waarvoor een Nederlands werkwoord bestaat; hier mag het werkwoord en is alleen de deelwoordspelling Engels gebleven.
+
 ### Engelse volgorde in de bijzin `english-clause-order-nl`
 
 Ernst: **context** · Herkomst: nl-bron
 
-In een bijzin blijft de werkwoordsgroep niet aan het eind staan, of hij wordt in Engelse volgorde uit elkaar getrokken met de bepalingen erachter: 'zodat het team kan focussen op groei', 'omdat we moeten kijken naar de cijfers eerst'. Daarbij hoort het abstractieniveau van Engelse institutionele proza, met een reeks bijzinnen die elk op een vaag gevolg eindigen.
+In een bijzin blijft de werkwoordsgroep niet aan het eind staan, of hij wordt in Engelse volgorde uit elkaar getrokken met de bepalingen erachter: 'zodat het team kan focussen op groei', 'omdat we moeten kijken naar de cijfers eerst'. Daarbij hoort het abstractieniveau van Engelse institutionele proza, met een reeks bijzinnen die elk op een vaag gevolg eindigen. Extrapositie van een lange bepaling achter de werkwoordelijke eindgroep is gewoon Nederlands en vaak het leesbaarst; alleen de bepaling die het ritme breekt of die tussen hulpwerkwoord en deelwoord uit elkaar wordt getrokken telt.
 
-Signalen: `zodat het team kan focussen op groei` · `omdat we moeten kijken naar de cijfers eerst` · `die is ontworpen voor teams die willen groeien snel` · `bepaling systematisch achter de werkwoordsgroep` · `De onderzoekers suggereren…` · `wat bijdraagt aan`
+Signalen: `zodat het team kan focussen op groei` · `omdat we moeten kijken naar de cijfers eerst` · `bepaling systematisch achter de werkwoordsgroep` · `hij zei dat hij zou komen morgen` · `we hebben besloten om te wachten tot volgende week`
 
 Voor: Ik denk dat we moeten kijken naar de cijfers eerst.
 
@@ -3546,13 +4351,13 @@ Na: Ik denk dat we eerst naar de cijfers moeten kijken.
 
 Niet markeren: Een bepaling achter de werkwoordsgroep komt in gesproken Nederlands en in journalistiek proza gewoon voor, en is bij lange bepalingen zelfs de leesbaarste keuze. Het signaal is de systematiek: elke bijzin volgt de Engelse volgorde. Geen regex, want de afwijking is alleen per zin te beoordelen.
 
-### Lidwoord weg, bezittelijk voornaamwoord erbij `english-determiner-transfer-nl`
+### Ontbrekend lidwoord bij abstracte naamwoorden `english-determiner-transfer-nl`
 
 Ernst: **context** · Herkomst: translationese
 
-De Engelse omgang met bepalers lekt twee kanten op. Het lidwoord verdwijnt voor een abstract of ontelbaar naamwoord, omdat het Engels daar geen lidwoord zet: dit verbetert workflow en verlaagt kosten. En bij lichaamsdelen, gereedschap en vaste onderdelen staat juist een bezittelijk voornaamwoord waar het Nederlands een lidwoord gebruikt: open je browser en typ je URL in je adresbalk.
+De Engelse omgang met bepalers lekt twee kanten op. Het lidwoord verdwijnt voor een abstract of ontelbaar naamwoord, omdat het Engels daar geen lidwoord zet: dit verbetert workflow en verlaagt kosten. De omgekeerde beweging (een bezittelijk voornaamwoord waar een lidwoord hoort) is geschrapt: bij lichaamsdelen is het bezittelijk voornaamwoord in het Nederlands verplicht, en in een instructie aan één lezer is "je browser" de duidelijkste keuze.
 
-Signalen: `verbetert workflow` · `verlaagt kosten` · `verhoogt performance` · `Team kan hierdoor sneller leveren` · `open je browser` · `typ je URL in` · `pak je telefoon` · `was je handen` · `in je adresbalk`
+Signalen: `verbetert workflow` · `verlaagt kosten` · `verhoogt performance` · `Team kan hierdoor sneller leveren`
 
 Voor: Dit verbetert workflow en verlaagt kosten.
 
@@ -3598,6 +4403,6 @@ Signalen: `abstract_onderwerp_ratio` · `door_passief_aantal` · `hulpwerkwoords
 
 Voor: De door de commissie opgestelde informaties kunnen in termen van beleid worden benut.
 
-Na: De commissie schreef dit op. Het beleid kan het gebruiken.
+Na: De commissie schreef dit op. Beleidsmakers kunnen het gebruiken.
 
 Niet markeren: Geen markeerpatroon: gebruik de index nooit om één zin af te keuren. Vertaalde teksten scoren van nature hoger op interferentie, dus een echte vertaling is geen AI-signaal. Stel de basislijn per tekstsoort in, want ambtelijke en wetenschappelijke tekst ligt hoger dan blogtekst.

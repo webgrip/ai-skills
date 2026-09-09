@@ -4,7 +4,7 @@
   "evals": [
     {
       "id": "en-detect-only",
-      "prompt": "Is this slop? Don't edit it, just tell me.\n\nIn today's fast-paced landscape, observability isn't just a tool—it's a mindset. Teams that embrace it unlock faster incident response, deeper insights, and a culture of ownership. It's not about dashboards; it's about trust. Experts agree that the future of reliability is already here.",
+      "prompt": "Does this read as AI-written? Tell me which parts give it away, and don't change the text.\n\nIn today's fast-paced landscape, observability isn't just a tool—it's a mindset. Teams that embrace it unlock faster incident response, deeper insights, and a culture of ownership. It's not about dashboards; it's about trust. Experts agree that the future of reliability is already here.",
       "assertions": [
         "Names at least four distinct patterns with the quoted span for each: the fast-paced opener, the em dash, the not-X-but-Y contrast (twice), the rule of three, the vague attribution, the future-is-here closer",
         "Does not rewrite the text and does not offer a rewritten version unasked",
@@ -55,6 +55,22 @@
       "expect_trigger": false,
       "assertions": [
         "Writes the test without invoking the humanize skill"
+      ]
+    },
+    {
+      "id": "should-not-trigger-commit-message",
+      "prompt": "Write a commit message for a change that swaps the retry backoff from linear to exponential with jitter.",
+      "expect_trigger": false,
+      "assertions": [
+        "Writes the commit message without invoking the humanize skill: an internal git artifact is not public-facing copy"
+      ]
+    },
+    {
+      "id": "should-not-trigger-docstring",
+      "prompt": "Add docstrings to the three public functions in src/parser.py.",
+      "expect_trigger": false,
+      "assertions": [
+        "Adds the docstrings without invoking the humanize skill"
       ]
     }
   ]

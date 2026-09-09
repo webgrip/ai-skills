@@ -35,4 +35,6 @@ json.dump({"patterns": merged}, open(target, "w"), ensure_ascii=False, indent=1)
 print(f"patterns.json: {len(merged)} entries ({len(new)} for {lang})")
 PY
 
+python3 "$PIPELINE/whats_new.py"
+
 rm -f "$staged" "${staged%.json}.patterns.json"

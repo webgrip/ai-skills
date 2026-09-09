@@ -7,10 +7,20 @@ Contents: [1 Modes](#1-modes) · [2 Workflow](#2-workflow) · [3 Gates and prote
 Pick exactly one mode per run. Diagnosis (section 2) is identical in every mode; only what is touched and what is returned differs.
 
 - **detect** (report only). Triggers: detect, audit, scan, flag only, "does this read as AI". Never rewrite, never score authorship, never state a probability. Return one entry per finding: pattern name, quoted span, severity tier, a fix in a few words; then an assessment splitting clear problems from judgment calls that may be intentional. Keep clarity edits (wordiness) visually separate from frequency markers; a wordiness fix says nothing about authorship. Close with an offer to edit. If the text is clean, say so.
-- **edit** (minimal surgical). Default when the user shares a draft. Touch only flagged spans; a paragraph with no tells stays byte-identical. Prose only: code, YAML, tables, quotes, link targets untouched. For a named file, confirm it is a prose file; refuse source, config and generated data. Return the edited text (or the in-place file) plus a short "What changed": location, before and after per span, and what was deliberately left because it was the author's.
-- **rewrite** (full pass). Use when the rebuild triggers fire (section 2, step 9) or when asked. Paragraph structure is not fixed; information is. Return four parts: issues found with spans quoted; the rewritten text; what changed and why (say why if you reorganised); a second-pass audit of your own rewrite with corrections inline. When the second pass changed anything, say "use this version" in as many words. Embedded in another task (PR body, commit message, document): return only the final text.
+- **edit** (minimal surgical). Default when the user shares a draft. Touch only flagged spans; a paragraph with no tells stays byte-identical. Prose only: code, YAML, tables, quotes, link targets untouched. For a named file, confirm it is a prose file; refuse source, config and generated data. Return the edited text first and whole, then at most six lines saying what changed and what was left because it was the author's.
+- **rewrite** (full pass). Use when the rebuild triggers fire (section 2, step 9) or when asked. Paragraph structure is not fixed; information is. Return the rewritten text first and whole, then at most six lines of account: the three to six patterns that dominated, anything deliberately left because it was the author's, and any gap you flagged rather than filled. Run the second-pass audit before returning, not in front of the reader; if it changed something, the text you return is already the corrected one.
 - **write-fresh** (prevent while drafting). Load the writer's voice description or sample first, the catalog as an avoid-list second. Draft, then run the section 2 self-scan on your own output before returning it; the agent produces every tell itself. Return the text only: no preamble, no restated question, no summary wrap. Applies to house copy and to the agent's own chat answers.
 - No satire mode and no "make this pass a detector" mode.
+
+**The deliverable is the text.** In every mode that produces prose, the reader must be able to copy what
+you return and use it without deleting anything. The account is short, comes after the text, and is
+never longer than the text it describes.
+
+**Never state a measurement you did not take.** Scanner counts, dash densities, hit tiers and change
+rates are quotable only from a run you actually performed in this session; name the command if you
+quote a number. An estimate is written as one ("roughly a quarter of the sentences"), never as a
+figure. A claim that the output is now clean is checked against the output you are about to send,
+the account included, or it is not made.
 
 ## 2. Workflow
 

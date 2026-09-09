@@ -40,7 +40,7 @@
     "(?<![a-zà-ÿ])je vraagt (?:je af )?(?:of|naar|hoe|waarom|wat)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])als ik (?:je|jouw|uw) vraag goed begrijp(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])wat je vraagt,? is(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])even samengevat wat je (?:vroeg|vraagt)(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:je vraag komt erop neer dat|even terug naar je vraag)(?![a-zà-ÿ])"
    ],
    "hint": "De tekst opent door de vraag terug te formuleren naar degene die hem stelde: \"Om je vraag te beantwoorden\", \"Je vraagt je af of\", \"Als ik je"
   },
@@ -97,7 +97,6 @@
    "regex": [
     "\\bsignificant,? (?:and )?substantial,? (?:and )?secondary coverage\\b",
     "\\bnot trivial mentions\\b",
-    "\\bindependent coverage\\b",
     "\\bmeet(?:s|ing)? (?:both )?wp:[a-z]+\\b",
     "\\b(?:wikipedia|the site|the platform)['’]?s guidelines on\\b",
     "\\badheres to wikipedia['’]?s\\b"
@@ -199,8 +198,7 @@
     "(?<![a-zà-ÿ])hieronder (?:vind je|volgt)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])je hebt (?:helemaal|volkomen) gelijk(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])op basis van (?:wat je|de informatie die je) (?:hebt |heeft )?(?:gedeeld|gegeven)(?![a-zà-ÿ])",
-    "(?m)^\\s*zoals (?:gevraagd|verzocht)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])een gedetailleerdere uitsplitsing(?![a-zà-ÿ])"
+    "(?m)^\\s*zoals (?:gevraagd|verzocht)(?![a-zà-ÿ])"
    ],
    "hint": "De aanloop van de assistent naar het eigenlijke antwoord blijft in de afgeleverde tekst staan"
   },
@@ -229,8 +227,7 @@
     "\\bwikipedia\\+\\d\\b",
     "\\b[a-z][a-z .]{1,25}\\+\\d{1,2}(?:[a-z][a-z .]{0,25}\\+\\d{1,2})+",
     "(?:[a-z0-9-]+\\.)+(?:com|org|net|edu|gov\\.uk)(?=[a-z])",
-    "[a-z]{3,}[.!?]\\d{1,2}(?=\\s|$)",
-    "↩"
+    "\\b(?!(?:figs|vols|chap|chaps|sect|sects|secs|para|paras|arts|refs|eqns|appx|nos)\\b)[a-z]{4,}[.!?]\\d{1,2}(?=\\s|$)"
    ],
    "hint": "Internal citation tokens from a chat interface that survive copy-paste, in place of real references"
   },
@@ -247,7 +244,7 @@
     ":?contentreference(?:\\[oaicite:\\d+\\])?",
     "oaicite",
     "\\[oai_citation",
-    "(?<![a-zà-ÿ])ga naar zoekopdracht nr(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:navigate to search result|turn\\d+navlist)(?![a-zà-ÿ])",
     "<ref name=\"\\d+search\\d+\">"
    ],
    "hint": "Interne verwijzingstokens uit een chatinterface overleven het kopieren en staan op de plaats van een echte bronvermelding"
@@ -341,6 +338,32 @@
    "hint": "Het model schrijft in de eerste persoon over zijn eigen beperkingen, en die zin blijft staan"
   },
   {
+   "id": "dode-interne-verwijzing-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "context",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:zoals hierboven beschreven|zie punt \\d|in de vorige sectie|de tabel hieronder|zie bijlage [A-Z]|in hoofdstuk \\d)(?![a-zà-ÿ])"
+   ],
+   "hint": "De tekst verwijst naar een eigen onderdeel dat er niet is: hierboven staat niets, punt 3 bestaat niet in een lijst van twee, de vorige secti"
+  },
+  {
+   "id": "gelekte-interfacetekst-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "(?m)^\\s*(?:kopieer code|copy code|kopiëren|bewerken|regenereren|antwoord opnieuw genereren|doorgaan met genereren)\\s*$",
+    "(?m)^\\s*\\d\\s*/\\s*\\d\\s*$",
+    "(?<![a-zà-ÿ])(?:chatgpt kan fouten maken|claude kan fouten maken|gemini kan fouten maken|nagedacht gedurende \\d+ seconden|redeneerde \\d+s)(?![a-zà-ÿ])"
+   ],
+   "hint": "Knop- en statusteksten van de chatinterface zijn met het antwoord mee gekopieerd en staan als losse regels in de afgeleverde tekst: de kopie"
+  },
+  {
    "id": "generated-engagement-reply-nl",
    "lang": [
     "nl"
@@ -349,9 +372,8 @@
    "severity": "always",
    "regex": [
     "(?<![a-zà-ÿ])dank (?:je |u |jullie )?voor het delen van (?:deze|je|jouw|dit)(?![a-zà-ÿ])",
-    "(?m)^\\s*(?:wat een |echt |wow,? )?(?:interessant|sterk|mooi|waardevol|krachtig)(?:e)? (?:perspectief|punt|stuk|inzicht|verhaal|bijdrage)\\s*[,!]",
-    "(?<![a-zà-ÿ])waardevolle inzichten(?![a-zà-ÿ])",
-    "(?m)^\\s*helemaal (?:mee )?eens\\s*[,!]"
+    "(?m)^\\s*(?:wat een |echt |wow,? )?(?:interessant|sterk|mooi|waardevol|krachtig)(?:e)? (?:perspectief|punt|stuk|inzicht|verhaal|bijdrage),\\s+[A-ZÀ-Ý]",
+    "(?<![a-zà-ÿ])waardevolle inzichten(?![a-zà-ÿ])"
    ],
    "hint": "Een gegenereerde reactie op een bericht die de auteur bij naam prijst, bedankt voor het delen en verder niets toevoegt: \"Interessant perspec"
   },
@@ -378,7 +400,8 @@
    "regex": [
     ":::\\s*(?:writing|schrijven)\\{",
     "(?m)^:::\\s*$",
-    "(?m)^(?:claude|chatgpt|gemini|copilot|gpt-\\d)\\s*(?:antwoordde|zei|schreef|reageerde)\\s*:"
+    "(?m)^(?:claude|chatgpt|gemini|copilot|gpt-\\d)\\s*(?:antwoordde|zei|schreef|reageerde)\\s*:",
+    "(?m)^\\s*```(?:markdown|html)\\s*$"
    ],
    "hint": "De transportverpakking rond het antwoord is met de inhoud mee geplakt"
   },
@@ -416,6 +439,20 @@
     "(?<![a-zà-ÿ])als een (?:beoordelaar|reviewer|moderator) (?:vraagt|bezwaar maakt)(?![a-zà-ÿ])"
    ],
    "hint": "Tekst gericht aan wie het document gaat plakken, indienen of nakijken, gepubliceerd binnenin dat document"
+  },
+  {
+   "id": "lengteaanwijzing-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "[(\\[](?:ongeveer|circa|ca\\.|ruim)?\\s*\\d{2,4}\\s*woorden[)\\]]",
+    "(?<![a-zà-ÿ])(?:woordenaantal|aantal tekens)\\s*:\\s*\\d",
+    "(?<![a-zà-ÿ])binnen de gevraagde \\d{2,4} woorden(?![a-zà-ÿ])"
+   ],
+   "hint": "De tekst draagt de meting van zijn eigen lengte, omdat de opdracht een aantal woorden of tekens vroeg: een telling tussen haakjes onder een "
   },
   {
    "id": "letter-register-on-non-correspondence",
@@ -485,6 +522,45 @@
    "skip_on_markdown": true
   },
   {
+   "id": "naad-na-voortgezette-generatie-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "(?m)^\\s*\\(?vervolg(?: van hierboven)?\\)?\\s*:?\\s*$",
+    "(?<![a-zà-ÿ])(?:verder gaand waar we gebleven waren|vervolg van hierboven)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het stuk is in twee beurten gegenereerd en de naad is blijven staan: de eerste beurt breekt af, de tweede begint opnieuw met een halve zin d"
+  },
+  {
+   "id": "opdrachtparameters-in-tekst-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "(?m)^\\s*(?:rol|doelgroep|toon|schrijfstijl|lengte|doel van deze tekst)\\s*:\\s*\\S[^\\n]{0,80}$",
+    "(?<![a-zà-ÿ])(?:gebruik geen gedachtestreepjes|schrijf in het nederlands)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het instructieblok waarmee de tekst is besteld staat boven, onder of tussen de tekst zelf: rol, doelgroep, toon, lengte, verboden woorden"
+  },
+  {
+   "id": "optiemenu-meegeleverd-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "(?m)^\\s*(?:optie|variant|versie)\\s*\\d\\s*(?:\\([^)\\n]{2,30}\\))?\\s*:",
+    "(?<![a-zà-ÿ])(?:alternatieve kop:|kies degene die het beste past|of, wat directer:)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het model levert drie varianten van een kop, een openingszin of een slot, en het hele menu inclusief de labels en de karakteriseringen wordt"
+  },
+  {
    "id": "outline-plan-left-in-body",
    "lang": [
     "en"
@@ -505,9 +581,7 @@
    "severity": "always",
    "regex": [
     "(?<![a-zà-ÿ])(?:deze|dit) (?:sectie|paragraaf|hoofdstuk|onderdeel) zou (?:worden )?(?:ingegaan|beschreven|behandeld|besproken)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])hier (?:zou|komt) (?:nog )?(?:een|de) [^.\\n]{0,40}(?:komen|volgen|staan)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])nader uit te werken(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])nog aan te vullen(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])hier (?:zou|komt) (?:nog )?(?:een|de) [^.\\n]{0,40}(?:komen|volgen|staan)(?![a-zà-ÿ])"
    ],
    "hint": "Een zin die beschrijft wat een sectie zou bevatten, geleverd in plaats van die inhoud: \"In deze sectie zou worden ingegaan op mogelijke ontw"
   },
@@ -519,7 +593,8 @@
    "category": "artifacts",
    "severity": "cluster",
    "regex": [
-    "[a-zà-ÿ] +[,.;!?](?:\\s|$)"
+    "[a-zà-ÿ] +[,.;!?](?:\\s|$)",
+    "[a-zà-ÿ0-9]\\u00a0[a-zà-ÿ0-9]"
    ],
    "hint": "Witruimte die niet uit een toetsenbord komt maar uit het kopieren: dubbele spaties midden in een zin, een of meer spaties aan het begin van "
   },
@@ -553,7 +628,8 @@
     "(?<![a-zà-ÿ])url\\s?=\\s?url(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:bron_?url|insert_?source_?url)[_a-z0-9]*",
     "(?<![a-zà-ÿ])(?:titel\\s?=\\s?titel|uitgever\\s?=\\s?uitgever|auteur\\s?=\\s?auteur)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])datum\\s?=\\s?onbekend(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])datum\\s?=\\s?onbekend(?![a-zà-ÿ])",
+    "(?m)^(?:title|description|author|slug):\\s*(?:untitled|todo|your name|jouw naam|tbd|lorem)"
    ],
    "hint": "Een bron-, infobox- of frontmatterveld draagt een stomp in plaats van een waarde: \"url=URL\", \"BRON_URL_HIER\", \"uitgever=UITGEVER\", \"datum=on"
   },
@@ -566,7 +642,7 @@
    "severity": "always",
    "regex": [
     "\\blet me think step by step\\b",
-    "\\bbreaking this down\\b",
+    "\\bbreaking this down (?:step by step|into (?:its )?(?:parts|components|pieces))\\b",
     "\\bto approach this systematically\\b",
     "\\bhere['’]?s my thought process\\b",
     "\\bfirst,? let['’]?s consider\\b",
@@ -586,10 +662,10 @@
    "regex": [
     "(?<![a-zà-ÿ])(?:laten we|laat me|laat ik) (?:dit |het )?stap voor stap(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])om dit systematisch aan te pakken(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])ik ontleed dit(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])mijn gedachtegang(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])laten we (?:eerst|om te beginnen) (?:kijken naar|beginnen bij|vaststellen)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])mijn analyse is gebaseerd op(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])mijn analyse is gebaseerd op(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:laat me dit even opsplitsen|ik pak het even uit elkaar|ik loop het even na)(?![a-zà-ÿ])"
    ],
    "hint": "De denksteiger van het model is als proza blijven staan: \"Laten we dit stap voor stap bekijken\", \"Om dit systematisch aan te pakken\", genumm"
   },
@@ -616,6 +692,20 @@
     "\\*(?:knikt|zucht|lacht|glimlacht|grinnikt|fronst|haalt (?:zijn|haar|de) schouders op|leunt (?:naar voren|achterover))[^*\\n]{0,30}\\*"
    ],
    "hint": "Regieaanwijzingen tussen sterretjes uit rollenspelchat zijn in het proza blijven staan: *knikt*, *zucht*, *haalt zijn schouders op*"
+  },
+  {
+   "id": "sandboxpad-verwijzing-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "sandbox:/?(?:mnt/data)?",
+    "/mnt/data/",
+    "(?<![a-zà-ÿ])(?:je kunt het bestand hier downloaden|download het volledige overzicht hier)(?![a-zà-ÿ])"
+   ],
+   "hint": "De tekst biedt een download of verwijst naar een bestandspad dat alleen binnen de werkomgeving van het model bestond: een link met het schem"
   },
   {
    "id": "self-certification-of-compliance",
@@ -653,6 +743,19 @@
    "hint": "De tekst beweert zijn eigen neutraliteit, bronvastheid of regelconformiteit in plaats van die te laten zien: \"Neutraal van toon en overal ge"
   },
   {
+   "id": "seo-veldblok-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "(?m)^\\s*(?:metatitel|meta title|metabeschrijving|meta description|slug|url-slug|focuszoekwoord|zoekwoorden|alt-tekst)\\s*:",
+    "(?m)^\\s*H[12]\\s*:\\s*\\S"
+   ],
+   "hint": "De velden die een SEO-briefing vraagt worden als tekstblok boven of onder het artikel afgeleverd en zo gepubliceerd: metatitel, metabeschrij"
+  },
+  {
    "id": "stale-boilerplate-metadata",
    "lang": [
     "nl"
@@ -661,7 +764,8 @@
    "severity": "cluster",
    "regex": [
     "\\{\\{[a-zà-ÿ ]{3,25}\\|datum=[a-z]{3,10} \\d{4}\\}\\}",
-    "\\|\\s?(?:bezocht|geraadpleegd)datum\\s?=\\s?\\d{1,2} [a-z]{3,10} \\d{4}"
+    "\\|\\s?(?:bezocht|geraadpleegd)datum\\s?=\\s?\\d{1,2} [a-z]{3,10} \\d{4}",
+    "(?<![a-zà-ÿ])laatst bijgewerkt\\s*:\\s*[a-z]{3,10}\\s+20\\d\\d"
    ],
    "hint": "Een nieuw document draagt metadata die het niet verdiend kan hebben: een onderhouds- of stijlsjabloon met een datum van voor het bestaan van"
   },
@@ -708,7 +812,7 @@
    "category": "artifacts",
    "severity": "always",
    "regex": [
-    "\\[(?:your|insert|add|enter|describe|specify|choose|pick|link to|fill in|todo|tbd|placeholder)[^\\]\\n]{1,80}\\]",
+    "\\[(?:your|insert|add|enter|describe|specify|choose|pick|link to|fill in|todo|tbd|placeholder)\\b[^\\]\\n]{0,80}\\]",
     "\\[(?:recipient|sender|topic|subject|salutation|closing|position|department|project name|company name|client name|entertainer['’]?s name)(?:\\s[^\\]\\n]{0,60})?\\]",
     "\\{(?:client_name|your_name|company_name|first_name|recipient_name|topic)\\}",
     "\\((?:add|insert|enter) your [^)\\n]{1,60}\\)"
@@ -729,7 +833,10 @@
     "\\((?:vul|voeg)[^)\\n]{0,50}(?:in|toe)\\)",
     "\\[[a-zà-ÿ ]{2,30} (?:invullen|toevoegen)\\]",
     "(?m)^\\s*todo\\s*:",
-    "lorem ipsum"
+    "lorem ipsum",
+    "\\{\\{\\s*(?:voornaam|naam|bedrijf|firstname|fname|company)\\s*\\}\\}",
+    "\\*\\|[A-Z_]{2,20}\\|\\*",
+    "%%[a-z_]{2,20}%%"
    ],
    "hint": "Een invulplek die de schrijver had moeten vervangen, gepubliceerd zoals hij is"
   },
@@ -741,11 +848,11 @@
    "category": "content",
    "severity": "context",
    "regex": [
-    "\\bsignificantly\\s+(?:faster|slower|better|larger|smaller|improved?|improves|reduced?|increased?)\\b",
+    "\\bsignificantly\\s+(?:faster|slower|better|larger|smaller|improved?|improves|improving|reduced?|increased?)\\b",
     "\\b(?:improved|improving|boosted|enhanced)\\s+(?:efficiency|productivity|performance|outcomes)\\b",
     "\\ba\\s+(?:large|small|huge)\\s+(?:image|file|dataset|number\\s+of\\s+users)\\b"
    ],
-   "hint": "A claim is stated in abstract terms where a name, number, date, mechanism or example is available: 'improved efficiency', 'significantly fas"
+   "hint": "A claim is stated in abstract terms where a name, number, date, mechanism or example the draft already supplies would do the work: 'improved"
   },
   {
    "id": "abstraction-over-specifics",
@@ -761,6 +868,43 @@
     "(diverse|een aantal) (voordelen|verbeteringen|optimalisaties)"
    ],
    "hint": "Een claim blijft abstract terwijl er een naam, een getal, een datum, een mechanisme of een voorbeeld beschikbaar is: verbeterde de efficiënt"
+  },
+  {
+   "id": "amerikaanse-realia-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:de FDA|de IRS|de FTC|OSHA|at-will employment|K-12|401\\(?k\\)?|high school|sales tax)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:denk aan bedrijven als|neem bedrijven als)\\s+(?:Netflix|Uber|Airbnb|Amazon|Google)"
+   ],
+   "hint": "Een Nederlandse tekst over een Nederlandse situatie haalt instellingen, regelingen, opleidingsniveaus, maten of gebruiken uit de Verenigde S"
+  },
+  {
+   "id": "anonieme-klantcasus-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:bij een (?:middelgroot|middelgrote|groot|grote|klein|kleine)\\s+\\w+\\s+(?:zagen we|brachten we|hielpen we)|een van onze klanten (?:in|uit)\\s+de\\s+\\w+|een gemeente in het oosten van het land)(?![a-zà-ÿ])"
+   ],
+   "hint": "Bewijs in de vorm van een geanonimiseerde casus die niemand kan natrekken: een middelgroot bedrijf in de maakindustrie, een van onze klanten"
+  },
+  {
+   "id": "bijna-juiste-instellingsnaam-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:Universiteit van Twente|provincie Twente|gemeente Twente|Centraal Bureau van de Statistiek|Autoriteit voor Persoonsgegevens|Hogeschool Saxion|Nederlandse Kamer van Koophandel)(?![a-zà-ÿ])"
+   ],
+   "hint": "De naam van een bestaande Nederlandse instelling, regeling of bestuurslaag staat er net verkeerd, meestal met een ingevoegd \"van\" of een ver"
   },
   {
    "id": "cliche-and-purple-prose",
@@ -894,7 +1038,8 @@
    "severity": "cluster",
    "regex": [
     "aan het eind(e)? van de dag (draait|gaat|telt|komt het|is het)",
-    "(?<![a-zà-ÿ])impact maken(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])impact maken(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:het is geen raketwetenschap|(?:een|de) game.?changer)(?![a-zà-ÿ])"
    ],
    "hint": "Een poging tot informele toon die niemand zo zegt: bedachte spreektaal in plaats van gehoorde"
   },
@@ -959,7 +1104,8 @@
    "severity": "context",
    "regex": [
     "\\bin\\s+every\\s+(?:first-year|introductory|undergraduate)\\s+[a-z]+\\s+(?:course|class|textbook)\\b",
-    "\\bevery\\s+(?:single\\s+)?(?:developer|engineer|business|company|organization|organisation|team|marketer)\\s+(?:knows|needs|should|must|wants)\\b"
+    "\\bevery\\s+(?:single\\s+)?(?:developer|engineer|business|company|organization|organisation|team|marketer)\\s+(?:knows|needs|should|must|wants)\\b",
+    "\\b(?:assumption|abstraction|architecture|design|approach|refactor|codebase)\\s+is\\s+(?:brave|honest|dishonest|courageous|humble|virtuous|noble)\\b"
    ],
    "hint": "Authority borrowed from a scope the writer cannot check ('taught in every first-year biochemistry course', 'every engineer knows'), and mora"
   },
@@ -1041,6 +1187,21 @@
     "introduceer(t|de) (hij|zij|hierbij )?de term"
    ],
    "hint": "Een pseudo-analytische samenstelling wordt halverwege de zin gemunt en nooit gedefinieerd (de supervisieparadox, de contextval, een coördina"
+  },
+  {
+   "id": "list-title-as-entity",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\bis\\s+a\\s+curated\\s+(?:compilation|collection|list)\\b",
+    "\\bis\\s+the\\s+chronological\\s+list\\s+of\\b",
+    "\\b(?:the\\s+)?[\\\"“]list\\s+of\\b",
+    "\\brefers\\s+to\\s+(?:the|a)\\s+(?:collection|list|compilation|series|set)\\s+of\\b"
+   ],
+   "hint": "The opening sentence defines a working or descriptive title as though it were a real-world entity: 'X refers to', 'X is the chronological li"
   },
   {
    "id": "list-title-as-entity",
@@ -1132,9 +1293,22 @@
    "regex": [
     "een actieve (aanwezigheid|rol) op (sociale|social) media",
     "meer dan \\d[\\d.,]* (volgers|abonnees|leden op)",
-    "(onafhankelijke berichtgeving|landelijke media|toonaangevende vakbladen)"
+    "(?:kwam uitgebreid aan bod in (?:de )?landelijke media|werd besproken in (?:diverse|verschillende|toonaangevende) vakbladen|kreeg brede aandacht in de media)"
    ],
    "hint": "Belang wordt aangetoond door op te sommen waar het onderwerp is verschenen in plaats van wat er gezegd is: een rij prestigieuze titels, een "
+  },
+  {
+   "id": "ongevraagde-basisuitleg-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:maar eerst:? wat is|voordat we verder gaan,? een korte introductie|voordat we (?:daarnaar|hiernaar) kijken:? wat is)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])de voordelen van \\w+ op een rij(?![a-zà-ÿ])"
+   ],
+   "hint": "Midden in een stuk voor vakgenoten staat een alinea die het onderwerp uitlegt aan iemand die het allang weet: eerst een definitie, dan de vo"
   },
   {
    "id": "pathetic-fallacy-mood-setting",
@@ -1142,7 +1316,7 @@
     "en"
    ],
    "category": "content",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "\\bmirroring\\s+(?:her|his|their)\\s+(?:unspoken\\s+)?(?:grief|mood|sorrow|anxiety|turmoil|sadness)\\b",
     "\\brain\\s+(?:pattered|drummed|tapped)\\s+(?:softly|gently)\\b"
@@ -1235,7 +1409,7 @@
     "\\ba\\s+testament\\s+to\\b",
     "\\bplay(?:s|ed|ing)?\\s+a\\s+(?:vital|crucial|pivotal|significant|key|central)\\s+role\\b",
     "\\bunderscor(?:e|es|ed|ing)\\s+(?:its|his|her|their|the)\\s+(?:importance|significance|role)\\b",
-    "\\bhighlight(?:s|ed|ing)\\s+(?:its|his|her|their|the)\\s+(?:importance|significance|enduring\\s+legacy)\\b",
+    "\\bhighlight(?:s|ed|ing)\\s+(?:its|his|her|their)\\s+(?:importance|significance)\\b",
     "\\benduring\\s+legacy\\b",
     "\\btransformative\\s+power\\b",
     "\\bevolving\\s+landscape\\b",
@@ -1245,7 +1419,6 @@
     "\\bpart\\s+of\\s+a\\s+(?:broader|wider)\\s+(?:movement|trend|shift|effort)\\b",
     "\\bsymboliz(?:es|ing)\\s+(?:its|his|her|their)\\s+(?:ongoing|enduring|lasting)\\b",
     "\\bkey\\s+turning\\s+point\\b",
-    "\\bsignificantly\\s+improv(?:es|ed|ing)\\b",
     "\\bthis\\s+is\\s+(?:a|an)\\s+(?:crucial|critical|key|important)\\s+(?:insight|point|distinction|takeaway)\\b",
     "\\bcarries\\s+significant\\s+implications\\b|\\bthe\\s+implications\\s+are\\s+significant\\b|\\bis\\s+(?:noteworthy|of\\s+great\\s+significance)\\b",
     "시사하는\\s*바가\\s*크다|주목할\\s*만하다|매우\\s*중요하다|의미가\\s*크다|기록적인\\s*성과를\\s*거두었다|주목받았다"
@@ -1295,7 +1468,7 @@
    "regex": [
     "(meerdere|verschillende|diverse|talloze) (bronnen|publicaties|onderzoeken|recensenten|media|nieuwsmedia)",
     "(veel|talloze) wetenschappers",
-    "wordt breed geïnterpreteerd"
+    "wordt breed (?:gedragen|gedeeld)|wordt algemeen aangenomen"
    ],
    "hint": "Er staan bronnen in de tekst, maar hun aantal of hun breedte klopt niet: de mening van een persoon wordt breed gedeeld genoemd, meervoudige "
   },
@@ -1330,8 +1503,6 @@
    "regex": [
     "er is (weinig|niet veel|nauwelijks iets) bekend over",
     "hoewel (hierover )?weinig bekend is",
-    "naar alle waarschijnlijkheid",
-    "(het valt aan te nemen|men neemt aan) dat",
     "houdt zich (bewust )?op de achtergrond",
     "blijft liever uit de schijnwerpers",
     "op basis van de beschikbare (informatie|bronnen|gegevens)",
@@ -1442,7 +1613,7 @@
     "nl"
    ],
    "category": "content",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(experts|deskundigen|onderzoekers|analisten|critici|kenners|branchekenners|waarnemers) (zeggen|stellen|melden|beweren|wijzen erop|merken op|zijn het erover eens)",
     "onderzoek (toont aan|wijst uit)",
@@ -1475,10 +1646,74 @@
    "severity": "cluster",
    "regex": [
     "\\d+ (tot|à) \\d+ (minuten|seconden|uur|dagen|weken|procent|verzoeken|keer|regels)",
-    "tussen de \\d+ en (de )?\\d+",
-    "een uur of (twee|drie|vier)"
+    "tussen de \\d+ en (de )?\\d+"
    ],
    "hint": "Er staat een marge waar een enkel waargenomen getal had gestaan als de schrijver het echt had gedaan: duurt 5 tot 10 minuten, tussen de 20 e"
+  },
+  {
+   "id": "verzonnen-citaat-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "[\\\"”][^\\\"”\\n]{15,200}[\\\"”],?\\s*(?:aldus|zei|zegt|volgens)\\s+(?:de\\s+)?(?:wethouder|woordvoerder|directeur|oprichter|manager)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:zoals hij het zelf verwoordde|zoals ze het zelf verwoordde|in zijn eigen woorden|een woordvoerder laat weten)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een letterlijk citaat tussen aanhalingstekens wordt toegeschreven aan een met naam en functie genoemde persoon, woordvoerder of organisatie,"
+  },
+  {
+   "id": "verzonnen-meting-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:bespaart? (?:het team |ons |je )?(?:twaalf|tien|acht|zes|vijf|vier|drie|twee)\\s+uur per (?:week|maand)|de (?:bouwtijd|doorlooptijd|laadtijd) (?:halveerde|is gehalveerd))(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:tien|vijf|drie|twee) keer sneller(?![a-zà-ÿ])"
+   ],
+   "hint": "Een concreet getal met de vorm van een meetresultaat waar niets is gemeten: een percentage verbetering, een doorlooptijd voor en na, een bes"
+  },
+  {
+   "id": "verzonnen-optie-of-menupad-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "(?<![a-zà-ÿ])ga naar (?:Instellingen|Beheer|Configuratie)\\s*>\\s*\\w+",
+    "(?<![a-zà-ÿ])(?:standaard staat deze waarde op (?:true|false)|met de optie --\\w+ kun je)(?![a-zà-ÿ])"
+   ],
+   "hint": "Gegenereerde documentatie beschrijft een vlag, configuratiesleutel, menupad of endpoint dat niet bestaat, of een standaardwaarde die het sys"
+  },
+  {
+   "id": "backticks-om-gewone-woorden-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "`(?:de|het|een|meetup|oktober|januari|productie|aanmeldingen|klant|team|website)`"
+   ],
+   "hint": "Inline code-opmaak op woorden die geen code zijn: vaktermen, productnamen, maanden, gewone Nederlandse woorden"
+  },
+  {
+   "id": "beletselteken-als-spanningspauze-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "(?m)…\\s*$",
+    "(?<![a-zà-ÿ])(?:maar er is meer\\.\\.\\.|en toen gebeurde er iets…|klinkt simpel, toch…)",
+    "[a-zà-ÿ](?:…|\\.\\.\\.)\\s*(?:tot|maar|en toen)\\s"
+   ],
+   "hint": "Drie puntjes worden ingezet als dramatische pauze of als cliffhanger, terwijl er niets wordt weggelaten: midden in een zin voor de clou, of "
   },
   {
    "id": "bold-overuse",
@@ -1518,6 +1753,19 @@
     "(?-i:\\b[a-z]{3,}: [A-Z][a-z]+ [a-z]+)"
    ],
    "hint": "The clause after a colon starts with a capital letter where grammar, a proper noun, a title or code does not require it ('Two options remain"
+  },
+  {
+   "id": "cijfers-in-lopende-tekst-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?<![a-zà-ÿ0-9.,%])(?:we|wij|er|ik|het team)\\s+(?:\\w+\\s+){0,2}(?:1[0-9]|[2-9])\\s+(?:teams|mensen|sprekers|stappen|klanten|bedrijven|tips|redenen|manieren)(?![a-zà-ÿ])",
+    "\\d{1,3}%\\s+van\\s+de\\s+(?:bedrijven|mensen|klanten|teams|respondenten)"
+   ],
+   "hint": "Kleine getallen in lopende tekst staan in cijfers waar de Nederlandse redactionele stijl ze uitschrijft, en het procentteken staat waar \"pro"
   },
   {
    "id": "curly-quotes",
@@ -1636,7 +1884,7 @@
     "en"
    ],
    "category": "punctuation-format",
-   "severity": "always",
+   "severity": "context",
    "regex": [
     "\\A(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
     "(?:^|\\n)#[ \\t][^\\n]*\\n(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
@@ -1651,7 +1899,7 @@
     "nl"
    ],
    "category": "punctuation-format",
-   "severity": "always",
+   "severity": "context",
    "regex": [
     "(?ms)\\A(?:(?!^##\\s)[\\s\\S])*?^###\\s"
    ],
@@ -1688,7 +1936,7 @@
     "en"
    ],
    "category": "punctuation-format",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?:^|\\n)[ \\t]*(?:[-*+]|\\d+[.)])[ \\t]+\\*\\*(?:[a-z0-9&/'-]+[ \\t]+){0,3}[a-z0-9&/'-]+\\.\\*\\*[ \\t]+[a-z]"
    ],
@@ -1705,6 +1953,18 @@
     "(?m)^\\s*[-*]\\s+\\*\\*[^*\\n]{1,26}\\.\\*\\*\\s+\\S"
    ],
    "hint": "In een lijst waarvan de items met een kort label openen, eindigt dat label met een punt en loopt de toelichting als losse zin door, waar iem"
+  },
+  {
+   "id": "los-bulletteken-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?m)^\\s*\\u2022\\s+\\S"
+   ],
+   "hint": "Lijstitems worden gemarkeerd met het losse bulletteken • op een vlak dat zelf lijstopmaak kent: een Markdown-bestand, een issue, een wiki, e"
   },
   {
    "id": "oxford-comma-nl",
@@ -1769,6 +2029,18 @@
    "hint": "Dialoog met een emotie tussen haakjes voor de regel, als in een scenario, in proza dat geen scenario is"
   },
   {
+   "id": "punt-achter-fragmentbullet-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?m)^\\s{0,4}[-*+]\\s+(?!.*\\b(?:is|zijn|was|waren|wordt|worden|heeft|hebben|kan|kun|moet|doet|gaat|staat|komt|maakt|geeft)\\b)[A-ZÀ-Ýa-zà-ÿ][^.\\n]{2,45}\\.\\s*$"
+   ],
+   "hint": "Elk lijstitem sluit af met een punt terwijl het geen zin is, of alle items dragen mechanisch dezelfde eindinterpunctie ongeacht hun vorm"
+  },
+  {
    "id": "redundant-acronym-expansion",
    "lang": [
     "en"
@@ -1827,7 +2099,7 @@
    "regex": [
     ";[^;\\n]{1,120};[^;\\n]{1,120};"
    ],
-   "hint": "Het gebruik van de puntkomma wijkt af van menselijk proza, in een richting die van het model afhangt"
+   "hint": "De puntkomma verbindt hoofdzinnen op een tempo dat ver boven gewoon Nederlands ligt en vervangt punt en voegwoord"
   },
   {
    "id": "stress-accents-nl",
@@ -1881,6 +2153,19 @@
    "hint": "Every main word of a section heading is capitalized ('Strategic Negotiations And Global Partnerships'), sometimes conjunctions included, whe"
   },
   {
+   "id": "uitroeptekendichtheid-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "![^.!?\\n]{5,120}!",
+    "(?m)^\\s{0,3}#{1,4}[^\\n]{3,80}!\\s*$"
+   ],
+   "hint": "Het uitroepteken wordt het standaard eindteken van enthousiaste tekst: meer dan één per alinea, aan het eind van een kop, achter een lijstit"
+  },
+  {
    "id": "unicode-arrows",
    "lang": [
     "en"
@@ -1928,10 +2213,9 @@
    "category": "punctuation-format",
    "severity": "always",
    "regex": [
-    "[\\U0001d400-\\U0001d7ff]",
-    "(?m)^\\s*\\u2022\\s+\\S"
+    "[\\U0001d400-\\U0001d7ff]"
    ],
-   "hint": "Vet nagemaakt met Unicode-wiskundetekens in plaats van met opmaak, en lijstitems gemarkeerd met het losse bulletteken op een vlak dat echte ",
+   "hint": "Vet nagemaakt met Unicode-wiskundetekens in plaats van met opmaak",
    "skip_on_markdown": true
   },
   {
@@ -1942,8 +2226,7 @@
    "category": "punctuation-format",
    "severity": "cluster",
    "regex": [
-    "\\u2026",
-    "\\u00a0"
+    "\\u2026"
    ],
    "hint": "Unicode-varianten van gewone leestekens waar een mens de toetsenbordvorm typt: het ellipsis-teken in plaats van drie punten, de harde spatie"
   },
@@ -1964,11 +2247,12 @@
     "\\b(?:python-package|rust-crate)\\s+usage\\b",
     "\\btotal-downloads\\s+figures?\\b",
     "\\b(?:single-project\\s+manifest|life-sciences-native\\s+citation\\s+count)\\b",
-    "\\b(?:is|are|was|were|remains?|stays?|seems?|becomes?)\\s+(?:high-quality|data-driven|cross-functional|client-facing|end-to-end|real-time|long-term)\\b(?!\\s+[a-z]+)",
+    "\\b(?:is|are|was|were|feels?|seems?|looks?|remains?|stays?)\\s+well-(?:written|known|documented|understood|received|suited|tested|defined|behaved)\\b(?!\\s+[a-z])",
+    "\\b(?:fully|highly|newly|widely|closely|rapidly|easily|clearly|poorly|heavily|deeply|freshly|carefully|properly|publicly|globally|locally|nearly|slightly|strongly|tightly|readily|equally|totally|entirely|completely|partially|automatically|dynamically|manually|virtually|technically|thoroughly|frequently|regularly|constantly|continuously|instantly|recently|previously|initially|specifically|generally|typically|commonly|broadly|quickly|slowly|largely|mostly|firmly|richly|purely|simply|securely|remotely|centrally)-[a-z]{3,}\\b",
     "(?:\\b[a-z]+(?:-[a-z]+)+,?\\s+){3}\\b[a-z]+",
     "\\b\\w+-\\w+,\\s+\\w+-\\w+,\\s+(?:and\\s+)?\\w+-\\w+\\s+\\w+\\b"
    ],
-   "hint": "Hyphens where English does not want them: stock corporate compounds ('data-driven', 'cross-functional', 'high-quality') kept hyphenated in p"
+   "hint": "Hyphens where English does not want them: attributive-only forms used adverbially or as nouns ('in real-time', 'over the long-term', 'works "
   },
   {
    "id": "unnecessary-tables",
@@ -1996,6 +2280,30 @@
    "hint": "Een tabel van een paar rijen met feiten die als zin beter lezen: twee kolommen Metriek en Waarde, of Naam en Functie, vaak met een bijschrif"
   },
   {
+   "id": "vet-bovenop-de-kop-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?m)^\\s{0,3}#{1,6}\\s*\\*\\*[^*\\n]{2,60}\\*\\*\\s*:?\\s*$"
+   ],
+   "hint": "Een kop draagt naast zijn kopniveau ook nog vetopmaak, of elke genummerde kop krijgt vet mee"
+  },
+  {
+   "id": "achterblijversdreiging-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:mist? de boot|verliest? de aansluiting|blijft? achter bij de concurrentie|wordt? links ingehaald|wie nu niet begint)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het argument bestaat uit een dreigend gevolg voor wie niet meedoet, zonder één genoemd geval waarin dat gevolg optrad: wie nu niet begint mi"
+  },
+  {
    "id": "announced-interest",
    "lang": [
     "en"
@@ -2018,7 +2326,7 @@
     "nl"
    ],
    "category": "rhetoric",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])(?:wat\\s+(?:mij|me)\\s+(?:opviel|verbaasde|raakte|verraste)|dit\\s+vond\\s+ik\\s+(?:interessant|opvallend)|hier\\s+wordt\\s+het\\s+interessant|ik\\s+was\\s+verrast\\s+te\\s+zien|ik\\s+moet\\s+hier\\s+steeds\\s+aan\\s+denken|blijft\\s+door\\s+mijn\\s+hoofd\\s+(?:spelen|gaan)|hier\\s+denk\\s+ik\\s+al\\s+(?:de\\s+hele\\s+week|dagen)\\s+over\\s+na)(?![a-zà-ÿ])"
    ],
@@ -2049,7 +2357,8 @@
    "regex": [
     "(?<![a-zà-ÿ])is\\s+de\\s+(?:taal|munt|valuta|architectuur|ruggengraat|brandstof)\\s+van(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:is\\s+)?de\\s+excel\\s+van(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])voorbij\\s+\\w+\\s+richting\\s+\\w+"
+    "(?<![a-zà-ÿ])voorbij\\s+\\w+\\s+richting\\s+\\w+",
+    "(?<![a-zà-ÿ])de\\s+heilige\\s+graal\\s+van(?![a-zà-ÿ])"
    ],
    "hint": "Een gewone bewering wordt omgegoten tot citeerbare wetmatigheid door een invulmetafoor: X is de taal van Y, de munt van Z, de architectuur v"
   },
@@ -2077,6 +2386,18 @@
     "(?m)(?:^|[.!?]\\s+)(?:en\\s+dat\\s+telt\\.|zo\\s+simpel\\s+is\\s+het\\.|de\\s+toekomst\\s+(?:is\\s+al\\s+begonnen|begint\\s+nu)\\.|daar\\s+begint\\s+het\\s+pas\\.|nu\\s+is\\s+het\\s+moment\\s+om)"
    ],
    "hint": "Een alinea of stuk landt op een compacte spreuk die het punt als wijsheid herhaalt in plaats van iets toe te voegen: En dat telt"
+  },
+  {
+   "id": "bekentenis-als-aanloop-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:jarenlang (?:deed|dacht|deden) ik|toen viel het kwartje|dat was mijn wake-?upcall|tot ik ontdekte dat)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het stuk opent met een toegegeven fout of een jarenlange dwaling die alleen bestaat om de omslag naar het advies te dragen: Jarenlang deed i"
   },
   {
    "id": "booster-density-nl",
@@ -2291,7 +2612,7 @@
    "category": "rhetoric",
    "severity": "cluster",
    "regex": [
-    "(?<![a-zà-ÿ])(?:de\\s+echte\\s+vraag\\s+is|waar\\s+het\\s+(?:werkelijk|echt)\\s+om\\s+(?:gaat|draait)|vergis\\s+je\\s+niet|de\\s+realiteit\\s+is\\s+simpeler|het\\s+echte\\s+verhaal\\s+is|de\\s+kern\\s+van\\s+de\\s+zaak\\s+is)(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:de\\s+echte\\s+vraag\\s+is|waar\\s+het\\s+(?:werkelijk|echt)\\s+om\\s+(?:gaat|draait)|vergis\\s+je\\s+niet|de\\s+(?:realiteit|werkelijkheid)\\s+is\\s+(?:simpeler|genuanceerder|weerbarstiger)|het\\s+ligt\\s+genuanceerder|het\\s+echte\\s+verhaal\\s+is|de\\s+kern\\s+van\\s+de\\s+zaak\\s+is)(?![a-zà-ÿ])"
    ],
    "hint": "Een vaste frase presenteert een gewoon punt als verborgen of fundamenteel inzicht, of beweert dat de zaak duidelijk is in plaats van het te "
   },
@@ -2321,6 +2642,19 @@
     "(?<![a-zà-ÿ])(?:het\\s+is\\s+(?:belangrijk|goed)\\s+om\\s+te\\s+onthouden|houd\\s+er\\s+rekening\\s+mee\\s+dat|dit\\s+kan\\s+per\\s+(?:situatie|land|geval)\\s+verschillen|raadpleeg\\s+(?:altijd\\s+)?een\\s+(?:deskundige|specialist|arts|adviseur)|controleer\\s+dit\\s+altijd\\s+zelf|ter\\s+voorkoming\\s+van\\s+verwarring)(?![a-zà-ÿ])"
    ],
    "hint": "Waarschuwingen aan de lezer in een tekst die gewoon feiten zou moeten melden: het is belangrijk om te onthouden, houd er rekening mee dat, d"
+  },
+  {
+   "id": "dienstjarenopener-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])na\\s+(?:tien|twaalf|vijftien|twintig|\\d{1,2})\\s+jaar\\s+[^.!?]{0,40}\\s+weet ik (?:één|een) ding zeker(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:weet ik één ding zeker|heb ik in die jaren geleerd dat|als iemand die al jaren)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een claim over jaren ervaring of aantallen opent de tekst en dient alleen als aanloop naar een algemene wijsheid: na tien jaar in dit vak we"
   },
   {
    "id": "fake-casual-register",
@@ -2373,7 +2707,7 @@
    "category": "rhetoric",
    "severity": "always",
    "regex": [
-    "(?<![a-zà-ÿ])(?:verandering\\s+is\\s+de\\s+enige\\s+constante|uiteindelijk\\s+zijn\\s+we\\s+allemaal\\s+(?:maar\\s+)?mensen|iedereen\\s+twijfelt\\s+weleens|het\\s+begint\\s+(?:allemaal\\s+)?bij\\s+jezelf|niets\\s+is\\s+(?:ooit\\s+)?zwart[- ]wit)(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:verandering\\s+is\\s+de\\s+enige\\s+constante|uiteindelijk\\s+(?:zijn\\s+we\\s+allemaal\\s+(?:maar\\s+)?mensen|draait\\s+het\\s+(?:allemaal\\s+)?om\\s+mensen)|iedereen\\s+twijfelt\\s+weleens|het\\s+begint\\s+(?:allemaal\\s+)?bij\\s+jezelf|niets\\s+is\\s+(?:ooit\\s+)?zwart[- ]wit)(?![a-zà-ÿ])"
    ],
    "hint": "Een zin heeft de vorm van inzicht, een tegenstelling of een omkering, maar bevat niets waar een lezer iets mee kan of het mee oneens kan zij"
   },
@@ -2400,7 +2734,8 @@
    "category": "rhetoric",
    "severity": "always",
    "regex": [
-    "(?<![a-zà-ÿ])(?:het\\s+addertje\\??|hier\\s+komt\\s+(?:het|de\\s+clou)|en\\s+nu\\s+wordt\\s+het\\s+(?:interessant|leuk)|het\\s+(?:mooiste|beste|gekke|rare|ergste)\\s*[:?]|en\\s+dan\\s+komt\\s+de\\s+clou|en\\s+dan\\s+dit\\s*:)"
+    "(?<![a-zà-ÿ])(?:het\\s+addertje\\??|hier\\s+komt\\s+(?:het|de\\s+clou)|en\\s+nu\\s+wordt\\s+het\\s+(?:interessant|leuk)|het\\s+(?:mooiste|beste|gekke|rare|ergste)\\s*[:?]|en\\s+dan\\s+komt\\s+de\\s+clou|en\\s+dan\\s+dit\\s*:)",
+    "(?<![a-zà-ÿ])(?:maar\\s+er\\s+is\\s+meer\\.|maar\\s+er\\s+zit\\s+een\\s+addertje\\s+onder\\s+het\\s+gras|wacht,\\s+het\\s+wordt\\s+beter)"
    ],
    "hint": "Een kort zinsdeel maakt spanning rond informatie die dat niet nodig had: Het addertje?, Hier komt het:, En nu wordt het interessant, Het moo"
   },
@@ -2437,6 +2772,19 @@
     "(?<![a-zà-ÿ])(?:de\\s+(?:toekomst|tijd)\\s+zal\\s+het\\s+(?:leren|uitwijzen)|de\\s+toekomst\\s+(?:ziet\\s+er\\s+rooskleurig\\s+uit|is\\s+veelbelovend)|(?:één|een)\\s+ding\\s+is\\s+zeker|we\\s+kijken\\s+uit\\s+naar\\s+wat\\s+(?:er\\s+)?komt|wordt\\s+ongetwijfeld\\s+vervolgd|belooft\\s+(?:de|het|een)\\s+\\w+\\s+te\\s+worden)(?![a-zà-ÿ])"
    ],
    "hint": "Een slotzin wijst naar de toekomst of naar zekerheid zonder een bewering die iemand kan nakijken: De toekomst ziet er rooskleurig uit, De ti"
+  },
+  {
+   "id": "geruststellende-toestemming-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])en dat is (?:helemaal )?(?:oké|oke|ok|prima)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:je hoeft niet alles te weten|je hoeft dit niet in je eentje te doen|wees lief voor jezelf)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een korte regel geeft de lezer toestemming voor iets waar niemand om vroeg: En dat is oké, Dat mag, Je hoeft niet alles te weten, Neem gerus"
   },
   {
    "id": "historical-analogy-stacking",
@@ -2592,8 +2940,7 @@
    "category": "rhetoric",
    "severity": "always",
    "regex": [
-    "(?<![a-zà-ÿ])(?:in\\s+(?:dit\\s+artikel|deze\\s+blog|dit\\s+blog|deze\\s+gids|dit\\s+stuk)\\s+(?:verkennen|bespreken|behandelen|leer|neem|vertel|kijken)|dit\\s+artikel\\s+verkent|we\\s+behandelen\\s+achtereenvolgens|hieronder\\s+(?:een|vind\\s+je\\s+een)\\s+overzicht|zoals\\s+(?:eerder|hierboven)\\s+(?:genoemd|beschreven|vermeld)|(?:dit|het)\\s+valt\\s+uiteen\\s+in|laten\\s+we\\s+beginnen|allereerst\\s+kijken\\s+we)(?![a-zà-ÿ])",
-    "(?m)(?:^|[.!?]\\s+)(?:kortom|samengevat|samenvattend)(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:in\\s+(?:dit\\s+artikel|deze\\s+blog|dit\\s+blog|deze\\s+gids|dit\\s+stuk)\\s+(?:verkennen|bespreken|behandelen|leer|neem|vertel|kijken)|dit\\s+artikel\\s+verkent|we\\s+behandelen\\s+achtereenvolgens|hieronder\\s+(?:een|vind\\s+je\\s+een)\\s+overzicht|zoals\\s+(?:eerder|hierboven)\\s+(?:genoemd|beschreven|vermeld)|(?:dit|het)\\s+valt\\s+uiteen\\s+in|laten\\s+we\\s+beginnen|allereerst\\s+kijken\\s+we)(?![a-zà-ÿ])"
    ],
    "hint": "De tekst vertelt wat hij gaat doen in plaats van het te doen"
   },
@@ -2612,6 +2959,18 @@
     "\\bsince we'?re being honest\\b"
    ],
    "hint": "Announcing one's own disclosure instead of disclosing, or performing self-awareness that costs nothing: 'I want to be upfront:', 'To be full"
+  },
+  {
+   "id": "opgelegde-herkenning-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:je kent het (?:wel|gevoel)|we (?:kennen|hebben) het allemaal|je herkent het vast|je hebt het vast wel eens|elke ontwikkelaar heeft dit)(?![a-zà-ÿ])"
+   ],
+   "hint": "De tekst schrijft de lezer een ervaring of een gevoel toe alsof dat vaststaat: Je kent het wel, We hebben het allemaal weleens meegemaakt, J"
   },
   {
    "id": "patronizing-analogy",
@@ -2650,7 +3009,6 @@
     "\\b(?:that|this|it)(?:'?s| is| was) not nothing\\b",
     "\\byou already know the answer\\b",
     "\\b(?:do not|don'?t) take my word for it\\b",
-    "(?:^|[.!?]\\s|\\n)turns out\\b",
     "(?:'?s|\\b(?:is|was)) the (?:whole|entire) (?:point|game|ballgame|trick|business model)\\b",
     "\\bthe only \\w+ that (?:matters|counts)\\b",
     "\\bis dead[.;,:] long live\\b"
@@ -2972,6 +3330,31 @@
    "hint": "Lof voor de vrager, zijn vraag of zijn gevoel gaat vooraf aan het antwoord: Goede vraag, Wat een mooie vraag, Je hebt helemaal gelijk, Dat i"
   },
   {
+   "id": "volledigheidsbelofte-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])alles wat je (?:moet weten over|nodig hebt om)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:in (?:vijf|drie|twee) minuten weet je|dit is het enige artikel dat je hoeft te lezen)(?![a-zà-ÿ])"
+   ],
+   "hint": "De intro of de hook belooft uitputtendheid of een gegarandeerd resultaat binnen een tijdsbestek, terwijl de tekst een selectie is die nieman"
+  },
+  {
+   "id": "wending-naar-eigen-oplossing-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:en precies daarom bouwden wij|daarom zijn we begonnen met|dat is precies waarom wij|daar hebben wij iets op bedacht|en laat dat nou net zijn wat wij doen)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een informatief stuk analyseert een probleem en draait halverwege naar de dienst of het product van de schrijver met een verbindingszin die "
+  },
+  {
    "id": "bare-noun-phrase-bullets",
    "lang": [
     "en"
@@ -3021,7 +3404,11 @@
    "category": "structure",
    "severity": "cluster",
    "regex": [
-    "\\b(?:return|come back|circle back) to where we (?:began|started)\\b"
+    "\\b(?:return|come back|circle back) to where we (?:began|started)\\b",
+    "\\bcomes? full circle\\b",
+    "\\bwhich brings us back to\\b",
+    "\\bback to the (?:question|point) we started with\\b",
+    "\\b(?:that|this) is where we (?:began|started)\\b"
    ],
    "hint": "A closing sentence that loops back to the opening image or question ('And so we return to where we began') as a substitute for an ending tha"
   },
@@ -3033,9 +3420,10 @@
    "category": "structure",
    "severity": "cluster",
    "regex": [
-    "terug bij (het begin|af)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])terug bij het begin(?![a-zà-ÿ])",
     "(is|was) de cirkel rond",
-    "terug bij de vraag waarmee we (begonnen|startten|openden)"
+    "terug bij de vraag waarmee we (begonnen|startten|openden)",
+    "(?<![a-zà-ÿ])daarmee komen we (?:weer )?(?:terug )?(?:uit )?bij(?![a-zà-ÿ])"
    ],
    "hint": "De slotzin keert terug naar het openingsbeeld of de openingsvraag in plaats van ergens nieuws te landen"
   },
@@ -3161,6 +3549,8 @@
    "category": "structure",
    "severity": "cluster",
    "regex": [
+    "\\bthere are three (?:reasons|key|main)\\b",
+    "\\btaken together, these\\b",
     "(?:^|\\n)[ \\t]*먼저[,，\\s][\\s\\S]{5,1500}?\\n[ \\t]*반면[,，\\s][\\s\\S]{5,1500}?\\n[ \\t]*결국[,，\\s]"
    ],
    "hint": "Intro plus three body sections plus closing recap, imposed at any length, even on a 100-word answer"
@@ -3200,7 +3590,7 @@
    "category": "structure",
    "severity": "cluster",
    "regex": [
-    "(?m)^\\s{0,3}#{1,4}\\s*(inleiding|introductie|overzicht|samenvatting|conclusie|belangrijkste punten|kernpunten|kerncijfers|tot slot|slotwoord|afsluitende gedachten|prijzen en erkenning)\\s*:?\\s*$",
+    "(?m)^\\s{0,3}#{1,4}\\s*(inleiding|introductie|overzicht|samenvatting|conclusie|belangrijkste punten|kernpunten|tot slot|slotwoord|afsluitende gedachten|prijzen en erkenning)\\s*:?\\s*$",
     "(?m)^\\s{0,3}#{0,4}\\s*(waarom dit ertoe doet|wat je moet weten|belangrijkste inzichten|wat betekent dit voor jou|key takeaways|de bottom line)",
     "(?<![a-zà-ÿ])(key takeaways|belangrijkste takeaways)(?![a-zà-ÿ])"
    ],
@@ -3238,18 +3628,6 @@
    "hint": "Zeg wat je gaat zeggen, zeg het, zeg wat je gezegd hebt, op elk niveau"
   },
   {
-   "id": "headers-over-short-text",
-   "lang": [
-    "nl"
-   ],
-   "category": "structure",
-   "severity": "cluster",
-   "regex": [
-    "(?m)^\\s{0,3}#{2,4}\\s*(context|analyse|aanleiding|aanpak|resultaat|toelichting)\\s*:?\\s*$"
-   ],
-   "hint": "Kopjes worden opgelegd aan tekst die te kort is om navigatie nodig te hebben: een kop boven twee zinnen, meer dan drie koppen in minder dan "
-  },
-  {
    "id": "heading-restated-below",
    "lang": [
     "en"
@@ -3274,12 +3652,25 @@
    "hint": "Op een kop volgt een regel die de kop alleen herhaalt voordat de echte inhoud begint: '## Veiligheid' gevolgd door 'Veiligheid is belangrijk"
   },
   {
+   "id": "inhoudsopgave-boven-kort-stuk-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?m)^\\s{0,3}#{2,4}\\s*(?:inhoudsopgave|inhoud)\\s*$",
+    "(?<![a-zà-ÿ])(?:wat je in dit artikel leest|in dit artikel:|snel naar:)(?![a-zà-ÿ])"
+   ],
+   "hint": "Boven een document van een paar honderd woorden staat een gegenereerde inhoudsopgave met ankerlinks, of een lijst \"Wat je in dit artikel lee"
+  },
+  {
    "id": "inline-header-lists",
    "lang": [
     "en"
    ],
    "category": "structure",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?:^|\\n)[ \\t]*(?:[-*•+]|\\d+[.)])[ \\t]+(?:\\*\\*|__)[^*_\\n]{1,80}?(?::(?:\\*\\*|__)|(?:\\*\\*|__)[ \\t]*:)",
     "(?:^|\\n)[ \\t]*[*#]+[ \\t]*'''[^'\\n]{1,80}?(?::'''|'''[ \\t]*:)",
@@ -3293,7 +3684,7 @@
     "nl"
    ],
    "category": "structure",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?m)^\\s{0,4}(?:[-*+]\\s+)?\\*\\*[^*\\n]{2,45}\\*\\*\\s*:",
     "(?m)^\\s{0,4}\\d{1,2}[.)]\\s+\\*\\*[^*\\n]{2,45}:?\\*\\*\\s*:?",
@@ -3416,13 +3807,11 @@
     "nl"
    ],
    "category": "structure",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])kortom(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])(in|als) conclusie(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(concluderend|resumerend|samenvattend)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])(om (het|dit) samen te vatten|tot slot kunnen we stellen|uiteindelijk komt het erop neer dat)",
-    "(?<![a-zà-ÿ])aan het eind van de dag(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(tot slot kunnen we stellen|uiteindelijk komt het erop neer dat)"
    ],
    "hint": "De tekst of de alinea sluit af met een gemarkeerde samenvatting die herhaalt wat er net stond"
   },
@@ -3439,6 +3828,46 @@
    "hint": "The output opens with a level-1 heading (often bold or linked) that repeats the document or article title before any body text, because the "
   },
   {
+   "id": "vertaalde-conclusiemarkeerder-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "structure",
+   "severity": "always",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:in|als|ter) conclusie(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])om (?:het|dit) samen te vatten(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])aan het eind van de dag(?![a-zà-ÿ])"
+   ],
+   "hint": "Slotformules die woordelijk uit het Engels komen en in spontaan Nederlands niet bestaan: In conclusie (in conclusion), Als conclusie, Om het"
+  },
+  {
+   "id": "vervolgstappenblok-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?m)^\\s{0,3}#{2,4}\\s*(?:vervolgstappen|aanbevelingen|actiepunten|hoe nu verder)\\s*:?\\s*$",
+    "(?<![a-zà-ÿ])(?:evalueer periodiek|betrek de (?:betrokken )?stakeholders|monitor de voortgang|zorg voor voldoende draagvlak)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een informerende tekst (verslag, notulen, analyse, adviesnota, projectplan) eindigt met een blok Vervolgstappen, Aanbevelingen of Actiepunte"
+  },
+  {
+   "id": "vraagkoppen-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?m)^\\s{0,3}#{2,4}\\s*(?:wat is|waarom is|hoe werkt|wat kost|hoe begin je met|wat levert het op)\\b[^\\n]{0,60}\\?\\s*$",
+    "(?m)^\\s{0,3}#{2,4}\\s*veelgestelde vragen\\s*$"
+   ],
+   "hint": "Alle tussenkoppen zijn vragen in de vorm die een zoekmachine indexeert (Wat is X? Waarom is X belangrijk? Hoe werkt X?), meestal in de vaste"
+  },
+  {
    "id": "agentless-passive-subjectless-fragment",
    "lang": [
     "en"
@@ -3448,7 +3877,8 @@
    "regex": [
     "(?:^|[.!?]\\s+|\\n)no\\s+(?:(?!\\b(?:is|are|was|were|will|would|has|have)\\b)[a-z]+\\s+){0,2}(?:needed|required)\\.",
     "\\b(?:are|is)\\s+(?:preserved|handled|managed|saved|synced|persisted|tracked)\\s+automatically\\b",
-    "\\bsupport\\s+for\\s+[^.!?\\n]{2,40}\\s+(?:was|has\\s+been)\\s+added\\b"
+    "\\bsupport\\s+for\\s+[^.!?\\n]{2,40}\\s+(?:was|has\\s+been)\\s+added\\b",
+    "\\bit\\s+is\\s+recommended\\s+that\\b"
    ],
    "hint": "The actor is hidden or the subject dropped in the clipped shape models use to compress feature descriptions: agentless passives ('The result"
   },
@@ -3460,7 +3890,6 @@
    "category": "syntax",
    "severity": "context",
    "regex": [
-    "(?<![a-zà-ÿ])er (?:wordt|worden) (?:gewerkt aan|gekeken naar|gestreefd naar|nagedacht over)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])wordt (?:automatisch|standaard) (?:bewaard|opgeslagen|verwerkt|bijgewerkt|gesynchroniseerd)(?![a-zà-ÿ])",
     "(?:^|[.!?]\\s+)geen [a-zà-ÿ]+(?:bestand|account|installatie|configuratie|creditcard)[a-zà-ÿ]* nodig\\."
    ],
@@ -3477,7 +3906,8 @@
     "\\b(?:what(?:'s|’s|\\s+is)\\s+(?:really\\s+|truly\\s+)?(?:important|notable|striking|interesting|crucial|key|remarkable|telling)\\s+(?:here\\s+)?is|what\\s+(?:matters|counts)\\s+(?:most\\s+|here\\s+)?is)\\b",
     "\\bthe\\s+(?:key|takeaway|lesson|upshot|bottom\\s+line|real\\s+question|crux)\\s+(?:here\\s+)?is\\s+that\\b",
     "\\bwhich\\s+is\\s+to\\s+say\\b",
-    "주목할\\s*점은|중요한\\s*점은|라는\\s*점에\\s*있다|다는\\s*것이다|다는\\s*뜻이다|하는\\s*이유다"
+    "주목할\\s*점은|중요한\\s*점은|라는\\s*점에\\s*있다|다는\\s*것이다|다는\\s*뜻이다|하는\\s*이유다",
+    "\\bthe\\s+(?:point|thing)\\s+is\\s+that\\b"
    ],
    "hint": "A claim is foregrounded through a cleft or a dummy noun instead of being stated: 'What matters is X', 'What's important here is', 'The key i"
   },
@@ -3526,6 +3956,31 @@
    "hint": "Het gewone is, zijn of heeft wordt vervangen door een zwaardere stand-in die precies hetzelfde zegt: fungeert als, dient als, geldt als, vor"
   },
   {
+   "id": "doelstaart-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])om (?:ervoor )?te (?:zorgen dat|garanderen dat)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:met als doel om|om zo bij te dragen aan|om optimaal gebruik te maken van)(?![a-zà-ÿ])"
+   ],
+   "hint": "Aan een handeling wordt een doelbijzin geplakt die het gevolg nog eens abstract herhaalt, gebouwd op het Engelse in order to ensure en to ma"
+  },
+  {
+   "id": "door-infinitief-opener-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "syntax",
+   "severity": "context",
+   "regex": [
+    "(?m)(?:^|\\n)\\s*door\\s+(?:\\w+\\s+){1,6}te\\s+\\w+(?:en|n),?\\s"
+   ],
+   "hint": "De zin opent met een middel- of oorzaakaanloop op Door .."
+  },
+  {
    "id": "false-range",
    "lang": [
     "en"
@@ -3554,6 +4009,18 @@
    "hint": "Twee voorbeelden uit een verzameling worden gepresenteerd als de uiteinden van een spectrum, terwijl er geen spectrum is: van startups tot m"
   },
   {
+   "id": "gevolgstaart-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    ",\\s*(?:wat\\s+(?:resulteert\\s+in|leidt\\s+tot|zorgt\\s+voor|betekent\\s+dat|ervoor\\s+zorgt\\s+dat)|waardoor\\s+(?:je|u|het\\s+team))(?![a-zà-ÿ])"
+   ],
+   "hint": "Aan elke mededeling hangt een bijzin die het gevolg samenvat, overgezet uit het Engelse resulting in, leading to en allowing you to: wat res"
+  },
+  {
    "id": "inanimate-agent",
    "lang": [
     "en"
@@ -3562,10 +4029,10 @@
    "severity": "always",
    "regex": [
     "\\b(?:the\\s+)?(?:data|codebase|code|research|evidence|technology|market|numbers|architecture|era|moment|history|science|future|industry)\\s+(?:tells?|asks?|invites?|calls?|demands?|wants?|reminds?|urges?|teaches|begs)\\s+(?:us|you|me)\\b",
-    "\\bthe\\s+(?:decision|answer|solution|consensus|idea|strategy)\\s+emerged\\b",
-    "\\b(?:codebase|code|data|design|architecture|framework|api|interface|text|prose|essay|landscape)\\s+invites\\s+(?:you|us|the\\s+reader)\\s+to\\b"
+    "\\b(?:codebase|code|data|design|architecture|framework|api|interface|text|prose|essay|landscape)\\s+invites\\s+(?:you|us|the\\s+reader)\\s+to\\b",
+    "\\b(?:the\\s+)?(?:data|research|evidence|technology|market|algorithm|code|codebase|architecture|history|science|industry|model)\\s+(?:argues|decides|insists|demands|wants|refuses|believes|knows)\\b"
    ],
-   "hint": "An abstraction or object is made the grammatical subject of a verb only people perform: 'the decision emerged', 'the data tells us', 'the co"
+   "hint": "An abstraction or object is made the grammatical subject of a verb only people perform: 'the data tells us', 'the codebase invites you to', "
   },
   {
    "id": "inanimate-agent",
@@ -3573,13 +4040,25 @@
     "nl"
    ],
    "category": "syntax",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])de (?:data|cijfers|resultaten|grafiek|statistieken) (?:vertelt|vertellen|zegt|zeggen|laat zien|laten zien|leert|leren) (?:ons|je|u)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:de techniek|de tijd|de markt|de samenleving|het moment) (?:vraagt|roept|schreeuwt) om(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])het (?:besluit|idee|inzicht|plan) ontstond(?![a-zà-ÿ])"
    ],
    "hint": "Een abstractie of een ding wordt onderwerp van een werkwoord dat alleen mensen uitvoeren: de data vertelt ons, het rapport laat ons zien, de"
+  },
+  {
+   "id": "instructie-kun-je-vorm-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "syntax",
+   "severity": "context",
+   "regex": [
+    "(?m)(?:^|[.!?]\\s+)(?:vervolgens|daarna|hierna|dan)\\s+(?:kun|kan)\\s+(?:je|u|jij)\\s+\\w+[^.!?]{0,80}[.!?]\\s+(?:vervolgens|daarna|hierna|dan)\\s+(?:kun|kan)\\s+(?:je|u|jij)(?![a-zà-ÿ])"
+   ],
+   "hint": "Stappen in een handleiding worden gegeven als mogelijkheid in plaats van als opdracht: Vervolgens kun je de map openen, Daarna kan je opslaa"
   },
   {
    "id": "invented-contrast-pair",
@@ -3602,7 +4081,9 @@
    "severity": "context",
    "regex": [
     "\\b(?:is|are|was|were)\\s+not\\s+optional\\b",
-    "\\bnot\\s+(?:difficult|hard)\\s+to\\s+(?:specify|imagine|see\\s+why)\\b"
+    "\\bnot\\s+(?:difficult|hard|impossible|unusual|uncommon)\\s+to\\b",
+    "\\bnot\\s+un(?:common|likely|usual|reasonable|important|related|helpful|welcome|expected|aware|familiar|true|clear|interesting|impressive|like)\\b",
+    "\\b(?:no\\s+small|hardly\\s+surprising|not\\s+accidental|not\\s+without\\s+(?:its|their|some))\\b"
    ],
    "hint": "A claim is made by negating its opposite ('not difficult', 'not optional') so that it is presupposed rather than asserted or argued, which p"
   },
@@ -3614,8 +4095,8 @@
    "category": "syntax",
    "severity": "context",
    "regex": [
-    "(?<![a-zà-ÿ])niet on(?:belangrijk|gewoon|logisch|verdienstelijk|terecht|omstreden)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])niet (?:te onderschatten|optioneel|zonder reden|zonder gevolgen)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])niet on(?:belangrijk|gewoon|logisch|terecht|omstreden)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:niet (?:te onderschatten|optioneel|zonder reden|zonder gevolgen|zonder risico)|geen overbodige luxe)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])geen (?:onverstandige|onlogische|slechte) (?:keuze|zet|stap)(?![a-zà-ÿ])"
    ],
    "hint": "Een bewering wordt gedaan door haar tegendeel te ontkennen: niet onbelangrijk, niet ongewoon, niet optioneel, niet te onderschatten"
@@ -3631,6 +4112,18 @@
     "\\b(?:a|an|the)\\s+\\w+(?:\\s+\\w+)?\\s+is\\s+(?:a|an)\\s+([^.!?\\n]{3,40})\\.\\s+(?:a|an|the)\\s+\\w+(?:\\s+\\w+)?\\s+is\\s+(?:a|an)\\s+\\1\\."
    ],
    "hint": "Two or more clauses or sentences are built on one grammatical frame with only a couple of slots swapped, set side by side to convey contrast"
+  },
+  {
+   "id": "modal-flattening",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\bcould\\b[^.!?\\n]{0,80}[.!?]\\s+[^.!?\\n]{0,40}\\bcould\\b[^.!?\\n]{0,80}[.!?]\\s+[^.!?\\n]{0,40}\\bcould\\b"
+   ],
+   "hint": "Every shade of epistemic uncertainty ('might', 'may well', 'could possibly', 'there is a chance') is rendered with the same modal, Korean ~수"
   },
   {
    "id": "modal-flattening",
@@ -3681,7 +4174,7 @@
     "en"
    ],
    "category": "syntax",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "\\b(?:it|this|that|there)(?:'s|’s| is|'re|’re| are)\\s+not\\s+(?:just|only|merely|simply|about)\\b",
     "\\b(?:isn't|isn’t|aren't|aren’t|wasn't|wasn’t)\\s+(?:just|only|merely|simply|about)\\b",
@@ -3700,14 +4193,13 @@
     "nl"
    ],
    "category": "syntax",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?:het|dat|dit|die) is geen [^.,;:!?]{2,40}[.,] (?:het|dat|dit|die) is(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:het gaat|het draait) niet om [^.;:!?]{2,50}, (?:het gaat|het draait|maar) ",
     "(?<![a-zà-ÿ])niet alleen [^.;:!?]{2,60}, maar ook(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])niet omdat [^.;:!?]{1,60}, maar omdat(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])de vraag is niet [^.;:!?]{1,50}[.,] de vraag is(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])meer dan alleen(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])de vraag is niet [^.;:!?]{1,50}[.,] de vraag is(?![a-zà-ÿ])"
    ],
    "hint": "Een punt wordt gebracht als correctie op een bewering die niemand deed: de zwakkere lezing wordt ontkend en de echte in dezelfde adem gegeve"
   },
@@ -3724,7 +4216,8 @@
     "\\bthe\\s+(?:implementation|utilization|utilisation|optimization|optimisation|facilitation|operationalization)\\s+of\\b",
     "\\b\\w{4,}(?:tion|ment|ness)\\s+of\\s+(?:the\\s+)?\\w+(?:tion|ment|ness)\\b",
     "[가-힣]{1,4}적\\s*[가-힣]{1,6}.{0,40}?[가-힣]{1,4}적\\s*[가-힣]{1,6}",
-    "[가-힣]{2,}\\s*능력"
+    "[가-힣]{2,}\\s*능력",
+    "\\b(?:provides?\\s+support\\s+for|conducts?\\s+an\\s+analysis\\s+of|is\\s+reflective\\s+of|performs?\\s+an\\s+evaluation\\s+of)\\b"
    ],
    "hint": "A single direct verb or adjective is replaced by a verb plus abstract noun or a modal periphrasis: 'made a decision' for 'decided', 'has the"
   },
@@ -3738,8 +4231,8 @@
    "regex": [
     "(?<![a-zà-ÿ])(?:overgaan tot|over te gaan tot|(?:is|zijn) overgegaan tot|ging over tot)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])het nemen van een (?:besluit|beslissing)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])(?:een bijdrage (?:te )?leveren aan|in staat (?:te )?zijn om|tot stand (?:te )?brengen)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])(?:het|bij\\s+het|met\\s+het|aan\\s+het|tot\\s+het)\\s+(?:bieden|creëren|waarborgen|verbeteren|groeien|optimaliseren|implementeren|realiseren|vergroten|navigeren|faciliteren)\\s+van(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:een bijdrage (?:te )?leveren aan|tot stand (?:te )?brengen)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:het|bij\\s+het|met\\s+het|aan\\s+het|tot\\s+het)\\s+(?:bieden|creëren|waarborgen|verbeteren|groeien|optimaliseren|implementeren|realiseren|vergroten|navigeren|faciliteren|doorvoeren|opzetten|aanbrengen)\\s+van(?![a-zà-ÿ])"
    ],
    "hint": "Eén direct werkwoord wordt vervangen door een werkwoord plus abstract zelfstandig naamwoord: overgaan tot invoering voor invoeren, het nemen"
   },
@@ -3751,7 +4244,7 @@
    "category": "syntax",
    "severity": "cluster",
    "regex": [
-    "(?:^|[.!?]\\s+|\\n)this\\s+(?:highlights|underscores|demonstrates|illustrates|reinforces|signals|speaks\\s+to|matters\\s+because)\\b"
+    "(?:^|[.!?]\\s+|\\n)(?:this|these)\\s+(?:highlights|underscores|demonstrates|illustrates|reinforces|signals|speaks\\s+to|reflects|matters\\s+because|findings\\s+suggest)\\b"
    ],
    "hint": "'This', 'that' or 'these' opens a sentence as its subject with no clear referent, typically 'This highlights ...' or 'This underscores ...' "
   },
@@ -3791,8 +4284,7 @@
    "regex": [
     ", (?:wat|waarmee|hetgeen) [^.!?]{2,70}(?:onderstreept|benadrukt|illustreert|weerspiegelt|aantoont|waarborgt|markeert)(?![a-zà-ÿ])",
     ", wat (?:bijdraagt aan|past in een bredere trend|de noodzaak|het belang)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])daarmee (?:benadrukkend|onderstrepend|illustrerend)(?![a-zà-ÿ])",
-    ",\\s*(?:wat\\s+(?:resulteert\\s+in|leidt\\s+tot|zorgt\\s+voor|betekent\\s+dat)|waardoor\\s+(?:je|u|het\\s+team))(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])daarmee (?:benadrukkend|onderstrepend|illustrerend)(?![a-zà-ÿ])"
    ],
    "hint": "Aan een gewoon feit wordt een staart geplakt die er een betekenis aan geeft die de bron niet levert: belang (wat het belang onderstreept, wa"
   },
@@ -3808,7 +4300,8 @@
     "\\b(?:innovation|change|action|reform|investment|collaboration)\\s+is\\s+(?:needed|required|essential)\\b",
     "이\\s*필요하다|가\\s*필요하다|할\\s*필요가\\s*있다",
     "[가-힣]{2,}[이가]\\s*필요하다",
-    "\\b(?:innovation|change|transformation|collaboration|awareness|investment|reform|leadership)\\s+is\\s+needed\\b"
+    "\\b(?:innovation|change|transformation|collaboration|awareness|investment|reform|leadership)\\s+is\\s+needed\\b",
+    "\\bit\\s+is\\s+essential\\s+that\\b|\\bsteps\\s+must\\s+be\\s+taken\\b"
    ],
    "hint": "Deontic statements pile up with no actor named: Korean ~해야 한다 (must) / ~할 필요가 있다 (there is a need to) five or more times, and the abstract-n"
   },
@@ -3854,7 +4347,7 @@
     "nl"
    ],
    "category": "syntax",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?:^|[.!?]\\s+)(?:het resultaat|het mooiste|het ergste|de uitkomst|het gevolg|het gekke|het gevolg daarvan)\\?",
     "(?<![a-zà-ÿ])(?:klinkt goed, toch|wat betekent dit voor jou|waarom zou je dat willen|herkenbaar)\\?",
@@ -3992,7 +4485,8 @@
     "\\b(?:role\\s+and\\s+function|function\\s+and\\s+role|meaning\\s+and\\s+value|new\\s+and\\s+innovative|important\\s+and\\s+(?:core|essential|vital|key|central)|continuous\\s+and\\s+steady|steady\\s+and\\s+continuous)\\b",
     "역할과\\s*기능|의미와\\s*가치|새롭고\\s*혁신적인|중요하고\\s*핵심적인|지속적이고\\s*꾸준한",
     "\\b(?:important|key|critical|vital|essential|crucial)\\s+and\\s+(?:central|key|critical|vital|essential|crucial|fundamental|core)\\b|\\brole\\s+and\\s+function\\b",
-    "중요하고\\s*핵심적인|역할과\\s*기능"
+    "중요하고\\s*핵심적인|역할과\\s*기능",
+    "\\b(?:clear\\s+and\\s+concise|safe\\s+and\\s+secure|quick\\s+and\\s+easy|robust\\s+and\\s+reliable|tools\\s+and\\s+technologies|vital\\s+and\\s+essential|tried\\s+and\\s+tested)\\b"
    ],
    "hint": "Two near-synonymous modifiers or abstract nouns are coordinated on one head so the phrase says the same thing twice: Korean '중요하고 핵심적인 역할' ("
   },
@@ -4069,6 +4563,31 @@
    "hint": "Een invulzin met verwisselbare zelfstandige naamwoorden: het valse-breedtepaar (Of je nu starter bent of doorgewinterd architect), de vage s"
   },
   {
+   "id": "uitleggende-bijstelling-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])[A-ZÀ-Ý][\\wà-ÿ.-]{2,20},\\s+(?:de|het|een)\\s+(?:bekende|populaire|grootste|ervaren|moderne)\\s+[\\wà-ÿ ]{3,30},\\s"
+   ],
+   "hint": "Elke eigennaam krijgt bij het noemen een bijstelling tussen komma's die uitlegt wat of wie het is, ook wanneer het publiek dat evident weet:"
+  },
+  {
+   "id": "waarbij-aanhaakzin-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    ",\\s*waarbij\\s+[^.!?]{5,120},\\s*waarbij(?![a-zà-ÿ])",
+    ",\\s*waarbij\\s+(?:gebruik wordt gemaakt van|rekening wordt gehouden met|de nadruk ligt op)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een tweede mededeling wordt niet als zelfstandige zin geschreven maar met waarbij, waarin of waarbinnen aan de vorige geplakt, zodat elke al"
+  },
+  {
    "id": "abstract-subject-all-purpose-verb",
    "lang": [
     "en"
@@ -4090,8 +4609,7 @@
    "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])(?:dit|het|deze)\\s+(?:onderzoek|rapport|artikel|onderdeel|beleid|model)\\s+(?:laat\\s+zien|toont\\s+aan|biedt\\s+inzicht|suggereert)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])de\\s+(?:data|cijfers|resultaten)\\s+(?:suggere(?:ert|ren)|laat\\s+zien|tonen\\s+aan)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])brengt\\s+[^.!?]{0,30}\\s+met\\s+zich\\s+mee(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])de\\s+(?:data|cijfers|resultaten)\\s+(?:suggere(?:ert|ren)|laat\\s+zien|tonen\\s+aan)(?![a-zà-ÿ])"
    ],
    "hint": "Drie mechanismen met dezelfde oorzaak: een abstract of levenloos onderwerp met een kleurloos werkwoord (dit onderzoek laat zien, het rapport"
   },
@@ -4140,7 +4658,7 @@
    "category": "translationese",
    "severity": "cluster",
    "regex": [
-    "[a-zà-ÿ],[\\\"”’]",
+    "[a-zà-ÿ],[\\\"”’]\\s*(?!(?:zei|zegt|aldus|vertelde|volgens|antwoordde|reageerde|stelde))",
     "(?<![a-zà-ÿ])(?!(?:let|it|that|what|there|here|he|she|who)['’]s)[a-zà-ÿ]{3,}(?<![aeiouyà-ÿ])['’]s(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:api|kpi|url|cd|dvd|suv|pc|lp)s(?![a-zà-ÿ])"
    ],
@@ -4198,7 +4716,7 @@
     "(?<![a-zà-ÿ])duik(?:en)?\\s+(?:we\\s+)?(?:dieper\\s+)?in\\s+(?:de\\s+wereld|dit|deze|het\\s+onderwerp)",
     "(?<![a-zà-ÿ])laten\\s+we\\s+ons\\s+verdiepen\\s+in"
    ],
-   "hint": "Een onderwerp wordt 'ingedoken' of 'in gedolven', letterlijk uit dive into en delve into"
+   "hint": "Een onderwerp wordt 'ingedoken'"
   },
   {
    "id": "calque-landscape-journey-nl",
@@ -4206,7 +4724,7 @@
     "nl"
    ],
    "category": "translationese",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])(?:het\\s+)?(?:huidige|snel\\s+veranderende|veranderende|dynamische|complexe|digitale)\\s+\\w*landschap(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:ai|digitale|jouw|je|uw)[- ]reis(?![a-zà-ÿ])",
@@ -4278,7 +4796,7 @@
     "nl"
    ],
    "category": "translationese",
-   "severity": "cluster",
+   "severity": "context",
    "regex": [
     "(?<![a-zà-ÿ])het\\s+(?:model|systeem|bedrijf|team|rapport|platform|proces|onderzoek)\\s+die(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])de\\s+(?:tool|organisatie|aanpak|manier|oplossing|methode)\\s+dat(?![a-zà-ÿ])",
@@ -4324,6 +4842,18 @@
    "hint": "Een hele Engelse zin staat letterlijk als citaat in de lopende tekst, direct gevolgd door de vertaling, zodat de lezer dezelfde bewering twe"
   },
   {
+   "id": "engels-deelwoord-spelling-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "context",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:gefixed|gecrashed|gechecked|geüpdate|gedeleted|gedeployed|geresetted|gemerget|geswitched)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een Engels leenwerkwoord dat in het Nederlands volstrekt gangbaar is, houdt zijn Engelse verledentijdsvorm in het deelwoord: gefixed in plaa"
+  },
+  {
    "id": "english-abbreviation-and-citation-nl",
    "lang": [
     "nl"
@@ -4332,7 +4862,7 @@
    "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])(?:e\\.g\\.|i\\.e\\.)",
-    "(?<![a-zà-ÿ])(?:asap|fyi|aka|tl;dr)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:aka)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:retrieved from|accessed on)(?![a-zà-ÿ])",
     "\\(n\\.d\\.\\)"
    ],
@@ -4346,8 +4876,7 @@
    "category": "translationese",
    "severity": "context",
    "regex": [
-    "(?<![a-zà-ÿ])(?:verbetert|verlaagt|verhoogt|verbeteren|verlagen|verhogen)\\s+(?:workflow|kosten|performance|efficiency|productiviteit)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])(?:open\\s+je\\s+browser|pak\\s+je\\s+telefoon|was\\s+je\\s+handen|in\\s+je\\s+adresbalk)(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:verbetert|verlaagt|verhoogt|verbeteren|verlagen|verhogen)\\s+(?:workflow|kosten|performance|efficiency|productiviteit)(?![a-zà-ÿ])"
    ],
    "hint": "De Engelse omgang met bepalers lekt twee kanten op"
   },
@@ -4375,7 +4904,7 @@
    "category": "translationese",
    "severity": "always",
    "regex": [
-    "(?<![a-zà-ÿ])(?:supercharge(?:er|ren|erde)\\w*|leverage(?:n|de|d)|geleveraged|unlock(?:en|te|t)|empower(?:en|t|de|de)|gedisrupt|gecraft|geboost)(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:supercharge(?:er|ren|erde)\\w*|leverage(?:n|de|d)|geleveraged|unlock(?:en|te|t)|empower(?:en|t|de)|gedisrupt|gecraft|geboost)(?![a-zà-ÿ])"
    ],
    "hint": "Een Engels werkwoord wordt Nederlands vervoegd terwijl er een gangbaar Nederlands werkwoord bestaat, of terwijl de vorm in het Nederlands he"
   },
@@ -4397,9 +4926,9 @@
     "nl"
    ],
    "category": "translationese",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
-    "(?m)(?:^|[.!?]\\s+|[»”]\\s+)(?:echter|desalniettemin|niettemin|bovendien|daarnaast|bovenal|sterker\\s+nog),\\s"
+    "(?m)(?:^|[.!?]\\s+|[»”]\\s+)(?:echter|desalniettemin|niettemin|bovendien|daarnaast|bovenal),\\s"
    ],
    "hint": "Een tegenstellend of optellend bijwoord opent de zin met een komma erachter, naar het Engelse However, en Nevertheless,"
   },
@@ -4416,6 +4945,19 @@
     "(?<![a-zà-ÿ])(?:het\\s+punt\\s+is\\s+dit|en\\s+dat\\s+is\\s+precies\\s+waarom)(?![a-zà-ÿ])"
    ],
    "hint": "Een aankondigende overgangszin uit het Engels: Here's why, Here's how, This is why, Here's what you need to know"
+  },
+  {
+   "id": "hoe-te-infinitiefkop-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "always",
+   "regex": [
+    "(?m)^\\s{0,3}#{0,4}\\s*hoe\\s+(?:te\\s+\\w+|(?:een|je|de|het)\\s+[\\wà-ÿ ]{2,30}\\s+te\\s+\\w+)\\s*$",
+    "(?<![a-zà-ÿ])hoe te (?:beginnen met|installeren|schrijven voor|kiezen)(?![a-zà-ÿ])"
+   ],
+   "hint": "De Engelse how-to-kop wordt structureel overgezet als infinitiefkop: \"Hoe te beginnen met Astro\", \"Hoe je website te optimaliseren\", \"Hoe ee"
   },
   {
    "id": "honorific-register-drift",
@@ -4442,6 +4984,18 @@
     "(?<![a-zà-ÿ])wanneer\\s+het\\s+aankomt\\s+op(?![a-zà-ÿ])"
    ],
    "hint": "Het frame 'in termen van' leidt een onderwerp of domein in, als letterlijke weergave van in terms of, when it comes to en with respect to"
+  },
+  {
+   "id": "jouw-voor-je-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])jouw\\s+\\w+[^.!?]{0,60}?\\bjouw\\s+\\w+[^.!?]{0,60}?\\bjouw(?![a-zà-ÿ])"
+   ],
+   "hint": "Het Engelse your wordt overal met de beklemtoonde vorm \"jouw\" vertaald, terwijl het Nederlands standaard het onbeklemtoonde \"je\" gebruikt en"
   },
   {
    "id": "known-as-appositive-calque",
@@ -4560,6 +5114,31 @@
    "hint": "Bied, biedt en bieden staan overal waar het Engels offer, provide of deliver zegt, met een abstract lijdend voorwerp erachter"
   },
   {
+   "id": "om-de-hoek-komt-kijken-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "always",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:dit is (?:precies )?waar|hier komt)\\s+[^.!?]{2,40}\\s+(?:om de hoek komt? kijken|in beeld komt)(?![a-zà-ÿ])"
+   ],
+   "hint": "De Engelse scharnierzin This is where X comes in wordt vertaald tot \"dit is waar X om de hoek komt kijken\", \"hier komt X om de hoek kijken\" "
+  },
+  {
+   "id": "over-onder-maatvoorzetsel-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "always",
+   "regex": [
+    "(?<![a-zà-ÿ])over\\s+\\d[\\d.,]*\\s*(?:jaar ervaring|klanten|downloads|deelnemers|procent|gebruikers|bedrijven)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])in onder \\d[\\d.,]*\\s*(?:minuten|seconden|uur)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het Engelse over en under bij een hoeveelheid worden woord voor woord overgezet: over 20 jaar ervaring, over 500 klanten, in onder 30 minute"
+  },
+  {
    "id": "overformal-register-nl",
    "lang": [
     "nl"
@@ -4570,7 +5149,7 @@
     "(?<![a-zà-ÿ])(?:wij\\s+zijn\\s+(?:verheugd|opgetogen)|verheugd\\s+om\\s+aan\\s+te\\s+kondigen|het\\s+doet\\s+ons\\s+genoegen|wij\\s+informeren\\s+u\\s+graag|in\\s+de\\s+hedendaagse\\s+maatschappij)",
     "(?<![a-zà-ÿ])(?:derhalve|teneinde|bijgevolg|desalniettemin|voornoemd(?:e)?|aangaande)(?![a-zà-ÿ])"
    ],
-   "hint": "Beleefdheid en blijdschap komen in een register dat in het Nederlands vrijwel niemand meer gebruikt, als overzetting van delighted, excited "
+   "hint": "Beleefdheid en blijdschap komen in een register dat in gewone Nederlandse tekst niet meer voorkomt: wij zijn verheugd, het doet ons genoegen"
   },
   {
    "id": "parenthetical-english-gloss",
@@ -4605,7 +5184,7 @@
    "category": "translationese",
    "severity": "cluster",
    "regex": [
-    "(?<![a-zà-ÿ])meest\\s+(?:belangrijke|simpele|snelle|makkelijke|mooie|grote|kleine|goede|nieuwe|slimme|sterke)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])meest\\s+(?:belangrijke|simpele|snelle|makkelijke|mooie|grote|kleine|goede|nieuwe|slimme|sterke|optimale|ideale)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])meer\\s+(?:simpel|snel|groot|makkelijk|mooi)(?![a-zà-ÿ])"
    ],
    "hint": "De trappen van vergelijking worden met 'meer' en 'meest' omschreven zoals in het Engels, terwijl het Nederlands het achtervoegsel -er en -st"
@@ -4661,6 +5240,18 @@
    "hint": "Drie of meer keer 'van' in één naamwoordgroep, als spiegel van de Engelse of-keten: de uitkomst van de evaluatie van het beleid van de gemee"
   },
   {
+   "id": "succesvol-als-bijwoord-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])succesvol\\s+(?:geïnstalleerd|verwerkt|afgerond|aangemeld|toegevoegd|uitgevoerd|verwijderd|opgeslagen|geïmplementeerd|gelanceerd|voltooid|uitgerold|verzonden)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het Engelse successfully wordt letterlijk meegenomen bij een handeling die alleen maar gelukt kan zijn: de update is succesvol geïnstalleerd"
+  },
+  {
    "id": "untranslated-marketing-loanword",
    "lang": [
     "en"
@@ -4683,6 +5274,43 @@
     "(?<![a-zà-ÿ])(?:seamless|insights|learnings|key\\s+takeaways|actionable|cutting-edge|next-level|game[-\\s]?changer|value\\s+proposition|customer\\s+journey|low\\s+hanging\\s+fruit|quick\\s+wins|deep\\s+dive|best\\s+practices)(?![a-zà-ÿ])"
    ],
    "hint": "Engelse marketing- en managementwoorden blijven onvertaald staan terwijl het Nederlands een even kort en gangbaar woord heeft: insights, lea"
+  },
+  {
+   "id": "valse-vrienden-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:dit|deze|het|de)\\s+(?:probleem|uitdaging|vraagstuk|kwestie|punt|onderwerp)\\s+(?:te\\s+)?adresseren(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])een dramatische (?:stijging|daling|toename|afname)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een bestaand Nederlands woord staat in de betekenis van zijn Engelse gelijkenis: we adresseren dit probleem (address is aanpakken), eventuee"
+  },
+  {
+   "id": "voel-je-vrij-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:voel je vrij om|voel u vrij om|aarzel niet om|schroom niet om)(?![a-zà-ÿ])"
+   ],
+   "hint": "De Engelse beleefdheidsformules feel free to en don't hesitate to worden woordelijk vertaald tot \"voel je vrij om\" en \"aarzel niet om\", bijn"
+  },
+  {
+   "id": "zullen-als-will-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:in dit artikel zullen we|dit zal (?:ervoor zorgen dat|je helpen om|resulteren in|leiden tot)|zal het mogelijk maken|we zullen kijken naar)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het Engelse will wordt stelselmatig met zullen of zal weergegeven, terwijl het Nederlands toekomst gewoon met de tegenwoordige tijd uitdrukt"
   },
   {
    "id": "additive-transition-pileup",
@@ -4746,7 +5374,7 @@
     "en"
    ],
    "category": "vocabulary",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|underscor(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|comprehensive|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
     "\\b(?:best\\s+practices|thought\\s+leader(?:ship|s)?|deep\\s+dive|dives?\\s+deep\\s+into|at\\s+its\\s+core|testament\\s+to|in\\s+the\\s+realms?\\s+of|watershed\\s+moment|marking\\s+a\\s+pivotal\\s+moment|only\\s+time\\s+will\\s+tell|the\\s+future\\s+looks\\s+bright|shed(?:s|ding)?\\s+light\\s+on|paves?\\s+the\\s+way|unpack(?:s|ing)?)\\b",
@@ -4771,6 +5399,31 @@
     "(?<![a-zà-ÿ])(?:een breed scala aan|naar nieuwe hoogten|de sleutel tot)(?![a-zà-ÿ])"
    ],
    "hint": "Een kleine gesloten woordenschat waar taalmodellen in het Nederlands naar grijpen ongeacht het onderwerp"
+  },
+  {
+   "id": "ambtelijke-lijmwoorden-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:middels|inzake|hetgeen|zulks|alsook|bij dezen)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:de|het|een)\\s+\\w+(?:en|s)?\\s+welke\\s+(?:per|in|op|door|vanaf|met)(?![a-zà-ÿ])"
+   ],
+   "hint": "De formele lijmwoorden waarmee Nederlandse modeltekst een brief of een beleidsstuk nabootst: middels voor met of via, inzake voor over, hetg"
+  },
+  {
+   "id": "beklemtoond-lidwoord-claim-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:dé|hét)\\s+(?:plek|partner|specialist|platform|antwoord|community|oplossing|adres|manier|standaard)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het beklemtoonde lidwoord als kortere weg naar een superlatief: dé plek voor, hét platform voor, dé partner in, hét antwoord op, dé speciali"
   },
   {
    "id": "boilerplate-phrase-stack",
@@ -4925,7 +5578,7 @@
    "category": "vocabulary",
    "severity": "cluster",
    "regex": [
-    "(?<![a-zà-ÿ])(?:ontsluit(?:en|te|)|ontzorg(?:en|d|t)|leverage(?:n|d)?|revolutionee?r(?:en|t|de)|stroomlijn(?:en|t|de))(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])(?:ontsluit(?:en|te|)|ontzorg(?:en|d|t)|revolutionee?r(?:en|t|de)|stroomlijn(?:en|t|de))(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])(?:geborgd|borgen|gewaarborgd|te waarborgen|verankeren|verankerd|vorm te geven|vormgeven)(?![a-zà-ÿ])",
     "(?:in te zetten op|inzetten op|zett?en?\\s+(?:we|wij|ze|zij)?\\s*in op|stelt?\\w*[^.!?]{0,30}in staat om)",
     "(?<![a-zà-ÿ])(?:waarde toevoeg|inzichten bied|impact maken|kansen benutten|waardecreatie|uitdagingen aan te gaan)"
@@ -4965,6 +5618,18 @@
    "hint": "Een openingszin die het onderwerp in een algemeen heden of een ongenoemde trend plaatst in plaats van de concrete aanleiding te noemen: In d"
   },
   {
+   "id": "handvattentaal-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:(?:concrete|praktische) handvatten|handvatten (?:te )?bieden|direct aan de slag|tips en tricks|do'?s en don'?ts|in (?:vijf|drie|vier|zeven) (?:eenvoudige )?stappen)(?![a-zà-ÿ])"
+   ],
+   "hint": "Het beloftevocabulaire van Nederlandse trainers, coaches en nieuwsbriefschrijvers, dat vooruitwijst naar bruikbaarheid zonder iets bruikbaar"
+  },
+  {
    "id": "hedging",
    "lang": [
     "en"
@@ -4998,10 +5663,9 @@
    "category": "vocabulary",
    "severity": "always",
    "regex": [
-    "\\b(?:genuinely|truly|quite\\s+frankly|to\\s+be\\s+honest|let'?s\\s+be\\s+clear)\\b",
-    "\\bgenuine\\s+(?:insight|value|understanding|improvement|interest|problem|need|surprise)\\b"
+    "\\b(?:genuinely|truly|quite\\s+frankly|to\\s+be\\s+honest|let'?s\\s+be\\s+clear)\\b"
    ],
-   "hint": "Sincerity and emphasis markers that assert conviction instead of supplying a fact: genuinely, genuine, truly, real (as intensifier), quite f"
+   "hint": "Sincerity and emphasis markers that assert conviction instead of supplying a fact: genuinely, truly, quite frankly, to be honest, let's be c"
   },
   {
    "id": "hollow-intensifier",
@@ -5009,7 +5673,7 @@
     "nl"
    ],
    "category": "vocabulary",
-   "severity": "always",
+   "severity": "cluster",
    "regex": [
     "(?<![a-zà-ÿ])(?:eerlijk gezegd|om eerlijk te zijn|laten we eerlijk zijn|oprecht (?:blij|trots|benieuwd|verrast))(?![a-zà-ÿ])"
    ],
@@ -5106,7 +5770,7 @@
     "en"
    ],
    "category": "vocabulary",
-   "severity": "always",
+   "severity": "context",
    "regex": [
     "\\bload-bearing\\b(?!\\s+(?:(?:structural|exterior|interior|internal|external|concrete|steel|timber|wooden|brick|masonry|perimeter|basement|main|primary|existing|original)\\s+)?(?:walls?|beams?|columns?|joists?|truss(?:es)?|members?|footings?|slabs?|studs?|partitions?|masonry|lintels?|piers?|rafters?|girders?|capacity|capacities)\\b)"
    ],
@@ -5143,11 +5807,11 @@
     "en"
    ],
    "category": "vocabulary",
-   "severity": "always",
+   "severity": "context",
    "regex": [
     "\\bstops\\s+being\\s+true\\b"
    ],
-   "hint": "Describing an assumption as flipping from true to false"
+   "hint": "Prefer 'no longer holds' or 'breaks down' for a model, premise or assumption that has stopped fitting the world"
   },
   {
    "id": "ontological-slop-assumptions",
@@ -5158,7 +5822,8 @@
    "severity": "context",
    "regex": [
     "(?:aanname|veronderstelling|vuistregel)[^.!?]{0,60}niet (?:langer|meer) waar",
-    "houdt op waar te zijn"
+    "(?:aanname|veronderstelling|vuistregel)[^.!?]{0,60}niet langer (?:geldig|van toepassing)",
+    "(?<![a-zà-ÿ])gaat niet langer op(?![a-zà-ÿ])"
    ],
    "hint": "Een aanname of vuistregel beschrijven alsof die van waar naar onwaar omklapt"
   },
@@ -5170,7 +5835,7 @@
    "category": "vocabulary",
    "severity": "context",
    "regex": [
-    "\\b(?:real|actual|genuine|true)\\s+(?:on-?chain\\s+)?(?:tokenomics|economics|utility|adoption|sustainability|impact|revenue|fundamentals|demand|value|innovation|traction|product[- ]market\\s+fit)\\b"
+    "\\b(?:real|actual|genuine|true)\\s+(?:on-?chain\\s+)?(?:tokenomics|economics|utility|adoption|sustainability|impact|revenue|fundamentals|demand|value|innovation|traction|insight|understanding|improvement|interest|problem|need|surprise|product[- ]market\\s+fit)\\b"
    ],
    "hint": "real, actual, genuine or true used as an empty intensifier on an abstract noun (real tokenomics, actual reward sustainability, genuine utili"
   },
@@ -5362,9 +6027,9 @@
     "en"
    ],
    "category": "vocabulary",
-   "severity": "always",
+   "severity": "context",
    "regex": [
-    "\\bworth\\s+(?:reading|a\\s+look|exploring|checking\\s+out|your\\s+time|paying\\s+attention\\s+to)\\b"
+    "\\bworth\\s+(?:reading|a\\s+look|exploring|checking\\s+out|your\\s+time|paying\\s+attention\\s+to)\\b(?!\\s*(?:,\\s*)?(?:for|because|if|since|when|to\\s+see|to\\s+learn))"
    ],
    "hint": "A generic thumbs-up built on 'worth' that substitutes for a specific reason: worth reading, worth paying attention to, worth a look, worth e"
   },
@@ -5409,6 +6074,31 @@
    "hint": "Waarderende bijvoeglijke naamwoorden die kwaliteit, nieuwheid of belang beweren zonder meetbaar aanknopingspunt: krachtig, innovatief, geava"
   },
   {
+   "id": "voorbeeldaankondiging-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:denk hierbij aan|denk daarbij aan|hierbij kun(?:t u|je)? denken aan|voorbeelden hiervan zijn|te denken valt aan|om er een paar te noemen)(?![a-zà-ÿ])"
+   ],
+   "hint": "Een vaste frase kondigt aan dat er voorbeelden komen in plaats van ze te noemen: denk hierbij aan, denk daarbij aan, voorbeelden hiervan zij"
+  },
+  {
+   "id": "welzijnsadjectieven-nl",
+   "lang": [
+    "nl"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-zà-ÿ])(?:laagdrempelig(?:e)?|toekomstgericht(?:e)?|verbindend(?:e)?|sociaal veilig(?:e)?)(?![a-zà-ÿ])",
+    "(?<![a-zà-ÿ])een plek waar iedereen zich welkom voelt(?![a-zà-ÿ])"
+   ],
+   "hint": "De vaste set waarderende bijvoeglijke naamwoorden uit het Nederlandse gemeente-, onderwijs-, zorg- en verenigingsregister, waar een model in"
+  },
+  {
    "id": "wordy-circumlocution",
    "lang": [
     "en"
@@ -5430,8 +6120,7 @@
    "category": "vocabulary",
    "severity": "always",
    "regex": [
-    "(?<![a-zà-ÿ])(?:teneinde|vanwege het feit dat|op dit moment in de tijd|de mogelijkheid hebben om|tot uitvoering (?:te )?brengen|over te gaan tot)(?![a-zà-ÿ])",
-    "(?<![a-zà-ÿ])in termen van(?![a-zà-ÿ])"
+    "(?<![a-zà-ÿ])(?:teneinde|vanwege het feit dat|op dit moment in de tijd|de mogelijkheid hebben om|in staat (?:te )?zijn om|tot uitvoering (?:te )?brengen|over te gaan tot)(?![a-zà-ÿ])"
    ],
    "hint": "Een constructie van meerdere woorden op de plek van één: teneinde voor om, vanwege het feit dat voor omdat, op dit moment in de tijd voor nu"
   }
