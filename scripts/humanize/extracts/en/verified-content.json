@@ -1,0 +1,1617 @@
+{
+ "category": "content",
+ "entries": [
+  {
+   "id": "significance-inflation",
+   "name": "Significance and legacy inflation",
+   "definition": "An ordinary fact is framed as a turning point, a legacy, a symbol, or evidence of a broad trend, using a small recognisable set of significance verbs and nouns: 'marks a pivotal moment', 'stands as a testament', 'plays a vital role', 'underscores its significance', 'enduring legacy', 'evolving landscape'. Sub-forms: self-labelling significance ('this is a crucial insight'), significance bolted onto mundane facts such as an etymology or a census figure, an abstract that stresses implications while naming no result, and regression to the mean, where the concrete detail disappears and the importance claim gets louder in its place. State the fact and let the reader judge; if the sentence still works with the significance clause deleted, delete it.",
+   "cues": [
+    "stands/serves as",
+    "is a testament/reminder",
+    "a vital/significant/crucial/pivotal/key role/moment",
+    "underscores/highlights its importance/significance",
+    "reflects broader",
+    "symbolizing its ongoing/enduring/lasting",
+    "contributing to the",
+    "setting the stage for",
+    "marking/shaping the",
+    "represents/marks a shift",
+    "key turning point",
+    "evolving landscape",
+    "focal point",
+    "indelible mark",
+    "deeply rooted",
+    "Stands as a testament",
+    "marks a pivotal moment",
+    "plays a vital role",
+    "solidifies its position",
+    "underscores its significance",
+    "a testament to",
+    "marking a pivotal moment in the evolution of...",
+    "a watershed moment for the industry",
+    "pivotal moment",
+    "watershed moment",
+    "significantly improves",
+    "stands as",
+    "serves as",
+    "is a testament",
+    "is a reminder",
+    "a crucial role",
+    "a pivotal role",
+    "a vital role",
+    "a significant role",
+    "a key role",
+    "a crucial moment",
+    "a pivotal moment",
+    "a key moment",
+    "underscores its importance",
+    "highlights its importance",
+    "highlights its significance",
+    "represented a significant shift",
+    "was part of a broader movement",
+    "an important center",
+    "solidify its role as a regional hub",
+    "This etymology highlights the enduring legacy",
+    "the transformative power",
+    "enduring legacy",
+    "transformative power",
+    "a revolutionary titan of industry",
+    "this is a crucial insight",
+    "pivotal moment in the evolution of",
+    "highlights the enduring legacy",
+    "significance"
+   ],
+   "regex": [
+    "\\bmark(?:s|ed|ing)?\\s+a\\s+(?:pivotal|significant|important|key|defining|watershed|major)\\s+moment\\b",
+    "\\ba\\s+(?:pivotal|watershed|defining|seminal)\\s+moment\\s+(?:in|for)\\b",
+    "\\bin\\s+the\\s+evolution\\s+of\\s+(?:regional|modern|the)\\b",
+    "\\b(?:stands|stood|serves|served)\\s+as\\s+a\\s+testament\\b",
+    "\\ba\\s+testament\\s+to\\b",
+    "\\bplay(?:s|ed|ing)?\\s+a\\s+(?:vital|crucial|pivotal|significant|key|central)\\s+role\\b",
+    "\\bunderscor(?:e|es|ed|ing)\\s+(?:its|his|her|their|the)\\s+(?:importance|significance|role)\\b",
+    "\\bhighlight(?:s|ed|ing)\\s+(?:its|his|her|their|the)\\s+(?:importance|significance|enduring\\s+legacy)\\b",
+    "\\benduring\\s+legacy\\b",
+    "\\btransformative\\s+power\\b",
+    "\\bevolving\\s+landscape\\b",
+    "\\bindelible\\s+mark\\b",
+    "\\bsolidif(?:y|ies|ied|ying)\\s+(?:its|his|her|their)\\s+(?:position|role|place|status)\\b",
+    "\\brepresent(?:s|ed)?\\s+a\\s+(?:significant|major|profound|fundamental)\\s+shift\\b",
+    "\\bpart\\s+of\\s+a\\s+(?:broader|wider)\\s+(?:movement|trend|shift|effort)\\b",
+    "\\bsymboliz(?:es|ing)\\s+(?:its|his|her|their)\\s+(?:ongoing|enduring|lasting)\\b",
+    "\\bkey\\s+turning\\s+point\\b",
+    "\\bsignificantly\\s+improv(?:es|ed|ing)\\b",
+    "\\bthis\\s+is\\s+(?:a|an)\\s+(?:crucial|critical|key|important)\\s+(?:insight|point|distinction|takeaway)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions.",
+     "after": "The Statistical Institute of Catalonia was established in 1989, during a wider decentralization of administrative functions in Spain."
+    },
+    {
+     "before": "The tool significantly improves engineering productivity.",
+     "after": "The tool cut review time from 30 minutes to 8."
+    },
+    {
+     "before": "During the Spanish colonial period, the name Bakunutan was hispanized to Bacnotan. This etymology highlights the enduring legacy of the community's resistance and the transformative power of unity.",
+     "after": "During the Spanish colonial period the name Bakunutan was hispanized to Bacnotan."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "wikipedia-a",
+    "vollmer"
+   ],
+   "merged_from": [
+    "§1 Inflated claims about importance and legacy",
+    "Importance puffery",
+    "Generic-importance claims replacing a specific fact",
+    "Significance inflation",
+    "Significance inflation on routine events",
+    "significance inflation",
+    "self-labeling significance",
+    "Undue emphasis on significance, legacy, and broader trends (WP:AILEGACY / WP:AITREND)",
+    "Significance attached to mundane facts (etymology, population data)",
+    "Regression to the mean (specific fact replaced by generic inflation)",
+    "Puffed-up significance (regression to the mean)",
+    "Overgeneralized abstract (significance without findings)"
+   ],
+   "false_positives": "A genuinely pivotal event described with a sourced reason stays: the tell is the claim standing in for the reason, not the word. Obituaries, award citations, anniversary pieces and marketing copy the writer intends are register-appropriate; tolerance is strict for reporting, technical writing and investor mail, relaxed for docs, skipped for casual chat. 'stands as' and 'serves as' also belong to copula avoidance under syntax; flag under whichever mechanism the sentence actually shows. Do not flag a summary sentence that names a specific measured result.",
+   "in_baseline": false
+  },
+  {
+   "id": "unnamed-debate-situating",
+   "name": "Situating the subject in an unnamed debate",
+   "definition": "The subject is said to have generated, sparked, shaped, or prompted debate, discussion, or reflection, or to raise questions, with no debate, participant, venue or date ever named. It reads as context while adding none. Name the debate and who is in it, or cut the sentence.",
+   "cues": [
+    "generated debate",
+    "debates",
+    "participated in public discussions",
+    "shaped emerging policy discussions",
+    "prompted broader reflection",
+    "raising philosophical questions"
+   ],
+   "regex": [
+    "\\b(?:has|have|had)\\s+(?:generated|sparked|prompted|ignited)\\s+(?:a\\s+|broader\\s+|renewed\\s+)?(?:debate|debates|discussion|discussions|reflection)\\b",
+    "\\bprompted\\s+broader\\s+reflection\\b",
+    "\\brais(?:es|ing)\\s+(?:philosophical|ethical|profound|important)\\s+questions\\s+about\\b",
+    "\\bshap(?:ed|ing)\\s+(?:emerging\\s+)?policy\\s+discussions\\b",
+    "\\bparticipated\\s+in\\s+public\\s+discussions\\b"
+   ],
+   "examples": [
+    {
+     "before": "The phenomenon has generated debate about authenticity, consent, and the psychological effects of digitally extending personhood.",
+     "after": "In a 2025 paper in AI & Society, Hollanek and Nowaczyk-Basinska argue that griefbots need consent from the person being simulated."
+    },
+    {
+     "before": "GriefBots have prompted broader reflection on mortality and memory in a digital age, raising philosophical questions about identity.",
+     "after": "Two ethics boards, at Cambridge and at KU Leuven, published guidance on griefbots in 2024."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Situating the subject amid broader debates and public discussions"
+   ],
+   "false_positives": "A named, cited controversy is normal encyclopedic content: 'the 2023 exchange between Marcus and LeCun over scaling' is a debate with participants. Flag only when the debate has no name, no party and no source. Opinion columns that describe a live public argument they then quote are also fine.",
+   "in_baseline": false
+  },
+  {
+   "id": "ecosystem-heritage-padding",
+   "name": "Tenuous ecosystem, heritage and conservation padding",
+   "definition": "Writing about a species, place or artefact is padded with generic ties to the wider ecosystem, environment or cultural heritage even where the tie is unsupported, and dwells on conservation status, threats and preservation effort where no assessment and no effort exist. The give-away shape is conceding the absence of an assessment and then speculating about threats anyway. Keep sourced ecology and cut the rest.",
+   "cues": [
+    "plays a role in the ecosystem",
+    "contributes to Hawaii's rich cultural heritage",
+    "crucial for the survival of this and other endemic species",
+    "the general health of the ... ecosystem",
+    "there is no specific conservation assessment",
+    "Preserving this endemic species is vital",
+    "could potentially impact their populations",
+    "Factors such as overfishing, pollution, and habitat destruction",
+    "conservation status"
+   ],
+   "regex": [
+    "\\bplay(?:s|ed|ing)?\\s+(?:a|an)\\s+(?:vital|crucial|important|key)?\\s*role\\s+in\\s+the\\s+(?:local\\s+|wider\\s+|broader\\s+)?ecosystem\\b",
+    "\\bcontributes\\s+to\\s+[a-z']{2,20}\\s+rich\\s+cultural\\s+heritage\\b",
+    "\\bthere\\s+is\\s+no\\s+specific\\s+conservation\\s+assessment\\b",
+    "\\b(?:overfishing|pollution)(?:,)?\\s+and\\s+habitat\\s+destruction\\b",
+    "\\bpreserving\\s+this\\s+endemic\\s+species\\b",
+    "\\bcould\\s+potentially\\s+impact\\s+(?:their|its|these)\\s+populations\\b"
+   ],
+   "examples": [
+    {
+     "before": "It plays a role in the ecosystem and contributes to Hawaii's rich cultural heritage. Preserving this endemic species is vital for ecological diversity.",
+     "after": "The species is endemic to Kauai and grows only above 900 metres."
+    },
+    {
+     "before": "Currently, there is no specific conservation assessment for Lethrinops lethrinus by the IUCN. However, factors such as overfishing, pollution, and habitat destruction could potentially impact their populations.",
+     "after": "The IUCN has not assessed Lethrinops lethrinus."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Tenuous ecosystem or heritage connections in biology writing",
+    "Belabored conservation status and preservation efforts"
+   ],
+   "false_positives": "A cited IUCN category, a documented recovery programme, or a named study of the species' ecological function is content, not padding. Conservation-focused publications are expected to lead with status. The tell is a status section that admits there is no status, or an ecological role asserted with no source.",
+   "in_baseline": false
+  },
+  {
+   "id": "promotional-language",
+   "name": "Promotional and brochure register",
+   "definition": "Prose meant to inform drifts into advertisement: evaluative adjectives, travel-guide framing, and press-release verbs applied to places, communities, people, companies or products. Sub-forms: the cultural-heritage travel guide ('nestled', 'breathtaking', 'rich cultural heritage', 'a town worth visiting'), the corporate press release ('commitment to sustainability', 'communicates a powerful emotional presence'), and the product round-up built from generic praise ('durable construction', 'excellent value') with no test behind it. Replace with plain description and a checkable fact.",
+   "cues": [
+    "boasts a",
+    "vibrant",
+    "rich (figurative)",
+    "profound",
+    "enhancing its",
+    "showcasing",
+    "exemplifies",
+    "commitment to",
+    "natural beauty",
+    "nestled",
+    "in the heart of",
+    "groundbreaking (figurative)",
+    "renowned",
+    "breathtaking",
+    "must-visit",
+    "stunning",
+    "nestled within the breathtaking foothills",
+    "a vibrant hub of innovation",
+    "a thriving ecosystem",
+    "vibrant hub",
+    "thriving ecosystem",
+    "featuring",
+    "diverse array",
+    "stands as a vibrant town with a rich cultural heritage and a significant place",
+    "From its scenic landscapes to its historical landmarks",
+    "offers visitors a fascinating glimpse into the diverse tapestry",
+    "unique characteristics",
+    "a town worth visiting",
+    "its significance",
+    "acts as the gateway",
+    "diverse attractions",
+    "every traveller's journey",
+    "dependable, value-driven experiences",
+    "rich history, spiritual heritage, and natural beauty",
+    "align with KQ's goals of reducing its environmental footprint",
+    "emphasized the airline's commitment to sustainability, customer focus, and Africa's prosperity",
+    "communicates a powerful emotional presence",
+    "staying true to Cadillac's signature bold proportions",
+    "imparts a sense of refined dynamism",
+    "showcasing the brand's dedication to craftsmanship and historical reverence",
+    "rich cultural heritage",
+    "breathtaking landscapes",
+    "vibrant community",
+    "endless possibilities",
+    "rich tapestry",
+    "durable construction",
+    "excellent value",
+    "users rave"
+   ],
+   "regex": [
+    "\\bnestled\\s+(?:in|within|among|amid|between|along|beneath)\\b",
+    "\\bbreathtaking\\s+(?:views?|landscapes?|scenery|beauty|region|foothills|coastline)\\b",
+    "\\bvibrant\\s+(?:city|town|community|hub|culture|scene|ecosystem|neighborhood|neighbourhood|tapestry)\\b",
+    "\\brich\\s+(?:cultural\\s+heritage|tapestry|cultural\\s+tapestry)\\b",
+    "\\bboasts\\s+(?:a|an|its|over|more\\s+than)\\b",
+    "\\bthriving\\s+ecosystem\\b",
+    "\\bmust-visit\\b",
+    "\\bshowcas(?:es|ing)\\s+(?:its|the|their|the\\s+brand)\\b",
+    "\\bcommitment\\s+to\\s+(?:excellence|sustainability|innovation|quality|craftsmanship|customer)\\b",
+    "\\bdiverse\\s+array\\b",
+    "\\bendless\\s+possibilities\\b",
+    "\\bdurable\\s+construction\\b",
+    "\\bexcellent\\s+value\\b",
+    "\\busers\\s+rave\\b",
+    "\\ba\\s+(?:fascinating|unique|rare)\\s+glimpse\\s+into\\b",
+    "\\bexemplifies\\b",
+    "\\bacts\\s+as\\s+the\\s+gateway\\b"
+   ],
+   "examples": [
+    {
+     "before": "Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.",
+     "after": "Alamata Raya Kobo is a town in the Gonder region of Ethiopia."
+    },
+    {
+     "before": "A vibrant hub of innovation with a thriving ecosystem.",
+     "after": "Twelve startups have offices here."
+    },
+    {
+     "before": "The chair offers durable construction and excellent value, and users rave about the finish.",
+     "after": "The chair held 120 kg through 200 sit-stand cycles in our test; it costs 89 euro."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "wikipedia-a",
+    "vollmer"
+   ],
+   "merged_from": [
+    "§4 Sales language",
+    "Promotional language",
+    "promotional language",
+    "Promotional and advertisement-like language (WP:AIPUFFERY / WP:AIPEACOCK)",
+    "Cultural-heritage travel-guide subtype",
+    "Press-release or corporate tone for people and companies",
+    "Promotional register for non-promotional subjects",
+    "Product round-up generic praise"
+   ],
+   "false_positives": "Deliberately promotional registers are governed by the voice rules: marketing copy, a tourism board's own site, a launch announcement. Tolerance is relaxed for LinkedIn, strict for reporting and docs, extra strict for investor mail. 'rich' and 'groundbreaking' count only in figurative use ('rich in iron' is fine). Not all spammy writing is AI, and newer models are subtly positive rather than superlative, so the absence of 'the best' proves nothing either way.",
+   "in_baseline": false
+  },
+  {
+   "id": "vague-attribution",
+   "name": "Vague attribution to unnamed authority",
+   "definition": "A claim is credited to an authority the text never identifies: experts, studies, research, observers, critics, analysts, industry reports, scholarship. Sub-forms: vague third-party validation, where an unnamed outside party supplies a generic superlative ('independent testing confirms', 'widely regarded as'), and the agentless verdict, where the judgement is stated as 'the analysis is that X' with no one judging. Name the source, the test and the result, or cut the claim; if the writer has no source, ask rather than invent one.",
+   "cues": [
+    "Industry reports",
+    "Observers have cited",
+    "Experts argue",
+    "Some critics argue",
+    "several sources/publications (when few cited)",
+    "Experts agree",
+    "industry reports suggest",
+    "many argue",
+    "widely regarded as",
+    "studies show",
+    "Experts believe",
+    "Studies show",
+    "Research suggests",
+    "Industry leaders agree",
+    "an outside party measuring the same models everyone runs and putting us on top",
+    "independent testing confirms",
+    "third-party benchmarks show we lead",
+    "analysts agree",
+    "studies consistently show",
+    "an outside party",
+    "experts say",
+    "researchers and conservationists",
+    "according to Indian sources",
+    "described in scholarship",
+    "modern researchers treat",
+    "reviewers",
+    "scholars",
+    "experts",
+    "observers",
+    "industry reports",
+    "several publications",
+    "~다는 분석이다",
+    "~다는 평가다",
+    "~다는 관측이다"
+   ],
+   "regex": [
+    "\\bexperts?\\s+(?:say|says|agree|agrees|believe|believes|argue|argues|suggest|suggests|note|warn)\\b",
+    "\\bstudies\\s+(?:show|shows|suggest|indicate|consistently\\s+show|have\\s+shown)\\b",
+    "\\bresearch\\s+(?:shows|suggests|indicates)\\b",
+    "\\bindustry\\s+(?:reports|leaders|analysts|experts)\\s+(?:suggest|show|indicate|agree|believe|say|note)\\b",
+    "\\bobservers\\s+have\\s+(?:cited|noted|said|argued)\\b",
+    "\\b(?:some\\s+)?critics\\s+argue\\b",
+    "\\banalysts\\s+(?:agree|say|note|suggest|believe)\\b",
+    "\\bindependent\\s+testing\\s+confirms\\b",
+    "\\bthird-party\\s+benchmarks\\s+show\\b",
+    "\\b다는\\s*(?:분석|평가|관측)이다"
+   ],
+   "examples": [
+    {
+     "before": "Experts believe it plays a crucial role in the regional ecosystem.",
+     "after": "Researchers at Wageningen University measured its share of the local sediment budget at 11 percent (Kok, 2021)."
+    },
+    {
+     "before": "An outside party put us on top.",
+     "after": "On Stanford's HELM leaderboard (April 2026 run) we ranked first on reasoning latency."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "im-not-ai-method",
+    "wikipedia-a",
+    "tropes-fyi",
+    "vollmer"
+   ],
+   "merged_from": [
+    "§5 Vague sources",
+    "Weasel attribution",
+    "Vague attributions",
+    "Vague third-party validation",
+    "Vague attributions without sources",
+    "vague attribution",
+    "vague third-party validation",
+    "I-7 무주체 판정 '~다는 분석이다·평가다' (agentless verdict)",
+    "Vague attributions to unnamed authorities (WP:AIWEASEL)",
+    "Vague Attributions",
+    "Missing primary sourcing (unnamed experts)"
+   ],
+   "false_positives": "Specifically attributed, checkable validation stays: a named benchmark, a linked report, a dated audit ('SOC 2 Type II, audited by Prescient Assurance'). A field's genuine consensus, cited, is fine ('the 2019 IPCC report concludes'). The absence of a footnote is not itself the tell; the vague attribution phrase is. In review-of-literature registers 'studies show' followed immediately by the citations it summarises is normal. Never invent a source to satisfy this rule.",
+   "in_baseline": false
+  },
+  {
+   "id": "source-count-inflation",
+   "name": "Source-count and consensus inflation",
+   "definition": "Sources are cited, but their number or breadth is overstated: one person's view is presented as widely held, plural 'reviewers', 'scholars' or 'publications' stand for a single cited name, 'several sources' appears where two are listed, and 'such as' implies a longer list the sources give no sign exists. Match the plural to the citation count, or name the one source you have.",
+   "cues": [
+    "several sources",
+    "several publications",
+    "such as",
+    "widely interpreted",
+    "Toy industry publications such as",
+    "multiple",
+    "widely held",
+    "several publications have cited"
+   ],
+   "regex": [
+    "\\bseveral\\s+(?:sources|publications|outlets|reports|reviewers|scholars)\\s+(?:have\\s+)?(?:cited|noted|reported|described|argued|suggested)\\b",
+    "\\b(?:widely|generally)\\s+interpreted\\s+as\\b",
+    "\\b(?:industry|trade|toy|music|business|tech)\\s+publications\\s+such\\s+as\\b"
+   ],
+   "examples": [
+    {
+     "before": "Several publications have cited the device as a STEM platform.",
+     "after": "The Toy Insider called the device a STEM platform (March 2024)."
+    },
+    {
+     "before": "The reference to cross-border terrorism, according to Indian sources, was widely interpreted as aimed at Islamabad.",
+     "after": "The Indian Express read the reference to cross-border terrorism as aimed at Islamabad."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-a",
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Overgeneralization of source quantity and opinion spread",
+    "Source-Count Inflation"
+   ],
+   "false_positives": "Check the citation count before flagging: 'several publications' with six footnotes is accurate. 'such as' is legitimate when the list really is a sample and the source says so. A genuinely broad consensus, with a survey or meta-analysis behind it, may be described as widely held.",
+   "in_baseline": false
+  },
+  {
+   "id": "notability-name-dropping",
+   "name": "Notability name-dropping and over-attribution",
+   "definition": "Importance is argued by cataloguing where the subject appeared rather than what was said: a roll-call of prestigious outlets, a classification of those outlets ('independent coverage', 'regional media outlets', 'trade publications'), or a follower count. A related change-note form praises an edit for being 'sourced' or 'verified' instead of saying what it added. Keep one citation with context; cut the roll-call, the classification and the count.",
+   "cues": [
+    "independent coverage",
+    "local/regional/national media outlets",
+    "written by a leading expert",
+    "active social media presence",
+    "cited in The New York Times, BBC, Financial Times, and The Hindu",
+    "cited in",
+    "local media outlets",
+    "regional media outlets",
+    "national media outlets",
+    "music outlets",
+    "business outlets",
+    "tech outlets",
+    "trade publications",
+    "featured in",
+    "profiled in",
+    "other media",
+    "other prominent media outlets",
+    "documented in archived school event programs and regional press coverage",
+    "has also been mentioned in ... coverage relating to",
+    "profiled in multiple high-quality, independent, and widely-read outlets",
+    "appearing in platforms",
+    "significant, substantial, secondary coverage",
+    "Repeated national media coverage",
+    "reported by",
+    "highlighted by multiple independent reports",
+    "Ongoing public presence in respected media",
+    "significant, sustained, and verifiable coverage",
+    "added sourced [information/content/infobox/section]",
+    "added verified [information/content/infobox/section]",
+    "added [coverage/citations/references]",
+    "improved attribution",
+    "with [independent/secondary/third-party/peer-reviewed] sources",
+    "with sourced content",
+    "added sourced information, references",
+    "All claims verified"
+   ],
+   "regex": [
+    "\\bother\\s+(?:prominent\\s+)?media\\s+outlets\\b",
+    "\\b(?:local|regional|national|international)\\s+media\\s+outlets\\b",
+    "\\b(?:trade|industry|music|business|tech)\\s+publications\\b",
+    "\\bindependent\\s+coverage\\b",
+    "\\bactive\\s+social\\s+media\\s+presence\\b",
+    "\\bwritten\\s+by\\s+a\\s+leading\\s+expert\\b",
+    "\\bsignificant,?\\s+(?:substantial|sustained)(?:,)?\\s+(?:and\\s+)?(?:secondary|verifiable)\\s+coverage\\b",
+    "\\bwidely-read\\s+outlets\\b",
+    "\\badded\\s+(?:sourced|verified)\\s+(?:information|content|section|infobox)\\b",
+    "\\bwith\\s+(?:sourced\\s+content|independent\\s+sources|secondary\\s+sources)\\b",
+    "\\bhighlighted\\s+by\\s+multiple\\s+independent\\s+reports\\b"
+   ],
+   "examples": [
+    {
+     "before": "Her views have been cited in The New York Times, BBC, Financial Times, and The Hindu. She maintains an active social media presence with over 500,000 followers.",
+     "after": "In a 2024 New York Times interview she argued that regional statistics offices should publish raw microdata."
+    },
+    {
+     "before": "Expanded the article with new sections, added sourced information, references, and internal/external links.",
+     "after": "Added the artist's 1998 debut album and its chart placing."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "wikipedia-a",
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "§2 Name-dropping to prove importance",
+    "Notability name-dropping",
+    "notability name-dropping",
+    "Canned emphasis on notability, attribution, and media coverage (WP:OVERATTRIBUTION / WP:AIATTR)",
+    "Overemphasis on presence or reliability of citations"
+   ],
+   "false_positives": "Where the source explains what was said and where, that is a useful citation; keep it and do not invent context to shorten it. Press kits, bios and grant applications have listed clippings for decades and are not AI by that fact; the distinguishing marks are the classification of the outlets and the focus on their availability rather than their content. Deletion-discussion arguments legitimately count sources. This form is more common in tools released from 2025 on, and often travels with a fabricated citation, so check that the references exist.",
+   "in_baseline": false
+  },
+  {
+   "id": "vague-association",
+   "name": "Vague expression of connection",
+   "definition": "A concrete relationship (was CEO of, taught at, composed for, received) is replaced by an unspecified link: 'associated with', 'in connection with', 'connected to', 'particularly associated'. The sentence looks sourced while saying nothing checkable. Recover the actual relation from the source and state it.",
+   "cues": [
+    "in connection with",
+    "in connection to",
+    "connected with",
+    "connected to",
+    "in association with",
+    "associated with",
+    "particularly associated",
+    "widely associated",
+    "has been associated with",
+    "associated principally with",
+    "is associated with",
+    "became associated with"
+   ],
+   "regex": [
+    "\\b(?:particularly|widely|principally|closely|primarily)\\s+associated\\b",
+    "\\b(?:has|have)\\s+been\\s+associated\\s+with\\b",
+    "\\bbecame\\s+associated\\s+with\\b",
+    "\\bin\\s+connection\\s+with\\s+(?:her|his|their|its)\\s+(?:work|role|career|research)\\b"
+   ],
+   "examples": [
+    {
+     "before": "In 2017, sources identified John Doe as being associated with leadership of ExampleCorp.",
+     "after": "In 2017 John Doe was the CEO of ExampleCorp."
+    },
+    {
+     "before": "Professor Jane Doe was connected with science education at Example University.",
+     "after": "Professor Jane Doe taught science at Example University."
+    },
+    {
+     "before": "Strickler was quoted in National Journal in connection with her work founding Fifty Plus One.",
+     "after": "Strickler told National Journal that Fifty Plus One trains pro-choice candidates in campaign strategy."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Vague expression of connection or association (WP:AICONNECT / WP:AIASSOCIATION)"
+   ],
+   "false_positives": "Some relations really are vague and the vagueness is the fact: an arrest 'in connection with' an investigation, a school of thought 'associated with' a city, a name 'associated with' a brand in the public mind. Legal and police reporting uses the phrase precisely. The indirection alone does not prove AI authorship; its abundance alongside other signs does.",
+   "in_baseline": false
+  },
+  {
+   "id": "cutoff-disclaimer",
+   "name": "Knowledge-cutoff disclaimer",
+   "definition": "The text discloses the model's training horizon or its inability to check current facts: 'as of my last knowledge update', 'up to my last training update', 'I don't have access to real-time data'. It is a chatbot's limitation leaking into prose as an admission that nobody looked the thing up. Find the information or delete the sentence; never publish one.",
+   "cues": [
+    "as of [date]",
+    "Up to my last training update",
+    "As of my last knowledge update",
+    "As of my last knowledge update in January 2022",
+    "I don't have specific information about the current status or developments",
+    "As of my last update",
+    "I don't have access to real-time data",
+    "in today's era",
+    "my knowledge cutoff"
+   ],
+   "regex": [
+    "\\bas\\s+of\\s+my\\s+(?:last\\s+)?(?:knowledge|training)\\s+(?:update|cutoff|cut-off)\\b",
+    "\\bup\\s+to\\s+my\\s+last\\s+(?:training|knowledge)\\s+update\\b",
+    "\\bmy\\s+(?:knowledge|training)\\s+(?:cutoff|cut-off)\\b",
+    "\\bas\\s+of\\s+my\\s+last\\s+update\\b",
+    "\\bi\\s+(?:do\\s+not|don't)\\s+have\\s+(?:access\\s+to\\s+)?(?:real-?time|up-to-date|current)\\s+(?:data|information)\\b",
+    "\\bi\\s+(?:do\\s+not|don't)\\s+have\\s+specific\\s+information\\s+about\\s+the\\s+current\\s+status\\b"
+   ],
+   "examples": [
+    {
+     "before": "As of my last knowledge update in January 2022, I don't have specific information about the current status of the Chester Mental Health Center.",
+     "after": "The Chester Mental Health Center was operating as of the state's 2024 facility list."
+    },
+    {
+     "before": "As of my last update, the company had around 200 employees.",
+     "after": "The company reported 214 employees in its 2025 annual filing."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "wikipedia-b"
+   ],
+   "merged_from": [
+    "§21a Knowledge-cutoff disclaimer",
+    "Cutoff disclaimers",
+    "Knowledge-cutoff disclaimer"
+   ],
+   "false_positives": "A dated statement in a document that is meant to be time-stamped is legitimate: 'as of March 2026, the register lists 41 members' is a fact with a date, not a disclaimer. Release notes, datasets and reports properly say when their data was pulled. The tell is the writer disclaiming their own reach, not the presence of a date. Model documentation that genuinely describes a training cutoff is on-topic.",
+   "in_baseline": false
+  },
+  {
+   "id": "speculative-gap-fill",
+   "name": "Speculative gap-fill dressed as fact",
+   "definition": "Where the model found nothing it asserts that nothing exists ('details are not widely documented') and then fills the hole with hedged invention introduced by 'likely', 'may', 'appears to have'. A frequent sub-form attributes deliberate privacy to a living person ('maintains a low profile', 'keeps personal details private') when the real situation is that the model has no data. Both the absence claim and the guess are unverified. Delete both, or state plainly what the sources do not show.",
+   "cues": [
+    "maintains a low profile",
+    "keeps personal details private",
+    "prefers to stay out of the spotlight",
+    "likely [grew up/studied/began]",
+    "it is believed that",
+    "maintains a relatively low public profile",
+    "is believed to have",
+    "likely began his career in",
+    "appears to have studied",
+    "is believed to",
+    "appears to have",
+    "likely began",
+    "While specific details are limited",
+    "While specific details are scarce",
+    "While specific information about",
+    "not widely available",
+    "not widely documented",
+    "not widely disclosed",
+    "not widely transcribed",
+    "aren't widely documented",
+    "are not extensively documented in readily available sources",
+    "is limited in the provided search results",
+    "in the provided sources",
+    "in the available sources",
+    "in the search results",
+    "based on available information",
+    "aren't fully documented in public sources",
+    "likely",
+    "the mountain likely supports",
+    "not publicly available"
+   ],
+   "regex": [
+    "\\bwhile\\s+specific\\s+(?:details|information)\\b",
+    "\\bnot\\s+(?:widely|extensively|fully|publicly)\\s+(?:documented|available|disclosed|transcribed)\\b",
+    "\\bin\\s+the\\s+(?:provided|available)\\s+(?:sources|search\\s+results)\\b",
+    "\\bbased\\s+on\\s+available\\s+information\\b",
+    "\\bmaintains?\\s+a\\s+(?:relatively\\s+)?low\\s+(?:public\\s+)?profile\\b",
+    "\\bkeeps?\\s+(?:her\\s+|his\\s+|their\\s+)?personal\\s+(?:details|life)\\s+private\\b",
+    "\\bprefers\\s+to\\s+(?:stay|keep)\\s+(?:out\\s+of\\s+the\\s+spotlight|.{0,20}out\\s+of\\s+the\\s+public\\s+eye)\\b",
+    "\\bis\\s+believed\\s+to\\s+have\\b",
+    "\\bappears\\s+to\\s+have\\s+(?:studied|worked|begun|trained)\\b",
+    "\\blikely\\s+(?:grew\\s+up|began\\s+(?:his|her|their)\\s+career|studied|supports)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Information about her early life is not publicly available, suggesting she maintains a low profile. She likely grew up in a middle-class household.",
+     "after": "Her early life is not covered by the sources used here."
+    },
+    {
+     "before": "While specific information about the fauna of Studnicni hora is limited in the provided search results, the mountain likely supports alpine species.",
+     "after": "The sources used here do not describe the fauna of Studnicni hora."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "wikipedia-b"
+   ],
+   "merged_from": [
+    "§21b Speculative gap-fill presented as fact",
+    "Speculative gap-filling",
+    "Speculation about gaps in sources",
+    "Privacy speculation about a person"
+   ],
+   "false_positives": "A sourced statement that a person declines interviews, or a documented archival gap ('the 1911 census returns for this district were destroyed'), is a fact and stays. Scientific hedging over evidence the writer has read and cites is normal ('the isotope ratios suggest a volcanic origin'). The tell is a hedge covering an absence of looking rather than an absence in the record. 'in the provided search results' additionally leaks the retrieval prompt and should always go.",
+   "in_baseline": false
+  },
+  {
+   "id": "abstraction-over-specifics",
+   "name": "Abstraction where a specific exists",
+   "definition": "A claim is stated in abstract terms where a name, number, date, mechanism or example is available: 'improved efficiency', 'significantly faster', 'a large image', 'a database' for the product's actual name. Sub-forms: abstract quantifiers standing in for a measured value, category words standing in for the thing's name, and abstraction drift, where well-formed sentences carry generic nouns and hypothetical examples and no one has a last name. Replace each abstraction with the concrete detail the draft already supports.",
+   "cues": [
+    "improved efficiency",
+    "abstract nouns",
+    "significantly improves",
+    "significantly faster",
+    "a large image",
+    "significantly",
+    "large",
+    "the soul",
+    "the silence",
+    "the weight of what remains",
+    "people",
+    "community",
+    "technology",
+    "change"
+   ],
+   "regex": [
+    "\\bsignificantly\\s+(?:faster|slower|better|larger|smaller|improved?|improves|reduced?|increased?)\\b",
+    "\\b(?:improved|improving|boosted|enhanced)\\s+(?:efficiency|productivity|performance|outcomes)\\b",
+    "\\ba\\s+(?:large|small|huge)\\s+(?:image|file|dataset|number\\s+of\\s+users)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The integration improved efficiency.",
+     "after": "The integration cut deploy time from 40 minutes to 4."
+    },
+    {
+     "before": "Loading a large image made it significantly faster.",
+     "after": "Loading the 2.1 GB tile set dropped first paint from 430 ms to 80 ms."
+    },
+    {
+     "before": "We swapped in a database and a tool for the migration.",
+     "after": "We swapped in Postgres 16 and ran the migration with pgloader."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "vollmer",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "Abstraction instead of specifics",
+    "Strategic vagueness / abstraction drift",
+    "Vague claims instead of specifics",
+    "Abstract quantifiers",
+    "Category words instead of the actual name"
+   ],
+   "false_positives": "Two of the four sources rate this always; the context reading is kept because the fix needs a concrete detail the draft already supplies. Only flag when that detail is available: the editor must not invent a number, and 'significantly' is correct where it reports a statistical test. Abstract nouns are the subject matter in philosophy, law and poetry. A category word is right when the category is the point ('pick a database with MVCC'), or when the specific name is confidential.",
+   "in_baseline": true
+  },
+  {
+   "id": "missing-concrete-detail",
+   "name": "No concrete particular (portable sentence)",
+   "definition": "The text stays at the level of the generic and the widely applicable: no proper noun, no brand, no street, no month, no odd quote, nothing that could only be here. The test is portability, if a sentence could move unchanged to another person, company, country or product, it is filler. Cut it or replace it with a fact, example, mechanism, consequence or judgement specific to this subject; keep such details where the writer already supplied them, and never manufacture them.",
+   "cues": [
+    "portability test",
+    "No Tuesday. No laundromat. No grandmother with a specific brand of mentholated cough drop."
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Wander a few steps off the main squares and you'll discover a quieter, more authentic side: sun-drenched alleys, charming tiled facades, and friendly locals going about their daily lives.",
+     "after": "Two blocks uphill from any plaza it turns into laundry lines, chipped tile, open windows, and old men watching football with the sound turned up."
+    },
+    {
+     "before": "The company has always put its customers first and continues to invest in its people.",
+     "after": "The company still runs the 2013 support rota: one engineer on call per week, no tiering."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "no-ai-slop",
+    "vollmer"
+   ],
+   "merged_from": [
+    "Implied: absence of specific, unusual detail",
+    "Portable filler sentence",
+    "The missing concrete particular ('collapse of context' / 'no grain')"
+   ],
+   "false_positives": "Abstracts, definitions, glossary entries, policy text and executive summaries are meant to generalise, and short transitional sentences carry structure rather than fact; leave those alone. Elsewhere run the portability test sentence by sentence. As a detection signal rather than an editing rule it needs a whole passage of portable sentences, since one generic line proves nothing. The fix is additive, so flag the gap for the writer rather than inventing a detail to fill it.",
+   "in_baseline": false
+  },
+  {
+   "id": "missing-first-hand-detail",
+   "name": "Missing first-hand detail and stated view",
+   "definition": "In a piece whose register invites a voice, nothing appears that only this author could supply: no anecdote, no measured number from their own run, no named failure, no preference, no 'I think'. The prose is relentlessly neutral where a position was expected, or generic where a prompt asked for reflection. A useful check is roughly one author-specific detail per section; below that the piece runs on generalities.",
+   "cues": [
+    "I think",
+    "in my experience",
+    "Be direct. Have opinions."
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "There are several approaches to on-call, each with trade-offs, and teams should choose what fits them.",
+     "after": "We ran follow-the-sun for eight months and it cost us two engineers; a one-week rota with a hard handover note works better for a team of six."
+    },
+    {
+     "before": "Caching can be beneficial in many scenarios.",
+     "after": "I cache anything that survives a deploy. The 40-minute rebuild was what convinced me."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "vollmer",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "Missing first-person perspective",
+    "Absence of personal reflection where invited",
+    "Opinionless prose",
+    "Missing first-hand detail"
+   ],
+   "false_positives": "Encyclopedic, technical, legal and news registers are correctly neutral, and their neutrality is not a defect. Never inject an 'I' the source does not have: flag the gap and ask the writer for the detail rather than fabricating presence, since a fabricated anecdote is a worse failure than a flat paragraph.",
+   "in_baseline": true
+  },
+  {
+   "id": "absent-human-friction",
+   "name": "Absent human friction (asides, quotes, era markers)",
+   "definition": "Corroborating absences rather than phrases: the text never interrupts itself with a parenthetical self-correction or a real aside, never admits an unresolved mixed feeling, quotes nobody, and carries no era-bound slang, meme or in-joke, or carries one that is a year or more stale. Published human prose quotes freely and contradicts itself in passing. Treat these as weak corroboration and preserve them wherever a human wrote them.",
+   "cues": [
+    "인용문 0",
+    "(I keep wanting to say 'almost' here, but it really was certain.)"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The migration went well and the team was pleased with the outcome.",
+     "after": "The migration went fine (I keep wanting to write 'fine' in scare quotes, because the first night was not). Ellen's verdict afterwards: 'never again on a Friday'."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Implied: no self-interruption, asides, or unresolved tension",
+    "Implied: dated, era-bound references lag",
+    "인용 부재 (missing quotations)"
+   ],
+   "false_positives": "Observe only, never prescribe: inventing a quotation is unacceptable, and manufactured asides read worse than none. Reference documentation, standards, legal text and abstracts have no place for asides or slang. Measured Korean-corpus rates (AI 0.0 versus human 8.7 quotations per 1,000 words) are corpus-level evidence and do not convict a single short piece.",
+   "in_baseline": false
+  },
+  {
+   "id": "fake-first-person",
+   "name": "Fabricated first-person experience",
+   "definition": "First-person experience claims appear in prose that had no author behind them: 'I've seen this a hundred times', 'in my experience', 'I'll admit', or a lyric 'I' with no body, situation, history or place. On the rewriting side any added 'I' is a failure, since provenance is the whole question and no phrase can show it. If the source has no first person, the rewrite has none.",
+   "cues": [
+    "I've seen this a hundred times",
+    "in my experience",
+    "I'll admit"
+   ],
+   "regex": [
+    "\\bi'?ve\\s+seen\\s+this\\s+(?:a\\s+hundred|a\\s+thousand|countless|so\\s+many)\\s+times\\b",
+    "\\bin\\s+my\\s+(?:\\d+\\s+years\\s+of\\s+)?experience,"
+   ],
+   "examples": [
+    {
+     "before": "I've seen this a hundred times: teams ship the migration and skip the rollback.",
+     "after": "Teams commonly ship the migration and skip the rollback."
+    },
+    {
+     "before": "In my experience, the second week is when it breaks.",
+     "after": "The second week is when it breaks."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "vollmer"
+   ],
+   "merged_from": [
+    "Fake first person",
+    "The uncanny lyric 'I' without a body"
+   ],
+   "false_positives": "A first-person aside the author actually wrote is not a flag; the same sentence is fine or fatal depending on who wrote it, which no pattern can see. Memoir, essay, field report and any interview transcript live in the first person by design. Judge on provenance, and where you cannot know it, flag rather than delete.",
+   "in_baseline": false
+  },
+  {
+   "id": "invented-concept-labels",
+   "name": "Invented concept labels and novelty inflation",
+   "definition": "A pseudo-analytical compound is coined mid-sentence and never defined ('the supervision paradox', 'the context-collapse problem', 'a coordination tax', 'workload creep'), or an established concept is credited to the subject as a discovery ('he introduced a term', 'she coined the phrase'). A related header form wraps the coinage in scare quotes to make it look canonical. Naming a thing is not explaining it: define the term on first use, describe the mechanism instead of branding it, and assume a concept is not novel unless you can show it is.",
+   "cues": [
+    "the supervision paradox",
+    "the context-collapse problem",
+    "a coordination tax",
+    "paradox",
+    "problem",
+    "tax",
+    "trap",
+    "creep",
+    "divide",
+    "vacuum",
+    "inversion",
+    "the acceleration trap",
+    "workload creep",
+    "He introduced a term",
+    "She coined the phrase",
+    "a concept nobody's naming",
+    "a failure mode nobody talks about",
+    "introduced a term",
+    "coined the phrase",
+    "Portability and the \"Pocket Meal\"",
+    "The \"Cold\" Factor",
+    "The Sephardic \"Home Factory\"",
+    "Portuguese Sailors as \"Early Adopters\"",
+    "The Iberian Potato \"Infrastructure\""
+   ],
+   "regex": [
+    "\\bthe\\s+(?:supervision|productivity|automation|abundance|alignment|attention|expertise|delegation)\\s+paradox\\b",
+    "\\bcontext[-\\s]collapse\\s+problem\\b",
+    "\\ba\\s+(?:coordination|complexity|cognitive|context|communication)\\s+tax\\b",
+    "\\bworkload\\s+creep\\b",
+    "\\bthe\\s+(?:acceleration|efficiency|velocity|automation|productivity)\\s+trap\\b",
+    "\\bcoined\\s+the\\s+(?:term|phrase)\\b",
+    "\\bintroduced\\s+a\\s+term\\s+i\\s+(?:hadn't|had\\s+not)\\s+heard\\b",
+    "\\ba\\s+(?:failure\\s+mode|problem|phenomenon)\\s+nobody\\s+(?:talks\\s+about|is\\s+naming)\\b"
+   ],
+   "examples": [
+    {
+     "before": "This is the supervision paradox: the more you automate, the more you must watch.",
+     "after": "Automating the checks moved the work: someone now reads 200 diff summaries a week instead of writing 20 diffs."
+    },
+    {
+     "before": "Michel introduced a term I hadn't heard before: context poisoning.",
+     "after": "Michel walked through how context poisoning works in practice."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "wikipedia-b",
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Invented labels",
+    "Novelty inflation",
+    "invented concept labels",
+    "Invented Concept Labels",
+    "Scare-quoted coined labels in headers"
+   ],
+   "false_positives": "Established terms with literature behind them stay: scope creep, the digital divide, technical debt, the tragedy of the commons. A writer may coin a term deliberately, define it, and use it consistently; that is theory-building, and the definition is what separates it from slop. One defined coinage may be deliberate theory-building; several undefined ones in a piece is strong evidence of slop. Verify novelty claims against the record before rewriting them.",
+   "in_baseline": true
+  },
+  {
+   "id": "empty-caveat-slot",
+   "name": "Empty caveat slot",
+   "definition": "A concession sentence that names no concession: an unnamed challenge paired with an unnamed response ('Despite challenges, the organisation continues to thrive', 'While facing headwinds, it remains resilient'), or a stand-alone 'limits remain' line after a run of positive claims. It performs balance and adds no information. Name the actual challenge and the actual response, or cut the sentence.",
+   "cues": [
+    "Despite challenges, [subject] continues to thrive",
+    "While facing headwinds, the organization remains resilient",
+    "Despite challenges",
+    "continues to thrive",
+    "facing headwinds",
+    "remains resilient",
+    "과제도 남아 있다",
+    "한계도 분명하다",
+    "아쉬운 점도 있다"
+   ],
+   "regex": [
+    "\\bdespite\\s+(?:the\\s+|these\\s+|ongoing\\s+)?challenges,",
+    "\\bcontinues\\s+to\\s+thrive\\b",
+    "\\bwhile\\s+facing\\s+headwinds\\b",
+    "\\bremains\\s+resilient\\b",
+    "과제도\\s*남아\\s*있다",
+    "한계도\\s*분명하다",
+    "아쉬운\\s*점도\\s*있다"
+   ],
+   "examples": [
+    {
+     "before": "Despite challenges, the cooperative continues to thrive.",
+     "after": "The cooperative lost its largest buyer in 2024 and replaced the volume with three regional wholesalers."
+    },
+    {
+     "before": "Limits remain, of course.",
+     "after": "The method fails on documents over 4,000 tokens, which is about a third of our corpus."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Formulaic challenges",
+    "D-12 내용 없는 반론 슬롯 '과제도 남아 있다' (empty caveat slot)"
+   ],
+   "false_positives": "A concession that names the thing conceded is good writing: 'despite losing its export licence in March, the plant kept two shifts'. The closing-block form of this, a whole 'Challenges and Future Directions' section, is owned by the structure category; here the unit is the single contentless sentence. Do not flag a caveat that is elaborated in the following sentence.",
+   "in_baseline": false
+  },
+  {
+   "id": "both-sides-padding",
+   "name": "Both-sides padding",
+   "definition": "Every claim is balanced against its opposite regardless of the real weighting: pro and con pairs of equal length, advantages matched one for one with disadvantages, and a hedging lexicon of 'both', 'on the one hand', 'there are advantages but also' that keeps the text from concluding anything. Where the writer has a view, state it and defend it; where the evidence is lopsided, say so.",
+   "cues": [
+    "양쪽 모두",
+    "두 가지 모두",
+    "장점도 있지만",
+    "신중하게",
+    "균형",
+    "pros and cons",
+    "advantages and disadvantages"
+   ],
+   "regex": [
+    "\\bthere\\s+are\\s+(?:both\\s+)?(?:pros\\s+and\\s+cons|advantages\\s+and\\s+disadvantages|benefits\\s+and\\s+drawbacks)\\b",
+    "양쪽\\s*모두",
+    "장점도\\s*있지만"
+   ],
+   "examples": [
+    {
+     "before": "There are advantages and disadvantages to each approach, and the right answer depends on your context.",
+     "after": "Use the queue. The direct call is simpler to read and loses messages whenever the consumer restarts, which for us was twice a week."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-method",
+    "baseline"
+   ],
+   "merged_from": [
+    "G-3 안전 균형 lexicon (Safe Balance Score)",
+    "Symmetric everything: balanced pro/con pairs",
+    "Both-sides padding"
+   ],
+   "false_positives": "Genuinely contested questions deserve both sides, and neutral registers (encyclopedia, court reporting, a decision record listing options) require them. A trade-off table is a form, not a hedge. Flag when the balance is manufactured, when one side is padded to match the other, or when the author plainly holds a view the text refuses to state.",
+   "in_baseline": true
+  },
+  {
+   "id": "treadmill-redundancy",
+   "name": "Treadmill (restating without advancing)",
+   "definition": "Paragraphs restate the premise in fresh words instead of advancing it: motion without distance. Signs are a passage that loses no information when cut by 40 to 60 percent, connections between paragraphs asserted rather than made, and filler that spends words without adding a claim. For each paragraph name the one fact, claim or turn it contributes; if there is none, cut it, and if there is one, lead with it.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Testing matters. Without tests, teams cannot be confident in their changes. This lack of confidence slows delivery, because engineers hesitate to change code they cannot verify.",
+     "after": "Without tests, engineers hesitate to change code, and our median PR sat for three days."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "vollmer",
+    "goedecke",
+    "baseline"
+   ],
+   "merged_from": [
+    "Treadmill effect (low information density)",
+    "Redundancy, repetition, lack of coherence",
+    "Waffle (verbosity)"
+   ],
+   "false_positives": "Deliberate repetition for teaching, liturgy, speeches and children's writing is a device, not slop. Summaries and abstracts restate by design, and a recap after a long technical section helps. Newer, terser models waffle less, so low density is weaker evidence than it was. Measure by information added per paragraph rather than by length.",
+   "in_baseline": true
+  },
+  {
+   "id": "diff-anchored-writing",
+   "name": "Diff-anchored writing",
+   "definition": "Documentation, comments or prose describe the thing as a change from a state the reader never saw: 'This function was added to replace the previous approach', 'the improved version now handles'. A reader without the commit history gets archaeology instead of behaviour. Describe what it does now, and put the history in the changelog or the commit message.",
+   "cues": [
+    "was added to replace the previous approach",
+    "previously",
+    "the old approach",
+    "This function was added to replace",
+    "the improved version now handles",
+    "now handles",
+    "the improved version"
+   ],
+   "regex": [
+    "\\bwas\\s+added\\s+to\\s+replace\\b",
+    "\\bthe\\s+(?:previous|old)\\s+(?:approach|implementation|version|behaviour|behavior)\\b",
+    "\\bthe\\s+(?:improved|updated|new)\\s+version\\s+now\\b",
+    "\\breplaces?\\s+the\\s+(?:old|previous)\\s+(?:logic|code|approach|method)\\b"
+   ],
+   "examples": [
+    {
+     "before": "This function was added to replace the previous approach of iterating through all items, which caused O(n^2) performance.",
+     "after": "This function looks items up in a hash map, so a lookup costs O(1)."
+    },
+    {
+     "before": "The improved version now handles empty payloads.",
+     "after": "An empty payload returns 204."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "baseline"
+   ],
+   "merged_from": [
+    "§30 Writing about the previous version",
+    "Diff-anchored writing",
+    "diff-anchored writing"
+   ],
+   "false_positives": "Version-scoped documents narrate change correctly and stay unflagged: changelogs, release notes, migration guides, upgrade notes, decision records, postmortems, and any document whose subject is the change. A comparison that helps a reader migrating from the old API is content. Flag only where a standalone description of current behaviour was expected.",
+   "in_baseline": true
+  },
+  {
+   "id": "hallucinated-citations",
+   "name": "Hallucinated or unverifiable citations",
+   "definition": "References that cannot carry the claim: URLs to sites that never existed or 404 with no archive copy, ISBNs that fail their checksum, DOIs that do not resolve or resolve to an unrelated paper, real journals with invented volumes, pages or author lists, books cited with no page number or link, placeholder identifiers built from a tiny number (pubmed.ncbi.nlm.nih.gov/3), and invented rules, policies or shortcut links that say something other than claimed. Resolve every identifier, compare the title and authors, and check the cited page actually contains the claim.",
+   "cues": [
+    "404",
+    "non-existent websites",
+    "doi",
+    "ISBN",
+    "bad isbn",
+    "Proceedings of the IEEE",
+    "10.1109/PROC.1974.9547",
+    "10.1109/PROC.1967.6033",
+    "(8th ed.)",
+    "p. 12",
+    "https://pubmed.ncbi.nlm.nih.gov/3",
+    "pmid=3",
+    "WP:",
+    "per policy",
+    "guidelines state"
+   ],
+   "regex": [
+    "pubmed\\.ncbi\\.nlm\\.nih\\.gov/\\d{1,3}\\b",
+    "\\bpmid\\s*=\\s*\\d{1,3}\\b",
+    "\\bdoi\\s*[:=]\\s*10\\.\\d{4,9}/[-._;()/:a-z0-9]+",
+    "\\bper\\s+policy\\b",
+    "\\bguidelines\\s+state\\b"
+   ],
+   "examples": [
+    {
+     "before": "M. E. Van Valkenburg, \"The validity and limitations of Ohm's law in non-linear circuits,\" Proceedings of the IEEE, vol. 62, no. 6, 1974. doi:10.1109/PROC.1974.9547",
+     "after": "Citation removed: the DOI resolves to an unrelated paper and the article does not appear in that volume."
+    },
+    {
+     "before": "Analysts note that traditionalists appeal to Burke's notion of prescription. [1] Goldwater, Barry (1960). The Conscience of a Conservative. p. 12.",
+     "after": "Claim removed: the cited page does not mention Burke, and the book does not discuss prescription."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-c",
+    "vollmer"
+   ],
+   "merged_from": [
+    "Broken external links in several citations",
+    "Invalid DOI and ISBN checksums",
+    "DOIs that lead to unrelated articles",
+    "Book citations without page numbers or URLs",
+    "Irrelevant low-ID placeholder link (pubmed.ncbi.nlm.nih.gov/3)",
+    "Misquoted policies and made-up shortcuts (WP:AIFICTPOLICY, WP:AISHORTCUT)",
+    "Missing or hallucinated citations"
+   ],
+   "false_positives": "Link rot is ordinary: a dead URL with an archive copy, a paywalled journal that works through a library, or a link mangled by a bot or a copy-paste is a human error, not a hallucination. One broken reference proves nothing; several in one new passage, none archived, is the signal. A 2018 to 2023 VisualEditor bug inserted low-numbered PubMed ids that look fabricated and are not. Page-number-free book citations are common in older articles written by people. The regexes here only locate identifiers to check, they do not by themselves indicate a problem.",
+   "in_baseline": false
+  },
+  {
+   "id": "hallucinated-system-references",
+   "name": "Hallucinated or stale system references",
+   "definition": "Tags, templates, categories or API calls that look right and do not exist in the system: invented category names that read like SEO keywords or generic concepts, categories renamed or deleted since the model's training data, and markup deleted after the cutoff (the lang-xx template family, removed in September 2024). The mechanism transfers to any platform: a plausible identifier that the target system has never had, or had and dropped.",
+   "cues": [
+    "[[Category:American hip hop musicians]]",
+    "[[Category:Entrepreneurs]]",
+    "{{lang-en",
+    "{{lang-fr",
+    "lang-??"
+   ],
+   "regex": [
+    "\\{\\{lang-[a-z]{2,3}\\|",
+    "\\[\\[category:[a-z][^\\]]{0,60}\\]\\]"
+   ],
+   "examples": [
+    {
+     "before": "[[Category:American hip hop musicians]]",
+     "after": "[[Category:American hip-hop musicians]]"
+    },
+    {
+     "before": "{{lang-fr|maison}}",
+     "after": "{{langx|fr|maison}}"
+    }
+   ],
+   "severity": "context",
+   "scope": "language-specific",
+   "sources": [
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Non-existent or out-of-place categories (WP:AIREDCAT)",
+    "Templates deleted after the knowledge cutoff"
+   ],
+   "false_positives": "Humans make the same mistakes: new users do not know the naming rules, and returning editors remember categories that were deleted while they were away. Check earlier revisions, because a reviewer may already have removed the broken ones. Valid only as corroborating evidence alongside other signs, never on its own. The category regex matches every well-formed category tag, so use it to enumerate candidates for checking rather than as a finding.",
+   "in_baseline": false
+  },
+  {
+   "id": "misattributed-source-analysis",
+   "name": "Analysis misattributed to a named source",
+   "definition": "A retrieval-augmented model attaches its own interpretive gloss to a real named source or citation, whether or not that source says anything of the kind: 'Roger Ebert highlighted the lasting influence', 'Fridrichova highlights that ... emphasizing their critical view', 'This citation demonstrates the enduring relevance'. The citation is real, the claim about it is generated. Only reading the cited source settles it.",
+   "cues": [
+    "Roger Ebert highlighted the lasting influence",
+    "Fridrichová highlights that",
+    "emphasizing their critical view",
+    "This citation demonstrates the",
+    "demonstrating his influence"
+   ],
+   "regex": [
+    "\\bthis\\s+(?:citation|source|reference)\\s+demonstrates\\b",
+    "\\bdemonstrating\\s+(?:his|her|its|their)\\s+influence\\b",
+    "\\bhighlight(?:s|ed|ing)\\s+the\\s+(?:lasting|enduring|continued)\\s+(?:influence|relevance|impact|importance)\\b",
+    "\\bemphasiz(?:es|ing)\\s+(?:his|her|their)\\s+critical\\s+view\\b"
+   ],
+   "examples": [
+    {
+     "before": "Fridrichova analyzes the distinction made by Blois and Bar, emphasizing their critical view on truncations. This citation demonstrates the enduring relevance of Blois's work.",
+     "after": "Fridrichova (2019, p. 44) compares Blois and Bar's treatment of truncation."
+    },
+    {
+     "before": "Roger Ebert highlighted the lasting influence of the film.",
+     "after": "Ebert gave the film three stars and called the second act 'a mess with a good heart'."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Superficial analysis misattributed to a named source (RAG)"
+   ],
+   "false_positives": "A gloss the cited source actually supports is normal scholarship, so verify before flagging rather than deleting on sight. Review essays and historiography legitimately characterise what a body of work emphasises. The tell is an interpretive claim about a source that the source does not make, usually in participial form and usually about influence or legacy.",
+   "in_baseline": false
+  },
+  {
+   "id": "list-title-as-entity",
+   "name": "Descriptive title treated as a named thing",
+   "definition": "The opening sentence defines a working or descriptive title as though it were a real-world entity: 'X refers to', 'X is the chronological list of', 'The \"List of ...\" is a curated compilation of'. The article becomes about its own title rather than its subject. Introduce the subject directly instead.",
+   "cues": [
+    "refers to",
+    "is the chronological list",
+    "is a curated compilation",
+    "The \"List of ...\" is"
+   ],
+   "regex": [
+    "\\bis\\s+a\\s+curated\\s+(?:compilation|collection|list)\\b",
+    "\\bis\\s+the\\s+chronological\\s+list\\s+of\\b",
+    "\\b(?:the\\s+)?[\\\"“]list\\s+of\\b"
+   ],
+   "examples": [
+    {
+     "before": "The \"List of songs about Mexico\" is a curated compilation of musical works that reference Mexico.",
+     "after": "Songs about Mexico range from corridos of the revolution to Ry Cooder's Chavez Ravine."
+    },
+    {
+     "before": "EuroGames editions is the chronological list of the biennial EuroGames.",
+     "after": "The EuroGames, a European LGBT+ multi-sport event, have been held biennially since 1992."
+    }
+   ],
+   "severity": "context",
+   "scope": "language-specific",
+   "sources": [
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Leads treating list or descriptive titles as proper nouns"
+   ],
+   "false_positives": "Style guides do allow a descriptive title at the start of a lead when it reads naturally, and 'refers to' is correct when the article really is about a term or a usage ('Gaslighting refers to a pattern of manipulation'). Dictionaries and glossaries define words for a living. The mechanism carries to any CMS where the title is a separate field from the body.",
+   "in_baseline": false
+  },
+  {
+   "id": "gratuitous-universals-and-category-errors",
+   "name": "Gratuitous universals and category errors",
+   "definition": "Authority borrowed from a scope the writer cannot check ('taught in every first-year biochemistry course', 'every engineer knows'), and moral or evaluative adjectives attached to things that cannot carry them, including assumptions and abstractions treated as if they had intentions or virtues. Replace the quantifier with the real scope, and the moral adjective with the property you actually mean.",
+   "cues": [
+    "every",
+    "Taught in every first-year biochemistry course",
+    "universal quantifiers"
+   ],
+   "regex": [
+    "\\bin\\s+every\\s+(?:first-year|introductory|undergraduate)\\s+[a-z]+\\s+(?:course|class|textbook)\\b",
+    "\\bevery\\s+(?:single\\s+)?(?:developer|engineer|business|company|organization|organisation|team|marketer)\\s+(?:knows|needs|should|must|wants)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Taught in every first-year biochemistry course.",
+     "after": "Taught in introductory biochemistry."
+    },
+    {
+     "before": "Every engineer knows that caching is hard.",
+     "after": "Cache invalidation is hard, and the two engineers who wrote this layer both say so."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Gratuitous universal quantifiers",
+    "moral-adjective category errors"
+   ],
+   "false_positives": "A universal that is true and checkable stays: 'every EU member state has ratified it' is a fact with a register behind it. Mathematics, logic and law quantify universally by nature. Rhetorical 'we all know' in a speech is a device. Flag when the writer plainly cannot have checked the scope they claim.",
+   "in_baseline": false
+  },
+  {
+   "id": "vague-numeric-range",
+   "name": "Estimated range standing in for a measurement",
+   "definition": "A numeric range is given where a single observed number would exist if the writer had done the thing: 'takes 5 to 10 minutes', 'between 20 and 30 requests'. The range advertises that the figure was guessed. State the number you measured, or say that you did not measure it.",
+   "cues": [
+    "5 to 10 minutes",
+    "X to Y minutes",
+    "between X and Y"
+   ],
+   "regex": [
+    "\\b\\d+\\s*(?:to|-|–)\\s*\\d+\\s+(?:minutes|hours|seconds|days|weeks|months)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Setup takes 5 to 10 minutes.",
+     "after": "Setup took 7 minutes on a clean machine."
+    },
+    {
+     "before": "The job runs in 20 to 30 seconds.",
+     "after": "The job ran in 26 seconds, median of five runs."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "hassid"
+   ],
+   "merged_from": [
+    "\"5 to 10 minutes.\" (vague ranges)"
+   ],
+   "false_positives": "A range from genuine, documented variance is honest and often more truthful than a single number: measurement spreads, confidence intervals, published tolerances, cooking times that depend on the oven, and forecasts. Regulatory and safety text specifies ranges deliberately. The tell is a round range where one measurement would exist and none was taken.",
+   "in_baseline": false
+  },
+  {
+   "id": "flat-dialogue-and-exposition",
+   "name": "Flat dialogue and as-you-know-Bob exposition",
+   "definition": "Characters are interchangeable: no distinct idiolect, verbal tic, dialect or pattern of evasion separates one speaker from another, and speech carries information the speakers already share so the reader can hear it. Mysteries resolve through explanation rather than action. Give each speaker a way of talking, and let events rather than briefings carry the plot.",
+   "cues": [],
+   "regex": [
+    "\\bas\\s+you\\s+know,\\s+(?:doctor|captain|professor|father|mother)\\b"
+   ],
+   "examples": [
+    {
+     "before": "\"As you know, Doctor, the reactor was built in 1974 and has never been serviced,\" she said.",
+     "after": "\"Nineteen seventy-four,\" she said. \"Nobody's opened it since.\" He already knew. He let her say it anyway."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Dialogue flattening",
+    "'As-you-know-Bob' exposition"
+   ],
+   "false_positives": "Some registers flatten speech on purpose: procedural drama, courtroom transcript, minimalist fiction where the sameness is the point, and translated dialogue that lost its dialect on the way. Expository dialogue is a genre convention in radio drama and in children's writing. Judge across a whole scene rather than a single line.",
+   "in_baseline": false
+  },
+  {
+   "id": "pathetic-fallacy-mood-setting",
+   "name": "Mood-saturated setting (pathetic fallacy)",
+   "definition": "Weather, rooms and objects exist only to mirror a character's feeling: rain that matches grief, a room that is cold because the marriage is. The setting carries no independent fact, so it stops being a place. Let the setting be itself and let the emotion come from what happens in it.",
+   "cues": [
+    "mirroring her unspoken grief",
+    "pattered softly against the window"
+   ],
+   "regex": [
+    "\\bmirroring\\s+(?:her|his|their)\\s+(?:unspoken\\s+)?(?:grief|mood|sorrow|anxiety|turmoil|sadness)\\b",
+    "\\brain\\s+(?:pattered|drummed|tapped)\\s+(?:softly|gently)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The rain pattered softly against the window, mirroring her unspoken grief.",
+     "after": "It rained. She kept the window open anyway, because the room smelled of his tobacco."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Mood-saturated weather and rooms (pathetic fallacy)"
+   ],
+   "false_positives": "Pathetic fallacy is a legitimate literary device with a long history, used deliberately by Hardy, Bronte and most gothic fiction. Poetry uses it as a mode. Flag when it is the only thing the setting does, and when every environmental detail in the piece tracks the emotional beat.",
+   "in_baseline": false
+  },
+  {
+   "id": "off-metaphor",
+   "name": "Mixed or subtly off metaphor",
+   "definition": "Images in the right semantic ballpark with the wrong physics: figures that fall apart the moment you picture them, or two incompatible figures welded into one sentence. The model reaches for the associated word rather than the working image. Picture the metaphor literally; if the picture is impossible or silly, rebuild it from one source domain.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The algorithm whispered through the circuits, a river of logic that bloomed in the garden of her mind.",
+     "after": "The algorithm ran the way water finds a crack: it took the cheapest path and widened it."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Mixed or subtly off metaphors"
+   ],
+   "false_positives": "Deliberate catachresis and surrealism break physics on purpose, and comic writing mixes metaphors for the joke. Idioms that are technically mixed have often lexicalised ('nip it in the bud'). AI editing tools flag strong human metaphors as confusing because those resist categorical mapping, so a strange image alone is not evidence. Judge whether the image does work in the sentence.",
+   "in_baseline": false
+  },
+  {
+   "id": "cliche-and-purple-prose",
+   "name": "Cliche, purple prose, no subtext",
+   "definition": "Stock phrasing and over-ornamented description with nothing beneath the surface: everything the text means is stated on the page, no layer sits under the dialogue or the image, and the ornament substitutes for observation. Expert readers name this cluster (cliches, purple prose, too much exposition, absent subtext) as how they recognise machine fiction.",
+   "cues": [
+    "clichés",
+    "purple prose",
+    "lack of subtext"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Her heart pounded like a drum as a single tear traced its way down her porcelain cheek, and she knew in that moment that she would never be the same again.",
+     "after": "She read the message twice, put the phone face down, and went back to loading the dishwasher."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Clichés, purple prose, lack of subtext"
+   ],
+   "false_positives": "Genre fiction runs on shared convention, and a cliche used knowingly can be exact. Some traditions prize ornament (baroque, gothic, certain lyric essays). Fine-tuned models suppress these tells, so their absence says nothing about authorship, and their presence in a first draft is ordinary human beginner writing.",
+   "in_baseline": false
+  },
+  {
+   "id": "sudden-polish-jump",
+   "name": "Sudden polish above the writer's baseline",
+   "definition": "Diction and syntax leap above the writer's demonstrated level inside one piece or between consecutive pieces: clause structures, vocabulary and punctuation that no earlier work by this author shows. Requires a prior corpus to read against, and points at the boundary between what the person wrote and what a tool produced.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "A paragraph of plain, error-prone prose followed by a flawless periodic sentence with a semicolon and a subordinate chain.",
+     "after": "Ask the writer about the shift and compare against three earlier pieces before drawing any conclusion."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Sudden-polish jump (style drift from baseline)"
+   ],
+   "false_positives": "People improve, edit, and get help from copy-editors, Grammarly, autocorrect and friends; cyborg writing is not fraud. Teachers in controlled studies flagged the better-written essays as AI, which is exactly the bias this pattern invites. Never use it alone or as an accusation, and treat register change between an email and an essay as normal.",
+   "in_baseline": false
+  },
+  {
+   "id": "criteria-echoing",
+   "name": "Rubric and criteria echoing",
+   "definition": "The text names the assignment rubric's own criteria, or the reviewing guideline's wording, with suspicious fluency: the prompt's checklist reappears as the piece's structure and vocabulary. It shows the generator was handed the criteria and optimised against them rather than doing the work.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "This essay demonstrates critical engagement with the source material, uses evidence effectively, and maintains a coherent structure throughout.",
+     "after": "Milgram's 1963 obedience results do not survive Perry's archival findings, and section three works through why."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Rubric-language echoing"
+   ],
+   "false_positives": "Students are taught to signpost against the rubric, and many style guides recommend it. Grant applications and tender responses are required to mirror the criteria section by section. Flag when the criteria vocabulary appears in place of the content it was meant to measure.",
+   "in_baseline": false
+  },
+  {
+   "id": "lost-thread-context",
+   "name": "Lost prior-thread context",
+   "definition": "A reply does not answer what the earlier message asked: it responds to the topic rather than the question, drops the specifics raised upthread, and reintroduces information already settled. In correspondence this is the clearest sign that the text was generated from a summary rather than from the thread.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Thanks for reaching out about the invoice. Our billing team is happy to help with any questions you may have.",
+     "after": "Invoice 2214 was raised against the old PO. I have credited it and reissued against PO 8871 as you asked on Tuesday."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Loss of prior-thread context"
+   ],
+   "false_positives": "People also skim, forward threads to colleagues who lack the history, and answer from a phone. Long threads legitimately restate context for new recipients. Flag when the reply cannot be reconciled with a question that was asked plainly and recently.",
+   "in_baseline": false
+  },
+  {
+   "id": "fabricated-bylines-and-datelines",
+   "name": "Fabricated bylines and datelines",
+   "definition": "Publishing metadata that does not correspond to anyone or anywhere: author bios and headshots for reporters who do not exist, and date or place lines that contradict the events described. Distinct from the prose tells, this is fabricated provenance attached to the piece, and it is checkable against staff directories, image marketplaces and the event record.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "By Drew Ortiz. Drew has always had a passion for the outdoors and lives in the countryside with his dog.",
+     "after": "Byline removed: no such staff member exists and the portrait comes from a stock AI-face marketplace."
+    },
+    {
+     "before": "BRUSSELS, 3 March 2026 - the summit opened on Monday.",
+     "after": "Dateline corrected: the summit opened in Ghent on 5 March 2026."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Boilerplate bios of fictional reporters",
+    "Datelines mismatched with events"
+   ],
+   "false_positives": "Pen names, house bylines ('By the Economist'), and staff writers who keep a low online presence are all legitimate. Wire copy carries the originating dateline, which can look wrong beside a later local event. Verify against the masthead and the event record rather than assuming.",
+   "in_baseline": false
+  },
+  {
+   "id": "permissions-gaming",
+   "name": "Throwaway rewrites to inflate a record",
+   "definition": "Many benign-looking, unconstructive AI rewrites across unrelated pages in quick succession, made to build an edit count or contribution record before pursuing a different goal. The individual edits look harmless; the volume, the spread and the timing are the signal.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Forty small rewrites across forty unrelated articles in one evening, none changing a fact.",
+     "after": "Reviewed as a pattern rather than edit by edit, and raised with the contributor before any action."
+    }
+   ],
+   "severity": "context",
+   "scope": "language-specific",
+   "sources": [
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Permissions gaming with throwaway AI rewrites (WP:PGAME)"
+   ],
+   "false_positives": "The inference runs one way only: rapid AI-assisted additions are not evidence of gaming, while a contributor already shown to be gaming permissions may well be using AI for the volume. Gnomes, typo-fixers and bot-assisted cleanup make many small edits legitimately. Newcomer enthusiasm looks the same from outside.",
+   "in_baseline": false
+  },
+  {
+   "id": "pro-authoritarian-bias",
+   "name": "Pro-authoritarian framing",
+   "definition": "On political topics, generated text leans toward state-media framing, criticises the governments of freer countries more readily than repressive ones, and sometimes declines on safety grounds where the safety concern runs one direction. Observed more strongly in Chinese-language responses than English as of 2026. Check political framing against independent reporting before publishing it.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The region has seen significant development and improved stability under the current administration's guidance.",
+     "after": "Human Rights Watch documented 340 detentions in the region in 2025; the administration disputes the count."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Pro-authoritarian bias"
+   ],
+   "false_positives": "Neutral phrasing about an authoritarian state is often correct encyclopedic tone, and criticism of a democracy is not bias. The pattern is a corpus-level tendency reported in 2026 press coverage, not a verdict on any single sentence. Language-model refusals also have many other causes.",
+   "in_baseline": false
+  }
+ ],
+ "report": "Only two regexes touched the human control prose: 'nestled in/among' hits Twain once (0.05 per 10,000 words) and a bare 'in connection with' hit Strunk three times (1.78 per 10,000), so that one was narrowed to 'in connection with her/his/their/its work|role|career|research'; twelve further candidates were dropped for having no literal cue or example behind them ('we all know that', 'both sides make valid points', 'previously, this function', a bare 'per WP:' shortcut, and two of the three numeric-range variants). The large folds are significance inflation (twelve raw patterns, including self-labelling significance, regression to the mean and the overgeneralized abstract), vague attribution (eleven, including vague third-party validation and the Korean agentless verdict), promotional language (eight, including the travel-guide, press-release and product-round-up sub-forms) and hallucinated citations (seven identifier and policy-fabrication variants). Patterns were kept apart where the mechanism differs: source-count inflation cites real sources and overstates their number, notability name-dropping catalogues outlets instead of what they said, vague association hides a concrete relation behind 'associated with', and cutoff disclaimers admit the gap that speculative gap-fill hides.",
+ "added": 30,
+ "regex_dropped": 12
+}

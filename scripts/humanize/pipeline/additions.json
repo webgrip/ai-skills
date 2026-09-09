@@ -1,0 +1,32 @@
+{
+ "en": {
+  "lets-invitation-opener": {
+   "cues": [
+    "Let's dive into",
+    "Let's dive in",
+    "Let's jump in",
+    "Let's get into it",
+    "Let's start with the basics"
+   ],
+   "regex": [
+    "\\blet(?:'s|’s)\\s+(?:dive|jump)\\s+(?:in|into|deeper)\\b",
+    "\\blet(?:'s|’s)\\s+get\\s+(?:into\\s+it|started)\\b"
+   ]
+  },
+  "rule-of-three": {
+   "cues": [],
+   "regex": [
+    "\\b(?:faster|deeper|better|stronger|smarter|cheaper)\\s+\\w+(?:\\s+\\w+)?,\\s+(?:faster|deeper|better|stronger|smarter|cheaper)\\s+\\w+(?:\\s+\\w+)?,\\s+and\\s+a?\\s*\\w+"
+   ]
+  }
+ },
+ "nl": {},
+ "flags": {
+  "markdown-in-non-markdown-surface": {
+   "skip_on_markdown": true
+  },
+  "unicode-math-bold-and-bullets": {
+   "skip_on_markdown": true
+  }
+ }
+}

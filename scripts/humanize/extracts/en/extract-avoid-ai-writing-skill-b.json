@@ -1,0 +1,902 @@
+{
+  "source": "avoid-ai-writing-skill-b: conorbronsdon/avoid-ai-writing SKILL.md, lines 440-872 (second half: rest of the rulebook, severity tiers, self-reference escape hatch, context profiles, voice profiles, house style, output format, tone calibration, never-inject list)",
+  "patterns": [
+    {
+      "name": "Infomercial engagement hooks",
+      "category": "rhetoric",
+      "definition": "A short fragment-hook placed mid-flow that tees up a reveal and manufactures suspense around ordinary information. Delete the hook and state the thing.",
+      "cues": ["The catch?", "The kicker?", "Here's the thing.", "But here's the kicker:", "The best part?", "Plot twist:", "The result?"],
+      "examples": [{"before": "The catch? It only works on weekends.", "after": "It only works on weekends."}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Distinct from rhetorical-question openers (which stall before a point) and chatbot artifacts (which perform helpfulness): these are mid-flow teasers that pad the rhythm. Adapted from Aboudjem/humanizer-skill P41. Not in the tolerance matrix, so full strength in every context profile. 'Here's the thing' also appears on the never-inject list as performed candor on the rewrite side."
+    },
+    {
+      "name": "Fake-candid openers",
+      "category": "rhetoric",
+      "definition": "A standalone sentence-opener that stages a theatrical pause before an ordinary point, in a fake-candid register. The tell is the setup-and-reveal shape, not the word.",
+      "cues": ["Honestly?", "Look,", "Real talk:", "Let's be honest —"],
+      "examples": [{"before": "Let's be honest — the migration took longer than planned."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Source lists this under Infomercial engagement hooks as the same move in a fake-candid register. 'honestly' or 'look' mid-sentence in casual prose is ordinary English and stays unflagged. Adapted from blader/humanizer P33. 'Let's be honest' and 'real talk' also on the never-inject list (performed candor)."
+    },
+    {
+      "name": "Launch-copy dramatic introductions",
+      "category": "rhetoric",
+      "definition": "Introducing a product like a game-show contestant instead of saying what it does and for whom: 'Enter X.', 'Meet X, your new favorite Y', 'Say hello to X', 'Think A meets B'. Near-deterministic LLM shape for product and launch posts, especially short social copy.",
+      "cues": ["Enter Flowdesk.", "Meet Flowdesk, your new favorite treasury dashboard", "Say hello to Flowdesk", "Think Notion meets Figma", "your new favorite", "your new go-to", "the new home of", "the new way to", "the new standard in", "the new standard for", "meets"],
+      "examples": [{"before": "Meet Flowdesk, your new favorite treasury dashboard", "after": "Flowdesk shows a fund's full treasury position on one screen."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Detector, stated exactly: sentence-initial 'Meet' or 'Think', then one capitalized token of 2-30 characters. After 'Meet X,' requires one of four launch-copy heads: 'your new favorite', 'your new go-to', or 'the new home/way/standard' and those three only when followed by 'of' / 'to' / 'in|for' or the end of the clause. After 'Think X' requires 'meets' and a second capitalized token. Judgment-only surfaces (flag in launch and announcement copy only): 'Say hello to X' ('Say hello to Grandma.' is ordinary), bare 'Meet X, your new [role]' ('Meet Sarah, your new account manager' is how humans introduce colleagues, pets, babies), bare 'Enter X.' (UI instructions 'Enter Password.', 'Enter Amount.', 'Enter Username — your work email.'; stage directions 'Enter Hamlet.'; column narrative 'Enter Rashford.'). Residue accepted: person-name variants fire ('Meet Alice, your new favorite aunt', 'Think Alice meets Bob at noon'). Misses: two-token product names ('Meet North Star', 'Think Google Docs meets Microsoft Word'). Before the heads required a tail, 'Meet Rosa, the new home secretary' and 'Meet Emma, the new way station manager' fired. Sits next to stale social-ad tells (unlock, elevate, link in bio). Source: welttowelt/stop-slop-refined (issue #108)."
+    },
+    {
+      "name": "Fake-casual register: one-word verdict closers",
+      "category": "rhetoric",
+      "definition": "A single lowercase verdict word standing as the whole closing line of a post; the drama is outsourced to the word instead of carried by the content.",
+      "cues": ["wild.", "insane.", "unhinged."],
+      "examples": [{"before": "wild."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "One of six props of the Fake-casual register, the register models emit when asked for a lowercase-casual social voice; a post can clear every vocabulary tier and still wear this costume. Fix: replace the verdict word with the specific surprise. Judgment-only, no detector (needs register judgment). Carve-out for the whole register: a writer whose established voice runs on these props keeps them; the register is a tell for imposed casualness, not a ban on playfulness. Source: welttowelt/stop-slop-refined (#108)."
+    },
+    {
+      "name": "Fake-casual register: stage directions",
+      "category": "rhetoric",
+      "definition": "Asterisk-wrapped stage business inserted as a beat in prose to perform a reaction the content does not carry.",
+      "cues": ["*checks notes*", "*chef's kiss*", "*mic drop*", "*takes a deep breath*", "*sips coffee*", "*sips tea*", "*nervous laughter*"],
+      "examples": [{"before": "*checks notes*"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Detector is a closed list of exactly six asterisk stage directions: checks notes, chef's kiss, mic drop, takes a deep breath, sips coffee/tea, nervous laughter. The apostrophe in chef's kiss is required (straight or curly) because '*chefs kiss*' would match 'At midnight, *chefs kiss* their spouses goodbye'. Disclosed miss: '*checks calendar*' does not fire. Same established-voice carve-out as the rest of the register. Fix: cut the stage business."
+    },
+    {
+      "name": "Fake-casual register: wink asides",
+      "category": "rhetoric",
+      "definition": "A parenthetical wink that insists on the surprise instead of showing it.",
+      "cues": ["(yes, really)", "(no, seriously)", "(yes, seriously)", "(no, really)"],
+      "examples": [{"before": "(yes, really)"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Detector covers exactly four parentheticals, the full (yes|no) x (really|seriously) grid. Disclosed miss: '(yes, honestly)'. Fix: cut the wink. Same established-voice carve-out."
+    },
+    {
+      "name": "Fake-casual register: label-prefix openers",
+      "category": "rhetoric",
+      "definition": "A genre label prefixed to a post or line, with or without a colon, that announces the kind of remark instead of making it.",
+      "cues": ["hot take", "fun fact", "pro tip", "PSA", "unpopular opinion"],
+      "examples": [{"before": "hot take: monorepos are fine"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "'Plot twist:' is the same move and is caught under Infomercial engagement hooks. Judgment-only (skill-only, no detector). Fix: delete the label and say the thing."
+    },
+    {
+      "name": "Fake-casual register: 'because of course it does'",
+      "category": "rhetoric",
+      "definition": "The tag 'because of course it does' appended as a knowing shrug to outsource the joke to the phrase.",
+      "cues": ["because of course it does"],
+      "examples": [{"before": "because of course it does"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Judgment-only: no tense gate separates the wink from the ordinary grumble, which uses the same form ('The build failed because of course it did.')."
+    },
+    {
+      "name": "Fake-casual register: self-QA volley",
+      "category": "syntax",
+      "definition": "A run of self-posed yes/no questions each answered in one word, staged as a rapid-fire exchange with oneself.",
+      "cues": ["Is it fast? Yes. Is it cheap? Also yes."],
+      "examples": [{"before": "Is it fast? Yes. Is it cheap? Also yes."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Judgment-only. Part of the Fake-casual register set; same established-voice carve-out."
+    },
+    {
+      "name": "Social endorsement closers",
+      "category": "rhetoric",
+      "definition": "A curatorial sign-off line closing a share or recommendation post, usually a colon teeing up a link, that performs a recommendation without giving a reason to click. It is generic and demonstrative-anchored ('THIS one') so it could sit under any link.",
+      "cues": ["This one is worth your time:", "This one's a must-read:", "I highly recommend giving this a read.", "Do yourself a favor and read this.", "You won't want to miss this one.", "Save this for later.", "Bookmark this.", "Don't sleep on this one.", "Trust me, you'll want to read this.", "Thank me later."],
+      "examples": [{"before": "This one is worth your time:", "after": "Sarah's breakdown of why context windows leak — the clearest explanation I've found for anyone debugging RAG pipelines."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P1. Distinct from the bare 'worth [verb]ing' word-table entry (a weak word inside a sentence) and from Infomercial engagement hooks (mid-flow teasers): this is the whole closing line of a social post. Fix: say what the thing is and who it is for, then drop the CTA; if no specific reason, no sign-off at all. Tolerance: linkedin strict (the LinkedIn share-post tell), blog strict, technical-blog strict, investor-email strict, docs skip, casual relaxed (1 OK in a DM)."
+    },
+    {
+      "name": "Emotional flatline",
+      "category": "rhetoric",
+      "definition": "Claiming an emotion as a structural crutch (a list introduction or transition) without the writing conveying it; tell-don't-show. Includes the bare section-header variant that pre-announces significance.",
+      "cues": ["What surprised me most", "I was fascinated to discover", "What struck me was", "I was excited to learn", "The most interesting part", "Interesting part of the project:", "Interesting thing here:", "Interesting aspect:"],
+      "examples": [{"before": "What surprised me most was how fast the index rebuilt."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Not always AI; also lazy human writing on autopilot; flag either way. The fix is not 'never say surprised': if you claim an emotion the writing around it should earn it, otherwise cut the claim and present the thing directly. The header form drops 'the most' but does the same job."
+    },
+    {
+      "name": "Trendy-colloquialism shortcut ('hits different')",
+      "category": "vocabulary",
+      "definition": "A trendy colloquialism used as a shortcut to sound relatable without earning the emotional beat.",
+      "cues": ["hit differently", "hits different"],
+      "examples": [{"before": "Reading that changelog hits different."}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Listed as a related pattern under Emotional flatline. If something genuinely affected you, describe how; otherwise cut."
+    },
+    {
+      "name": "Lingering-attention claims",
+      "category": "rhetoric",
+      "definition": "A share-post opening frame claiming the thing has occupied the writer's mind for a duration, before the reader has any reason to care. Unfalsifiable and self-flattering; the frame implies the quote earned repeat visits without showing what it earned them with.",
+      "cues": ["the line I keep coming back to", "I can't stop thinking about this", "still thinking about this one", "this has been rattling around in my head all week", "I've been chewing on this since Tuesday"],
+      "examples": [{"before": "The line I keep coming back to: agents are teenagers.", "after": "Jeetu describes AI agents as teenagers."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P1. Distinct from Emotional flatline (claims a feeling) and Social endorsement closers (closes a post; this opens one). Carve-out, reason attached: leave it when the sentence says why the thing recurred, e.g. 'I keep coming back to Hirschman's exit-voice framing because it predicts which engineers quit and which ones file the RFC.' The tell is the bare frame with the reason missing."
+    },
+    {
+      "name": "False concession structure",
+      "category": "syntax",
+      "definition": "A 'While X is impressive, Y remains a challenge' construction where both halves are vague, used to sound balanced without weighing anything.",
+      "cues": ["While X is impressive, Y remains a challenge", "Although X has made strides, Y is still an open question", "remains a challenge", "is still an open question"],
+      "examples": [{"before": "While the tooling is impressive, adoption remains a challenge."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Fix: make the concession specific (name what is impressive, name the actual challenge) or pick a side and argue it."
+    },
+    {
+      "name": "Invented contrast-pair mirroring",
+      "category": "syntax",
+      "definition": "Forced symmetry where one half of a contrast pair is a legitimate term of art and the other is a phantom counterpart invented to balance the sentence. Invisible unless you know which half is real.",
+      "cues": ["False precision rather than genuine accuracy", "rather than"],
+      "examples": [{"before": "False precision rather than genuine accuracy", "after": "May create a misleadingly exact number rather than a more accurate one"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P1. Pairs where both halves are real ('real data rather than theoretical models', 'practical results rather than abstract speculation') are the general pattern but not the AI-specific tell. Fix: reach for an actual opposite, or drop the contrast structure and state the positive claim. Tolerance: linkedin strict, blog strict, technical-blog relaxed, investor-email strict, docs relaxed, casual skip."
+    },
+    {
+      "name": "Rhetorical question openers",
+      "category": "syntax",
+      "definition": "A rhetorical question used as a section transition to stall before the actual point. If you know the answer, say it; rhetorical questions are earned by strong setup.",
+      "cues": ["But what does this mean for developers?", "So why should you care?", "What's next?"],
+      "examples": [{"before": "So why should you care?"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Tolerance: linkedin relaxed (1 as hook OK), blog strict, technical-blog strict, investor-email strict, docs strict, casual skip."
+    },
+    {
+      "name": "Parenthetical hedging",
+      "category": "rhetoric",
+      "definition": "A parenthetical aside inserted to sound nuanced without committing. If the aside matters, give it its own sentence; if it does not, cut it.",
+      "cues": ["(and, increasingly, Z)", "(or, more precisely, Y)", "(and perhaps more importantly, W)", "and, increasingly,", "or, more precisely,", "and perhaps more importantly,"],
+      "examples": [{"before": "(and perhaps more importantly, W)"}],
+      "severity": "always",
+      "scope": "english"
+    },
+    {
+      "name": "Numbered list inflation",
+      "category": "structure",
+      "definition": "A count-headlined list ('Three key takeaways') used because numbered lists are structurally safe, padded to hit the number rather than reflecting that many discrete parallel items.",
+      "cues": ["Three key takeaways", "Five things to know", "Here are the top seven", "key takeaways", "things to know", "the top"],
+      "examples": [{"before": "Here are the top seven"}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Only use numbered lists when the content genuinely has that many discrete parallel items. Tolerance: linkedin relaxed, blog strict, technical-blog relaxed, investor-email strict, docs skip, casual skip."
+    },
+    {
+      "name": "Reasoning chain artifacts",
+      "category": "artifacts",
+      "definition": "Chain-of-thought scaffolding leaking into published prose, including numbered reasoning steps that read like an internal monologue rather than an argument for an audience. State the conclusion, then the evidence.",
+      "cues": ["Let me think step by step", "Breaking this down", "To approach this systematically", "Step 1:", "Here's my thought process", "First, let's consider", "Working through this logically"],
+      "examples": [{"before": "Let me think step by step."}],
+      "severity": "always",
+      "scope": "english"
+    },
+    {
+      "name": "Sycophantic tone",
+      "category": "rhetoric",
+      "definition": "Conversational rewards from chat interfaces that validate the reader or questioner. Remove entirely.",
+      "cues": ["Great question!", "Excellent point!", "You're absolutely right!", "That's a really insightful observation"],
+      "examples": [{"before": "Great question!"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P0 (listed with chatbot artifacts). Distinct from chatbot artifacts: sycophancy validates the reader rather than performing helpfulness."
+    },
+    {
+      "name": "Narrated candor",
+      "category": "rhetoric",
+      "definition": "Announcing one's own disclosure instead of disclosing: a separable clause advertising forthrightness ahead of the content. Deletion test: cut the frame; if the sentence loses no information, it was never content.",
+      "cues": ["Two caveats I would rather flag than let you discover later:", "I want to be upfront:", "To be fully transparent:", "Rather than bury this, I'll say it plainly:", "I could have left this out, but:", "Being honest about the limitations here:", "I would rather flag this than let you discover it later", "in the interest of full disclosure"],
+      "examples": [{"before": "Two caveats I would rather flag than let you discover later: X and Y", "after": "Two caveats: X and Y"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P1. Completes a set: chatbot artifacts perform helpfulness ('I hope this helps!'), sycophantic tone validates the reader ('Great question!'), this performs candor about oneself. Shape is usually a matched antithesis (flag rather than let you discover, say plainly rather than bury), itself a tell. Carve-outs: the disclosure itself stays ('I haven't tested this on Windows', 'the numbers in the commit message don't reproduce on my hardware', 'this is a mitigation, not a fix'); conflict-of-interest disclosure stays ('In the interest of full disclosure, I own shares in the company discussed here'; the same words with nothing behind them, 'in the interest of full disclosure, I want to be upfront about my thinking here', are the tell); the ordinary comparative is not it ('I'd rather fix it than let you inherit the mess'). Judgment-only, deliberately: a detector was implemented and reverted because every regex tight enough to spare the carve-outs stopped matching the tell."
+    },
+    {
+      "name": "Acknowledgment loops",
+      "category": "artifacts",
+      "definition": "Restating the prompt or question before answering. Pure filler in writing: the reader knows what they asked.",
+      "cues": ["You're asking about", "The question of whether", "To answer your question", "That's a great question. The..."],
+      "examples": [{"before": "To answer your question, the cache is invalidated on write."}],
+      "severity": "always",
+      "scope": "english"
+    },
+    {
+      "name": "Section-opening recap",
+      "category": "structure",
+      "definition": "Opening a section by summarizing what the previous section said. If the structure is clear the reader needs no recap.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Listed as a related pattern under Acknowledgment loops. No literal cues given."
+    },
+    {
+      "name": "Confidence calibration phrases",
+      "category": "vocabulary",
+      "definition": "Sentence adverbs and windups that signal how the reader should feel about a fact instead of letting the fact speak. Flag by density.",
+      "cues": ["It's worth noting that", "Interestingly", "Surprisingly", "Importantly", "Significantly", "Notably", "Certainly", "Undoubtedly", "Without a doubt", "It's important to note that"],
+      "examples": [{"before": "Notably, the build time dropped by half."}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "One 'notably' in a 2,000-word piece is fine; three in 500 words is AI-style emphasis stacking. 'It's important to note that' is named as a windup to cut under the blunt voice profile; the casual voice profile keeps warm hedges ('honestly', 'I think') and cuts corporate ones ('it's worth noting')."
+    },
+    {
+      "name": "Reader-steering interest cue",
+      "category": "rhetoric",
+      "definition": "A cue that pre-interprets importance for the reader before delivering the content. Works when followed by genuinely surprising data; fails when it introduces a restatement of the obvious, which is the AI default.",
+      "cues": ["Here's what's interesting", "Here's the interesting part", "Here are the parts I found interesting"],
+      "examples": [{"before": "Here's what's interesting: the cache never filled."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Listed inside Confidence calibration phrases."
+    },
+    {
+      "name": "Persuasive-authority tropes",
+      "category": "rhetoric",
+      "definition": "Phrases that assert depth or stakes rather than showing them; they announce that what follows is important. Cut the trope and lead with the substance.",
+      "cues": ["the real question is", "at its core", "fundamentally", "make no mistake", "the truth is"],
+      "examples": [{"before": "Make no mistake, this changes the deploy model."}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Same move as confidence calibration phrases but asserts depth/stakes instead of feeling. Adapted from blader/humanizer P27."
+    },
+    {
+      "name": "Self-labeling significance",
+      "category": "rhetoric",
+      "definition": "After listing several items, the writer points back at one and labels it as contrarian, clever, surprising, counterintuitive or key; typically '[that / this / the Xth / the last] [noun] is the [adjective] one'. The label does the work the content should have done.",
+      "cues": ["That last move is the contrarian one", "This is the interesting part", "That third bullet is the real story", "Here's where it gets clever", "The last bit is the counterintuitive one", "contrarian", "clever", "surprising", "counterintuitive", "interesting", "key", "important", "unusual", "smart", "brilliant", "real", "actual"],
+      "examples": [{"before": "→ Two separate indexes for tiered storage. That last move is the contrarian one. Co-locating related data usually helps cache locality.", "after": "→ Two separate indexes for tiered storage. Co-locating related data usually helps cache locality, but splitting the indexes is what makes the hot path cheap."}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Back-points after the fact; distinct from confidence calibration (front-loads the cue) and emotional flatline (prefaces a single claim). Fix: cut the labeling sentence, or restructure so the highlighted item is first or expanded with specifics."
+    },
+    {
+      "name": "Dramatized contrast against the crowd",
+      "category": "rhetoric",
+      "definition": "A claim propped on an implied lagging crowd, usually date-stamped: a trailing 'while everyone else...' clause with a dismissive verb. A strawman with a timestamp; the crowd is invented so the contrast costs nothing.",
+      "cues": ["while everyone else was still debating timelines", "while the industry wrote thinkpieces", "while everyone else wrote think-pieces", "while everyone else played catch-up", "everyone else", "others", "the industry", "the market", "the competition"],
+      "examples": [{"before": "shipped it in 2022, while everyone else was still debating timelines"}, {"before": "built it in a weekend, while the industry wrote thinkpieces"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Input-side counterpart of the never-inject 'forced contrarianism'. Adjacent to significance inflation and self-labeling significance. Fix: state the fact and cut the crowd clause, or name the actual competitor and what they did. Carve-out: literal simultaneity is ordinary narrative ('she read while everyone else watched the movie'). Detector has three branches: debate/speculation branch requires was/were/is/are + 'still' + a dismissive verb in -ing form (so adjective 'was still deliberate about', passive 'was still debated by pundits', and bare present stay clean); think-pieces branch accepts 'writing' or 'wrote'; catch-up branch accepts play/plays/played/playing with auxiliary and 'still' optional. Crowd is a closed list (everyone else, others, the industry, the market, the competition), so 'while every competitor was still debating timelines' and 'while our rivals were still debating timelines' are misses. Disclosed residue: 'while the market was still speculating about the price', 'while others were still arguing about procedure', 'while everyone else wrote think-pieces from Washington', 'while everyone else played catch-up in the spring' fire though literal; accepted under precision-over-recall. Source: welttowelt/stop-slop-refined (#108)."
+    },
+    {
+      "name": "Wall-of-text replies (missing line breaks)",
+      "category": "structure",
+      "definition": "In conversational registers, a reply-length text (roughly under 150 words) with four or more sentences delivered as one unbroken paragraph with no line break. Humans break replies at thought boundaries; LLMs default to a single dense block.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Fires only in conversational reply registers (issue and PR comments, chat, DMs, casual email). Carve-out: a single dense paragraph is the correct shape in formal long-form registers (blog intro, docs paragraph, tight one-paragraph email); never flag continuous long-form prose for lacking internal breaks. Distinct from paragraph-length uniformity (long-form, every paragraph same size): this is about zero breaks in short text. The structural detector was reverted for this false-positive class (detector/CATEGORIES.md §C), and the tolerance matrix is the wrong home because a plain issue comment auto-detects to the blog profile; scoping lives in the rule's judgment. Observed in the wild: a maintainer replied 'I prefer to talk human to human' to a block-paragraph reply."
+    },
+    {
+      "name": "Recap-flattery opener",
+      "category": "rhetoric",
+      "definition": "Replying to a person by summarizing their own work back at them with praise before getting to the point. The recap restates specifics the other person already knows, dressed as gratitude.",
+      "cues": ["Thanks for all the legwork here — the migration script and the rollback plan you worked through are what made this possible."],
+      "examples": [{"before": "Thanks for all the legwork here — the migration script and the rollback plan you worked through are what made this possible.", "after": "Thanks for the legwork — this looks right to me, one comment below."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Distinct from a genuine thank-you (short, moves on), from Sycophantic tone (generic validation) and from Acknowledgment loops (restating the prompt or prior section). Fix: substance first; if thanks is warranted, one plain clause without the recap."
+    },
+    {
+      "name": "Excessive structure: too many headers in short text",
+      "category": "structure",
+      "definition": "More than 3 headings in under 300 words. Merge sections or use prose transitions.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Threshold stated by source: >3 headings / <300 words is almost always AI trying to look organized."
+    },
+    {
+      "name": "Excessive structure: too many list items",
+      "category": "structure",
+      "definition": "8 or more bullet points in under 200 words; the content should be a paragraph, not a list.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Tolerance matrix row 'Excessive bullets': linkedin skip (lists work on LinkedIn), blog strict, technical-blog relaxed (technical lists OK), investor-email strict, docs skip (lists are docs), casual skip."
+    },
+    {
+      "name": "Formulaic section headers",
+      "category": "structure",
+      "definition": "Default scaffolding headers that name a slot rather than telling the reader something specific about what follows.",
+      "cues": ["Overview", "Key Points", "Summary", "Conclusion", "Introduction"],
+      "examples": [{"before": "## Key Points"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Use headers that tell the reader something specific about what follows."
+    },
+    {
+      "name": "Fragmented headers",
+      "category": "structure",
+      "definition": "A heading followed by a one-line warm-up that restates it before the real content starts. Cut the warm-up; the heading already did that job.",
+      "cues": [],
+      "examples": [{"before": "## Performance\nSpeed matters."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Adapted from blader/humanizer P29."
+    },
+    {
+      "name": "Diff-anchored writing",
+      "category": "content",
+      "definition": "Documentation or comments narrating a change instead of describing the thing as it is; the prose anchors to the edit the assistant just made, so a reader without commit history gets archaeology.",
+      "cues": ["was added to replace the previous approach", "This function was added to replace"],
+      "examples": [{"before": "This function was added to replace the previous approach of iterating through all items.", "after": "This function uses a hash map for O(1) lookups."}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "If the history matters it belongs in the changelog or commit message. Carve-out: inherently version-scoped documents (changelogs, release notes, migration guides, decision records) narrate change correctly and stay unflagged. Adapted from blader/humanizer P30."
+    },
+    {
+      "name": "Performed-insight phrases",
+      "category": "rhetoric",
+      "definition": "Essayist tics that announce profundity instead of delivering it; each stages a reveal and adds no fact. State the claim the phrase was gesturing at.",
+      "cues": ["sit with that for a moment", "that's not nothing", "you already know the answer", "the punchline is", "worth naming", "don't take my word for it", "that's the whole point", "is the entire business model", "that's the part nobody mentions", "the only metric that matters", "X is dead; long live X", "that's why it mattered", "Turns out"],
+      "examples": [{"before": "That's not nothing."}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "One hit can be a stylistic choice; several in one piece is a tell. 'Turns out' counts sentence-initially. 'That's not nothing' becomes the actual size of the thing; 'the punchline is' becomes the point, unannounced. Carve-out: quoted speech and genuinely comedic writing where a punchline is literal. The deterministic detector omits 'the punchline' and 'worth naming' because their literal senses cannot be separated by regex. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Negation chains",
+      "category": "syntax",
+      "definition": "Two or more 'no ...' items in a row, two or more stacked 'didn't ...' clauses for rhythm, or a negated-then-repeated verb. The chain performs decisiveness; the items are rarely load-bearing. Say what the thing is.",
+      "cues": ["No fluff, no filler, no jargon.", "It didn't ask. It didn't wait.", "Don't call it a pivot. Call it a correction."],
+      "examples": [{"before": "No fluff, no filler, no jargon."}, {"before": "Don't call it a pivot. Call it a correction."}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "One negation earns its place when the reader would otherwise assume the opposite; a chain is a drumroll. Distinct from Manufactured punchlines (same-shape fragments for drama): this fires on the negation structure itself, fragments or not. Carve-outs: mid-sentence factual inventories ('the endpoint takes no arguments, no headers, and no body') and sequential narration with restated subjects ('I did not sleep well. I did not eat breakfast.'). Detector matches only sentence-initial chains of three or more short 'no ...' items and comma-joined 'did not ...' chains with the subject elided; two-item chains and other forms are judgment calls. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Dev-blog boilerplate",
+      "category": "vocabulary",
+      "definition": "Stock simplicity slogans from developer marketing that substitute for a property you could demonstrate. Name the concrete behavior instead.",
+      "cues": ["batteries included", "it just works", "zero config", "sane defaults", "small enough to fit in your head", "fits in your head"],
+      "examples": [{"before": "zero config", "after": "installs with no config file"}, {"before": "fits in your head", "after": "the whole API is six functions"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Carve-out: quoting a product's own tagline, or discussing the phrase itself. The deterministic detector omits 'batteries included' because a software slogan and literal package contents share a surface form. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Stacked rhetorical questions",
+      "category": "syntax",
+      "definition": "Two or more questions fired in a row, usually fragments after the first; a performance of curiosity. Keep at most one, answer it, convert the rest into the statements they were hiding.",
+      "cues": ["Do I know how it works? Where it breaks? Which corners it cut?"],
+      "examples": [{"before": "Do I know how it works? Where it breaks? Which corners it cut?"}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Extends Rhetorical question openers to the chain form. Judgment call rather than detector: interviews, FAQs and dialogue stack questions legitimately. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Same-opener sentence runs",
+      "category": "syntax",
+      "definition": "Three or more consecutive sentences opening on the same word. Deliberate anaphora is a rhetorical device; a run that is not doing persuasive work is a tell. Keep the first, vary or merge the rest.",
+      "cues": ["Maybe nobody needed it. Maybe it solved the wrong problem. Maybe the timing was off."],
+      "examples": [{"before": "Maybe nobody needed it. Maybe it solved the wrong problem. Maybe the timing was off."}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Judgment-only: whether the repetition is earned is what a pattern cannot read, and pronoun-opener runs ('He... He... He...') are ordinary narration. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Same-skeleton sentence runs",
+      "category": "syntax",
+      "definition": "Consecutive sentences built on the same repeated skeleton, the cousin of same-opener runs.",
+      "cues": ["A cart is an object in the system. A chat room is an object in the system."],
+      "examples": [{"before": "A cart is an object in the system. A chat room is an object in the system."}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Same fix and same judgment-only status as Same-opener sentence runs. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Stranded auxiliary contrast",
+      "category": "syntax",
+      "definition": "Landing a reversal on a bare auxiliary ('the data didn't.'). One is fine; as a recurring rhythm it is a signature LLM move where the clipped contrast poses as earned insight. Ration it: if the piece already has one, write the next contrast out in full.",
+      "cues": ["The tool died; the data didn't.", "Reading mostly passed. Writing didn't.", "didn't."],
+      "examples": [{"before": "The tool died; the data didn't."}, {"before": "Reading mostly passed. Writing didn't."}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Judgment-only: the single instance is legitimate style; only density across a piece distinguishes voice from tic. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Colon into a triple",
+      "category": "syntax",
+      "definition": "A colon opening onto exactly three comma-separated items; the most common shape LLM prose uses to sound concrete, whether or not the content has three parts. Audit the list: write two or four if that is the truth, or cut to the one that matters.",
+      "cues": ["separate ports, processes, and local state."],
+      "examples": [{"before": "separate ports, processes, and local state."}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Judgment-only and noisy by design in technical writing where three-item lists are often just true; weigh by genre, not per hit. Source: Simon Willison's LLM cliché highlighter."
+    },
+    {
+      "name": "Manufactured punchlines and staccato drama",
+      "category": "syntax",
+      "definition": "Three or more same-shape clipped fragments in a row, each engineered to land like a quotable closer; stacked, they read as a drumroll. Keep the one fragment that earns emphasis and fold the rest into ordinary sentences with the claim stated.",
+      "cues": ["It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone."],
+      "examples": [{"before": "It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone.", "after": "AlphaEvolve did not favor symmetry or human-looking designs, which made some of the older assumptions less useful."}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Composes with Rhythm and uniformity: variation is the human signal and one short sentence that lands a point is fine; the tell is the opposite of variation. Rewrite-side twin is the never-inject 'staccato conversion'. Adapted from blader/humanizer P31."
+    },
+    {
+      "name": "Sentence length uniformity",
+      "category": "structure",
+      "definition": "Most sentences falling in a narrow band (15-25 words) so the text reads metronomic. Mix short punchy sentences (3-8 words) with longer flowing ones (20+); fragments work; questions break monotony.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Under 'Rhythm and uniformity'. Structure is the #1 detection signal: AI detection tools (Pangram, classifier on 28M human documents) weight structural regularity higher than vocabulary; fixing every Tier 1 word but leaving rhythm still reads as AI."
+    },
+    {
+      "name": "Paragraph length uniformity",
+      "category": "structure",
+      "definition": "Every paragraph 3-5 sentences and roughly the same size. Vary deliberately: some paragraphs one sentence, some longer.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity tier P2. Tolerance: linkedin skip (short-form), blog strict, technical-blog strict, investor-email strict, docs relaxed, casual skip. Distinct from Wall-of-text replies (zero breaks in short text)."
+    },
+    {
+      "name": "Vocabulary repetition vs. synonym cycling",
+      "category": "vocabulary",
+      "definition": "Either repeating the same word mechanically or cycling through synonyms conspicuously. Human writers repeat when the word is right and vary when natural; there is no formula.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'Synonym cycling within a paragraph' is severity tier P1."
+    },
+    {
+      "name": "Missing first-person perspective",
+      "category": "content",
+      "definition": "In a piece that is supposed to have a voice, the absence of opinions, preferences and reactions ('I think', 'in my experience', a stated preference) is itself a tell; AI is relentlessly neutral.",
+      "cues": ["I think", "in my experience"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Only where appropriate: encyclopedic, technical or legal text is correctly neutral. Bounded by the never-inject rule: if the source has no 'I', the rewrite adds no 'I'; flag the gap rather than fabricating presence."
+    },
+    {
+      "name": "Low type-token ratio (vocabulary diversity)",
+      "category": "vocabulary",
+      "definition": "Stylometric signal for pieces of 200+ words: distinct word types divided by total tokens. Human English prose at this length usually lands around 0.50-0.65; AI text trends flatter, sometimes under 0.40 when locked on a small vocabulary loop.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "A very low TTR is not proof of AI authorship: narrow topics, technical reference material and second-language writing legitimately compress vocabulary. On general prose (essays, articles, social content over ~200 words) a TTR below 0.40 is worth a second look. Fix is rarely to thesaurus the text; broaden the what: name specific things, cite specific cases, replace a re-used abstract noun with the concrete instance. Numeric thresholds are for English. First of four planned stylometric signals; sentence-length burstiness, function-word z-scores and POS-bigram log-odds are not implemented."
+    },
+    {
+      "name": "Paragraph-reshuffle immunity",
+      "category": "structure",
+      "definition": "Writer-side structure test: if two body paragraphs can be swapped without breaking the piece, it is a list of points, not an argument that builds; each paragraph is a self-contained module with no load-bearing link to its neighbours.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Fix is structural, not lexical: establish a through-line where each paragraph depends on the one before. If paragraphs are genuinely independent, decide whether the piece should be an explicit list or is missing a thesis. Adapted from Aboudjem/humanizer-skill P38."
+    },
+    {
+      "name": "Treadmill effect (low information density)",
+      "category": "content",
+      "definition": "Paragraphs that restate the premise in fresh words instead of advancing it; lots of motion, no distance. Tell: you could cut 40-60% and lose no information.",
+      "cues": [],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Writer-side content test: for each paragraph name the one fact, claim or turn it contributes; if none, cut it; if one, lead with it and drop the throat-clearing. Adapted from Aboudjem/humanizer-skill P43."
+    },
+    {
+      "name": "Cutoff disclaimers",
+      "category": "artifacts",
+      "definition": "Knowledge-cutoff disclaimers leaking into prose.",
+      "cues": ["As of my last update"],
+      "examples": [{"before": "As of my last update"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P0 (credibility killer). Defined in the first half of the source; this range carries only the tier and cue."
+    },
+    {
+      "name": "Chatbot artifacts",
+      "category": "artifacts",
+      "definition": "Conversational leftovers that perform helpfulness.",
+      "cues": ["I hope this helps!"],
+      "examples": [{"before": "I hope this helps!"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P0. Defined in the first half; here as tier entry and as the 'performs helpfulness' member of the helpfulness / reader-validation / self-candor triad."
+    },
+    {
+      "name": "Vague attributions without sources",
+      "category": "content",
+      "definition": "Appeals to unnamed authority in place of a citation or a concrete claim.",
+      "cues": ["Experts believe", "experts say"],
+      "examples": [{"before": "Experts believe"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P0. Professional voice profile: prefer a concrete claim per paragraph (a number, a name, a date) when the source provides one; never 'experts say'. Defined in the first half."
+    },
+    {
+      "name": "Significance inflation on routine events",
+      "category": "content",
+      "definition": "Inflating the importance of an ordinary event.",
+      "cues": [],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Severity tier P0. Tolerance: linkedin strict, blog strict, technical-blog strict, investor-email extra strict, docs relaxed, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Hashtag stuffing",
+      "category": "punctuation-format",
+      "definition": "Stacking hashtags on a post.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "Severity varies by profile: P0 on linkedin and investor-email; P2 on blog/technical-blog where a launch post may legitimately stack tags. Tolerance: linkedin strict, blog strict, technical-blog strict, investor-email extra strict, docs skip (no hashtags in docs), casual skip. Platform-bound (social platforms). Defined in the first half."
+    },
+    {
+      "name": "Word-list violations (Tier 1 word table)",
+      "category": "vocabulary",
+      "definition": "Words from the skill's replacement table.",
+      "cues": ["delve", "leverage", "harness", "robust", "tapestry", "beacon", "embark", "testament to", "game-changer", "comprehensive", "seamless", "ecosystem", "facilitate", "underpin", "streamline", "thriving ecosystem"],
+      "examples": [{"before": "a thriving ecosystem"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P1. Full table is in the first half; this range gives the technical-blog exceptions: robust, comprehensive, seamless, ecosystem, leverage (when discussing actual platform leverage/APIs), facilitate, underpin, streamline pass in technical context; still flag delve, tapestry, beacon, embark, testament to, game-changer, harness. Tolerance: linkedin strict, blog strict, technical-blog partial, investor-email strict, docs relaxed, casual P0 only (implies the table has P0-ranked entries). Investor email: a single 'thriving ecosystem' can undermine the whole message. The replacement table provides defaults, not mandates: if a flagged word is clearly right in context, preserve it."
+    },
+    {
+      "name": "Template phrases and slot-fill constructions",
+      "category": "syntax",
+      "definition": "Fill-in-the-blank sentence templates.",
+      "cues": [],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Severity tier P1. Named in the tier list only; defined in the first half."
+    },
+    {
+      "name": "'Let's' transition openers",
+      "category": "vocabulary",
+      "definition": "Sections or paragraphs opened with a 'Let's ...' invitation.",
+      "cues": ["Let's"],
+      "examples": [],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P1. Named in the tier list; defined in the first half."
+    },
+    {
+      "name": "Formulaic openings",
+      "category": "rhetoric",
+      "definition": "Stock scene-setting openers.",
+      "cues": ["In the rapidly evolving world of..."],
+      "examples": [{"before": "In the rapidly evolving world of..."}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P1. Defined in the first half."
+    },
+    {
+      "name": "Bold overuse",
+      "category": "punctuation-format",
+      "definition": "Boldface density beyond what emphasis needs.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Severity tier P1. Tolerance: linkedin relaxed (bold hooks OK), blog strict, technical-blog strict, investor-email strict, docs relaxed, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Em dash frequency",
+      "category": "punctuation-format",
+      "definition": "Em dash rate above 1 per 1,000 words, and dashes staged for drama the content has not earned.",
+      "cues": ["—"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity tier P1 (above 1 per 1,000 words). Tolerance: linkedin relaxed (2/post OK), blog strict, technical-blog strict, investor-email strict, docs relaxed, casual skip. Never-inject 'em-dash theatrics': the detection rule is a rate ceiling; adding dashes during a rewrite should never happen. Blunt voice: em-dashes rare, periods for emphasis. House style: a guide's mechanics win (CMOS keeps deliberate em dashes) but still flag the AI habit of em-dash stacking. Config mechanic 'emDash' is advisory."
+    },
+    {
+      "name": "Generic future-narrative closers",
+      "category": "rhetoric",
+      "definition": "A closing line that forecasts the topic's grand future in generic terms.",
+      "cues": ["may become one of the most important narratives…"],
+      "examples": [{"before": "may become one of the most important narratives…"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Severity tier P1. Tolerance: linkedin strict, blog strict, technical-blog strict, investor-email extra strict, docs skip, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Hedge-stacked predictions",
+      "category": "rhetoric",
+      "definition": "Two or more hedges stacked on one prediction.",
+      "cues": ["could potentially", "may eventually", "may", "could", "potentially"],
+      "examples": [{"before": "could potentially"}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Severity tier P1. Tolerance: linkedin strict, blog strict, technical-blog relaxed ('could' is hedged accuracy), investor-email extra strict, docs relaxed, casual skip. Blunt voice: near-zero hedging, flag 'may / could / potentially' stacks. Defined in the first half."
+    },
+    {
+      "name": "Hedging (general)",
+      "category": "rhetoric",
+      "definition": "Softening qualifiers that reduce commitment without adding accuracy.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Tolerance matrix row 'Hedging': linkedin strict, blog strict, technical-blog relaxed ('may' is accurate in technical), investor-email strict, docs relaxed, casual skip. Professional voice: low tolerance for hedging. Casual voice: keep warm hedges ('honestly', 'I think'), cut corporate ones. Defined in the first half."
+    },
+    {
+      "name": "Real/actual adjective inflation",
+      "category": "vocabulary",
+      "definition": "'real' or 'actual' prefixed to a noun to assert authenticity the noun did not need.",
+      "cues": ["real on-chain tokenomics", "real", "actual"],
+      "examples": [{"before": "real on-chain tokenomics"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P1. Tolerance: linkedin strict, blog strict, technical-blog strict, investor-email extra strict, docs relaxed, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Moral-adjective category errors",
+      "category": "vocabulary",
+      "definition": "A moral adjective or adverb applied to a thing that cannot have that quality.",
+      "cues": ["honest shape", "flagged honestly"],
+      "examples": [{"before": "honest shape"}, {"before": "flagged honestly"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P1. Tolerance: linkedin strict, blog strict, technical-blog relaxed, investor-email strict, docs relaxed, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Bullet lists of bare noun phrases (Bullet-NP lists)",
+      "category": "structure",
+      "definition": "A bullet list of 5+ short adjective+noun items with no verbs.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity tier P1. Tolerance: linkedin strict, blog strict, technical-blog relaxed (technical option lists OK), investor-email strict, docs relaxed (parameter lists OK), casual skip. Defined in the first half."
+    },
+    {
+      "name": "Tier 3 phrase clustering",
+      "category": "vocabulary",
+      "definition": "Three or more distinct Tier 3 boilerplate phrases in one piece.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity tier P1 (≥3 distinct boilerplate phrases). Tolerance: linkedin strict, blog strict, technical-blog strict, investor-email extra strict, docs relaxed, casual skip. Tier 3 list is in the first half."
+    },
+    {
+      "name": "Tier 3 phrase repetition",
+      "category": "vocabulary",
+      "definition": "A single Tier 3 boilerplate phrase used two or more times in one piece.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity tier P2: fine in isolation, suspect in stacks."
+    },
+    {
+      "name": "Generic conclusions",
+      "category": "structure",
+      "definition": "A closing paragraph of generic optimism or summary that adds nothing.",
+      "cues": ["The future looks bright"],
+      "examples": [{"before": "The future looks bright"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P2. Tolerance: linkedin skip, blog strict, technical-blog strict, investor-email extra strict, docs skip, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Compulsive rule of three",
+      "category": "syntax",
+      "definition": "Defaulting to three items, adjectives or clauses because three is the rhythm, not because the content has three parts.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity tier P2. Blunt voice: no padding to hit a rule of three. Related: Colon into a triple. Defined in the first half."
+    },
+    {
+      "name": "Copula avoidance",
+      "category": "syntax",
+      "definition": "Inflated substitutes for plain 'is' / 'has'.",
+      "cues": ["serves as", "features", "boasts", "stands as a testament to"],
+      "examples": [{"before": "stands as a testament to"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P2. Tolerance: linkedin skip, blog strict, technical-blog relaxed, investor-email strict, docs skip, casual skip. Technical voice prefers plain copulatives ('X is Y') and that voice target applies even in a casual context that otherwise skips this rule. Defined in the first half."
+    },
+    {
+      "name": "Transition phrases",
+      "category": "vocabulary",
+      "definition": "Formal additive connectives used as paragraph glue.",
+      "cues": ["Moreover", "Furthermore", "Additionally"],
+      "examples": [{"before": "Moreover,"}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Severity tier P2. Tolerance: linkedin skip (short-form), blog strict, technical-blog strict, investor-email strict, docs relaxed, casual skip. Detect-mode assessment note: a well-placed 'however' is not a problem. Defined in the first half."
+    },
+    {
+      "name": "Unnecessary hyphenation",
+      "category": "punctuation-format",
+      "definition": "Hyphenating compounds that are open, closed, or only hyphenated in certain positions, against a curated list.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Severity tier P2. Source describes the list as curated open, closed, and position-dependent compounds. Defined in the first half."
+    },
+    {
+      "name": "Emoji in headers",
+      "category": "punctuation-format",
+      "definition": "Emoji decorating headings.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Tolerance: linkedin relaxed (1-2 end-of-line OK), blog strict, technical-blog strict, investor-email strict, docs skip, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Promotional language",
+      "category": "content",
+      "definition": "Sell-copy register in prose meant to inform.",
+      "cues": ["thriving ecosystem"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Tolerance: linkedin relaxed (some sell is expected), blog strict, technical-blog strict, investor-email extra strict (the biggest risk for that profile), docs strict, casual skip. Defined in the first half."
+    },
+    {
+      "name": "Subjectless fragments and agentless passives",
+      "category": "syntax",
+      "definition": "Fragments with no subject and passives with no agent.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Tolerance: linkedin relaxed (short-form fragments are the register), blog strict, technical-blog relaxed, investor-email strict, docs skip (fragment lists are docs), casual skip. Professional voice: active voice for most sentences. Defined in the first half."
+    },
+    {
+      "name": "Stale social-ad tells",
+      "category": "vocabulary",
+      "definition": "Worn social-media advertising vocabulary.",
+      "cues": ["unlock", "elevate", "link in bio"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Named in passing as the neighbours of Launch-copy dramatic introductions; defined elsewhere in the source."
+    },
+    {
+      "name": "Manufactured stakes (speculative scenario openers)",
+      "category": "rhetoric",
+      "definition": "Stakes-inflating scene-setters that place the reader in an epochal moment.",
+      "cues": ["In a world where", "now more than ever", "the stakes have never been higher"],
+      "examples": [{"before": "In a world where"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Detection rule lives under 'Speculative scenario openers' in the first half; listed again in this range on the never-inject list because the rewrite side is where it gets introduced."
+    },
+    {
+      "name": "Forced contrarianism",
+      "category": "rhetoric",
+      "definition": "Inventing a foil ('everyone says X, but they're wrong') to sound contrarian; inventing a foil is inventing a claim.",
+      "cues": ["Everyone says X, but they're wrong", "the conventional wisdom is backwards"],
+      "examples": [{"before": "Everyone says X, but they're wrong"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Never-inject item: only legitimate when the source actually argued it. Input-side detection is Dramatized contrast against the crowd."
+    },
+    {
+      "name": "Fake first person",
+      "category": "content",
+      "definition": "First-person experience claims dropped into prose that had no author presence. On the rewrite side, a failure whenever added; on the detection side, a first-person aside is not a flag when the author wrote it.",
+      "cues": ["I've seen this a hundred times", "in my experience", "I'll admit"],
+      "examples": [{"before": "I've seen this a hundred times"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Never-inject: if the source has no 'I', the rewrite has no 'I'. Provenance decides, which no pattern can see; an independent stress test of blader/humanizer found generic AI phrasing replaced by a recognizable 'humanizer' voice, a new fingerprint rather than the absence of one."
+    },
+    {
+      "name": "Performative-empathy openers",
+      "category": "rhetoric",
+      "definition": "An opener that performs understanding of the reader's feelings.",
+      "cues": ["I completely understand how you feel"],
+      "examples": [{"before": "I completely understand how you feel"}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Named in the warm voice profile: no performative-empathy openers; keep the source's acknowledgment rather than adding one."
+    },
+    {
+      "name": "Intensifiers",
+      "category": "vocabulary",
+      "definition": "Degree adverbs used in place of a stronger verb.",
+      "cues": ["very", "truly", "incredibly"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Named in the warm voice profile: cut intensifiers in favor of stronger verbs."
+    },
+    {
+      "name": "AI tracking parameters in URLs",
+      "category": "artifacts",
+      "definition": "A query parameter appended to a URL by an AI tool that identifies the link as AI-sourced.",
+      "cues": [],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied only: the preservation validator carves out 'stripping an AI tracking parameter from a URL' because the skill instructs it; the rule itself is in the first half."
+    },
+    {
+      "name": "Title Case headings",
+      "category": "punctuation-format",
+      "definition": "Headings capitalized in Title Case where the surrounding style is sentence case.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Implied only: the preservation validator carves out 'rewording a heading to fix Title Case' because the skill instructs it; the rule itself is in the first half. Config mechanic 'headings' is advisory."
+    }
+  ],
+  "methodology": [
+    {"topic": "scoring", "rule": "Prioritize by severity tier. P0 credibility killers (fix immediately): cutoff disclaimers, chatbot artifacts, vague attributions without sources, significance inflation on routine events, hashtag stuffing on linkedin and investor-email. P1 obvious AI smell (fix before publishing): word-list violations, template phrases and slot-fill constructions, 'Let's' transition openers, synonym cycling within a paragraph, formulaic openings, bold overuse, em dash frequency above 1 per 1,000 words, generic future-narrative closers, social endorsement closers, lingering-attention claims, narrated candor, hedge-stacked predictions, real/actual adjective inflation, moral-adjective category errors, invented contrast-pair mirroring, bullet lists of bare noun phrases (5+ short adj+noun items, no verbs), Tier 3 phrase clustering (≥3 distinct phrases). P2 stylistic polish (fix when time allows): generic conclusions, compulsive rule of three, uniform paragraph length, copula avoidance, transition phrases, hashtag stuffing on blog/technical-blog, Tier 3 phrase repetition (single phrase ≥2×), unnecessary hyphenation."},
+    {"topic": "workflow", "rule": "Use P0+P1 for a quick pass or when triaging a large document; a full audit covers all three tiers."},
+    {"topic": "workflow", "rule": "Decide rewrite-from-scratch vs patch: if the text has 5+ flagged vocabulary hits across multiple categories, 3+ distinct pattern categories triggered, and uniform sentence/paragraph length, patching phrases will not fix it; advise a full rewrite: state the core point in one sentence, then rebuild."},
+    {"topic": "workflow", "rule": "Treat structure as the #1 detection signal: detection tools (Pangram, trained on 28M human documents) weight structural regularity above vocabulary, so fix rhythm, pacing and symmetry, not only flagged words."},
+    {"topic": "workflow", "rule": "Read-aloud test: if the text could be read by a text-to-speech engine without sounding weird, it is probably too uniform."},
+    {"topic": "false-positives", "rule": "Self-reference escape hatch: when writing about AI writing patterns, text inside quotation marks, code blocks, or explicitly marked as illustrative ('for example, AI might write...') is exempt; flag only the author's own prose."},
+    {"topic": "false-positives", "rule": "In technical-blog context do not flag robust, comprehensive, seamless, ecosystem, leverage (actual platform leverage/APIs), facilitate, underpin, streamline; still flag delve, tapestry, beacon, embark, testament to, game-changer, harness."},
+    {"topic": "false-positives", "rule": "Do not over-polish: aggressively editing out every irregularity pushes human writing toward AI statistical profiles; natural disfluency, idiosyncratic word choices and uneven pacing keep text out of the AI classification. Applying every rule at maximum strictness creates the uniformity you are trying to avoid."},
+    {"topic": "false-positives", "rule": "The replacement table provides defaults, not mandates; if a flagged word is clearly the right choice in context, preserve it. If the original writing is already strong, say so and make only necessary cuts."},
+    {"topic": "false-positives", "rule": "Prefer precision over recall in deterministic detectors: use closed lists, disclose residue and misses with measurements, and keep a pattern judgment-only when every regex tight enough to spare the carve-outs stops matching the tell (narrated candor, wall-of-text replies, fake-casual verdict closers, stacked questions, same-opener runs, stranded auxiliaries, colon triples)."},
+    {"topic": "register", "rule": "Context profiles: linkedin (short-form social; punchy fragments and visual formatting matter), blog (default; all rules at full strength), technical-blog (long-form with code/architecture/APIs; technical terms get a pass), investor-email (high-trust; tighten everything, promotional language is the biggest risk), docs (READMEs, guides; clarity over voice), casual (Slack, internal notes, quick replies; only the worst offenders). Accept an optional context hint; rules not in the tolerance matrix apply at full strength across all profiles."},
+    {"topic": "register", "rule": "Auto-detect context when none is given: under 300 words plus hashtags or mentions = linkedin; code blocks, API references or technical architecture = technical-blog; salutation ('Hi [name]', 'Dear') plus investor/fundraising language = investor-email; step-by-step instructions, parameter docs, README structure = docs; no strong signals = blog. Say which profile you are using and why; the user can override."},
+    {"topic": "register", "rule": "Tolerance vocabulary: 'strict' = normal enforcement; 'relaxed' = tolerate the stated allowance; 'extra strict' = flag even borderline instances (in investor emails a single 'thriving ecosystem' can undermine the whole message); 'skip' = do not audit this category for this profile."},
+    {"topic": "register", "rule": "Tolerance matrix (linkedin / blog / technical-blog / investor-email / docs / casual). Em dashes: relaxed (2/post OK) / strict / strict / strict / relaxed / skip. Bold overuse: relaxed (bold hooks OK) / strict / strict / strict / relaxed / skip. Emoji in headers: relaxed (1-2 end-of-line OK) / strict / strict / strict / skip / skip. Excessive bullets: skip / strict / relaxed (technical lists OK) / strict / skip (lists are docs) / skip. Hedging: strict / strict / relaxed ('may' is accurate in technical) / strict / relaxed / skip. Word table (full list): strict / strict / partial / strict / relaxed / P0 only. Promotional language: relaxed (some sell expected) / strict / strict / extra strict / strict / skip. Significance inflation: strict / strict / strict / extra strict / relaxed / skip."},
+    {"topic": "register", "rule": "Tolerance matrix continued (linkedin / blog / technical-blog / investor-email / docs / casual). Copula avoidance: skip / strict / relaxed / strict / skip / skip. Uniform paragraph length: skip / strict / strict / strict / relaxed / skip. Numbered list inflation: relaxed / strict / relaxed / strict / skip / skip. Rhetorical questions: relaxed (1 as hook OK) / strict / strict / strict / strict / skip. Transition phrases: skip / strict / strict / strict / relaxed / skip. Generic conclusions: skip / strict / strict / extra strict / skip / skip. Hashtag stuffing: strict / strict / strict / extra strict / skip / skip. Bullet-NP lists: strict / strict / relaxed (option lists OK) / strict / relaxed (parameter lists OK) / skip."},
+    {"topic": "register", "rule": "Tolerance matrix continued (linkedin / blog / technical-blog / investor-email / docs / casual). Tier 3 phrase clustering: strict / strict / strict / extra strict / relaxed / skip. Future-narrative closers: strict / strict / strict / extra strict / skip / skip. Social endorsement closers: strict / strict / strict / strict / skip / relaxed (1 OK in a DM). Hedge-stacked predictions: strict / strict / relaxed / extra strict / relaxed / skip. Real/actual inflation: strict / strict / strict / extra strict / relaxed / skip. Moral-adjective category errors: strict / strict / relaxed / strict / relaxed / skip. Invented contrast-pair mirroring: strict / strict / relaxed / strict / relaxed / skip. Subjectless fragments and agentless passives: relaxed (short-form fragments are the register) / strict / relaxed / strict / skip / skip."},
+    {"topic": "register", "rule": "Wall-of-text scoping lives in the rule's own judgment, not in the tolerance matrix: a plain issue comment auto-detects to the blog profile, so a per-profile strictness cell cannot carry the conversational-only scope."},
+    {"topic": "voice", "rule": "Voice profiles are an axis independent of context (context = how strict, voice = how the prose should sound). Voice is optional: if the writer names none, infer it from the input's existing register and never impose a persona on text that already has one. Every voice target is bounded by the never-inject guardrails: bring out what the source has, never manufacture what it lacks."},
+    {"topic": "voice", "rule": "casual voice: contractions throughout; short sentences (aim ≤14 words average), fragments allowed; keep first-person and concrete touches where the source has them, never add one it lacks; near-zero jargon; keep warm hedges ('honestly', 'I think'), cut corporate ones ('it's worth noting'). For blog posts, social, community."},
+    {"topic": "voice", "rule": "professional voice: active voice for most sentences; vary sentence length, avoid three in a row within a few words of each other; a concrete claim per paragraph (number, name, date) when the source provides one, never 'experts say'; keep the ask explicit where the source makes one, never invent facts or an ask; low tolerance for hedging. For LinkedIn, investor email, sponsor pitches."},
+    {"topic": "voice", "rule": "technical voice: plain copulatives ('X is Y') over 'serves as' / 'stands as a testament to'; one idea per sentence; imperative mood for instructions; jargon fine but define on first use; tables and lists only where content is genuinely list-shaped. For docs, technical blog."},
+    {"topic": "voice", "rule": "warm voice: address the reader directly where the source already does ('you'), keep its acknowledgment rather than adding one; cut intensifiers ('very', 'truly', 'incredibly') for stronger verbs; no performative-empathy openers ('I completely understand how you feel'); medium sentences (15-20 words). For mentorship, onboarding, thank-yous."},
+    {"topic": "voice", "rule": "blunt voice: lead with the claim, cut 'It's important to note that' windups; em-dashes rare, periods for emphasis; no padding to hit a rule of three; near-zero hedging, flag 'may / could / potentially' stacks; short declaratives with an occasional long sentence for contrast. For decision memos, thought leadership, hard feedback."},
+    {"topic": "voice", "rule": "Calibrate to a sample when the writer supplies their own writing: analyze sentence-length pattern, contraction rate, paragraph openings and recurring word choices, and match those instead of a named profile. Do not upgrade their vocabulary: if they write 'stuff' and 'things', keep that register."},
+    {"topic": "voice", "rule": "Compose voice with context: voice sets the target, context sets how hard to enforce. A voice target always applies even where the context profile skips that category (technical voice still prefers plain copulatives in a casual context). Where both govern the same rule and agree they reinforce; where they disagree resolve toward the stricter. Default pairings: casual↔casual, professional↔linkedin/investor-email, technical↔docs/technical-blog."},
+    {"topic": "modes", "rule": "House style (--style <config-or-guide>) copyedits to a house style on top of the de-AI pass, which always runs. Preferred: a JSON config (path, or bare name matching examples/<name>.json) with 'register' (voice directives applied as written) and 'mechanics' (quotes and latinAbbrev hard-checkable; headings, emDash, spellNumbersUpTo advisory; serialComma model-applied). Verify the checkable subset with node scripts/check-style.js <file> --config <path> (exit 0 clean / 1 hard violation / 2 tool error). Open the output by naming the resolved config so the mode is never ambiguous."},
+    {"topic": "modes", "rule": "Style composition order, narrowest wins: config mechanics beat everything (they are checkable), then --voice, then the config's register, then --context. '--voice blunt' with a config asking for warmth stays blunt, while that config's emDash: deliberate still governs dashes."},
+    {"topic": "modes", "rule": "Named-guide fallback (--style 'APA' / 'Chicago' with no config): apply from general knowledge as best-effort, open with a status line such as 'Applying APA from general knowledge (not verified; no compliance claim).', make no compliance claim, note the knowledge may reflect an older edition, never reproduce the guide's copyrighted text; paywalled guides (Chicago, APA, MLA, AP) are never bundled. When a guide's mechanics conflict with the AI-ism catalog the guide wins the mechanic (CMOS keeps deliberate em dashes) but still flag the AI habit such as em-dash stacking. A bare de-AI request applies no guide, and never apply a guide to a genre it was not written for."},
+    {"topic": "output", "rule": "Rewrite mode (default) returns four sections: 1. Issues found (bulleted, offending text quoted); 2. Rewritten version (full text; preserve original structure, intent and all specific technical details; change only what the guidelines require); 3. What changed (brief summary of meaningful edits); 4. Second-pass audit (re-read section 2, fix remaining tells such as recycled transitions, lingering inflation, copula avoidance, filler; return corrected text inline and note the changes; if clean say so). When the second pass changed anything, state in as many words 'use this version, not section 2' because a skimming reader will otherwise ship section 2."},
+    {"topic": "output", "rule": "Detect mode returns two sections: 1. Issues found, grouped by severity P0/P1/P2, with Tier 1B clarity edits kept visually separate from Tier 1A markers and labeled as such (a wordiness fix is a writing suggestion, not evidence about authorship); 2. Assessment: for each flag say whether it is a clear problem or a judgment call, which the writer should definitely fix vs. worth a second look; some AI-associated patterns are effective techniques (uniform paragraph length is a problem, a well-placed 'however' is not). If the text is clean, say so."},
+    {"topic": "output", "rule": "Edit mode edits the file in place and returns a short report, not the full file: 1. Edits made (each with file location and before → after, only touched spans); 2. Verification (confirm you re-read the file and the flagged patterns are resolved; note anything deliberately left because it was already human or intentional)."},
+    {"topic": "gates", "rule": "Mechanical check (optional, recommended for edit mode): run node detector/validate.js <original> <rewritten>. It exits non-zero when a rewrite altered a fenced code block, YAML frontmatter, a blockquote, a table cell, inline code, a URL, a file path, or the heading structure, or introduced more flagged patterns than it removed. Carve-outs: rewording a heading to fix Title Case and stripping an AI tracking parameter from a URL."},
+    {"topic": "gates", "rule": "Never inject into a text that did not already contain it, even when the result scores clean: fake first person ('I've seen this a hundred times', 'in my experience', 'I'll admit'); manufactured stakes ('In a world where', 'now more than ever', 'the stakes have never been higher'); forced contrarianism ('Everyone says X, but they're wrong', 'the conventional wisdom is backwards'); performed candor ('Let's be honest', 'real talk', 'here's the thing'); em-dash theatrics (adding dashes during a rewrite); staccato conversion (chopping ordinary sentences into fragments to manufacture rhythm; vary length by varying the sentences); invented specifics (a number, name, date, tool or mechanism the source never contained; a fabricated specific is worse than the vague phrasing it replaced; flag the gap and leave it)."},
+    {"topic": "gates", "rule": "Provenance test for every edit: ask whether the information in the rewrite came from the source. Subtraction and sharpening are in scope (cut filler, make an existing claim concrete, surface a buried point); addition of stance, personality or fact is not. You may subtract and sharpen, you may not add (after isatimur/de-slop). These are constraints on the editor, not detections on the text; a first-person aside is not a flag when the author wrote it."},
+    {"topic": "voice", "rule": "Tone calibration, five principles for human-sounding rewrites: vary sentence length (mix short with long, fragments fine); be concrete (numbers, names, dates, examples for vague claims); have a voice (first person, preferences, reactions where appropriate); cut the neutrality (if the piece should take a position, take it); earn your emphasis (make it interesting instead of saying it is). Writing should demonstrate confidence, not assert it."},
+    {"topic": "voice", "rule": "Removal is half the job: a rewrite that clears every flag but reads sterile (even sentence lengths, no stance, no first person where one belongs) is still recognizably machine output. Where the genre carries a voice (essays, posts, personal writing) put voice back on purpose: a reaction, a stated preference, an aside, one thought left unresolved. For encyclopedic, technical or legal text, neutral and plain is the correct human voice; do not inject personality there (after blader/humanizer 'Personality and soul'). The failure mode is installing a stock 'humanizer' voice of fragments and staccato rhythm, a new fingerprint rather than none."},
+    {"topic": "other", "rule": "Stylometric roadmap: TTR is the only implemented stylometric category; sentence-length burstiness as a continuous measure, function-word z-scores against a human-prose reference, and POS-bigram log-odds need a POS tagger or a reference distribution and are not detector categories yet."}
+  ],
+  "coverage_note": "Read exactly lines 440-872 of scratchpad/deai/repos/avoid-ai-writing/SKILL.md (440-689 via the persisted output of the first sed call, in three slices; 690-780 and 781-872 directly). The range opens mid-rulebook at '### Infomercial engagement hooks' and closes at the end of the never-inject section. Every rule heading in the range has its own pattern entry; the six props of 'Fake-casual register' are split into six entries because they carry different detector status, and 'Same-opener sentence runs' is split from its 'same skeleton' cousin. Patterns that the range only names (the P0/P1/P2 tier lists, the tolerance-matrix rows, voice-profile mentions, never-inject items, the validator carve-outs) are included as thin entries with the note 'defined in the first half' so the consolidator can attach tiers and per-profile tolerances; their full definitions and word lists belong to the other agent. The tolerance matrix is reproduced in full inside three methodology rules rather than one per row. Left out on purpose: the two markdown horizontal rules and the '## Context profiles' / '## House style' section preambles that carry no rule content. Nothing was unclassifiable; borderline category choices: 'False concession structure' and 'Invented contrast-pair mirroring' went to syntax (constructions) rather than rhetoric, 'Acknowledgment loops' and 'Reasoning chain artifacts' to artifacts (chatbot leftovers) rather than rhetoric, 'Generic conclusions' to structure, and 'Hashtag stuffing' to punctuation-format with language-specific scope since it is platform-bound. Read-aloud test, over-polishing, and the stylometric roadmap were treated as methodology rather than patterns."
+}

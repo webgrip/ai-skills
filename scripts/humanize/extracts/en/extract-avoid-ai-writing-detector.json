@@ -1,0 +1,2257 @@
+{
+ "source": "avoid-ai-writing-detector (patterns.js, CATEGORIES.md, README.md of the avoid-ai-writing detector engine)",
+ "patterns": [
+  {
+   "name": "tier1 (AI vocabulary, single words)",
+   "category": "vocabulary",
+   "definition": "A closed list of single words that the engine flags on every occurrence, each paired with a replacement suggestion. Token-matched after lowercasing, one issue per distinct word.",
+   "cues": [
+    "delve",
+    "tapestry",
+    "paradigm",
+    "beacon",
+    "robust",
+    "comprehensive",
+    "cutting-edge",
+    "pivotal",
+    "meticulous",
+    "meticulously",
+    "seamless",
+    "seamlessly",
+    "game-changer",
+    "game-changing",
+    "nestled",
+    "vibrant",
+    "thriving",
+    "bustling",
+    "intricate",
+    "intricacies",
+    "ever-evolving",
+    "enduring",
+    "daunting",
+    "holistic",
+    "holistically",
+    "actionable",
+    "impactful",
+    "learnings",
+    "synergy",
+    "synergies",
+    "interplay",
+    "symphony",
+    "embrace"
+   ],
+   "examples": [
+    {
+     "before": "delve",
+     "after": "explore, dig into, look at"
+    },
+    {
+     "before": "tapestry",
+     "after": "describe the actual complexity"
+    },
+    {
+     "before": "beacon",
+     "after": "rewrite entirely"
+    },
+    {
+     "before": "robust",
+     "after": "strong, reliable, solid"
+    },
+    {
+     "before": "seamless",
+     "after": "smooth, easy, without friction"
+    },
+    {
+     "before": "game-changer",
+     "after": "describe what changed"
+    },
+    {
+     "before": "nestled",
+     "after": "is located, sits"
+    },
+    {
+     "before": "learnings",
+     "after": "lessons, findings, takeaways"
+    },
+    {
+     "before": "synergy",
+     "after": "describe the combined effect"
+    },
+    {
+     "before": "embrace",
+     "after": "adopt, accept, use"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 5, severity high (P1). Maps to SKILL.md 'Words and phrases to replace'. Duplicates of the same word count once. Together with tier2 clusters and a transition it forms the denseAIVocab corroborator."
+  },
+  {
+   "name": "tier1 multi-word phrases",
+   "category": "vocabulary",
+   "definition": "Regex-matched stock phrases and inflected verb families flagged on every hit, with a replacement suggestion. Same tier and weight as tier1 words.",
+   "cues": [
+    "\\bdelve\\s+into\\b",
+    "\\blandscape\\b (filter: true)",
+    "\\brealm\\b",
+    "\\btestament\\s+to\\b",
+    "\\bleverag(?:e|es|ing|ed)\\b",
+    "\\bwatershed\\s+moment\\b",
+    "\\bmarking\\s+a\\s+pivotal\\s+moment\\b",
+    "\\bthe\\s+future\\s+looks\\s+bright\\b",
+    "\\bonly\\s+time\\s+will\\s+tell\\b",
+    "\\bdespite\\s+challenges[^.]*continues?\\s+to\\s+thrive\\b",
+    "\\bdeep\\s+dive\\b",
+    "\\bdive\\s+into\\b",
+    "\\bunpack(?:ing)?\\b",
+    "\\bcomplexities\\b",
+    "\\bthought\\s+leader(?:ship)?\\b",
+    "\\bbest\\s+practices\\b",
+    "\\bat\\s+its\\s+core\\b",
+    "\\bshowcas(?:e|es|ing|ed)\\b",
+    "\\bembark(?:s|ing|ed)?\\b",
+    "\\bunderscor(?:es|ing|ed)\\b"
+   ],
+   "examples": [
+    {
+     "before": "delve into",
+     "after": "explore, dig into"
+    },
+    {
+     "before": "landscape",
+     "after": "field, space, industry"
+    },
+    {
+     "before": "testament to",
+     "after": "shows, proves"
+    },
+    {
+     "before": "leverage",
+     "after": "use"
+    },
+    {
+     "before": "watershed moment",
+     "after": "turning point, shift"
+    },
+    {
+     "before": "the future looks bright",
+     "after": "cut or say something specific"
+    },
+    {
+     "before": "despite challenges ... continues to thrive",
+     "after": "name the challenge and response"
+    },
+    {
+     "before": "deep dive",
+     "after": "look at, examine"
+    },
+    {
+     "before": "unpack",
+     "after": "explain, break down"
+    },
+    {
+     "before": "complexities",
+     "after": "name the actual problems"
+    },
+    {
+     "before": "thought leadership",
+     "after": "expert, authority"
+    },
+    {
+     "before": "best practices",
+     "after": "what works, proven methods"
+    },
+    {
+     "before": "at its core",
+     "after": "cut, just state it"
+    },
+    {
+     "before": "showcase",
+     "after": "show, demonstrate"
+    },
+    {
+     "before": "embark",
+     "after": "start, begin"
+    },
+    {
+     "before": "underscores",
+     "after": "highlights, shows"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "'landscape' and 'features' carry filter: true in the source table (a flag the engine defines but does not otherwise act on in the shown code). Two entries also appear in GENERIC_CONCLUSIONS."
+  },
+  {
+   "name": "load-bearing (metaphorical)",
+   "category": "vocabulary",
+   "definition": "The hyphenated compound 'load-bearing' used metaphorically ('the load-bearing assumption'). Exempt only when attributive before a literal structural noun with at most one material/position adjective between.",
+   "cues": [
+    "\\bload-bearing\\b(?!\\s+(?:(?:structural|exterior|interior|internal|external|concrete|steel|timber|wooden|brick|masonry|perimeter|basement|main|primary|existing|original)\\s+)?(?:walls?|beams?|columns?|joists?|truss(?:es)?|members?|footings?|slabs?|studs?|partitions?|masonry|lintels?|piers?|rafters?|girders?|capacity|capacities)\\b)"
+   ],
+   "examples": [
+    {
+     "before": "the load-bearing structure of the argument",
+     "after": "essential, critical, or say what breaks if you remove it"
+    },
+    {
+     "before": "load-bearing structural wall (exempt)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Hyphen required: unhyphenated 'load bearing' is ordinary English ('the load bearing down on the bridge'). Abstract-capable nouns (structure, element, frame, foundation) are deliberately omitted from the exemption so the metaphor still fires. Predicative use ('the wall is load-bearing') is not exempt (tracked as #56)."
+  },
+  {
+   "name": "tier1-clarity (wordiness)",
+   "category": "vocabulary",
+   "definition": "Wordy or pompous forms that are clarity edits rather than AI-frequency evidence: flagged on every hit but weighted like tier2 so a clarity fix cannot push a document toward an AI classification.",
+   "cues": [
+    "\\bin\\s+order\\s+to\\b",
+    "\\bdue\\s+to\\s+the\\s+fact\\s+that\\b",
+    "\\bserves\\s+as\\b",
+    "\\bfeatures\\b (filter: true)",
+    "\\bboasts\\b",
+    "\\butiliz(?:e|es|ing|ed)\\b",
+    "\\bcommenc(?:e|es|ing|ed)\\b",
+    "\\bascertain(?:s|ing|ed)?\\b",
+    "\\bendeavou?r(?:s|ing|ed)?\\b"
+   ],
+   "examples": [
+    {
+     "before": "in order to",
+     "after": "to"
+    },
+    {
+     "before": "due to the fact that",
+     "after": "because"
+    },
+    {
+     "before": "serves as",
+     "after": "is"
+    },
+    {
+     "before": "features",
+     "after": "has, includes"
+    },
+    {
+     "before": "boasts",
+     "after": "has"
+    },
+    {
+     "before": "utilize",
+     "after": "use"
+    },
+    {
+     "before": "commence",
+     "after": "start, begin"
+    },
+    {
+     "before": "ascertain",
+     "after": "find out, determine"
+    },
+    {
+     "before": "endeavour",
+     "after": "effort, attempt, try"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 3, severity medium (P2). SKILL.md calls this the Tier 1A/1B split: same fix, weaker claim. 'serves as' is the regex-detectable slice of copula avoidance; the general rule is skill-only."
+  },
+  {
+   "name": "tier2 (word cluster)",
+   "category": "vocabulary",
+   "definition": "A closed list of words that are only flagged when two or more distinct entries co-occur in the same paragraph; every member of the cluster is then reported with its suggestion.",
+   "cues": [
+    "harness",
+    "navigate",
+    "navigating",
+    "foster",
+    "elevate",
+    "unleash",
+    "streamline",
+    "empower",
+    "bolster",
+    "spearhead",
+    "resonate",
+    "resonates",
+    "revolutionize",
+    "facilitate",
+    "facilitates",
+    "underpin",
+    "nuanced",
+    "crucial",
+    "multifaceted",
+    "ecosystem",
+    "myriad",
+    "plethora",
+    "encompass",
+    "catalyze",
+    "reimagine",
+    "galvanize",
+    "augment",
+    "cultivate",
+    "illuminate",
+    "elucidate",
+    "juxtapose",
+    "transformative",
+    "transformation",
+    "cornerstone",
+    "paramount",
+    "poised",
+    "burgeoning",
+    "nascent",
+    "quintessential",
+    "overarching",
+    "quietly",
+    "underpinning",
+    "underpinnings",
+    "paradigm-shifting"
+   ],
+   "examples": [
+    {
+     "before": "harness",
+     "after": "use, take advantage of"
+    },
+    {
+     "before": "navigate",
+     "after": "work through, handle"
+    },
+    {
+     "before": "foster",
+     "after": "encourage, support, build"
+    },
+    {
+     "before": "empower",
+     "after": "enable, let, allow"
+    },
+    {
+     "before": "nuanced",
+     "after": "specific, subtle, detailed"
+    },
+    {
+     "before": "crucial",
+     "after": "important, key, necessary"
+    },
+    {
+     "before": "multifaceted",
+     "after": "describe the actual facets"
+    },
+    {
+     "before": "ecosystem",
+     "after": "system, community, network"
+    },
+    {
+     "before": "myriad",
+     "after": "many, numerous"
+    },
+    {
+     "before": "plethora",
+     "after": "many, a lot of"
+    },
+    {
+     "before": "transformative",
+     "after": "describe what changed"
+    },
+    {
+     "before": "cornerstone",
+     "after": "foundation, basis, key part"
+    },
+    {
+     "before": "poised",
+     "after": "ready, set, about to"
+    },
+    {
+     "before": "quietly",
+     "after": "cut, or name the concrete contrast"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 3, severity medium. Threshold: found.length >= 2 per paragraph. Two or more clustered paragraphs (tier2Clusters >= 2) is one leg of the denseAIVocab corroborator."
+  },
+  {
+   "name": "tier2 conditional: 'deeply' + significance collocation",
+   "category": "vocabulary",
+   "definition": "Everyday word whose AI tell is a specific collocation; it joins a paragraph's tier2 cluster only when the collocation matches, never on bare use.",
+   "cues": [
+    "\\bdeeply\\s+(?:integrated|committed|rooted|personal|human|flawed|resonant|transformative|interconnected|ingrained|embedded|meaningful)\\b"
+   ],
+   "examples": [
+    {
+     "before": "deeply integrated / deeply human / deeply flawed",
+     "after": "cut, or name what specifically runs deep"
+    },
+    {
+     "before": "deeply nested JSON (never counts)"
+    },
+    {
+     "before": "cares deeply (never counts)"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Base rate of the bare word in innocent prose is far higher than the rest of the table; an unconditional entry measurably flagged clean human writing."
+  },
+  {
+   "name": "tier3 (overused word by density)",
+   "category": "vocabulary",
+   "definition": "Words legitimate on their own that are flagged only when one word repeats at or above 3% of the word count, with a floor of 3 occurrences.",
+   "cues": [
+    "significant",
+    "significantly",
+    "innovative",
+    "innovation",
+    "effective",
+    "effectively",
+    "dynamic",
+    "dynamics",
+    "scalable",
+    "scalability",
+    "compelling",
+    "unprecedented",
+    "exceptional",
+    "exceptionally",
+    "remarkable",
+    "remarkably",
+    "sophisticated",
+    "instrumental",
+    "world-class",
+    "state-of-the-art",
+    "best-in-class",
+    "verbatim"
+   ],
+   "examples": [
+    {
+     "before": "\"significant\" x4",
+     "after": "Overused (4 times in 120 words)"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 2, severity low (P3). densityThreshold = max(3, floor(wordCount * 0.03)). Hyphenated entries also match dashless forms. 'verbatim' is usually redundant with its verb but is a term of art in legal, research and QA registers, hence density-gated. Earlier floor of 1 flagged a 50-word text with one 'significant' as noise."
+  },
+  {
+   "name": "tier3-phrase (boilerplate phrase repeated)",
+   "category": "vocabulary",
+   "definition": "Multi-word boilerplate common in crypto/web3/dev writing; a single phrase is flagged when it occurs at least twice (a lower threshold than single tier3 words, because repeating the same multi-word boilerplate is a stronger tell).",
+   "cues": [
+    "\\bemerging\\s+(?:sector|space|category|industry)\\b",
+    "\\bthe\\s+integration\\s+of\\b",
+    "\\bthe\\s+intersection\\s+of\\b",
+    "\\bcommunity-?driven\\b",
+    "\\blong-?term\\s+sustainability\\b",
+    "\\buser\\s+engagement\\b",
+    "\\bdecentralized\\s+compute\\b",
+    "\\b(?:sustainable\\s+)?reward\\s+emissions?\\b",
+    "\\btokenized\\s+incentive\\s+structures?\\b",
+    "\\bdesigned\\s+for\\s+long-?term\\b"
+   ],
+   "examples": [
+    {
+     "before": "\"the intersection of\" x2",
+     "after": "Boilerplate phrase repeated 2x - replace at least one with specifics"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 3, medium. Overlapping spans are claimed once so 'designed for long-term sustainability' counts as one hit, not two."
+  },
+  {
+   "name": "tier3-phrase-cluster (boilerplate cluster)",
+   "category": "vocabulary",
+   "definition": "Three or more distinct boilerplate phrases from the tier3-phrase list anywhere in one piece, each possibly used only once. Catches LLMs varying their boilerplate rather than repeating it.",
+   "cues": [
+    "distinctPhrasesHit >= 3 over TIER3_PHRASES"
+   ],
+   "examples": [
+    {
+     "before": "3 distinct boilerplate phrases",
+     "after": "Several stock crypto/web3 phrases stacked in one piece. Rewrite around one specific claim or observation."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 12, severity high; deliberately heavy because it is near-dispositive on social-length posts that the length divisor would otherwise wash out."
+  },
+  {
+   "name": "transition (AI transition phrases)",
+   "category": "vocabulary",
+   "definition": "Connective and framing phrases LLMs use to glue paragraphs; every hit is flagged.",
+   "cues": [
+    "\\bmoreover\\b",
+    "\\bfurthermore\\b",
+    "\\badditionally\\b",
+    "\\bin\\s+today'?s\\b",
+    "\\bin\\s+an\\s+era\\s+where\\b",
+    "\\bit'?s\\s+worth\\s+noting\\s+that\\b",
+    "\\bnotably\\b",
+    "\\bin\\s+conclusion\\b",
+    "\\bin\\s+summary\\b",
+    "\\bto\\s+summarize\\b",
+    "\\bwhen\\s+it\\s+comes\\s+to\\b",
+    "\\bat\\s+the\\s+end\\s+of\\s+the\\s+day\\b",
+    "\\bthat\\s+(?:being\\s+)?said\\b"
+   ],
+   "examples": [
+    {
+     "before": "Moreover, ..."
+    },
+    {
+     "before": "It's worth noting that ..."
+    },
+    {
+     "before": "In today's fast-paced world ..."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 2, medium. Presence of at least one transition is a leg of the denseAIVocab corroborator."
+  },
+  {
+   "name": "filler phrase",
+   "category": "vocabulary",
+   "definition": "Throat-clearing phrases that delay the claim without adding information.",
+   "cues": [
+    "\\bit\\s+is\\s+important\\s+to\\s+note\\s+that\\b",
+    "\\bin\\s+terms\\s+of\\b",
+    "\\bthe\\s+reality\\s+is\\s+that\\b",
+    "\\bit'?s\\s+important\\s+to\\s+note\\s+that\\b"
+   ],
+   "examples": [
+    {
+     "before": "It is important to note that X",
+     "after": "X"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 2, medium."
+  },
+  {
+   "name": "hollow intensifier",
+   "category": "vocabulary",
+   "definition": "Sincerity or emphasis markers that assert honesty or intensity instead of supplying it.",
+   "cues": [
+    "\\bgenuine(?:ly)?\\b",
+    "\\btruly\\b",
+    "\\bquite\\s+frankly\\b",
+    "\\bto\\s+be\\s+honest\\b",
+    "\\blet'?s\\s+be\\s+clear\\b"
+   ],
+   "examples": [
+    {
+     "before": "genuinely useful",
+     "after": "useful"
+    },
+    {
+     "before": "to be honest, ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 2, medium. 'actually' is deliberately excluded from the regex: it is a hollow intensifier only when it adds emphasis and is legitimate when it carries a named correction or expectation gap, so it stays LLM-judgment (CATEGORIES.md §C)."
+  },
+  {
+   "name": "confidence calibration (confidence stacking)",
+   "category": "vocabulary",
+   "definition": "Sentence adverbs that perform certainty or surprise; flagged only when three or more raw hits stack in one text.",
+   "cues": [
+    "\\binterestingly\\b",
+    "\\bsurprisingly\\b",
+    "\\bimportantly\\b",
+    "\\bsignificantly\\b",
+    "\\bcertainly\\b",
+    "\\bundoubtedly\\b",
+    "\\bwithout\\s+a\\s+doubt\\b"
+   ],
+   "examples": [
+    {
+     "before": "Interestingly, ... Importantly, ... Undoubtedly, ..."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 2, severity low. Gated pre-dedup on raw match count (>= 3), since stacking, not vocabulary, is the signal."
+  },
+  {
+   "name": "dev-blog boilerplate",
+   "category": "vocabulary",
+   "definition": "Stock simplicity slogans from developer marketing.",
+   "cues": [
+    "\\bit\\s+just\\s+works\\b(?!\\s+out\\b(?![-\\s]+of[-\\s]+the[-\\s]+box\\b))",
+    "\\bzero[-\\s]config(?:uration)?\\b",
+    "\\bsane\\s+defaults\\b",
+    "\\b(?:hold|fit|fits|holds)\\s+in\\s+your\\s+head\\b"
+   ],
+   "examples": [
+    {
+     "before": "It just works."
+    },
+    {
+     "before": "zero-config"
+    },
+    {
+     "before": "sane defaults"
+    },
+    {
+     "before": "fits in your head"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 3, medium. Adapted from Simon Willison's LLM cliche highlighter. Literal 'batteries included' is excluded and stays judgment-only."
+  },
+  {
+   "name": "real/actual adjective inflation",
+   "category": "vocabulary",
+   "definition": "real/actual/genuine/true used as an empty intensifier on an abstract noun to imply the rest of the field is fake or superficial.",
+   "cues": [
+    "\\b(?:real|actual|genuine|true)\\s+(?:on-?chain\\s+)?(?:tokenomics|economics|utility|adoption|sustainability|impact|revenue|fundamentals|demand|value|innovation|traction)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Real on-chain tokenomics"
+    },
+    {
+     "before": "actual reward sustainability"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 5, medium."
+  },
+  {
+   "name": "dense AI vocabulary trifecta",
+   "category": "vocabulary",
+   "definition": "Composite corroborator: at least 150 words, at least 5 distinct tier1 hits, at least 2 tier2-clustered paragraphs, and at least 1 transition phrase together. Counted as a strong corroborator that alone yields AI_ONLY.",
+   "cues": [
+    "wordCount >= 150 && tier1Distinct >= 5 && tier2Clusters >= 2 && hasTransition"
+   ],
+   "examples": [],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Word-count gate prevents short ESL or adversarial sentences from tripping it; the vocabulary overlap with systems-programming idiom (robust, comprehensive, leverage, ecosystem) is why a single tier alone is not enough. Note the classifier comment says >=4 tier1 while the code uses >=5."
+  },
+  {
+   "name": "\"Let's\" construction",
+   "category": "syntax",
+   "definition": "First-person-plural imperative openers that stage the exposition instead of starting it.",
+   "cues": [
+    "\\blet'?s\\s+explore\\b",
+    "\\blet'?s\\s+take\\s+a\\s+look\\b",
+    "\\blet'?s\\s+break\\s+this\\s+down\\b",
+    "\\blet'?s\\s+examine\\b",
+    "\\blet'?s\\s+(?:consider|discuss|delve|unpack|walk\\s+through)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Let's explore how ..."
+    },
+    {
+     "before": "Let's break this down."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 2, medium. 'let's dive in' is in the chatbot list instead."
+  },
+  {
+   "name": "hedge-stacked prediction",
+   "category": "syntax",
+   "definition": "A modal (could/may/might) stacked with a hedge adverb (potentially/eventually/ultimately/possibly/conceivably), in either order, with at most one non-negating word between.",
+   "cues": [
+    "\\b(?:could|may|might)\\s+(?:(?!not\\b|never\\b|hardly\\b|scarcely\\b|barely\\b)\\w+\\s+)?(?:potentially|eventually|ultimately|possibly|conceivably)\\b",
+    "\\b(?:potentially|eventually|ultimately)\\s+(?:could|may|might)\\b"
+   ],
+   "examples": [
+    {
+     "before": "could potentially create new opportunities"
+    },
+    {
+     "before": "may eventually unlock value"
+    },
+    {
+     "before": "could not possibly (must not fire)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 6, high. Either word alone is fine; the stack is the tell. The earlier {0,2} gap matched 'could not possibly' and 'could a savage possibly'; on the human-control corpus 3 of 4 flags were that over-match (issue #69)."
+  },
+  {
+   "name": "negation chain",
+   "category": "syntax",
+   "definition": "Rhetorical negation runs: a sentence-initial 'No X, no Y, no Z' with three or more items; a comma-joined 'didn't X, didn't Y' with the subject elided; or 'Don't [verb] it ... [verb] it' mirroring.",
+   "cues": [
+    "(?<=^|[.!?]\\s|\\n|[:–—]\\s)No\\s+(?!matter\\b|one\\b|doubt\\b|longer\\b|way\\b|less\\b|more\\b|such\\b|other\\b|means\\b)[a-z'’-]+(?:\\s+(?!(?:in|on|at|of|to|for|with|from|by|is|are|was|were|be|been|being|will|would|can|could|should|shall|may|might|must|have|has|had|do|does|did)\\b)[a-z'’-]+)?(?:\\s*,\\s*(?:and\\s+|or\\s+|just\\s+)?no\\s+(?!matter\\b|...)[a-z'’-]+(?:\\s+(?!...)[a-z'’-]+)?){2,}  [flags gm]",
+    "\\b(?:did\\s+not|didn['’]t)\\s+[a-z]+[^,.;!?\\n]{0,20},\\s*(?:did\\s+not|didn['’]t)\\s+[a-z]+",
+    "\\b(?:do\\s+not|don['’]t)\\s+(?:just\\s+)?(\\w+)\\s+it\\b[^.!?\\n]{0,60}[.!?;:,][\\s'\\\"”’]*(?:just\\s+)?\\1\\s+it\\b"
+   ],
+   "examples": [
+    {
+     "before": "No fluff, no filler, no jargon."
+    },
+    {
+     "before": "It didn't ask, didn't wait."
+    },
+    {
+     "before": "Don't call it X. Call it Y."
+    },
+    {
+     "before": "takes no arguments, no headers, and no body (must not fire: mid-sentence factual inventory)"
+    },
+    {
+     "before": "I did not sleep. I did not eat. (must not fire: ordinary narration)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 5, high. Stop-list keeps idiomatic pairs ('no more, no less', 'no matter what') from firing. Two-item chains remain judgment calls. Adapted from Simon Willison's LLM cliche highlighter."
+  },
+  {
+   "name": "parenthetical hedge",
+   "category": "syntax",
+   "definition": "A parenthetical aside that adds no information but performs thoughtfulness, as opposed to a genuine tangent or clarification.",
+   "cues": [
+    "\\(\\s*(?:and\\s+)?(?:increasingly|notably|importantly|crucially|interestingly|perhaps)[,]?\\s+[^)]{3,60}\\)",
+    "\\(\\s*or\\s+more\\s+(?:precisely|accurately|specifically)[,]?\\s+[^)]{3,60}\\)",
+    "\\(\\s*though\\s+to\\s+be\\s+fair[,]?\\s+[^)]{3,60}\\)",
+    "\\(\\s*at\\s+least\\s+(?:in\\s+)?(?:theory|principle|part)[,]?\\s+[^)]{0,60}\\)"
+   ],
+   "examples": [
+    {
+     "before": "(and increasingly, X)"
+    },
+    {
+     "before": "(or more precisely, Y)"
+    },
+    {
+     "before": "(though to be fair, Z)"
+    },
+    {
+     "before": "(at least in theory)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 3, medium."
+  },
+  {
+   "name": "false concession",
+   "category": "syntax",
+   "definition": "A concessive clause that grants a compliment or a vague challenge in order to pivot, without conceding anything specific.",
+   "cues": [
+    "\\bwhile\\s+\\w+\\s+is\\s+impressive\\b",
+    "\\balthough\\s+\\w+\\s+has\\s+made\\s+strides\\b",
+    "\\bdespite\\s+\\w+\\s+challenges?\\b"
+   ],
+   "examples": [
+    {
+     "before": "While X is impressive, ..."
+    },
+    {
+     "before": "Despite its challenges, ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 2, medium."
+  },
+  {
+   "name": "template phrase",
+   "category": "syntax",
+   "definition": "Slot-fill sentence frames that read as a template with the nouns swapped in.",
+   "cues": [
+    "\\ba\\s+\\w+\\s+step\\s+(?:towards?|forward\\s+for)\\b",
+    "\\bwhether\\s+you'?re\\s+\\w+\\s+or\\s+\\w+",
+    "\\bi\\s+recently\\s+had\\s+the\\s+pleasure\\s+of\\b"
+   ],
+   "examples": [
+    {
+     "before": "a significant step towards ..."
+    },
+    {
+     "before": "whether you're a beginner or an expert"
+    },
+    {
+     "before": "I recently had the pleasure of ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 3, high."
+  },
+  {
+   "name": "sycophantic tone",
+   "category": "rhetoric",
+   "definition": "Flattery of the interlocutor left in the text.",
+   "cues": [
+    "\\byou'?re\\s+absolutely\\s+right\\b",
+    "\\bthat'?s\\s+a\\s+really\\s+insightful\\b",
+    "\\bthat'?s\\s+a\\s+great\\s+question\\b",
+    "\\bexcellent\\s+question\\b"
+   ],
+   "examples": [
+    {
+     "before": "You're absolutely right"
+    },
+    {
+     "before": "That's a great question"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, critical (P0)."
+  },
+  {
+   "name": "acknowledgment loop",
+   "category": "rhetoric",
+   "definition": "Restating the question before answering it.",
+   "cues": [
+    "\\byou'?re\\s+asking\\s+about\\b",
+    "\\bthe\\s+question\\s+of\\s+whether\\b",
+    "\\bto\\s+answer\\s+your\\s+question\\b"
+   ],
+   "examples": [
+    {
+     "before": "To answer your question, ..."
+    },
+    {
+     "before": "You're asking about ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 3, medium."
+  },
+  {
+   "name": "generic conclusion",
+   "category": "rhetoric",
+   "definition": "Closers that gesture at the future without a falsifiable claim.",
+   "cues": [
+    "\\bthe\\s+future\\s+looks\\s+bright\\b",
+    "\\bonly\\s+time\\s+will\\s+tell\\b",
+    "\\bone\\s+thing\\s+is\\s+certain\\b",
+    "\\bas\\s+we\\s+move\\s+forward\\b"
+   ],
+   "examples": [
+    {
+     "before": "Only time will tell."
+    },
+    {
+     "before": "As we move forward, ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 3, medium. Two of these are also tier1 phrases."
+  },
+  {
+   "name": "rhetorical question opener",
+   "category": "rhetoric",
+   "definition": "A staged question used as a section pivot.",
+   "cues": [
+    "\\bbut\\s+what\\s+does\\s+this\\s+mean\\s+for\\b",
+    "\\bso\\s+why\\s+should\\s+you\\s+care\\b",
+    "\\bwhat'?s\\s+next\\?\\s*"
+   ],
+   "examples": [
+    {
+     "before": "But what does this mean for you?"
+    },
+    {
+     "before": "So why should you care?"
+    },
+    {
+     "before": "What's next?"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 2, medium. Stacked rhetorical questions in general are skill-only: interviews, FAQs and dialogue stack them legitimately."
+  },
+  {
+   "name": "formulaic opener (formulaic challenges)",
+   "category": "rhetoric",
+   "definition": "The LLM-default essay opening: 'In the rapidly evolving world of X, Y has emerged as ...', plus its era/age and 'has become increasingly' relatives, gated to inflated head nouns.",
+   "cues": [
+    "\\bin\\s+the\\s+(?:rapidly\\s+|ever-?\\s*)?(?:evolving|changing|expanding|growing|shifting)\\s+(?:world|landscape|realm|space|field|domain|era)\\s+of\\b",
+    "\\bin\\s+(?:an?|the)\\s+(?:digital\\s+)?age\\s+(?:where|of)\\b",
+    "\\bas\\s+(?:we|the\\s+world|society|industries?)\\s+(?:continue|move|navigate|enter)\\s+(?:to\\s+)?(?:evolve|forward|into|through)\\b",
+    "\\bhas\\s+emerged\\s+as\\s+(?:a|the|one\\s+of)\\s+(?:leading|key|major|critical|essential|fundamental|pivotal|prominent|dominant|important)\\s+\\w+",
+    "\\bhas\\s+become\\s+increasingly\\s+(?:important|critical|popular|relevant|prominent|essential)\\b"
+   ],
+   "examples": [
+    {
+     "before": "In the rapidly evolving world of AI, ..."
+    },
+    {
+     "before": "has emerged as a leading force"
+    },
+    {
+     "before": "Rust has emerged as a serious systems language (must not fire)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, high. Bare 'has emerged as a' matches normal English, hence the noun gate."
+  },
+  {
+   "name": "speculative scenario opener",
+   "category": "rhetoric",
+   "definition": "Opening an argument with a hypothetical world that lists desirable outcomes instead of making a claim.",
+   "cues": [
+    "\\b(?:imagine|picture|envision)(?:\\s*,[^,\\n]{1,30},)?\\s+a\\s+(?:world|future|reality)\\s+(?:where|in\\s+which)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Imagine a world where ..."
+    },
+    {
+     "before": "Imagine, for a moment, a future in which ..."
+    },
+    {
+     "before": "imagine you have an array (must not fire)"
+    },
+    {
+     "before": "consider a scenario where (deliberately excluded)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, high. Known accepted false positive: fiction openings and staged thought experiments; the engine has no fiction mode, a lone hit cannot flip classification."
+  },
+  {
+   "name": "launch-copy introduction",
+   "category": "rhetoric",
+   "definition": "The product-launch move 'Meet X, your new favorite ...' / 'Think X meets Y', gated to a sentence-initial imperative plus one capitalized 2-30 char token.",
+   "cues": [
+    "(?<=^|[.!?]\\s|\\n)Meet\\s+[A-Z][\\w'-]{1,29}\\s*,\\s*(?:your\\s+new\\s+(?:favorite|go-to)\\b|the\\s+new\\s+(?:home\\s+of\\b|way\\s+to\\b|standard\\s+(?:in|for)\\b|(?:standard|way|home)(?=\\s*(?:[.!?,;:–—]|$))))",
+    "(?<=^|[.!?]\\s|\\n)[Tt]hink\\s+[A-Z][\\w'-]{1,29}\\s+meets\\s+[A-Z][\\w'-]{1,29}\\b"
+   ],
+   "examples": [
+    {
+     "before": "Meet Flowdesk, your new favorite treasury dashboard"
+    },
+    {
+     "before": "Think Notion meets Figma"
+    },
+    {
+     "before": "Meet Rosa, the new home secretary (must not fire)"
+    },
+    {
+     "before": "Meet Sarah, your new account manager (skill-only)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, high. Two-token names ('Meet North Star') are a deliberate miss. 'Say hello to X' and bare 'Enter X.' stay judgment-only because 'Say hello to Grandma.' and 'Enter Password.' are ordinary prose."
+  },
+  {
+   "name": "dramatized crowd contrast",
+   "category": "rhetoric",
+   "definition": "A claim propped on an implied lagging crowd: 'while everyone else was still debating ...', 'while the industry wrote think-pieces', 'while others played catch-up'.",
+   "cues": [
+    "\\bwhile\\s+(?:everyone\\s+else|the\\s+(?:industry|market|competition)|others)\\s+(?:was|were|is|are)\\s+still\\s+(?:busy\\s+)?(?:(?:debat|deliberat|hesitat|theoriz|philosophiz|pontificat|speculat|argu)ing|(?:dither|bicker)ing)\\b",
+    "\\bwhile\\s+(?:everyone\\s+else|the\\s+(?:industry|market|competition)|others)\\s+(?:was\\s+|were\\s+)?(?:busy\\s+)?(?:writing|wrote)\\s+think-?\\s?pieces\\b",
+    "\\bwhile\\s+(?:everyone\\s+else|the\\s+(?:industry|market|competition)|others)\\s+(?:was\\s+|were\\s+|is\\s+|are\\s+)?(?:still\\s+)?play(?:ed|ing|s)?\\s+catch[-\\s]?up\\b"
+   ],
+   "examples": [
+    {
+     "before": "shipped it in 2022, while everyone else was still debating timelines"
+    },
+    {
+     "before": "she read while everyone else watched the movie (must not fire)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 6, medium. Crowd is the closed list everyone else|others|the industry|the market|the competition. Literal progressive uses ('while the market was still speculating about the price') are accepted residue; 'was busy debating' without 'still' is a deliberate miss."
+  },
+  {
+   "name": "fake-casual prop (stage directions and wink asides)",
+   "category": "rhetoric",
+   "definition": "Theatrical asterisk stage directions and (yes, really)-style wink parentheticals that costume prose as casual.",
+   "cues": [
+    "\\*\\s?(?:checks\\s+notes|chef['’]s\\s+kiss|mic\\s+drop|takes\\s+a\\s+deep\\s+breath|sips\\s+(?:coffee|tea)|nervous\\s+laughter)\\s?\\*",
+    "\\(\\s?(?:yes|no)\\s?,\\s?(?:really|seriously)\\s?\\)"
+   ],
+   "examples": [
+    {
+     "before": "*checks notes*"
+    },
+    {
+     "before": "*chef's kiss*"
+    },
+    {
+     "before": "(yes, really)"
+    },
+    {
+     "before": "*checks calendar* (deliberate miss)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, high. Exactly six stage directions and the four (yes|no) x (really|seriously) forms. Verdict closers ('wild.'), label-prefix openers, the self-QA volley and 'because of course it does' stay skill-only. Known accepted FP: a human using a wink aside on purpose."
+  },
+  {
+   "name": "performed-insight phrase",
+   "category": "rhetoric",
+   "definition": "Essayist tics that announce profundity instead of delivering it.",
+   "cues": [
+    "\\bsit(?:s|ting)?\\s+with\\s+(?:that|this)(?=\\s*(?:[.!?,;:)–—’\\\"']|for\\s+a\\s+(?:moment|minute|second|beat)\\b|$))(?:\\s+for\\s+a\\s+(?:moment|minute|second|beat))?",
+    "\\bsit(?:s|ting)?\\s+with\\s+(?:the|your)\\s+(?:discomfort|tension|uncertainty|ambiguity|grief|unease)\\b",
+    "\\b(?:that|this|it|which)(?:['’]s|\\s+(?:is|was))\\s+not\\s+nothing\\b",
+    "\\byou\\s+already\\s+know\\s+the\\s+answer\\b",
+    "\\b(?:do\\s+not|don['’]t)\\s+(?:have\\s+to\\s+)?take\\s+my\\s+word\\s+for\\s+it\\b",
+    "(?<=^|[.!?]\\s|\\n)Turns\\s+out\\b",
+    "(?:['’]s|\\b(?:is|was|are|were))\\s+the\\s+(?:whole|entire)\\s+(?:point|game|ballgame|trick|pitch|idea|play|business\\s+model|value\\s+proposition)\\b",
+    "\\b(?:that|this)(?:['’]s|\\s+(?:is|was))\\s+the\\s+part\\s+(?:that|I|you|we|nobody|no\\s+one|most\\s+people)\\b",
+    "\\bthe\\s+only\\s+[\\w'’-]+\\s+that\\s+(?:matters|counts)\\b",
+    "\\bis\\s+dead\\s*[.;,:–—]\\s*long\\s+live\\b",
+    "\\b(?:that|this)(?:['’]s|\\s+(?:is|was))\\s+why\\s+[^.!?\\n]{0,60}\\s+mattered\\b"
+   ],
+   "examples": [
+    {
+     "before": "Sit with that for a moment."
+    },
+    {
+     "before": "That's not nothing."
+    },
+    {
+     "before": "Turns out ..."
+    },
+    {
+     "before": "That's the whole point."
+    },
+    {
+     "before": "the only thing that matters"
+    },
+    {
+     "before": "X is dead, long live X"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 3, medium: single hits are common in human essays, density does the classifying. Literal 'the punchline' and 'worth naming' senses are excluded and remain judgment. Adapted from Simon Willison's LLM cliche highlighter."
+  },
+  {
+   "name": "social endorsement / CTA closer (engagement-bait)",
+   "category": "rhetoric",
+   "definition": "The curatorial sign-off appended to LinkedIn/X share posts that performs a recommendation without giving a reason: demonstrative-anchored 'this one is worth your time', 'thank me later', 'bookmark this'.",
+   "cues": [
+    "\\bthis\\s+one['’]?s?\\s+(?:is\\s+)?(?:well\\s+|totally\\s+|absolutely\\s+|definitely\\s+|really\\s+|truly\\s+|easily\\s+|more\\s+than\\s+)?worth\\s+(?:your\\s+time|the\\s+read|a\\s+read|every\\s+(?:minute|second)|reading|watching|a\\s+listen|a\\s+watch|a\\s+look|it)\\b",
+    "\\bthis\\s+one['’]?s?\\s+(?:is\\s+)?a\\s+must[-\\s]?(?:read|watch|listen|see)\\b",
+    "\\b(?:highly|strongly|can['’]?t|cannot)\\s+recommend\\w*\\s+(?:giving\\s+)?(?:this|it)\\s+(?:one\\s+)?a\\s+(?:read|listen|watch|look|go)\\b",
+    "\\bdo\\s+yourself\\s+a\\s+favou?r\\s+and\\s+(?:read|watch|check\\s+out)\\s+(?:this|it)\\b",
+    "\\byou\\s+(?:really\\s+)?(?:won['’]?t|do\\s*n['’]?t|will\\s+not|do\\s+not)\\s+want\\s+to\\s+miss\\s+this(?:\\s+one)?(?=\\s*(?:[:.!\\n]|$))",
+    "(?<=^|[,.!?:\\n]\\s{0,4})(?:you\\s+can\\s+)?thank\\s+me\\s+later\\b",
+    "(?<=^|[.!?:\\n]\\s{0,4})save\\s+this\\s+(?:one\\s+)?for\\s+later\\b",
+    "\\bbookmark\\s+this(?:\\s+(?:one|post|thread))?(?=\\s*(?:[:.!\\n]|$))",
+    "\\bdo\\s*n['’]?t\\s+sleep\\s+on\\s+this\\b",
+    "\\btrust\\s+me,?\\s+(?:on\\s+this|you['’]?ll)\\b"
+   ],
+   "examples": [
+    {
+     "before": "This one is worth your time:"
+    },
+    {
+     "before": "Do yourself a favor and read this."
+    },
+    {
+     "before": "You won't want to miss this."
+    },
+    {
+     "before": "bookmark this page (must not fire)"
+    },
+    {
+     "before": "she will thank me later (must not fire)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, high. Curly apostrophe (U+2019) admitted because LinkedIn/Word/macOS auto-curl it."
+  },
+  {
+   "name": "emotional flatline (superficial -ing analyses)",
+   "category": "rhetoric",
+   "definition": "Announced emotion or interest that substitutes for a reaction: 'what surprised me most', 'the most interesting part', bare 'Interesting part:' as a section opener.",
+   "cues": [
+    "\\bwhat\\s+surprised\\s+me\\s+most\\b",
+    "\\bi\\s+was\\s+fascinated\\s+to\\b",
+    "\\bwhat\\s+struck\\s+me\\s+was\\b",
+    "\\bi\\s+was\\s+excited\\s+to\\s+learn\\b",
+    "\\bthe\\s+most\\s+interesting\\s+(?:part|thing|aspect|piece)\\b",
+    "^\\s*interesting\\s+(?:part|thing|aspect|piece)(?:\\s+of\\s+(?:the\\s+)?\\w+)?\\s*:  [flags gim]"
+   ],
+   "examples": [
+    {
+     "before": "What struck me was ..."
+    },
+    {
+     "before": "The most interesting part is ..."
+    },
+    {
+     "before": "Interesting aspect of the design:"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 2, low. The line-start form uses the multiline flag; an earlier (?:^|\\n) form missed openers at position 0 (silent-failure audit 2026-05-16)."
+  },
+  {
+   "name": "lingering-attention claim",
+   "category": "rhetoric",
+   "definition": "A share-post opener that claims duration of attention instead of saying anything about the thing: noun-anchored 'the line I keep coming back to', 'I can't stop thinking about'.",
+   "cues": [
+    "\\b(?:the|that|this)\\s+(?:one\\s+)?(?:line|quote|bit|part|idea|point|framing|comment|thing)\\s+(?:that\\s+)?i\\s+keep\\s+(?:coming\\s+back\\s+to|thinking\\s+about)\\b",
+    "\\bi\\s+can'?t\\s+stop\\s+thinking\\s+about\\b",
+    "\\bstill\\s+thinking\\s+about\\s+(?:this|that)\\s+one\\b",
+    "\\b(?:been|be)\\s+rattling\\s+around\\s+(?:in\\s+)?my\\s+(?:head|brain)\\b",
+    "\\bi'?ve\\s+been\\s+chewing\\s+on\\s+(?:this|that)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The line I keep coming back to: ..."
+    },
+    {
+     "before": "I keep coming back to Hirschman because it predicts who quits (must not fire; bare form stays judgment)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 3, medium. Bare 'I keep coming back to X' is legitimate whenever a reason follows, which regex cannot detect."
+  },
+  {
+   "name": "novelty inflation",
+   "category": "rhetoric",
+   "definition": "Claiming that nobody else has noticed the point.",
+   "cues": [
+    "\\bthe\\s+failure\\s+mode\\s+nobody'?s?\\s+naming\\b",
+    "\\ba\\s+problem\\s+nobody\\s+talks\\s+about\\b",
+    "\\bthe\\s+insight\\s+everyone'?s?\\s+missing\\b",
+    "\\bwhat\\s+nobody\\s+tells\\s+you\\b"
+   ],
+   "examples": [
+    {
+     "before": "the problem nobody talks about"
+    },
+    {
+     "before": "what nobody tells you"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 3, medium. The invented-concept-labels sub-rule is LLM-judgment only: open-ended coinages are not regex-matchable."
+  },
+  {
+   "name": "generic future-narrative closer",
+   "category": "rhetoric",
+   "definition": "Vague future significance with no falsifiable claim: 'may become one of the most important narratives of the next decade'.",
+   "cues": [
+    "\\b(?:may|could|will|is\\s+(?:poised|set)\\s+to)\\s+become\\s+(?:one\\s+of\\s+)?(?:the\\s+)?(?:most\\s+)?\\w+\\s+(?:narratives?|stories|developments?|trends?|movements?|chapters?|themes?|forces?)\\b",
+    "\\bone\\s+of\\s+the\\s+most\\s+important\\s+(?:narratives?|stories|trends?|themes?)\\s+of\\s+the\\s+(?:next|coming)\\s+\\w+\\b"
+   ],
+   "examples": [
+    {
+     "before": "may become one of the most important narratives"
+    },
+    {
+     "before": "is poised to become a defining trend"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 12, high; weighted heavily as a near-dispositive social-post tell."
+  },
+  {
+   "name": "significance inflation",
+   "category": "content",
+   "definition": "Declaring an event a pivotal or watershed moment instead of stating what happened.",
+   "cues": [
+    "\\bmarking\\s+a\\s+(?:pivotal|significant|important)\\s+moment\\b",
+    "\\ba\\s+watershed\\s+moment\\s+for\\b",
+    "\\bin\\s+the\\s+evolution\\s+of\\b",
+    "\\ba\\s+(?:pivotal|defining)\\s+moment\\s+in\\b"
+   ],
+   "examples": [
+    {
+     "before": "marking a pivotal moment in the evolution of ...",
+     "after": "state what happened"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 4, high. Self-labeling significance, notability name-dropping and vague third-party validation are skill-only relatives."
+  },
+  {
+   "name": "vague attribution",
+   "category": "content",
+   "definition": "Appeals to unnamed experts, studies, research or industry leaders.",
+   "cues": [
+    "\\bexperts\\s+(?:believe|say|suggest|agree)\\b",
+    "\\bstudies\\s+(?:show|suggest|indicate)\\b",
+    "\\bresearch\\s+(?:shows|suggests|indicates)\\b",
+    "\\bindustry\\s+leaders\\s+(?:agree|believe|say)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Experts believe ..."
+    },
+    {
+     "before": "Studies show ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 5, critical. Weighted below cutoff disclaimers (10) and chatbot artifacts (8) despite the shared critical tag."
+  },
+  {
+   "name": "cutoff disclaimer / LLM self-identification",
+   "category": "artifacts",
+   "definition": "Knowledge-cutoff caveats and first-person self-identification as an AI model, plus the canned refusal of professional advice.",
+   "cues": [
+    "\\bas\\s+of\\s+my\\s+last\\s+update\\b",
+    "\\bas\\s+of\\s+my\\s+(?:knowledge\\s+)?(?:cut-?off|last\\s+training)\\b",
+    "\\bi\\s+don'?t\\s+have\\s+access\\s+to\\s+real-?time\\s+(?:data|information)\\b",
+    "\\bbased\\s+on\\s+available\\s+information\\b",
+    "\\bas\\s+an?\\s+(?:ai|artificial\\s+intelligence|large\\s+language|ai\\s+language)\\s+(?:language\\s+)?model\\b",
+    "\\bi\\s+(?:am|'m)\\s+an?\\s+(?:ai|artificial\\s+intelligence|large\\s+language)\\s+(?:assistant|model)?\\b",
+    "\\bi\\s+cannot\\s+(?:provide|give|offer)\\s+(?:legal|medical|financial|professional)\\s+advice\\b",
+    "\\bmy\\s+training\\s+data\\s+(?:only\\s+)?(?:goes\\s+up\\s+to|extends\\s+to|ends\\s+(?:in|at))\\b"
+   ],
+   "examples": [
+    {
+     "before": "As of my last update, ..."
+    },
+    {
+     "before": "As an AI language model, ..."
+    },
+    {
+     "before": "I cannot provide legal advice"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 10, critical: the highest phrase weight, a strong corroborator that alone yields AI_ONLY with high confidence. The cutoff-caveat half maps to the 'content' family (knowledge-cutoff disclaimers); the self-identification half is a chatbot artifact. The source keeps them as one type."
+  },
+  {
+   "name": "chatbot artifact",
+   "category": "artifacts",
+   "definition": "Conversational openers and closers left over from a chat reply.",
+   "cues": [
+    "\\bi\\s+hope\\s+this\\s+helps\\b",
+    "\\bcertainly!\\b",
+    "\\babsolutely!\\b",
+    "\\bgreat\\s+question!\\b",
+    "\\bexcellent\\s+point!\\b",
+    "\\bfeel\\s+free\\s+to\\s+reach\\s+out\\b",
+    "\\blet\\s+me\\s+know\\s+if\\s+you\\s+need\\s+anything\\b",
+    "\\bin\\s+this\\s+article,?\\s+we\\s+will\\s+explore\\b",
+    "\\blet'?s\\s+dive\\s+in!?\\b"
+   ],
+   "examples": [
+    {
+     "before": "I hope this helps!"
+    },
+    {
+     "before": "Certainly!"
+    },
+    {
+     "before": "In this article, we will explore ..."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 8, critical. Chatbot + reasoning-artifact co-occurrence is one strong corroborator."
+  },
+  {
+   "name": "reasoning chain artifact",
+   "category": "artifacts",
+   "definition": "Chain-of-thought scaffolding that leaked into the output.",
+   "cues": [
+    "\\blet\\s+me\\s+think\\s+step\\s+by\\s+step\\b",
+    "\\bbreaking\\s+this\\s+down\\b",
+    "\\bto\\s+approach\\s+this\\s+systematically\\b",
+    "\\bhere'?s\\s+my\\s+thought\\s+process\\b",
+    "\\bfirst,?\\s+let'?s\\s+consider\\b",
+    "\\bworking\\s+through\\s+this\\s+logically\\b"
+   ],
+   "examples": [
+    {
+     "before": "Let me think step by step."
+    },
+    {
+     "before": "Here's my thought process:"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "notes": "Weight 6, critical."
+  },
+  {
+   "name": "unfilled placeholder",
+   "category": "artifacts",
+   "definition": "Slot-fill placeholders the user was meant to replace: bracketed directives, bracketed template nouns, all-caps stubs, XX date stubs, and HTML/Markdown comment placeholders.",
+   "cues": [
+    "\\[(?:Your|Insert|Add|Enter|Describe|Specify|Choose|Pick)[^\\]\\n]{1,80}\\]",
+    "\\[(?:Recipient|Sender|Topic|Subject|Salutation|Closing|Position|Department|Project Name|Company Name|Date)(?:\\s+[^\\]\\n]{0,60})?\\]",
+    "\\[(?:INSERT|FILL\\s+IN|ADD|TODO|TBD|PLACEHOLDER)[^\\]\\n]{0,80}\\]",
+    "\\b(?:19|20)\\d{2}-XX-XX\\b",
+    "\\bXX\\/XX\\/(?:19|20)\\d{2}\\b",
+    "<!--\\s*(?:add|fill\\s+in|insert|todo|placeholder)[^>]{0,120}-->"
+   ],
+   "examples": [
+    {
+     "before": "[Your Name]"
+    },
+    {
+     "before": "[INSERT SOURCE URL]"
+    },
+    {
+     "before": "[Company Name]"
+    },
+    {
+     "before": "2024-XX-XX"
+    },
+    {
+     "before": "<!-- add example here -->"
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 10, critical. Adapted from Aboudjem/humanizer-skill P33-P35. Citation refs and code identifiers are excluded because they carry dots, slashes, hyphens or versions. Slightly less definitive than citation markup because humans forget template slots too."
+  },
+  {
+   "name": "chatbot citation markup leak",
+   "category": "artifacts",
+   "definition": "Internal citation tokens of ChatGPT/Grok and similar tools that survive copy-paste.",
+   "cues": [
+    "\\bcite(?:turn|news|search|navigation)\\d+(?:search|turn|news|navigation)\\d+",
+    "contentReference\\s*\\[oaicite:[^\\]]+\\]\\s*\\{[^}]*\\}",
+    "\\boai_citation\\b",
+    "\\[attached_file:\\d+\\]",
+    "\\bgrok_card\\b"
+   ],
+   "examples": [
+    {
+     "before": "citeturn0search0"
+    },
+    {
+     "before": "contentReference[oaicite:3]{index=3}"
+    },
+    {
+     "before": "oai_citation"
+    },
+    {
+     "before": "[attached_file:1]"
+    },
+    {
+     "before": "grok_card"
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 15, critical: the highest weight in the table, a smoking gun."
+  },
+  {
+   "name": "AI-tool URL parameter",
+   "category": "artifacts",
+   "definition": "Tracking parameters auto-appended by AI tools to the URLs they write.",
+   "cues": [
+    "[?&]utm_source=(?:chatgpt|openai|copilot|claude|grok|gemini|perplexity)(?:\\.com|\\.ai)?\\b",
+    "[?&]referrer=(?:chatgpt|copilot|grok|claude|gemini|perplexity)\\.(?:com|ai)\\b"
+   ],
+   "examples": [
+    {
+     "before": "https://example.com/?utm_source=chatgpt.com",
+     "after": "https://example.com/"
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 12, critical. Stripping this parameter is one of two rewrite edits the validator explicitly permits."
+  },
+  {
+   "name": "bypass-trick characters (zero-width, homoglyph)",
+   "category": "artifacts",
+   "definition": "Zero-width characters and Cyrillic/Greek Latin-lookalike letters inserted by humanizer or prompt-injection bypass tools; stripped before matching and reported as a flag.",
+   "cues": [
+    "U+200B ZWSP",
+    "U+200C ZWNJ",
+    "U+200D ZWJ",
+    "U+FEFF BOM",
+    "U+2060 word joiner",
+    "[Ѐ-ӿͰ-Ͽ] swapped via CYRILLIC_LOOKALIKES / GREEK_LOOKALIKES (а е о р с х у к м н в т А Е О Р С Х У К М Н В Т ο Ο α Α ρ Ρ)"
+   ],
+   "examples": [
+    {
+     "before": "delve with a Cyrillic е",
+     "after": "Re-type from your own keyboard."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 9. Fires at zeroWidth > 0 or homoglyph >= 2; strong corroborator for the classifier at >= 2 of either (parity prevents one stray ZWSP from Word/Notion flipping AI_ONLY at score 0). Unicode ranges sourced from It-s-AI/llm-detection."
+  },
+  {
+   "name": "roleplay action markers",
+   "category": "artifacts",
+   "definition": "Paired *action* markers whose inner phrase opens with a stage verb ('*nods*', '*sighs and looks away*'), the chat-model roleplay artifact. Stripped in the normalization pre-pass and flagged at two or more.",
+   "cues": [
+    "(?<!\\*)\\*([^*\\n]{1,80}?)\\*(?!\\*)  with inner matching ^(?:nods|sighs|laughs|smiles|frowns|shrugs|grins|winks|chuckles|gasps|pauses|thinks|wonders|whispers|shouts|gestures|raises|leans|turns|looks|glances|smirks|blinks|nodding|sighing|laughing|smiling|thinking|gesturing)\\b"
+   ],
+   "examples": [
+    {
+     "before": "*nods thoughtfully*"
+    },
+    {
+     "before": "*sighs*"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Reported under normalization-flag (weight 9), severity high, requires >= 2 because a single marker can be Markdown emphasis. Markdown **bold** is rejected by lookaround."
+  },
+  {
+   "name": "bullet list of bare noun phrases",
+   "category": "structure",
+   "definition": "Five or more consecutive bullet items that are short (<= 6 words) and contain no auxiliary/modal token; 75% or more of the run must be such items.",
+   "cues": [
+    "bullet line: ^\\s*(?:\\*|-|•|\\+)\\s+(.+)$",
+    "verb gate: \\b(?:is|are|was|were|has|have|had|will|would|should|must|do|does|did|can|could|may|might|am|been|being)\\b",
+    "run >= 5, item wc <= 6, bareNP/run >= 0.75"
+   ],
+   "examples": [
+    {
+     "before": "- Stable mining efficiency\n- Reliable pool connectivity\n- Optimized RandomX performance\n- ...",
+     "after": "Convert to a prose paragraph or merge items."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 10, high. Numbered lists are excluded (numbered-list inflation is a separate skill-only rule). Bullets inside code fences are skipped; two blank lines break a run. Short two-word action items ('* fixed bug') pass both gates, an accepted trade-off."
+  },
+  {
+   "name": "hashtag stuffing",
+   "category": "structure",
+   "definition": "Six or more social hashtags in one text, counted globally, after masking code and subtracting issue refs, hex colours and preprocessor directives.",
+   "cues": [
+    "(?:^|\\W)#(\\w[\\w-]*)",
+    "exclusions: ^\\d+$, HEX_COLOUR ^(?=[0-9a-f]*\\d)(?:[0-9a-f]{6}|[0-9a-f]{8})$, CPP_DIRECTIVE ^(?:include|define|undef|if|ifdef|ifndef|elif|else|endif|pragma|error|warning|line)$"
+   ],
+   "examples": [
+    {
+     "before": "#AI #Innovation #Tech #Future #Growth #Leadership #Success",
+     "after": "Cut to 2-3 specific tags or none."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 12, medium. 3- and 4-digit hex is deliberately not carved out (#dad, #cafe, #b2b are real tags). '#general' as a channel stays counted."
+  },
+  {
+   "name": "sentence-length uniformity",
+   "category": "structure",
+   "definition": "Sentence lengths clustering around one value: coefficient of variation below 0.25 with an average above 10 words, over at least 5 sentences.",
+   "cues": [
+    "cv < 0.25 && avg > 10 && sentences >= 5"
+   ],
+   "examples": [
+    {
+     "before": "Sentence lengths cluster around 18 words (low variation)",
+     "after": "Mix short punchy sentences with longer flowing ones"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Type 'uniformity', weight 5, medium. Sentence split is coarse ([.!?]+, > 5 chars)."
+  },
+  {
+   "name": "paragraph-length uniformity",
+   "category": "structure",
+   "definition": "Every paragraph within one sentence of the average paragraph length, with an average of at least 3 sentences, over at least 4 paragraphs.",
+   "cues": [
+    "allSimilar (|len - avg| <= 1 for every paragraph) && avg >= 3 && paragraphs >= 4"
+   ],
+   "examples": [
+    {
+     "before": "All paragraphs are ~4 sentences",
+     "after": "Vary paragraph length deliberately"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Type 'uniformity', severity low."
+  },
+  {
+   "name": "cross-paragraph burstiness",
+   "category": "structure",
+   "definition": "Every paragraph has the same internal sentence-rhythm: standard deviation of per-paragraph CV of sentence length below 0.08 with mean CV below 0.45, over at least 4 paragraphs of 3+ sentences.",
+   "cues": [
+    "cvStd < 0.08 && cvMean < 0.45"
+   ],
+   "examples": [
+    {
+     "before": "Sentence-rhythm uniform across paragraphs (σCV=0.05)",
+     "after": "Humans vary cadence between terse and discursive paragraphs."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Weight 5, medium. Human prose typically swings 0.15-0.40 across paragraphs. Weak (stylometric) corroborator."
+  },
+  {
+   "name": "punctuation-distribution uniformity",
+   "category": "structure",
+   "definition": "Per-paragraph punctuation density (, ; : — ( ) per word) with coefficient of variation below 0.25 and mean at least 0.04, over at least 4 paragraphs of 5+ words.",
+   "cues": [
+    "[,;:—()] per \\S+",
+    "cv < 0.25 && mean >= 0.04"
+   ],
+   "examples": [
+    {
+     "before": "Punctuation density uniform across paragraphs (CV=0.18)",
+     "after": "Human writers swing between dense and sparse paragraphs."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Weight 6, medium. Humans cluster trimodal; threshold from stylometry literature (arxiv 2507.00838). Weak corroborator."
+  },
+  {
+   "name": "function-word trigram entropy (grammar repetition)",
+   "category": "structure",
+   "definition": "Normalized Shannon entropy of function-word trigrams below 0.82 over a text of 150+ words and 50+ sequence tokens; approximates POS-trigram entropy without a tagger.",
+   "cues": [
+    "FUNC_WORDS: the a an and or but of to in on at by for with from as is was are were be been being have has had do does did will would should could may might must can this that these those it its they them their there here we our us i you your he she his her him not no so if then than when where which who what how why because",
+    "normalized < 0.82 && total >= 50; degenerate distinctCount === 1 flagged high"
+   ],
+   "examples": [
+    {
+     "before": "Function-word trigram entropy 0.76 (low)",
+     "after": "Grammatical structure is unusually repetitive."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Weight 5. Empirical: human ~0.85-0.95, AI ~0.70-0.82. Weak corroborator."
+  },
+  {
+   "name": "low type-token ratio (vocabulary diversity)",
+   "category": "structure",
+   "definition": "Distinct word types divided by tokens below 0.40 on a text of 200+ tokens.",
+   "cues": [
+    "tokens >= 200 && ttr < 0.4"
+   ],
+   "examples": [
+    {
+     "before": "Vocabulary diversity 36.5% (73 unique / 200 tokens)",
+     "after": "Vary nouns and verbs deliberately, or check if the topic genuinely warrants the repetition."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Weight 3, low; conservative because short or topic-narrow human prose triggers easily. Human English at 200+ words sits ~0.50-0.65."
+  },
+  {
+   "name": "em dash overuse",
+   "category": "punctuation-format",
+   "definition": "More than one em dash per 1000 words, counting real em dashes and whitespace-surrounded '--', after excluding list-separator and changelog-version-heading dashes.",
+   "cues": [
+    "—|(?<=\\s)--(?=\\s|$)|(?<=^|\\s)--(?=\\s)",
+    "excluded SEPARATOR_DASH_RE: ^\\s*(?:[-*+]|\\d+[.)])\\s+(?:\\*\\*[^*\\n]+\\*\\*|\\[[^\\]\\n]+\\]\\([^)\\n]*\\))(?:[ \\t]*(?:\\([^)\\n]*\\)|`[^`\\n]+`))?[ \\t]*—",
+    "excluded VERSION_HEADING_DASH_RE: ^#{1,6}[ \\t]+\\[?v?\\d+\\.\\d+\\.\\d+[^\\]\\n]*\\]?[ \\t]*—[ \\t]*\\d{4}-\\d{2}-\\d{2}[ \\t]*$",
+    "emDashRate > 1 per 1000 words"
+   ],
+   "examples": [
+    {
+     "before": "6 em dashes in 900 words",
+     "after": "Replace with commas, periods, or rewrite"
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Weight 4, medium. A line-initial '**Bold lead** — sentence' outside a list still counts, as does a mid-sentence '**bold** — like this' splice. The '--' substitute is never carved out. Technical mode is documented as lowering em-dash weight."
+  },
+  {
+   "name": "bold overuse",
+   "category": "punctuation-format",
+   "definition": "More than three **bold** spans in a text.",
+   "cues": [
+    "\\*\\*[^*]+\\*\\*",
+    "count > 3"
+   ],
+   "examples": [
+    {
+     "before": "7 bold phrases",
+     "after": "Strip bold from most; restructure to lead with key info"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Type 'formatting', weight 3, medium."
+  },
+  {
+   "name": "Title Case section header",
+   "category": "punctuation-format",
+   "definition": "A heading line of four or more tokens with every content word capitalized and a function word (And/Or/Of/The/In/For/To/A/An) mid-title; skipped in technical mode and inside code fences.",
+   "cues": [
+    "^(?:#{1,6}[ \\t]+)?([A-Z][a-z]+(?:\\s+(?:[A-Z][a-z]+|and|or|of|the|in|for|to|a|an))+\\s+[A-Z][a-z]+)\\s*$  [flags gm]",
+    "FUNCTION_WORD mid-title: \\b(?:And|Or|Of|The|In|For|To|A|An)\\b on tokens[1:]"
+   ],
+   "examples": [
+    {
+     "before": "## Benefits And Strategic Considerations"
+    },
+    {
+     "before": "## Terms Of Service (must not fire: 3 tokens)"
+    },
+    {
+     "before": "## The New Security Landscape (must not fire: leading The)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 4, medium. Acceptable in API docs, ML papers, headlines. The optional #{1,6} prefix was load-bearing (#62). Across 81 pre-LLM files, a bare /\\bThe\\b/ gave 13 false positives, all opening with 'The'."
+  },
+  {
+   "name": "smart-punctuation signature",
+   "category": "punctuation-format",
+   "definition": "Curly quotes, a non-separator em dash, an Oxford comma and clean typing (no double spaces, no missing apostrophes) all present in 80+ words: a paste-from-LLM signature. Any one alone is meaningless.",
+   "cues": [
+    "[“”‘’]",
+    "—  (minus separator dashes)",
+    "\\b\\w+,\\s+\\w+,\\s+and\\s+\\w+",
+    "clean: no [^.!?]  + and no \\b(?:dont|wont|cant|isnt|wasnt|shouldnt|wouldnt|couldnt|youre|theyre|its\\s+a\\s+\\w+ing)\\b",
+    "signals >= 4 && wordCount >= 80"
+   ],
+   "examples": [
+    {
+     "before": "curly-quotes + em-dash + Oxford comma + zero typos",
+     "after": "Humans typing into textareas rarely produce all four."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Weight 6, high. Matches Word-edited human prose, so it is only a weak corroborator. SKILL.md treats curly quotes as a weak signal in plain-text contexts and excludes apostrophes; 'immaculate typography in casual registers' is folded into the same weak tier."
+  },
+  {
+   "name": "unnecessary hyphenation: welded open noun phrases",
+   "category": "punctuation-format",
+   "definition": "Noun-noun pairs hyphenated as if they were compound modifiers when the phrase is an open compound; matched as complete curated phrases only.",
+   "cues": [
+    "\\bresearch-impact\\s+aggregat(?:or|ion)s?\\b",
+    "\\bdata-source\\s+strateg(?:y|ies)\\b",
+    "\\bPython-package\\s+usage\\b",
+    "\\bRust-crate\\s+usage\\b",
+    "\\bsingle-Project\\s+Manifest\\b",
+    "\\btotal-downloads\\s+figures?\\b",
+    "\\blife-sciences-native\\s+citation\\s+count\\b"
+   ],
+   "examples": [
+    {
+     "before": "research-impact aggregator",
+     "after": "research impact aggregator"
+    },
+    {
+     "before": "data-source strategy",
+     "after": "data source strategy"
+    },
+    {
+     "before": "life-sciences-native citation count",
+     "after": "citation count from a life sciences source"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 0: a P2 copyedit that never moves the AI score or highlights. Reported in #107. Quotes, URLs, paths, flags, code, tables, YAML and blockquotes are masked first."
+  },
+  {
+   "name": "unnecessary hyphenation: closed compounds",
+   "category": "punctuation-format",
+   "definition": "Compounds whose standard spelling is one word, written with a hyphen.",
+   "cues": [
+    "\\bcode-base\\b",
+    "\\bdata-set\\b",
+    "\\btime-frame\\b",
+    "\\broad-map\\b"
+   ],
+   "examples": [
+    {
+     "before": "code-base",
+     "after": "codebase"
+    },
+    {
+     "before": "data-set",
+     "after": "dataset"
+    },
+    {
+     "before": "time-frame",
+     "after": "timeframe"
+    },
+    {
+     "before": "road-map",
+     "after": "roadmap"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 0. Kept as a small curated list rather than guessing every noun-noun pair should close up."
+  },
+  {
+   "name": "unnecessary hyphenation: attributive-only forms used adverbially or as nouns",
+   "category": "punctuation-format",
+   "definition": "'in real-time', 'for/over the long-term', 'works out-of-the-box' where the compound is not before a noun and should be open.",
+   "cues": [
+    "\\bin\\s+real-time(?=\\s*(?:[,.!?;:]|$)|\\s+(?:(?:across|as|automatically|because|but|continuously|during|dynamically|every|for|from|immediately|instantly|on|simultaneously|through|throughout|until|via|when|while|with|without)\\b))",
+    "\\b(?:for|over)\\s+the\\s+long-term(?=\\s*(?:[,.!?;:]|$)|\\s+(?:across|because|but|by|during|for|from|on|through|throughout|until|via|when|while|with|without)\\b)",
+    "\\b(?:functions?|functioned|functioning|operates?|operated|operating|runs?|ran|running|works?|worked|working)\\s+out-of-the-box\\b"
+   ],
+   "examples": [
+    {
+     "before": "in real-time",
+     "after": "in real time"
+    },
+    {
+     "before": "over the long-term",
+     "after": "over the long term"
+    },
+    {
+     "before": "works out-of-the-box",
+     "after": "works out of the box"
+    },
+    {
+     "before": "real-time analytics (must not fire)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Weight 0. The general question of whether a compound modifier is established English remains editorial judgment in SKILL.md."
+  },
+  {
+   "name": "synonym cycling",
+   "category": "vocabulary",
+   "definition": "Rotating through near-synonyms for the same referent to avoid repetition, producing a thesaurus effect instead of a stable term.",
+   "cues": [],
+   "examples": [],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "copula avoidance",
+   "category": "syntax",
+   "definition": "Replacing 'is/has' with 'serves as', 'features', 'boasts', 'stands as'. Only the 'serves as/features/boasts' forms are regex-caught under tier1-clarity.",
+   "cues": [
+    "serves as",
+    "features",
+    "boasts"
+   ],
+   "examples": [
+    {
+     "before": "serves as",
+     "after": "is"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "promotional language",
+   "category": "content",
+   "definition": "Marketing register in expository prose: praise adjectives and sales framing where a fact would do.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "context-dependent 'actually' as hollow intensifier",
+   "category": "vocabulary",
+   "definition": "Delete 'actually' when it only adds emphasis; keep it when it carries a named correction or expectation gap. The same token performs both jobs, so it is never matched unconditionally.",
+   "cues": [
+    "actually"
+   ],
+   "examples": [],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "'It's not X — it's Y' / split-sentence / multi-negation countdown / tailing negation",
+   "category": "syntax",
+   "definition": "Negative-parallel sentence structures: the contrast reveal, the sentence split at the dash, a countdown of negations before the point, and a negation tacked on after the claim.",
+   "cues": [
+    "It's not X — it's Y",
+    "Not X. Not Y. Z."
+   ],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap. Three-item sentence-initial 'no' chains are caught by negation-chain; the rest is judgment."
+  },
+  {
+   "name": "structural issues / excessive structure / inline-header lists / numbered list inflation",
+   "category": "structure",
+   "definition": "Over-scaffolded documents: headers on every topic, lists where prose belongs, bold-label inline headers inside bullets, and numbered lists padded to a round count.",
+   "cues": [
+    "inline-header list",
+    "numbered list inflation"
+   ],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap. Bullet-NP list is the regex-detectable slice; numbered lists are excluded from it."
+  },
+  {
+   "name": "moral-adjective category errors",
+   "category": "content",
+   "definition": "Applying moral or evaluative adjectives to things that cannot bear them, ontological slop on assumptions, and gratuitous universal quantifiers.",
+   "cues": [
+    "universal quantifiers"
+   ],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "invented contrast-pair mirroring",
+   "category": "syntax",
+   "definition": "Manufacturing a symmetrical pair of contrasted items whose parallelism exists only for rhythm.",
+   "cues": [],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "hyphenated modifier stacking",
+   "category": "punctuation-format",
+   "definition": "Chaining several hyphenated compound modifiers before one noun.",
+   "cues": [],
+   "examples": [],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "unnecessary hyphenation outside curated subclasses",
+   "category": "punctuation-format",
+   "definition": "The general question of whether a compound modifier is established English; the engine covers only the curated open, closed and position-dependent subclasses.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "false ranges",
+   "category": "syntax",
+   "definition": "'From X to Y' spans whose endpoints do not form a real scale.",
+   "cues": [
+    "from X to Y"
+   ],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "notability name-dropping",
+   "category": "content",
+   "definition": "Citing well-known names or institutions to borrow significance.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "vague third-party validation",
+   "category": "content",
+   "definition": "Unnamed approval ('widely praised', 'recognized by many') used as evidence.",
+   "cues": [],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap. The regex-detectable slice is vague-attribution."
+  },
+  {
+   "name": "self-labeling significance",
+   "category": "content",
+   "definition": "Text that announces its own importance ('this is a crucial insight') rather than earning it.",
+   "cues": [],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "wall-of-text replies",
+   "category": "structure",
+   "definition": "Conversational replies with no line breaks. Tried as 'reply-length, >=4 sentences, zero newlines' and reverted because it fires on any ordinary short paragraph; requires knowing the register.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "recap-flattery opener",
+   "category": "rhetoric",
+   "definition": "Opening a reply by summarizing the prompt back and complimenting it.",
+   "cues": [],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "narrated candor",
+   "category": "rhetoric",
+   "definition": "Announcing that honesty or disclosure is coming ('in the interest of full disclosure', 'I'd rather X than Y') instead of carrying information. Tried as a detector and reverted: the phrasings are shared with idiomatic conflict-of-interest disclosure and the ordinary comparative.",
+   "cues": [
+    "in the interest of full disclosure",
+    "I'd rather ... than"
+   ],
+   "examples": [
+    {
+     "before": "in the interest of full disclosure, I own shares in... (legitimate)"
+    },
+    {
+     "before": "I'd rather die than let you drive (legitimate)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "immaculate typography in casual registers",
+   "category": "punctuation-format",
+   "definition": "Perfect smart punctuation in a register where humans type roughly; folded into Formatting as the same weak-signal tier as curly quotes.",
+   "cues": [],
+   "examples": [],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "subjectless fragments and agentless passives",
+   "category": "syntax",
+   "definition": "Fragments with no subject and passives with no agent. Docs and changelog registers are carve-outs: the fragment is the correct form there.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "diff-anchored writing",
+   "category": "content",
+   "definition": "Prose that describes what changed relative to a previous state instead of describing the thing. Changelogs, release notes and migration guides are carve-outs.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "manufactured punchlines / staccato drama",
+   "category": "rhetoric",
+   "definition": "Short one-line paragraphs or fragments placed for dramatic effect.",
+   "cues": [],
+   "examples": [],
+   "severity": "cluster",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "aphorism formulas",
+   "category": "rhetoric",
+   "definition": "'X is the Y of Z' style maxims. A regex would flag ordinary genitive copulas ('Paris is the capital of France').",
+   "cues": [
+    "X is the Y of Z"
+   ],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "stacked rhetorical questions",
+   "category": "syntax",
+   "definition": "Several rhetorical questions in a row. Interviews, FAQs and dialogue stack questions legitimately; a regex cannot read register.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "same-opener sentence runs",
+   "category": "syntax",
+   "definition": "Consecutive sentences beginning with the same word (anaphora). Whether it is earned is the whole judgment; pronoun-opener runs are ordinary narration.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "stranded auxiliary contrast",
+   "category": "syntax",
+   "definition": "'It does.' / 'It isn't.' style contrast on a bare auxiliary. A single instance is legitimate style; only density across a piece distinguishes voice from tic.",
+   "cues": [],
+   "examples": [],
+   "severity": "cluster",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "colon into a triple",
+   "category": "syntax",
+   "definition": "A colon introducing exactly three items. Three-item lists are often simply true, especially in technical writing; weigh by genre, not per hit.",
+   "cues": [],
+   "examples": [],
+   "severity": "context",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "invented concept labels",
+   "category": "content",
+   "definition": "Coining a name for an ordinary phenomenon to make it sound like a discovery; sub-rule of novelty inflation, open-ended so not regex-matchable.",
+   "cues": [],
+   "examples": [],
+   "severity": "always",
+   "scope": "universal",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "bare 'I keep coming back to X'",
+   "category": "rhetoric",
+   "definition": "The verb phrase without a noun anchor; legitimate when a reason clause follows, which regex cannot detect.",
+   "cues": [
+    "I keep coming back to"
+   ],
+   "examples": [
+    {
+     "before": "I keep coming back to Hirschman because it predicts who quits (legitimate)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "bare 'Enter X.' / 'Say hello to X' / 'Meet X, your new [role]'",
+   "category": "rhetoric",
+   "definition": "Launch-copy introductions in the forms the regex deliberately skips because they coincide with UI instructions and how humans introduce colleagues, pets and babies.",
+   "cues": [
+    "Enter X.",
+    "Say hello to X",
+    "Meet X, your new [role]"
+   ],
+   "examples": [
+    {
+     "before": "Enter Password. (legitimate)"
+    },
+    {
+     "before": "Say hello to Grandma. (legitimate)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "fake-casual register: verdict closers, label-prefix openers, self-QA volley, 'because of course it does'",
+   "category": "rhetoric",
+   "definition": "The rest of the fake-casual register beyond the six stage directions and four wink asides: one-word verdict closers ('wild.'), label-prefix openers, the self-question-and-answer volley, and the 'because of course it does' wink.",
+   "cues": [
+    "wild.",
+    "because of course it does"
+   ],
+   "examples": [
+    {
+     "before": "The build failed because of course it did. (human grumble, pinned as must-not-fire)"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "literal-sense exclusions: 'the punchline', 'worth naming', 'batteries included'",
+   "category": "rhetoric",
+   "definition": "Surface forms adjacent to performed-insight and dev-blog boilerplate that the engine omits because their literal sense is common; remain judgment calls.",
+   "cues": [
+    "the punchline",
+    "worth naming",
+    "batteries included"
+   ],
+   "examples": [],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  },
+  {
+   "name": "two-item negation chains",
+   "category": "syntax",
+   "definition": "'No X, no Y' with only two items; the engine requires three, so the pair stays a judgment call.",
+   "cues": [
+    "no X, no Y"
+   ],
+   "examples": [],
+   "severity": "context",
+   "scope": "english",
+   "notes": "Skill-only (LLM judgment); no detector type. Listed in CATEGORIES.md §C so its absence from the engine is not mistaken for a coverage gap."
+  }
+ ],
+ "methodology": [
+  {
+   "topic": "workflow",
+   "rule": "Run the deterministic detector (AIDetector.analyzeText) before rewriting, and run validate(original, rewritten) after; a rewrite that introduces more flagged patterns than it removes fails with residual-grew."
+  },
+  {
+   "topic": "workflow",
+   "rule": "Pre-pass order: mask rendered-markdown frontmatter and HTML comments (rendered mode only), mask or strip multi-line blockquotes (>= 2 consecutive '> ' lines), strip zero-width and homoglyph bypass characters and roleplay markers, then match."
+  },
+  {
+   "topic": "workflow",
+   "rule": "Mask fenced code and inline code before hashtag, title-case and hyphenation checks; a fenced '## Heading' example is illustration, not the author's section header, and a #fff in a CSS sample is not a tag."
+  },
+  {
+   "topic": "workflow",
+   "rule": "Deduplicate issues by (type, lowercased text) before scoring so the score reflects the same distinct signals the user sees; repeated hits of one phrase never inflate the score linearly."
+  },
+  {
+   "topic": "gates",
+   "rule": "Length gates: under 10 words returns 'Too short' (UNSCORED), over 10,000 words returns 'Text too long' (UNSCORED); UNSCORED is distinct from HUMAN_ONLY so a refused scan is never read as a confident human verdict."
+  },
+  {
+   "topic": "gates",
+   "rule": "Rewrite preservation errors: fenced code modified or dropped, YAML frontmatter changed, blockquote reworded, table cell changed, inline code removed, URL or file path lost, heading count or nesting changed, residual-grew."
+  },
+  {
+   "topic": "gates",
+   "rule": "Rewrite preservation warnings: heading reworded, a figure from the original missing, more than 40% of the words dropped."
+  },
+  {
+   "topic": "gates",
+   "rule": "Two rewrite edits are always allowed: stripping AI tracking parameters from URLs (utm_source=chatgpt.com) and rewording a heading to fix Title Case or remove an emoji."
+  },
+  {
+   "topic": "gates",
+   "rule": "Never 'correct' a literal spelling inside a quote, URL, path, filename, command flag, code span, Markdown table, YAML metadata or blockquote when applying the hyphenation copyedit."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "Design is FN-biased: false positives damage trust more than false negatives, so MIXED is wide, AI_ONLY requires multiple corroborating signals, and a signal that fires on most normal prose is not worth adding (CONTRIBUTING.md)."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "Precision over recall per rule: gate every open-ended surface on a closed list, an inflection tail, a sentence-initial anchor or a terminal lookahead; document deliberate misses and accepted residue in the rule's comment."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "A human quoting AI text must not be scored on the quote: blockquotes of two or more lines are excluded; single-line '> ls -la' prompts stay in."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "Everyday words with a high innocent base rate (deeply, actually, landscape) are either collocation-gated, density-gated or left to judgment; never flagged unconditionally."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "Hashtag counting subtracts issue refs (#88), 6/8-char hex colours containing a digit, and C preprocessor directives; owner/repo#88 and URL fragments are already rejected by the non-word-char anchor."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "Em-dash and smart-punct checks exclude definition-list separator dashes ('- **Term** — desc', '- [label](url) — desc') and Keep-a-Changelog version headings ('## [3.21.0] — 2026-07-30')."
+  },
+  {
+   "topic": "false-positives",
+   "rule": "Title-case headers need four or more tokens and a function word mid-title; leading 'The' and three-word headings like '## Terms Of Service' or '## Bank Of America' are ordinary."
+  },
+  {
+   "topic": "register",
+   "rule": "contextMode 'general' (default) runs the full ruleset; 'technical' skips Title Case headers and lowers em-dash/formatting weight; 'marketing' boosts formulaic-opener and future-narrative; 'personal' is full ruleset at normal weights. Invalid modes fall back to general and are reported in stats.contextModeFallback; nothing is suppressed silently."
+  },
+  {
+   "topic": "register",
+   "rule": "sourceMode 'plain' (default) or 'rendered-markdown'; rendered mode masks initial YAML frontmatter and HTML comments while preserving offsets, so TODO placeholders inside comments are only reported in plain mode."
+  },
+  {
+   "topic": "register",
+   "rule": "Docs and changelog registers are carve-outs for subjectless fragments and diff-anchored writing; fiction and staged thought experiments are an accepted false positive for the speculative opener because the engine has no fiction mode."
+  },
+  {
+   "topic": "register",
+   "rule": "Full context-profile tolerance (the skill's Context profiles / Tolerance matrix / Auto-detection cues) remains an LLM-side judgment; the engine realizes only the contextMode gate."
+  },
+  {
+   "topic": "scoring",
+   "rule": "rawScore = sum of ISSUE_WEIGHTS over deduplicated issues (unknown types default to 2); normalizedScore = min(100, round(rawScore / max(1, log2(wordCount / 50))))."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Weights are non-flat by design: ai-citation-markup 15, ai-utm-source 12, tier3-phrase-cluster 12, hashtag-stuff 12, future-narrative 12, cutoff-disclaimer 10, ai-placeholder 10, bullet-np-list 10, normalization-flag 9, chatbot 8, sycophantic 8, social-cta-closer 8, formulaic-opener 8, speculative-opener 8, launch-intro 8, fake-casual-prop 8, reasoning-artifact 6, hedge-stack 6, crowd-contrast 6, smart-punct-signature 6, punct-distribution 6, tier1 5, vague-attribution 5, uniformity 5, real-actual-inflation 5, negation-chain 5, fnword-trigram-entropy 5, cross-para-burstiness 5, significance-inflation 4, em-dash 4, title-case-header 4, tier1-clarity 3, tier2 3, generic-conclusion 3, acknowledgment-loop 3, lingering-attention 3, novelty-inflation 3, template-phrase 3, formatting 3, tier3-phrase 3, performed-insight 3, dev-blog-boilerplate 3, parenthetical-hedge 3, low-ttr 3, tier3 2, transition 2, filler 2, lets-construction 2, hollow-intensifier 2, emotional-flatline 2, false-concession 2, rhetorical-question 2, confidence-calibration 2, unnecessary-hyphenation 0."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Structural and cluster signals on short social posts are weighted high on purpose so the log2 length divisor does not wash out a near-dispositive single hit."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Labels: 0 Clean; <=15 Minimal AI signals; <=35 Some AI patterns; <=60 Moderate AI signals; <=80 Strong AI signals; >80 Heavy AI patterns."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Trinary classification: strong corroborators are cutoff-disclaimer, normalization-flag at >= 2, reasoning-artifact + chatbot co-occurrence, and denseAIVocab; weak corroborators are >= 2 of {punct-distribution, cross-para-burstiness, fnword-trigram-entropy} and smart-punct-signature. score < 15 with no strong -> HUMAN_ONLY; strong >= 1 or score >= 70 -> AI_ONLY; score >= 40 with any corroborator -> AI_ONLY; otherwise MIXED."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Confidence: high when strong >= 2, or a cutoff disclaimer, or score < 8 on 100+ words; medium when strong >= 1, or score >= 45 with a weak corroborator, or score < 20; low otherwise. Class probabilities are soft, uncalibrated, and forced to sum to exactly 1."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Sentence-region smoothing: map each text-bearing issue to its sentence, merge adjacent flagged sentences allowing a one-sentence gap, score a region as min(1, weight/20); document-level and zero-weight copyedit types are never highlighted."
+  },
+  {
+   "topic": "scoring",
+   "rule": "Severity tags map to tiers: critical = P0, high = P1, medium = P2, low = P3."
+  },
+  {
+   "topic": "modes",
+   "rule": "The engine has one mode, detect; edit and rewrite are the skill's job and are policed by validate.js. Skill-side decisions (when to rewrite from scratch vs patch, severity tiers, self-reference escape hatch, output format) are LLM-side."
+  },
+  {
+   "topic": "output",
+   "rule": "analyzeText returns score (0-100), label, issues[] of {type, text, severity, suggestion, index}, stats (wordCount, tier counts, contextMode, sourceMode, masked spans, normalization flags, quotedLines, denseAIVocab, tier1Distinct), document_classification (HUMAN_ONLY / MIXED / AI_ONLY / UNSCORED), class_probabilities, confidence_category, highlight_sentence_for_ai regions with source offsets."
+  },
+  {
+   "topic": "output",
+   "rule": "Every issue carries a concrete replacement suggestion where the rule has one ('delve' -> 'explore, dig into, look at'); density and stylometric issues carry a diagnostic message instead."
+  },
+  {
+   "topic": "other",
+   "rule": "Anti-goal: bypass tricks (zero-width characters, Cyrillic/Greek homoglyphs, roleplay markers) are normalized away and counted as adversarial evidence; re-type from your own keyboard rather than obfuscating tells."
+  },
+  {
+   "topic": "other",
+   "rule": "Three counts coexist and must not be forced to match: README pattern-category count, the engine's 54 types, and SKILL.md's ### sections; categories.test.js enforces the engine-to-CATEGORIES.md mapping, and every prose statement of the type total is checked against TYPE_LABELS."
+  },
+  {
+   "topic": "other",
+   "rule": "Own docs are scanned against a budget (npm run self-scan:check exits 1 in CI when a document is over budget); findings live in PROOF.md."
+  }
+ ],
+ "coverage_note": "Read in full: CATEGORIES.md (137 lines), README.md (114 lines), patterns.js lines 1-2495 in 250-line chunks. Every detector type in TYPE_LABELS (54) is represented as at least one pattern; unnecessary-hyphenation is split into its three curated subclasses, uniformity into sentence-length and paragraph-length, normalization-flag into bypass characters and roleplay markers, and tier1 into words, phrases, load-bearing and the tier1-clarity band, so the pattern count exceeds 54. The skill-only rules in CATEGORIES.md §C are included with cues only where the source gives a phrase, since SKILL.md itself was not in scope. Left out on purpose: the masking helper implementations (fenceRanges, maskCode, maskYamlMetadata, maskMarkdownTables, maskDelimitedQuotes, maskHyphenationProtected, initialFrontmatterRange) beyond the false-positive rules they encode; the sentence-region and probability arithmetic beyond the thresholds; getColor. The negation-chain first regex is assembled from string constants (NO_ITEM_STOP, NO_ITEM_SECOND_STOP); it is quoted expanded on the first item and elided with '...' on the repeated group, which is the only regex not reproduced character-for-character. Not classifiable cleanly: cutoff-disclaimer merges knowledge-cutoff caveats (content) with 'as an AI' self-identification (artifacts) under one type; filed under artifacts with a note. 'features' and 'landscape' carry a filter: true flag whose effect is not visible in the shown code. The classifier comment says denseAIVocab needs >= 4 tier1 hits while the code requires >= 5; the code value is reported."
+}

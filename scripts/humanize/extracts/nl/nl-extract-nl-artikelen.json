@@ -1,0 +1,1222 @@
+{
+  "bron": "nl-artikelen",
+  "patronen": [
+    {
+      "naam": "Opgeblazen bijvoeglijke naamwoorden (jeukwoorden)",
+      "categorie": "vocabulary",
+      "definitie": "Vage, overdreven positieve bijvoeglijke naamwoorden die indruk wekken zonder iets te specificeren. Los zijn het gewone zakelijke woorden; de opeenhoping in één tekst is de tell.",
+      "cues": ["cruciaal", "essentieel", "naadloos", "robuust", "baanbrekend", "revolutionair", "vernieuwend", "geavanceerd", "transformatief", "moeiteloos", "innovatief", "hoogwaardig", "magisch", "krachtig", "ongekend", "dynamisch", "doeltreffend", "toonaangevend", "stijlvol", "onmiskenbaar", "uniek", "inspirerend", "efficiënt", "adembenemend", "impactvol", "schaalbaar", "disruptief", "holistisch", "wendbaarheid", "betekenisvol", "prachtig", "indrukwekkend", "waardevol", "geoptimaliseerd", "op maat gemaakt", "ultiem", "meesterwerk", "rijk erfgoed", "blijft fascineren"],
+      "voorbeelden": [
+        {"voor": "Onze geavanceerde technologie", "na": "Ons systeem dat automatisch 6 kanalen tegelijk beheert"},
+        {"voor": "Een robuust platform, een robuuste strategie, een robuuste oplossing", "na": "stevig, betrouwbaar, of beschrijf gewoon wat het doet"},
+        {"voor": "Naadloos", "na": "soepel, zonder gedoe, of leg uit waaróm iets goed werkt"},
+        {"voor": "Moeiteloos", "na": "eenvoudig, of: kost je 5 minuten"},
+        {"voor": "Cutting-edge", "na": "nieuw — en als iets echt nieuw is, blijkt dat wel uit je verhaal"},
+        {"voor": "Baanbrekend", "na": "nieuw, of: anders dan wat je gewend bent"},
+        {"voor": "Efficiënt, innovatief, uniek, baanbrekend, inspirerend, essentieel, cruciaal, stijlvol, onmiskenbaar"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rhinoz noemt ze jeukwoorden. Het Contentkantoor nuanceert: het woord zelf is niet fout, het voorspelbare patroon wel — 'in kaart brengen' of 'impact maken' zijn prima als je ze bewust inzet. Bikkelhart: AI slaat er iets té ver in door. Bikkelhart laat ook zien hoe ChatGPT een niet-bestaand onderzoek van de Universiteit van Zürich (2024) verzon dat AI-teksten 40% meer bijvoeglijke naamwoorden zouden bevatten — die claim is dus zelf een hallucinatie."
+    },
+    {
+      "naam": "AI-werkwoorden",
+      "categorie": "vocabulary",
+      "definitie": "Werkwoorden die in normaal Nederlands zeldzaam zijn maar in AI-output stelselmatig opduiken, meestal een duurdere variant van een gewoon werkwoord.",
+      "cues": ["identificeren", "opereren", "transformeren", "maximaliseren", "stroomlijnen", "revolutioneren", "faciliteren", "navigeren", "ontsluiten", "unlocken", "benutten", "leveragen", "verdiepen", "delven", "verkennen", "ontdekken", "analyseren", "optimaliseren", "vergemakkelijken", "ontzorgen", "weerspiegelt", "verschuiven", "aangedreven", "inzetten", "bijdragen aan", "in kaart brengen", "waarde toevoegen", "inzichten bieden", "impact maken", "uitdagingen aangaan", "kansen benutten", "waardecreatie"],
+      "voorbeelden": [
+        {"voor": "AI revolutioneert de manier waarop bedrijven marketing bedrijven.", "na": "AI verandert marketing. Niet alles, maar een paar dingen flink."},
+        {"voor": "Het navigeren van het complexe AI-landschap…", "na": "Uitzoeken hoe AI werkt voor jouw bedrijf."},
+        {"voor": "je ontsluit nieuw groeipotentieel", "na": "Je bereikt meer klanten"},
+        {"voor": "Faciliteren", "na": "helpen of mogelijk maken"},
+        {"voor": "Benutten / leveragen", "na": "gebruiken of inzetten"},
+        {"voor": "Laten we ons verdiepen in…", "na": "bekijken of uitzoeken"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rhinoz: bij 'identificeren' en 'opereren' krijgt de schrijver acuut jeuk. Het Contentkantoor wijst op de herkomst: 'facilitate a solution' is normaal Engels, 'een oplossing faciliteren' klinkt als een taalrobot die te veel managementboeken heeft gelezen. So-MC noemt 'benutten/leveragen' consultantjargon."
+    },
+    {
+      "naam": "Consultancy- en managementjargon",
+      "categorie": "vocabulary",
+      "definitie": "Zelfstandige naamwoorden en vaste combinaties uit het beleids- en adviesregister die AI als vulling gebruikt: ze ogen intelligent maar dragen geen informatie.",
+      "cues": ["synergie", "holistische benadering", "data-gedreven", "datagedreven", "relevante stakeholders", "stakeholders", "waardecreatie", "randvoorwaarden", "best practices", "schaalbaarheid", "strategisch kader", "toekomstvisie", "toekomstbestendig", "bedrijfscontinuïteit", "ecosysteem", "waardepropositie", "purpose", "continue verbetering", "klantgericht", "resultaatgericht", "evolutie", "scala", "een breed scala aan", "scharnierend", "digitale transformatie", "transformatie", "next-level", "het speelveld verandert"],
+      "voorbeelden": [
+        {"voor": "een breed scala aan diensten", "na": "We bieden e-mailmarketing, social media en SEO"},
+        {"voor": "Een breed scala aan", "na": "veel, of verschillende — of beter: noem gewoon wat je bedoelt"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Het Contentkantoor: 'Ze ogen intelligent, maar worden vaak ingezet als opvulling.' AI Slop Checker rekent 'digitale transformatie' en 'stakeholders' tot de LinkedIn-cliché- en buzzwordcategorie."
+    },
+    {
+      "naam": "Landschap als metafoor",
+      "categorie": "vocabulary",
+      "definitie": "Het woord 'landschap' voor een markt, vakgebied of situatie, meestal in de openingszin en meestal met 'huidige', 'dynamische' of 'veranderende' ervoor.",
+      "cues": ["in het huidige landschap", "dynamisch landschap", "een veranderend landschap", "navigeren door het landschap", "het complexe AI-landschap", "in dit snel veranderende landschap", "landschap"],
+      "voorbeelden": [
+        {"voor": "In het huidige landschap", "na": "Schrap het. Begin met je punt. Je lezer weet in welk landschap ze leven."},
+        {"voor": "In dit snel veranderende landschap…"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "AI Slop Checker: 'landschap' als abstracte metafoor is het meest voorkomende Nederlandse AI-woord. So-MC noemt 'In het huidige landschap' de openingszin van 90% van alle AI-blogs. Promptmaster rekent 'landschap' (als metafoor) tot de woorden waarvan niet de betekenis maar de frequentie onnatuurlijk is."
+    },
+    {
+      "naam": "Holle openingsfrase over de veranderende wereld",
+      "categorie": "vocabulary",
+      "definitie": "Een openingszin die de tijd of de wereld groot en dringend verklaart zonder iets te beweren. Vult de plek waar de eigenlijke inzet had moeten staan.",
+      "cues": ["In de snel veranderende wereld van vandaag", "In een complexe wereld waar", "In ons huidige dynamische tijdperk", "In de hedendaagse maatschappij", "In de huidige digitale wereld", "Het is algemeen bekend dat", "Belangrijker dan ooit", "In een tijd waarin"],
+      "voorbeelden": [
+        {"voor": "In de snel veranderende wereld van vandaag.", "na": "Begin met een voorbeeld — daarmee trek je meteen de aandacht"},
+        {"voor": "Creativiteit is een belangrijk onderdeel van innovatie. In een snel veranderende wereld is het essentieel om nieuwe ideeën te ontwikkelen..."},
+        {"voor": "In de huidige digitale wereld…", "na": "Begin met een persoonlijke ervaring, een vraag, of een opvallend feit."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "b2bmarketeers pleit voor een stijlregel: nooit meer een tekst met zo'n zin beginnen, zoals je een brief nooit met 'ik' begint. Promptmaster: de eerste twee zinnen van een AI-tekst zijn het meest AI-achtig."
+    },
+    {
+      "naam": "Meta-afzwakker: het is belangrijk om op te merken",
+      "categorie": "vocabulary",
+      "definitie": "Een frase die aankondigt dat er iets belangrijks komt in plaats van het te zeggen. Schrappen laat de zin intact.",
+      "cues": ["Het is belangrijk om op te merken dat", "Het is belangrijk om te overwegen", "Het is belangrijk om te benadrukken dat", "Daarom is het essentieel dat", "Het is belangrijk om", "vooral belangrijk om te overwegen", "het loont de moeite om te onthouden dat", "ongetwijfeld", "zonder twijfel"],
+      "voorbeelden": [
+        {"voor": "Het is belangrijk om op te merken dat", "na": "Schrap het. Maak gewoon je punt. Als het belangrijk is, merkt je lezer dat zelf wel."},
+        {"voor": "Het is belangrijk om te overwegen…"},
+        {"voor": "Het is belangrijk om te benadrukken dat…"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Frankwatching (2024) telt het als de meest voorkomende AI-zinsopening; Het Contentkantoor noemt 'Het is belangrijk om…' en 'Daarom is het essentieel dat…' patronen die in bijna elke gegenereerde tekst terugkeren."
+    },
+    {
+      "naam": "Wervende clichéfrasen en beloftetaal",
+      "categorie": "vocabulary",
+      "definitie": "Vaste verkoop- en SEO-frasen waarmee AI een tekst opent, aankondigt of afsluit; ze beloven onthulling of hoogte zonder inhoud.",
+      "cues": ["De sleutel tot", "Ontdek nu zelf", "Geheimen ontdekken", "In dit artikel onthullen we", "Naar nieuwe hoogten tillen", "In een stroomversnelling brengen", "Ben je klaar om", "Diepgaand inzicht geven", "Op een rij zetten", "De noodzaak van", "Dit brengt uitdagingen met zich mee maar biedt ook kansen.", "Bij [merknaam] begrijpen we…", "Dit artikel verkent…", "Geen discussie is compleet zonder…", "Laten we samen ontdekken", "het verschil maken", "trots om te delen", "ongekende kansen"],
+      "voorbeelden": [
+        {"voor": "Bij [merknaam] begrijpen we…", "na": "Schrijf alsof je een klant direct aanspreekt."},
+        {"voor": "Dit artikel verkent…", "na": "Laten we eens kijken wat dit betekent voor jouw organisatie."},
+        {"voor": "Dit brengt uitdagingen met zich mee maar biedt ook kansen."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rhinoz noemt 'De sleutel tot' de onverslaanbare topper. So-MC noemt 'Bij [merknaam] begrijpen we…' de klassieke AI-opening voor bedrijfscontent. Jouw Copiloot rekent 'Dit artikel verkent…' en 'Geen discussie is compleet zonder…' tot de clichézinsstructuren uit de Wikipedia-lijst."
+    },
+    {
+      "naam": "Verbindingswoorden-overdaad",
+      "categorie": "vocabulary",
+      "definitie": "Signaalwoorden aan het begin van bijna elke alinea of zin. Een mens gebruikt ze ook, maar niet vier keer op een rij.",
+      "cues": ["bovendien", "daarnaast", "echter", "tevens", "verder", "sterker nog", "daarom", "ten slotte", "samenvattend"],
+      "voorbeelden": [
+        {"voor": "Sterker nog", "na": "Eén keer per artikel kan het, maar als het drie keer voorkomt is het een rode vlag."},
+        {"voor": "bovendien, daarnaast, furthermore in bijna elke zin", "na": "Schrap ze. Begin gewoon met je punt."},
+        {"voor": "📚 Formele toon – woorden als bovendien, daarnaast en daarom komen opvallend vaak terug."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Digiwijzer zet 'veel vaste verbindingswoorden na elkaar' in de snelle checklist. Jouw Copiloot heeft het als signaal 2 uit de Wikipedia-lijst; Promptmaster: 'Een menselijke schrijver gebruikt die woorden ook, maar niet in bijna elke alinea.'"
+    },
+    {
+      "naam": "Ambtelijke en overformele woordkeus",
+      "categorie": "vocabulary",
+      "definitie": "Stijve, juridisch-ambtelijke woorden die vrijwel niemand in dagelijkse communicatie gebruikt, maar die ChatGPT in Nederlandse output standaard inzet.",
+      "cues": ["verheugd", "derhalve", "niettemin", "zodoende", "desalniettemin", "voorts", "aldus", "teneinde", "bijgevolg", "aangaande", "mits", "in acht nemende", "betreffende", "voornoemd", "zou kunnen", "mogelijk", "frasen"],
+      "voorbeelden": [
+        {"voor": "Verheugd — ChatGPT gebruikt dit woord regelmatig in een tekst, ook al gebruiken mensen dit woord nog amper."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Op de Beeck's top-20 lijst; 'verheugd' is zijn grootste boosdoener. Zijn toets: gebruikt de persoon in kwestie deze woorden in het dagelijks leven? Meestal niet. Ook 'frasen' noemt hij een woord dat bijna niemand zou gebruiken. Aikundig noemt 'overmatig formele of neutrale taal' als algemeen kenmerk."
+    },
+    {
+      "naam": "Overmatige stijlwoorden (excess vocabulary)",
+      "categorie": "vocabulary",
+      "definitie": "Woorden waarvan de frequentie na 2022 meetbaar explodeerde in gepubliceerde teksten; het gaat om stijlwoorden (werkwoorden en bijvoeglijke naamwoorden die een gevoel opwekken), niet om inhoudswoorden.",
+      "cues": ["delve", "crucial", "potential", "significant", "findings", "showcase", "underscore", "mosaic", "tapestry", "intricate", "valuable", "exceptional", "pivotal", "primarily", "thoroughly", "subsequently", "particularly", "foster", "leverage", "seamless", "robust", "multifaceted", "navigate", "craft", "compelling", "elevate", "harness", "unlock", "unleash"],
+      "voorbeelden": [
+        {"voor": "Teksten in PubMed schakelden plots vanaf 2023 over van 'important' naar 'significant'"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "PC-Active vat het onderzoek van Tübingen en Northwestern samen (14 miljoen PubMed-samenvattingen, 2010-2024): 319 overmatige stijlwoorden, minstens 10% van de samenvattingen ging door een taalmodel, in computationele domeinen 20%. Delve 25x meer, showcase en underscore 9x meer, potential +4,1 procentpunt, findings +2,7, crucial +2,6. Anders dan eerdere pieken (ebola, zika, lockdown) gaat het niet om inhoudswoorden: tweederde werkwoorden, een zesde bijvoeglijke naamwoorden. Alex Hern's theorie: 'delve' komt uit het professionele Nigeriaanse Engels van de RLHF-beoordelaars. De VU citeert Bao et al. (2025) met 100 bijvoeglijke naamwoorden en 100 bijwoorden die ChatGPT vaker gebruikt."
+    },
+    {
+      "naam": "LinkedIn-clichés",
+      "categorie": "vocabulary",
+      "definitie": "Vaste posefrasen uit het LinkedIn-register die AI standaard reproduceert.",
+      "cues": ["digitale transformatie", "het verschil maken", "trots om te delen", "ongekende kansen", "let that sink in", "here's the thing", "het gaat niet om X maar om Y"],
+      "voorbeelden": [
+        {"voor": "Elke post begint met 'In het huidige landschap' en eindigt met 'Thoughts? Agree?'"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "AI Slop Checker scant 200+ patronen in vijf categorieën: AI Buzzwords, AI Frasen, Structuurpatronen, LinkedIn Cliches, Vage/Weasel-taal. So-MC: op LinkedIn of Instagram vallen deze woorden nog meer op dan in een blog, omdat je maar een paar zinnen hebt."
+    },
+    {
+      "naam": "Vage superlatief als frase",
+      "categorie": "vocabulary",
+      "definitie": "Een zelfstandig naamwoord dat door een superlatief wordt opgetuigd in plaats van beschreven: 'een krachtige manier om', 'een cruciale stap in het proces'.",
+      "cues": ["een krachtige manier om", "een essentieel onderdeel van", "een cruciale stap in het proces", "een effectieve aanpak"],
+      "voorbeelden": [
+        {"voor": "Een cruciale stap", "na": "een belangrijke stap — of nog beter: beschrijf waarom het belangrijk is in plaats van het te labelen"},
+        {"voor": "Een effectieve aanpak", "na": "wat bij ons team werkte was…"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Promptmaster: 'AI strooit met woorden die indrukwekkend klinken maar weinig concreets zeggen. Menselijke schrijvers zijn specifieker of juist nonchalanter.'"
+    },
+    {
+      "naam": "Drieslag",
+      "categorie": "syntax",
+      "definitie": "Een opsomming van precies drie elementen als stijlfiguur. Sterk als stijlmiddel, maar AI gebruikt het zo vaak dat het derde element vaak niets toevoegt.",
+      "cues": ["snel, eenvoudig en efficiënt", "Helder, krachtig, overtuigend.", "razendsnel, foutloos en vaak verrassend goed opgebouwd", "variatie in lengte, toon en ritme", "Ze zijn te perfect. Te gestructureerd. En het ontbreekt ze aan karakter.", "Zon, zee, strand", "Heerlijk, helder, Heineken", "X, Y én Z"],
+      "voorbeelden": [
+        {"voor": "AI-teksten zijn razendsnel, foutloos en vaak verrassend goed opgebouwd."},
+        {"voor": "Menselijke docenten brengen hun unieke perspectieven, ervaringen en onderwijsstijlen mee, wat bijdraagt aan een rijke en diverse leeromgeving."},
+        {"voor": "Helder, krachtig, overtuigend."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart: check altijd of het derde onderdeel relevant is. Donna van de Ven: de gemiddelde tekstschrijver beperkt zich tot één drieslag per tekst, ChatGPT gaat zonder schaamte los. b2bmarketeers en Donna van de Ven demonstreren hem meerdere keren in hun eigen (zelfgeschreven) tekst — een drieslag alleen bewijst dus niets."
+    },
+    {
+      "naam": "Drieslag met tegenstelling (Niet X, niet Y, maar Z)",
+      "categorie": "syntax",
+      "definitie": "Drieslag waarin de eerste twee leden worden ontkend en het derde de onthulling is. Bij AI ontbreekt meestal het echte contrast of de logische spanning.",
+      "cues": ["Niet Copilot, niet Claude, maar jijzelf!", "Niet links, niet rechts maar recht door zee", "Niet X. Niet Y. Maar Z."],
+      "voorbeelden": [
+        {"voor": "Niet Copilot, niet Claude, maar jijzelf!"},
+        {"voor": "Niet links, niet rechts maar recht door zee"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "b2bmarketeers: LLM's hebben geleerd dat dit krachtig is (Rita Verdonks one-liner), maar de opzetjes missen de spanning die menselijke schrijvers aanbrengen. Donna van de Ven: na de eerste twee verwacht de lezer een tegenstelling — dan moet het wel een echte zijn, anders leest het 'gemaakt'."
+    },
+    {
+      "naam": "Tegenstellingsconstructie (Niet X, maar Y)",
+      "categorie": "syntax",
+      "definitie": "Twee zinnen of zinsdelen waarin de eerste wordt ontkend om de tweede op te blazen, ook zonder drieslag.",
+      "cues": ["Niet dit, maar dat.", "Het was niet groot. Het was enorm.", "We waren niet blij. We waren dolgelukkig.", "Het gaat niet om X, het gaat om Y"],
+      "voorbeelden": [
+        {"voor": "Het was niet groot. Het was enorm."},
+        {"voor": "We waren niet blij. We waren dolgelukkig."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Donna van de Ven: werkt als het gepast is (herinnering aan vakanties van vroeger), maar niet bij een bedrijfsprobleem — dan geloven mensen je woorden minder. AI Slop Checker rekent de contraststructuur tot zijn AI-frasen."
+    },
+    {
+      "naam": "Niet alleen ..., maar ook ...",
+      "categorie": "syntax",
+      "definitie": "Letterlijk sjabloon dat twee dingen naast elkaar zet om de zin gewichtiger te maken.",
+      "cues": ["Niet alleen…, maar ook…", "Niet alleen A, maar ook B"],
+      "voorbeelden": [
+        {"voor": "Niet alleen…, maar ook…"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Digiwijzer zet het in de checklist onder 'Regel van drie en sjablonen'; AI Slop Checker onder contrast-structuren."
+    },
+    {
+      "naam": "Vraag-antwoordconstructie zonder reden",
+      "categorie": "syntax",
+      "definitie": "Een korte vraag die meteen zelf beantwoord wordt, op plekken waar geen vraag leeft. Het trucje op zich is prima; de frequentie en de plaatsing verraden de machine.",
+      "cues": ["Het resultaat?", "Vraag? Antwoord!", "Kan een vraag effectief zijn? Ja dat kan!", "Herkenbaar?", "Waarom?"],
+      "voorbeelden": [
+        {"voor": "Het resultaat? Een unieke klantbeleving voor jong en oud!"},
+        {"voor": "Voegt de vraag in dit voorbeeld iets toe aan deze alinea? Ik denk het niet."}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart: je hoeft niet alle vragen te schrappen, let op dat er niet té veel in staan. b2bmarketeers: er zijn genoeg mensen die zo praten, ChatGPT past het alleen iets te vaak toe; de antwoorden slaan soms niet eens terug op de vraag. AI-tekstdetector: 'AI herhaalt graag de vraag.'"
+    },
+    {
+      "naam": "Passieve en omslachtige zinsbouw",
+      "categorie": "syntax",
+      "definitie": "Lijdende vorm en indirecte constructies waar een actieve, directe zin hoort.",
+      "cues": ["passieve constructies", "lijdende vorm", "wordt ... door", "er wordt"],
+      "voorbeelden": [
+        {"voor": "Of een lijdende zin die net niet lekker loopt."},
+        {"voor": "Herschrijf zinnen die robotachtig, clichématig of overdreven formeel klinken", "na": "zet passieve constructies om in actieve, directe zinnen"}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Frankwatching (2024) noemt passieve constructies naast afgezwakte beweringen; LinkAI zet de omzetting naar actief in zijn vaste opschoonprompt."
+    },
+    {
+      "naam": "Uniforme zinslengte (geen burstiness)",
+      "categorie": "syntax",
+      "definitie": "Zinnen van vrijwel gelijke lengte en complexiteit door de hele tekst. Menselijke tekst is grillig: korte zin, dan een lange.",
+      "cues": ["burstiness", "zinnen van 15-25 woorden", "weinig variatie in zinslengte", "AI is regelmatiger"],
+      "voorbeelden": [
+        {"voor": "AI schrijft consistent: zinnen van 15-25 woorden, keurig afgewisseld.", "na": "Gooi er een hele korte zin tussen. Of een langere, die een beetje afdwaalt voordat hij bij het punt komt — zoals je in een gesprek ook zou doen."},
+        {"voor": "AI doet dit niet, die houdt alles op dezelfde lengte.", "na": "Korte zin. Dan een langere die wat meer context geeft en de lezer meeneemt in je redenering. Dan weer kort."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Detectietools meten dit als 'burstiness' naast perplexiteit. De VU citeert Bao et al. (2025) voor eenvoudiger zinsstructuren en Durak et al. (2024) voor kortere zinnen met minder tekens per woord."
+    },
+    {
+      "naam": "Onnatuurlijk lange zinnen met komma voor 'en'",
+      "categorie": "syntax",
+      "definitie": "Zinnen die zonder duidelijk doel doorlopen en met ', en' aan elkaar worden geplakt; grammaticaal correct maar voelt fout.",
+      "cues": [", en", "lange zinnen", "onnatuurlijk lang of ingewikkeld"],
+      "voorbeelden": [
+        {"voor": "Hoewel AI grammaticaal correcte zinnen kan produceren, kunnen de zinnen soms onnatuurlijk lang of ingewikkeld zijn, zonder dat dit een duidelijk doel dient, en zonder dat dat de correcte zin echte spelfouten bevatten, maar toch onjuist aanvoelen."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig demonstreert het patroon in de zin zelf ('Precies zoals deze zin'). Zijn toets voor de komma voor 'en': zou de schrijver de regels kennen en overal foutloos toepassen? De oude schoolregel dat een komma nooit voor 'en' mag staan is zelf onwaar."
+    },
+    {
+      "naam": "Herhaalde woorden en zinsstructuren",
+      "categorie": "syntax",
+      "definitie": "Dezelfde woorden en dezelfde zinsopbouw keren binnen één tekst terug, vooral in langere stukken.",
+      "cues": ["repetitieve structuren", "herhaling van woorden", "steeds terugkerende woorden", "herhalende zinsstructuren"],
+      "voorbeelden": [
+        {"voor": "✨ Herhalende zinsstructuren – grammaticaal perfect, maar zonder natuurlijk ritme."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig verklaart het uit de generatie: bepaalde woorden worden als waarschijnlijker beschouwd en dus vaker gekozen. De VU citeert Durak et al. (2025): menselijke teksten bevatten ongeveer vier keer zoveel unieke woorden."
+    }
+,
+    {
+      "naam": "Dramatisering en overdrijving",
+      "categorie": "rhetoric",
+      "definitie": "Gebeurtenissen worden groter voorgesteld dan ze zijn: een kleine wijziging verandert alles, een alledaagse blunder is een levensdrama.",
+      "cues": ["veranderde alles", "ongekend", "drastisch veranderen", "superkrachten", "Wat. Een. DRAMA."],
+      "voorbeelden": [
+        {"voor": "Twintig jaar deden we het zo. Eén kleine wijziging veranderde alles."},
+        {"voor": "Twintig jaar lang deden we het zo. Nu, door één kleine verandering, doen we het zus. De winst die we hiermee behalen is ongekend."},
+        {"voor": "Wat. Een. DRAMA. Zoiets had ik nog nooit meegemaakt – in mijn hele leven niet."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "b2bmarketeers: bij menselijke schrijvers is dat drama gereserveerd voor écht grote wendingen; in b2b-teksten is het bijna lachwekkend welke superkrachten tools krijgen toegedicht. Donna van de Ven: extra verdacht als de plaatser normaal gesproken vrij nuchter is."
+    },
+    {
+      "naam": "Opgeblazen belang (van cruciaal belang)",
+      "categorie": "rhetoric",
+      "definitie": "Het onderwerp krijgt een gewicht toegekend dat het niet draagt, vaak meerdere keren in dezelfde tekst.",
+      "cues": ["van cruciaal belang", "cruciaal", "essentieel", "belangrijker dan ooit"],
+      "voorbeelden": [
+        {"voor": "Als je Valencia bezoekt is het van cruciaal belang dat je een wandeling maakt door het oude stadscentrum"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: soms staat het twee of meer keer in één tekst terwijl sommige teksten zich er helemaal niet voor lenen."
+    },
+    {
+      "naam": "Vleierij bij de opening (Goede vraag)",
+      "categorie": "rhetoric",
+      "definitie": "Het antwoord opent met een compliment over de vraag of de vraagsteller voordat er inhoud komt.",
+      "cues": ["Goede vraag —", "Goede en terechte vraag", "fijn dat je dat kritisch vraagt", "dat is een mooie, vrij oude uitdrukking", "Interessant perspectief"],
+      "voorbeelden": [
+        {"voor": "Goede vraag — er zijn eigenlijk een paar correcte manieren om 'bronzen medaille winnaar' te schrijven in het Nederlands, afhankelijk van de context."},
+        {"voor": "Goede en terechte vraag — en fijn dat je dat kritisch vraagt."},
+        {"voor": "Goede vraag — dat is een mooie, vrij oude uitdrukking."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Onze Taal citeert drie ChatGPT-antwoorden die alle drie zo openen, telkens met em-dash. Bikkelhart citeert dezelfde opening bij een bronvraag en merkt op: 'meteen weer met een em-dash!'"
+    },
+    {
+      "naam": "Neutraliteit zonder standpunt",
+      "categorie": "rhetoric",
+      "definitie": "De tekst neemt geen positie in, mijdt controverse en blijft afstandelijk objectief, ook waar een mening het interessant zou maken.",
+      "cues": ["neutraal en objectief van toon", "zelden een controversieel standpunt", "AI is altijd neutraal", "geen persoonlijke mening"],
+      "voorbeelden": [
+        {"voor": "Het is allemaal erg algemeen en er wordt zelden een (controversieel) standpunt ingenomen.", "na": "De meeste AI tools zijn nog niet goed genoeg voor Nederlandstalige content — dat is een standpunt. Dat maakt het interessant."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: LLM's zijn getraind om niemand te beledigen, dat merk je in de tekst. Hulz: ChatGPT komt zelden met onverwachte, creatieve of controversiële standpunten tenzij er expliciet om gevraagd wordt. So-MC: 'Durf een mening te hebben (als dat bij je merk/imago hoort).' Wel: LinkAI merkt op dat een uitgesproken merktoon (scherp, speels, direct, rebels) juist verloren gaat."
+    },
+    {
+      "naam": "Zelfverzekerde toon: veel boosters, weinig hedges",
+      "categorie": "rhetoric",
+      "definitie": "Beweringen worden versterkt met zekerheidswoorden en zelden voorzichtig geformuleerd, waardoor de tekst overmoedig klinkt.",
+      "cues": ["certainly", "undoubtedly", "essential", "by far", "ongetwijfeld", "zonder twijfel", "zeker weten"],
+      "voorbeelden": [
+        {"voor": "Door AI gegenereerde teksten klinken vaak zelfverzekerder en misschien zelfs overmoedig.", "na": "hedges toevoegen: almost, in general, probable, appear to be"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, naar Johansson (2023). Let op de spanning met Frankwatching (2024), dat juist afgezwakte beweringen met 'kan', 'mag', 'zou kunnen' als AI-signaal noemt — de twee bronnen wijzen tegengestelde kanten op; per tekst bepalen welke van de twee je ziet."
+    },
+    {
+      "naam": "Afgezwakte beweringen (kan, mag, zou kunnen)",
+      "categorie": "rhetoric",
+      "definitie": "Uitspraken worden systematisch in modale slagen om de arm gegoten in plaats van gedaan.",
+      "cues": ["kan", "mag", "zou kunnen", "mogelijk", "wellicht"],
+      "voorbeelden": [
+        {"voor": "afgezwakte beweringen met 'kan', 'mag', 'zou kunnen'"}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Frankwatching (2024). Op de Beeck zet 'zou kunnen' en 'mogelijk' ook in zijn top-20. Tegengesteld aan de booster-bevinding van de VU-gids."
+    },
+    {
+      "naam": "Overoptimistische marketing- en goeroetoon",
+      "categorie": "rhetoric",
+      "definitie": "De hele tekst baadt in een positieve sfeer die aan een verkooppraatje of zelfhulpverhaal doet denken, zonder dat er iets wordt geclaimd dat je kunt narekenen.",
+      "cues": ["onverholen marketingpraatje", "het schreeuwerige geblaat van een zelfhulpgoeroe", "overoptimistische sfeer", "uniek", "adembenemend", "baanbrekend", "lege gebeuzel"],
+      "voorbeelden": [
+        {"voor": "woorden als uniek, adembenemend, baanbrekend", "na": "Onze klant verkortte de wachttijd met 31 procent in drie maanden."},
+        {"voor": "Zo blijft je content authentiek, geloofwaardig en effectief toch? Jazeker! Dat zal —in de meeste gevallen alles volledig veranderen, en zo ook jouw eigen leven! 🔥"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "PC-Active: 'Als ik de laatste tijd op Twitter, LinkedIn of een blog iets lees, krijg ik steeds vaker de indruk dat ik met het lege gebeuzel van een zelfverklaarde zelfhulpgoeroe te maken heb.' Jouw Copiloot noemt dit signaal 1 (promotie-taal) en vervangt het door bewijs. b2bmarketeers stelt voor om 'enig calvinisme' in de prompt in te bouwen."
+    },
+    {
+      "naam": "De vraag herhalen en netjes samenvatten",
+      "categorie": "rhetoric",
+      "definitie": "Het antwoord begint met een parafrase van de vraag en sluit af met een samenvatting van wat er net stond.",
+      "cues": ["AI herhaalt graag de vraag", "sluit af met een keurige samenvatting"],
+      "voorbeelden": [
+        {"voor": "AI herhaalt graag de vraag en sluit af met een keurige samenvatting.", "na": "Verwijder de samenvatting. Je lezer heeft het net gelezen"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "AI-tekstdetector.nl; AI Slop Checker geeft dezelfde tip ('Verwijder de samenvatting')."
+    },
+    {
+      "naam": "Opbouw creëren en om het onderwerp heen praten",
+      "categorie": "rhetoric",
+      "definitie": "De tekst bouwt spanning op naar een punt dat pas laat of nooit komt, in plaats van meteen te zeggen waar het om gaat.",
+      "cues": ["een opbouw creëren", "om een onderwerp heen praten", "straight to the point"],
+      "voorbeelden": [
+        {"voor": "AI-tools houden van een opbouw creëren in een tekst en praten vaak een beetje om een onderwerp heen.", "na": "Staat het belangrijkste wat ik wil vertellen vooraan?"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart geeft drie controlevragen: is het doel duidelijk, voor wie schrijf ik, staat het belangrijkste vooraan?"
+    },
+    {
+      "naam": "Overgestructureerde schoolopbouw",
+      "categorie": "structure",
+      "definitie": "Elke alinea even lang, elke paragraaf een tussenkop, inleiding met drie tot vijf punten en een nette conclusie — een schoolopstel in plaats van een verhaal.",
+      "cues": ["elke alinea is even lang", "elke paragraaf heeft een tussenkop", "een inleiding, drie tot vijf punten met kopjes, en een conclusie", "vergelijkbare inleidingen en conclusies", "overgestructureerd"],
+      "voorbeelden": [
+        {"voor": "AI-teksten volgen vaak een bijna schoolse opbouw: elke alinea is even lang, elke paragraaf heeft een tussenkop, en de tekst sluit netjes af met een conclusie."},
+        {"voor": "Een tekst geschreven door AI klinkt vaak als een schoolopstel met een heleboel woordjes uit de bonuslijst. Alles klopt. Maar het lééft niet."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "b2bmarketeers: menselijke schrijvers brengen juist variatie aan in lengte, toon en ritme. Promptmaster: 'Echte teksten zijn rommeliger — en dat is juist menselijk.' De VU citeert Herbold et al. (2023) voor uniforme inleidingen die met sleutelbegrippen beginnen."
+    },
+    {
+      "naam": "Verplichte conclusie / Kortom-slot",
+      "categorie": "structure",
+      "definitie": "De tekst eindigt met een expliciet gemarkeerde samenvatting, ook bij teksten die helemaal geen conclusie nodig hebben.",
+      "cues": ["Kortom", "als conclusie", "In conclusie", "Samenvattend", "Concluderend", "Overall", "Tot slot"],
+      "voorbeelden": [
+        {"voor": "Soms is het een nieuwe alinea met een heading genaamd Conclusie, soms zijn het een aantal zinnen aan het eind van het artikel."},
+        {"voor": "'In conclusie/Overall' aan het einde van alinea's of secties."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: bijna alle snel door AI geschreven teksten bevatten een conclusie. Digiwijzer zet het in de checklist voor docenten: jongeren doen dit in schoolwerk meestal niet zo consequent."
+    },
+    {
+      "naam": "Verplichte intro én conclusie waar ze niet horen",
+      "categorie": "structure",
+      "definitie": "De tekst krijgt standaard een inleidende en een afsluitende sectie, ongeacht of het genre of de lengte daarom vraagt.",
+      "cues": ["Er is altijd een introductie en een conclusie"],
+      "voorbeelden": [
+        {"voor": "Intro en Conclusie: Er is altijd een introductie en een conclusie, ook bij teksten waarbij dit helemaal niet nodig is."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig noemt dit apart van de 'Kortom'-formulering: het gaat om de architectuur, niet om het signaalwoord."
+    },
+    {
+      "naam": "Alinea's die eindigen in een samenvatting",
+      "categorie": "structure",
+      "definitie": "Elke alinea sluit af met een zin die herhaalt wat er net stond, in plaats van door te stoten naar het volgende punt.",
+      "cues": ["Samenvattend kunnen we zeggen…", "elke alinea eindigt met een samenvatting"],
+      "voorbeelden": [
+        {"voor": "Samenvattend kunnen we zeggen…", "na": "Wat betekent dit voor jouw team? Kies één tool en richt workflows opnieuw in."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Jouw Copiloot, signaal 3 uit de Wikipedia-lijst 'Signs of AI writing'; zijn fix is eindigen met een tip of vervolgstap."
+    },
+    {
+      "naam": "Opsommingen-overdaad",
+      "categorie": "structure",
+      "definitie": "Om de paar alinea's een bullet- of genummerde lijst, ook als het onderwerp of de opdracht daar niet om vraagt. Daarmee verliest de opsomming zijn kracht.",
+      "cues": ["veel opsommingen", "een ongenummerde lijst", "in elke alinea een opsomming", "leest als een stappenplan in plaats van een verhaal"],
+      "voorbeelden": [
+        {"voor": "Bij AI-teksten duiken ze vaak om de paar alinea's op. Ook als dat niet echt nodig is."},
+        {"voor": "Het is verdacht als een tekst ineens vol staat met een ongenummerde lijst terwijl dat niet bij de opdracht past."}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Donna van de Ven: bij de tweede opsomming denkt de lezer 'blijkbaar is het toch niet zo belangrijk'. Rubens gebruikt het als docentensignaal: verdacht wanneer het niet bij de opdracht past."
+    },
+    {
+      "naam": "Vetgedrukte koppen in bullets en overdreven opmaak",
+      "categorie": "structure",
+      "definitie": "Lijsten waarvan elk item met een vetgedrukt kernwoord opent, plus vet in de lopende tekst om losse woorden te benadrukken.",
+      "cues": ["bullet points met vetgedrukte koppen", "overmatig vetgedrukte woorden", "key takeaways", "alles vetgedrukt"],
+      "voorbeelden": [
+        {"voor": "Overmatig vetgedrukte woorden: vooral in lijstjes of key takeaways."},
+        {"voor": "alles vetgedrukt, rare aanhalingstekens of emoji", "na": "spaarzaam gebruiken. Eén kernzin per alinea vetgedrukt, klaar."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids: AI-teksten bevatten vaak vetgedrukte woorden of bullet points om stukken in de lopende tekst te benadrukken. AI Slop Checker rekent het tot de structuurpatronen."
+    },
+    {
+      "naam": "Weinig tekst onder tussenkopjes",
+      "categorie": "structure",
+      "definitie": "Onder elke subtitel staan maar een paar zinnen, terwijl een tussenkop normaal een substantiëler blok aankondigt.",
+      "cues": ["weinig zinnen onder een tussenkopje"],
+      "voorbeelden": [
+        {"voor": "Bij teksten waar gebruik wordt gemaakt van titels en subtitels staan er bij AI-teksten vaak weinig zinnen onder een tussenkopje."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig, uit eigen praktijk als webtekstschrijver."
+    },
+    {
+      "naam": "Te lange antwoorden zonder kern",
+      "categorie": "structure",
+      "definitie": "Meer tekst dan gevraagd of nodig, die toch de kern mist of niet precies op de vraag aansluit.",
+      "cues": ["overbodig lange, uitgebreide antwoorden", "lang, maar toch de kern mist", "lange antwoorden zonder veel diepgang"],
+      "voorbeelden": [
+        {"voor": "Als een lerende plotseling veel meer schrijft dan gevraagd, kan dit een teken van het gebruik van generatieve AI zijn. Vooral als de tekst lang is, maar toch de kern mist of niet precies aansluit op de opdracht."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rubens (docentenperspectief) en Hulz ('AI-teksten hebben de neiging om het onderwerp breed aan te pakken, maar missen soms de expertise en precisie van een menselijke specialist')."
+    },
+    {
+      "naam": "LinkedIn-slotvraag (engagement bait)",
+      "categorie": "structure",
+      "definitie": "De post eindigt met een voorspelbare vraag die alleen bestaat om reacties te lokken.",
+      "cues": ["Thoughts?", "Agree?", "Herkenbaar?", "Wat denk jij?", "een voorspelbare vraag aan het eind om reacties te lokken"],
+      "voorbeelden": [
+        {"voor": "Elke post begint met 'In het huidige landschap' en eindigt met 'Thoughts? Agree?'"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "AI Slop Checker noemt het 'Engagement-bait afsluiters'; Frankwatching (2026) beschrijft LinkedIn-posts vol emoji's met een voorspelbare vraag aan het eind — 'een eenheidsworst geworden waar de creativiteit helemaal uit is verdwenen'."
+    },
+    {
+      "naam": "Kopjes die de volgende alinea aankondigen",
+      "categorie": "structure",
+      "definitie": "Tussenkopjes die niet meer doen dan het onderwerp van de eropvolgende alinea benoemen, ook in genres waar kopjes ongebruikelijk zijn (essays).",
+      "cues": ["kopjes die het onderwerp van de volgende alinea aankondigen"],
+      "voorbeelden": [
+        {"voor": "door AI gegenereerde essays gebruiken soms kopjes die het onderwerp van de volgende alinea('s) aankondigen om de inhoud van het artikel te structureren"}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, structurele aanwijzingen."
+    },
+    {
+      "naam": "Te constante stijl door de hele tekst",
+      "categorie": "structure",
+      "definitie": "Toon, aanspreekvorm en woordkeus blijven van begin tot eind exact gelijk — consistenter dan menselijke schrijvers volhouden.",
+      "cues": ["tekst is te constant", "dezelfde aanspreekvorm", "consistentie in stijl en woordkeuze"],
+      "voorbeelden": [
+        {"voor": "Ik ken maar weinig schrijvers die door de hele tekst heen hun eigen stijl kunnen behouden, dezelfde aanspreekvorm blijven gebruiken e.d. AI kan dit vaak wel."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig noemt het twee keer (eigen ervaring en algemene kenmerken). Let op de spanning met het tegenovergestelde signaal bij Jouw Copiloot: abrupte stijlwissels binnen één tekst."
+    }
+,
+    {
+      "naam": "Los gedachtestreepje op zijn Engels (em-dash)",
+      "categorie": "punctuation-format",
+      "definitie": "Het lange streepje — als los accent midden in of vlak voor het einde van een zin, in plaats van als paar rond een tussenzin zoals in het Nederlands gebruikelijk is.",
+      "cues": ["—", "em-dash", "gedachtestreepje", "het eenzame gedachtestreepje", "lang koppelteken"],
+      "voorbeelden": [
+        {"voor": "Uit onderzoek blijkt dat Nederland nog niet goed is voorbereid op de impact van AI op de werkvloer — training, betrokkenheid van werknemers en duidelijke implementatie blijven grote aandachtspunten.", "na": "Maak er gewoon een komma of nieuwe zin van, dat is in de meeste gevallen geen probleem."},
+        {"voor": "Ik wil een gedachte delen, —misschien moeten we standaard in onze prompts inbouwen dat het een wervende tekst mag zijn"},
+        {"voor": "De manier waarop ChatGPT het gedachtestreepje – deze – gebruikt, komt namelijk uit het Engels.", "na": "In het Nederlands gebruiken we dit streepje vooral bij een tussenzin, met z'n tweeën"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart noemt het de nummer 1 herkenner en wijst erop dat je drie toetsen nodig hebt om het teken te typen. b2bmarketeers: het gevolg is dat schrijvers die het van oudsher gebruikten er nu van terugdeinzen; de VU beschrijft hetzelfde terugslageffect. Vals positief: het teken bestaat gewoon in het Nederlands, het gaat om het losse, Engelse gebruik."
+    },
+    {
+      "naam": "Oxford-komma (komma voor 'en' of 'of')",
+      "categorie": "punctuation-format",
+      "definitie": "Een komma voor het laatste lid van een opsomming van drie of meer. In het Nederlands ongebruikelijk, in het (Britse) Engels standaard.",
+      "cues": [", en", ", of", "Oxford-komma", "serial comma"],
+      "voorbeelden": [
+        {"voor": "Ik kocht appels, peren, en bananen", "na": "Ik kocht appels, peren en bananen"},
+        {"voor": "schrijven, lezen, en films kijken", "na": "schrijven, lezen en films kijken"},
+        {"voor": "Bij Bikkelhart ondersteunen we je vanuit copywriting op het gebied van SEO, tone of voice, contentcreatie, en workshops over beter leren schrijven met AI.", "na": "die laatste komma achter 'contentcreatie' weghalen"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart ziet hem sinds enkele weken steeds vaker. b2bmarketeers en Donna van de Ven: niet fout in het Nederlands en het komt ook bij mensen voor, maar het vele gebruik is een signaal."
+    },
+    {
+      "naam": "Emoji-overdaad, vaste favorieten en vaste plek",
+      "categorie": "punctuation-format",
+      "definitie": "Emoji aan het begin van elke zin of elk opsommingsitem, uit een kleine vaste set. Niet het gebruik zelf maar de plek en de keuze verraden de tool.",
+      "cues": ["🚀", "💡", "✨", "🎯", "🙌", "🤖", "🧠", "👉", "📚", "✅", "⚠️", "❌", "🔥"],
+      "voorbeelden": [
+        {"voor": "✨ Herhalende zinsstructuren – grammaticaal perfect, maar zonder natuurlijk ritme.\n📚 Formele toon – woorden als bovendien, daarnaast en daarom komen opvallend vaak terug.\n💡 Vage bijvoeglijke naamwoorden – innovatief, efficiënt, waardevol… maar weinig concreet."},
+        {"voor": "net zoals met de opsommingen, geldt ook hier dat 🚀 overdaad 🚀 schaadt 🚀"},
+        {"voor": "✅ bronzenmedaillewinnaar → één woord ... ⚠️ bronzen medaille winnaar → minder correct"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart: ondanks bijna 4000 emoji's heeft AI een paar duidelijke favorieten (🙌 🚀 ✨ 🤖 🧠 💡 👉); 😂 of 💀 zie je juist bijna nooit. Op de Beeck: een post die met een emoji begint en na de eerste zin met een emoji afsluit is 99% zeker ChatGPT. Donna van de Ven: emoji die zo diep in de krochten van je toetsenbord verborgen zitten dat je ze zelf nooit zou kiezen. b2bmarketeers: een kermisachtige uitstraling waardoor de boodschap wegvalt. Digiwijzer telt 'emoji in serieuze teksten' mee in de checklist. Onze Taal laat ChatGPT ✅/⚠️/❌ als beoordelingstekens in spellingantwoorden gebruiken."
+    },
+    {
+      "naam": "Hashtagketen met hoofdletters",
+      "categorie": "punctuation-format",
+      "definitie": "Een rij hashtags aan het eind van een social post waarin elk woord een hoofdletter krijgt.",
+      "cues": ["#Elk #Woord #Hoofdletter"],
+      "voorbeelden": [
+        {"voor": "hashtags met #Elk #Woord #Hoofdletter"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Frankwatching (2024), naast de emojipatronen 🚀 💡 ✨ 🎯."
+    },
+    {
+      "naam": "Onnodige nadruk: accenten, vet, cursief, kapitalen",
+      "categorie": "punctuation-format",
+      "definitie": "Nadrukmarkering op woorden die geen nadruk dragen — klemtoonaccenten (té, wél, én), vet, cursief of kapitalen op willekeurige plekken.",
+      "cues": ["té", "wél", "én", "te pas én te onpas", "hoofdletters voor nadruk"],
+      "voorbeelden": [
+        {"voor": "Of moet ik zeggen: te pas én te onpas.", "na": "In deze zin is zo'n accent helemaal niet nodig. De nadruk ligt op de tegenstelling, niet op het woordje 'en'."},
+        {"voor": "een enkel woord vet maken, cursief zetten of het met hoofdletters schrijven", "na": "we zetten alleen iets in de spotlight als het de betekenis echt versterkt of als we een contrast willen benadrukken"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "b2bmarketeers: AI heeft geleerd dat nadruk aandacht trekt maar snapt niet wanneer die gepast is. Donna van de Ven: het accent is een normaal Nederlands middel — het patroon is de te-pas-en-te-onpas-toepassing."
+    },
+    {
+      "naam": "Slimme versus rechte aanhalingstekens",
+      "categorie": "punctuation-format",
+      "definitie": "Gekrulde en rechte aanhalingstekens wisselen elkaar af, of de tekst gebruikt rechte quotes in een document dat verder gekrulde heeft.",
+      "cues": ["slimme aanhalingstekens", "curly quotes", "rechte aanhalingstekens", "rare aanhalingstekens"],
+      "voorbeelden": [
+        {"voor": "Rechte aanhalingstekens in een document met een lettertype dat normaal gekrulde aanhalingstekens heeft, kunnen erop wijzen dat de tekst uit ChatGPT is gekopieerd."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rubens (docentenperspectief), Digiwijzer ('slimme aanhalingstekens die wisselen met rechte quotes'), Promptmaster (typografische vervanging), Jouw Copiloot (overdreven opmaak)."
+    },
+    {
+      "naam": "Zero-width characters en onzichtbare Unicode",
+      "categorie": "punctuation-format",
+      "definitie": "Tekens zonder zichtbare breedte die als watermerk in gegenereerde tekst kunnen zitten; alleen zichtbaar in een code-editor of hex-viewer.",
+      "cues": ["U+200B", "U+200C", "U+200D", "U+2060", "Zero-Width Space", "Zero-Width Non-Joiner", "Zero-Width Joiner", "Word Joiner"],
+      "voorbeelden": [
+        {"voor": "Als je een AI-tekst plakt in een code-editor of hex-viewer, kun je deze tekens terugvinden."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Promptmaster; de tekens hebben legitiem gebruik voor taalopmaak (Arabisch, Hindi) maar kunnen als watermerk dienen en worden door detectietools meegewogen. Zijn Wasstraat-tool verwijdert ze automatisch."
+    },
+    {
+      "naam": "Typografische Unicode-vervangingen",
+      "categorie": "punctuation-format",
+      "definitie": "Unicode-varianten van gewone leestekens: het ellipsis-teken, het lange streepje in plaats van een hyphen, non-breaking spaces. Typografisch correcter, maar het patroon is kenmerkend.",
+      "cues": ["…", "—", "non-breaking space", "ellipsis-karakter", "curly quotes"],
+      "voorbeelden": [
+        {"voor": "Ellipsis-karakter (…) in plaats van drie puntjes (...)", "na": "Wasstraat maakt er gewone hyphens en rechte quotes van"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Promptmaster: 'Dit zijn op zich geen fouten — ze zijn typografisch zelfs correcter. Maar het patroon waarin ze voorkomen is kenmerkend voor AI-output.'"
+    },
+    {
+      "naam": "Vage bronvermelding",
+      "categorie": "content",
+      "definitie": "Beweringen worden toegeschreven aan een anonieme autoriteit: experts, onderzoekers, auteurs, steeds meer organisaties — zonder wie, waar of wanneer.",
+      "cues": ["sommige experts zeggen", "Experts stellen dat…", "Onderzoek wijst uit dat…", "steeds meer organisaties", "onderzoekers", "auteurs", "veel bedrijven merken dat…"],
+      "voorbeelden": [
+        {"voor": "Experts zeggen dat…", "na": "of een echte bron of weg ermee. Liever een klein feit dat klopt dan een grote claim zonder bewijs."},
+        {"voor": "niet 'experts stellen'", "na": "uit onderzoek van McKinsey uit 2024 blijkt"},
+        {"voor": "veel bedrijven merken dat…", "na": "Bij een klant in (locatie)…"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Digiwijzer geeft docenten de drie vervolgvragen: wie precies? waar? wanneer? De VU-gids ziet hetzelfde in essays: verwijzen naar 'onderzoekers' of 'auteurs' in plaats van namen. AI Slop Checker rekent het tot de categorie Vage/Weasel-taal."
+    },
+    {
+      "naam": "Verzonnen bronnen en dode links",
+      "categorie": "content",
+      "definitie": "Bronvermeldingen die niet bestaan, niet kloppen of naar iets heel anders leiden: verzonnen DOI's, ISBN's, URL's en onderzoeken.",
+      "cues": ["niet bestaande bronnen", "gehallucineerde bronnen", "dode links", "ongeldige DOI/ISBN", "verzonnen citaten"],
+      "voorbeelden": [
+        {"voor": "In een artikel over bijen stond onderaan een bron die moest leiden naar een onderzoek over de hoeveelheid bijen in Nederland. De link ging echter naar een onderzoek over Multi-Objective Optimization Applied to the Design of Sustainable Pedestrian Bridges."},
+        {"voor": "AI-teksten bevatten tot 40% meer bijvoeglijke naamwoorden dan menselijke teksten. Dat bleek uit onderzoek van de Universiteit van Zürich in 2024.", "na": "Er is geen specifiek onderzoek van de Universiteit van Zürich uit 2024 dat exact zegt dat AI-teksten 40% meer bijvoeglijke naamwoorden bevatten."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: klik de URL altijd aan. Digiwijzer: jongeren leveren soms perfecte citaten aan die bij controle nergens naar leiden. Rubens: door AI gegenereerde teksten bevatten vaak geen bronvermeldingen of bronnen die geen relatie met de inhoud hebben. De VU citeert Watson (2024): het merendeel van de vermoedelijk gehallucineerde bronnen was niet echt, al waren onderdelen (auteursnaam, titel) vaak wel echt."
+    },
+    {
+      "naam": "Onverwachte of verouderde bronnen",
+      "categorie": "content",
+      "definitie": "De tekst leunt op obscure of oude publicaties waar recentere voor de hand zouden liggen.",
+      "cues": ["obscure bronnen", "oudere bronnen", "bronnen uit de jaren 90"],
+      "voorbeelden": [
+        {"voor": "ChatGPT bleek vaker oudere bronnen te citeren dan studenten en gebruikte veel bronnen die in de jaren 90 waren gepubliceerd."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, naar Goulart et al. (2024); studenten gebruikten daarentegen recentere informatie."
+    },
+    {
+      "naam": "Minder verwijzingen in de tekst",
+      "categorie": "content",
+      "definitie": "Er wordt minder vaak naar bronnen verwezen dan het genre vraagt, vooral in essays.",
+      "cues": ["minder referenties"],
+      "voorbeelden": [
+        {"voor": "Goulart et al. (2024) merkten op dat ChatGPT minder referenties in de tekst gebruikte dan studenten, vooral in essays."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, inhoudelijke aanwijzingen."
+    },
+    {
+      "naam": "Links die nergens op slaan",
+      "categorie": "content",
+      "definitie": "Verwijzingen naar een zoekopdracht of een kapotte pagina in plaats van naar een primaire bron.",
+      "cues": ["link naar een zoekopdracht", "kapotte bron"],
+      "voorbeelden": [
+        {"voor": "link naar een zoekopdracht of kapotte bron", "na": "altijd een primaire bron of een pagina van jezelf"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Jouw Copiloot, signaal 9 uit de Wikipedia-lijst; hij houdt het apart van 'vage bronnen' (signaal 4)."
+    },
+    {
+      "naam": "Geen eigen ervaring of anekdote",
+      "categorie": "content",
+      "definitie": "De tekst bevat geen eerstehands voorbeeld, herinnering of observatie; hooguit een gesimuleerde ('Stel je voor dat…').",
+      "cues": ["gebrek aan authentieke ervaringen", "geen persoonlijke anekdotes", "Stel je voor dat…", "geen eigen ervaring"],
+      "voorbeelden": [
+        {"voor": "Het simuleert ze soms ('Stel je voor dat...'), maar je zult nooit lezen 'vorige week had ik dit probleem bij een klant.'"},
+        {"voor": "AI schrijft alsof het er zelf bij was — maar was dat natuurlijk niet."},
+        {"voor": "veel bedrijven merken dat…", "na": "Bij een klant in (locatie)… is tien keer geloofwaardiger"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart: LLM's kunnen ervaringen wel verzinnen als je erom vraagt, maar niet in een eerste versie. b2bmarketeers mist ook 'kleine imperfecties'. Hulz noemt afwezigheid van persoonlijke ervaring een van de vier kernsignalen."
+    },
+    {
+      "naam": "Verzonnen spreektaal",
+      "categorie": "content",
+      "definitie": "Een poging tot informele toon die niemand zo zegt: bedachte spreektaal in plaats van gehoorde.",
+      "cues": ["Aan het eind van de dag draait het om impact maken", "aan het eind van de dag"],
+      "voorbeelden": [
+        {"voor": "Aan het eind van de dag draait het om impact maken.", "na": "Geen mens die dat zegt op die manier."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Het Contentkantoor. De toets bij meerdere bronnen is dezelfde: lees hardop, klinkt het als iets wat je tegen een collega zou zeggen?"
+    },
+    {
+      "naam": "Veel woorden, weinig inhoud",
+      "categorie": "content",
+      "definitie": "Volle alinea's die niets toevoegen: lege, clichématige zinnen en herhaling in andere bewoordingen.",
+      "cues": ["nietszeggende teksten", "lege, clichématige zinnen", "veel herhalingen", "opvulzinnen"],
+      "voorbeelden": [
+        {"voor": "Een beetje zoals je vroeger een geschiedenistoets maakte: je schrijft zoveel mogelijk op, in verschillende bewoordingen zodat er wel iets een beetje goed moet zijn."},
+        {"voor": "in de snel veranderende wereld van vandaag / het is belangrijker dan ooit om", "na": "Vermijd deze holle frasen. Begin met een voorbeeld."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart en Donna van de Ven; LinkAI: 'Er zit geen frictie in, geen karakter, geen onverwachte wending. Geen mens, kortom.'"
+    },
+    {
+      "naam": "Zelfverzekerde feitelijke onjuistheden",
+      "categorie": "content",
+      "definitie": "Aannemelijk klinkende maar onjuiste beweringen, compleet met redenering en voorbeelden, gebracht zonder enig voorbehoud.",
+      "cues": ["klinkt aannemelijk, maar", "verzonnen informatie", "feiten kunnen rammelen", "anachronismen"],
+      "voorbeelden": [
+        {"voor": "De verbinding van haver tot gort drukt uit: van het ene uiterste tot het andere — vergelijkbaar met van A tot Z.", "na": "Klinkt aannemelijk, maar dit antwoord is volledig onwaar. De oorspronkelijke vorm is van avere tot avere, 'van ouder tot ouder'."},
+        {"voor": "schuddelwaske is een dialectwoord dat letterlijk iets als 'klein schud-dingetje' zou betekenen", "na": "Het komt niet uit een zuidelijk dialect maar uit het Gronings: schuddel betekent 'schotel', schuddelwasken is 'het tafelgereedschap reinigen'."},
+        {"voor": "Correct is: ergens langzaam naartoe werken.", "na": "Het klinkt taalkundig verantwoord, maar dit antwoord klopt echt niet: juist 'ergens langzaam naar toewerken' is goed."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Onze Taal: 'Helaas is het heel moeilijk te beoordelen of een antwoord op iets waar je zelf al over twijfelde, inhoudelijk klopt.' Het model corrigeert een foute aanname in je vraag niet en kan bij iets andere formulering tegengestelde adviezen geven. Rubens noemt anachronismen; Het Contentkantoor: 'AI is geen bron, geen eindredacteur en zeker geen taalgevoelige collega.'"
+    },
+    {
+      "naam": "Kennisgrensdisclaimer",
+      "categorie": "content",
+      "definitie": "De tekst verwijst naar de trainingsgrens van het model als was dat een eigenschap van de schrijver.",
+      "cues": ["Mijn kennis loopt tot 2023", "mijn kennis loopt tot"],
+      "voorbeelden": [
+        {"voor": "Mijn kennis loopt tot 2023.", "na": "schrijf tijdloos óf zet er een actuele bron bij"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Jouw Copiloot, signaal 5 uit de Wikipedia-lijst 'Signs of AI writing'."
+    },
+    {
+      "naam": "Algemene, niet-specifieke inhoud",
+      "categorie": "content",
+      "definitie": "Antwoorden die op elke situatie passen: breed, zonder detail, zonder niche-kennis die het publiek juist wel zou hebben.",
+      "cues": ["algemene antwoorden", "breed, niet-specifiek of te algemeen", "vage algemeenheden zonder concrete details", "niche informatie die het publiek zou kennen"],
+      "voorbeelden": [
+        {"voor": "Omdat ChatGPT is getraind op een breed scala aan data, geeft het vaak algemene antwoorden die toepasbaar zijn op verschillende situaties."},
+        {"voor": "AI-teksten lijken vaker te verwijzen naar meer algemene onderwerpen en ervan uit te gaan dat de lezer geen specialistische kennis heeft."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Hulz en de VU-gids. PC-Active: 'de uitvoer van taalmodellen is notoir gemiddeld. Je zult er zelden vernieuwende zaken in lezen.'"
+    },
+    {
+      "naam": "Beweringen boven het kennisniveau van de schrijver",
+      "categorie": "content",
+      "definitie": "Uitspraken die de schrijver op grond van eigen lezen of ervaring niet met zekerheid kan doen.",
+      "cues": ["beweringen die de kennis van studenten te boven gaan"],
+      "voorbeelden": [
+        {"voor": "In één paper werd een bewering gepresenteerd over hoe studieboeken psychologie placebo's bespreken, maar het is onwaarschijnlijk dat een student genoeg studieboeken heeft gelezen om een dergelijke bewering met zekerheid te kunnen doen."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, kwalitatieve aanwijzingen."
+    },
+    {
+      "naam": "Opdrachtinstructies niet gevolgd, stof weggelaten",
+      "categorie": "content",
+      "definitie": "De tekst negeert specifieke instructies (lengte, opzet) en mist juist de stof die in de opdracht of cursus centraal stond, terwijl er materiaal in staat dat er niet vandaan komt.",
+      "cues": ["negeren specifieke instructies", "voldoen niet aan de vereiste lengte", "weglaten van cursusstof"],
+      "voorbeelden": [
+        {"voor": "Belangrijke informatie, inhoud en teksten die in de cursus werden besproken, ontbraken soms in door AI gegenereerd werk."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, naar Fisk (2025) en Perkins et al. (2023)."
+    },
+    {
+      "naam": "Informatie in plaats van argumentatie",
+      "categorie": "content",
+      "definitie": "De tekst somt feiten op zonder een duidelijk hoofdargument, en beperkt zich tot uitleg waar een mens ook zou vertellen, vergelijken of betogen.",
+      "cues": ["een lijst met feiten en informatie", "geen duidelijk hoofdargument", "meer informatief, minder verhalend"],
+      "voorbeelden": [
+        {"voor": "Language is a dynamic and multifaceted tool, constantly evolving and adapting to the diverse needs and contexts of its users. Language variation, the phenomenon encompassing differences in pronunciation, vocabulary, and grammar, among other linguistic elements, is a ubiquitous aspect of human communication (uitleg).", "na": "Accents are a distinctive way of pronouncing words in a specific language (uitleg) ... variation is very important because it is situated in the field of sociolinguistics (argumentatie) ... As a professional translator, I was familiar with the saying 'language is constantly changing', so I had to put this in context (verhalend)."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids, naar Goulart et al. (2024) en Berber Sardinha (2024): ChatGPT-essays waren voornamelijk argumentatief of verklarend, studenten combineerden meer communicatieve doelen binnen één tekst."
+    },
+    {
+      "naam": "Overdreven poëtische taal",
+      "categorie": "content",
+      "definitie": "Beeldspraak die te groot is voor het onderwerp: tapijten, symfonieën, bakens.",
+      "cues": ["rijk tapijt", "symfonie", "tapestry", "mosaic", "baken van hoop"],
+      "voorbeelden": [
+        {"voor": "overdreven poëtische taal ('rijk tapijt' en 'symfonie')"},
+        {"voor": "dit draagt bij aan de rijke tapestry van het volk"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "VU-gids naar Fisk (2025); PC-Active noemt 'mosaic' en 'tapestry' als bombastische ChatGPT-voorkeuren; Aikundig ziet 'tapestry' onvertaald in Nederlandse teksten opduiken."
+    },
+    {
+      "naam": "Té foutloos",
+      "categorie": "content",
+      "definitie": "Geen enkele spel-, tik- of grammaticafout over een hele tekst, terwijl mensen van vlees en bloed kleine foutjes maken.",
+      "cues": ["té foutloos", "geen of zeer weinig fouten", "grammaticaal foutloze taal"],
+      "voorbeelden": [
+        {"voor": "Een perfect geschreven stuk dat verder niet briljant is, kan wijzen op AI-gebruik."}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rubens, Hulz en de VU-gids. Rubens waarschuwt meteen: lerenden vragen AI-toepassingen ook bewust om spelfouten te maken. Het Contentkantoor ziet juist het omgekeerde in het Nederlands: spelling, grammatica en vooral interpunctie gaan regelmatig mis."
+    },
+    {
+      "naam": "Stijlbreuk met de omringende communicatie",
+      "categorie": "content",
+      "definitie": "Het ingeleverde stuk is van een heel ander niveau dan alles eromheen van dezelfde persoon.",
+      "cues": ["niet consistent", "hoogwaardige tekst maar matige communicatie eromheen"],
+      "voorbeelden": [
+        {"voor": "Dan zie je in het eindwerk van 40 pagina's 0 spelfouten, en zit er in de mail van 5 zinnen 25 spelfouten."}
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Op de Beeck, uit zijn jurywerk bij eindwerken; Rubens formuleert dezelfde toets als 'let op of de schrijfstijl past bij de lerende'. Dit is een contextsignaal, geen eigenschap van de tekst zelf."
+    },
+    {
+      "naam": "Inzendingen die inhoudelijk op elkaar lijken",
+      "categorie": "content",
+      "definitie": "Meerdere onafhankelijke teksten over dezelfde vraag vertonen dezelfde inhoud en opbouw zonder identiek te zijn.",
+      "cues": ["teksten die veel op elkaar lijken", "vergelijkbare antwoorden op dezelfde vraag"],
+      "voorbeelden": [
+        {"voor": "De teksten zijn niet identiek, maar hebben wel inhoudelijke overeenkomsten."},
+        {"voor": "Elke AI tekst klinkt alsof dezelfde persoon hem heeft geschreven."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rubens (corpusniveau, docentensignaal); So-MC beschrijft hetzelfde effect voor gepubliceerde content en koppelt het aan Google's 'scaled content abuse'."
+    },
+    {
+      "naam": "Rare details en anachronismen",
+      "categorie": "content",
+      "definitie": "Losse fouten die niemand met kennis van het onderwerp zou maken: dingen die niet in de tijd passen of verzonnen inhoud waar het model geen antwoord had.",
+      "cues": ["anachronismen", "rare fouten", "inhoud gaan verzinnen"],
+      "voorbeelden": [
+        {"voor": "Ook kunnen generatieve AI-toepassingen inhoud gaan verzinnen, als de toepassing op basis van de data geen antwoord kan produceren. Dat kan bij specifieke vragen of onderwerpen het geval zijn."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rubens, 'let op vreemde details'."
+    }
+,
+    {
+      "naam": "Plaatshouders en chattokens uit de chatbot",
+      "categorie": "artifacts",
+      "definitie": "Technische restjes die bij het kopiëren uit een chatvenster meekomen: interne verwijzingstokens, tracking-parameters en onbegrijpelijke tag-stukjes.",
+      "cues": ["contentReference", "oaicite", "turn0search", "utm_source=openai", "utm_source=chatgpt.com"],
+      "voorbeelden": [
+        {"voor": "rare placeholder-code zoals contentReference, oaicite of onbegrijpelijke tag-stukjes. Soms staan er verborgen 'turn0search'-achtige tokens of utm_source=openai."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Digiwijzer: 'Zulke sporen ontstaan bij kopiëren uit een chatbot. Controleer dus altijd even de ruwe tekst.'"
+    },
+    {
+      "naam": "Markdown-tekens in platte tekst",
+      "categorie": "artifacts",
+      "definitie": "Sterretjes, hekjes en andere markdown-opmaak in een document of veld dat geen markdown rendert.",
+      "cues": ["Markdown-tekens in plaats van normale tekstopmaak", "**", "##"],
+      "voorbeelden": [
+        {"voor": "Denk aan Markdown-tekens in plaats van normale tekstopmaak."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Digiwijzer, onder 'Kopieer- en plaksporen uit chatapps'; Jouw Copiloot vangt het onder 'overdreven opmaak'."
+    },
+    {
+      "naam": "Extra spaties en kopieersporen",
+      "categorie": "artifacts",
+      "definitie": "Overtollige spaties aan het begin van een zin of regel en andere resten die bij plakken uit een chatvenster ontstaan.",
+      "cues": ["extra spaties aan het begin van een nieuwe zin of regel", "onterechte spaties"],
+      "voorbeelden": [
+        {"voor": "Ook kunnen er hier en daar extra spaties staan aan het begin van een nieuwe zin of regel."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Digiwijzer. Onze Taal verklaart een verwante variant anders: veelvoorkomende spatiefouten uit het bronmateriaal komen terug in de output."
+    },
+    {
+      "naam": "AI-reactie onder een post",
+      "categorie": "artifacts",
+      "definitie": "Een gegenereerde reactie die de auteur bij naam prijst en dankt zonder iets toe te voegen.",
+      "cues": ["Interessant perspectief, Piet!", "Dank voor het delen van deze waardevolle inzichten"],
+      "voorbeelden": [
+        {"voor": "Interessant perspectief, Piet! Dank voor het delen van deze waardevolle inzichten…"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Frankwatching (2026): LinkedIn zet technologiesystemen in tegen AI-content, ook tegen AI-geschreven reacties."
+    },
+    {
+      "naam": "Chatbot-excuusdraai in de eerste persoon",
+      "categorie": "artifacts",
+      "definitie": "De tekst spreekt als assistent over zijn eigen antwoord: complimenteert de vraag, geeft toe dat een claim niet klopte, herformuleert met 'Dus om het helder te zeggen'.",
+      "cues": ["Ik zei dat omdat", "Ik had dat niet mogen presenteren", "Dus om het helder te zeggen:", "Goede en terechte vraag"],
+      "voorbeelden": [
+        {"voor": "Goede en terechte vraag — en fijn dat je dat kritisch vraagt. Ik zei dat omdat ik de observatie over bijvoeglijke naamwoorden wilde illustreren met een concreet voorbeeld. Maar ik had dat niet als een letterlijk bestaand onderzoek (met bron en getal) mogen presenteren. Dus om het helder te zeggen: er is geen specifiek onderzoek…"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Bikkelhart citeert dit antwoord integraal en merkt op dat er meteen weer een em-dash in staat."
+    },
+    {
+      "naam": "Engelse woordvolgorde",
+      "categorie": "translationese",
+      "definitie": "Een Nederlandse zin die de Engelse constructie aanhoudt in plaats van de Nederlandse; grammaticaal net houdbaar, maar het loopt niet.",
+      "cues": ["helpen met het groeien van", "het navigeren van"],
+      "voorbeelden": [
+        {"voor": "Wij helpen bedrijven met het groeien van hun bereik", "na": "Wij helpen bedrijven hun bereik te vergroten"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "LinkAI: letterlijke vertaling van 'help you grow your reach'; klinkt goed als je er snel overheen leest."
+    },
+    {
+      "naam": "Angelsaksische zinsbouw",
+      "categorie": "translationese",
+      "definitie": "Nederlandse zinnen die de opbouw en het abstractieniveau van Engelse academische of institutionele proza aanhouden.",
+      "cues": ["De onderzoekers suggereren…", "wat bijdraagt aan"],
+      "voorbeelden": [
+        {"voor": "De onderzoekers suggereren…"},
+        {"voor": "Menselijke docenten brengen hun unieke perspectieven, ervaringen en onderwijsstijlen mee, wat bijdraagt aan een rijke en diverse leeromgeving."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Rubens: 'Bij Nederlandse teksten gebruiken generatieve AI-toepassingen regelmatig zinsconstructies die Angelsaksisch van aard zijn.'"
+    },
+    {
+      "naam": "Letterlijke idioomvertalingen",
+      "categorie": "translationese",
+      "definitie": "Engelse uitdrukkingen die letterlijk in het Nederlands worden overgezet; correct maar houterig voor ervaren lezers.",
+      "cues": ["De bal ligt bij jou", "Het is een win-win situatie"],
+      "voorbeelden": [
+        {"voor": "De bal ligt bij jou"},
+        {"voor": "Het is een win-win situatie"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "LinkAI, onder 'Het Nederlands-Engels dilemma'."
+    },
+    {
+      "naam": "Leenvertalingen (calques) van Engelse beeldspraak",
+      "categorie": "translationese",
+      "definitie": "Nederlandse woorden in een betekenis die alleen in het Engels bestaat: een letterlijke vertaling van een Engels beeld of vaste combinatie.",
+      "cues": ["baken van hoop", "baken van verandering", "in de diepten van", "standvastig", "hubs van", "lichtend voorbeeld van", "tapestry", "rijke tapestry", "het tapijt van een gemeenschap", "testament aan", "realm", "symfonie", "symboliseert", "resoneert", "weerspiegelt", "behoeften", "aangedreven", "een door AI-aangedreven start-up"],
+      "voorbeelden": [
+        {"voor": "Food that's cheap, plentiful and capable of feeding large numbers of people is part of the tapestry of a community.", "na": "Voedsel dat goedkoop en overvloedig is en dat grote aantallen mensen kan voeden, maakt deel uit van het tapijt van een gemeenschap. (zo vertaalt zelfs Google Translate het — en zo lees je het terug in AI-teksten)"},
+        {"voor": "dit sluit perfect aan bij jouw fitnessbehoeften"},
+        {"voor": "een door AI-aangedreven start-up"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig houdt hier een groeiende lijst bij (baken, in de diepten van, standvastig, transformatief, hubs van, lichtend voorbeeld van, ontdekken, tapestry, behoeften, aangedreven). Het Contentkantoor markeert 'testament aan' expliciet als Engelse calque en 'realm' als soms letterlijk vertaald. Zijn oordeel: staan zulke woorden in een Nederlandse tekst, dan kun je ervan uitgaan dat het door AI is geschreven."
+    },
+    {
+      "naam": "Onvertaalde Engelse termen",
+      "categorie": "translationese",
+      "definitie": "Engelse woorden die blijven staan omdat er geen goede Nederlandse vertaling is of omdat het model denkt dat ze gangbaar zijn.",
+      "cues": ["gamechanger", "cutting-edge", "next-level", "unlocken", "leveragen", "delve", "tapestry", "Sentinel", "Enshittification", "best practices", "unlock new levels of growth"],
+      "voorbeelden": [
+        {"voor": "dit is een gamechanger voor je marketing", "na": "Dit bespaart je 10 uur per week"},
+        {"voor": "Cutting-edge", "na": "In het Nederlands al helemaal gek. Zeg 'nieuw' of laat het weg."},
+        {"voor": "Unlock new levels of growth…."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig noemt Gamechanger, Tapestry en Sentinel; So-MC noemt 'gamechanger' hét AI-woord bij uitstek ('Elk product is een gamechanger, elke update is een gamechanger'); Frankwatching (2023) signaleert onvertaalde termen als 'Enshittification'."
+    },
+    {
+      "naam": "Duiken in (deep dive)",
+      "categorie": "translationese",
+      "definitie": "De duikmetafoor voor 'grondig bekijken', een slechte vertaling van 'a deep dive into'. In het Nederlands duik je in de zee, niet in een tekst.",
+      "cues": ["Laten we erin duiken", "Laten we (er)in duiken", "duiken in", "delven", "verdiepen in", "Duik in de wereld van"],
+      "voorbeelden": [
+        {"voor": "Laten we erin duiken.", "na": "Begin gewoon met je uitleg."},
+        {"voor": "Laten we in deze recensie duiken!"},
+        {"voor": "Laten we ons verdiepen in…", "na": "bekijken of uitzoeken"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: zoek je in het Nederlands naar 'in een goed boek duiken', dan krijg je informatie over de duiksport of AI-gegenereerde artikelen. So-MC: Frankwatching-lezers noemden dit een van hun grootste AI-irritaties."
+    },
+    {
+      "naam": "Bied, biedt, bieden (offer)",
+      "categorie": "translationese",
+      "definitie": "Overmatig gebruik van 'bieden' als letterlijke vertaling van het Engelse 'offer', in contexten waar het Nederlands een ander werkwoord kiest.",
+      "cues": ["bied", "biedt", "bieden", "biedt een reeks"],
+      "voorbeelden": [
+        {"voor": "A services company offers a range of software", "na": "Een dienstenbedrijf biedt een reeks software aan (zo vertaalt AI het; in normaal Nederlands zou je het anders zeggen)"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: dit hoort bij de punten die een LLM blijft doen ook als je het instrueert het te laten, omdat er geen andere goede optie beschikbaar is."
+    },
+    {
+      "naam": "Engelse Title Case in koppen",
+      "categorie": "translationese",
+      "definitie": "Elk woord in een titel of tussenkop met een hoofdletter, naar Amerikaans model. In het Nederlands geldt sentence case: alleen het eerste woord en eigennamen.",
+      "cues": ["Title Case", "Elke Zin Begint Met Een Hoofdletter", "Hoofdletters Bijna Bij Elk Woord", "SEO Geheimen Onthuld", "Superchargeer je online aanwezigheid met ChatGPT"],
+      "voorbeelden": [
+        {"voor": "Wat Dacht Je Van Titels Die Allemaal Zo Zijn Geschreven?", "na": "Pas de correcte Nederlandse sentence case toe: alleen een hoofdletter aan het begin van de zin en bij eigennamen."},
+        {"voor": "Elke tussenkop in Engels 'Title Case'.", "na": "gewoon normale hoofdletters. Rustiger."},
+        {"voor": "SEO Geheimen Onthuld"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Aikundig: 'In het Nederlands doen we dit eigenlijk nooit. Dit is iets Amerikaans.' LinkAI zet de correctie in zijn vaste prompt, samen met aandacht voor diakritische tekens (é, ö, ü). Digiwijzer zet Title Case in de snelle checklist voor docenten."
+    },
+    {
+      "naam": "Engelse marketing-titelformule (Van X naar Y: Hoe Z)",
+      "categorie": "translationese",
+      "definitie": "Koppen die een Engels SEO-sjabloon volgen in plaats van een Nederlandse, inhoudelijke titel.",
+      "cues": ["Van X naar Y: Hoe Z…"],
+      "voorbeelden": [
+        {"voor": "Van X naar Y: Hoe Z….", "na": "Creëer een subtiele, inhoudelijke en prikkelende Nederlandse titel die past bij een kwaliteitsblad, niet bij een SEO-blog."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "LinkAI, uit zijn vaste opschoonprompt."
+    },
+    {
+      "naam": "Amerikaanse clickbaittoon in het Nederlands",
+      "categorie": "translationese",
+      "definitie": "Het model schrijft naar de Amerikaanse communicatienorm — luid, superlatief, onthullend — terwijl de Nederlandse norm nuchterder is.",
+      "cues": ["over-the-top clickbaiterig Amerikaans", "Onthuld", "Supercharge"],
+      "voorbeelden": [
+        {"voor": "Superchargeer je online aanwezigheid met ChatGPT"},
+        {"voor": "SEO Geheimen Onthuld"}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Frankwatching (2023): de Nederlandse communicatienorm verschilt van de Amerikaanse, maar het model schrijft Amerikaans; oorzaak is training overwegend op Engels (Common Crawl), Nederlands is bijzaak."
+    },
+    {
+      "naam": "Valse formaliteit",
+      "categorie": "translationese",
+      "definitie": "Overbeleefde, afstandelijke formulering waar gewoon Nederlands volstaat — het register van vertaalde Engelse bedrijfscommunicatie.",
+      "cues": ["In de hedendaagse maatschappij is het essentieel om", "Wij informeren u graag over", "Beste klant"],
+      "voorbeelden": [
+        {"voor": "In de hedendaagse maatschappij is het essentieel om...", "na": "Tegenwoordig is het belangrijk om..."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "LinkAI. Zie ook de je/u-wisseling: LinkAI's eigen kopij wisselt binnen één pagina tussen 'je' en 'uw team', wat hetzelfde register-effect laat zien."
+    },
+    {
+      "naam": "Taalomslag midden in de tekst",
+      "categorie": "translationese",
+      "definitie": "De ene zin Nederlands, de volgende Engels, of een Engels woord waar een Nederlands hoort — inclusief antwoorden die in de verkeerde taal komen.",
+      "cues": ["de ene zin Nederlands, de andere Engels", "Horseshoes", "abrupte stijlwissels", "rare afkap"],
+      "voorbeelden": [
+        {"voor": "Signaal: de ene zin Nederlands, de andere Engels, of ineens een rare afkap.", "na": "Lees de tekst hardop. Je hoort dit meteen."},
+        {"voor": "Engels antwoord waar een Nederlands woord hoort ('Horseshoes' in een Nederlandse woordpuzzel)"}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Jouw Copiloot (signaal 10) en Frankwatching (2023). Let op de spanning met Aikundigs 'tekst is te constant': binnen één tekst kun je juist allebei zien."
+    },
+    {
+      "naam": "Kromme Nederlandse grammatica en interpunctie",
+      "categorie": "translationese",
+      "definitie": "Kleine Nederlandse fouten die ontstaan waar het Engels niet stuurt: die/dat, komma's op de verkeerde plek, ongelukkige lijdende zinnen.",
+      "cues": ["die of dat", "een komma op de verkeerde plek", "een lijdende zin die net niet lekker loopt"],
+      "voorbeelden": [
+        {"voor": "Een verkeerd gebruik van 'die' of 'dat'. Een komma op de verkeerde plek. Of een lijdende zin die net niet lekker loopt.", "na": "Daarom controleer áltijd alles wat je met AI schrijft."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Het Contentkantoor: 'AI snapt taalstructuur, maar voelt hem niet.' Onze Taal verklaart een deel hiervan uit het bronmateriaal: veelvoorkomende taal- en spelfouten en wijdverspreide misvattingen over taalregels komen terug in de output."
+    },
+    {
+      "naam": "Engelse spatiëring in samenstellingen",
+      "categorie": "translationese",
+      "definitie": "Samenstellingen los geschreven naar Engels model, of met een verzonnen regel verdedigd, waar het Nederlands aaneenschrijft.",
+      "cues": ["bronzen medaille winnaar", "los geschreven samenstelling", "onterechte spaties"],
+      "voorbeelden": [
+        {"voor": "bronzen medaille winnaar", "na": "bronzenmedaillewinnaar"},
+        {"voor": "✅ bronzen medaillewinnaar → ook toegestaan, vooral in journalistieke teksten voor leesbaarheid.", "na": "Onjuist: die spelling zou uitdrukken dat de winnaar zelf van brons is. Er bestaan geen aparte toegestane spellingen voor journalistieke teksten."}
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Onze Taal: het antwoord én de uitleg klopten niet; er bestaat ook geen 'minder correcte' spelling, en het model vergat de streepjesvariant."
+    },
+    {
+      "naam": "Klinkt als vertaald Engels",
+      "categorie": "translationese",
+      "definitie": "Het overkoepelende effect: Nederlandse output die als een vertaling leest omdat het model in het Engels denkt en het Engels als uitgangspunt neemt.",
+      "cues": ["klinkt als vertaald Engels", "het Engels als uitgangspunt", "getraind op Engelstalige data"],
+      "voorbeelden": [
+        {"voor": "Het gevolg daarvan is dat het soms (nog) een beetje als vertaald Engels klinkt, en bij het beantwoorden van taalvragen lijkt het soms ook het Engels als uitgangspunt te nemen."}
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Onze Taal; LinkAI en Frankwatching (2023) geven dezelfde verklaring: Nederlands zit in de trainingsdata maar in veel mindere mate, waardoor er typische bijwerkingen ontstaan (Engelse zinsstructuur, valse formaliteit, letterlijke idioomvertalingen, Title Case). De VU-gids waarschuwt dat het meeste onderzoek naar AI-kenmerken op Engels is gedaan en dat de Nederlandse kenmerken waarschijnlijk lijken maar niet identiek zijn."
+    }
+  ],
+  "dekking": "Alle 22 bestanden volledig gelezen (cat / sed -n in stukken): frankwatching-2024-ai-woorden, rhinoz-jeukwoorden, somc-20-woorden, contentkantoor-ai-woorden, hulz-herkennen, aikundig-herkennen, digiwijzer-herkennen, bikkelhart-8-signalen, rubens-zonder-technologie, b2bmarketeers-herkennen, donnavandeven-herkennen, opdebeeck-herkennen, promptmaster-opschonen, aislopchecker, aitekstdetector, frankwatching-2026-linkedin, frankwatching-2023-nederlandse-taal, linkai-raakt-niet, onzetaal-chatgpt-taalvragen, pcactive-denkwerk, vu-alp-gids-nl, jouwcopiloot-nl.\n\nGeëxtraheerd: elk afzonderlijk genoemd schrijfpatroon, inclusief alle woordenlijsten woord voor woord (Rhinoz 25 jeukwoorden + 15 jeukuitdrukkingen, So-MC's blacklist van 20, de ~50 woorden van Het Contentkantoor, Op de Beecks top-20, Aikundigs groeiende calque-lijst, de NL- en EN-buzzwordlijsten van AI Slop Checker, de excess-vocabulary-woorden uit het PubMed-onderzoek bij PC-Active, de emoji-favorieten van Bikkelhart en de VU-lijst van boosters en hedges). Voor/na-paren zijn letterlijk overgenomen waar de bron ze geeft (vooral So-MC, Jouw Copiloot, Promptmaster, LinkAI, Onze Taal); waar alleen een 'voor' bestaat is alleen dat opgenomen.\n\nDrie inhoudelijke spanningen bewust in de notities laten staan in plaats van weggepoetst: (1) Frankwatching-2024 ziet afgezwakte beweringen (kan/mag/zou kunnen), de VU-gids ziet juist boosters en weinig hedges; (2) Aikundig ziet een té constante stijl door de hele tekst, Jouw Copiloot ziet juist abrupte stijlwissels; (3) Rubens/Hulz/VU noemen AI-tekst 'té foutloos', Het Contentkantoor ziet in het Nederlands juist rammelende spelling, komma's en die/dat.\n\nBewust weggelaten, omdat het geen schrijfpatronen zijn: (a) de hele detectortoolvergelijking en betrouwbaarheidsdiscussie (aitekstdetector.nl, Hulz, Aikundig, Op de Beeck, Het Contentkantoor, Jouw Copiloot) — perplexiteit en burstiness zijn wél als patroon opgenomen (uniforme zinslengte), maar de tools, prijzen, nauwkeurigheidsclaims en het valse-positievenprobleem bij niet-moedertaalsprekers niet; (b) advies- en workflowdelen (prompttips, 80/20-regel, 'lees hardop', 'praat met de lerenden', 'vergelijk met andere inzendingen' is wél opgenomen omdat het een tekstsignaal is); (c) platform- en SEO-gevolgen (Google scaled content abuse, GEO, YouTube-monetisatie, Meta-bereik, LinkedIn's ingrijpen) — alleen als notitie waar relevant; (d) commerciële blokken, cookiebanners, navigatie, auteursbio's, blogarchieven en de Lorem-ipsum-resten in het LinkAI-bestand; (e) de vier uitgewerkte Onze Taal-casussen zijn samengevat in twee patronen (zelfverzekerde feitelijke onjuistheden, Engelse spatiëring in samenstellingen) plus de vleierij-opener, niet elk als eigen patroon.\n\nDekkingsgaten: Frankwatching-2024, -2026 en -2023 zijn samenvattingen via fetch (de pagina's blokkeren curl), dus daar staan minder letterlijke cues dan bij de andere bronnen. De VU-gids beschrijft grotendeels Engelstalig onderzoek en waarschuwt daar zelf voor; de Engelse voorbeelden (Fragment 3/4, boosters, hedges) zijn letterlijk overgenomen omdat het Nederlandse equivalent in de bron ontbreekt."
+}

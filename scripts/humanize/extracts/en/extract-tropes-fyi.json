@@ -1,0 +1,1058 @@
+{
+  "source": "tropes-fyi",
+  "patterns": [
+    {
+      "name": "\"Quietly\" and Other Magic Adverbs",
+      "category": "vocabulary",
+      "definition": "An adverb (or its adjective form) that asserts subtle importance or understated power instead of showing it, used to make a mundane description feel significant.",
+      "cues": [
+        "quietly",
+        "quiet",
+        "deeply",
+        "fundamentally",
+        "remarkably",
+        "arguably"
+      ],
+      "examples": [
+        {
+          "before": "quietly orchestrating workflows, decisions, and interactions"
+        },
+        {
+          "before": "the one that quietly suffocates everything else"
+        },
+        {
+          "before": "a quiet intelligence behind it"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The third source example uses the adjective 'quiet', so match the stem, not only the -ly form. A literal 'quietly' describing sound level is not a hit."
+    },
+    {
+      "name": "\"Delve\" and Friends",
+      "category": "vocabulary",
+      "definition": "A closed family of verbs and adjectives whose frequency in LLM output far exceeds the human baseline; 'delve' was the flagship tell.",
+      "cues": [
+        "delve",
+        "delving",
+        "certainly",
+        "utilize",
+        "leverage",
+        "robust",
+        "streamline",
+        "harness"
+      ],
+      "examples": [
+        {
+          "before": "Let's delve into the details..."
+        },
+        {
+          "before": "Delving deeper into this topic..."
+        },
+        {
+          "before": "We certainly need to leverage these robust frameworks..."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'Used to be the most infamous AI tell' and appeared 'in a staggering percentage of AI-generated text'; prevalence has shifted as models were tuned away from it. 'leverage' is flagged as a verb only."
+    },
+    {
+      "name": "\"Tapestry\" and \"Landscape\"",
+      "category": "vocabulary",
+      "definition": "Ornate or grandiose abstract nouns standing in for plain words: 'tapestry' for anything interconnected, 'landscape' for any field or domain, plus a set of management-speak abstractions.",
+      "cues": [
+        "tapestry",
+        "landscape",
+        "paradigm",
+        "synergy",
+        "ecosystem",
+        "framework",
+        "rich tapestry",
+        "ever-evolving landscape",
+        "navigating the complex landscape"
+      ],
+      "examples": [
+        {
+          "before": "The rich tapestry of human experience..."
+        },
+        {
+          "before": "Navigating the complex landscape of modern AI..."
+        },
+        {
+          "before": "The ever-evolving landscape of technology..."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "'framework' and 'ecosystem' have literal technical meanings (a software framework, a package ecosystem); the source lists them as offenders in their figurative, field-describing use."
+    },
+    {
+      "name": "The \"Serves As\" Dodge",
+      "category": "syntax",
+      "definition": "Replacing the plain copula 'is'/'are' with a pompous verb of standing or signification. The source attributes it to the repetition penalty pushing the model away from repeating 'is'.",
+      "cues": [
+        "serves as",
+        "stands as",
+        "marks",
+        "represents"
+      ],
+      "examples": [
+        {
+          "before": "The building serves as a reminder of the city's heritage."
+        },
+        {
+          "before": "Gallery 825 serves as LAAA's exhibition space for contemporary art."
+        },
+        {
+          "before": "The station marks a pivotal moment in the evolution of regional transit."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Mechanism (copula avoidance) is universal; the verbs are English. Rewrite by substituting 'is'/'are'. 'marks' and 'represents' have literal uses (a lawyer represents a client) that are not hits. Examples read like Wikipedia place descriptions."
+    },
+    {
+      "name": "Negative Parallelism",
+      "category": "syntax",
+      "definition": "'It's not X -- it's Y': a point framed as the correction of a claim nobody made, so every statement reads as a surprising reframe. The source calls it the single most commonly identified AI writing tell.",
+      "cues": [
+        "It's not X -- it's Y",
+        "It's not",
+        "isn't ... It's",
+        "aren't ... They're",
+        "not X but Y"
+      ],
+      "examples": [
+        {
+          "before": "It's not bold. It's backwards."
+        },
+        {
+          "before": "Feeding isn't nutrition. It's dialysis."
+        },
+        {
+          "before": "Half the bugs you chase aren't in your code. They're in your head."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'One in a piece can be effective; ten in a blog post is a genuine insult to the reader.' 'Before LLMs, people simply did not write like this at scale.' Often carries an em dash. The source names three variants, inventoried as the next three entries."
+    },
+    {
+      "name": "Causal Negative Parallelism (\"not because X, but because Y\")",
+      "category": "syntax",
+      "definition": "The causal variant of negative parallelism: the expected cause is denied and the real cause supplied, so every explanation is staged as a surprise reveal.",
+      "cues": [
+        "not because X, but because Y",
+        "not because",
+        "but because"
+      ],
+      "examples": [
+        {
+          "before": "not because X, but because Y"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Named as a variant under Negative Parallelism; the source gives only the template, no full-sentence example."
+    },
+    {
+      "name": "Em-Dash Dismissal (\"X -- not Y\")",
+      "category": "syntax",
+      "definition": "A claim followed by an em dash and a negated alternative, dismissing an option that was never on the table.",
+      "cues": [
+        "X -- not Y",
+        " -- not "
+      ],
+      "examples": [
+        {
+          "before": "X -- not Y"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Named as a variant under Negative Parallelism; co-occurs with Em-Dash Addiction. Template only in source."
+    },
+    {
+      "name": "Cross-Sentence Reframe (\"The question isn't X. The question is Y.\")",
+      "category": "syntax",
+      "definition": "The same noun is negated in one sentence and repositioned in the next, spreading the not-X-but-Y move across a sentence boundary.",
+      "cues": [
+        "The question isn't X. The question is Y.",
+        "The question isn't",
+        "The question is",
+        "The problem isn't ... The problem is"
+      ],
+      "examples": [
+        {
+          "before": "The question isn't X. The question is Y."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Named as a variant under Negative Parallelism. Detectable as two adjacent sentences sharing a subject noun, the first with a negated copula."
+    },
+    {
+      "name": "\"Not X. Not Y. Just Z.\"",
+      "category": "syntax",
+      "definition": "A countdown of two or more negated candidates before the 'real' answer, manufacturing tension by false narrowing.",
+      "cues": [
+        "Not X. Not Y. Just Z.",
+        "Not ... Not ... A ...",
+        "not ..., not ..., but ...",
+        "Just"
+      ],
+      "examples": [
+        {
+          "before": "Not a bug. Not a feature. A fundamental design flaw."
+        },
+        {
+          "before": "Not ten. Not fifty. Five hundred and twenty-three lint violations across 67 files."
+        },
+        {
+          "before": "not recklessly, not completely, but enough"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Two or more sentence- or clause-initial 'Not' in a row followed by an affirmative fragment."
+    },
+    {
+      "name": "\"The X? A Y.\"",
+      "category": "syntax",
+      "definition": "A self-posed rhetorical question ('The result?') answered at once by a short fragment, staging drama around a point nobody asked about.",
+      "cues": [
+        "The result?",
+        "The worst part?",
+        "The scary part?",
+        "The X? A Y."
+      ],
+      "examples": [
+        {
+          "before": "The result? Devastating."
+        },
+        {
+          "before": "The worst part? Nobody saw it coming."
+        },
+        {
+          "before": "The scary part? This attack vector is perfect for developers."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Regex shape: sentence-initial 'The <noun phrase>?' immediately followed by a fragment or single sentence. Source: the model 'thinks this is the epitome of great writing'."
+    },
+    {
+      "name": "Anaphora Abuse",
+      "category": "syntax",
+      "definition": "Three or more consecutive sentences or clauses opening with the same words.",
+      "cues": [
+        "They assume that ...",
+        "They could ...",
+        "They have built ..., but not ..."
+      ],
+      "examples": [
+        {
+          "before": "They assume that users will pay... They assume that developers will build... They assume that ecosystems will emerge... They assume that..."
+        },
+        {
+          "before": "They could expose... They could offer... They could provide... They could create... They could let... They could unlock..."
+        },
+        {
+          "before": "They have built engines, but not vehicles. They have built power, but not leverage. They have built walls, but not doors."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "The third example also stacks negative parallelism ('X, but not Y') and a tricolon."
+    },
+    {
+      "name": "Tricolon Abuse",
+      "category": "syntax",
+      "definition": "Rule-of-three lists, often stretched to four or five items, stacked back-to-back; also antithetical pairs run three times in a row.",
+      "cues": [
+        "X, Y, and Z",
+        "identity, payments, compute, distribution",
+        "workflows, decisions, and interactions"
+      ],
+      "examples": [
+        {
+          "before": "Products impress people; platforms empower them. Products solve problems; platforms create worlds. Products scale linearly; platforms scale exponentially."
+        },
+        {
+          "before": "identity, payments, compute, distribution"
+        },
+        {
+          "before": "workflows, decisions, and interactions"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'A single tricolon is elegant; three back-to-back tricolons are a pattern recognition failure.' The third example is the same list that appears in the Magic Adverbs example, showing the tropes co-occur."
+    },
+    {
+      "name": "\"It's Worth Noting\"",
+      "category": "vocabulary",
+      "definition": "Filler transitions that introduce a new point while asserting nothing about how it connects to the previous argument.",
+      "cues": [
+        "It's worth noting",
+        "It bears mentioning",
+        "Importantly",
+        "Interestingly",
+        "Notably"
+      ],
+      "examples": [
+        {
+          "before": "It's worth noting that this approach has limitations."
+        },
+        {
+          "before": "Importantly, we must consider the broader implications."
+        },
+        {
+          "before": "Interestingly, this pattern repeats across industries."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Rewrite by deleting the phrase; if the sentence loses nothing, the phrase carried nothing."
+    },
+    {
+      "name": "Superficial Analyses",
+      "category": "syntax",
+      "definition": "A present-participle ('-ing') phrase appended to a factual sentence to attach significance, legacy or broader meaning the fact does not carry.",
+      "cues": [
+        "highlighting its importance",
+        "reflecting broader trends",
+        "contributing to the development of",
+        "contributing to",
+        "underscoring its role",
+        "highlights the enduring legacy",
+        "transformative power",
+        "rich cultural heritage",
+        "dynamic hub"
+      ],
+      "examples": [
+        {
+          "before": "contributing to the region's rich cultural heritage"
+        },
+        {
+          "before": "This etymology highlights the enduring legacy of the community's resistance and the transformative power of unity in shaping its identity."
+        },
+        {
+          "before": "underscoring its role as a dynamic hub of activity and culture"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "The -ing tail is the detectable shape; the substance failure is inflated significance/legacy (content). The second example is a finite-verb form of the same move. Examples read like Wikipedia place and etymology prose."
+    },
+    {
+      "name": "False Ranges",
+      "category": "syntax",
+      "definition": "'From X to Y' where X and Y lie on no real scale, used as a decorated way of listing two or three loosely related things.",
+      "cues": [
+        "from X to Y",
+        "From ... to ...",
+        "From ... to ... to ..."
+      ],
+      "examples": [
+        {
+          "before": "From innovation to implementation to cultural transformation."
+        },
+        {
+          "before": "From the singularity of the Big Bang to the grand cosmic web."
+        },
+        {
+          "before": "From problem-solving and tool-making to scientific discovery, artistic expression, and technological innovation."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "False-positive rule from the source: legitimate 'from X to Y' implies a spectrum with a meaningful middle; ask what sits between X and Y. If nothing does, it is a hit."
+    },
+    {
+      "name": "Short Punchy Fragments",
+      "category": "structure",
+      "definition": "Very short sentences or sentence fragments set as standalone sentences or paragraphs for manufactured emphasis: one thought per sentence, no mental state-keeping asked of the reader.",
+      "cues": [
+        "Openly.",
+        "Platforms do.",
+        "single-word sentences",
+        "runs of sentences under five words"
+      ],
+      "examples": [
+        {
+          "before": "He published this. Openly. In a book. As a priest."
+        },
+        {
+          "before": "These weren't just products. And the software side matched. Then it professionalised. But I adapted."
+        },
+        {
+          "before": "Platforms do."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source attributes it to RLHF pushing 'writing for readability' at the lowest common denominator; 'No real person writes first drafts this way because it doesn't match how humans think or speak.' Overlaps the syntax-level paired-fragment tell."
+    },
+    {
+      "name": "Listicle in a Trench Coat",
+      "category": "structure",
+      "definition": "Numbered or labeled points written as consecutive prose paragraphs that each open with an ordinal ('The first... The second...') to disguise a list.",
+      "cues": [
+        "The first ... The second ... The third ...",
+        "The first wall is",
+        "The second takeaway is that",
+        "The third takeaway is that",
+        "The fourth takeaway is that"
+      ],
+      "examples": [
+        {
+          "before": "The first wall is the absence of a free, scoped API... The second wall is the lack of delegated access... The third wall is the absence of scoped permissions..."
+        },
+        {
+          "before": "The second takeaway is that... The third takeaway is that... The fourth takeaway is that..."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Often the result of telling the model to stop generating lists; 'still very common'."
+    },
+    {
+      "name": "\"Here's the Kicker\"",
+      "category": "rhetoric",
+      "definition": "A false-suspense transition that promises a revelation before an observation that did not need the buildup.",
+      "cues": [
+        "Here's the kicker",
+        "Here's the thing",
+        "Here's where it gets interesting",
+        "Here's what most people miss",
+        "Here's the starting point",
+        "Here's the deal"
+      ],
+      "examples": [
+        {
+          "before": "Here's the kicker."
+        },
+        {
+          "before": "Here's the thing about AI adoption."
+        },
+        {
+          "before": "Here's where it gets interesting."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Often a standalone one-line paragraph, which also trips Short Punchy Fragments."
+    },
+    {
+      "name": "\"Think of It As...\"",
+      "category": "rhetoric",
+      "definition": "The patronizing analogy: an unrequested 'think of it as' / 'it's like a' metaphor that assumes the reader needs a simplification, often less clear than the concept it explains.",
+      "cues": [
+        "Think of it as",
+        "Think of it like",
+        "It's like a",
+        "It's like asking"
+      ],
+      "examples": [
+        {
+          "before": "Think of it like a highway system for data."
+        },
+        {
+          "before": "Think of it as a Swiss Army knife for your workflow."
+        },
+        {
+          "before": "It's like asking someone to buy a car they're only allowed to sit in while it's parked."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Source: the model 'defaults to teacher mode'. Tolerable in genuinely introductory material; a tell for expert audiences or when the analogy is murkier than the original."
+    },
+    {
+      "name": "\"Imagine a World Where...\"",
+      "category": "rhetoric",
+      "definition": "An invitation to futurism that opens with 'Imagine' and lists the wonders that follow if the reader accepts the premise.",
+      "cues": [
+        "Imagine a world where",
+        "Imagine",
+        "In that world"
+      ],
+      "examples": [
+        {
+          "before": "Imagine a world where every tool you use -- your calendar, your inbox, your documents, your CRM, your code editor -- has a quiet intelligence behind it..."
+        },
+        {
+          "before": "In that world, workflows stop being collections of manual steps and start becoming orchestrations."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The example also stacks Magic Adverbs ('quiet intelligence') and an em-dash list."
+    },
+    {
+      "name": "False Vulnerability",
+      "category": "rhetoric",
+      "definition": "Performative self-awareness: a fourth-wall break or admitted bias that is polished and risk-free rather than specific and uncomfortable.",
+      "cues": [
+        "And yes,",
+        "I'm openly",
+        "since we're being honest",
+        "I'm looking at you",
+        "This is not a rant; it's a diagnosis"
+      ],
+      "examples": [
+        {
+          "before": "And yes, I'm openly in love with the platform model"
+        },
+        {
+          "before": "And yes, since we're being honest: I'm looking at you, OpenAI, Google, Anthropic, Meta"
+        },
+        {
+          "before": "This is not a rant; it's a diagnosis"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'Real vulnerability is specific and uncomfortable; AI vulnerability is polished and risk-free.' The third example is also a negative-parallelism shape."
+    },
+    {
+      "name": "\"The Truth Is Simple\"",
+      "category": "rhetoric",
+      "definition": "Asserting that a point is obvious, clear or simple in place of proving it.",
+      "cues": [
+        "The truth is simple",
+        "The reality is simpler",
+        "History is unambiguous",
+        "is clear",
+        "the metrics are clear",
+        "the examples are clear"
+      ],
+      "examples": [
+        {
+          "before": "The reality is simpler and less flattering"
+        },
+        {
+          "before": "History is unambiguous on this point"
+        },
+        {
+          "before": "History is clear, the metrics are clear, the examples are clear"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "'If you have to tell the reader your point is clear, it very likely isn't.' The third example is also an anaphora/tricolon."
+    },
+    {
+      "name": "\"The Real Story Is...\" Reveal",
+      "category": "rhetoric",
+      "definition": "The dramatic-reveal variant of 'the truth is simple': everything said so far is waved away as not the real story and privileged insight is claimed for what follows.",
+      "cues": [
+        "but none of them is the real story",
+        "The real story is"
+      ],
+      "examples": [
+        {
+          "before": "but none of them is the real story. The real story is..."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Named as a variant under 'The Truth Is Simple'."
+    },
+    {
+      "name": "Grandiose Stakes Inflation",
+      "category": "rhetoric",
+      "definition": "Every argument is raised to world-historical significance regardless of subject; a post about API pricing becomes a meditation on the fate of civilization.",
+      "cues": [
+        "fundamentally reshape",
+        "how we think about everything",
+        "will define the next era",
+        "something entirely new"
+      ],
+      "examples": [
+        {
+          "before": "This will fundamentally reshape how we think about everything."
+        },
+        {
+          "before": "will define the next era of computing"
+        },
+        {
+          "before": "something entirely new"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Shares the adverb 'fundamentally' with Magic Adverbs."
+    },
+    {
+      "name": "\"Let's Break This Down\"",
+      "category": "rhetoric",
+      "definition": "The pedagogical voice: first-person-plural invitations that cast the reader as a student needing hand-holding, even for expert audiences.",
+      "cues": [
+        "Let's break this down",
+        "Let's unpack this",
+        "Let's explore",
+        "Let's dive in",
+        "step by step"
+      ],
+      "examples": [
+        {
+          "before": "Let's break this down step by step."
+        },
+        {
+          "before": "Let's unpack what this really means."
+        },
+        {
+          "before": "Let's explore this idea further."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "'AI defaults to a teacher-student dynamic even when writing for expert audiences.'"
+    },
+    {
+      "name": "Vague Attributions",
+      "category": "content",
+      "definition": "Claims attributed to unnamed authorities (experts, observers, industry reports, several publications) with no one actually named.",
+      "cues": [
+        "Experts argue",
+        "Industry reports suggest",
+        "Observers have cited",
+        "experts",
+        "observers",
+        "industry reports",
+        "several publications"
+      ],
+      "examples": [
+        {
+          "before": "Experts argue that this approach has significant drawbacks."
+        },
+        {
+          "before": "Industry reports suggest that adoption is accelerating."
+        },
+        {
+          "before": "Observers have cited the initiative as a turning point."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Gate from the source: 'If you can't name the expert, you don't have a source.'"
+    },
+    {
+      "name": "Source-Count Inflation",
+      "category": "content",
+      "definition": "Presenting one person's statement as a widely held view, or writing 'several publications have cited' when the count is two.",
+      "cues": [
+        "several publications have cited",
+        "widely held",
+        "several"
+      ],
+      "examples": [
+        {
+          "before": "several publications have cited"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Named inside Vague Attributions as a second failure: inflating the quantity of sources. A fact-protection issue as much as a style one."
+    },
+    {
+      "name": "Invented Concept Labels",
+      "category": "content",
+      "definition": "Compound labels built from a domain word plus an abstract problem-noun, used as if they were established, rigorously defined terms; they name a thing so the argument can be skipped.",
+      "cues": [
+        "paradox",
+        "trap",
+        "creep",
+        "divide",
+        "vacuum",
+        "inversion",
+        "the supervision paradox",
+        "the acceleration trap",
+        "workload creep"
+      ],
+      "examples": [
+        {
+          "before": "the supervision paradox"
+        },
+        {
+          "before": "the acceleration trap"
+        },
+        {
+          "before": "workload creep"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'Multiple such labels in the same piece is a strong signal of AI slop.' Established terms (scope creep, digital divide) exist; the tell is a freshly minted compound presented as canon."
+    },
+    {
+      "name": "Em-Dash Addiction",
+      "category": "punctuation-format",
+      "definition": "Em dashes used compulsively for dramatic pauses, parenthetical asides and pivot points.",
+      "cues": [
+        "—",
+        "--",
+        " -- "
+      ],
+      "examples": [
+        {
+          "before": "The problem -- and this is the part nobody talks about -- is systemic."
+        },
+        {
+          "before": "The tinkerer spirit didn't die of natural causes -- it was bought out."
+        },
+        {
+          "before": "Not recklessly, not completely -- but enough -- enough to matter."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Threshold: 'A human writer might use 2-3 per piece (and naturally); AI will use 20+.' The source file renders em dashes as '--'. The third example also stacks 'Not X. Not Y.'"
+    },
+    {
+      "name": "Bold-First Bullets",
+      "category": "structure",
+      "definition": "Every list item opens with a bolded keyword or phrase, usually followed by a colon.",
+      "cues": [
+        "**Word**:",
+        "**Security**:",
+        "**Performance**:",
+        "bold keyword"
+      ],
+      "examples": [
+        {
+          "before": "Every single bullet point begins with a bold keyword."
+        },
+        {
+          "before": "**Security**: Environment-based configuration with..."
+        },
+        {
+          "before": "**Performance**: Lazy loading of expensive resources..."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'Extremely common in Claude and ChatGPT markdown output. Almost nobody formats lists this way when writing by hand.' Especially telling in documentation, blog posts and README files, 'especially with emojis'."
+    },
+    {
+      "name": "Unicode Decoration: Arrows",
+      "category": "punctuation-format",
+      "definition": "Typographic arrow characters (→) and other characters that cannot easily be typed on a standard keyboard, used in prose where a keyboard writer would type -> or => or write a sentence.",
+      "cues": [
+        "→",
+        "->",
+        "=>",
+        "Input → Processing → Output"
+      ],
+      "examples": [
+        {
+          "before": "Input → Processing → Output"
+        },
+        {
+          "before": "This leads to better outcomes → which means higher engagement"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "'Claude in particular loves the -> arrow.' Diagrams and code notation use arrows legitimately; the tell is the arrow as a prose connective. Source groups arrows and smart quotes under one 'Unicode Decoration' heading."
+    },
+    {
+      "name": "Unicode Decoration: Smart Quotes",
+      "category": "punctuation-format",
+      "definition": "Curly quotation marks and apostrophes in text meant to have been typed in a plain text editor, where straight quotes would have resulted.",
+      "cues": [
+        "“",
+        "”",
+        "’",
+        "smart quotes",
+        "curly quotes"
+      ],
+      "examples": [
+        {
+          "before": "“Smart quotes” instead of straight \"quotes\" that you’d actually type"
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Word processors and publishing pipelines auto-curl quotes, so this is a tell only on plaintext, markdown and code surfaces. Other languages have their own quotation conventions."
+    },
+    {
+      "name": "Emoji Decoration",
+      "category": "punctuation-format",
+      "definition": "Emoji used as list-item or heading ornaments, especially alongside bold-first bullets in READMEs and documentation.",
+      "cues": [
+        "emojis"
+      ],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Implied only: the source mentions it in passing under Bold-First Bullets ('especially with emojis'); no dedicated trope or example."
+    },
+    {
+      "name": "Fractal Summaries",
+      "category": "structure",
+      "definition": "'What I'm going to tell you; what I'm telling you; what I just told you' applied at every level: each subsection, section and the document itself gets a preview and a recap.",
+      "cues": [
+        "In this section, we'll explore",
+        "as we've seen in this section",
+        "as we've seen",
+        "And so we return to where we began"
+      ],
+      "examples": [
+        {
+          "before": "In this section, we'll explore... [3000 words later] ...as we've seen in this section."
+        },
+        {
+          "before": "A conclusion that restates every point already made in the previous 3000 words"
+        },
+        {
+          "before": "And so we return to where we began."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Academic and long-report formats sometimes require section summaries; the tell is the recursion at every level."
+    },
+    {
+      "name": "Circular Return Ending",
+      "category": "structure",
+      "definition": "A closing sentence that loops back to the opening ('And so we return to where we began') as a substitute for a real ending.",
+      "cues": [
+        "And so we return to where we began",
+        "return to where we began"
+      ],
+      "examples": [
+        {
+          "before": "And so we return to where we began."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied: listed as the third example under Fractal Summaries; split out because it is a distinct bookend device a regex can target."
+    },
+    {
+      "name": "The Dead Metaphor",
+      "category": "rhetoric",
+      "definition": "One metaphor introduced and then reused throughout the piece instead of being used once and dropped.",
+      "cues": [
+        "ecosystem",
+        "walls and doors",
+        "primitives",
+        "same figurative noun recurring"
+      ],
+      "examples": [
+        {
+          "before": "The ecosystem needs ecosystems to build ecosystem value."
+        },
+        {
+          "before": "Walls and doors used 30+ times in the same article"
+        },
+        {
+          "before": "Every paragraph finds a way to say \"primitives\" again"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Threshold: 'A human writer would introduce a metaphor, use it then move on. AI will repeat the same metaphor 5-10 times.' The cue words are the source's examples, not a general list; detect by counting recurrence of a figurative noun across paragraphs."
+    },
+    {
+      "name": "Historical Analogy Stacking",
+      "category": "rhetoric",
+      "definition": "Rapid-fire listing of historical companies or technology revolutions to borrow authority for a claim.",
+      "cues": [
+        "Apple didn't build Uber",
+        "the web, mobile, social, cloud",
+        "Every major technological shift",
+        "followed the same pattern",
+        "Take Spotify",
+        "Or consider Uber",
+        "followed a similar path",
+        "is another example",
+        "Even Discord"
+      ],
+      "examples": [
+        {
+          "before": "Apple didn't build Uber. Facebook didn't build Spotify. Stripe didn't build Shopify. AWS didn't build Airbnb."
+        },
+        {
+          "before": "Every major technological shift -- the web, mobile, social, cloud -- followed the same pattern."
+        },
+        {
+          "before": "Take Spotify... Or consider Uber... Airbnb followed a similar path... Shopify is another example... Even Discord..."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "'ESPECIALLY COMMON IN TECHNICAL WRITING'. The first example also stacks anaphora and negation."
+    },
+    {
+      "name": "One-Point Dilution",
+      "category": "structure",
+      "definition": "A single thesis restated many times with different metaphors, examples and framings so a short argument fills thousands of words.",
+      "cues": [
+        "restated",
+        "rephrases the thesis"
+      ],
+      "examples": [
+        {
+          "before": "The same point, restated eight ways across 4000 words."
+        },
+        {
+          "before": "Each section rephrases the thesis with a different metaphor but adds nothing new"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "'An 800-word argument becomes 4000 words of circular repetition.' No lexical cue; detect by semantic redundancy across sections."
+    },
+    {
+      "name": "Content Duplication",
+      "category": "artifacts",
+      "definition": "Whole sections or paragraphs repeated verbatim or near-verbatim within the same piece because the model lost track of what it had already written.",
+      "cues": [
+        "word-for-word identical",
+        "the same section appeared twice"
+      ],
+      "examples": [
+        {
+          "before": "The same section appeared twice, word-for-word identical."
+        },
+        {
+          "before": "Paragraph 3 and paragraph 17 are the same sentence reworded"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "'A dead giveaway of unedited AI output. Less common nowadays.' A machine fingerprint rather than a style choice; detectable by paragraph hashing or n-gram overlap."
+    },
+    {
+      "name": "The Signposted Conclusion",
+      "category": "structure",
+      "definition": "Announcing the conclusion with a stock phrase instead of letting the ending land.",
+      "cues": [
+        "In conclusion",
+        "To sum up",
+        "In summary"
+      ],
+      "examples": [
+        {
+          "before": "In conclusion, the future of AI depends on..."
+        },
+        {
+          "before": "To sum up, we've explored three key themes..."
+        },
+        {
+          "before": "In summary, the evidence suggests..."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "'AI signals its structural moves because it's following a template, not writing organically.' Formal and academic registers tolerate a marked conclusion."
+    },
+    {
+      "name": "\"Despite Its Challenges...\"",
+      "category": "structure",
+      "definition": "A rigid two-beat formula: 'Despite its [positive words], [subject] faces challenges...' followed by 'Despite these challenges, [optimistic conclusion]', acknowledging problems only to dismiss them.",
+      "cues": [
+        "Despite its",
+        "Despite these challenges",
+        "faces challenges",
+        "faces several challenges",
+        "continues to thrive",
+        "must be addressed for broader adoption"
+      ],
+      "examples": [
+        {
+          "before": "Despite these challenges, the initiative continues to thrive."
+        },
+        {
+          "before": "Despite its industrial and residential prosperity, Korattur faces challenges typical of urban areas."
+        },
+        {
+          "before": "Despite their promising applications, pyroelectric materials face several challenges that must be addressed for broader adoption."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Examples are Wikipedia-style place and materials-science prose. Both beats are cues: the 'faces challenges' opener and the 'Despite these challenges' closer."
+    }
+  ],
+  "methodology": [
+    {
+      "topic": "modes",
+      "rule": "Use the trope list in write mode: add it to the assistant's system prompt or context so the model avoids the patterns while generating. The source is an avoid-list for generation, not a detector or a rewrite procedure."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Score by co-occurrence and repetition, not single hits: any one trope used once may be fine; flag when multiple tropes appear together or when a single trope recurs through the piece."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Apply the source's density thresholds: negative parallelism, one per piece can be effective and ten is an insult; tricolon, one is elegant and three back-to-back is a failure; em dashes, 2-3 per piece is human and 20+ is AI; a metaphor repeated 5-10 times is dead; more than one invented concept label in a piece is a strong signal."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "'From X to Y' is legitimate when X and Y sit on a real scale with a meaningful middle; flag only when nothing lies between them."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Treat the trope inventory as a list of overuse, not banned words: the closing note says any pattern used once might be fine, so a rewriter deletes repetition and stacking rather than every instance."
+    },
+    {
+      "topic": "gates",
+      "rule": "Name the source or drop the claim: 'If you can't name the expert, you don't have a source.' Never present one person's statement as a widely held view, and never write 'several publications' when there are two."
+    },
+    {
+      "topic": "register",
+      "rule": "Weight historical analogy stacking higher in technical writing, where the source says it is especially common."
+    },
+    {
+      "topic": "register",
+      "rule": "Weight bold-first bullets and emoji decoration higher in documentation, blog posts and README files, where the source says they are most telling; they are common Claude and ChatGPT markdown output."
+    },
+    {
+      "topic": "register",
+      "rule": "Tolerate the pedagogical voice ('Let's break this down', 'Think of it as') only for genuinely novice audiences; the source's complaint is that the model uses it even for expert readers."
+    },
+    {
+      "topic": "register",
+      "rule": "Treat smart quotes and unicode arrows as tells only on surfaces a person would type in a text editor (plaintext, markdown, code); word processors and publishing pipelines produce them on their own."
+    },
+    {
+      "topic": "voice",
+      "rule": "Draft as a human drafts: sentences that carry more than one thought and ask the reader to keep state, rather than one thought per sentence in standalone fragments."
+    },
+    {
+      "topic": "voice",
+      "rule": "When admitting a bias or limitation, make it specific and uncomfortable; a polished, risk-free confession reads as performance."
+    },
+    {
+      "topic": "voice",
+      "rule": "Use a metaphor once and move on; do not carry a single figure through the whole piece."
+    },
+    {
+      "topic": "facts",
+      "rule": "Do not inflate the count or the reach of sources: report what one person said as what one person said."
+    },
+    {
+      "topic": "other",
+      "rule": "Target the cause where the source names one: copula avoidance comes from the repetition penalty (so let 'is' repeat), fragment style from RLHF readability tuning, verbatim duplication from lost context in long outputs."
+    },
+    {
+      "topic": "other",
+      "rule": "Prevalence drifts with model generations: 'delve' was the most infamous tell and has faded, verbatim content duplication is less common now, negative parallelism is currently the single most commonly identified tell. Re-weight the list over time."
+    },
+    {
+      "topic": "other",
+      "rule": "Model-specific fingerprints the source names: the -> / → arrow is a Claude habit; bold-first bullets are shared by Claude and ChatGPT."
+    },
+    {
+      "topic": "output",
+      "rule": "The catalog format is one heading per trope carrying the source's own name, a one-paragraph definition with any sub-variants named inline, then an 'Avoid patterns like:' bullet list of about three verbatim examples; no after-rewrites are given."
+    }
+  ],
+  "coverage_note": "Read the whole file /private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/lists/tropes-fyi.md (326 lines) in two chunks, lines 1-250 and 251-326. The file carries 33 headed tropes (Word Choice 4, Sentence Structure 8, Paragraph Structure 2, Tone 9, Formatting 3, Composition 7), not the 39 the brief mentions, and no comment-sourced additions section; the mirror appears trimmed, so anything beyond these 33 is not in what I received. I split named sub-variants into their own entries (three negative-parallelism variants, the 'real story' reveal, source-count inflation, arrows vs smart quotes) and added two implied entries (emoji decoration, circular return ending), giving 41 patterns. Left out: the author's asides and expletives, the 'I've studied this!' claim, and the intro sentence about adding the file to a system prompt except as the modes rule. Category calls that could go either way: Superficial Analyses (syntax by shape, content by substance), Short Punchy Fragments (structure per the source's own section, though the taxonomy lists paired fragments under syntax), Content Duplication (artifacts as a machine fingerprint rather than structure), The Dead Metaphor (rhetoric rather than structure), 'Despite Its Challenges' (structure per the taxonomy, though it is also both-sides padding). The source gives no after-rewrites, no detect-before-rewrite workflow, no scoring formula beyond the closing co-occurrence note, no output format for a detector, and no explicit anti-goals; the methodology items marked 'other' and some 'register' rules are stated as instructions from the source's remarks rather than rules the source itself wrote."
+}

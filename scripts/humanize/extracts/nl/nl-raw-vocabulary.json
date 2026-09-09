@@ -1,0 +1,1648 @@
+[
+ {
+  "naam": "Mechanische voegwoorden",
+  "categorie": "vocabulary",
+  "definitie": "Verbindingswoorden die aan het begin van bijna elke zin of alinea opduiken en een redenering suggereren die er niet is.",
+  "cues": [
+   "Bovendien",
+   "Daarnaast",
+   "Verder",
+   "Tevens",
+   "Voorts",
+   "Anderzijds",
+   "Aan de andere kant",
+   "Daarbij komt dat",
+   "Daarenboven"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Bovendien groeit het aantal deelnemers. Daarnaast is de locatie verbeterd. Verder is er sinds kort koffie.",
+    "na": "Het aantal deelnemers groeit, de zaal is groter en er is koffie."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Losse voegwoorden zijn normaal Nederlands; het signaal is de dichtheid en de vaste plaats vooraan de zin. 'Voorts', 'Tevens' en 'Daarenboven' zijn in modern Nederlands al ambtelijk en vallen daardoor extra op. De Duitse tegenhangers zijn 'darüber hinaus', 'außerdem' en 'ferner'.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "AI-markervocabulaire",
+  "categorie": "vocabulary",
+  "definitie": "Een kleine, steeds terugkerende woordenschat van opwaarderende bijvoeglijke naamwoorden en abstracties die overal past en daardoor niets zegt.",
+  "cues": [
+   "cruciaal",
+   "essentieel",
+   "naadloos",
+   "robuust",
+   "innovatief",
+   "waardevol",
+   "veelzijdig",
+   "moeiteloos",
+   "krachtig",
+   "toonaangevend",
+   "op maat gemaakt",
+   "duurzame groei",
+   "een sleutelrol",
+   "in het huidige landschap"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een naadloze en robuuste aanpak is cruciaal voor duurzame groei.",
+    "na": "De aanpak moet werken bij tweehonderd aanmeldingen; nu loopt hij vast bij zestig."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina noemt in de inleiding van de zachte signalen alleen 'veel floskels' zonder ze op te sommen; humanizer-de vult dat in als patroon 64 (KI-Marker-Vokabular). De cues hierboven zijn de Nederlandse woorden die modellen daadwerkelijk produceren, niet de vertaalde Duitse lijst. Test: staat het woord er ook nog als je het onderwerp vervangt, dan draagt het niets.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Opgeblazen bijvoeglijke naamwoorden (jeukwoorden)",
+  "categorie": "vocabulary",
+  "definitie": "Vage, overdreven positieve bijvoeglijke naamwoorden die indruk wekken zonder iets te specificeren. Los zijn het gewone zakelijke woorden; de opeenhoping in één tekst is de tell.",
+  "cues": [
+   "cruciaal",
+   "essentieel",
+   "naadloos",
+   "robuust",
+   "baanbrekend",
+   "revolutionair",
+   "vernieuwend",
+   "geavanceerd",
+   "transformatief",
+   "moeiteloos",
+   "innovatief",
+   "hoogwaardig",
+   "magisch",
+   "krachtig",
+   "ongekend",
+   "dynamisch",
+   "doeltreffend",
+   "toonaangevend",
+   "stijlvol",
+   "onmiskenbaar",
+   "uniek",
+   "inspirerend",
+   "efficiënt",
+   "adembenemend",
+   "impactvol",
+   "schaalbaar",
+   "disruptief",
+   "holistisch",
+   "wendbaarheid",
+   "betekenisvol",
+   "prachtig",
+   "indrukwekkend",
+   "waardevol",
+   "geoptimaliseerd",
+   "op maat gemaakt",
+   "ultiem",
+   "meesterwerk",
+   "rijk erfgoed",
+   "blijft fascineren"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Onze geavanceerde technologie",
+    "na": "Ons systeem dat automatisch 6 kanalen tegelijk beheert"
+   },
+   {
+    "voor": "Een robuust platform, een robuuste strategie, een robuuste oplossing",
+    "na": "stevig, betrouwbaar, of beschrijf gewoon wat het doet"
+   },
+   {
+    "voor": "Naadloos",
+    "na": "soepel, zonder gedoe, of leg uit waaróm iets goed werkt"
+   },
+   {
+    "voor": "Moeiteloos",
+    "na": "eenvoudig, of: kost je 5 minuten"
+   },
+   {
+    "voor": "Cutting-edge",
+    "na": "nieuw — en als iets echt nieuw is, blijkt dat wel uit je verhaal"
+   },
+   {
+    "voor": "Baanbrekend",
+    "na": "nieuw, of: anders dan wat je gewend bent"
+   },
+   {
+    "voor": "Efficiënt, innovatief, uniek, baanbrekend, inspirerend, essentieel, cruciaal, stijlvol, onmiskenbaar"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Rhinoz noemt ze jeukwoorden. Het Contentkantoor nuanceert: het woord zelf is niet fout, het voorspelbare patroon wel — 'in kaart brengen' of 'impact maken' zijn prima als je ze bewust inzet. Bikkelhart: AI slaat er iets té ver in door. Bikkelhart laat ook zien hoe ChatGPT een niet-bestaand onderzoek van de Universiteit van Zürich (2024) verzon dat AI-teksten 40% meer bijvoeglijke naamwoorden zouden bevatten — die claim is dus zelf een hallucinatie.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "AI-werkwoorden",
+  "categorie": "vocabulary",
+  "definitie": "Werkwoorden die in normaal Nederlands zeldzaam zijn maar in AI-output stelselmatig opduiken, meestal een duurdere variant van een gewoon werkwoord.",
+  "cues": [
+   "identificeren",
+   "opereren",
+   "transformeren",
+   "maximaliseren",
+   "stroomlijnen",
+   "revolutioneren",
+   "faciliteren",
+   "navigeren",
+   "ontsluiten",
+   "unlocken",
+   "benutten",
+   "leveragen",
+   "verdiepen",
+   "delven",
+   "verkennen",
+   "ontdekken",
+   "analyseren",
+   "optimaliseren",
+   "vergemakkelijken",
+   "ontzorgen",
+   "weerspiegelt",
+   "verschuiven",
+   "aangedreven",
+   "inzetten",
+   "bijdragen aan",
+   "in kaart brengen",
+   "waarde toevoegen",
+   "inzichten bieden",
+   "impact maken",
+   "uitdagingen aangaan",
+   "kansen benutten",
+   "waardecreatie"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "AI revolutioneert de manier waarop bedrijven marketing bedrijven.",
+    "na": "AI verandert marketing. Niet alles, maar een paar dingen flink."
+   },
+   {
+    "voor": "Het navigeren van het complexe AI-landschap…",
+    "na": "Uitzoeken hoe AI werkt voor jouw bedrijf."
+   },
+   {
+    "voor": "je ontsluit nieuw groeipotentieel",
+    "na": "Je bereikt meer klanten"
+   },
+   {
+    "voor": "Faciliteren",
+    "na": "helpen of mogelijk maken"
+   },
+   {
+    "voor": "Benutten / leveragen",
+    "na": "gebruiken of inzetten"
+   },
+   {
+    "voor": "Laten we ons verdiepen in…",
+    "na": "bekijken of uitzoeken"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Rhinoz: bij 'identificeren' en 'opereren' krijgt de schrijver acuut jeuk. Het Contentkantoor wijst op de herkomst: 'facilitate a solution' is normaal Engels, 'een oplossing faciliteren' klinkt als een taalrobot die te veel managementboeken heeft gelezen. So-MC noemt 'benutten/leveragen' consultantjargon.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Consultancy- en managementjargon",
+  "categorie": "vocabulary",
+  "definitie": "Zelfstandige naamwoorden en vaste combinaties uit het beleids- en adviesregister die AI als vulling gebruikt: ze ogen intelligent maar dragen geen informatie.",
+  "cues": [
+   "synergie",
+   "holistische benadering",
+   "data-gedreven",
+   "datagedreven",
+   "relevante stakeholders",
+   "stakeholders",
+   "waardecreatie",
+   "randvoorwaarden",
+   "best practices",
+   "schaalbaarheid",
+   "strategisch kader",
+   "toekomstvisie",
+   "toekomstbestendig",
+   "bedrijfscontinuïteit",
+   "ecosysteem",
+   "waardepropositie",
+   "purpose",
+   "continue verbetering",
+   "klantgericht",
+   "resultaatgericht",
+   "evolutie",
+   "scala",
+   "een breed scala aan",
+   "scharnierend",
+   "digitale transformatie",
+   "transformatie",
+   "next-level",
+   "het speelveld verandert"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "een breed scala aan diensten",
+    "na": "We bieden e-mailmarketing, social media en SEO"
+   },
+   {
+    "voor": "Een breed scala aan",
+    "na": "veel, of verschillende — of beter: noem gewoon wat je bedoelt"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Het Contentkantoor: 'Ze ogen intelligent, maar worden vaak ingezet als opvulling.' AI Slop Checker rekent 'digitale transformatie' en 'stakeholders' tot de LinkedIn-cliché- en buzzwordcategorie.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Landschap als metafoor",
+  "categorie": "vocabulary",
+  "definitie": "Het woord 'landschap' voor een markt, vakgebied of situatie, meestal in de openingszin en meestal met 'huidige', 'dynamische' of 'veranderende' ervoor.",
+  "cues": [
+   "in het huidige landschap",
+   "dynamisch landschap",
+   "een veranderend landschap",
+   "navigeren door het landschap",
+   "het complexe AI-landschap",
+   "in dit snel veranderende landschap",
+   "landschap"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In het huidige landschap",
+    "na": "Schrap het. Begin met je punt. Je lezer weet in welk landschap ze leven."
+   },
+   {
+    "voor": "In dit snel veranderende landschap…"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "AI Slop Checker: 'landschap' als abstracte metafoor is het meest voorkomende Nederlandse AI-woord. So-MC noemt 'In het huidige landschap' de openingszin van 90% van alle AI-blogs. Promptmaster rekent 'landschap' (als metafoor) tot de woorden waarvan niet de betekenis maar de frequentie onnatuurlijk is.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Holle openingsfrase over de veranderende wereld",
+  "categorie": "vocabulary",
+  "definitie": "Een openingszin die de tijd of de wereld groot en dringend verklaart zonder iets te beweren. Vult de plek waar de eigenlijke inzet had moeten staan.",
+  "cues": [
+   "In de snel veranderende wereld van vandaag",
+   "In een complexe wereld waar",
+   "In ons huidige dynamische tijdperk",
+   "In de hedendaagse maatschappij",
+   "In de huidige digitale wereld",
+   "Het is algemeen bekend dat",
+   "Belangrijker dan ooit",
+   "In een tijd waarin"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In de snel veranderende wereld van vandaag.",
+    "na": "Begin met een voorbeeld — daarmee trek je meteen de aandacht"
+   },
+   {
+    "voor": "Creativiteit is een belangrijk onderdeel van innovatie. In een snel veranderende wereld is het essentieel om nieuwe ideeën te ontwikkelen..."
+   },
+   {
+    "voor": "In de huidige digitale wereld…",
+    "na": "Begin met een persoonlijke ervaring, een vraag, of een opvallend feit."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "b2bmarketeers pleit voor een stijlregel: nooit meer een tekst met zo'n zin beginnen, zoals je een brief nooit met 'ik' begint. Promptmaster: de eerste twee zinnen van een AI-tekst zijn het meest AI-achtig.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Meta-afzwakker: het is belangrijk om op te merken",
+  "categorie": "vocabulary",
+  "definitie": "Een frase die aankondigt dat er iets belangrijks komt in plaats van het te zeggen. Schrappen laat de zin intact.",
+  "cues": [
+   "Het is belangrijk om op te merken dat",
+   "Het is belangrijk om te overwegen",
+   "Het is belangrijk om te benadrukken dat",
+   "Daarom is het essentieel dat",
+   "Het is belangrijk om",
+   "vooral belangrijk om te overwegen",
+   "het loont de moeite om te onthouden dat",
+   "ongetwijfeld",
+   "zonder twijfel"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het is belangrijk om op te merken dat",
+    "na": "Schrap het. Maak gewoon je punt. Als het belangrijk is, merkt je lezer dat zelf wel."
+   },
+   {
+    "voor": "Het is belangrijk om te overwegen…"
+   },
+   {
+    "voor": "Het is belangrijk om te benadrukken dat…"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Frankwatching (2024) telt het als de meest voorkomende AI-zinsopening; Het Contentkantoor noemt 'Het is belangrijk om…' en 'Daarom is het essentieel dat…' patronen die in bijna elke gegenereerde tekst terugkeren.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Wervende clichéfrasen en beloftetaal",
+  "categorie": "vocabulary",
+  "definitie": "Vaste verkoop- en SEO-frasen waarmee AI een tekst opent, aankondigt of afsluit; ze beloven onthulling of hoogte zonder inhoud.",
+  "cues": [
+   "De sleutel tot",
+   "Ontdek nu zelf",
+   "Geheimen ontdekken",
+   "In dit artikel onthullen we",
+   "Naar nieuwe hoogten tillen",
+   "In een stroomversnelling brengen",
+   "Ben je klaar om",
+   "Diepgaand inzicht geven",
+   "Op een rij zetten",
+   "De noodzaak van",
+   "Dit brengt uitdagingen met zich mee maar biedt ook kansen.",
+   "Bij [merknaam] begrijpen we…",
+   "Dit artikel verkent…",
+   "Geen discussie is compleet zonder…",
+   "Laten we samen ontdekken",
+   "het verschil maken",
+   "trots om te delen",
+   "ongekende kansen"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Bij [merknaam] begrijpen we…",
+    "na": "Schrijf alsof je een klant direct aanspreekt."
+   },
+   {
+    "voor": "Dit artikel verkent…",
+    "na": "Laten we eens kijken wat dit betekent voor jouw organisatie."
+   },
+   {
+    "voor": "Dit brengt uitdagingen met zich mee maar biedt ook kansen."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Rhinoz noemt 'De sleutel tot' de onverslaanbare topper. So-MC noemt 'Bij [merknaam] begrijpen we…' de klassieke AI-opening voor bedrijfscontent. Jouw Copiloot rekent 'Dit artikel verkent…' en 'Geen discussie is compleet zonder…' tot de clichézinsstructuren uit de Wikipedia-lijst.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Verbindingswoorden-overdaad",
+  "categorie": "vocabulary",
+  "definitie": "Signaalwoorden aan het begin van bijna elke alinea of zin. Een mens gebruikt ze ook, maar niet vier keer op een rij.",
+  "cues": [
+   "bovendien",
+   "daarnaast",
+   "echter",
+   "tevens",
+   "verder",
+   "sterker nog",
+   "daarom",
+   "ten slotte",
+   "samenvattend"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Sterker nog",
+    "na": "Eén keer per artikel kan het, maar als het drie keer voorkomt is het een rode vlag."
+   },
+   {
+    "voor": "bovendien, daarnaast, furthermore in bijna elke zin",
+    "na": "Schrap ze. Begin gewoon met je punt."
+   },
+   {
+    "voor": "📚 Formele toon – woorden als bovendien, daarnaast en daarom komen opvallend vaak terug."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Digiwijzer zet 'veel vaste verbindingswoorden na elkaar' in de snelle checklist. Jouw Copiloot heeft het als signaal 2 uit de Wikipedia-lijst; Promptmaster: 'Een menselijke schrijver gebruikt die woorden ook, maar niet in bijna elke alinea.'",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Ambtelijke en overformele woordkeus",
+  "categorie": "vocabulary",
+  "definitie": "Stijve, juridisch-ambtelijke woorden die vrijwel niemand in dagelijkse communicatie gebruikt, maar die ChatGPT in Nederlandse output standaard inzet.",
+  "cues": [
+   "verheugd",
+   "derhalve",
+   "niettemin",
+   "zodoende",
+   "desalniettemin",
+   "voorts",
+   "aldus",
+   "teneinde",
+   "bijgevolg",
+   "aangaande",
+   "mits",
+   "in acht nemende",
+   "betreffende",
+   "voornoemd",
+   "zou kunnen",
+   "mogelijk",
+   "frasen"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Verheugd — ChatGPT gebruikt dit woord regelmatig in een tekst, ook al gebruiken mensen dit woord nog amper."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Op de Beeck's top-20 lijst; 'verheugd' is zijn grootste boosdoener. Zijn toets: gebruikt de persoon in kwestie deze woorden in het dagelijks leven? Meestal niet. Ook 'frasen' noemt hij een woord dat bijna niemand zou gebruiken. Aikundig noemt 'overmatig formele of neutrale taal' als algemeen kenmerk.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Overmatige stijlwoorden (excess vocabulary)",
+  "categorie": "vocabulary",
+  "definitie": "Woorden waarvan de frequentie na 2022 meetbaar explodeerde in gepubliceerde teksten; het gaat om stijlwoorden (werkwoorden en bijvoeglijke naamwoorden die een gevoel opwekken), niet om inhoudswoorden.",
+  "cues": [
+   "delve",
+   "crucial",
+   "potential",
+   "significant",
+   "findings",
+   "showcase",
+   "underscore",
+   "mosaic",
+   "tapestry",
+   "intricate",
+   "valuable",
+   "exceptional",
+   "pivotal",
+   "primarily",
+   "thoroughly",
+   "subsequently",
+   "particularly",
+   "foster",
+   "leverage",
+   "seamless",
+   "robust",
+   "multifaceted",
+   "navigate",
+   "craft",
+   "compelling",
+   "elevate",
+   "harness",
+   "unlock",
+   "unleash"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Teksten in PubMed schakelden plots vanaf 2023 over van 'important' naar 'significant'"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "PC-Active vat het onderzoek van Tübingen en Northwestern samen (14 miljoen PubMed-samenvattingen, 2010-2024): 319 overmatige stijlwoorden, minstens 10% van de samenvattingen ging door een taalmodel, in computationele domeinen 20%. Delve 25x meer, showcase en underscore 9x meer, potential +4,1 procentpunt, findings +2,7, crucial +2,6. Anders dan eerdere pieken (ebola, zika, lockdown) gaat het niet om inhoudswoorden: tweederde werkwoorden, een zesde bijvoeglijke naamwoorden. Alex Hern's theorie: 'delve' komt uit het professionele Nigeriaanse Engels van de RLHF-beoordelaars. De VU citeert Bao et al. (2025) met 100 bijvoeglijke naamwoorden en 100 bijwoorden die ChatGPT vaker gebruikt.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "LinkedIn-clichés",
+  "categorie": "vocabulary",
+  "definitie": "Vaste posefrasen uit het LinkedIn-register die AI standaard reproduceert.",
+  "cues": [
+   "digitale transformatie",
+   "het verschil maken",
+   "trots om te delen",
+   "ongekende kansen",
+   "let that sink in",
+   "here's the thing",
+   "het gaat niet om X maar om Y"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Elke post begint met 'In het huidige landschap' en eindigt met 'Thoughts? Agree?'"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "AI Slop Checker scant 200+ patronen in vijf categorieën: AI Buzzwords, AI Frasen, Structuurpatronen, LinkedIn Cliches, Vage/Weasel-taal. So-MC: op LinkedIn of Instagram vallen deze woorden nog meer op dan in een blog, omdat je maar een paar zinnen hebt.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Vage superlatief als frase",
+  "categorie": "vocabulary",
+  "definitie": "Een zelfstandig naamwoord dat door een superlatief wordt opgetuigd in plaats van beschreven: 'een krachtige manier om', 'een cruciale stap in het proces'.",
+  "cues": [
+   "een krachtige manier om",
+   "een essentieel onderdeel van",
+   "een cruciale stap in het proces",
+   "een effectieve aanpak"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een cruciale stap",
+    "na": "een belangrijke stap — of nog beter: beschrijf waarom het belangrijk is in plaats van het te labelen"
+   },
+   {
+    "voor": "Een effectieve aanpak",
+    "na": "wat bij ons team werkte was…"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Promptmaster: 'AI strooit met woorden die indrukwekkend klinken maar weinig concreets zeggen. Menselijke schrijvers zijn specifieker of juist nonchalanter.'",
+  "bron": "nl-artikelen"
+ },
+ {
+  "en_id": "ai-vocabulary-lexicon",
+  "naam": "AI-woordenlijst (duiken in / cruciaal / naadloos)",
+  "categorie": "vocabulary",
+  "definitie": "Een gesloten lijst Nederlandse woorden waar taalmodellen naar grijpen ongeacht of ze passen: figuurlijke werkwoorden op de plek van een concreet werkwoord (duiken in, benutten, ontsluiten, onderstrepen, belichten, in kaart brengen), grote abstracte zelfstandige naamwoorden geleend voor gewicht (landschap, ecosysteem, hoeksteen, bakermat, kantelpunt, mijlpaal, palet) en vaste samenstellingen (baanbrekend, toonaangevend, game-changer, best practices, in de kern). Vervang elk door het gewone woord dat de zin nodig heeft, of schrap de bijzin als er geen bewering in zat.",
+  "cues": [
+   "cruciaal",
+   "essentieel",
+   "naadloos",
+   "moeiteloos",
+   "robuust",
+   "baanbrekend",
+   "toonaangevend",
+   "ongekend",
+   "nauwgezet",
+   "veelzijdig",
+   "impactvol",
+   "toekomstbestendig",
+   "holistisch",
+   "synergie",
+   "ecosysteem",
+   "hoeksteen",
+   "bakermat",
+   "kantelpunt",
+   "mijlpaal",
+   "duiken in",
+   "een duik nemen in",
+   "in kaart brengen",
+   "een cruciale rol spelen",
+   "getuigt van",
+   "staat symbool voor",
+   "de sleutel tot",
+   "in de kern",
+   "een schat aan",
+   "een rijk palet",
+   "het speelveld",
+   "het snel veranderende landschap",
+   "best practices",
+   "thought leader",
+   "waardevolle inzichten"
+  ],
+  "regex": [
+   "\\b(?:cruciaal|cruciale|essentieel|essentiële|naadloos|naadloze|moeiteloos|moeiteloze|robuust|robuuste|baanbrekend|baanbrekende|toonaangevend|toonaangevende|ongekend|ongekende|nauwgezet|veelzijdig|veelzijdige|impactvol|impactvolle|toekomstbestendig|holistisch|holistische|synergie|synergieën|ecosysteem|hoeksteen|bakermat|kantelpunt|mijlpaal)\\b",
+   "\\b(?:duiken\\s+in|duikt\\s+in|een\\s+duik\\s+(?:in|nemen)|dieper\\s+in\\w*\\s+duiken|in\\s+kaart\\s+brengen|een\\s+(?:cruciale|centrale|sleutel)\\s*rol\\s+(?:speelt|spelen|vervult)|getuigt\\s+van|staat\\s+symbool\\s+voor|de\\s+sleutel\\s+tot|in\\s+de\\s+kern|een\\s+schat\\s+aan|een\\s+rijk\\s+palet|het\\s+speelveld|best\\s+practices|thought\\s+leader\\w*|waardevolle\\s+inzichten)\\b",
+   "\\b(?:het\\s+)?(?:snel|steeds|voortdurend)\\s+veranderende\\s+(?:digitale\\s+|technologische\\s+)?landschap\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Deze naadloze oplossing speelt een cruciale rol in het snel veranderende digitale landschap en getuigt van jarenlange innovatie.",
+    "na": "De koppeling scheelt de klantenservice ongeveer twee uur per dag. We bouwen eraan sinds 2019."
+   },
+   {
+    "voor": "In dit artikel duiken we in de complexe wereld van caching.",
+    "na": "Caching gaat mis zodra twee servers dezelfde sleutel schrijven."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "Nederlandse lijst, geen vertaling van de Engelse: duiken in staat voor delve, landschap voor landscape, getuigt van voor testament to. Cruciaal en essentieel zijn gewone woorden die door de frequentiesprong toch als tell werken; wie vals-positieven wil vermijden, poort ze op twee treffers per alinea.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "elevated-vocabulary-cluster",
+  "naam": "Cluster van opgepoetste werkwoorden (twee of meer in één alinea)",
+  "categorie": "vocabulary",
+  "definitie": "Woorden die los verdedigbaar zijn maar samen een sterk signaal geven zodra er twee of meer in één alinea staan: opgeblazen werkwoorden (benutten, ontsluiten, verankeren, borgen, ontzorgen, faciliteren, stimuleren, aanjagen, versterken, verrijken, in staat stellen) plus het zelfstandig naamwoord en bijvoeglijk naamwoord dat erbij hoort (ecosysteem, hoeksteen, scala aan, veelvoud aan, overkoepelend, transformatie, kernwaarde). De alinea is de eenheid, niet het woord: herschrijf hem rond de concrete handeling.",
+  "cues": [
+   "benutten",
+   "ontsluiten",
+   "verankeren",
+   "borgen",
+   "ontzorgen",
+   "faciliteren",
+   "stimuleren",
+   "aanjagen",
+   "versterken",
+   "verrijken",
+   "in staat stellen",
+   "meenemen in",
+   "ecosysteem",
+   "scala aan",
+   "veelvoud aan",
+   "overkoepelend",
+   "kernwaarde",
+   "transformatie",
+   "nuance"
+  ],
+  "regex": [
+   "\\b(?:benutten|benut|benutte|ontsluiten|ontsluit|verankeren|verankerd|borgen|geborgd|ontzorgen|ontzorgt|faciliteren|faciliteert|stimuleren|stimuleert|aanjagen|versterken|versterkt|verrijken|verrijkt|in\\s+staat\\s+(?:stellen|stelt))\\b",
+   "\\b(?:ecosysteem|scala\\s+aan|veelvoud\\s+aan|overkoepelend\\w*|kernwaarde\\w*|transformatie|nuance)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het platform stelt teams in staat het ecosysteem te benutten en de samenwerking te versterken.",
+    "na": "Teams kunnen elkaars plug-ins hergebruiken, en met z'n tweeën in één document werken."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Borgen, verankeren en ontzorgen komen uit het Nederlandse beleids- en offertejargon; ze zijn in het Engels niet één op één terug te vinden en zijn hier de sterkste treffers.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "vague-praise-adjectives",
+  "naam": "Vage lofadjectieven (krachtig, innovatief, ongekend)",
+  "categorie": "vocabulary",
+  "definitie": "Waarderende bijvoeglijke naamwoorden en bijwoorden die kwaliteit, nieuwheid, omvang of belang beweren zonder meetbaar aanknopingspunt: krachtig, innovatief, effectief, dynamisch, schaalbaar, ongekend, uitzonderlijk, opmerkelijk, geavanceerd, hoogwaardig, uniek, plus de reclamesuperlatieven (wereldklasse, state-of-the-art, revolutionair, baanbrekend) en de bezielde set (bevlogen, gedreven, met passie). Vervang door een getal, een vergelijking, een voorbeeld of de concrete eigenschap.",
+  "cues": [
+   "krachtig",
+   "innovatief",
+   "effectief",
+   "dynamisch",
+   "schaalbaar",
+   "ongekend",
+   "uitzonderlijk",
+   "opmerkelijk",
+   "geavanceerd",
+   "hoogwaardig",
+   "uniek",
+   "wereldklasse",
+   "state-of-the-art",
+   "revolutionair",
+   "baanbrekend",
+   "indrukwekkend",
+   "bevlogen",
+   "gedreven",
+   "met passie",
+   "van topkwaliteit"
+  ],
+  "regex": [
+   "(?<![\\w-])(?:krachtige?|innovatieve?|geavanceerde?|hoogwaardige?|toonaangevende?|wereldklasse|state[- ]of[- ]the[- ]art|revolutionaire?|baanbrekende?|ongekende?|uitzonderlijke?|opmerkelijke?|indrukwekkende?|unieke?|bevlogen|gedreven)\\b",
+   "\\b(?:van\\s+topkwaliteit|met\\s+passie\\s+(?:gemaakt|gebouwd)|van\\s+wereldformaat)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een innovatief platform van wereldklasse met indrukwekkende resultaten en unieke schaalbaarheid.",
+    "na": "Het platform verwerkte 40.000 verzoeken per seconde in de test van maart, vier keer zoveel als het oude."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Uniek en gedreven zijn in Nederlandse bedrijfscopy zo gewoon dat ze pas bij verzadiging tellen; wereldklasse en baanbrekend tellen los.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "boilerplate-phrase-stack",
+  "naam": "Stapel standaardfrasen",
+  "categorie": "vocabulary",
+  "definitie": "Frasen van twee of drie woorden die los onschuldig zijn maar in gegenereerde tekst opstapelen, het ergst in offerte-, vacature- en fondsentaal: het snijvlak van, de integratie van, opkomende sector, community-gedreven, duurzame groei, breed gedragen, van A tot Z ontzorgd, met oog voor detail, korte lijnen, no-nonsense. Markeer één frase die twee keer voorkomt, of drie verschillende frasen uit deze familie in één tekst.",
+  "cues": [
+   "het snijvlak van",
+   "de integratie van",
+   "opkomende sector",
+   "community-gedreven",
+   "duurzame groei",
+   "langetermijnwaarde",
+   "breed gedragen",
+   "van A tot Z ontzorgd",
+   "met oog voor detail",
+   "korte lijnen",
+   "no-nonsense",
+   "op maat gemaakt",
+   "gebruikersbetrokkenheid"
+  ],
+  "regex": [
+   "\\b(?:het\\s+snijvlak\\s+van|de\\s+integratie\\s+van|opkomende\\s+(?:sector|markt|categorie)|community[- ]gedreven|duurzame\\s+groei|langetermijn(?:waarde|groei|denken)|breed\\s+gedragen|van\\s+a\\s+tot\\s+z\\s+ontzorg\\w*|met\\s+oog\\s+voor\\s+detail|korte\\s+lijnen|no[- ]nonsense|op\\s+maat\\s+gemaakt|gebruikersbetrokkenheid)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een community-gedreven project op het snijvlak van AI en infrastructuur, gebouwd voor duurzame groei.",
+    "na": "De knooppunten stemmen zelf over de kostenverdeling, en de vergoeding komt uit de transactiekosten."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Korte lijnen, no-nonsense en van A tot Z ontzorgd zijn Nederlandse mkb-clichés zonder Engels origineel; ze horen in dezelfde familie omdat ze dezelfde lege belofte doen.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "dense-ai-vocabulary-composite",
+  "naam": "Dichte AI-woordenschat (bevestiger)",
+  "categorie": "vocabulary",
+  "definitie": "Een samengestelde drempel, geen frase: minstens 150 woorden, minstens vijf verschillende treffers uit de altijd-lijst, minstens twee alinea's met een cluster opgepoetste werkwoorden, en minstens één standaardovergang, alles in dezelfde tekst. De combinatie geldt als sterke bevestiger; geen enkele laag is op zichzelf genoeg, omdat elke laag overlapt met gewoon Nederlands vakjargon.",
+  "cues": [
+   "woorden >= 150 && lijst1Distinct >= 5 && lijst2Clusters >= 2 && heeftStandaardovergang"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Een stuk van 400 woorden met duiken in, naadloos, robuust, cruciaal en hoeksteen, twee alinea's met borgen plus ecosysteem, en een alinea die met Daarnaast opent.",
+    "na": "Herschrijf het stuk rond de twee of drie dingen die het echt meldt, met het gewone woord voor elk."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Drempels ongewijzigd overgenomen; alleen de woordlijsten waarnaar hij verwijst zijn Nederlands.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "model-era-vocabulary-drift",
+  "naam": "Woordverschuiving per modelgeneratie",
+  "categorie": "vocabulary",
+  "definitie": "Welke overgebruikte woorden samen voorkomen verschuift per modelgeneratie, zodat een ontbrekend woord niets bewijst en een aanwezig cluster de tekst ruwweg dateert. Voor het Engels zijn die lijsten per generatie gemeten; voor het Nederlands bestaat die meting niet.",
+  "cues": [],
+  "regex": [],
+  "voorbeelden": [],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "Bewust leeg: er is geen Nederlandse frequentiemeting per modelgeneratie, dus elke lijst zou verzonnen zijn. Schrappen bij de merge, of bewaren als losse observatie zonder cues.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "load-bearing-metaphor",
+  "naam": "Dragend (figuurlijk)",
+  "categorie": "vocabulary",
+  "definitie": "Het woord dragend op iets wat geen gewicht draagt: een argument, een aanname, een onderdeel, een zin. Vervang door de gewone bewoording, of zeg wat er kapotgaat als je het weghaalt.",
+  "cues": [
+   "dragende aanname",
+   "dragend onderdeel",
+   "de dragende muur van het betoog",
+   "dragende zin"
+  ],
+  "regex": [
+   "\\bdragende?\\s+(?:aanname|aannames|veronderstelling|argument|betoog|zin|component|onderdeel|muur)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Die zin is de dragende aanname van het hele betoog.",
+    "na": "Haal die zin weg en het betoog valt om."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "Zwakkere tell dan in het Engels: dragend is in Nederlandse bouwtaal letterlijk gangbaar, dus alleen de figuurlijke koppeling telt.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "wordy-circumlocution",
+  "naam": "Omhaal van woorden (teneinde, vanwege het feit dat)",
+  "categorie": "vocabulary",
+  "definitie": "Constructies van meerdere woorden op de plek van één: teneinde (om), vanwege het feit dat (omdat), op dit moment in de tijd (nu), in het geval dat (als), de mogelijkheid hebben om (kunnen), overgaan tot (doen), met betrekking tot en ten aanzien van (herschrijven). De correctie is mechanisch; een treffer is een breedsprakigheidsfout, geen bewijs van een machine.",
+  "cues": [
+   "teneinde",
+   "vanwege het feit dat",
+   "op dit moment in de tijd",
+   "in het geval dat",
+   "de mogelijkheid hebben om",
+   "overgaan tot",
+   "tot uitvoering brengen",
+   "met betrekking tot",
+   "ten aanzien van",
+   "in het kader van",
+   "in termen van"
+  ],
+  "regex": [
+   "\\b(?:teneinde|vanwege\\s+het\\s+feit\\s+dat|op\\s+dit\\s+moment\\s+in\\s+de\\s+tijd|in\\s+het\\s+geval\\s+dat|de\\s+mogelijkheid\\s+(?:hebben|heeft|bieden|biedt)\\s+om|overgaan\\s+tot|tot\\s+uitvoering\\s+brengen|met\\s+betrekking\\s+tot|ten\\s+aanzien\\s+van|in\\s+het\\s+kader\\s+van|in\\s+termen\\s+van)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Teneinde dit doel te bereiken gaan wij over tot een herziening van het proces.",
+    "na": "Om dit te halen herzien we het proces."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "In het kader van en ten aanzien van komen uit Nederlands ambtelijk taalgebruik en zijn daar een even sterke tell als de Engelse tegenhangers.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "latinate-inflation",
+  "naam": "Deftige woordkeuze (benutten, alvorens, dienen te)",
+  "categorie": "vocabulary",
+  "definitie": "Het langere, formelere of Latijnse woord kiezen waar een kort gewoon woord hetzelfde zegt: benutten voor gebruiken, aanvangen voor beginnen, alvorens voor voordat, dienen te voor moeten, vervaardigen voor maken, initiëren voor starten, verrichten voor doen, aanschaffen voor kopen, talrijke voor veel, betreffende voor over, beschikt over voor heeft, heengaan voor overlijden. De tegenindicator is het spiegelbeeld: menselijke schrijvers pakken het korte werkwoord.",
+  "cues": [
+   "benutten",
+   "aanvangen",
+   "alvorens",
+   "dienen te",
+   "vervaardigen",
+   "initiëren",
+   "verrichten",
+   "aanschaffen",
+   "talrijke",
+   "diverse",
+   "betreffende",
+   "beschikt over",
+   "is gelegen",
+   "heengaan"
+  ],
+  "regex": [
+   "\\b(?:benutten|benut|aanvangen|ving\\s+aan|alvorens|dien(?:t|en)\\s+te|vervaardig\\w+|initiëren|initieert|verricht\\w*|aanschaff\\w+|talrijke|betreffende|beschikt\\s+over|beschikken\\s+over|is\\s+gelegen)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het team benutte de nieuwe pijplijn en ving aan met testen.",
+    "na": "Het team gebruikte de nieuwe pijplijn en begon met testen."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Het Engelse mechanisme is Latijns versus Angelsaksisch; in het Nederlands is het formeel-schriftelijk versus gewoon. Dienen te en beschikt over zijn de twee die het vaakst vuren.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "it-is-worth-noting-frame",
+  "naam": "Aankondigingsframe (het is belangrijk om op te merken)",
+  "categorie": "vocabulary",
+  "definitie": "Een bijzin die aankondigt dat het volgende ertoe doet, in plaats van het te zeggen: het is belangrijk om op te merken dat, het is goed om te weten dat, vermeldenswaard is dat, opgemerkt dient te worden dat, de realiteit is dat. Schrap het frame en houd de inhoud; verliest de zin niets, dan zat er niets in het frame.",
+  "cues": [
+   "het is belangrijk om op te merken dat",
+   "het is goed om te weten dat",
+   "het is vermeldenswaard dat",
+   "opgemerkt dient te worden dat",
+   "hierbij is van belang dat",
+   "wat opvalt is dat",
+   "de realiteit is dat",
+   "het is van belang op te merken"
+  ],
+  "regex": [
+   "\\b(?:het\\s+is\\s+(?:belangrijk|goed|nuttig|vermeldenswaard|van\\s+belang)\\s+(?:om\\s+)?(?:op\\s+te\\s+merken|te\\s+vermelden|te\\s+weten|te\\s+benoemen)|opgemerkt\\s+(?:dient|moet)\\s+te\\s+worden|vermeldenswaard\\s+is\\s+dat|hierbij\\s+is\\s+van\\s+belang\\s+dat|de\\s+realiteit\\s+is\\s+dat)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het is belangrijk om op te merken dat de bouwtijd is gehalveerd.",
+    "na": "De bouwtijd is gehalveerd."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "confidence-calibration-adverb",
+  "naam": "Sturende zinsbijwoorden (opvallend genoeg, nog belangrijker)",
+  "categorie": "vocabulary",
+  "definitie": "Zinsbijwoorden die de lezer vertellen hoe hij een feit moet wegen in plaats van het feit voor zichzelf te laten spreken: Opvallend genoeg, Interessant genoeg, Verrassend genoeg, Nog belangrijker, Cruciaal hierbij, Ongetwijfeld, Zonder twijfel, Bovenal. De tell is het stapelen, niet het losse woord.",
+  "cues": [
+   "opvallend genoeg",
+   "interessant genoeg",
+   "verrassend genoeg",
+   "nog belangrijker",
+   "belangrijker nog",
+   "cruciaal hierbij",
+   "ongetwijfeld",
+   "zonder twijfel",
+   "bovenal",
+   "met name"
+  ],
+  "regex": [
+   "(?m)^\\s*(?:opvallend\\s+genoeg|interessant\\s+genoeg|verrassend\\s+genoeg|nog\\s+belangrijker|belangrijker\\s+nog|cruciaal\\s+hierbij|ongetwijfeld|zonder\\s+twijfel|bovenal)\\b",
+   "\\b(?:opvallend|interessant|verrassend)\\s+genoeg\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Opvallend genoeg halveerde de bouwtijd. Nog belangrijker: ook het geheugengebruik daalde.",
+    "na": "De bouwtijd halveerde en het geheugengebruik daalde mee."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "topic-framing-filler",
+  "naam": "Onderwerpsaanloop (als het gaat om, in de kern)",
+  "categorie": "vocabulary",
+  "definitie": "Uitdrukkingen die een onderwerp inleiden of een samenvatting aankondigen zonder informatie te dragen: als het gaat om, wanneer het aankomt op, in de kern, in essentie, in de basis, aan het eind van de dag, uiteindelijk draait het om, de waarheid is, in dit artikel, in de wereld van. Schrap de frase en begin de zin bij het onderwerp.",
+  "cues": [
+   "als het gaat om",
+   "wanneer het aankomt op",
+   "in de kern",
+   "in essentie",
+   "in de basis",
+   "aan het eind van de dag",
+   "uiteindelijk draait het om",
+   "waar het om draait is",
+   "de waarheid is",
+   "in dit artikel",
+   "in deze blog",
+   "in de wereld van"
+  ],
+  "regex": [
+   "\\b(?:als\\s+het\\s+gaat\\s+om|wanneer\\s+het\\s+aankomt\\s+op|in\\s+de\\s+kern|in\\s+essentie|in\\s+de\\s+basis|aan\\s+het\\s+eind(?:e)?\\s+van\\s+de\\s+dag|uiteindelijk\\s+draait\\s+het\\s+(?:allemaal\\s+)?om|waar\\s+het\\s+om\\s+draait\\s+is|in\\s+dit\\s+artikel|in\\s+deze\\s+blog|in\\s+de\\s+wereld\\s+van)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Als het gaat om caching is het grootste risico verouderde data.",
+    "na": "Het grootste risico bij caching is verouderde data."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "Aan het eind van de dag is een letterlijke leenvertaling van at the end of the day en overlapt met translationese; hij staat hier omdat hij inmiddels als vaste Nederlandse vulfrase circuleert.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "generic-scene-setting-opener",
+  "naam": "Algemene openingszin (in de snel veranderende wereld van vandaag)",
+  "categorie": "vocabulary",
+  "definitie": "Een openingszin die het onderwerp in een algemeen heden of een ongenoemde trend plaatst in plaats van de concrete aanleiding te noemen: In de snel veranderende wereld van vandaag, In het huidige digitale landschap, In een tijd waarin, Anno nu, Steeds meer organisaties, is niet meer weg te denken, wordt steeds belangrijker. Schrap hem, of noem de aanleiding die dit stuk nodig maakte.",
+  "cues": [
+   "in de snel veranderende wereld van vandaag",
+   "in het huidige digitale landschap",
+   "in een tijd waarin",
+   "in een wereld waarin",
+   "anno nu",
+   "tegenwoordig",
+   "steeds meer organisaties",
+   "steeds meer bedrijven",
+   "is niet meer weg te denken",
+   "wordt steeds belangrijker",
+   "het is geen geheim dat",
+   "speelt een steeds grotere rol"
+  ],
+  "regex": [
+   "\\b(?:in\\s+(?:de|het)\\s+(?:snel|steeds|voortdurend)\\s+veranderende\\s+(?:wereld|landschap)|in\\s+de\\s+wereld\\s+van\\s+vandaag|in\\s+het\\s+huidige\\s+(?:digitale\\s+)?landschap|in\\s+een\\s+(?:tijd|wereld|tijdperk)\\s+waarin|anno\\s+(?:nu|\\d{4})|steeds\\s+meer\\s+(?:organisaties|bedrijven|teams|mensen)|is\\s+niet\\s+meer\\s+weg\\s+te\\s+denken|wordt\\s+steeds\\s+belangrijker|het\\s+is\\s+geen\\s+geheim\\s+dat)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In de snel veranderende wereld van vandaag is goede tooling niet meer weg te denken.",
+    "na": "Onze release duurde vrijdag vier uur, dus hebben we de pijplijn opnieuw gebouwd."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "Is niet meer weg te denken en wordt steeds belangrijker zijn de Nederlandse staarten die het Engelse has become increasingly important vervangen.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "additive-transition-pileup",
+  "naam": "Opeenstapeling van optelvoegwoorden (Daarnaast, Bovendien, Tevens)",
+  "categorie": "vocabulary",
+  "definitie": "Formele optelvoegwoorden als alinealijm, gestapeld over opeenvolgende zinnen: Daarnaast, Bovendien, Tevens, Voorts, Eveneens, Desalniettemin, en de anglicistische zinsopening Echter met komma. Herschrijf zo dat het verband vanzelf blijkt, of gebruik en, ook, daar komt bij; schrap meer dan de helft van de tegenstellende. De eenheid is de alinea: meerdere voegwoordopeningen binnen één alinea, of een tegenstellende opening in elke alinea.",
+  "cues": [
+   "daarnaast",
+   "bovendien",
+   "tevens",
+   "voorts",
+   "eveneens",
+   "desalniettemin",
+   "niettemin",
+   "echter",
+   "kortom",
+   "tot slot",
+   "daarbij komt"
+  ],
+  "regex": [
+   "(?m)^\\s*(?:daarnaast|bovendien|tevens|voorts|eveneens|desalniettemin|niettemin|echter|kortom|tot\\s+slot)\\b[,\\s]"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Daarnaast is kamelenvlees gangbaar. Bovendien kwam de pasta met de Italianen mee. Tevens werd koffie al vroeg uitgevoerd.",
+    "na": "Kamelenvlees is gangbaar, de pasta kwam met de Italianen mee en koffie ging al vroeg de grens over."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Echter aan het zinsbegin met komma is daarbovenop een anglicisme; de Nederlandse vorm zet echter in de zin met inversie. Die vorm staat apart onder translationese.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "restatement-gloss",
+  "naam": "Herhaling met aankondiging (met andere woorden, oftewel)",
+  "categorie": "vocabulary",
+  "definitie": "Een vaste frase kondigt een parafrase aan van wat er net stond, zodat het punt twee keer wordt geleverd: met andere woorden, anders gezegd, oftewel, dat wil zeggen, ofwel. Kijk of de tweede versie iets toevoegt; zo niet, schrap er één.",
+  "cues": [
+   "met andere woorden",
+   "anders gezegd",
+   "oftewel",
+   "dat wil zeggen",
+   "ofwel",
+   "ter verduidelijking"
+  ],
+  "regex": [
+   "\\b(?:met\\s+andere\\s+woorden|anders\\s+gezegd|oftewel|dat\\s+wil\\s+zeggen|ter\\s+verduidelijking)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De wachtrij loopt langzaam leeg. Met andere woorden: berichten stapelen zich op.",
+    "na": "De wachtrij loopt langzamer leeg dan hij volloopt, dus berichten stapelen zich op."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "hollow-intensifier",
+  "naam": "Holle nadruk (oprecht, eerlijk gezegd, daadwerkelijk)",
+  "categorie": "vocabulary",
+  "definitie": "Woorden die overtuiging beweren in plaats van een feit te leveren: oprecht, werkelijk, daadwerkelijk, eerlijk gezegd, om eerlijk te zijn, laten we eerlijk zijn, in feite, feitelijk, en de gewone vulwoorden echt en gewoon. Schrap het woord en noem het feit; de standaardoplossing is weglaten, niet vervangen.",
+  "cues": [
+   "oprecht",
+   "werkelijk",
+   "daadwerkelijk",
+   "eerlijk gezegd",
+   "om eerlijk te zijn",
+   "laten we eerlijk zijn",
+   "in feite",
+   "feitelijk",
+   "echt",
+   "gewoon"
+  ],
+  "regex": [
+   "\\b(?:oprecht|werkelijk|daadwerkelijk|eerlijk\\s+gezegd|om\\s+eerlijk\\s+te\\s+zijn|laten\\s+we\\s+eerlijk\\s+zijn|in\\s+feite|feitelijk)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Dit maakt het proces eigenlijk gewoon echt eenvoudiger.",
+    "na": "Dit maakt het proces eenvoudiger."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "Echt en gewoon staan bewust niet in de regex: als modaal partikel zijn ze juist een teken van natuurlijk Nederlands. Alleen als versterker op een bewering tellen ze mee, en dat vraagt een leesoordeel.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "degree-adverb-padding",
+  "naam": "Graadbijwoorden als vulling (ontzettend, simpelweg, letterlijk)",
+  "categorie": "vocabulary",
+  "definitie": "Versterkende graadbijwoorden op gezegdes die ze niet nodig hebben: ontzettend, ongelooflijk, simpelweg, letterlijk, uiterst, bijzonder, heel erg, best wel, volledig, compleet. Meestal schrappen, en waar nadruk echt gewenst is een getal of een sterker werkwoord gebruiken.",
+  "cues": [
+   "ontzettend",
+   "ongelooflijk",
+   "simpelweg",
+   "letterlijk",
+   "uiterst",
+   "bijzonder",
+   "heel erg",
+   "best wel",
+   "volledig",
+   "compleet",
+   "enorm"
+  ],
+  "regex": [
+   "\\b(?:ontzettend|ongelooflijk|simpelweg|letterlijk|uiterst|heel\\s+erg|best\\s+wel|bijzonder\\s+(?:goed|belangrijk|handig|snel)|zeer\\s+(?:belangrijk|effectief|nuttig))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het is eigenlijk heel erg simpel, echt waar.",
+    "na": "Het kost één commando."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "Heel, erg en zeer los zijn te gewoon voor een regex; poort ze op dichtheid per alinea.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "understated-significance-adverb",
+  "naam": "Bijwoord van stille betekenis (stilletjes, diepgeworteld)",
+  "categorie": "vocabulary",
+  "definitie": "Een bijwoord of bijvoeglijk naamwoord dat subtiel belang beweert in plaats van het te tonen, zodat een gewone beschrijving zwaar aanvoelt: stilletjes, in stilte, ongemerkt, diepgeworteld, diep verankerd, fundamenteel anders, wezenlijk anders. Schrap het, of noem het concrete contrast dat het ding stil of diep maakt.",
+  "cues": [
+   "stilletjes",
+   "in stilte",
+   "ongemerkt",
+   "diepgeworteld",
+   "diep verankerd",
+   "diep menselijk",
+   "fundamenteel anders",
+   "wezenlijk anders"
+  ],
+  "regex": [
+   "\\b(?:stilletjes|in\\s+alle\\s+stilte|ongemerkt|diepgeworteld\\w*|diep\\s+(?:geworteld|verankerd|menselijk)|fundamenteel\\s+anders|wezenlijk\\s+anders)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het heeft stilletjes veranderd hoe teams werken.",
+    "na": "Vier van de zes teams zijn er vorig kwartaal op overgestapt, zonder aankondiging."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "hedging",
+  "naam": "Lege slagen om de arm (wellicht, zou kunnen, lijkt)",
+  "categorie": "vocabulary",
+  "definitie": "Verzachtende woorden en bijzinnen die een bewering verdunnen zonder echte onzekerheid uit te drukken: wellicht, mogelijkerwijs, zou kunnen, lijkt, enigszins, in zekere zin, naar verwachting, misschien, ik denk dat. Elk wordt een concrete bewering of verdwijnt. Let op de tegenindicator: kleine slagen om de arm komen vaker voor in menselijk proza dan in machinetekst, dus hun aanwezigheid bewijst weinig.",
+  "cues": [
+   "wellicht",
+   "mogelijkerwijs",
+   "zou kunnen",
+   "lijkt",
+   "enigszins",
+   "in zekere zin",
+   "naar verwachting",
+   "misschien",
+   "ik denk dat",
+   "in sommige gevallen"
+  ],
+  "regex": [
+   "\\b(?:wellicht|mogelijkerwijs|zou(?:den)?\\s+kunnen|enigszins|in\\s+zekere\\s+zin|naar\\s+verwachting|in\\s+sommige\\s+gevallen)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Dit zou de doorvoer enigszins kunnen verbeteren.",
+    "na": "De doorvoer ging in de test met ongeveer 15 procent omhoog."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "synonym-cycling",
+  "naam": "Synoniemenroulatie (elegante variatie)",
+  "categorie": "vocabulary",
+  "definitie": "Dezelfde persoon of zaak krijgt bij elke herhaling een nieuw synoniem om het woord niet te herhalen (hoofdpersoon, centrale figuur, held; ontwikkelaars, engineers, programmeurs, bouwers; het bedrijf, de organisatie, de onderneming, de partij). Het is een spoor van de herhalingsstraf, geen keuze. Als het heldere woord het juiste is, herhaal het.",
+  "cues": [
+   "hoofdpersoon / centrale figuur / held",
+   "ontwikkelaars / engineers / programmeurs / bouwers",
+   "het bedrijf / de organisatie / de onderneming",
+   "de tool / de oplossing / het platform",
+   "de bezoeker / de deelnemer / de gast"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "De hoofdpersoon krijgt tegenslagen. De centrale figuur moet obstakels overwinnen. De held keert uiteindelijk terug.",
+    "na": "De hoofdpersoon krijgt tegenslagen, maar keert uiteindelijk terug."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "In het Nederlands versterkt door de schoolregel dat je een woord niet twee keer mag gebruiken, dus ook menselijke redacteuren doen dit. Geen regex mogelijk: dit is een leesregel over één referent binnen één alinea.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "real-actual-adjective-inflation",
+  "naam": "Echt en werkelijk als lege versterker",
+  "categorie": "vocabulary",
+  "definitie": "Echte, werkelijke, daadwerkelijke of ware als lege versterker op een abstract zelfstandig naamwoord (echte meerwaarde, werkelijke impact, ware kracht), wat suggereert dat de rest van het veld nep is zonder ooit te zeggen wat deze versie echt maakt. Laat het bijvoeglijk naamwoord weg en zet de concrete bewering erbij.",
+  "cues": [
+   "echte meerwaarde",
+   "echte impact",
+   "werkelijke waarde",
+   "daadwerkelijke resultaten",
+   "de ware kracht van",
+   "echte behoefte"
+  ],
+  "regex": [
+   "\\b(?:echte|werkelijke|daadwerkelijke|oprechte|ware)\\s+(?:waarde|meerwaarde|impact|kracht|betekenis|resultaten|behoefte|winst)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Eindelijk echte meerwaarde.",
+    "na": "De vergoeding komt uit 40.000 euro aan transactiekosten per maand."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "moral-adjective-category-error",
+  "naam": "Moreel bijvoeglijk naamwoord op iets zonder moraal",
+  "categorie": "vocabulary",
+  "definitie": "Een moreel of karakterwoord (eerlijk, oprecht, integer, betrouwbaar) geplakt op iets wat geen morele eigenschap kan hebben: een vorm, een getal, een curve, een weergave, een nauwkeurigheid, een output. Noem in plaats daarvan de concrete eigenschap.",
+  "cues": [
+   "een eerlijke vorm",
+   "een eerlijk getal",
+   "een eerlijke curve",
+   "integere data",
+   "oprechte nauwkeurigheid",
+   "eerlijk weergegeven"
+  ],
+  "regex": [
+   "\\b(?:eerlijke?|oprechte?|integere?)\\s+(?:vorm|getal|cijfer|curve|grafiek|weergave|nauwkeurigheid|output|meting)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een eerlijke vorm voor de data.",
+    "na": "Een curve die dichter bij de metingen ligt."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "Let op: een eerlijk beeld en een eerlijke prijs zijn wel idiomatisch Nederlands. Alleen de koppeling aan vorm, getal, curve of output is de categoriefout.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "ontological-slop-assumptions",
+  "naam": "Aanname die niet langer waar is",
+  "categorie": "vocabulary",
+  "definitie": "Een aanname beschrijven alsof die van waar naar onwaar omklapt. Aannames verliezen hun bruikbaarheid, niet hun waarheidswaarde; schrijf dat de aanname niet meer opgaat of dat hij het begeeft.",
+  "cues": [
+   "de aanname is niet langer waar",
+   "die veronderstelling is niet meer waar",
+   "houdt op waar te zijn"
+  ],
+  "regex": [
+   "\\b(?:aanname|aannames|veronderstelling\\w*)\\s+(?:is|zijn)\\s+niet\\s+(?:langer|meer)\\s+waar\\b",
+   "\\bhoudt?\\s+op\\s+waar\\s+te\\s+zijn\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Op schaal is die aanname niet langer waar.",
+    "na": "Op schaal gaat die aanname niet meer op."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "Zwakke transfer: houdt op waar te zijn is geen natuurlijk Nederlands, dus in de praktijk vuurt vooral de variant is niet langer waar.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "dev-blog-boilerplate",
+  "naam": "Ontwikkelaarsslogans (het werkt gewoon, zonder gedoe)",
+  "categorie": "vocabulary",
+  "definitie": "Vaste eenvoudsslogans uit developermarketing die in de plaats komen van een eigenschap die je kunt laten zien: het werkt gewoon, out of the box, zonder gedoe, zonder configuratie, plug-and-play, in een handomdraai, binnen no-time, zo geregeld. Noem het concrete gedrag.",
+  "cues": [
+   "het werkt gewoon",
+   "out of the box",
+   "zonder gedoe",
+   "zonder configuratie",
+   "plug-and-play",
+   "in een handomdraai",
+   "binnen no-time",
+   "zo geregeld",
+   "in vijf minuten draaiend"
+  ],
+  "regex": [
+   "\\b(?:het\\s+werkt\\s+gewoon|out\\s+of\\s+the\\s+box|zonder\\s+gedoe|zonder\\s+(?:enige\\s+)?configuratie|plug[- ]and[- ]play|in\\s+een\\s+handomdraai|binnen\\s+no[- ]time|zo\\s+geregeld)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Plug-and-play, zonder gedoe, en het werkt gewoon.",
+    "na": "Je installeert het zonder configuratiebestand, en de hele API is zes functies."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "vague-endorsement-worth-verbing",
+  "naam": "Vage aanbeveling (de moeite waard)",
+  "categorie": "vocabulary",
+  "definitie": "Een algemene duim omhoog die in de plaats komt van een concrete reden: de moeite waard, het lezen waard, zeker een aanrader, een must-read, het bekijken waard, zeker aan te raden. Schrap hem, of zeg wat de lezer eraan heeft.",
+  "cues": [
+   "de moeite waard",
+   "het lezen waard",
+   "zeker een aanrader",
+   "een must-read",
+   "het bekijken waard",
+   "zeker aan te raden",
+   "houd dit in de gaten"
+  ],
+  "regex": [
+   "\\b(?:de\\s+moeite\\s+waard|het\\s+lezen\\s+waard|het\\s+bekijken\\s+waard|zeker\\s+(?:een\\s+)?aanrader|een\\s+aanrader|must[- ]read|zeker\\s+aan\\s+te\\s+raden)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Hun changelog is zeker de moeite waard.",
+    "na": "In hun changelog staat precies welke standaardwaarden in v3 zijn veranderd."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "trendy-colloquialism",
+  "naam": "Modewoord uit de tijdlijn (hits different, next level)",
+  "categorie": "vocabulary",
+  "definitie": "Een geleende trendfrase als kortere weg naar herkenbaarheid, zonder de emotie te verdienen: hits different, raakt anders, next level, gaat hard, is een vibe. Beschrijf wat er werkelijk veranderde, of schrap.",
+  "cues": [
+   "hits different",
+   "raakt anders",
+   "next level",
+   "gaat hard",
+   "is een vibe",
+   "geen woorden voor",
+   "chef's kiss"
+  ],
+  "regex": [
+   "\\b(?:hits\\s+different|raakt\\s+anders|next\\s+level|gaat\\s+hard|is\\s+een\\s+vibe|geen\\s+woorden\\s+voor)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Die changelog lezen hits different.",
+    "na": "In die changelog stond precies de bug waar ik dinsdag op vastliep."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "In Nederlandse tekst blijft deze categorie meestal onvertaald Engels; overlapt daarmee met untranslated-marketing-loanword.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "social-ad-boilerplate",
+  "naam": "Sleetse socialtaal (ontgrendel, naar een hoger niveau, link in bio)",
+  "categorie": "vocabulary",
+  "definitie": "Versleten advertentietaal van sociale media in gewone tekst: ontgrendel het potentieel, haal het maximale uit, til je X naar een hoger niveau, link in bio, stuur me een DM. Zeg wat de lezer krijgt en waar.",
+  "cues": [
+   "ontgrendel het potentieel",
+   "haal het maximale uit",
+   "naar een hoger niveau tillen",
+   "naar the next level",
+   "link in bio",
+   "stuur me een DM",
+   "volg voor meer"
+  ],
+  "regex": [
+   "\\b(?:ontgrendel(?:\\s+het\\s+potentieel)?|haal\\s+het\\s+maximale\\s+uit|naar\\s+(?:een\\s+hoger\\s+niveau|the\\s+next\\s+level)\\s+(?:tillen|brengen)|til\\s+je\\s+\\w+\\s+naar\\s+een\\s+hoger\\s+niveau|link\\s+in\\s+bio|stuur\\s+(?:me\\s+)?een\\s+dm|volg\\s+(?:mij|ons)\\s+voor\\s+meer)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Til je data naar een hoger niveau. Link in bio.",
+    "na": "De export staat op /rapporten/csv."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "canned-stock-sentence",
+  "naam": "Kant-en-klare standaardzin (ik hoop dat dit bericht je goed bereikt)",
+  "categorie": "vocabulary",
+  "definitie": "Een hele voorgebakken zin die niets specifieks erkent: Ik hoop dat dit bericht je goed bereikt, Ik hoop dat het goed met je gaat, Ik had onlangs het genoegen om, X is actief op sociale media en deelt regelmatig updates. Zeg wat er gebeurd is, of begin bij de echte reden van het bericht.",
+  "cues": [
+   "ik hoop dat dit bericht je goed bereikt",
+   "ik hoop dat deze mail je in goede gezondheid bereikt",
+   "ik hoop dat het goed met je gaat",
+   "ik had onlangs het genoegen",
+   "is actief op sociale media",
+   "deelt regelmatig updates",
+   "bedankt voor je interesse in"
+  ],
+  "regex": [
+   "\\b(?:ik\\s+hoop\\s+dat\\s+(?:dit\\s+bericht|deze\\s+(?:mail|e-mail))\\s+je\\s+(?:goed|in\\s+goede\\s+gezondheid)\\s+bereikt|ik\\s+had\\s+(?:onlangs\\s+)?het\\s+genoegen|het\\s+genoegen\\s+om\\s+[^.!?]{0,40}\\s+te\\s+\\w+en|is\\s+actief\\s+op\\s+(?:sociale\\s+media|social\\s+media)|deelt\\s+regelmatig\\s+updates)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Ik had onlangs het genoegen hun meetup bij te wonen.",
+    "na": "Ik was donderdag bij hun meetup."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "Ik hoop dat dit bericht je in goede gezondheid bereikt is een letterlijke leenvertaling die in Nederlandse mail vrijwel alleen uit een model komt.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "lets-invitation-opener",
+  "naam": "Uitnodigende opening (laten we erin duiken)",
+  "categorie": "vocabulary",
+  "definitie": "Een alinea of hoofdstuk geopend met een uitnodiging: laten we erin duiken, laten we dit uitpakken, laten we eens kijken naar, we nemen je mee, laten we het opsplitsen. Het ensceneert een gezamenlijke reis en stelt het punt één zin uit. Schrap de opening en begin bij de bewering.",
+  "cues": [
+   "laten we erin duiken",
+   "laten we duiken in",
+   "laten we dit uitpakken",
+   "laten we eens kijken naar",
+   "laten we het opsplitsen",
+   "we duiken erin",
+   "we nemen je mee",
+   "laten we beginnen bij"
+  ],
+  "regex": [
+   "\\b(?:laten\\s+we\\s+(?:erin\\s+duiken|duiken\\s+in|dit\\s+uitpakken|het\\s+opsplitsen|eens\\s+kijken|beginnen\\s+bij)|we\\s+duiken\\s+er\\s*in|we\\s+nemen\\s+je\\s+mee)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Laten we erin duiken hoe de scheduler werkt.",
+    "na": "De scheduler kijkt elke 200 milliseconde en gooit alles ouder dan een minuut weg."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "uncontracted-forms",
+  "naam": "Te formeel register: geen modale partikels",
+  "categorie": "vocabulary",
+  "definitie": "Spreektaalcopy zonder de woordjes die Nederlands gesproken maken. Het Engelse mechanisme (geen samentrekkingen zoals isn't en won't) bestaat hier niet; de Nederlandse tegenhanger is dat modale partikels ontbreken (even, maar, toch, nou, hoor, hè, eens, wel) en dat er men, dient te, alsmede en zich bevindt voor in de plaats komen. Schrijf zoals je het zou zeggen en zet de partikels terug.",
+  "cues": [
+   "men dient",
+   "men kan",
+   "alsmede",
+   "dan wel",
+   "zich bevindt",
+   "teneinde",
+   "het verdient aanbeveling",
+   "ontbrekende partikels: even, maar, toch, nou, hoor, hè"
+  ],
+  "regex": [
+   "\\b(?:men\\s+(?:kan|dient|moet|zou|wordt)|alsmede|dan\\s+wel|zich\\s+bevindt|het\\s+verdient\\s+aanbeveling|dient\\s+men)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Men dient zich vooraf aan te melden, alsmede de betaling te voldoen.",
+    "na": "Meld je van tevoren aan en betaal er dan gelijk voor."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "De afwezigheid van partikels is niet met een regex te vangen; de regex vangt alleen de formele vervangers. Behandel het als bewaarregel: laat even, maar, toch en nou staan waar de stem ze zou gebruiken.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "english-variety-drift",
+  "naam": "Wisseling van taalvariëteit (Belgisch-Nederlands en Nederlands-Nederlands door elkaar)",
+  "categorie": "vocabulary",
+  "definitie": "Een mismatch tussen de lezer, het onderwerp en de gekozen variëteit: Belgisch-Nederlandse woorden in een tekst voor een Nederlandse lezer of andersom (gsm naast mobiel, plezant, goesting, seffens, kuisen), of een wisseling halverwege het document. Kies één variëteit en houd hem vast.",
+  "cues": [
+   "gsm naast mobiel",
+   "plezant",
+   "goesting",
+   "seffens",
+   "kuisen",
+   "ambetant",
+   "enkel voor alleen",
+   "wisseling halverwege de tekst"
+  ],
+  "regex": [
+   "\\b(?:gsm|plezant|goesting|seffens|kuisen|ambetant)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een tekst voor een Nederlandse klant die halverwege van mobiel op gsm overgaat.",
+    "na": "Eén variëteit door de hele tekst, passend bij de lezer."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "Zwak signaal: controleer eerst wie de tekst schreef en voor wie hij is. Spelling geeft in het Nederlands geen tweede as zoals -ize en -ise dat in het Engels doen.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "undefined-jargon",
+  "naam": "Onverklaard jargon",
+  "categorie": "vocabulary",
+  "definitie": "Een vakterm gebruikt zonder uitleg waar je niet mag aannemen dat de lezer hem kent, of bedrijfstaal die de tekst moeilijker maakt zonder preciezer te worden. Geef de term één bijzin uitleg, of vervang hem. Verwijder alleen wat het lezen in de weg zit, nooit de inhoud of de precisie.",
+  "cues": [
+   "jargon",
+   "afkorting zonder uitleg",
+   "vakterm zonder bijzin"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "We hebben de reconciliatielus achter de CRD gezet.",
+    "na": "We hebben de reconciliatielus, de controller die de echte toestand gelijk houdt aan de configuratie, achter een eigen Kubernetes-resource gezet."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "Geen regex: welke term jargon is hangt af van de lezer.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "flat-lexical-statistics",
+  "naam": "Vlakke woordstatistiek (lage TTR, uniforme n-grammen)",
+  "categorie": "vocabulary",
+  "definitie": "Gemeten, niet gelezen. De tekst is op vijf assen vlakker dan menselijk proza: type-tokenratio, lexicale dichtheid, variatie in zinseinden, uniformiteit van woordtripletovergangen en perplexiteit per token. De volgende woordkeuze is steeds de verwachte.",
+  "cues": [
+   "lage TTR",
+   "lage lexicale dichtheid",
+   "weinig variatie in zinseinden",
+   "uniforme woordtripletovergangen",
+   "lage en vlakke perplexiteit",
+   "tokens >= 200 && ttr < 0.40"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Een stuk van 900 woorden met een TTR van 0,36 dat in elke alinea hetzelfde abstracte zelfstandig naamwoord hergebruikt.",
+    "na": "Vervang dat hergebruikte abstracte woord per alinea door het geval waar het voor staat."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Nederlandse samenstellingen worden aan elkaar geschreven en verhogen daarmee het aantal types; meet op lemma's en houd een iets lagere drempel aan dan de Engelse 0,50 tot 0,65.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "ai-poetry-register",
+  "naam": "Machinepoëzieregister (fluisteren, echo, breekbaar)",
+  "categorie": "vocabulary",
+  "definitie": "De smalle woordenschat waar gegenereerde Nederlandse verzen dwangmatig naar terugkeren: een vaste set (hart, omarmen, echo, weerklank, fluisteren, stilte) en een emotioneel-broze set die in de plaats komt van een beeld (breekbaar, gebroken, verlangen, schaduw, adem, sluier, as, bloeien, wiegen). Twee registers in elkaar geschoven: Instagrampoëzie en de meest gedeelde bloemlezingpagina's.",
+  "cues": [
+   "fluistert",
+   "echo",
+   "weerklank",
+   "stilte",
+   "breekbaar",
+   "gebroken",
+   "verlangen",
+   "omarmen",
+   "schaduw",
+   "adem",
+   "sluier",
+   "bloeien",
+   "wij",
+   "ons"
+  ],
+  "regex": [
+   "\\b(?:fluister\\w*|echo(?:'s)?|weerklank|breekbaar\\w*|gebroken|verlangen|omarm\\w+|schaduw\\w*|sluier|wiegt|bloeit)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "een breekbare stilte fluistert door de schaduw van de ochtend",
+    "na": "de waterkoker tikt terwijl hij afkoelt, het raam is nog koud"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "generic-policy-verb-convergence",
+  "naam": "Beleidswerkwoorden die alles opslokken (versterken, borgen, verankeren)",
+  "categorie": "vocabulary",
+  "definitie": "Elke handeling in de tekst wordt ingevuld met een handvol algemene beleidswerkwoorden (versterken, verbeteren, uitbreiden, borgen, waarborgen, faciliteren, stimuleren, verankeren, vormgeven, in kaart brengen, inzetten op), steeds met een abstract lijdend voorwerp. Noem de concrete handeling en wie hem uitvoert.",
+  "cues": [
+   "versterken",
+   "verbeteren",
+   "uitbreiden",
+   "borgen",
+   "waarborgen",
+   "faciliteren",
+   "stimuleren",
+   "verankeren",
+   "vormgeven",
+   "in kaart brengen",
+   "inzetten op",
+   "aandacht besteden aan"
+  ],
+  "regex": [
+   "\\b(?:versterken|verbeteren|uitbreiden|borgen|waarborgen|faciliteren|stimuleren|verankeren|vormgeven|in\\s+kaart\\s+brengen|inzetten\\s+op|aandacht\\s+besteden\\s+aan)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "We versterken de samenwerking, borgen de kwaliteit en zetten in op verbetering.",
+    "na": "Twee afdelingen kijken elke donderdag samen naar de meldingen, en het budget gaat met 30.000 euro omhoog."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Het Koreaanse origineel gaat over Sino-Koreaanse beleidswerkwoorden; het Nederlandse equivalent is de subsidie- en gemeentetaal, met precies hetzelfde effect.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "reflective-adverb-formula",
+  "naam": "Bespiegelend slotbijwoord (misschien is dat wel, langzaam maar zeker)",
+  "categorie": "vocabulary",
+  "definitie": "De vaste bijwoordformule van essayeindes en inzichtmomenten: misschien is dat wel, en misschien is dat maar goed ook, langzaam maar zeker, pas toen werd duidelijk. Schrap het bijwoord en laat het laatste concrete detail het einde dragen.",
+  "cues": [
+   "misschien is dat wel",
+   "misschien is dat precies",
+   "en misschien is dat maar goed ook",
+   "langzaam maar zeker",
+   "pas toen werd duidelijk",
+   "uiteindelijk bleek"
+  ],
+  "regex": [
+   "\\b(?:misschien\\s+is\\s+dat\\s+(?:wel|precies|maar)|en\\s+misschien\\s+is\\s+dat|langzaam\\s+maar\\s+zeker|pas\\s+(?:toen|daarna)\\s+werd\\s+duidelijk)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Misschien is dat wel het echte antwoord.",
+    "na": "Daarom kozen we voor die aanpak."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ }
+]

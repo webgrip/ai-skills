@@ -1,0 +1,2559 @@
+{
+ "patterns": [
+  {
+   "id": "acknowledgment-loop",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bto answer your question\\b",
+    "\\byou['’]?re asking (?:about|whether|if)\\b",
+    "\\bthat['’]?s a (?:great|good|fair) question\\b",
+    "요청하신 내용을 정리하면",
+    "\\byou'?re asking (?:about|whether)\\b"
+   ],
+   "hint": "The text opens by paraphrasing the request back to the person who made it: 'To answer your question...', 'You're asking about...', 'The ques"
+  },
+  {
+   "id": "ai-url-tracking-parameter",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "[?&]?utm_source=(?:chatgpt|openai|copilot|claude|grok|gemini|perplexity)\\b",
+    "[?&]?referrer=(?:chatgpt|copilot|grok|claude|gemini|perplexity)\\.(?:com|ai)\\b"
+   ],
+   "hint": "A query parameter that an AI tool appends to the links it writes: 'utm_source=chatgpt.com', 'utm_source=openai', 'utm_source=copilot.com', '"
+  },
+  {
+   "id": "brief-vocabulary-and-destination-naming",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bsignificant,? (?:and )?substantial,? (?:and )?secondary coverage\\b",
+    "\\bnot trivial mentions\\b",
+    "\\bindependent coverage\\b",
+    "\\bmeet(?:s|ing)? (?:both )?wp:[a-z]+\\b",
+    "\\b(?:wikipedia|the site|the platform)['’]?s guidelines on\\b",
+    "\\badheres to wikipedia['’]?s\\b"
+   ],
+   "hint": "The output echoes the wording of the criteria it was asked to satisfy, or names the venue it was written for, from inside the text"
+  },
+  {
+   "id": "bypass-trick-characters",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "[​‌‍⁠﻿]",
+    "[a-z][Ѐ-ӿ]|[Ѐ-ӿ][a-z]"
+   ],
+   "hint": "Invisible or lookalike characters inserted to defeat AI detectors: zero-width space, non-joiner, joiner, word joiner and byte-order mark (U+"
+  },
+  {
+   "id": "chatbot-opener",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\b(?:certainly|absolutely|of course)!",
+    "\\bgreat question\\b",
+    "\\bexcellent point!",
+    "\\byou['’]?re absolutely right\\b",
+    "\\bhere is an overview of\\b",
+    "\\bhere['’]?s (?:a|an|the) (?:draft|template|summary|revised|professional|quick|brief|complete)\\b",
+    "\\bi['’]?d be happy to (?:help|assist)\\b",
+    "\\bi can help (?:you )?(?:draft|write|put together)\\b",
+    "\\bin this (?:article|post|piece),? (?:we|i) (?:will |['’]ll )?(?:explore|discuss|examine|look at)\\b",
+    "\\blet['’]?s dive (?:in|into)\\b",
+    "물론입니다",
+    "다음은 .{0,20}입니다"
+   ],
+   "hint": "The assistant's framing before the content survives into the finished text"
+  },
+  {
+   "id": "citation-markup-leak",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bcite(?:turn|news|search|navigation)\\d+(?:search|turn|news|navigation|image|file)\\d+",
+    "\\bturn\\d+(?:search|image|news|file)\\d+",
+    "contentreference\\s*\\[oaicite:",
+    "\\boaicite\\b",
+    "\\boai_citation\\b",
+    "\\battributableindex\\b",
+    "\\[cite:\\s*\\d{1,3}(?:\\s*,\\s*\\d{1,3})*\\]",
+    "\\[span_\\d+\\]\\((?:start|end)_span\\)",
+    "<grok-card\\b|\\bgrok[_-]card\\b",
+    "\\bgrok_render_citation_card_json\\b",
+    "【\\d+†",
+    "\\[attached_file:\\d+\\]",
+    "\\[web:\\d+\\]",
+    "\\bppl-ai-file-upload\\b",
+    "\\bwikipedia\\+\\d\\b",
+    "\\b[a-z][a-z .]{1,25}\\+\\d{1,2}(?:[a-z][a-z .]{0,25}\\+\\d{1,2})+",
+    "(?:[a-z0-9-]+\\.)+(?:com|org|net|edu|gov\\.uk)(?=[a-z])",
+    "[a-z]{3,}[.!?]\\d{1,2}(?=\\s|$)",
+    "↩"
+   ],
+   "hint": "Internal citation tokens from a chat interface that survive copy-paste, in place of real references"
+  },
+  {
+   "id": "collaborative-closer",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bi hope this helps\\b",
+    "\\bhope (?:this|that) helps\\b",
+    "\\blet me know if\\b",
+    "\\bfeel free to (?:reach out|ask)\\b",
+    "\\bwould you like me to\\b",
+    "\\bwould you like help\\b",
+    "\\bwant me to (?:give|write|explain|expand|turn|make|continue|draft)\\b",
+    "\\bshould i continue\\b",
+    "\\bis there anything else\\b",
+    "\\bi can guide you step-?by-?step\\b",
+    "\\byou can copy and paste this\\b",
+    "\\bcustomize it further\\b",
+    "도움이 되셨길",
+    "추가 질문이 있으시면"
+   ],
+   "hint": "The chat sign-off addressed to the requester survives into the text"
+  },
+  {
+   "id": "cutoff-disclaimer-and-ai-self-identification",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bas of my (?:last|latest|most recent) (?:update|training)\\b",
+    "\\bas of my (?:knowledge )?cut-?off\\b",
+    "\\bas an? (?:ai|artificial intelligence|large language)(?: language)? (?:model|assistant)\\b",
+    "\\bi (?:am|['’]m) an? (?:ai|artificial intelligence|large language) (?:model|assistant)\\b",
+    "\\bi (?:do not|don['’]?t) have access to real-?time\\b",
+    "\\bi cannot (?:provide|give|offer) (?:legal|medical|financial|professional) advice\\b",
+    "\\bmy training data (?:only )?(?:goes up to|extends to|ends)\\b",
+    "제 지식은",
+    "\\bas\\s+of\\s+my\\s+(?:last\\s+)?(?:knowledge|training)\\s+(?:update|cutoff|cut-off)\\b",
+    "\\bup\\s+to\\s+my\\s+last\\s+(?:training|knowledge)\\s+update\\b",
+    "\\bmy\\s+(?:knowledge|training)\\s+(?:cutoff|cut-off)\\b",
+    "\\bas\\s+of\\s+my\\s+last\\s+update\\b",
+    "\\bi\\s+(?:do\\s+not|don't)\\s+have\\s+(?:access\\s+to\\s+)?(?:real-?time|up-to-date|current)\\s+(?:data|information)\\b",
+    "\\bi\\s+(?:do\\s+not|don't)\\s+have\\s+specific\\s+information\\s+about\\s+the\\s+current\\s+status\\b"
+   ],
+   "hint": "The model's own limits stated in the first person and left in the text: a knowledge-cutoff caveat ('As of my last update', 'my training data"
+  },
+  {
+   "id": "generation-wrapper-and-speaker-label",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    ":::\\s*(?:writing|écriture)\\s*\\{\\s*variante?\\s*=",
+    "\\b(?:chatgpt|claude|gemini|copilot|grok|deepseek|perplexity)\\s+(?:responded|said|wrote|replied)\\s*:"
+   ],
+   "hint": "The transport envelope around the answer gets pasted with the payload"
+  },
+  {
+   "id": "instructions-to-the-handler",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bdelete this (?:section|paragraph|note) before (?:submission|submitting|publishing|posting)\\b",
+    "\\bsubmission notes\\b",
+    "\\breviewer note\\b",
+    "\\bthank you for your review\\b",
+    "\\bwould enrich the (?:article|section|post|page)\\b",
+    "\\bcould (?:further )?engage readers\\b",
+    "\\bcould be added to orient readers\\b",
+    "\\bbefore (?:creating|submitting|publishing) (?:a|the|your) real\\b"
+   ],
+   "hint": "Text addressed to whoever will paste, submit or review the document, published inside it"
+  },
+  {
+   "id": "letter-register-on-non-correspondence",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "context",
+   "regex": [
+    "\\bi hope this (?:message|email|letter) finds you well\\b",
+    "\\bi trust this (?:message|email|letter) finds you well\\b",
+    "\\bi am writing to (?:request|express|inform|inquire|raise|report)\\b",
+    "\\bthank you for your understanding and (?:assistance|cooperation)\\b",
+    "\\bdear [a-z]+(?: [a-z]+)? (?:team|editors?|committee)\\b"
+   ],
+   "hint": "Business-letter framing on a ticket, a talk page, a comment, a form or an article: 'Dear Editorial Team,', 'I hope this message finds you we"
+  },
+  {
+   "id": "markdown-in-non-markdown-surface",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "(?<!\\*)\\*\\*(?![\\s*])[^*\\n]{1,80}(?<![\\s*])\\*\\*(?!\\*)",
+    "(?:^|\\n)#{1,6} \\S",
+    "\\n\\n(?:-{3,}|\\*{3,}|_{3,})[ \\t]*\\n\\n",
+    "```",
+    "\\[(https?://[^\\]\\n]{5,300})\\]\\(\\1\\)",
+    "\\[[^\\]\\n]{1,60}\\]\\(https?://[^)\\n]{1,300}\\)"
+   ],
+   "hint": "Markdown syntax lands on a surface with its own markup or none at all (wikitext, plain-text email, a CMS field, a ticket, a code comment): '",
+   "skip_on_markdown": true
+  },
+  {
+   "id": "outline-plan-left-in-body",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\bthis (?:section|chapter|part) would (?:speculate|cover|discuss|explore|detail|describe|include|address)\\b"
+   ],
+   "hint": "A sentence describing what a section would contain is emitted in place of the content: 'This section would speculate on potential developmen"
+  },
+  {
+   "id": "placeholder-in-metadata-field",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\b(?:19|20)\\d{2}-xx-xx\\b",
+    "\\b(?:19|20)\\d{2}-\\d{2}-xx\\b",
+    "\\bxx/xx/(?:19|20)\\d{2}\\b",
+    "(?:\\||\\b)(?:url|publisher|author|access-?date)\\s*=\\s*url\\b",
+    "\\b(?:insert|paste)_[a-z0-9_]{0,40}(?:url|here|name|title|publisher)(?:_\\d+)?\\b",
+    "=\\s*source_[a-z_]{3,30}\\b",
+    "<!--\\s*add\\b[^>]{0,80}(?:if available|if reliably sourced|with citation)[^>]{0,40}-->"
+   ],
+   "hint": "A citation, infobox or front-matter field holding a stub instead of a value: 'url=URL', 'INSERT_SOURCE_URL_30', 'SOURCE_PUBLISHER', 'PASTE_S"
+  },
+  {
+   "id": "reasoning-chain-leak",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\blet me think step by step\\b",
+    "\\bbreaking this down\\b",
+    "\\bto approach this systematically\\b",
+    "\\bhere['’]?s my thought process\\b",
+    "\\bfirst,? let['’]?s consider\\b",
+    "\\bworking through this logically\\b",
+    "\\bmy analysis is based on\\b",
+    "\\bi['’]?ve inferred\\b"
+   ],
+   "hint": "Chain-of-thought scaffolding published as prose: 'Let me think step by step', 'Breaking this down', 'To approach this systematically', 'Here"
+  },
+  {
+   "id": "roleplay-action-markers",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "cluster",
+   "regex": [
+    "(?<!\\*)\\*(?:nods|sighs|laughs|smiles|frowns|shrugs|grins|winks|chuckles|gasps|pauses|thinks|wonders|whispers|shouts|gestures|raises|leans|turns|looks|glances|smirks|blinks|nodding|sighing|laughing|smiling|thinking|gesturing)\\b[^*\\n]{0,60}\\*(?!\\*)"
+   ],
+   "hint": "Asterisk-wrapped stage directions from chat roleplay left in prose: '*nods*', '*sighs*', '*sighs and looks away*', '*leans in*'"
+  },
+  {
+   "id": "self-certification-of-compliance",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:written|formatted) to (?:the )?[a-z ]{0,25}manual of style\\b",
+    "\\bneutral tone,? (?:and )?sourced throughout\\b",
+    "\\bin compliance with (?:wikipedia|the platform|the manual of style|the guidelines|the style guide)\\b",
+    "\\bi understand (?:the |your )?concerns? (?:about|regarding) ai-generated\\b",
+    "\\bto ensure (?:that )?(?:the )?(?:content|article|text|it) (?:adheres|complies|conforms)\\b",
+    "\\breflect my (?:own )?thoughts\\b",
+    "\\bfor clarity and compliance with\\b"
+   ],
+   "hint": "The text asserts its own neutrality, sourcing or rule-conformance instead of demonstrating it: 'Written to Wikipedia Manual of Style"
+  },
+  {
+   "id": "templated-change-note",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "cluster",
+   "regex": [
+    "\\bimproved clarity,? flow,? and readability\\b",
+    "\\breduced redundancy\\b",
+    "\\brefined tone\\b",
+    "\\bfor a more neutral tone\\b",
+    "\\bcomprehensive (?:rewrite|formatting update)\\b",
+    "\\bwhile preserving (?:the )?(?:original|existing|sourced)\\b",
+    "\\bwhile maintaining backward compatibility\\b",
+    "\\bconcise edit summary\\b",
+    "\\bi revised the content to\\b"
+   ],
+   "hint": "A change description written as exhaustive procedural prose rather than a terse human note"
+  },
+  {
+   "id": "unfilled-placeholder",
+   "lang": [
+    "en"
+   ],
+   "category": "artifacts",
+   "severity": "always",
+   "regex": [
+    "\\[(?:your|insert|add|enter|describe|specify|choose|pick|link to|fill in|todo|tbd|placeholder)[^\\]\\n]{1,80}\\]",
+    "\\[(?:recipient|sender|topic|subject|salutation|closing|position|department|project name|company name|client name|entertainer['’]?s name)(?:\\s[^\\]\\n]{0,60})?\\]",
+    "\\{(?:client_name|your_name|company_name|first_name|recipient_name|topic)\\}",
+    "\\((?:add|insert|enter) your [^)\\n]{1,60}\\)"
+   ],
+   "hint": "A fill-in-the-blank slot the writer was meant to replace, shipped as-is: bracketed nouns ('[Your Name]', '[Entertainer's Name]', '[Specific "
+  },
+  {
+   "id": "abstraction-over-specifics",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\bsignificantly\\s+(?:faster|slower|better|larger|smaller|improved?|improves|reduced?|increased?)\\b",
+    "\\b(?:improved|improving|boosted|enhanced)\\s+(?:efficiency|productivity|performance|outcomes)\\b",
+    "\\ba\\s+(?:large|small|huge)\\s+(?:image|file|dataset|number\\s+of\\s+users)\\b"
+   ],
+   "hint": "A claim is stated in abstract terms where a name, number, date, mechanism or example is available: 'improved efficiency', 'significantly fas"
+  },
+  {
+   "id": "diff-anchored-writing",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\bwas\\s+added\\s+to\\s+replace\\b",
+    "\\bthe\\s+(?:previous|old)\\s+(?:approach|implementation|version|behaviour|behavior)\\b",
+    "\\bthe\\s+(?:improved|updated|new)\\s+version\\s+now\\b",
+    "\\breplaces?\\s+the\\s+(?:old|previous)\\s+(?:logic|code|approach|method)\\b"
+   ],
+   "hint": "Documentation, comments or prose describe the thing as a change from a state the reader never saw: 'This function was added to replace the p"
+  },
+  {
+   "id": "ecosystem-heritage-padding",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "\\bplay(?:s|ed|ing)?\\s+(?:a|an)\\s+(?:vital|crucial|important|key)?\\s*role\\s+in\\s+the\\s+(?:local\\s+|wider\\s+|broader\\s+)?ecosystem\\b",
+    "\\bcontributes\\s+to\\s+[a-z']{2,20}\\s+rich\\s+cultural\\s+heritage\\b",
+    "\\bthere\\s+is\\s+no\\s+specific\\s+conservation\\s+assessment\\b",
+    "\\b(?:overfishing|pollution)(?:,)?\\s+and\\s+habitat\\s+destruction\\b",
+    "\\bpreserving\\s+this\\s+endemic\\s+species\\b",
+    "\\bcould\\s+potentially\\s+impact\\s+(?:their|its|these)\\s+populations\\b"
+   ],
+   "hint": "Writing about a species, place or artefact is padded with generic ties to the wider ecosystem, environment or cultural heritage even where t"
+  },
+  {
+   "id": "empty-caveat-slot",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bdespite\\s+(?:the\\s+|these\\s+|ongoing\\s+)?challenges,",
+    "\\bcontinues\\s+to\\s+thrive\\b",
+    "\\bwhile\\s+facing\\s+headwinds\\b",
+    "\\bremains\\s+resilient\\b",
+    "과제도\\s*남아\\s*있다",
+    "한계도\\s*분명하다",
+    "아쉬운\\s*점도\\s*있다",
+    "\\bwhile\\s+\\w+\\s+is\\s+impressive\\b",
+    "\\balthough\\s+\\w+\\s+has\\s+made\\s+strides\\b",
+    "\\bdespite\\s+(?:\\w+\\s+){0,2}challenges\\b",
+    "\\bremains?\\s+a\\s+(?:significant\\s+|major\\s+|key\\s+)?challenge\\b",
+    "\\bis\\s+still\\s+an\\s+open\\s+question\\b"
+   ],
+   "hint": "A concession sentence that names no concession: an unnamed challenge paired with an unnamed response ('Despite challenges, the organisation "
+  },
+  {
+   "id": "fake-first-person",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\bi'?ve\\s+seen\\s+this\\s+(?:a\\s+hundred|a\\s+thousand|countless|so\\s+many)\\s+times\\b",
+    "\\bin\\s+my\\s+(?:\\d+\\s+years\\s+of\\s+)?experience,"
+   ],
+   "hint": "First-person experience claims appear in prose that had no author behind them: 'I've seen this a hundred times', 'in my experience', 'I'll a"
+  },
+  {
+   "id": "flat-dialogue-and-exposition",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "\\bas\\s+you\\s+know,\\s+(?:doctor|captain|professor|father|mother)\\b"
+   ],
+   "hint": "Characters are interchangeable: no distinct idiolect, verbal tic, dialect or pattern of evasion separates one speaker from another, and spee"
+  },
+  {
+   "id": "gratuitous-universals-and-category-errors",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\bin\\s+every\\s+(?:first-year|introductory|undergraduate)\\s+[a-z]+\\s+(?:course|class|textbook)\\b",
+    "\\bevery\\s+(?:single\\s+)?(?:developer|engineer|business|company|organization|organisation|team|marketer)\\s+(?:knows|needs|should|must|wants)\\b"
+   ],
+   "hint": "Authority borrowed from a scope the writer cannot check ('taught in every first-year biochemistry course', 'every engineer knows'), and mora"
+  },
+  {
+   "id": "hallucinated-citations",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "pubmed\\.ncbi\\.nlm\\.nih\\.gov/\\d{1,3}\\b",
+    "\\bpmid\\s*=\\s*\\d{1,3}\\b",
+    "\\bdoi\\s*[:=]\\s*10\\.\\d{4,9}/[-._;()/:a-z0-9]+",
+    "\\bper\\s+policy\\b",
+    "\\bguidelines\\s+state\\b"
+   ],
+   "hint": "References that cannot carry the claim: URLs to sites that never existed or 404 with no archive copy, ISBNs that fail their checksum, DOIs t"
+  },
+  {
+   "id": "invented-concept-labels",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bthe\\s+(?:supervision|productivity|automation|abundance|alignment|attention|expertise|delegation)\\s+paradox\\b",
+    "\\bcontext[-\\s]collapse\\s+problem\\b",
+    "\\ba\\s+(?:coordination|complexity|cognitive|context|communication)\\s+tax\\b",
+    "\\bworkload\\s+creep\\b",
+    "\\bthe\\s+(?:acceleration|efficiency|velocity|automation|productivity)\\s+trap\\b",
+    "\\bcoined\\s+the\\s+(?:term|phrase)\\b",
+    "\\bintroduced\\s+a\\s+term\\s+i\\s+(?:hadn't|had\\s+not)\\s+heard\\b",
+    "\\ba\\s+(?:failure\\s+mode|problem|phenomenon)\\s+nobody\\s+(?:talks\\s+about|is\\s+naming)\\b"
+   ],
+   "hint": "A pseudo-analytical compound is coined mid-sentence and never defined ('the supervision paradox', 'the context-collapse problem', 'a coordin"
+  },
+  {
+   "id": "misattributed-source-analysis",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bthis\\s+(?:citation|source|reference)\\s+demonstrates\\b",
+    "\\bdemonstrating\\s+(?:his|her|its|their)\\s+influence\\b",
+    "\\bhighlight(?:s|ed|ing)\\s+the\\s+(?:lasting|enduring|continued)\\s+(?:influence|relevance|impact|importance)\\b",
+    "\\bemphasiz(?:es|ing)\\s+(?:his|her|their)\\s+critical\\s+view\\b"
+   ],
+   "hint": "A retrieval-augmented model attaches its own interpretive gloss to a real named source or citation, whether or not that source says anything"
+  },
+  {
+   "id": "notability-name-dropping",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "\\bother\\s+(?:prominent\\s+)?media\\s+outlets\\b",
+    "\\b(?:local|regional|national|international)\\s+media\\s+outlets\\b",
+    "\\b(?:trade|industry|music|business|tech)\\s+publications\\b",
+    "\\bindependent\\s+coverage\\b",
+    "\\bactive\\s+social\\s+media\\s+presence\\b",
+    "\\bwritten\\s+by\\s+a\\s+leading\\s+expert\\b",
+    "\\bsignificant,?\\s+(?:substantial|sustained)(?:,)?\\s+(?:and\\s+)?(?:secondary|verifiable)\\s+coverage\\b",
+    "\\bwidely-read\\s+outlets\\b",
+    "\\badded\\s+(?:sourced|verified)\\s+(?:information|content|section|infobox)\\b",
+    "\\bwith\\s+(?:sourced\\s+content|independent\\s+sources|secondary\\s+sources)\\b",
+    "\\bhighlighted\\s+by\\s+multiple\\s+independent\\s+reports\\b"
+   ],
+   "hint": "Importance is argued by cataloguing where the subject appeared rather than what was said: a roll-call of prestigious outlets, a classificati"
+  },
+  {
+   "id": "pathetic-fallacy-mood-setting",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bmirroring\\s+(?:her|his|their)\\s+(?:unspoken\\s+)?(?:grief|mood|sorrow|anxiety|turmoil|sadness)\\b",
+    "\\brain\\s+(?:pattered|drummed|tapped)\\s+(?:softly|gently)\\b"
+   ],
+   "hint": "Weather, rooms and objects exist only to mirror a character's feeling: rain that matches grief, a room that is cold because the marriage is"
+  },
+  {
+   "id": "promotional-language",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bnestled\\s+(?:in|within|among|amid|between|along|beneath)\\b",
+    "\\bbreathtaking\\s+(?:views?|landscapes?|scenery|beauty|region|foothills|coastline)\\b",
+    "\\bvibrant\\s+(?:city|town|community|hub|culture|scene|ecosystem|neighborhood|neighbourhood|tapestry)\\b",
+    "\\brich\\s+(?:cultural\\s+heritage|tapestry|cultural\\s+tapestry)\\b",
+    "\\bboasts\\s+(?:a|an|its|over|more\\s+than)\\b",
+    "\\bthriving\\s+ecosystem\\b",
+    "\\bmust-visit\\b",
+    "\\bshowcas(?:es|ing)\\s+(?:its|the|their|the\\s+brand)\\b",
+    "\\bcommitment\\s+to\\s+(?:excellence|sustainability|innovation|quality|craftsmanship|customer)\\b",
+    "\\bdiverse\\s+array\\b",
+    "\\bendless\\s+possibilities\\b",
+    "\\bdurable\\s+construction\\b",
+    "\\bexcellent\\s+value\\b",
+    "\\busers\\s+rave\\b",
+    "\\ba\\s+(?:fascinating|unique|rare)\\s+glimpse\\s+into\\b",
+    "\\bexemplifies\\b",
+    "\\bacts\\s+as\\s+the\\s+gateway\\b"
+   ],
+   "hint": "Prose meant to inform drifts into advertisement: evaluative adjectives, travel-guide framing, and press-release verbs applied to places, com"
+  },
+  {
+   "id": "significance-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bmark(?:s|ed|ing)?\\s+a\\s+(?:pivotal|significant|important|key|defining|watershed|major)\\s+moment\\b",
+    "\\ba\\s+(?:pivotal|watershed|defining|seminal)\\s+moment\\s+(?:in|for)\\b",
+    "\\bin\\s+the\\s+evolution\\s+of\\s+(?:regional|modern|the)\\b",
+    "\\b(?:stands|stood|serves|served)\\s+as\\s+a\\s+testament\\b",
+    "\\ba\\s+testament\\s+to\\b",
+    "\\bplay(?:s|ed|ing)?\\s+a\\s+(?:vital|crucial|pivotal|significant|key|central)\\s+role\\b",
+    "\\bunderscor(?:e|es|ed|ing)\\s+(?:its|his|her|their|the)\\s+(?:importance|significance|role)\\b",
+    "\\bhighlight(?:s|ed|ing)\\s+(?:its|his|her|their|the)\\s+(?:importance|significance|enduring\\s+legacy)\\b",
+    "\\benduring\\s+legacy\\b",
+    "\\btransformative\\s+power\\b",
+    "\\bevolving\\s+landscape\\b",
+    "\\bindelible\\s+mark\\b",
+    "\\bsolidif(?:y|ies|ied|ying)\\s+(?:its|his|her|their)\\s+(?:position|role|place|status)\\b",
+    "\\brepresent(?:s|ed)?\\s+a\\s+(?:significant|major|profound|fundamental)\\s+shift\\b",
+    "\\bpart\\s+of\\s+a\\s+(?:broader|wider)\\s+(?:movement|trend|shift|effort)\\b",
+    "\\bsymboliz(?:es|ing)\\s+(?:its|his|her|their)\\s+(?:ongoing|enduring|lasting)\\b",
+    "\\bkey\\s+turning\\s+point\\b",
+    "\\bsignificantly\\s+improv(?:es|ed|ing)\\b",
+    "\\bthis\\s+is\\s+(?:a|an)\\s+(?:crucial|critical|key|important)\\s+(?:insight|point|distinction|takeaway)\\b",
+    "\\bcarries\\s+significant\\s+implications\\b|\\bthe\\s+implications\\s+are\\s+significant\\b|\\bis\\s+(?:noteworthy|of\\s+great\\s+significance)\\b",
+    "시사하는\\s*바가\\s*크다|주목할\\s*만하다|매우\\s*중요하다|의미가\\s*크다|기록적인\\s*성과를\\s*거두었다|주목받았다"
+   ],
+   "hint": "An ordinary fact is framed as a turning point, a legacy, a symbol, or evidence of a broad trend, using a small recognisable set of significa"
+  },
+  {
+   "id": "source-count-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\bseveral\\s+(?:sources|publications|outlets|reports|reviewers|scholars)\\s+(?:have\\s+)?(?:cited|noted|reported|described|argued|suggested)\\b",
+    "\\b(?:widely|generally)\\s+interpreted\\s+as\\b",
+    "\\b(?:industry|trade|toy|music|business|tech)\\s+publications\\s+such\\s+as\\b"
+   ],
+   "hint": "Sources are cited, but their number or breadth is overstated: one person's view is presented as widely held, plural 'reviewers', 'scholars' "
+  },
+  {
+   "id": "speculative-gap-fill",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bwhile\\s+specific\\s+(?:details|information)\\b",
+    "\\bnot\\s+(?:widely|extensively|fully|publicly)\\s+(?:documented|available|disclosed|transcribed)\\b",
+    "\\bin\\s+the\\s+(?:provided|available)\\s+(?:sources|search\\s+results)\\b",
+    "\\bbased\\s+on\\s+available\\s+information\\b",
+    "\\bmaintains?\\s+a\\s+(?:relatively\\s+)?low\\s+(?:public\\s+)?profile\\b",
+    "\\bkeeps?\\s+(?:her\\s+|his\\s+|their\\s+)?personal\\s+(?:details|life)\\s+private\\b",
+    "\\bprefers\\s+to\\s+(?:stay|keep)\\s+(?:out\\s+of\\s+the\\s+spotlight|.{0,20}out\\s+of\\s+the\\s+public\\s+eye)\\b",
+    "\\bis\\s+believed\\s+to\\s+have\\b",
+    "\\bappears\\s+to\\s+have\\s+(?:studied|worked|begun|trained)\\b",
+    "\\blikely\\s+(?:grew\\s+up|began\\s+(?:his|her|their)\\s+career|studied|supports)\\b"
+   ],
+   "hint": "Where the model found nothing it asserts that nothing exists ('details are not widely documented') and then fills the hole with hedged inven"
+  },
+  {
+   "id": "unnamed-debate-situating",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:has|have|had)\\s+(?:generated|sparked|prompted|ignited)\\s+(?:a\\s+|broader\\s+|renewed\\s+)?(?:debate|debates|discussion|discussions|reflection)\\b",
+    "\\bprompted\\s+broader\\s+reflection\\b",
+    "\\brais(?:es|ing)\\s+(?:philosophical|ethical|profound|important)\\s+questions\\s+about\\b",
+    "\\bshap(?:ed|ing)\\s+(?:emerging\\s+)?policy\\s+discussions\\b",
+    "\\bparticipated\\s+in\\s+public\\s+discussions\\b"
+   ],
+   "hint": "The subject is said to have generated, sparked, shaped, or prompted debate, discussion, or reflection, or to raise questions, with no debate"
+  },
+  {
+   "id": "vague-association",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:particularly|widely|principally|closely|primarily)\\s+associated\\b",
+    "\\b(?:has|have)\\s+been\\s+associated\\s+with\\b",
+    "\\bbecame\\s+associated\\s+with\\b",
+    "\\bin\\s+connection\\s+with\\s+(?:her|his|their|its)\\s+(?:work|role|career|research)\\b"
+   ],
+   "hint": "A concrete relationship (was CEO of, taught at, composed for, received) is replaced by an unspecified link: 'associated with', 'in connectio"
+  },
+  {
+   "id": "vague-attribution",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "always",
+   "regex": [
+    "\\bexperts?\\s+(?:say|says|agree|agrees|believe|believes|argue|argues|suggest|suggests|note|warn)\\b",
+    "\\bstudies\\s+(?:show|shows|suggest|indicate|consistently\\s+show|have\\s+shown)\\b",
+    "\\bresearch\\s+(?:shows|suggests|indicates)\\b",
+    "\\bindustry\\s+(?:reports|leaders|analysts|experts)\\s+(?:suggest|show|indicate|agree|believe|say|note)\\b",
+    "\\bobservers\\s+have\\s+(?:cited|noted|said|argued)\\b",
+    "\\b(?:some\\s+)?critics\\s+argue\\b",
+    "\\banalysts\\s+(?:agree|say|note|suggest|believe)\\b",
+    "\\bindependent\\s+testing\\s+confirms\\b",
+    "\\bthird-party\\s+benchmarks\\s+show\\b",
+    "\\b다는\\s*(?:분석|평가|관측)이다"
+   ],
+   "hint": "A claim is credited to an authority the text never identifies: experts, studies, research, observers, critics, analysts, industry reports, s"
+  },
+  {
+   "id": "vague-numeric-range",
+   "lang": [
+    "en"
+   ],
+   "category": "content",
+   "severity": "context",
+   "regex": [
+    "\\b\\d+\\s*(?:to|-|–)\\s*\\d+\\s+(?:minutes|hours|seconds|days|weeks|months)\\b"
+   ],
+   "hint": "A numeric range is given where a single observed number would exist if the writer had done the thing: 'takes 5 to 10 minutes', 'between 20 a"
+  },
+  {
+   "id": "bold-overuse",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "\\*\\*[^*\\n]+\\*\\*[^*\\n]{1,80}\\*\\*[^*\\n]+\\*\\*",
+    "'''[^'\\n]+'''[^'\\n]{1,80}'''[^'\\n]+'''",
+    "(?:\\*\\*[^*\\n]+\\*\\*[^*\\n]*){4}"
+   ],
+   "hint": "Boldface applied mechanically instead of marking one real emphasis point: every term or acronym in a sentence, a bolded key phrase in every "
+  },
+  {
+   "id": "capitalized-after-colon",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?-i:\\b[a-z]{3,}: [A-Z][a-z]+ [a-z]+)"
+   ],
+   "hint": "The clause after a colon starts with a capital letter where grammar, a proper noun, a title or code does not require it ('Two options remain"
+  },
+  {
+   "id": "curly-quotes",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "[“”][^\\n]{0,300}\\\"|\\\"[^\\n]{0,300}[“”]"
+   ],
+   "hint": "Typographic quotes (U+201C, U+201D, U+2018) and the right-single-quote apostrophe (U+2019) on a surface whose convention is straight quotes:"
+  },
+  {
+   "id": "em-dash-density",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "always",
+   "regex": [
+    "—",
+    "(?<=\\s)–(?=\\s)",
+    "(?<=\\s)--(?=\\s)",
+    "(?:^|\\n)[ \\t]*\\*\\*[^*\\n]{2,60}\\*\\*[ \\t]*(?:—|--)[ \\t]*[a-z]"
+   ],
+   "hint": "The em dash, a spaced en dash or a spaced double hyphen used as the default clause splice: a pair bracketing an aside, a single dash tacking"
+  },
+  {
+   "id": "emoji-decoration",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "always",
+   "regex": [
+    "(?:^|\\n)[ \\t]*(?:#{1,6}[ \\t]+|[-*+][ \\t]+|\\d+[.)][ \\t]+)?[\\U0001F300-\\U0001FAFF\\u2600-\\u260f\\u2614-\\u2615\\u2648-\\u2653\\u26a0-\\u26ff\\u2702-\\u2712\\u2716-\\u27bf\\u2b50\\u2b06]",
+    "(?:^|\\n)#{1,6}[ \\t]+[^\\n]*[\\U0001F300-\\U0001FAFF\\u2600-\\u260f\\u2614-\\u2615\\u2648-\\u2653\\u26a0-\\u26ff\\u2702-\\u2712\\u2716-\\u27bf\\u2b50\\u2b06]",
+    "[\\U0001F300-\\U0001FAFF\\u2600-\\u260f\\u2614-\\u2615\\u2648-\\u2653\\u26a0-\\u26ff\\u2702-\\u2712\\u2716-\\u27bf\\u2b50\\u2b06]\\uFE0F?[ \\t]*\\*\\*[^*\\n]+\\*\\*",
+    "✨[ \\t]*(?:\\n|$)"
+   ],
+   "hint": "Emoji placed in front of headings, list items or bold labels as visual icons, one per heading or bullet and often thematically matched to th"
+  },
+  {
+   "id": "hashtag-stuffing",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?:#[a-z][a-z0-9_]*[ \\t]+){5}#[a-z][a-z0-9_]*",
+    "(?:(?:^|\\s)#[a-z][\\w-]*\\b){6,}"
+   ],
+   "hint": "A long trailing block of hashtags on a short post (six or more, typically one project-specific tag plus broad category tags such as #AI #Inn"
+  },
+  {
+   "id": "heading-level-skipping",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "always",
+   "regex": [
+    "\\A(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
+    "(?:^|\\n)#[ \\t][^\\n]*\\n(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
+    "(?:^|\\n)#{2}[ \\t][^\\n]*\\n(?:(?!#{1,3}[ \\t])[^\\n]*\\n)*#{4}[ \\t]",
+    "\\A(?:(?!={1,2}[^=\\n])[^\\n]*\\n)*===[^=\\n]"
+   ],
+   "hint": "Sections begin at the third heading level (### or ===) with no second-level heading above them, or any heading sits more than one level belo"
+  },
+  {
+   "id": "level-1-heading-overuse",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?:^|\\n)#[ \\t][^\\n]+\\n(?:[^\\n]*\\n)*?#[ \\t]",
+    "(?:^|\\n)=[^=\\n][^\\n]*=[ \\t]*(?=\\n|$)"
+   ],
+   "hint": "Level-1 headings (# or = H1 =) used for ordinary body sections on a surface that reserves level 1 for the page title (Wikipedia, most CMSs, "
+  },
+  {
+   "id": "list-label-periods",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "always",
+   "regex": [
+    "(?:^|\\n)[ \\t]*(?:[-*+]|\\d+[.)])[ \\t]+\\*\\*(?:[a-z0-9&/'-]+[ \\t]+){0,3}[a-z0-9&/'-]+\\.\\*\\*[ \\t]+[a-z]"
+   ],
+   "hint": "In a bulleted list whose items lead with a short label, the label ends with a period and the gloss runs on as a separate sentence ('- **Intr"
+  },
+  {
+   "id": "parenthetical-gloss-overload",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "\\((?:this|which|that|it) (?:means|implies|indicates|suggests)\\b[^)\\n]{0,120}\\)",
+    "\\(이는[^)\\n]{0,80}의미한다\\)"
+   ],
+   "hint": "Explanatory parentheses of the form '(this means ...)' or '(이는 ~을 의미한다)' tacked onto claim after claim in dense succession"
+  },
+  {
+   "id": "parenthetical-stage-directions",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "always",
+   "regex": [
+    "(?:^|\\n)[ \\t]*[a-z][a-z .'-]{0,30}:[ \\t]*\\((?:defensive(?:ly)?|frustrated|angr(?:y|ily)|sigh(?:s|ing)?|laugh(?:s|ing)?|paus(?:es|ing)|nervous(?:ly)?|smil(?:es|ing)|sarcastic(?:ally)?|calm(?:ly)?|quiet(?:ly)?|excited(?:ly)?|confused|annoyed|hesitant(?:ly)?|thoughtful(?:ly)?|firmly|softly|shrugs?|nods?)\\)"
+   ],
+   "hint": "Dialogue tagged with a bracketed emotion before the line, script-style ('Bob: (defensive) Why should I?'), in prose that is not a screenplay"
+  },
+  {
+   "id": "redundant-acronym-expansion",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "\\*\\*[^*\\n]*\\([a-z]{2,6}\\)\\*\\*",
+    "(?-i:\\b[A-Z]{2,6}s? \\([A-Z][a-z]+(?: (?:[A-Z][a-z]+|and|of|for|the|in|on|to)){1,5}\\))"
+   ],
+   "hint": "Every acronym is spelled out in parentheses at first use even when the audience owns the term, often in the reversed 'KPIs (Key Performance "
+  },
+  {
+   "id": "scare-quotes",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "[\\\"“][a-z]+[\\\"”][^\\\"“”\\n]{1,120}[\\\"“][a-z]+[\\\"”][^\\\"“”\\n]{1,120}[\\\"“][a-z]+[\\\"”]"
+   ],
+   "hint": "Quotation marks around ordinary words for emphasis or ironic distance ('a \"seamless\" experience'), five or more per document"
+  },
+  {
+   "id": "thematic-breaks",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "[.!?)\\]][ \\t]*\\n[ \\t]*\\n[ \\t]*(?:-{3,}|\\*{3,}|_{3,})[ \\t]*\\n[ \\t]*\\n?[ \\t]*#{1,6}[ \\t]",
+    "-{4}[ \\t]*\\n[ \\t]*\\n?[ \\t]*={2,}[^=\\n]"
+   ],
+   "hint": "A horizontal rule (---- in wikitext, --- or *** in Markdown, <hr>) inserted before every section or sub-section, common in Markdown output"
+  },
+  {
+   "id": "title-case-headings",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "(?-i:(?:^|\\n)#{1,6}[ \\t]+(?:[A-Z][a-z]+[ \\t]+)+(?:And|Or|Of|The|In|For|To|A|An)[ \\t]+(?:[A-Z][a-z]+[ \\t]*)+)(?=\\n|$)",
+    "(?-i:(?:^|\\n)#{1,6}[ \\t]+(?!(?:The|A|An)\\b)[A-Z][a-z]+(?:[ \\t]+(?:[A-Z][a-z]+|and|or|of|the|in|for|to|a|an)){2,}[ \\t]+[A-Z][a-z]+[ \\t]*)(?=\\n|$)",
+    "(?-i:(?:^|\\n)={2,6}[ \\t]*(?!(?:The|A|An)\\b)[A-Z][a-z]+(?:[ \\t]+(?:[A-Z][a-z]+|and|or|of|the|in|for|to|a|an)){2,}[ \\t]+[A-Z][a-z]+[ \\t]*={2,6})"
+   ],
+   "hint": "Every main word of a section heading is capitalized ('Strategic Negotiations And Global Partnerships'), sometimes conjunctions included, whe"
+  },
+  {
+   "id": "unicode-arrows",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "[a-z)]\\s*(?:→|⇒|➜|➡)\\s*[a-z(]",
+    "[a-z]\\s+(?:->|=>)\\s+[a-z]"
+   ],
+   "hint": "Typographic arrows (→, ⇒) or their ASCII forms (->, =>) used in running prose where a writer would say 'leads to', 'then' or write a sentenc"
+  },
+  {
+   "id": "unicode-math-bold-and-bullets",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "always",
+   "regex": [
+    "[\\U0001D400-\\U0001D7FF]",
+    "(?:^|\\n)[ \\t]*•[ \\t][^\\n]+\\n[ \\t]*•[ \\t]"
+   ],
+   "hint": "Bold faked with Unicode Mathematical Alphanumeric Symbols (𝗯𝗼𝗹𝗱) instead of markup, and list items marked with the Unicode bullet character ",
+   "skip_on_markdown": true
+  },
+  {
+   "id": "unnecessary-hyphenation",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:code-base|data-set|time-frame|road-map)\\b",
+    "\\bin\\s+real-time(?=[ \\t]*(?:[,.!?;:]|\\n|$)|\\s+(?:across|as|automatically|because|but|continuously|during|dynamically|every|for|from|immediately|instantly|on|simultaneously|through|throughout|until|via|when|while|with|without)\\b)",
+    "\\b(?:for|over)\\s+the\\s+long-term(?=[ \\t]*(?:[,.!?;:]|\\n|$)|\\s+(?:across|because|but|by|during|for|from|on|through|throughout|until|via|when|while|with|without)\\b)",
+    "\\b(?:functions?|functioned|functioning|operates?|operated|operating|runs?|ran|running|works?|worked|working)\\s+out-of-the-box\\b",
+    "\\bresearch-impact\\s+aggregat(?:or|ion)s?\\b",
+    "\\bdata-source\\s+strateg(?:y|ies)\\b",
+    "\\b(?:python-package|rust-crate)\\s+usage\\b",
+    "\\btotal-downloads\\s+figures?\\b",
+    "\\b(?:single-project\\s+manifest|life-sciences-native\\s+citation\\s+count)\\b",
+    "\\b(?:is|are|was|were|remains?|stays?|seems?|becomes?)\\s+(?:high-quality|data-driven|cross-functional|client-facing|end-to-end|real-time|long-term)\\b(?!\\s+[a-z]+)",
+    "(?:\\b[a-z]+(?:-[a-z]+)+,?\\s+){3}\\b[a-z]+",
+    "\\b\\w+-\\w+,\\s+\\w+-\\w+,\\s+(?:and\\s+)?\\w+-\\w+\\s+\\w+\\b"
+   ],
+   "hint": "Hyphens where English does not want them: stock corporate compounds ('data-driven', 'cross-functional', 'high-quality') kept hyphenated in p"
+  },
+  {
+   "id": "unnecessary-tables",
+   "lang": [
+    "en"
+   ],
+   "category": "punctuation-format",
+   "severity": "context",
+   "regex": [
+    "\\|\\+[ \\t]*(?:comparison of|key statistics)",
+    "\\|[ \\t]*(?:metric|aspect|criterion)[ \\t]*\\|[ \\t]*(?:figure|value|details?|description)[ \\t]*\\|"
+   ],
+   "hint": "Small tables (a handful of rows) holding facts that read better as a sentence or an infobox: a two-column Metric/Figure or Name/Designation "
+  },
+  {
+   "id": "announced-interest",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bhere'?s (?:what'?s|the) (?:interesting|surprising)(?: part)?\\b",
+    "\\bhere'?s what (?:caught my eye|stood out)\\b",
+    "\\bwhat surprised me most\\b",
+    "\\bwhat struck me was\\b",
+    "\\bi was fascinated to\\b",
+    "(?m)^\\s*interesting (?:part|thing|aspect|piece)(?: of [^:\\n]{1,30})?\\s*:"
+   ],
+   "hint": "A cue pre-interprets importance or claims a reaction the writing has not earned: 'Here's what's interesting', 'Here's the interesting part',"
+  },
+  {
+   "id": "aphorism-formula",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bis the (?:language|currency|architecture|grammar|operating system) of\\b",
+    "\\bbecomes? a trap\\b",
+    "\\bnot a tool but a mirror\\b",
+    "\\bthe architecture of trust\\b"
+   ],
+   "hint": "An ordinary claim is recast as a quotable general law by a slot-fill metaphor: 'X is the language of Y', 'the currency of Z', 'the architect"
+  },
+  {
+   "id": "aphoristic-ender",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bbecause,? in the end,",
+    "할 때입니다|시점입니다|할 순간입니다"
+   ],
+   "hint": "A paragraph, section or piece lands on a compact epigram that restates the point as a maxim instead of adding information: 'The future isn't"
+  },
+  {
+   "id": "both-sides-hedge",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bthe truth,? (?:as is often the case,? )?lies somewhere in between\\b",
+    "\\blies somewhere in (?:between|the middle)\\b",
+    "\\bwhile critics argue\\b",
+    "\\bsupporters maintain\\b",
+    "양쪽 모두|두 가지 모두|장점도 있지만",
+    "\\bthere\\s+are\\s+(?:both\\s+)?(?:pros\\s+and\\s+cons|advantages\\s+and\\s+disadvantages|benefits\\s+and\\s+drawbacks)\\b",
+    "양쪽\\s*모두",
+    "장점도\\s*있지만"
+   ],
+   "hint": "A symmetrical 'critics say X, supporters say Y, the truth lies somewhere in between' move performs nuance while asserting nothing, alongside"
+  },
+  {
+   "id": "call-to-action-closer",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bthis one'?s? (?:is )?worth (?:your time|the read|a read)\\b",
+    "\\bdo yourself a favou?r and (?:read|watch|check out) (?:this|it)\\b",
+    "\\b(?:you )?won'?t want to miss this\\b",
+    "\\bthank me later\\b",
+    "\\bbookmark this\\b",
+    "\\bdon'?t sleep on this\\b",
+    "\\bthis one'?s? a must[- ]?(?:read|watch|listen)\\b",
+    "\\blet'?s connect!"
+   ],
+   "hint": "A closing line instructs the reader instead of saying anything: the social endorsement sign-off ('This one is worth your time:', 'Bookmark t"
+  },
+  {
+   "id": "candor-flag-opener",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "(?:^|[.!?]\\s|\\n)\\s*honestly[?!]",
+    "(?:^|[.!?]\\s|\\n)\\s*(?:look|real talk|here'?s the thing)\\s*[,:.]",
+    "\\blet'?s be honest\\b",
+    "\\bthe honest answer\\b",
+    "\\bthe uncomfortable truth is\\b",
+    "\\blet me be clear\\b"
+   ],
+   "hint": "A staged pause or claim of frankness precedes an ordinary point: 'Honestly?', 'Look,', 'Here's the thing', 'Let's be honest', 'Real talk', '"
+  },
+  {
+   "id": "clean-consequence-connector",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bfalls? (?:straight )?out of\\b",
+    "\\bcomes? straight out of (?:this|that)\\b",
+    "\\bfollows directly\\b",
+    "로 이어진다|에 직결된다"
+   ],
+   "hint": "A connector asserts that the conclusion follows automatically from what came before, lending inevitability the argument has not earned: 'com"
+  },
+  {
+   "id": "colon-reveal",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|\\n)[ \\t]*[A-Z][^.!?:\\n]{5,45}: [a-z][^.!?\\n]{5,80}[.!?]"
+   ],
+   "hint": "A setup clause, a colon, then a tidy payload in lower case: the colon is used for suspense rather than to introduce a list, a label or a quo"
+  },
+  {
+   "id": "contrast-slogan-opener",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "(?m)^[ \\t]*[A-Z][^.!?\\n]{2,40}, geen [^.!?\\n]{2,40}\\.?$",
+    "(?m)^[ \\t]*[A-Z][^.!?\\n]{2,40}, no [a-z][^.!?\\n]{2,40}\\.?$"
+   ],
+   "hint": "A two-part contrast slogan stands as the first line or heading of a text, defining the thing by what it is not: 'Eén avond, geen verkooppraa"
+  },
+  {
+   "id": "deeper-truth-framing",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bthe real question is\\b",
+    "\\bat its core\\b",
+    "\\bmake no mistake\\b",
+    "\\bthe (?:real|actual) story is\\b",
+    "\\bthe (?:truth|reality) is (?:simple|simpler)\\b",
+    "\\bthe heart of the matter\\b",
+    "\\bbetter posed:",
+    "\\bwhat really matters (?:is|here)\\b"
+   ],
+   "hint": "A stock phrase presents an ordinary point as a hidden or fundamental insight, or asserts that the matter is obvious instead of showing it: '"
+  },
+  {
+   "id": "didactic-disclaimers",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "context",
+   "regex": [
+    "\\bit'?s (?:important|critical|crucial|essential) to (?:note|remember|consider|mention)\\b",
+    "\\bit is (?:important|critical|crucial|essential) to (?:note|remember|consider|differentiate)\\b",
+    "\\bto prevent confusion\\b",
+    "\\bfor deeper insights?\\b"
+   ],
+   "hint": "Advice-to-the-reader disclaimers in text that should simply state facts: 'it's important to note', 'it's crucial to remember', 'always check"
+  },
+  {
+   "id": "fake-casual-register",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\*\\s?(?:checks notes|chef'?s kiss|mic drop|takes a deep breath|sips (?:coffee|tea)|nervous laughter)\\s?\\*",
+    "\\(\\s?(?:yes|no)\\s?,\\s?(?:really|seriously)\\s?\\)",
+    "\\bbecause of course it (?:does|did)\\b",
+    "(?:^|\\n)\\s*(?:hot take|fun fact|pro tip|unpopular opinion|psa)\\s*:"
+   ],
+   "hint": "The costume a model puts on when asked for a lowercase-casual social voice: a kit of props that outsource drama to the prop instead of the c"
+  },
+  {
+   "id": "false-profundity-truism",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bchange is the only constant\\b",
+    "\\bat the end of the day, we are all\\b",
+    "\\beveryone has moments of\\b"
+   ],
+   "hint": "A sentence carries the shape of insight, a contrast, a reversal or an epigram, but contains nothing a reader could act on or disagree with: "
+  },
+  {
+   "id": "false-suspense-hook",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\b(?:here'?s|but here'?s) the (?:kicker|deal|catch)\\b",
+    "(?:^|[.!?]\\s|\\n)\\s*the (?:catch|kicker|best part|result)\\?",
+    "\\bhere'?s where it gets (?:interesting|clever|weird|good)\\b",
+    "\\bthis is where [a-z][\\w'-]* comes in\\b"
+   ],
+   "hint": "A short fragment or clause manufactures suspense around information that needed none: 'The catch?', 'The kicker?', 'Here's the kicker', 'Her"
+  },
+  {
+   "id": "generic-conclusion",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bthe future looks bright\\b",
+    "\\bonly time will tell\\b",
+    "\\bone thing is certain\\b",
+    "\\bas we move forward\\b",
+    "\\b(?:may|could|will|is poised to|is set to) become (?:one of )?(?:the )?(?:most |defining |next major )?\\w* ?(?:narratives?|stories|trends?|themes?|chapters?|movements?|forces?)\\b",
+    "\\bone of the most important (?:narratives?|stories|trends?|themes?) of the (?:next|coming)\\b",
+    "\\bthe future (?:looks|is) bright\\b",
+    "\\bexciting times (?:lie|are) ahead\\b",
+    "\\bjourney towards? excellence\\b",
+    "\\ba (?:major|significant|big|huge) step in the right direction\\b",
+    "\\bmemories (?:to|that) last a lifetime\\b"
+   ],
+   "hint": "A closing line gestures at the future or at certainty without a claim anyone could check: 'The future looks bright', 'Only time will tell', "
+  },
+  {
+   "id": "historical-analogy-stacking",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bthe printing press,? (?:the )?(?:telegraph|telephone|radio|internet)\\b",
+    "\\bevery major technolog(?:ical|y) shift\\b",
+    "\\bfollowed a similar path\\b"
+   ],
+   "hint": "A rapid-fire list of past technologies, companies or revolutions is invoked to borrow their weight: 'like the printing press, the telegraph,"
+  },
+  {
+   "id": "importance-labelling",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bplays? an? (?:crucial|vital|pivotal|key|central) role\\b",
+    "\\b(?:it )?cannot be overstated\\b",
+    "\\bone of the most (?:important|significant|crucial|notable|influential)\\b",
+    "\\brepresents a (?:broader|larger|wider) (?:shift|trend|movement)\\b",
+    "\\bspeaks to a (?:larger|broader) trend\\b",
+    "\\bsymbol(?:ize|ise)s a commitment\\b",
+    "\\bcontributes to the broader (?:history|story|understanding)\\b",
+    "매우 중요하다|시사하는 바가 크다|주목할 만하다"
+   ],
+   "hint": "An adjective, superlative or gloss asserts that something is important, crucial, significant, surprising, subtle or obvious in place of show"
+  },
+  {
+   "id": "invented-crowd-contrast",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "context",
+   "regex": [
+    "\\bwhile (?:everyone else|others|the (?:industry|market|competition)) (?:was|were|is|are) still (?:busy )?(?:debat|deliberat|hesitat|theoriz|philosophiz|pontificat|speculat|argu|dither|bicker)ing\\b",
+    "\\bwhile (?:everyone else|others|the (?:industry|market|competition)) (?:was |were )?(?:busy )?(?:writing|wrote) think-? ?pieces\\b",
+    "\\bwhile (?:everyone else|others|the (?:industry|market|competition)) (?:was |were |is |are )?(?:still )?play(?:ed|ing|s)? catch[- ]?up\\b",
+    "\\bthe conventional wisdom is backwards\\b"
+   ],
+   "hint": "A claim is propped on an implied lagging crowd nobody named: 'Everyone says X, but they're wrong', 'the conventional wisdom is backwards', a"
+  },
+  {
+   "id": "launch-copy-introduction",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "context",
+   "regex": [
+    "(?:^|[.!?]\\s|\\n)meet [A-Z][\\w'-]{1,29}\\s*,\\s*(?:your new (?:favou?rite|go-to)\\b|the new (?:home of|way to|standard (?:in|for))\\b)",
+    "(?:^|[.!?]\\s|\\n)think [A-Z][\\w'-]{1,29} meets [A-Z][\\w'-]{1,29}\\b"
+   ],
+   "hint": "A product is introduced like a game-show contestant instead of described: 'Enter Flowdesk.', 'Meet Flowdesk, your new favorite treasury dash"
+  },
+  {
+   "id": "lingering-attention-claim",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "context",
+   "regex": [
+    "\\b(?:the|that|this) (?:one )?(?:line|quote|bit|part|idea|point|framing|comment|thing) (?:that )?i keep (?:coming back to|thinking about)\\b",
+    "\\bi can'?t stop thinking about\\b",
+    "\\bstill thinking about (?:this|that) one\\b",
+    "\\brattling around in my (?:head|brain)\\b",
+    "\\bi'?ve been chewing on (?:this|that)\\b"
+   ],
+   "hint": "A share post opens by claiming the thing has occupied the writer's mind for a duration, before the reader has any reason to care: 'the line "
+  },
+  {
+   "id": "meta-signposting",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bin this (?:article|post|section|chapter|piece|guide),? (?:we|i) (?:will|'?ll|are going to)\\b",
+    "\\blet'?s (?:dive in|dive into|explore|unpack|break (?:this|it) down|take a look|examine|decode)\\b",
+    "\\bwithout further ado\\b",
+    "\\bhere'?s what you need to know\\b",
+    "\\bbelow is a detailed overview\\b",
+    "\\bthe purpose (?:of this section )?is to provide a comprehensive\\b",
+    "\\bnow let'?s (?:turn to|look at)\\b",
+    "\\bwe'?ll (?:look at|examine|conclude by)\\b",
+    "크게 세 가지로 나눌 수 있다|다음과 같습니다|이 관점에서"
+   ],
+   "hint": "The text narrates its own moves rather than making them: opening announcements ('In this article, we will explore', 'In this section, we wil"
+  },
+  {
+   "id": "narrated-candor",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bin the interest of full disclosure\\b",
+    "\\bi want to be upfront\\b",
+    "\\bto be fully transparent\\b",
+    "\\b(?:rather than bury this|i could have left this out, but)\\b",
+    "\\bsince we'?re being honest\\b"
+   ],
+   "hint": "Announcing one's own disclosure instead of disclosing, or performing self-awareness that costs nothing: 'I want to be upfront:', 'To be full"
+  },
+  {
+   "id": "patronizing-analogy",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "context",
+   "regex": [
+    "\\bthink of it (?:as|like) an?\\b",
+    "\\bless an? \\w+, more an? \\w+\\b"
+   ],
+   "hint": "An unrequested analogy is offered in place of the claim or the instruction: 'Think of it as a Swiss Army knife for your workflow', 'Think of"
+  },
+  {
+   "id": "performed-insight-phrase",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bsit(?:s|ting)? with (?:that|this)(?: for a (?:moment|minute|second|beat))?\\b",
+    "\\b(?:that|this|it)(?:'?s| is| was) not nothing\\b",
+    "\\byou already know the answer\\b",
+    "\\b(?:do not|don'?t) take my word for it\\b",
+    "(?:^|[.!?]\\s|\\n)turns out\\b",
+    "(?:'?s|\\b(?:is|was)) the (?:whole|entire) (?:point|game|ballgame|trick|business model)\\b",
+    "\\bthe only \\w+ that (?:matters|counts)\\b",
+    "\\bis dead[.;,:] long live\\b"
+   ],
+   "hint": "Essayist tics that announce profundity instead of delivering it: 'sit with that for a moment', 'that's not nothing', 'you already know the a"
+  },
+  {
+   "id": "phantom-rebuttal",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\ba tempting (?:option|approach|solution) would be\\b",
+    "\\bone might be tempted to\\b",
+    "\\bdon'?t get me wrong\\b",
+    "\\bi'?m not (?:saying|arguing|claiming) that\\b",
+    "\\bit would be wrong,? though,? to\\b",
+    "\\bthis isn'?t (?:mainly|really) about\\b"
+   ],
+   "hint": "The text argues with an interlocutor it invented"
+  },
+  {
+   "id": "reflexive-ai-humility",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bmost of the above is\\b",
+    "\\bwritten by one of the systems under examination\\b"
+   ],
+   "hint": "The writer flags that it is itself a language model, or that its own claims may be wrong, as a gesture of modesty rather than as a limit on "
+  },
+  {
+   "id": "review-process-deflection",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bunsubstantiated speculation\\b",
+    "\\bplease point out exactly\\b",
+    "\\blet'?s work together to strengthen\\b",
+    "\\bi urge you to focus on constructive dialogue\\b",
+    "\\baddress(?:ed|ing) reviewer feedback\\b",
+    "\\bper reviewer feedback\\b"
+   ],
+   "hint": "When the provenance or quality of a contribution is questioned, the reply argues about the process instead of the text: asking the critic to"
+  },
+  {
+   "id": "scarcity-of-knowledge-claim",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bwhat nobody tells you\\b",
+    "\\bnobody (?:talks|is talking) about\\b",
+    "\\bthe (?:insight|thing|part) (?:that )?(?:everyone|most people)'?s? (?:is )?missing\\b",
+    "\\bthe failure mode nobody'?s naming\\b",
+    "\\bwhat most people get wrong\\b",
+    "\\bthe part (?:that )?most people skip\\b"
+   ],
+   "hint": "The text claims that its point is unnoticed, hidden or suppressed, where no such scarcity exists: 'what nobody tells you about', 'the failur"
+  },
+  {
+   "id": "self-ranking-claim",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bthat'?s the part (?:everyone|most people|nobody|no one) (?:misses|skips|gets wrong)\\b",
+    "\\bwhich is exactly the point\\b",
+    "\\bthe (?:deepest|cleanest|sharpest|most important) (?:point|idea|insight|part) (?:here |in .{0,30})?is\\b",
+    "\\bthat (?:last|third|second) (?:move|bullet|bit|point) is the (?:contrarian|counterintuitive|interesting|real) one\\b",
+    "\\bsupplies the other half\\b"
+   ],
+   "hint": "The writer tells the reader which of their own points is the deep, clever, contrarian or overlooked one instead of letting the reader judge:"
+  },
+  {
+   "id": "significance-signaling",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\bthis matters (?:because|for)\\b",
+    "\\bthat (?:last )?(?:part|point|detail) matters more than it (?:sounds|looks)\\b",
+    "\\bthe key (?:point|takeaway|insight) (?:here )?is\\b",
+    "\\bwhat'?s going on here is\\b",
+    "\\bthis distinction matters\\b"
+   ],
+   "hint": "A clause tells the reader that what follows is significant, or how to read it, instead of letting it be: 'This matters because', 'That reduc"
+  },
+  {
+   "id": "speculative-scenario-opener",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:imagine|picture|envision)(?:\\s*,[^,\\n]{1,30},)?\\s+a\\s+(?:world|future|reality)\\s+(?:where|in which)\\b"
+   ],
+   "hint": "An argument opens with a hypothetical world that lists desirable outcomes instead of making a claim: 'Imagine a world where every deploy is "
+  },
+  {
+   "id": "stacked-hedges",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\b(?:may|might|could) (?:perhaps|possibly|potentially|arguably|conceivably)\\b",
+    "\\bpotentially possibly\\b",
+    "\\bin some cases it may\\b",
+    "\\bthis is an inference\\b",
+    "\\bmay eventually\\b",
+    "\\(\\s?(?:and|or),\\s?(?:increasingly|more precisely|perhaps more importantly),",
+    "\\bwhile this may vary\\b",
+    "\\bgenerally speaking, in most cases\\b",
+    "할 가능성이 있을 수 있다|로 보여질 수 있다|할 수 있을 것으로 보인다",
+    "\\b(?:(?:could|may|might)\\s+(?:(?!not\\b|never\\b|hardly\\b|scarcely\\b|barely\\b)\\w+\\s+)?(?:potentially|eventually|ultimately|possibly|conceivably)|(?:potentially|eventually|ultimately)\\s+(?:could|may|might))\\b",
+    "\\(\\s*(?:and\\s+)?(?:increasingly|notably|importantly|crucially|interestingly|perhaps),?\\s+[^)]{3,60}\\)",
+    "\\(\\s*or\\s+more\\s+(?:precisely|accurately|specifically),?\\s+[^)]{1,60}\\)",
+    "\\(\\s*though\\s+to\\s+be\\s+fair,?\\s+[^)]{1,60}\\)",
+    "\\(\\s*at\\s+least\\s+(?:in\\s+)?(?:theory|principle|part)(?:,?\\s+[^)]{0,60})?\\)"
+   ],
+   "hint": "Two or more qualifiers piled on a single predicate until it says nothing: 'could potentially possibly be argued that .."
+  },
+  {
+   "id": "stakes-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bfundamentally (?:reshape|redefine|transform|change) (?:how|the way)\\b",
+    "\\bthe stakes have never been higher\\b",
+    "\\bnow more than ever\\b",
+    "\\bwill define the (?:next|coming) (?:era|decade|generation)\\b",
+    "\\bshapes? everything that follows\\b",
+    "\\bhow we think about everything\\b"
+   ],
+   "hint": "The importance of the subject or of what is about to be said is raised beyond anything the content supports: 'This will fundamentally reshap"
+  },
+  {
+   "id": "sycophancy",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "\\bgreat question\\b",
+    "\\byou'?re absolutely right\\b",
+    "\\bthat'?s (?:a really |an? )?(?:great|excellent|insightful|brilliant|thoughtful) (?:question|point|observation)\\b",
+    "\\bwhat a (?:thoughtful|great|excellent) (?:question|observation|point)\\b",
+    "\\bi completely understand how you feel\\b",
+    "\\bis (?:correct|right), and (?:it can be made precise|this is its exact form)\\b"
+   ],
+   "hint": "Praise of the requester, their question or their feelings precedes the answer: 'Great question!', 'You're absolutely right', 'That's an exce"
+  },
+  {
+   "id": "bare-noun-phrase-bullets",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?:(?:^|\\n)[ \\t]*[-*•+][ \\t]+(?!(?:[^\\n]*)\\b(?:is|are|was|were|has|have|had|will|would|should|must|do|does|did|can|could|may|might|am|been|being)\\b)(?:[\\w'’/()-]+[ \\t]+){0,5}[\\w'’/()-]+[ \\t]*){5,}"
+   ],
+   "hint": "Five or more consecutive bullet items that are each a short (six words or fewer) adjective-plus-noun phrase with no finite verb, all the sam"
+  },
+  {
+   "id": "canned-profile-page",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "\\bwelcome to my (?:user )?page!",
+    "\\blet(?:'|’)?s (?:connect|collaborate)!",
+    "\\bhappy editing!",
+    "\\bfeel free to leave a message on my\\b",
+    "\\bif you have any suggestions, questions, or would like to collaborate\\b"
+   ],
+   "hint": "A profile or bio page following a fixed template: headings like 'Welcome To My User Page!', 'About Me', 'My Interests', 'My Contributions', "
+  },
+  {
+   "id": "circular-return-ending",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:return|come back|circle back) to where we (?:began|started)\\b"
+   ],
+   "hint": "A closing sentence that loops back to the opening image or question ('And so we return to where we began') as a substitute for an ending tha"
+  },
+  {
+   "id": "colon-subtitle-headings",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|\\n)#{1,6}[ \\t]+[^:\\n]{2,60}:[ \\t]+[^\\n]{3,80}(?:\\n|$)",
+    "(?:^|\\n)#{1,6}[ \\t]+[^:\\n]{2,60}:[ \\t]+from [^\\n]{1,40}\\bto\\b"
+   ],
+   "hint": "Every heading takes the 'Noun: subtitle' shape, or its transformation variant 'X: from A to B' ('X: A에서 B로')"
+  },
+  {
+   "id": "concede-salvage-rebut-template",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "\\bthat(?:'|’)?s not all it(?:'|’)?s doing\\b",
+    "\\bthe surplus is what you(?:'|’)?re pointing at\\b"
+   ],
+   "hint": "When a user points to an error and the model agrees, the first paragraph of the reply follows a fixed three-beat shape: admit the user is ri"
+  },
+  {
+   "id": "despite-challenges-outlook",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "always",
+   "regex": [
+    "\\bdespite (?:its|their|his|her|the|this|these) [^.\\n]{0,80}?\\bfaces? (?:several |numerous |many |new |significant |some |a number of )?challenges\\b",
+    "\\bdespite these challenges\\b",
+    "\\bcontinues? to thrive\\b",
+    "\\bfaces? (?:several|numerous|many) challenges,? including\\b",
+    "\\bmust be addressed for broader adoption\\b",
+    "(?:#{1,6}|={2,4})\\s*(?:challenges and (?:legacy|future directions|opportunities)|future (?:outlook|prospects))\\b"
+   ],
+   "hint": "A stock closing block, often under a heading like 'Challenges and Future Directions' or 'Future Outlook', shaped as two beats: 'Despite its "
+  },
+  {
+   "id": "empty-parent-headings",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|\\n)(#{2,5})[ \\t]+[^\\n]+\\n[ \\t]*\\n*[ \\t]*\\1#[ \\t]+",
+    "(?:^|\\n)(={1,4})[ \\t]*[^=\\n]+?[ \\t]*\\1[ \\t]*\\n[ \\t]*\\n*[ \\t]*\\1=[ \\t]*[^=\\n]+?[ \\t]*\\1="
+   ],
+   "hint": "A heading whose entire content is lower-level headings, with no prose of its own: an outline node rendered as a section ('= Main Characters "
+  },
+  {
+   "id": "five-paragraph-essay",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|\\n)[ \\t]*먼저[,，\\s][\\s\\S]{5,1500}?\\n[ \\t]*반면[,，\\s][\\s\\S]{5,1500}?\\n[ \\t]*결국[,，\\s]"
+   ],
+   "hint": "Intro plus three body sections plus closing recap, imposed at any length, even on a 100-word answer"
+  },
+  {
+   "id": "formulaic-section-headers",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "(?:#{1,6}|={2,4})[ \\t]*[^\\n]{0,4}?(?:key takeaways|key points|key highlights|key statistics|key figures|questions to consider|awards and recognition)\\b",
+    "(?:#{1,6}|={2,4})[ \\t]*(?:overview|introduction|summary|conclusion|body)[ \\t]*(?:#*|=*)[ \\t]*(?:\\n|$)",
+    "(?:#{1,6}|={2,4})[ \\t]*(?:도입|본론|결론)[ \\t]*(?:#*|=*)[ \\t]*(?:\\n|$)"
+   ],
+   "hint": "Headings that name a template slot rather than the content: 'Introduction', 'Overview', 'Body', 'Summary', 'Conclusion' (Korean 도입 / 본론 / 결론"
+  },
+  {
+   "id": "fractal-summaries",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "\\bin this (?:section|chapter|post|article),? (?:we|i|you)(?:'|’)?(?:ll| will) (?:explore|look at|cover|discuss|examine|walk through|dive into)\\b",
+    "\\bthis section (?:covers|deals with|explores|discusses|examines|will cover|will explore)\\b",
+    "\\bas we(?:'|’)?ve seen (?:in (?:this|the previous|the last) section|above|so far)\\b",
+    "\\bin the previous section,? we\\b",
+    "이 섹션에서는"
+   ],
+   "hint": "'Tell them what you will tell them, tell them, tell them what you told them' applied at every level: a preview sentence under each heading ("
+  },
+  {
+   "id": "heading-restated-below",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "always",
+   "regex": [
+    "(?:^|\\n)#{2,6}[ \\t]+([a-z][\\w-]{3,20})\\b[^\\n]{0,40}\\n\\s*\\n[ \\t]*[^\\n]{0,15}\\b\\1\\b[^\\n]{0,60}(?:\\n|$)"
+   ],
+   "hint": "A heading is followed by a one-line paragraph that only restates it ('## Performance' then 'Speed matters.') before the real content begins"
+  },
+  {
+   "id": "inline-header-lists",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "always",
+   "regex": [
+    "(?:^|\\n)[ \\t]*(?:[-*•+]|\\d+[.)])[ \\t]+(?:\\*\\*|__)[^*_\\n]{1,80}?(?::(?:\\*\\*|__)|(?:\\*\\*|__)[ \\t]*:)",
+    "(?:^|\\n)[ \\t]*[*#]+[ \\t]*'''[^'\\n]{1,80}?(?::'''|'''[ \\t]*:)",
+    "\\bkey highlights:[ \\t]*(?:\\n|$)"
+   ],
+   "hint": "A vertical list where every item opens with a short bold (or wiki-bold) label, a colon, then a sentence that often restates the label ('**Pe"
+  },
+  {
+   "id": "listicle-in-prose",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "cluster",
+   "regex": [
+    "\\bthe (?:first|second) ([a-z]+) is\\b[\\s\\S]{10,800}?\\bthe (?:second|third) \\1 is\\b[\\s\\S]{10,800}?\\bthe (?:third|fourth) \\1 is\\b",
+    "(?:^|[.!?]\\s+)first(?:ly)?,[\\s\\S]{5,600}?[.!?]\\s+second(?:ly)?,[\\s\\S]{5,600}?[.!?]\\s+third(?:ly)?,[\\s\\S]{5,600}?[.!?]\\s+fourth(?:ly)?,",
+    "첫째[\\s\\S]{1,400}?둘째[\\s\\S]{1,400}?셋째[\\s\\S]{1,400}?넷째",
+    "\\b1\\)\\s[^\\n]{3,200}?\\b2\\)\\s[^\\n]{3,200}?\\b3\\)\\s",
+    "\\b1\\)[^\\n]{3,200}\\b2\\)[^\\n]{3,200}\\b3\\)",
+    "\\(1\\)[^\\n]{3,200}\\(2\\)[^\\n]{3,200}\\(3\\)"
+   ],
+   "hint": "Numbered points disguised as running prose: consecutive paragraphs or sentences each opened with an ordinal ('The first wall is.."
+  },
+  {
+   "id": "numbered-list-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "context",
+   "regex": [
+    "\\b(?:three|four|five|six|seven|eight|nine|ten|\\d{1,2}) (?:key )?(?:takeaways|things (?:to know|you (?:need|should) know)|lessons learned)\\b",
+    "\\bhere are (?:the )?(?:top )?(?:three|four|five|six|seven|eight|nine|ten|\\d{1,2})\\b"
+   ],
+   "hint": "A count-headlined list ('Three key takeaways', 'Five things to know', 'Here are the top seven') chosen because numbered lists are structural"
+  },
+  {
+   "id": "preamble-before-the-point",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "always",
+   "regex": [
+    "\\bin today(?:'|’)?s (?:fast-paced|rapidly[- ]evolving|ever[- ]evolving|ever[- ]changing|digital|modern|competitive|dynamic|hyper-connected)[\\w ,-]{0,30}(?:world|landscape|era|age|economy|environment|market|society)\\b",
+    "\\bin the (?:rapidly |ever-)?(?:evolving|changing) (?:world|landscape|field) of\\b"
+   ],
+   "hint": "The piece opens with broad context before it says anything specific: a sweeping scene-setting sentence ('In today's fast-paced world...', 'I"
+  },
+  {
+   "id": "signposted-conclusion",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "always",
+   "regex": [
+    "\\bin conclusion\\b",
+    "\\bin summary\\b",
+    "\\bto (?:summarize|summarise|sum up)\\b",
+    "\\bin short[,…]",
+    "\\bkortom\\b",
+    "\\bat the end of the day\\b",
+    "(?:^|[.!?]\\s+|\\n\\s*)(?:overall|ultimately),",
+    "(?:^|\\n)[ \\t]*(?:\\*\\*|''')?conclusion(?:\\*\\*|''')?:[ \\t]",
+    "\\b(?:in\\s+conclusion|in\\s+summary|to\\s+summari[sz]e|to\\s+sum\\s+up|in\\s+short)\\b",
+    "(?:^|[.!?]\\s+|\\n)\\s*(?:ultimately|overall)\\s*,",
+    "결론적으로|요약하면|정리하자면|종합하면|이를\\s*통해"
+   ],
+   "hint": "A closing paragraph announced by a stock summarising marker ('In conclusion', 'In summary', 'To sum up', 'In short', 'Kortom', 'Overall', 'U"
+  },
+  {
+   "id": "title-heading-duplicate",
+   "lang": [
+    "en"
+   ],
+   "category": "structure",
+   "severity": "context",
+   "regex": [
+    "\\A\\s{0,20}=[ \\t]*'''[^\\n]{1,150}?'''[ \\t]*="
+   ],
+   "hint": "The output opens with a level-1 heading (often bold or linked) that repeats the document or article title before any body text, because the "
+  },
+  {
+   "id": "agentless-passive-subjectless-fragment",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "context",
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)no\\s+(?:(?!\\b(?:is|are|was|were|will|would|has|have)\\b)[a-z]+\\s+){0,2}(?:needed|required)\\.",
+    "\\b(?:are|is)\\s+(?:preserved|handled|managed|saved|synced|persisted|tracked)\\s+automatically\\b",
+    "\\bsupport\\s+for\\s+[^.!?\\n]{2,40}\\s+(?:was|has\\s+been)\\s+added\\b"
+   ],
+   "hint": "The actor is hidden or the subject dropped in the clipped shape models use to compress feature descriptions: agentless passives ('The result"
+  },
+  {
+   "id": "cleft-dummy-noun",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:what(?:'s|’s|\\s+is)\\s+(?:really\\s+|truly\\s+)?(?:important|notable|striking|interesting|crucial|key|remarkable|telling)\\s+(?:here\\s+)?is|what\\s+(?:matters|counts)\\s+(?:most\\s+|here\\s+)?is)\\b",
+    "\\bthe\\s+(?:key|takeaway|lesson|upshot|bottom\\s+line|real\\s+question|crux)\\s+(?:here\\s+)?is\\s+that\\b",
+    "\\bwhich\\s+is\\s+to\\s+say\\b",
+    "주목할\\s*점은|중요한\\s*점은|라는\\s*점에\\s*있다|다는\\s*것이다|다는\\s*뜻이다|하는\\s*이유다"
+   ],
+   "hint": "A claim is foregrounded through a cleft or a dummy noun instead of being stated: 'What matters is X', 'What's important here is', 'The key i"
+  },
+  {
+   "id": "copula-avoidance",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:serves|serve|serving)\\s+as\\s+(?:a|an|the)\\s+(?:[\\w'’]+\\s+){0,2}(?:hub|reminder|testament|platform|space|gateway|bridge|foundation|catalyst|cornerstone|centerpiece|centrepiece|symbol|backbone)\\b",
+    "\\bstands\\s+as\\s+(?:a|an)\\s+(?:\\w+\\s+)?(?:testament|reminder|symbol|beacon|monument|example)\\b",
+    "\\bboasts\\s+(?:a|an|over|more\\s+than|some|\\d)",
+    "\\bholds\\s+the\\s+distinction\\s+of\\b",
+    "\\b(?:functions|operates)\\s+as\\b",
+    "\\b(?:marks|represents)\\s+(?:a|an|the)\\s+(?:pivotal|significant|new|major|turning|important|crucial|fundamental|key|notable)\\s+(?:moment|shift|milestone|step|departure|change|advance|turning|point|chapter)\\b",
+    "\\bventured\\s+into\\s+(?:politics|business|acting|music)\\s+as\\b"
+   ],
+   "hint": "Plain 'is', 'are' or 'has' is replaced by a longer stand-in: 'serves as', 'stands as', 'marks', 'functions as', 'operates as', 'acts as', 'r"
+  },
+  {
+   "id": "false-range",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "\\bfrom\\s+(?:the\\s+)?[a-z]{4,}(?:\\s+[a-z]{4,})?\\s+to\\s+(?:the\\s+)?[a-z]{4,}(?:\\s+[a-z]{4,})?\\s+to\\s+(?:the\\s+)?[a-z]{4,}",
+    "\\bfrom\\s+ancient\\s+\\w+\\s+to\\s+modern\\b",
+    "\\bfrom\\s+the\\s+(?:singularity|big\\s+bang)\\b",
+    "\\bfrom\\s+[^,.;:\\n]{2,40}\\s+to\\s+[^,.;:\\n]{2,40},\\s+from\\s+[^,.;:\\n]{2,40}\\s+to\\b"
+   ],
+   "hint": "'From X to Y' is used where X and Y are not endpoints of any real scale, so the phrase implies a span with a meaningful middle that does not"
+  },
+  {
+   "id": "inanimate-agent",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "\\b(?:the\\s+)?(?:data|codebase|code|research|evidence|technology|market|numbers|architecture|era|moment|history|science|future|industry)\\s+(?:tells?|asks?|invites?|calls?|demands?|wants?|reminds?|urges?|teaches|begs)\\s+(?:us|you|me)\\b",
+    "\\bthe\\s+(?:decision|answer|solution|consensus|idea|strategy)\\s+emerged\\b",
+    "\\b(?:codebase|code|data|design|architecture|framework|api|interface|text|prose|essay|landscape)\\s+invites\\s+(?:you|us|the\\s+reader)\\s+to\\b"
+   ],
+   "hint": "An abstraction or object is made the grammatical subject of a verb only people perform: 'the decision emerged', 'the data tells us', 'the co"
+  },
+  {
+   "id": "invented-contrast-pair",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "context",
+   "regex": [
+    "\\b(?:(?:false|mere|superficial|hollow|empty)\\s+\\w+\\s+rather\\s+than\\s+(?:genuine|true|real|actual|authentic)|(?:genuine|true|real|actual|authentic)\\s+\\w+\\s+rather\\s+than\\s+(?:mere|false|superficial|hollow|empty))\\s+\\w+\\b"
+   ],
+   "hint": "A contrast is forced into symmetry where one half is a legitimate term of art and the other a phantom counterpart invented to balance the se"
+  },
+  {
+   "id": "litotes-confidence",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "context",
+   "regex": [
+    "\\b(?:is|are|was|were)\\s+not\\s+optional\\b",
+    "\\bnot\\s+(?:difficult|hard)\\s+to\\s+(?:specify|imagine|see\\s+why)\\b"
+   ],
+   "hint": "A claim is made by negating its opposite ('not difficult', 'not optional') so that it is presupposed rather than asserted or argued, which p"
+  },
+  {
+   "id": "mirrored-clause-symmetry",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:a|an|the)\\s+\\w+(?:\\s+\\w+)?\\s+is\\s+(?:a|an)\\s+([^.!?\\n]{3,40})\\.\\s+(?:a|an|the)\\s+\\w+(?:\\s+\\w+)?\\s+is\\s+(?:a|an)\\s+\\1\\."
+   ],
+   "hint": "Two or more clauses or sentences are built on one grammatical frame with only a couple of slots swapped, set side by side to convey contrast"
+  },
+  {
+   "id": "negation-countdown",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)no\\s+(?!matter\\b|one\\b|doubt\\b|longer\\b|more\\b|less\\b|way\\b|such\\b|other\\b)[a-z'’-]+(?:\\s+[a-z'’-]+)?,\\s*no\\s+[a-z'’-]+(?:\\s+[a-z'’-]+)?,\\s*(?:and\\s+|or\\s+|just\\s+)?no\\s+[a-z'’-]+",
+    "(?:^|[.!?]\\s+|\\n)(?:not|no)\\s+(?:a\\s+|an\\s+|the\\s+)?[a-z'’-]+(?:\\s+[a-z'’-]+){0,3}\\.\\s+(?:not|no)\\s+(?:a\\s+|an\\s+|the\\s+)?[a-z'’-]+(?:\\s+[a-z'’-]+){0,3}\\.\\s+(?:just|only|simply|a|an|the)\\s+",
+    "\\b(?:did\\s+not|didn't|didn’t)\\s+[a-z]+[^,.;!?\\n]{0,20},\\s*(?:did\\s+not|didn't|didn’t)\\s+[a-z]+",
+    "\\b(?:do\\s+not|don't|don’t)\\s+(?:just\\s+)?(\\w+)\\s+it\\b[^.!?\\n]{0,60}[.!?;:,][\\s'\"”’]*(?:just\\s+)?\\1\\s+it\\b",
+    "\\bit(?:'s|’s|\\s+is)\\s+not\\s+(?:the\\s+|a\\s+|an\\s+)?[^.!?\\n]{1,30}\\.\\s+it(?:'s|’s|\\s+is)\\s+not\\s+(?:the\\s+|a\\s+|an\\s+)?[^.!?\\n]{1,30}\\.\\s+it(?:'s|’s|\\s+is)\\b",
+    "(?:^|[.!?]\\s+|\\n)geen\\s+[^.!?\\n]{1,30}\\.\\s+geen\\s+[^.!?\\n]{1,30}\\.\\s+(?:gewoon|alleen|maar)\\b"
+   ],
+   "hint": "Two or more negated items are stacked before the affirmed answer, performing decisiveness by clearing away options nobody proposed"
+  },
+  {
+   "id": "negative-parallelism",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "\\b(?:it|this|that|there)(?:'s|’s| is|'re|’re| are)\\s+not\\s+(?:just|only|merely|simply|about)\\b",
+    "\\b(?:isn't|isn’t|aren't|aren’t|wasn't|wasn’t)\\s+(?:just|only|merely|simply|about)\\b",
+    "\\bnot\\s+because\\s+[^.!?\\n]{2,60}?,?\\s+but\\s+because\\b",
+    "\\b(?:the\\s+)?(?:question|problem|issue|point|answer|goal|challenge|real\\s+story|headline|hard\\s+part)\\s+(?:isn't|isn’t|is\\s+not|wasn't|wasn’t|was\\s+not)\\b[^.!?\\n]{0,80}[.;]\\s+(?:the\\s+)?(?:question|problem|issue|point|answer|goal|challenge|real\\s+story|it)(?:'s|’s|\\s+is)\\b",
+    "\\bthat(?:'s|’s|\\s+is)\\s+not\\s+[^.!?\\n]{1,40}\\.\\s+that(?:'s|’s|\\s+is)\\s+(?!not\\b)",
+    "\\b(?:isn't|isn’t|aren't|aren’t|wasn't|wasn’t|is\\s+not|are\\s+not)\\s+(?:just\\s+|merely\\s+|only\\s+|about\\s+)?[^.!?\\n;]{1,40}?\\s*(?:—|–|--|;)\\s*(?:it's|it’s|it\\s+is|they're|they’re|they\\s+are)\\b",
+    "\\b(?:het|dit|dat)\\s+is\\s+(?:niet|geen)\\s+[^.!?\\n]{1,40},\\s+(?:het|dit|dat)\\s+is\\b",
+    "\\bniet\\s+omdat\\b[^.!?\\n]{2,60}\\bmaar\\s+omdat\\b"
+   ],
+   "hint": "A point is staged as the correction of a claim nobody made: a weaker or literal framing is denied and the real one asserted in the same brea"
+  },
+  {
+   "id": "nominalization-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:has|have|had|having)\\s+the\\s+(?:ability|capability|capacity)\\s+to\\b",
+    "\\b(?:make|made|makes|making)\\s+(?:a|the)\\s+(?:decision|determination)\\s+to\\b",
+    "\\bthe\\s+(?:implementation|utilization|utilisation|optimization|optimisation|facilitation|operationalization)\\s+of\\b",
+    "\\b\\w{4,}(?:tion|ment|ness)\\s+of\\s+(?:the\\s+)?\\w+(?:tion|ment|ness)\\b",
+    "[가-힣]{1,4}적\\s*[가-힣]{1,6}.{0,40}?[가-힣]{1,4}적\\s*[가-힣]{1,6}",
+    "[가-힣]{2,}\\s*능력"
+   ],
+   "hint": "A single direct verb or adjective is replaced by a verb plus abstract noun or a modal periphrasis: 'made a decision' for 'decided', 'has the"
+  },
+  {
+   "id": "orphaned-demonstrative",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)this\\s+(?:highlights|underscores|demonstrates|illustrates|reinforces|signals|speaks\\s+to|matters\\s+because)\\b"
+   ],
+   "hint": "'This', 'that' or 'these' opens a sentence as its subject with no clear referent, typically 'This highlights ...' or 'This underscores ...' "
+  },
+  {
+   "id": "participial-tail",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    ",\\s+(?:highlighting|underscoring|emphasizing|emphasising|showcasing|symbolizing|symbolising|demonstrating|illustrating|reflecting|marking|signaling|signalling|cementing|solidifying|reinforcing|fostering|cultivating|encompassing|contributing\\s+to|ensuring|enhancing|embodying)\\s+(?:the|its|their|his|her|a|an|how|this|that|both)\\b",
+    "\\b(?:highlights|underscores|emphasizes|emphasises|reflects|showcases)\\s+(?:the|its|their)\\s+(?:\\w+\\s+){0,2}(?:importance|significance|need|legacy|role|commitment|relevance|trend|shift|dedication)\\b"
+   ],
+   "hint": "A trailing present-participle clause is bolted onto a plain fact to supply an interpretation the source does not provide: significance ('und"
+  },
+  {
+   "id": "prescriptive-agentless-necessity",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:there\\s+is\\s+a\\s+(?:clear\\s+|pressing\\s+|growing\\s+|real\\s+|urgent\\s+)?need\\s+(?:to|for)|(?:must|needs?\\s+to|should)\\s+be\\s+(?:addressed|prioritized|prioritised|taken\\s+into\\s+account|carefully\\s+considered))\\b",
+    "\\b(?:innovation|change|action|reform|investment|collaboration)\\s+is\\s+(?:needed|required|essential)\\b",
+    "이\\s*필요하다|가\\s*필요하다|할\\s*필요가\\s*있다",
+    "[가-힣]{2,}[이가]\\s*필요하다",
+    "\\b(?:innovation|change|transformation|collaboration|awareness|investment|reform|leadership)\\s+is\\s+needed\\b"
+   ],
+   "hint": "Deontic statements pile up with no actor named: Korean ~해야 한다 (must) / ~할 필요가 있다 (there is a need to) five or more times, and the abstract-n"
+  },
+  {
+   "id": "rhetorical-self-question",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)the\\s+(?:result|catch|kicker|upshot|takeaway|twist|verdict|lesson|bottom\\s+line|good\\s+news|bad\\s+news|(?:best|worst|scary|hard|crazy|wild|sad|funny|strange)\\s+part)\\?",
+    "\\b(?:so\\s+)?why\\s+(?:should|does)\\s+(?:you|this|it|that|any\\s+of\\s+this)\\s+(?:care|matter)\\?",
+    "\\bone\\s+might\\s+(?:wonder|ask)\\b",
+    "\\?\\s+(?:absolutely|exactly|precisely|also\\s+yes|simply\\s+\\w+|honestly\\?)[.!]",
+    "\\bwhat\\s+does\\s+this\\s+mean\\s+for\\b",
+    "\\?\\s+(?:where|which|what|how|why|who)\\s+[^?.!\\n]{1,40}\\?\\s+(?:where|which|what|how|why|who)\\s+[^?.!\\n]{1,40}\\?",
+    "\\bbut what does this mean for\\b",
+    "\\bso why should you care\\b",
+    "\\bwhat if i told you\\b",
+    "(?:^|[.!?]\\s|\\n)\\s*think about it[:.]",
+    "(?:^|[.!?]\\s|\\n)\\s*plot twist[:.]"
+   ],
+   "hint": "The writer poses a question to themself and answers it, or fires questions as a stalling device"
+  },
+  {
+   "id": "rule-of-three",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)[a-z]+(?:er)?,\\s+[a-z]+(?:er)?,\\s+(?:and\\s+)?[a-z]+(?:er)?\\.(?:\\s|$)",
+    "\\b(?:innovation|inspiration|insights?|creativity|collaboration|efficiency|excellence|growth|impact|transparency|resilience|empowerment),\\s+(?:innovation|inspiration|insights?|creativity|collaboration|efficiency|excellence|growth|impact|transparency|resilience|empowerment),?\\s+and\\s+(?:\\w+\\s+)?(?:innovation|inspiration|insights?|creativity|collaboration|efficiency|excellence|growth|impact|transparency|resilience|empowerment)\\b",
+    "\\b(?:faster|deeper|better|stronger|smarter|cheaper)\\s+\\w+(?:\\s+\\w+)?,\\s+(?:faster|deeper|better|stronger|smarter|cheaper)\\s+\\w+(?:\\s+\\w+)?,\\s+and\\s+a?\\s*\\w+"
+   ],
+   "hint": "Ideas are padded or trimmed to exactly three items so the sentence sounds complete: three adjectives ('faster, cheaper, smarter'), three abs"
+  },
+  {
+   "id": "same-opener-runs",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "context",
+   "regex": [
+    "\\b(they|we|you|maybe|it|this|there)\\s+(\\w+)\\b[^.!?\\n]{0,60}\\.\\s+\\1\\s+\\2\\b[^.!?\\n]{0,60}\\.\\s+\\1\\s+\\2\\b"
+   ],
+   "hint": "Three or more consecutive sentences open on the same word or words ('They assume that .."
+  },
+  {
+   "id": "staccato-fragments",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)(?!esq\\b|mrs\\b|etc\\b)[a-z]{3,}\\.\\s+(?!esq\\b|mrs\\b|etc\\b)[a-z]{3,}\\.(?:\\s+[a-z]{3,}\\.)?(?:\\s|$)",
+    "\\.\\s+and\\s+[^.!?\\n]{1,25}\\.\\s+and\\s+[^.!?\\n]{1,25}\\.",
+    "\\bthat(?:'s|’s)\\s+it\\.\\s+that(?:'s|’s)\\s+the\\s+whole\\s+(?:thing|point|story|trick)\\b",
+    "(?:^|[.!?]\\s+|\\n)no\\s+[a-z]+(?:\\s+[a-z]+)?\\.\\s+(?:just|only)\\s+[a-z]+(?:\\s+[a-z]+)?\\.",
+    "(?:(?<=[.!?]\\s)(?:[\\w'’-]+\\s){0,3}[\\w'’-]+[.!?](?:\\s|$)){3}"
+   ],
+   "hint": "Two or more short verbless fragments are set back to back as dramatic beats: the paired fragment ('Fast"
+  },
+  {
+   "id": "stranded-auxiliary-contrast",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    ";\\s+(?:the|this|that|it|they|we|you|others|some|its)\\s+\\w+(?:\\s+\\w+)?\\s+(?:didn't|didn’t|did\\s+not|doesn't|doesn’t|does\\s+not|isn't|isn’t|won't|won’t|wasn't|wasn’t|don't|don’t|aren't|aren’t|can't|can’t|couldn't|couldn’t)\\.",
+    "\\.\\s+(?:[a-z]+\\s+){1,2}(?:didn't|didn’t|doesn't|doesn’t|isn't|isn’t|wasn't|wasn’t|won't|won’t|couldn't|couldn’t|aren't|aren’t|weren't|weren’t|hasn't|hasn’t|haven't|haven’t)\\."
+   ],
+   "hint": "A reversal lands on a bare auxiliary: 'The tool died; the data didn't.', 'Reading mostly passed"
+  },
+  {
+   "id": "synonym-doubling",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:role\\s+and\\s+function|function\\s+and\\s+role|meaning\\s+and\\s+value|new\\s+and\\s+innovative|important\\s+and\\s+(?:core|essential|vital|key|central)|continuous\\s+and\\s+steady|steady\\s+and\\s+continuous)\\b",
+    "역할과\\s*기능|의미와\\s*가치|새롭고\\s*혁신적인|중요하고\\s*핵심적인|지속적이고\\s*꾸준한",
+    "\\b(?:important|key|critical|vital|essential|crucial)\\s+and\\s+(?:central|key|critical|vital|essential|crucial|fundamental|core)\\b|\\brole\\s+and\\s+function\\b",
+    "중요하고\\s*핵심적인|역할과\\s*기능"
+   ],
+   "hint": "Two near-synonymous modifiers or abstract nouns are coordinated on one head so the phrase says the same thing twice: Korean '중요하고 핵심적인 역할' ("
+  },
+  {
+   "id": "tailing-negation",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    ",\\s+no\\s+(?:guessing|setup|fuss|strings\\s+attached|surprises|hassle|hidden\\s+fees|excuses|catch|config(?:uration)?|questions\\s+asked|exceptions)\\.",
+    ",\\s+and\\s+(?:no\\s+more|nothing\\s+more|nothing\\s+else|nothing\\s+less)\\."
+   ],
+   "hint": "A sentence ends with a comma and a terse negative tail in place of a full clause"
+  },
+  {
+   "id": "template-phrase",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "always",
+   "regex": [
+    "\\bwhether\\s+you(?:'re|’re|\\s+are)\\s+(?:a|an)\\s+\\w+(?:\\s+\\w+)?\\s+or\\s+(?:a|an)\\s+\\w+",
+    "\\ba\\s+(?:significant|major|important|big|crucial|key|giant|huge)\\s+step\\s+(?:towards?|forward)\\b",
+    "\\bi\\s+recently\\s+had\\s+the\\s+pleasure\\s+of\\b",
+    "\\b(?:is|as)\\s+the\\s+(?:uber|netflix|airbnb|spotify|amazon|google|tesla|linux|whatsapp|slack|tinder|github|swiss\\s+army\\s+knife)\\s+(?:of|for)\\b",
+    "\\ba\\s+\\w+\\s+step\\s+(?:towards?|forward)\\b"
+   ],
+   "hint": "A fill-in-the-blank sentence frame with the nouns swapped in: the false-breadth audience pair 'Whether you're a startup founder or an enterp"
+  },
+  {
+   "id": "abstract-subject-all-purpose-verb",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?:보여준다|제공한다|가져온다|가져다준다|시사한다)(?![가-힣])",
+    "\\bthe (?:data|research|evidence|study|report|analysis) (?:suggests|shows|indicates|reveals|tells us)\\b"
+   ],
+   "hint": "Three sub-mechanisms the sources file together: an abstract or inanimate subject with a colourless verb, 'X shows / provides / brings' (보여준다"
+  },
+  {
+   "id": "agentive-by-passive",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "에 의(?:해|하여)(?![가-힣])",
+    "에 의한(?![가-힣])"
+   ],
+   "hint": "The English agentive passive with a named agent ('generated by AI', 'published by the ministry') rendered as X에 의해/에 의하여 plus a passive verb"
+  },
+  {
+   "id": "beyond-mere-escalation",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "always",
+   "regex": [
+    "단순한 [^\\n.]{1,20}[을를] 넘어",
+    "\\b(?:more than just|beyond (?:a )?mere)\\b",
+    "\\bmeer dan (?:alleen|zomaar)\\b"
+   ],
+   "hint": "Mid-sentence escalation that upgrades a thing by dismissing a smaller version of it: '단순한 X를 넘어 Y', a calque of English 'beyond mere X' and "
+  },
+  {
+   "id": "embedded-english-quotation",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "context",
+   "regex": [
+    "[\"“”‘’][a-z][a-z ,'’\\-]{25,}[.?!]?[\"“”‘’]\\s*(?:라고|이라고|라는|[가-힣])"
+   ],
+   "hint": "A full English sentence is pasted verbatim into the body as a quotation and immediately followed by its translation, so the reader gets the "
+  },
+  {
+   "id": "light-verb-literalism",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "always",
+   "regex": [
+    "[을를] 가지고 있",
+    "\\b(?:(?:maakt?|maken|gemaakt)\\s+(?:een|de|het)\\s+(?:beslissing|besluit)|(?:een|de|het)\\s+(?:beslissing|besluit)\\s+(?:maken|maakt|gemaakt)|impact\\s+(?:maken|maakt|gemaakt))\\b"
+   ],
+   "hint": "An English light-verb construction ('have strong competitiveness', 'make a decision', 'take action', 'give support') is carried over word fo"
+  },
+  {
+   "id": "parenthetical-english-gloss",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "[가-힣][^()\\n]{0,20}\\(([a-z][a-z .\\-]{2,30})\\)[^()]{1,400}[가-힣][^()\\n]{0,20}\\(\\1\\)"
+   ],
+   "hint": "A term is followed by its English original in parentheses every time it appears, so 주권 AI(Sovereign AI) is followed later by 주권 AI(Sovereign"
+  },
+  {
+   "id": "untranslated-marketing-loanword",
+   "lang": [
+    "en"
+   ],
+   "category": "translationese",
+   "severity": "cluster",
+   "regex": [
+    "(?<![a-z])(?:seamless|robust|leverage|scalable|synergy|holistic|impactful|actionable)(?![a-z])(?=[^a-zA-Z]{0,12}[가-힣ぁ-んァ-ン一-鿿])"
+   ],
+   "hint": "English marketing adjectives and verbs (seamless, robust, leverage, scalable, synergy, holistic) dropped untranslated and unexplained into a"
+  },
+  {
+   "id": "additive-transition-pileup",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|(?<=[.!?]\\s)|(?<=\\n))\\s*(?:moreover|furthermore|additionally|consequently)\\s*,",
+    "\\b(?:moreover|furthermore)\\b",
+    "(?:^|[.!?]\\s+|\\n)\\s*(?:또한|따라서|즉|나아가|아울러|게다가|더욱이|하지만|그러나)",
+    "(?:^|[.!?]\\s+|\\n)(?:furthermore|moreover|additionally|therefore|thus|however|in\\s+addition|consequently),\\s[^.!?\\n]+[.!?]\\s+(?:furthermore|moreover|additionally|therefore|thus|however|in\\s+addition|consequently),\\s",
+    "(?:^|[.!?]\\s+|\\n)(?:또한|따라서|나아가|아울러|게다가|더욱이),?\\s[^.!?\\n]+[.!?]\\s+(?:또한|따라서|나아가|아울러|게다가|더욱이),?\\s"
+   ],
+   "hint": "Formal additive connectives used as paragraph glue, stacked across consecutive sentences: Moreover, Furthermore, Additionally, Consequently"
+  },
+  {
+   "id": "ai-poetry-register",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:whispers?|whispering|echoes|echoing|tether|threadbare|ember|liminal)\\b",
+    "\\b(?:ache|hollow|linger|fragile|fractured|cradle|veil|ember|threadbare|tether)\\b[^.!?]{0,60}?\\b(?:ache|hollow|linger|fragile|fractured|cradle|veil|ember|threadbare|tether)\\b"
+   ],
+   "hint": "The narrow lexicon generated verse returns to compulsively: a signature set (heart, embrace, echo, echoes, whisper, whispers) and an emotive"
+  },
+  {
+   "id": "ai-vocabulary-lexicon",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|underscor(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|comprehensive|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
+    "\\b(?:best\\s+practices|thought\\s+leader(?:ship|s)?|deep\\s+dive|dives?\\s+deep\\s+into|at\\s+its\\s+core|testament\\s+to|in\\s+the\\s+realms?\\s+of|watershed\\s+moment|marking\\s+a\\s+pivotal\\s+moment|only\\s+time\\s+will\\s+tell|the\\s+future\\s+looks\\s+bright|shed(?:s|ding)?\\s+light\\s+on|paves?\\s+the\\s+way|unpack(?:s|ing)?)\\b",
+    "\\b(?:ever[- ]evolving|evolving|changing|shifting|competitive|digital|technological|business|marketing|political|regulatory|current|modern|broader|complex|cultural|culinary|startup|crypto)\\s+landscape\\b",
+    "\\bdespite\\s+(?:the\\s+)?challenges[^.]{0,80}?continues?\\s+to\\s+thrive\\b"
+   ],
+   "hint": "A closed list of words whose corpus frequency jumped abruptly after November 2022 and which LLMs reach for regardless of fit"
+  },
+  {
+   "id": "boilerplate-phrase-stack",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\bemerging\\s+(?:sector|space|category|industry)\\b",
+    "\\bthe\\s+(?:integration|intersection)\\s+of\\b",
+    "\\bcommunity-?driven\\b|\\blong-?term\\s+sustainability\\b|\\buser\\s+engagement\\b|\\bdecentrali[sz]ed\\s+compute\\b|\\btokeni[sz]ed\\s+incentive\\s+structures?\\b|\\bdesigned\\s+for\\s+long-?term\\b|\\b(?:sustainable\\s+)?reward\\s+emissions?\\b"
+   ],
+   "hint": "Two- and three-word phrases that are individually unobjectionable but stack heavily in generated content, worst in crypto, web3, DePIN and A"
+  },
+  {
+   "id": "canned-stock-sentence",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bi\\s+hope\\s+this\\s+(?:e-?mail|message|note)\\s+finds\\s+you\\s+well\\b",
+    "\\b(?:i\\s+)?(?:recently\\s+)?had\\s+the\\s+pleasure\\s+of\\b",
+    "\\bmaintains?\\s+(?:an?\\s+)?(?:active|strong)\\s+(?:social\\s+media|digital|online)\\s+presence\\b"
+   ],
+   "hint": "A whole prefabricated sentence that acknowledges nothing specific: I hope this email finds you well; I recently had the pleasure of X-ing; t"
+  },
+  {
+   "id": "confidence-calibration-adverb",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "(?:^|(?<=[.!?]\\s)|(?<=\\n))\\s*(?:notably|importantly|interestingly|surprisingly|crucially|undoubtedly|certainly|significantly)\\s*,",
+    "\\bwithout\\s+a\\s+doubt\\b"
+   ],
+   "hint": "Sentence adverbs that tell the reader how to feel about a fact instead of letting the fact carry itself: Notably, Importantly, Interestingly"
+  },
+  {
+   "id": "degree-adverb-padding",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "\\b(?:very|really|truly|incredibly|genuinely|honestly|simply|actually)\\b[^.!?]{0,50}?\\b(?:very|really|truly|incredibly|genuinely|honestly|simply|actually)\\b",
+    "(?<![가-힣])(?:매우|정말|진짜로|대단히|극히)(?![가-힣])"
+   ],
+   "hint": "Intensifying degree adverbs bolted onto predicates that do not need them: very, really, just, literally, simply, incredibly, fundamentally, "
+  },
+  {
+   "id": "dev-blog-boilerplate",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "\\bit\\s+just\\s+works\\b",
+    "\\bzero[-\\s]config(?:uration)?\\b|\\bsane\\s+defaults\\b|\\b(?:fits?|holds?)\\s+in\\s+your\\s+head\\b"
+   ],
+   "hint": "Stock simplicity slogans borrowed from developer marketing that stand in for a property you could demonstrate: batteries included, it just w"
+  },
+  {
+   "id": "elevated-vocabulary-cluster",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:harness(?:es|ing|ed)?|navigat(?:e|es|ing)|foster(?:s|ing|ed)?|elevat(?:e|es|ing|ed)|unleash(?:es|ing|ed)?|streamlin(?:e|es|ing|ed)|empower(?:s|ing|ed)?|bolster(?:s|ing|ed)?|spearhead(?:s|ing|ed)?|resonat(?:e|es|ing|ed)|revolutioniz(?:e|es|ing|ed)|facilitat(?:e|es|ing|ed)|underpin(?:s|ning|ned|nings)?|nuanced|crucial|multifaceted|ecosystems?|myriad|plethora|encompass(?:es|ing|ed)?|catalyz(?:e|es|ing|ed)|reimagin(?:e|es|ing|ed)|galvaniz(?:e|es|ing|ed)|augment(?:s|ing|ed)?|cultivat(?:e|es|ing|ed)|illuminat(?:e|es|ing|ed)|elucidat(?:e|es|ing|ed)|juxtapos(?:e|es|ing|ed)|transformative|transformation|cornerstone|paramount|poised|burgeoning|nascent|quintessential|overarching|paradigm[- ]shifting|unlock(?:s|ing|ed)?|supercharg(?:e|es|ing|ed)|optimiz(?:e|es|ing|ed))\\b",
+    "\\b(?:harness(?:es|ing|ed)?|navigat(?:e|es|ing)|foster(?:s|ing|ed)?|elevat(?:e|es|ing|ed)|unleash(?:es|ing|ed)?|streamlin(?:e|es|ing|ed)|empower(?:s|ing|ed)?|bolster(?:s|ing|ed)?|spearhead(?:s|ing|ed)?|facilitat(?:e|es|ing|ed)|underpin(?:s|ning|ned)?|nuanced|crucial|multifaceted|ecosystems?|myriad|plethora|catalyz(?:e|es|ing|ed)|cultivat(?:e|es|ing|ed)|transformative|cornerstone|paramount|poised|burgeoning|nascent|overarching)\\b(?=[\\s\\S]{0,300}?\\b(?:harness(?:es|ing|ed)?|navigat(?:e|es|ing)|foster(?:s|ing|ed)?|elevat(?:e|es|ing|ed)|unleash(?:es|ing|ed)?|streamlin(?:e|es|ing|ed)|empower(?:s|ing|ed)?|bolster(?:s|ing|ed)?|facilitat(?:e|es|ing|ed)|underpin(?:s|ning|ned)?|nuanced|crucial|multifaceted|ecosystems?|myriad|plethora|transformative|cornerstone|paramount|poised|burgeoning|nascent|overarching)\\b)"
+   ],
+   "hint": "Words that are legitimate alone but become a strong signal when two or more appear in one paragraph: inflated verbs (harness, foster, naviga"
+  },
+  {
+   "id": "generic-scene-setting-opener",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bin\\s+today'?s\\b",
+    "\\bin\\s+an\\s+era\\s+where\\b|\\bin\\s+the\\s+age\\s+of\\b|\\bimagine\\s+a\\s+(?:scenario|world)\\s+where\\b",
+    "\\bin\\s+the\\s+(?:ever[- ]evolving|rapidly\\s+(?:evolving|changing)|fast[- ]paced)\\b",
+    "\\bin the (?:rapidly |ever-?\\s*)?(?:evolving|changing|expanding|growing|shifting) (?:world|landscape|realm|space|field|domain|era) of\\b",
+    "\\bin (?:an?|the) (?:digital )?age (?:where|of)\\b",
+    "\\bhas emerged as (?:a|the|one of) (?:the )?(?:leading|key|major|critical|essential|fundamental|pivotal|prominent|dominant|important)\\b",
+    "\\bhas become increasingly (?:important|critical|popular|relevant|prominent|essential)\\b"
+   ],
+   "hint": "An opening phrase that situates the topic in a generic present or an unnamed trend instead of naming the specific occasion: In today's X, In"
+  },
+  {
+   "id": "hedging",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "\\b(?:could|may|might|can)\\s+potentially\\b",
+    "\\b(?:might|may|could|perhaps|possibly)\\b[^.!?]{0,40}?\\b(?:somewhat|arguably|perhaps|possibly|potentially|in\\s+some\\s+cases|to\\s+some\\s+extent)\\b"
+   ],
+   "hint": "Softening words and clauses that dilute a claim without expressing real uncertainty: perhaps, could potentially, seems, might, appears, tend"
+  },
+  {
+   "id": "hollow-intensifier",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\b(?:genuinely|truly|quite\\s+frankly|to\\s+be\\s+honest|let'?s\\s+be\\s+clear)\\b",
+    "\\bgenuine\\s+(?:insight|value|understanding|improvement|interest|problem|need|surprise)\\b"
+   ],
+   "hint": "Sincerity and emphasis markers that assert conviction instead of supplying a fact: genuinely, genuine, truly, real (as intensifier), quite f"
+  },
+  {
+   "id": "it-is-worth-noting-frame",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\b(?:it'?s|it\\s+is)\\s+(?:worth|important)\\s+(?:noting|mentioning|to\\s+note|to\\s+mention)\\b",
+    "\\bit\\s+bears\\s+(?:mentioning|noting|repeating)\\b"
+   ],
+   "hint": "A clause that announces that the next statement matters instead of making it: it's worth noting that, it's important to note that, it bears "
+  },
+  {
+   "id": "latinate-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:utiliz(?:e|es|ing|ed|ation)|commenc(?:e|es|ing|ed|ement)|ascertain(?:s|ing|ed)?|endeavou?r(?:s|ing|ed)?)\\b",
+    "\\b(?:boasts|serves?\\s+as)\\b",
+    "\\b(?:authored|relocated|attempted|passed\\s+away)\\b"
+   ],
+   "hint": "Choosing the longer Latinate or euphemistic word where a short Anglo-Saxon one says the same thing: utilize for use, commence for start, asc"
+  },
+  {
+   "id": "lets-invitation-opener",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "(?:^|(?<=[.!?]\\s)|(?<=\\n))\\s*let'?s\\s+(?:dive|delve|unpack|break|explore|take\\s+a\\s+look|talk\\s+about|get\\s+into)\\b",
+    "\\blet(?:'s|’s)\\s+(?:explore|examine|consider|discuss|delve|unpack|break\\s+(?:this|it)\\s+down|take\\s+a\\s+(?:closer\\s+)?look|walk\\s+through)\\b",
+    "\\blet(?:'s|’s)\\s+(?:dive|jump)\\s+(?:in|into|deeper)\\b",
+    "\\blet(?:'s|’s)\\s+get\\s+(?:into\\s+it|started)\\b"
+   ],
+   "hint": "A section or paragraph opened with a 'Let's …' invitation: let's dive in, let's delve into, let's unpack this, let's break it down, let's ex"
+  },
+  {
+   "id": "load-bearing-metaphor",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bload-bearing\\b(?!\\s+(?:(?:structural|exterior|interior|internal|external|concrete|steel|timber|wooden|brick|masonry|perimeter|basement|main|primary|existing|original)\\s+)?(?:walls?|beams?|columns?|joists?|truss(?:es)?|members?|footings?|slabs?|studs?|partitions?|masonry|lintels?|piers?|rafters?|girders?|capacity|capacities)\\b)"
+   ],
+   "hint": "The hyphenated compound load-bearing applied to something that carries no load: an argument, an assumption, a component, a sentence"
+  },
+  {
+   "id": "model-era-vocabulary-drift",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:empirical|causal|correlates?)\\b[\\s\\S]{0,200}?\\b(?:underscor(?:e|es|ing|ed)|empirical|causal|correlates?)\\b"
+   ],
+   "hint": "Which overused words co-occur shifts by model generation, so the absent word proves nothing and the present cluster roughly dates the text"
+  },
+  {
+   "id": "moral-adjective-category-error",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "\\b(?:honest|genuine|faithful|truthful)\\s+(?:shape|number|representation|accuracy|curve|output|estimate|signal|metric)s?\\b",
+    "\\b(?:described|flagged|reported|measured|presented)\\s+honestly\\b"
+   ],
+   "hint": "A moral or character adjective (honest, genuine, faithful, truthful) attached to something that cannot hold a moral quality (a shape, a numb"
+  },
+  {
+   "id": "ontological-slop-assumptions",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bstops\\s+being\\s+true\\b"
+   ],
+   "hint": "Describing an assumption as flipping from true to false"
+  },
+  {
+   "id": "real-actual-adjective-inflation",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "\\b(?:real|actual|genuine|true)\\s+(?:on-?chain\\s+)?(?:tokenomics|economics|utility|adoption|sustainability|impact|revenue|fundamentals|demand|value|innovation|traction|product[- ]market\\s+fit)\\b"
+   ],
+   "hint": "real, actual, genuine or true used as an empty intensifier on an abstract noun (real tokenomics, actual reward sustainability, genuine utili"
+  },
+  {
+   "id": "restatement-gloss",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\bin\\s+other\\s+words\\b|\\bput\\s+differently\\b|\\bto\\s+put\\s+it\\s+(?:another\\s+way|differently)\\b",
+    "(?<![가-힣])즉(?![가-힣])"
+   ],
+   "hint": "A stock phrase announces a paraphrase of what was just said, so the point is delivered twice: in other words, put differently, to put it ano"
+  },
+  {
+   "id": "social-ad-boilerplate",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "context",
+   "regex": [
+    "\\blink\\s+in\\s+bio\\b|\\bunlock\\s+the\\s+(?:power|potential|secrets)\\b|\\belevate\\s+your\\b"
+   ],
+   "hint": "Worn social-media advertising diction imported into ordinary writing: unlock the potential, elevate your X, link in bio"
+  },
+  {
+   "id": "synonym-cycling",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\bprotagonist\\b[\\s\\S]{0,300}?\\b(?:main\\s+character|central\\s+figure|the\\s+hero)\\b"
+   ],
+   "hint": "The same referent is renamed with a fresh synonym on each recurrence to avoid repeating a word (protagonist / main character / central figur"
+  },
+  {
+   "id": "topic-framing-filler",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bwhen\\s+it\\s+comes\\s+to\\b",
+    "\\bat\\s+(?:its\\s+core|the\\s+heart\\s+of)\\b",
+    "\\bat\\s+the\\s+end\\s+of\\s+the\\s+day\\b",
+    "\\bthe\\s+(?:reality|truth)\\s+is(?:\\s+that)?\\b",
+    "\\bhere'?s\\s+the\\s+thing\\b|\\blet\\s+me\\s+be\\s+clear\\b|\\bgoing\\s+forward\\b|\\bin\\s+this\\s+article\\b",
+    "\\bthat\\s+(?:being\\s+)?said\\b"
+   ],
+   "hint": "Idioms that introduce a topic or announce a summary while carrying no information: when it comes to, at its core, at the heart of, at the en"
+  },
+  {
+   "id": "trendy-colloquialism",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bhits?\\s+different(?:ly)?\\b"
+   ],
+   "hint": "A borrowed trend phrase used as a shortcut to sound relatable without earning the emotional beat: hits different, hit differently"
+  },
+  {
+   "id": "understated-significance-adverb",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\bquietly\\s+(?:became|becomes|becoming|building|built|builds|reshap\\w*|transform\\w*|revolutioni\\w*|dominat\\w*|orchestrat\\w*|power\\w*|running|runs|shaping|shifting|redefin\\w*|emerg\\w*)\\b",
+    "\\ba\\s+quiet\\s+(?:revolution|intelligence|confidence|power|shift|force)\\b",
+    "\\bdeeply\\s+(?:integrated|committed|rooted|personal|human|flawed|resonant|transformative|interconnected|ingrained|embedded|meaningful)\\b"
+   ],
+   "hint": "An adverb or its adjective form that asserts subtle importance instead of showing it, making a mundane description feel weighty: quietly (qu"
+  },
+  {
+   "id": "vague-endorsement-worth-verbing",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bworth\\s+(?:reading|a\\s+look|exploring|checking\\s+out|your\\s+time|paying\\s+attention\\s+to)\\b"
+   ],
+   "hint": "A generic thumbs-up built on 'worth' that substitutes for a specific reason: worth reading, worth paying attention to, worth a look, worth e"
+  },
+  {
+   "id": "vague-praise-adjectives",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "cluster",
+   "regex": [
+    "\\b(?:significant|significantly|innovative|innovation|effective|effectively|dynamics?|scalable|scalability|compelling|unprecedented|exceptional|exceptionally|remarkable|remarkably|sophisticated|instrumental|world[- ]class|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|groundbreaking|game[- ]changing|unparalleled)\\b(?=[\\s\\S]{0,300}?\\b(?:significant|significantly|innovative|innovation|effective|effectively|dynamics?|scalable|scalability|compelling|unprecedented|exceptional|exceptionally|remarkable|remarkably|sophisticated|instrumental|world[- ]class|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|groundbreaking|game[- ]changing|unparalleled)\\b)",
+    "\\b(?:groundbreaking|unparalleled|world[- ]class|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|transformative|game[- ]changing)\\b",
+    "혁신적|획기적|압도적|파격적|폭발적|전례\\s*없는|괄목할\\s*만한"
+   ],
+   "hint": "Evaluative adjectives and adverbs that assert quality, novelty, scale or importance without a measurable referent: significant, innovative, "
+  },
+  {
+   "id": "wordy-circumlocution",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "\\bin\\s+order\\s+to\\b",
+    "\\bdue\\s+to\\s+the\\s+fact\\s+that\\b",
+    "\\b(?:at\\s+this\\s+point\\s+in\\s+time|in\\s+the\\s+event\\s+that|ha(?:s|ve|d)\\s+the\\s+ability\\s+to|with\\s+regard\\s+to|in\\s+terms\\s+of)\\b"
+   ],
+   "hint": "Multi-word constructions standing in for one word: in order to (to), due to the fact that (because), at this point in time (now), in the eve"
+  }
+ ]
+}

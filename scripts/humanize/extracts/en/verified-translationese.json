@@ -1,0 +1,739 @@
+{
+ "category": "translationese",
+ "entries": [
+  {
+   "id": "calqued-preposition-periphrasis",
+   "name": "Calqued prepositional periphrasis (about / through / in that / related to / based on / in order to)",
+   "definition": "An English preposition phrase is rendered with a heavy periphrastic frame every time, where the target language marks the same relation with a plain particle, case or verb ending. Six lexical sub-forms in the Korean sources: 'about / regarding / concerning' as ~에 대해(서)/대하여 where the verb takes a direct object (X를 논의); 'through / via / by means of' as ~를 통해(서)/통하여 where instrumental ~로, ~해서 or ~함으로써 serve; 'in that / in the sense that' as ~라는 점에서 where a connective ~서 or ~라는 이유로 serves; 'related to / with regard to' as ~와 관련하여/관련된 where ~에 or genitive ~의 serves; 'based on' as ~에 기반하여 / ~을 바탕으로 where ~로 or a concrete verb (~을 보고) serves; 'in order to / for the purpose of' as ~을 위해 where the purpose endings ~려고, ~도록 or adnominal ~위한 serve. Each frame is native on its own, so the tell is density: three or more of one frame inside a paragraph. The transferable slot is any relational, instrumental or purpose preposition the model reaches for uniformly.",
+   "cues": [
+    "~에 대하여",
+    "~에 대해서",
+    "~에 대해(서)",
+    "~에 대해",
+    "X에 대해(서) Y",
+    "~를 통하여",
+    "~를 통해",
+    "~을 통해",
+    "통해",
+    "~라는 점에서",
+    "점에서",
+    "~와 관련하여",
+    "~와 관련된",
+    "관련하여",
+    "관련된",
+    "~에 기반하여",
+    "~을 바탕으로",
+    "기반하여",
+    "바탕으로",
+    "~을 위해",
+    "~를 위해",
+    "위해",
+    "위하여",
+    "X을 위해 Y한다"
+   ],
+   "regex": [
+    "에 대(?:하여|해서|해)(?![가-힣])",
+    "[을를] 통(?:하여|해서|해)(?![가-힣])",
+    "(?:이|라|다)는 점에서(?![가-힣])",
+    "[와과] 관련(?:하여|해서|해|된)(?![가-힣])",
+    "(?:에 기반(?:하여|해서|해|한)|[을를] 바탕으로)(?![가-힣])",
+    "(?:[을를]|기) 위(?:하여|해서|해)(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "AI 규제에 대해 논의할 필요가 있다",
+     "after": "AI 규제를 논의해야 한다"
+    },
+    {
+     "before": "데이터 분석을 통해 효율을 높일 수 있다",
+     "after": "데이터를 분석해서 효율을 높인다"
+    },
+    {
+     "before": "비용을 절감하기 위해 공정을 바꿨다",
+     "after": "비용을 줄이려고 공정을 바꿨다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-1 ~에 대하여/대해서 overuse (English 'about / regarding / concerning X' calque)",
+    "A-2 ~를 통하여/통해 repetition (English 'through / via' calque)",
+    "A-4 ~라는 점에서 (English 'in that / in the sense that / in terms of the fact that')",
+    "A-5 ~와 관련하여 / ~와 관련된 (English 'related to / in relation to / with regard to')",
+    "A-6 ~에 기반하여 / ~을 바탕으로 overuse (English 'based on')",
+    "A-11 ~을 위해 purpose clauses overuse (English 'in order to / for the purpose of / for')",
+    "A-1 '~에 대하여/대해서' 남발 (about/regarding calque)",
+    "A-2 '~를 통하여/통해' 남발 (through/via calque)",
+    "A-4 '~라는 점에서' (in the sense that)",
+    "A-5 '~와 관련하여 / ~와 관련된' (regarding / related to)",
+    "A-6 '~에 기반하여 / ~을 바탕으로' 남발 (based on)",
+    "A-11 '~을 위해' 목적절 남발 (in order to)"
+   ],
+   "false_positives": "None of these frames is wrong in isolation, so a single use is never a finding; only repetition inside one paragraph is. The ban version of this rule was rejected on evidence: 최희경 (2016) measured ~를 통해 at 84.4 per unit in non-translated Korean against 42.1 in translated Korean, so native writers use it twice as often as translators, and it barely appeared in the AI corpus; the same holds for ~에 대해, which humans use about three times more than the AI corpus. Redistribute the surplus and keep one or two. Never flag adnominal ~위한 (고객을 위한 서비스): that beneficiary form is the recommended replacement, not the tell, which is why the purpose regex matches only 위해/위하여. 점에서 inside a fixed academic or legal formula stands. The regexes are Korean and are the only tested instances; do not port them to Dutch or English text, where the equivalent slot needs its own calibration.",
+   "in_baseline": false
+  },
+  {
+   "id": "in-terms-of-frame",
+   "name": "'~에 있어(서)' frame (in terms of / when it comes to / with respect to)",
+   "definition": "The frame ~에 있어(서) used to introduce a topic, premise or domain, as a literal rendering of English 'in X / in terms of / when it comes to / with respect to'. The native forms are the plain locative ~에서, a bare topic particle, or ~을 볼 때. Both sources rate it decisive on a single occurrence, unlike the density-gated frames in calqued-preposition-periphrasis; it often arrives together with a dummy-noun head (중요한 점은) that should collapse at the same time.",
+   "cues": [
+    "~에 있어",
+    "~에 있어서",
+    "이에 있어서"
+   ],
+   "regex": [
+    "에 있어서(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "이 문제에 있어서 중요한 것은",
+     "after": "이 문제에서 중요한 건"
+    },
+    {
+     "before": "이에 있어서 중요한 점은",
+     "after": "여기서 중요한 건"
+    }
+   ],
+   "severity": "always",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-3 ~에 있어(서) (English 'in X / in terms of / when it comes to' calque)",
+    "A-3 '~에 있어(서)' (in terms of / when it comes to)"
+   ],
+   "false_positives": "Bare '에 있어' is also the ordinary existential verb 있다 plus a connective: 집에 있어, 회의는 3시에 있어, and '그는 집에 있어서 못 왔다' ('he was at home, so he could not come') all contain the string and none is the frame. That is why only the ~에 있어서 form carries a regex and the bare form stays a prose cue, and why even the regexed form needs a read: if 있- is a real predicate with a locative subject, leave it. Quoted statute and contract language that fixes the phrase stands.",
+   "in_baseline": false
+  },
+  {
+   "id": "light-verb-literalism",
+   "name": "Literal light-verb constructions (have / make / take / give + noun)",
+   "definition": "An English light-verb construction ('have strong competitiveness', 'make a decision', 'take action', 'give support') is carried over word for word as verb + noun, where the target language says the same thing with a single predicate or a double-subject construction. In Korean this surfaces as 가지고 있다 for every 'have'; in Dutch it surfaces as the maken/make calque ('een beslissing maken' for 'een besluit nemen', 'impact maken'). Reduce the pair to the predicate the noun is hiding.",
+   "cues": [
+    "가지고 있다",
+    "have + noun",
+    "make + noun",
+    "take + noun",
+    "give + noun",
+    "have+명사 직역",
+    "make+명사 직역",
+    "take+명사 직역",
+    "give+명사 직역"
+   ],
+   "regex": [
+    "[을를] 가지고 있",
+    "\\b(?:(?:maakt?|maken|gemaakt)\\s+(?:een|de|het)\\s+(?:beslissing|besluit)|(?:een|de|het)\\s+(?:beslissing|besluit)\\s+(?:maken|maakt|gemaakt)|impact\\s+(?:maken|maakt|gemaakt))\\b"
+   ],
+   "examples": [
+    {
+     "before": "강한 경쟁력을 가지고 있다",
+     "after": "경쟁력이 강하다"
+    },
+    {
+     "before": "Het team maakt een beslissing over de datum.",
+     "after": "Het team kiest de datum."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-7 가지고 있다 and literal light-verb constructions (have/make/take/give + noun)",
+    "A-7 '가지고 있다' (have/possess calque)"
+   ],
+   "false_positives": "가지고 있다 for physical possession of a concrete object is native Korean (나는 그 책을 가지고 있다), as is 가지고 가다/오다 ('take along'); the tell is an abstract quality as object: 경쟁력, 가능성, 중요성, 의미. In Dutch, 'een besluit nemen' and 'een keuze maken' are correct idiom and must not be flagged; only the maken-for-nemen calque and 'impact maken' are. An English light verb inside English prose is wordiness, not translationese, and belongs to the syntax and vocabulary categories; the English cues here name what is being calqued from, which is why this entry carries no English regex.",
+   "in_baseline": false
+  },
+  {
+   "id": "stacked-double-passive",
+   "name": "Double-marked passive (~되어진다 / ~지게 된다)",
+   "definition": "Two passive or inchoative morphemes stacked on one verb (되어지다, 아/어/여지게 되다), so a passive is passivised again, usually because an English passive was rendered on top of a verb that was already passive in the target. Prefer the active; if the agent genuinely cannot be named, use one passive marker.",
+   "cues": [
+    "~되어진다",
+    "~지게 된다",
+    "되어지",
+    "판단되어진다"
+   ],
+   "regex": [
+    "되어지",
+    "지게 (?:되|된)"
+   ],
+   "examples": [
+    {
+     "before": "판단되어진다",
+     "after": "판단된다"
+    },
+    {
+     "before": "상황이 나빠지게 된다",
+     "after": "상황이 나빠진다"
+    },
+    {
+     "before": "이 문제는 곧 해결되어질 것이다",
+     "after": "우리는 이 문제를 곧 해결한다"
+    }
+   ],
+   "severity": "always",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-8 Double passive ~되어진다 / ~지게 된다",
+    "A-8 이중 피동 '~되어진다 / ~지게 된다' (double passive)"
+   ],
+   "false_positives": "-게 되다 on its own is native and means a change of state or an outcome outside the subject's control (그렇게 되었다, 가게 되었다), and the second regex deliberately matches the bare cue form 지게 되-, so a stem that simply ends in the syllable 지 (가지게 되다, 만지게 되다) matches too and is not this pattern: read the stem before flagging. The vowel-linked form -아/어/여지게 되- was tested as a tighter guard and rejected, because Korean contracts that vowel (나쁘다 becomes 나빠지다) and the guard then misses real instances. 되어지 has no legitimate use. Evidence anchor: 김혜영 (2009), a one-million-eojeol contrastive study, is the only Korean work with measured discriminative power, and syntactic passives are among its features.",
+   "in_baseline": false
+  },
+  {
+   "id": "agentive-by-passive",
+   "name": "Agentive by-passive (~에 의해 / ~에 의하여 + passive verb)",
+   "definition": "The English agentive passive with a named agent ('generated by AI', 'published by the ministry') rendered as X에 의해/에 의하여 plus a passive verb, or adnominally as X에 의한. The agent is present, so it can simply be the subject of an active verb. The same slot exists in any language that prefers the active and puts the actor first.",
+   "cues": [
+    "~에 의해",
+    "에 의해",
+    "에 의한",
+    "~에 의하여"
+   ],
+   "regex": [
+    "에 의(?:해|하여)(?![가-힣])",
+    "에 의한(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "AI에 의해 생성된 이미지",
+     "after": "AI가 만든 이미지"
+    },
+    {
+     "before": "보고서가 정부에 의해 발표되었다",
+     "after": "정부가 보고서를 발표했다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-9 ~에 의해 agentive passive (English 'by'-passive)",
+    "A-9 '~에 의해' 피동문 (by-passive)"
+   ],
+   "false_positives": "Legal and administrative Korean uses ~에 의하여 as a fixed citation formula (법 제3조에 의하여, 규정에 의한) and there it stands. The passive is also right when the agent is genuinely unknown, when the patient is the topic of the paragraph, or when naming the actor would be an accusation the text cannot support. 김혜영 (2009) measured -에 의하여 as discriminative for translated Korean, so the count matters more than any single instance; three or more in a paragraph is the trigger.",
+   "in_baseline": false
+  },
+  {
+   "id": "agentless-automated-passive",
+   "name": "Agentless automated passive (만들어지다 / 이루어지다)",
+   "definition": "An event stated as something that 'was made' or 'was achieved' with a generic passive and no actor at all (합의가 이루어졌다, 'agreement was reached'), instead of the actor doing it. Distinct from stacked-double-passive (morphology) and from agentive-by-passive (the agent is named): here the agent has vanished and the verb is a colourless 'be made / be done'. Restore the agent and a plain active verb.",
+   "cues": [
+    "만들어지다",
+    "이루어지다",
+    "이루어졌다",
+    "만들어졌다"
+   ],
+   "regex": [
+    "(?:만들어|이루어)(?:지다|졌|진|지고|져)(?! 있)"
+   ],
+   "examples": [
+    {
+     "before": "합의가 이루어졌다",
+     "after": "양측이 합의했다"
+    },
+    {
+     "before": "새로운 기준이 만들어졌다",
+     "after": "위원회가 새 기준을 만들었다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-12 Automated passives 만들어지다 / 이루어지다 (English 'was made / was achieved / took place')",
+    "A-12 '만들어지다 / 이루어지다' (automated passive)"
+   ],
+   "false_positives": "이루어지다 in the composition sense (X로 이루어져 있다, 'consists of') hides no agent and is native, which is why the regex refuses any of these verbs followed by 있 (the state reading). 만들어지다 is right for a product whose maker is irrelevant or unknown (이 치즈는 산에서 만들어진다). The tell is an event with a real, recoverable actor that the sentence declined to name. This needs document-level judgement, so the source marks it not-quick: check whether the actor appears anywhere nearby before rewriting.",
+   "in_baseline": false
+  },
+  {
+   "id": "passive-progressive-calque",
+   "name": "Passive progressive (~되고 있다 / ~지고 있다) for 'is being ~ed'",
+   "definition": "A trend or state described with the passive progressive ~되고 있다 / ~지고 있다, transferring English 'is being ~ed' and 'is increasingly ~ed', where a plain present or past tense carries the same claim. The tell is three or more in one paragraph, which turns every sentence of a trend passage into the same shape.",
+   "cues": [
+    "~되고 있다",
+    "~지고 있다"
+   ],
+   "regex": [
+    "(?:되고|[아어여]지고) 있(?:다|으며|는|었)"
+   ],
+   "examples": [
+    {
+     "before": "관심이 높아지고 있으며 투자도 확대되고 있다",
+     "after": "관심이 높아졌고 투자도 늘었다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-20 피동 진행 '~되고 있다 / ~지고 있다' 남발 (passive progressive)"
+   ],
+   "false_positives": "A process genuinely under way right now takes this form in native Korean (눈이 내리고 있다, 공사가 진행되고 있다); the aspect is the point there, not a translation artifact. Only the repetition is the finding, and only where a simple tense would say the same thing. Do not convert a hedged in-progress claim into a completed one just to remove the shape, because that trades a style tell for a factual error.",
+   "in_baseline": false
+  },
+  {
+   "id": "modal-ability-overuse",
+   "name": "Ability modal on every predicate (~할 수 있다 / can / could / be able to)",
+   "definition": "Every predicate softened with the ability modal ~할 수 있다 because the English source said 'can / could / be able to': '효율을 높일 수 있다' where '효율을 높인다' is the claim actually being made. The tell is repetition, four or more identical uses in a stretch, flattening warranted assertions and genuine hedges into one shape. Where the claim is warranted, assert it in the plain tense; where it is not, keep the modality.",
+   "cues": [
+    "~할 수 있다",
+    "할 수 있다",
+    "수 있다",
+    "높일 수 있다"
+   ],
+   "regex": [
+    "[가-힣] 수 있(?:다|었|으)"
+   ],
+   "examples": [
+    {
+     "before": "이 도구는 시간을 절약할 수 있다",
+     "after": "이 도구는 시간을 절약한다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-10 ~할 수 있다 overuse (English modal 'can / could / be able to')",
+    "A-10 '~할 수 있다' 남발 (can / be able to)"
+   ],
+   "false_positives": "This is one of the most common native Korean constructions and a per-occurrence flag is noise; only four or more identical repeats in one stretch is the finding. The larger risk runs the other way: the source had to re-word this rule toward preservation because rewriters kept converting real epistemic modality into assertion ('낮은 것으로 판단된다' becoming '낮은 수치다'), and a restore_modality backstop was added to catch it. Ability, permission and genuine uncertainty all keep the modal. General reflexive hedging in English or Dutch copy is a different finding, scored by the baseline's hedging entries, not here.",
+   "in_baseline": false
+  },
+  {
+   "id": "noun-stacking-particle-drop",
+   "name": "English-style noun stacking with particles dropped",
+   "definition": "A chain of bare nouns mirroring English noun-noun compounding (AI 기술 발전 속도 가속화, 'AI technology development speed acceleration'), with the particles that mark the relations between them left out, so the reader has to reconstruct the English to parse it. Restore the particles and a finite verb.",
+   "cues": [
+    "noun stacking",
+    "particles dropped",
+    "조사 생략 명사구",
+    "영어식 명사구를 조사 없이 붙임"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "AI 기술 발전 속도 가속화",
+     "after": "AI 기술의 발전 속도가 빨라지고 있다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-13 English-style noun stacking with particles dropped",
+    "A-13 명사 나열 (noun stacking, particle omission)"
+   ],
+   "false_positives": "Lexicalised technical compounds and proper names are native and must not be broken up (인공지능 기술 표준, 국가정보원). Headlines, table headers, slide titles and list labels drop particles by convention. The finding is a four-or-more chain in running prose whose internal relations are only recoverable from the English. No regex: the source cues are descriptive, not literal, and any surface pattern for 'bare nouns in a row' misfires badly in Korean. A Dutch adaptation must recalibrate rather than port this, because Dutch compounds natively and writes the chain as one word.",
+   "in_baseline": false
+  },
+  {
+   "id": "free-conjunction-clause-linking",
+   "name": "Clauses joined with a free conjunction ('그리고' as English 'And')",
+   "definition": "Two clauses written as separate sentences and joined by the free conjunction 그리고, the way English coordinates with 'and', where the native form fuses them with a connective verb ending (-고, -며, -면서). The mechanism is English clause-level coordination imported into a language whose coordination is morphological.",
+   "cues": [
+    "그리고",
+    "-고",
+    "-며",
+    "-면서"
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s+|\\n)그리고(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "그는 보고했다. 그리고 자리에 앉았다.",
+     "after": "그는 보고하고 자리에 앉았다."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-14 그리고 joining clauses like English 'and'",
+    "A-14 접속부사 '그리고' 절 연결 ('and' clause linking)"
+   ],
+   "false_positives": "그리고 between noun phrases in a list is native and is not this pattern, which is why the regex anchors on sentence-initial position. One deliberate sentence-initial 그리고 for rhythm or emphasis is a choice a human makes too; the finding is the habit, not the instance. Spoken-register transcripts and dialogue carry more of them legitimately.",
+   "in_baseline": false
+  },
+  {
+   "id": "abstract-subject-all-purpose-verb",
+   "name": "Abstract subject + all-purpose verb; literal causatives and non-human cognition verbs",
+   "definition": "Three sub-mechanisms the sources file together: an abstract or inanimate subject with a colourless verb, 'X shows / provides / brings' (보여준다 / 제공한다 / 가져온다); English analytic causatives ('X made Y happen', 'X led Y to') rendered literally instead of as an adverbial cause (X 때문에 / 덕분에 / 로 인해); and cognition or speech verbs with a non-human subject ('the data suggests', 'the report tells us') where the native form attributes with '~에 따르면 ~이다'. Restore a concrete human or institutional actor, or name the source.",
+   "cues": [
+    "보여준다",
+    "제공한다",
+    "가져온다",
+    "suggest",
+    "show",
+    "indicate",
+    "X 때문에",
+    "X 덕분에",
+    "X로 인해",
+    "~에 따르면 ~이다",
+    "사역-인지 동사 직역"
+   ],
+   "regex": [
+    "(?:보여준다|제공한다|가져온다|가져다준다|시사한다)(?![가-힣])",
+    "\\bthe (?:data|research|evidence|study|report|analysis) (?:suggests|shows|indicates|reveals|tells us)\\b"
+   ],
+   "examples": [
+    {
+     "before": "이 연구는 새로운 가능성을 보여준다",
+     "after": "연구진은 새로운 가능성을 확인했다"
+    },
+    {
+     "before": "이 정책이 물가 상승을 가져왔다",
+     "after": "이 정책 때문에 물가가 올랐다"
+    },
+    {
+     "before": "The data suggests that adoption is slowing.",
+     "after": "Adoption slowed in the last two quarters, according to the survey."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "in_baseline": true,
+   "merged_from": [
+    "A-15 Abstract subject + all-purpose verb; literal causative, cognition and speech verbs",
+    "A-15 추상 주어 + 만능 동사 (abstract subject + all-purpose verb)"
+   ],
+   "false_positives": "An institution or a document can be the subject when a person did the acting and the reader can recover who (보고서는 ...라고 밝혔다 with a named author; 'the committee recommends'). A genuinely inanimate actor keeps its verb: 서버가 응답한다, 'the sensor reports'. In English the fix is naming the source, not banning the verb, so do not flag 'the study shows' where the study is cited with author and date in the same sentence. This entry carries the translation-side instance of the house baseline's False agency; score a given sentence once, here or there, not twice."
+  },
+  {
+   "id": "pronoun-over-translation",
+   "name": "Third-person pronoun over-translation (그 / 그녀 / 그것 / 그들 for he / she / it / they)",
+   "definition": "Every English he, she, it and they rendered one-to-one as 그 / 그녀 / 그것 / 그들 in a language that normally drops the pronoun, producing three or more in a paragraph. Delete 50 to 70 percent, name the referent only at a speaker or scene change, and render 'they' as 사람들, 우리, 일부 or 어떤 이들. Fires only on text rendered or summarised from an English source.",
+   "cues": [
+    "그",
+    "그녀",
+    "그것",
+    "그들",
+    "그는",
+    "그의"
+   ],
+   "regex": [
+    "(?:그(?:는|가|를|의|녀|것|들)[\\s\\S]{0,120}){2}그(?:는|가|를|의|녀|것|들)"
+   ],
+   "examples": [
+    {
+     "before": "그는 회의에 들어갔다. 그는 자료를 꺼냈고, 그것을 그들에게 보여주었다.",
+     "after": "회의에 들어가 자료를 꺼내 참석자들에게 보여주었다."
+    }
+   ],
+   "severity": "context",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-16 Third-person pronoun density 그/그녀/그것/그들 (1:1 mapping of he/she/it/they)",
+    "A-16 영어 대명사 직역 (pronoun over-translation)"
+   ],
+   "false_positives": "Hard scope guard: on natively written Korean this is a false positive, and the numbers say so: humans used 그는/그의 more than the AI corpus (1.9 against 0.0 per 1000 eojeol), and the trigger event, three or more in a 200-character window, occurred in 3.9 percent of human texts against 0.7 percent of AI texts. Modern models suppress pronouns when writing Korean natively, so a pronoun chain is weak evidence of a machine and strong evidence of a human or a translation. Literary prose and translated fiction carry pronoun chains by design. The mechanism does not transfer to non-pro-drop languages such as Dutch and English; the only part that carries over is 'a pronoun where the target language would repeat the name at a scene change'.",
+   "in_baseline": false
+  },
+  {
+   "id": "mechanical-plural-marking",
+   "name": "Mechanical -들 plural marking on inanimate and abstract nouns (held)",
+   "definition": "The obligatory English plural -s carried over as the plural suffix -들 on inanimate and abstract nouns, where the target language leaves number unmarked. This rule is on hold and must not fire: it has strong scholarly anchors but scored zero positives in both corpora, so it may be recorded as an observation and never named as a dominant pattern or prescribed as a rewrite.",
+   "cues": [
+    "-들"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "정책들과 규제들이 논의되었다",
+     "after": "정책과 규제를 논의했다"
+    }
+   ],
+   "severity": "context",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-17 Mechanical -들 plural marking on inanimate and abstract nouns (held)",
+    "A-17 무정물·추상명사 '-들' 복수 표지 (mechanical plural marker) [hold]"
+   ],
+   "false_positives": "Do not fire at all, because this is a held rule, kept so the pattern numbering stays stable and the deul_overuse_rate metric keeps measuring it, not so a scanner can flag it. Deliberately no regex. Even if it were active, -들 on animate nouns (학생들, 사람들) is obligatory, and -들 on inanimates is used for genuine emphasis or contrast in native Korean. Report it as an observation at most, and never as evidence a text is machine-written.",
+   "in_baseline": false
+  },
+  {
+   "id": "left-branching-modifier-stack",
+   "name": "Left-branching pre-nominal modifier stack (relative clause of 3+ eojeol)",
+   "definition": "An English post-nominal relative clause ('the X that ...') rendered as a long left-branching modifier in front of the head noun: three or more stacked adnominal phrases, or a modifier of three or more eojeol, so the reader holds the whole clause before learning what it modifies. Split the sentence, or postpose the clause as an apposition (X를 만났는데, 그 X는 ~).",
+   "cues": [
+    "relative clause",
+    "pre-nominal modifier",
+    "X를 만났는데, 그 X는 ~",
+    "명사 앞 3어절 이상 관형구",
+    "관형구 3중 이상 중첩"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "지난해 유럽에서 발표된 새로운 규제를 반영한 보고서가 나왔다",
+     "after": "보고서가 나왔다. 지난해 유럽에서 나온 새 규제를 반영한 것이다."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-18 Left-branching pre-nominal modifier / relative clause of 3+ eojeol",
+    "A-18 관계대명사절 직역 (left-branching relative clause stacking)"
+   ],
+   "false_positives": "Two stacked adnominals are ordinary Korean and the threshold is three; legal, academic and specification prose front-loads modifiers by convention and reads fine to its audience. No regex: the source cues are descriptive, and the metric behind them (relative_clause_nesting) is a parse depth rather than a string. A consecutive-adnominal proxy was written and then dropped, because a real stack separates its modifiers with their own objects (발표된 새로운 규제를 반영한 보고서) and the proxy misses exactly those while matching unrelated verb runs. The English-side analogue is comma-clause nesting, which the syntax category scores; do not double-count a sentence.",
+   "in_baseline": false
+  },
+  {
+   "id": "stacked-particles",
+   "name": "Stacked particles (~에서의 · ~에로의 · ~으로의 · ~에의 · ~으로부터의)",
+   "definition": "A locative or directional particle followed by the genitive 의 (에서의, 에로의, 으로의, 에의, 으로부터의, 로부터의), mirroring English preposition-plus-'of' sequences ('the X of the Y in Z'), a shape Korean inherited from Japanese の and English prepositional phrases. Unfold the stack into a clause or a plain phrase.",
+   "cues": [
+    "~에서의",
+    "~에로의",
+    "~으로의",
+    "~에의",
+    "~으로부터의",
+    "-에서의",
+    "-에로의",
+    "-으로의",
+    "-에의",
+    "-으로부터의",
+    "-로부터의"
+   ],
+   "regex": [
+    "(?:에서의|에로의|으로의|에의|으로부터의|로부터의)(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "국내에서의 논의는 유럽으로의 확산을 낳았다",
+     "after": "국내 논의가 유럽으로 퍼졌다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-19 Stacked particles ~에서의·~에로의·~으로의·~에의·~으로부터의",
+    "A-19 이중 조사 결합 (double particle combination)"
+   ],
+   "false_positives": "Plain ~의 on its own is explicitly not a target: there is no scholarly consensus on genitive overuse, and the source records that as an open caveat. Bare 로의 is left out of the regex on purpose, because a noun ending in the syllable 로 plus genitive 의 (도로의, 진로의, 통로의) is indistinguishable on the surface from the stacked particle. Fixed legal and bureaucratic collocations (에의 접근권) stand.",
+   "in_baseline": false
+  },
+  {
+   "id": "beyond-mere-escalation",
+   "name": "'Beyond mere X' escalation (단순한 X를 넘어 Y / more than just X)",
+   "definition": "Mid-sentence escalation that upgrades a thing by dismissing a smaller version of it: '단순한 X를 넘어 Y', a calque of English 'beyond mere X' and 'more than just X'. It asserts significance instead of showing it, and the second term is usually vaguer than the first. Delete the escalation and state what the thing does.",
+   "cues": [
+    "단순한 X를 넘어 Y",
+    "단순한 ~를 넘어"
+   ],
+   "regex": [
+    "단순한 [^\\n.]{1,20}[을를] 넘어",
+    "\\b(?:more than just|beyond (?:a )?mere)\\b",
+    "\\bmeer dan (?:alleen|zomaar)\\b"
+   ],
+   "examples": [
+    {
+     "before": "이것은 단순한 도구를 넘어 새로운 인프라다",
+     "after": "이것은 인프라다"
+    },
+    {
+     "before": "Dit is meer dan alleen een meetup.",
+     "after": "Deze meetup heeft ook een workshop en een vacaturebord."
+    },
+    {
+     "before": "This is more than just a job board.",
+     "after": "The job board also carries internships and one-day contracts."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "A-21 범위 상승 '단순한 X를 넘어 Y' (beyond mere X)"
+   ],
+   "false_positives": "The source recorded zero occurrences of the Korean frame in the human corpus, which is why it fires on one instance; the English and Dutch surface forms are commoner in human prose, so read them before flagging. A literal spatial or temporal 넘어 ('over the hill', 'past midnight') is not this pattern. 'More than just' is fine when the sentence goes on to say concretely what the second term is, and inside a quotation it stands. Its English surface overlaps the syntax category's negative-parallelism and false-range family: score the sentence once.",
+   "in_baseline": false
+  },
+  {
+   "id": "parenthetical-english-gloss",
+   "name": "English gloss in parentheses repeated on every occurrence",
+   "definition": "A term is followed by its English original in parentheses every time it appears, so 주권 AI(Sovereign AI) is followed later by 주권 AI(Sovereign AI) again rather than by the Korean term alone. The habit extends to glossing every technical term at once, so the page reads as a bilingual glossary. Gloss once, then use the target-language term alone.",
+   "cues": [
+    "~(Sovereign AI)",
+    "parenthetical English gloss",
+    "한글 + 괄호 영어 병기"
+   ],
+   "regex": [
+    "[가-힣][^()\\n]{0,20}\\(([a-z][a-z .\\-]{2,30})\\)[^()]{1,400}[가-힣][^()\\n]{0,20}\\(\\1\\)"
+   ],
+   "examples": [
+    {
+     "before": "주권 AI(Sovereign AI)는 국가 전략이다. 주권 AI(Sovereign AI) 정책은 예산을 요구한다.",
+     "after": "주권 AI(Sovereign AI)는 국가 전략이다. 주권 AI 정책은 예산을 요구한다."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "B-1 Parenthetical English gloss repeated on every occurrence",
+    "B-1 괄호 병기 관습 (parenthetical English gloss habit)"
+   ],
+   "false_positives": "A first-mention gloss is correct practice and required in technical and academic writing; only the repeat is the finding, which is what the regex looks for (the same parenthetical returning within about 400 characters). A term whose English form is the conventional one in the field (API, SLA, CI) needs no gloss at all and is not this pattern. Glossaries, indexes, tables and reference lists repeat glosses by design. A parenthetical that adds new information rather than repeating a translation is not a gloss.",
+   "in_baseline": false
+  },
+  {
+   "id": "embedded-english-quotation",
+   "name": "Whole English sentences quoted with a translation alongside",
+   "definition": "A full English sentence is pasted verbatim into the body as a quotation and immediately followed by its translation, so the reader gets the same claim twice in two languages. It is the source text leaking through the generation. Unless the original wording itself matters, paraphrase in the target language and cite the source.",
+   "cues": [
+    "embedded English quotation",
+    "translation alongside",
+    "영어 문장을 인용문으로 그대로 박아넣고 번역도 병기"
+   ],
+   "regex": [
+    "[\"“”‘’][a-z][a-z ,'’\\-]{25,}[.?!]?[\"“”‘’]\\s*(?:라고|이라고|라는|[가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "보고서는 “Adoption will accelerate over the next two years.”라고 적었다. (“도입은 앞으로 2년간 가속화될 것이다.”)",
+     "after": "보고서는 도입이 앞으로 2년간 빨라질 것으로 봤다."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "B-3 Whole English sentences embedded as quotations with a translation alongside",
+    "B-3 과도한 영어 인용구 (excessive English quotations)"
+   ],
+   "false_positives": "The explicit exception is that the original wording genuinely matters: a term of art, a legal formula, a slogan under analysis, or a quotation whose exact phrasing is the subject of the sentence. Quote it once and cite it. Language-teaching material, bilingual documentation and translation commentary present both versions by design. A short English phrase or a product name inside a target-language sentence is not this pattern; the regex requires a quoted run of at least twenty-five Latin characters followed by Hangul, so it stays inert on English text.",
+   "in_baseline": false
+  },
+  {
+   "id": "known-as-appositive-calque",
+   "name": "'Known as / so-called' appositive calque (~라고 알려진 / ~로 일컬어지는)",
+   "definition": "The English appositive 'X, known as Y' or 'the so-called Y' rendered as a full relative construction (~라고 알려진, ~로 일컬어지는), where the target language writes the noun with a parenthetical abbreviation. It is a weak tell on its own and strengthens when it stacks with the other English-over-quoting habits.",
+   "cues": [
+    "~라고 알려진",
+    "~로 일컬어지는"
+   ],
+   "regex": [
+    "(?:라고|이라고|로|으로) (?:알려진|일컬어지는)(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "'AGI'라고 알려진 범용 인공지능",
+     "after": "범용 인공지능(AGI)"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "B-4 ~라고 알려진 / ~로 일컬어지는 (literal 'known as / so-called')",
+    "B-4 '~라고 알려진 / ~로 일컬어지는' (known as / so-called)"
+   ],
+   "false_positives": "When the naming is the point, because the thing genuinely goes by two names or the text is about who calls it what, the construction is doing real work and stays. 알려진 in the sense 'well known, famous' (잘 알려진 사실) is a different use. Rated weak on its own by the source, so a single instance is not a finding; it counts when it appears alongside repeated parenthetical glosses or embedded English quotations.",
+   "in_baseline": false
+  },
+  {
+   "id": "translationese-interference-index",
+   "name": "Interference index (composite metric over the A-class signals)",
+   "definition": "A metric, not a sentence-level pattern: Toury's (1995) interference axis operationalised as nine measurable signals combined into one index: inanimate_subject_rate (abstract-subject-all-purpose-verb), by_passive_count and double_passive_count (the three passive entries), pronoun_density (pronoun-over-translation), deul_overuse_rate (mechanical-plural-marking, held), relative_clause_nesting (left-branching-modifier-stack), have_make_literal_count (light-verb-literalism), double_particle_count (stacked-particles) and progressive_aspect_rate (passive-progressive-calque). It is the structural map of this whole category: the nine axes are what a non-Korean adaptation refills with its own instances. Linkage runs both ways: pattern counts over threshold drive the diagnosis, and a composite off baseline triggers extra verification at finalize.",
+   "cues": [
+    "inanimate_subject_rate",
+    "by_passive_count",
+    "double_passive_count",
+    "pronoun_density",
+    "deul_overuse_rate",
+    "relative_clause_nesting",
+    "have_make_literal_count",
+    "double_particle_count",
+    "progressive_aspect_rate",
+    "interference_index"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "이 보고서에 의해 도출되어진 결과들은 정책 결정에 있어서 활용될 수 있다",
+     "after": "연구진은 이 결과를 정책 결정에 쓴다"
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy"
+   ],
+   "merged_from": [
+    "Post-editese: interference index (metric-only, composite of A-class signals)"
+   ],
+   "false_positives": "Never report this as a finding on a sentence: it is a document-level score, and the source marks it speculative and deliberately unnumbered. A high index on a text that actually is a translation is expected and is not a defect. Two of its nine inputs are themselves constrained (deul_overuse_rate feeds a held rule that must not fire, and pronoun_density is valid only in translation contexts), so the index is a trigger for a closer look, not evidence on its own.",
+   "in_baseline": false
+  }
+ ],
+ "report": "Nothing over-matched on the two English controls: all 27 regexes score 0.00 per 10,000 words on Strunk and Twain, because the Korean instances are inert on Latin script by construction and the four Latin-script regexes ('more than just / beyond mere', 'meer dan alleen', the Dutch maken-for-nemen calque and 'the data suggests') are modern collocations absent from both books, so the real over-match risk had to be probed on the two Dutch controls and on hand-written native-Korean negative cases instead. That caught three regexes contradicting their own false-positive notes, now tightened: an unanchored parenthetical-gloss backreference fired about 10 per 10k on Dutch Wikipedia (now Hangul-anchored), 'een keuze maken' was flagged although it is correct Dutch (now only beslissing/besluit with maken), and 이루어져 있다 in the 'consists of' sense read as a dropped agent (now excluded by a lookahead); one regex was dropped outright, the consecutive-adnominal proxy for left-branching-modifier-stack, because a real stack separates its modifiers with their own objects and the proxy misses exactly those. The 47 raw names are the same 24 Korean rules carried twice by the two im-not-ai extracts, folded 1:1 into 20 entries: the six preposition calques (about, through, in that, related to, based on, in order to) became one density-gated entry, 에 있어(서) stayed separate because both sources rate it decisive on a single occurrence, the four passive rules stayed apart because the taxonomy explicitly distinguishes stacked morphology from named-agent, agentless and progressive forms, and the metric-only interference index is kept as its own entry mapping its nine axes onto the other ids.",
+ "added": 19,
+ "regex_dropped": 1
+}

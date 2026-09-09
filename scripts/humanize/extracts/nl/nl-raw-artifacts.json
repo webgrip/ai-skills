@@ -1,0 +1,1021 @@
+[
+ {
+  "naam": "Brieftoon met aanhef en onderwerpregel",
+  "categorie": "artifacts",
+  "definitie": "Resten van een brief of e-mail in een tekst die geen brief is: een onderwerpregel, een aanhef, beleefdheidsformules over goede bedoelingen, en een groet aan het eind.",
+  "cues": [
+   "Onderwerp:",
+   "Geachte heer/mevrouw",
+   "Beste redactie",
+   "Ik hoop dat dit bericht u in goede gezondheid bereikt",
+   "Ik schrijf u om",
+   "Ik zou graag",
+   "Bij voorbaat dank voor uw tijd",
+   "Dank voor uw overweging",
+   "Met vriendelijke groet"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Onderwerp: bijdrage over Twente\n\nGeachte redactie,\n\nIk hoop dat dit bericht u in goede gezondheid bereikt. Ik schrijf u om een tekst aan te leveren over de regionale meetupcultuur.",
+    "na": "Twente kent sinds 2015 een vaste meetupcultuur rond software."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "'Ik hoop dat dit bericht u in goede gezondheid bereikt' is een letterlijke vertaling van 'I hope this message finds you well' en komt in spontaan Nederlands vrijwel niet voor. In gepubliceerde tekst is elke aanhef of groet een reststuk uit het chatvenster; een onderwerpregel boven lopende tekst is het duidelijkste geval.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Assistenttaal uit het chatvenster",
+  "categorie": "artifacts",
+  "definitie": "Zinnen die tot het gesprek met de chatbot horen en niet tot de tekst: dienstbare bevestigingen, aanbiedingen om door te gaan, en aankondigingen van wat er nu volgt.",
+  "cues": [
+   "Ik hoop dat dit helpt",
+   "Natuurlijk!",
+   "Zeker!",
+   "Uiteraard!",
+   "Goede vraag",
+   "Je hebt helemaal gelijk",
+   "Laat het me weten",
+   "Wil je dat ik",
+   "Is er nog iets waarmee ik kan helpen",
+   "Hier is een",
+   "Hieronder volgt",
+   "een gedetailleerdere uitsplitsing",
+   "Zoals gevraagd"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Natuurlijk! Hier is een overzicht van de Twentse tech-meetups. Ik hoop dat dit helpt, laat het me weten als je een gedetailleerdere uitsplitsing wilt.",
+    "na": "Twente heeft vier terugkerende tech-meetups."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Hieronder valt ook de variant waarin het model zijn eigen opdracht benoemt ('Zoals gevraagd volgt hier het artikel voor je website') of naar de conventies van het doelplatform verwijst. 'Een gedetailleerdere uitsplitsing' is een leenvertaling van 'a more detailed breakdown' en klinkt in het Nederlands meteen vertaald.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "AI-zelfonthulling en promptweigering",
+  "categorie": "artifacts",
+  "definitie": "De tekst zegt zelf dat er een taalmodel aan het werk is, of bevat een weigering die op de opdracht slaat en niet op het onderwerp.",
+  "cues": [
+   "Als AI-taalmodel",
+   "Als AI kan ik niet",
+   "Ik ben een taalmodel",
+   "Het spijt me, maar ik kan",
+   "Ik heb geen toegang tot internet",
+   "Ik kan geen actuele informatie geven",
+   "Dit antwoord is gegenereerd door"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Als AI-taalmodel kan ik geen actuele bezoekersaantallen geven, maar ik kan wel een algemeen beeld schetsen.",
+    "na": "Actuele bezoekersaantallen ontbreken."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina noemt een expliciete aanwijzing in het artikel dat het door een AI is gemaakt als grond voor onmiddellijke verwijdering; humanizer-de heeft dit als patroon 20 (Prompt-Ablehnung).",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Plaatshouders die blijven staan",
+  "categorie": "artifacts",
+  "definitie": "Invulvelden uit een gegenereerd sjabloon die nooit zijn ingevuld: haakjes met een instructie, een generieke naam, of een openstaande takenmarkering.",
+  "cues": [
+   "[naam invullen]",
+   "[datum]",
+   "[vul hier in]",
+   "[jouw bedrijf]",
+   "[bron]",
+   "[link]",
+   "[voorbeeld toevoegen]",
+   "TODO:",
+   "Lorem ipsum",
+   "XX of XYZ als getal of naam"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Neem contact op met [naam contactpersoon] via [e-mailadres] voor meer informatie over de meetup op [datum].",
+    "na": "Vragen over de meetup van 24 september gaan naar de organisatie via hallo@voorbeeld.nl."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Vierkante haken zijn in Nederlandse lopende tekst zeldzaam, wat dit patroon goedkoop detecteerbaar maakt met een enkele zoekactie op '[' in de kopij.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Zoek- en citatieresten uit de chatbot",
+  "categorie": "artifacts",
+  "definitie": "Resten van de manier waarop een chatbot naar bronnen verwijst, meegekopieerd in de tekst: interne citatietokens, een verwijzing naar een zoekopdracht in plaats van naar het document, of een trackingparameter in de URL.",
+  "cues": [
+   "utm_source=chatgpt.com",
+   "(ga naar zoekopdracht nr.)",
+   "turn0search0",
+   "citeturn0search1",
+   ":contentReference[oaicite:0]{index=0}",
+   "oaicite",
+   "google.com/search?q= als bronlink",
+   "chatgpt.com/share/ als bron",
+   "losse cijfers of Unicode-bolletjes aan het eind van een zin"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De vereniging werd in 1998 opgericht. citeturn0search2 Meer staat op https://voorbeeld.nl/?utm_source=chatgpt.com",
+    "na": "De vereniging werd in 1998 opgericht (Kamer van Koophandel, dossier 06012345)."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina beschrijft de vorm 'Gehe zu Suche Nr.' aan het zinseinde met oplopend nummer, en het misbruikfilter 453 van de Duitse Wikipedia logt puur op 'chatgpt.com' in een URL. Beide vormen zijn taalonafhankelijk en gelden onveranderd voor Nederlandse kopij; een grep op 'utm_source=chatgpt' en 'oaicite' hoort in elke redactieslag.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Markdown-resten in een omgeving zonder markdown",
+  "categorie": "artifacts",
+  "definitie": "Markdown-tekens blijven zichtbaar omdat het doelsysteem ze niet rendert: sterretjes rond woorden, hekjes voor koppen, streepjeslijnen, pijptabellen of een codeblok in een e-mail, CMS-veld, wiki of commitbericht.",
+  "cues": [
+   "**vet** dat als sterretjes blijft staan",
+   "## voor een kop",
+   "--- als scheidingslijn",
+   "| kolom | kolom | in platte tekst",
+   "een ```-codeblok in een e-mail",
+   "• of - als opsommingsteken in een systeem met eigen lijstopmaak",
+   "genummerde lijst met 1. 2. 3. in lopende tekst",
+   "markdown vermengd met de opmaaktaal van het doelsysteem"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Programma\n\n- **19:00** inloop\n- **19:30** eerste talk",
+    "na": "Programma: 19.00 uur inloop, 19.30 uur de eerste talk."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina waarschuwt uitdrukkelijk dat markdown op zichzelf zwak bewijs is: ontwikkelaars, onderzoekers en technisch schrijvers gebruiken het overal. Sterk wordt het pas als markdown vermengd raakt met de opmaaktaal van het doelsysteem, of als een heel antwoord inclusief codeblok is geplakt. Het patroon is taalonafhankelijk en verandert niets in het Nederlands; de wikitext-specifieke uitwerking op de pagina heb ik weggelaten.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Plaatshouders en chattokens uit de chatbot",
+  "categorie": "artifacts",
+  "definitie": "Technische restjes die bij het kopiëren uit een chatvenster meekomen: interne verwijzingstokens, tracking-parameters en onbegrijpelijke tag-stukjes.",
+  "cues": [
+   "contentReference",
+   "oaicite",
+   "turn0search",
+   "utm_source=openai",
+   "utm_source=chatgpt.com"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "rare placeholder-code zoals contentReference, oaicite of onbegrijpelijke tag-stukjes. Soms staan er verborgen 'turn0search'-achtige tokens of utm_source=openai."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Digiwijzer: 'Zulke sporen ontstaan bij kopiëren uit een chatbot. Controleer dus altijd even de ruwe tekst.'",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Markdown-tekens in platte tekst",
+  "categorie": "artifacts",
+  "definitie": "Sterretjes, hekjes en andere markdown-opmaak in een document of veld dat geen markdown rendert.",
+  "cues": [
+   "Markdown-tekens in plaats van normale tekstopmaak",
+   "**",
+   "##"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Denk aan Markdown-tekens in plaats van normale tekstopmaak."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Digiwijzer, onder 'Kopieer- en plaksporen uit chatapps'; Jouw Copiloot vangt het onder 'overdreven opmaak'.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Extra spaties en kopieersporen",
+  "categorie": "artifacts",
+  "definitie": "Overtollige spaties aan het begin van een zin of regel en andere resten die bij plakken uit een chatvenster ontstaan.",
+  "cues": [
+   "extra spaties aan het begin van een nieuwe zin of regel",
+   "onterechte spaties"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Ook kunnen er hier en daar extra spaties staan aan het begin van een nieuwe zin of regel."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Digiwijzer. Onze Taal verklaart een verwante variant anders: veelvoorkomende spatiefouten uit het bronmateriaal komen terug in de output.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "AI-reactie onder een post",
+  "categorie": "artifacts",
+  "definitie": "Een gegenereerde reactie die de auteur bij naam prijst en dankt zonder iets toe te voegen.",
+  "cues": [
+   "Interessant perspectief, Piet!",
+   "Dank voor het delen van deze waardevolle inzichten"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Interessant perspectief, Piet! Dank voor het delen van deze waardevolle inzichten…"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Frankwatching (2026): LinkedIn zet technologiesystemen in tegen AI-content, ook tegen AI-geschreven reacties.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Chatbot-excuusdraai in de eerste persoon",
+  "categorie": "artifacts",
+  "definitie": "De tekst spreekt als assistent over zijn eigen antwoord: complimenteert de vraag, geeft toe dat een claim niet klopte, herformuleert met 'Dus om het helder te zeggen'.",
+  "cues": [
+   "Ik zei dat omdat",
+   "Ik had dat niet mogen presenteren",
+   "Dus om het helder te zeggen:",
+   "Goede en terechte vraag"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Goede en terechte vraag — en fijn dat je dat kritisch vraagt. Ik zei dat omdat ik de observatie over bijvoeglijke naamwoorden wilde illustreren met een concreet voorbeeld. Maar ik had dat niet als een letterlijk bestaand onderzoek (met bron en getal) mogen presenteren. Dus om het helder te zeggen: er is geen specifiek onderzoek…"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Bikkelhart citeert dit antwoord integraal en merkt op dat er meteen weer een em-dash in staat.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Chatbotopening",
+  "categorie": "artifacts",
+  "definitie": "De inleiding van de assistent voor de eigenlijke inhoud blijft in de afgeleverde tekst staan. Subvormen: een instemmend woord vooraf ('Natuurlijk!', 'Zeker!', 'Uiteraard!', 'Goede vraag!', 'Je hebt helemaal gelijk!'), een aankondiging van wat er volgt ('Hier is een overzicht van ...', 'Hieronder vind je een opzet:'), en een voorbehoud over wat het model wel en niet kan. Begin bij de eerste zin die inhoud heeft.",
+  "cues": [
+   "Natuurlijk!",
+   "Zeker!",
+   "Uiteraard!",
+   "Absoluut!",
+   "Goede vraag!",
+   "Wat een goede vraag",
+   "Je hebt helemaal gelijk",
+   "Hier is een overzicht van",
+   "Hieronder vind je",
+   "Ik kan je daarbij helpen",
+   "Op basis van wat je hebt gedeeld"
+  ],
+  "regex": [
+   "(?m)^\\s*(?:natuurlijk|zeker|absoluut|uiteraard|prima|jazeker)\\s*[!.]",
+   "\\b(?:goede|uitstekende|interessante|scherpe) vraag[!.]",
+   "\\bhier is (?:een|het|de) [^.\\n]{0,40}(?:overzicht|voorstel|concept|opzet|versie|aanzet)\\b",
+   "\\bhieronder vind je\\b",
+   "\\bje hebt (?:helemaal|volkomen) gelijk\\b",
+   "\\bop basis van (?:wat je|de informatie die je) (?:hebt |heeft )?(?:gedeeld|gegeven)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Natuurlijk! Hier is een overzicht van de Franse Revolutie. De revolutie begon in 1789 na jaren van financiële crisis.",
+    "na": "De Franse Revolutie begon in 1789, na jaren van financiële crisis en voedseltekorten."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "chatbot-opener",
+  "notities": "Transfereert een-op-een; 'Natuurlijk!' en 'Zeker!' zijn de standaard Nederlandse openingen, 'Uiteraard!' iets formeler.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Behulpzaam slot",
+  "categorie": "artifacts",
+  "definitie": "De afsluiting die aan de opdrachtgever is gericht blijft in de tekst staan. Subvormen: de behulpzaamheidsafsluiter ('Ik hoop dat dit helpt', 'Laat het me weten als je nog vragen hebt'), het vervolgaanbod als vraag ('Wil je dat ik ...?', 'Zal ik er voorbeelden bij zetten?'), en het aanbod om de uitvoer om te zetten naar de vorm van de bestemming. Schrap het hele blok.",
+  "cues": [
+   "Ik hoop dat dit helpt!",
+   "Laat het me weten als je nog vragen hebt",
+   "Laat gerust weten of ik ergens dieper op in moet gaan",
+   "Wil je dat ik",
+   "Zal ik",
+   "Veel succes ermee!",
+   "Hopelijk heb je hier wat aan",
+   "Stel gerust je vragen"
+  ],
+  "regex": [
+   "\\bik hoop dat (?:dit|het) (?:je )?helpt\\b",
+   "\\bhopelijk heb je hier (?:iets|wat) aan\\b",
+   "\\blaat (?:het )?(?:me|mij) weten als\\b",
+   "\\blaat gerust weten (?:of|als)\\b",
+   "\\bwil je dat ik\\b",
+   "\\bzal ik (?:dit|het|er)\\b[^.\\n]{0,60}\\?",
+   "\\bals je nog vragen hebt\\b",
+   "\\bveel succes ermee\\b",
+   "\\bstel gerust (?:je|uw) vragen\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De migratie verloopt in twee fasen. Ik hoop dat dit helpt! Laat het me weten als je wilt dat ik een onderdeel verder uitwerk.",
+    "na": "De migratie verloopt in twee fasen."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "collaborative-closer",
+  "notities": "Transfereert een-op-een. Let op: 'laat het me weten' in een echte mail tussen twee mensen is gewoon Nederlands; de tell is de plaatsing onder een afgeleverd stuk tekst.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Vraag herhaald voor het antwoord",
+  "categorie": "artifacts",
+  "definitie": "De tekst opent door de vraag terug te formuleren naar degene die hem stelde: 'Om je vraag te beantwoorden ...', 'Je vraagt je af of ...', 'De vraag of ...', 'Goede vraag. Het antwoord is ...'. In een zelfstandige tekst heeft de lezer niets gevraagd, dus de herhaling zegt niets. Schrap de parafrase en open met het antwoord.",
+  "cues": [
+   "Om je vraag te beantwoorden",
+   "Je vraagt je af of",
+   "Je vraagt naar",
+   "De vraag of",
+   "Als ik je vraag goed begrijp",
+   "Wat je vraagt is",
+   "Even samengevat wat je vroeg"
+  ],
+  "regex": [
+   "\\bom (?:je|jouw|uw) vraag te beantwoorden\\b",
+   "\\bje vraagt (?:je af )?(?:of|naar|hoe|waarom|wat)\\b",
+   "\\bals ik (?:je|jouw|uw) vraag goed begrijp\\b",
+   "\\bwat je vraagt,? is\\b",
+   "(?m)^\\s*de vraag of\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Om je vraag te beantwoorden: de cache wordt bij elke schrijfactie ongeldig gemaakt.",
+    "na": "De cache wordt bij elke schrijfactie ongeldig gemaakt."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "acknowledgment-loop",
+  "notities": "Transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Gelekte redeneerstappen",
+  "categorie": "artifacts",
+  "definitie": "Denkstellingen gepubliceerd als proza: 'Laten we dit stap voor stap bekijken', 'Ik ontleed dit even', 'Om dit systematisch aan te pakken', 'Stap 1:', en genummerde redeneerstappen die als innerlijke monoloog lezen in plaats van als betoog voor een lezer. Een subvorm vertelt de eigen werkwijze in plaats van een bron te noemen ('Mijn analyse is gebaseerd op de beschikbare titels'). Schrap de steiger en houd de conclusie met haar onderbouwing.",
+  "cues": [
+   "Laten we dit stap voor stap bekijken",
+   "Laat me dit stap voor stap doorlopen",
+   "Om dit systematisch aan te pakken",
+   "Ik ontleed dit even",
+   "Stap 1:",
+   "Mijn gedachtegang",
+   "Laten we eerst kijken naar",
+   "Mijn analyse is gebaseerd op"
+  ],
+  "regex": [
+   "\\b(?:laten we|laat me|laat ik) (?:dit |het )?stap voor stap\\b",
+   "\\bom dit systematisch aan te pakken\\b",
+   "\\bik ontleed dit\\b",
+   "(?m)^\\s*stap \\d+\\s*:",
+   "\\bmijn gedachtegang\\b",
+   "\\blaten we (?:eerst|om te beginnen) (?:kijken naar|beginnen bij|vaststellen)\\b",
+   "\\bmijn analyse is gebaseerd op\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Laten we dit stap voor stap bekijken. Kijk eerst naar het schrijfpad. De cache wordt bij elke schrijfactie ongeldig gemaakt.",
+    "na": "De cache wordt bij elke schrijfactie ongeldig gemaakt."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "reasoning-chain-leak",
+  "notities": "Transfereert; in het Engels als scope english genoteerd, maar de Nederlandse vormen komen even vaak voor.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Kennisgrensdisclaimer en AI-zelfbenoeming",
+  "categorie": "artifacts",
+  "definitie": "De eigen beperkingen van het model in de eerste persoon, blijven staan in de tekst: een voorbehoud over de kennisgrens ('Op het moment van mijn laatste update', 'mijn trainingsdata loopt tot', 'ik heb geen toegang tot realtime informatie'), zelfbenoeming als model ('Als AI-taalmodel ...') en de standaardweigering van professioneel advies ('Ik kan geen juridisch advies geven, maar ...'). Vervang door een datum en een bron, of schrap.",
+  "cues": [
+   "Op het moment van mijn laatste update",
+   "Mijn trainingsdata loopt tot",
+   "Ik heb geen toegang tot realtime informatie",
+   "Als AI-taalmodel",
+   "Als AI kan ik",
+   "Ik ben een taalmodel",
+   "Ik kan geen juridisch advies geven",
+   "Op basis van de beschikbare informatie"
+  ],
+  "regex": [
+   "\\bals (?:een )?(?:ai|a\\.i\\.)[- ]?(?:taalmodel|model|assistent|systeem)\\b",
+   "\\bmijn (?:trainings)?(?:data|gegevens) (?:loopt|lopen|gaat|gaan) tot\\b",
+   "\\bik heb geen toegang tot (?:realtime|real-time|actuele|live)\\b",
+   "\\bop het moment van mijn laatste update\\b",
+   "\\bik kan geen (?:juridisch|medisch|financieel|fiscaal) advies geven\\b",
+   "\\bik ben een (?:ai|taalmodel|kunstmatige intelligentie)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Op het moment van mijn laatste update had de gemeenteraad de begroting voor 2026 nog niet gepubliceerd.",
+    "na": "De gemeenteraad had de begroting voor 2026 op 4 september 2026 nog niet gepubliceerd (raadsnotulen, 3 september)."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "cutoff-disclaimer-and-ai-self-identification",
+  "notities": "Transfereert; 'Als AI-taalmodel' is de vaste Nederlandse vorm, met koppelteken.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Gelekte citatiemarkup uit de chattool",
+  "categorie": "artifacts",
+  "definitie": "Interne citatietokens uit een chatinterface die het kopieren en plakken overleven, op de plaats van een echte bronvermelding. Bekende vormen zijn de contentReference- en oai_citation-tokens, de citeturn- en turn0search-reeksen, de kale afsluitende cijfers die overblijven als de onzichtbare omhulsels zijn gestript, en losgeraakte ref-tags. Vervang door een echte bronvermelding of haal ze weg.",
+  "cues": [
+   "citeturn0search0",
+   "turn0search1",
+   "citeturn0news0",
+   "turn0file",
+   ":contentReference[oaicite:20]{index=20}",
+   "[oai_citation:3]",
+   "turn0image0",
+   "<ref name=\"0search12\">"
+  ],
+  "regex": [
+   "cite\\u2020?turn\\d+\\w+",
+   "turn\\d+(?:search|news|file|image)\\d+",
+   ":contentreference\\[oaicite:\\d+\\]",
+   "\\[oai_citation:\\d+",
+   "<ref name=\"\\d+search\\d+\">"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De regeling geldt sinds 2019 voor alle gemeenten :contentReference[oaicite:20]{index=20}.",
+    "na": "De regeling geldt sinds 2019 voor alle gemeenten (Staatscourant 2019, 4412)."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "citation-markup-leak",
+  "notities": "Taalonafhankelijk: de tokens zijn machinetekst en worden niet vertaald. Transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "AI-trackingparameter in een URL",
+  "categorie": "artifacts",
+  "definitie": "Een queryparameter die een AI-tool aan de links plakt die het schrijft: utm_source=chatgpt.com, utm_source=openai, utm_source=copilot.com, utm_source=claude.ai, utm_source=perplexity.ai, referrer=grok.com. De parameter is de handtekening, wat de omringende tekst ook zegt. Haal de AI-verwijzer uit de URL en laat de rest van de querystring staan.",
+  "cues": [
+   "utm_source=chatgpt.com",
+   "utm_source=copilot.com",
+   "utm_source=openai",
+   "utm_source=claude.ai",
+   "utm_source=perplexity.ai",
+   "referrer=grok.com"
+  ],
+  "regex": [
+   "utm_source=(?:chatgpt\\.com|openai|copilot\\.com|claude\\.ai|perplexity\\.ai)",
+   "referrer=grok\\.com"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "https://www.nrc.nl/nieuws/2026/02/11/interview?utm_source=chatgpt.com",
+    "na": "https://www.nrc.nl/nieuws/2026/02/11/interview"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "ai-url-tracking-parameter",
+  "notities": "Taalonafhankelijk; transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Niet-ingevulde plaatshouder",
+  "categorie": "artifacts",
+  "definitie": "Een invulplek die de schrijver had moeten vervangen, verstuurd zoals hij is: plaatshouders tussen blokhaken ('[naam invullen]', '[jouw naam]', '[bedrijfsnaam]', '[link naar bron]'), instructies tussen blokhaken ('[beschrijf hier welk onderdeel aangepast moet worden]'), aanwijzingen tussen haakjes ('(vul hier je kanaal-URL in)') en sjabloonvariabelen. Vul de waarde in of schrap de regel.",
+  "cues": [
+   "[naam invullen]",
+   "[jouw naam]",
+   "[bedrijfsnaam]",
+   "[datum]",
+   "[link naar bron]",
+   "[vul hier in]",
+   "(vul hier je ... in)",
+   "[functietitel]",
+   "[plaats]"
+  ],
+  "regex": [
+   "\\[(?:jouw |je |uw |eigen )?(?:naam|voornaam|achternaam|bedrijfsnaam|organisatie|functietitel|datum|plaats|e-?mail|telefoonnummer)(?: invullen| hier| hier invullen)?\\]",
+   "\\[(?:vul|voeg|beschrijf|noem)[^\\]\\n]{0,60}\\]",
+   "\\[link naar [^\\]\\n]{1,40}\\]",
+   "\\((?:vul|voeg)[^)\\n]{0,50}(?:in|toe)\\)",
+   "\\[[a-z\\u00e0-\\u00ff ]{2,30} invullen\\]"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Met vriendelijke groet, [jouw naam] en Chloe",
+    "na": "Groet, Chloe Martens"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "unfilled-placeholder",
+  "notities": "Transfereert; de Nederlandse plaatshouders zijn '[naam invullen]' en '[jouw naam]', vaak met het werkwoord achteraan zoals het Nederlands dat doet.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Plaatshouder in een gestructureerd veld",
+  "categorie": "artifacts",
+  "definitie": "Een bron-, infobox- of frontmatterveld met een stomp in plaats van een waarde: 'url=URL', 'BRON_URL_HIER', 'UITGEVER', datumstompen als '2025-XX-XX' (meestal in geraadpleegd-op, soms in datum, en ze veroorzaken gereedschapsfouten) en verborgen notities die de inhoud uitstellen. Vul het veld of haal de hele verwijzing weg.",
+  "cues": [
+   "2025-XX-XX",
+   "geraadpleegd op 2025-XX-XX",
+   "url=URL",
+   "BRON_URL_HIER",
+   "UITGEVER",
+   "titel=Titel",
+   "datum=onbekend"
+  ],
+  "regex": [
+   "\\d{4}-xx-xx",
+   "\\burl\\s?=\\s?url\\b",
+   "\\b(?:bron_?url|insert_?source_?url)[_a-z0-9]*\\b",
+   "\\b(?:titel\\s?=\\s?titel|uitgever\\s?=\\s?uitgever|auteur\\s?=\\s?auteur)\\b",
+   "\\bdatum\\s?=\\s?onbekend\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "{{Citeer web |url=BRON_URL_HIER |uitgever=UITGEVER |datum=2022-11-XX}}",
+    "na": "(verwijzing verwijderd; er is nooit iets achter geraadpleegd)"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "placeholder-in-metadata-field",
+  "notities": "Transfereert; de datumstompen zijn taalonafhankelijk, de veldnamen zijn vernederlandst naar de conventie van de Nederlandstalige Wikipedia.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Opzet gepubliceerd in plaats van de sectie",
+  "categorie": "artifacts",
+  "definitie": "Een zin die beschrijft wat een sectie zou bevatten, geleverd in plaats van de inhoud: 'In deze sectie zou worden ingegaan op mogelijke ontwikkelingen'. De opzet van het model is in de tekst blijven staan. Schrijf de sectie of schrap de kop.",
+  "cues": [
+   "In deze sectie zou worden ingegaan op",
+   "Hier zou een beschrijving komen van",
+   "Dit hoofdstuk behandelt straks",
+   "Hier komt nog",
+   "nader uit te werken"
+  ],
+  "regex": [
+   "\\b(?:deze|dit) (?:sectie|paragraaf|hoofdstuk|onderdeel) zou (?:worden )?(?:ingegaan|beschreven|behandeld|besproken)\\b",
+   "\\bhier (?:zou|komt) (?:nog )?(?:een|de) [^.\\n]{0,40}(?:komen|volgen|staan)\\b",
+   "\\bnader uit te werken\\b",
+   "\\bnog aan te vullen\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In deze sectie zou worden ingegaan op mogelijke ontwikkelingen in de energiemarkt.",
+    "na": "Het IEA legt de piek in de olievraag in zijn vooruitzicht van 2025 tussen 2029 en 2032 bij ongewijzigd beleid."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "outline-plan-left-in-body",
+  "notities": "Transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Markdown op een vlak dat het niet rendert",
+  "categorie": "artifacts",
+  "definitie": "Markdown-syntaxis belandt op een vlak met een eigen opmaaktaal of helemaal geen: wikitekst, platte e-mail, een CMS-veld, een ticket, een codecommentaar. Chatbots produceren standaard Markdown omdat hun systeemprompt daarom vraagt, en kopieren houdt het vast. Zet het om naar de opmaak van het doel, of haal het weg.",
+  "cues": [
+   "**vet**",
+   "*cursief*",
+   "_cursief_",
+   "# Kop",
+   "## Kop",
+   "[tekst](url)",
+   "```",
+   "--- als scheidingslijn",
+   "- bullet in een platte e-mail"
+  ],
+  "regex": [
+   "\\*\\*[^*\\n]{1,60}\\*\\*",
+   "(?m)^#{1,6}\\s+\\S",
+   "\\[[^\\]\\n]{1,60}\\]\\((?:https?://|/)[^)\\n]{1,120}\\)",
+   "(?m)^```"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "* 💻 **Software en open source**\n* 📚 **Onderwijs in Twente**",
+    "na": "* Software en open source\n* Onderwijs in Twente"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "markdown-in-non-markdown-surface",
+  "notities": "Taalonafhankelijk; de regex is alleen zinvol op vlakken die Markdown niet renderen, en geeft op een Markdown-bestand per definitie vals alarm.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Verzonnen of kapotte opmaak voor het doelsysteem",
+  "categorie": "artifacts",
+  "definitie": "Opmaak die het model niet beheerst komt er verzonnen, verminkt of verkeerd toegepast uit. Subvormen: sjabloon- en parameternamen die op het echte schema lijken maar niet bestaan, zodat ze als rode link renderen of niets doen; verhaspelde sjabloonsyntaxis; en verwijzingstags die niet sluiten. Controleer elke sjabloonnaam tegen het doelsysteem.",
+  "cues": [
+   "{{Infobox oude bevolking",
+   "| archeologische_vindplaatsen =",
+   "{{Bron|",
+   "[[Categorie:",
+   "<ref name=",
+   "</references>",
+   "sjabloonnaam die niet bestaat"
+  ],
+  "regex": [
+   "\\{\\{infobox [a-z\\u00e0-\\u00ff ]{3,40}\\n?\\s*\\|",
+   "<ref name=[^>\\n]{1,40}(?<!/)>(?![\\s\\S]{0,200}</ref>)",
+   "<sup>\\[\\d+\\]</sup>",
+   "\\[\\[categorie:[^\\]\\n]{1,60}\\]\\]"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "{{Infobox oude bevolking | regio = IJsseldal | archeologische_vindplaatsen = Hunebed D27 }}",
+    "na": "{{Infobox archeologische cultuur | regio = IJsseldal | belangrijkstevindplaatsen = Hunebed D27 }}"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "broken-target-markup",
+  "notities": "Transfereert naar de Nederlandstalige Wikipedia, waar de sjabloonnamen anders zijn (Categorie:, Citeer web, Infobox). De regex markeert kandidaten; alleen het doelsysteem kan zeggen of een sjabloon bestaat.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Verouderde of onmogelijke sjabloonmetadata",
+  "categorie": "artifacts",
+  "definitie": "Een nieuw document draagt metadata die het niet verdiend kan hebben: onderhouds-, beveiligings- of stijlsjablonen met een datum van voor het bestaan van het document, een inzendkop die de inzending alvast afwijst, en geraadpleegd-op-datums die niet kunnen kloppen. Zet de datum op de dag van aanmaak of haal het sjabloon weg.",
+  "cues": [
+   "{{Wikify|datum=september 2022}} op een pagina van 2026",
+   "{{Beginnetje}}",
+   "|bezochtdatum=12 december 2024",
+   "|datum=februari 2025 op een nieuw artikel",
+   "{{Meebezig}}"
+  ],
+  "regex": [
+   "\\{\\{[a-z\\u00e0-\\u00ff ]{3,25}\\|datum=[a-z]{3,10} \\d{4}\\}\\}",
+   "\\|\\s?(?:bezocht|geraadpleegd)datum\\s?=\\s?\\d{1,2} [a-z]{3,10} \\d{4}"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een pagina die in februari 2026 is aangemaakt en opent met {{Wikify|datum=september 2022}}",
+    "na": "Een pagina die in februari 2026 is aangemaakt en opent met {{Wikify|datum=februari 2026}}"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "stale-boilerplate-metadata",
+  "notities": "Transfereert naar de Nederlandstalige Wikipedia; de sjabloonnamen en de parameter 'bezochtdatum' zijn de Nederlandse vormen.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Instructies aan degene die het plaatst",
+  "categorie": "artifacts",
+  "definitie": "Tekst gericht aan wie het document gaat plakken, indienen of nakijken, gepubliceerd binnenin dat document. Subvormen: genummerde indieningsnotities, een regel die de plaatser opdraagt de notitie te verwijderen ('Verwijder deze sectie voor publicatie'), coaching over wat te zeggen als een beoordelaar bezwaar maakt, en een checklist van wat het onderwerp zou moeten hebben. Schrap het hele blok.",
+  "cues": [
+   "Verwijder deze sectie voor publicatie",
+   "Na het plakken van het artikel",
+   "Let op: pas dit aan voordat je het verstuurt",
+   "Tip:",
+   "Dien dit in via",
+   "Als een beoordelaar vraagt"
+  ],
+  "regex": [
+   "\\bverwijder (?:deze|dit) (?:sectie|alinea|blok|regel|notitie) (?:voor|v\\u00f3\\u00f3r) (?:publicatie|het versturen|indiening|plaatsing)\\b",
+   "\\bna het plakken\\b",
+   "\\bvoordat je (?:dit|het) (?:publiceert|verstuurt|indient|plaatst)\\b",
+   "\\bdien (?:dit|het) in via\\b",
+   "\\bals een (?:beoordelaar|reviewer|moderator) (?:vraagt|bezwaar maakt)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Verwijder deze sectie voor publicatie. Zet na het plakken van het artikel de bronnenlijst om naar voetnoten.",
+    "na": "(geschrapt; het artikel begint bij zijn eerste regel)"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "instructions-to-the-handler",
+  "notities": "Transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Eigen verklaring dat het aan de regels voldoet",
+  "categorie": "artifacts",
+  "definitie": "De tekst beweert zijn eigen neutraliteit, bronvastheid of regelconformiteit in plaats van die te laten zien: 'Geschreven volgens de richtlijnen. Neutraal van toon en overal gebronde.', 'Ik begrijp je zorgen over AI-gegenereerde tekst'. De wijzigingsnotitievorm stapelt uitvoerige, niet-specifieke verzekeringen. Laat de tekst het werk doen en schrap de verklaring.",
+  "cues": [
+   "Neutraal van toon",
+   "voorzien van betrouwbare bronnen",
+   "in lijn met de richtlijnen",
+   "voldoet aan de richtlijnen",
+   "geschreven volgens de huisstijl",
+   "Ik begrijp je zorgen over",
+   "conform de geldende regels"
+  ],
+  "regex": [
+   "\\bneutraal (?:van toon|geformuleerd|geschreven|gehouden)\\b",
+   "\\bvoorzien van betrouwbare bronnen\\b",
+   "\\bin lijn met de richtlijnen\\b",
+   "\\bvoldoet aan (?:de|alle) (?:richtlijnen|eisen|voorwaarden|regels)\\b",
+   "\\bik begrijp (?:je|uw) zorgen over\\b",
+   "\\bconform de (?:geldende )?(?:regels|richtlijnen|huisstijl)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Sectie herzien voor helderheid en conform de richtlijnen; promotionele formuleringen gecorrigeerd en bronvermelding en neutraliteit verbeterd.",
+    "na": "overbodige links weggehaald"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "self-certification-of-compliance",
+  "notities": "Transfereert; in het Engels scope english, maar de Nederlandse vormen zijn even herkenbaar en komen vooral in bewerkingssamenvattingen voor.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Briefingtaal en bestemming in het product",
+  "categorie": "artifacts",
+  "definitie": "De uitvoer herhaalt de bewoordingen van de criteria waaraan hij moest voldoen, of noemt vanuit de tekst zelf de plek waarvoor hij is geschreven. Subvormen: richtlijnvocabulaire dat in het product terechtkomt ('significante, onafhankelijke berichtgeving, geen triviale vermeldingen'), de bestemming met een bezitsvorm en een regelwoord ('voldoet aan de richtlijnen van Wikipedia'), en verwijzingen naar de opdracht ('zoals gevraagd in de briefing'). Schrap de zin.",
+  "cues": [
+   "voldoet aan de relevantiecriteria",
+   "conform de richtlijnen van Wikipedia",
+   "zoals gevraagd in de briefing",
+   "significante, onafhankelijke berichtgeving",
+   "geen triviale vermeldingen of persberichten",
+   "zoals verzocht"
+  ],
+  "regex": [
+   "\\bvoldoet aan de (?:relevantie|notabiliteits|encyclopedische)criteria\\b",
+   "\\bconform de richtlijnen van [A-Z\\u00c0-\\u00de]",
+   "\\bzoals (?:gevraagd in de briefing|verzocht in de opdracht|gevraagd in de opdracht)\\b",
+   "\\bsignificante,? onafhankelijke berichtgeving\\b",
+   "\\bgeen triviale vermeldingen of persberichten\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Deze bronnen leveren significante, onafhankelijke berichtgeving, geen triviale vermeldingen of persberichten.",
+    "na": "(geschrapt uit het artikel; de bronnen staan bij de zin die ze ondersteunen)"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "brief-vocabulary-and-destination-naming",
+  "notities": "Transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Sjabloonmatige wijzigingsnotitie",
+  "categorie": "artifacts",
+  "definitie": "Een wijzigingsbeschrijving (commitbericht, PR-tekst, bewerkingssamenvatting) geschreven als uitputtend procedureel proza in plaats van een korte menselijke notitie. Subvormen: de volzin die alles opsomt wat er is gedaan en hoe het aan de regels voldoet, en de mededeling wat er bewust niet is veranderd, die de beperking uit de opdracht terugkaatst. Schrijf op wat er veranderde, in zo min mogelijk woorden.",
+  "cues": [
+   "Verbeterde duidelijkheid, structuur en leesbaarheid",
+   "Herzien voor betere leesbaarheid",
+   "met behoud van de oorspronkelijke betekenis",
+   "Uitgebreide herschrijving:",
+   "zonder de inhoud te wijzigen",
+   "Toon en stijl gelijkgetrokken"
+  ],
+  "regex": [
+   "\\bverbeterde? (?:de )?(?:duidelijkheid|leesbaarheid|structuur|toon|helderheid)\\b",
+   "\\bmet behoud van (?:de|het) (?:oorspronkelijke|bestaande|huidige)\\b",
+   "\\buitgebreide (?:herschrijving|update|opschoning|revisie)\\b",
+   "\\bzonder (?:de )?(?:inhoud|betekenis|strekking) (?:te )?(?:wijzigen|aan te tasten|te veranderen)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Verbeterde duidelijkheid, structuur en leesbaarheid van de plotsectie; herhaling teruggebracht en toon aangescherpt voor een betere encyclopedische stijl.",
+    "na": "plot ingekort"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "templated-change-note",
+  "notities": "Transfereert onveranderd; in dit repo relevant voor commitberichten, die volgens Conventional Commits juist kort en concreet moeten zijn.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Briefregister waar geen brief hoort",
+  "categorie": "artifacts",
+  "definitie": "Zakelijk briefformaat op een ticket, een overlegpagina, een reactie, een formulier of in een artikel: 'Geachte redactie,', 'Ik hoop dat dit bericht u in goede gezondheid bereikt', 'Bij dezen verzoek ik u', 'Alvast dank voor uw begrip en medewerking', 'Met vriendelijke groet,'. Het register klopt in een echte brief; de tell is dat het opduikt waar niemand brieven schrijft, en het reist meestal samen met niet-ingevulde plaatshouders.",
+  "cues": [
+   "Geachte redactie,",
+   "Geachte heer/mevrouw,",
+   "Ik hoop dat dit bericht u in goede gezondheid bereikt",
+   "Bij dezen verzoek ik u",
+   "Alvast dank voor uw begrip en medewerking",
+   "Met vriendelijke groet,",
+   "Hoogachtend,"
+  ],
+  "regex": [
+   "\\bgeachte (?:heer|mevrouw|redactie|lezer|beheerder|heer/mevrouw)\\b",
+   "\\bik hoop dat dit bericht (?:u|je) (?:in goede gezondheid )?(?:bereikt|goed bereikt)\\b",
+   "\\bbij dezen (?:verzoek|wil|meld) ik\\b",
+   "\\balvast (?:hartelijk )?(?:dank|bedankt) voor uw (?:begrip|medewerking|reactie)\\b",
+   "\\b(?:met vriendelijke groet|hoogachtend)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Geachte redactie, ik hoop dat dit bericht u in goede gezondheid bereikt. Bij dezen verzoek ik u een aanpassing door te voeren in het lemma.",
+    "na": "In de tweede alinea staat het verkeerde oprichtingsjaar: de akte is van 1924, niet van 1932."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "letter-register-on-non-correspondence",
+  "notities": "Transfereert, met een sterkere Nederlandse variant: 'Ik hoop dat dit bericht u in goede gezondheid bereikt' is geen bestaande Nederlandse briefformule maar een letterlijke vertaling van 'I hope this message finds you well' en verraadt zich dubbel. 'Met vriendelijke groet' is in een echte mail volstrekt normaal, vandaar ernst context.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Verdubbelde sectie of alinea",
+  "categorie": "artifacts",
+  "definitie": "Een sectie of alinea komt binnen hetzelfde stuk woordelijk of bijna woordelijk terug, omdat de generator het spoor bijster raakte van wat er al stond: dezelfde sectie twee keer uitgestoten, of alinea 3 herhaald als alinea 17 met geschud woordgebruik. Op te sporen met alineahashes of n-gram-overlap. Schrap de kopie, en kijk eerst of een van de twee een feit draagt dat de andere kwijt is.",
+  "cues": [
+   "dezelfde sectie twee keer, woord voor woord",
+   "alinea 3 en alinea 17 zijn dezelfde zin anders geformuleerd",
+   "twee keer dezelfde kop in de inhoudsopgave"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Dezelfde sectie 'Ontvangst' staat er twee keer, woord voor woord, op plek 4 en plek 9.",
+    "na": "Een sectie 'Ontvangst', op plek 4."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "content-duplication",
+  "notities": "Taalonafhankelijk; detectie is een hash- of overlapmeting, geen regex.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Tekst die middenin stopt",
+  "categorie": "artifacts",
+  "definitie": "Het stuk eindigt midden in een zin of een sectie omdat de generatie tegen een tokenlimiet liep en niemand hem heeft afgemaakt, of omdat het kopieren is afgekapt. Herken een slotzin zonder eindleesteken die op een functiewoord of een hulpwerkwoord eindigt. Maak de zin af of snijd terug naar de laatste hele zin.",
+  "cues": [
+   "eindigt midden in een zin",
+   "geen punt aan het eind van de tekst",
+   "eindigt op 'de', 'het', 'een', 'van', 'dat', 'om te', 'wordt'"
+  ],
+  "regex": [
+   "(?m)^[^\\n#|*\\-\\[>]{40,}[a-z\\u00e0-\\u00ff,]\\s*\\Z",
+   "(?i)\\b(?:de|het|een|van|dat|die|en|om te|te|is|wordt|worden|zal|kan|moet|heeft|hebben|automatisch)\\s*[\\n]?\\Z"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De vier tildes aan het eind zijn wikiopmaak die automatisch",
+    "na": "Vier tildes aan het eind ondertekenen je bericht met je gebruikersnaam en een tijdstempel."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "abrupt-cutoff",
+  "notities": "Transfereert, met een Nederlandse woordenlijst voor de eindtoets. Het Nederlands zet de persoonsvorm vaak achteraan, dus een tekst die op 'wordt' of 'heeft' eindigt is hier een sterker signaal dan in het Engels.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Onzichtbare en lookalike-tekens",
+  "categorie": "artifacts",
+  "definitie": "Onzichtbare of gelijkende tekens ingevoegd om AI-detectors te misleiden: zero-width-spatie, zero-width-non-joiner, zero-width-joiner, word joiner en byte order mark, en Cyrillische of Griekse letters op de plaats van Latijnse lookalikes. Hun aanwezigheid betekent dat de tekst door een humanizer of een omzeilingstool is gegaan. Haal de tekens weg en typ het woord opnieuw.",
+  "cues": [
+   "U+200B zero-width space",
+   "U+200C ZWNJ",
+   "U+200D ZWJ",
+   "U+FEFF BOM",
+   "U+2060 word joiner",
+   "Cyrillische а е о р с х у in een Nederlands woord"
+  ],
+  "regex": [
+   "[\\u200b\\u200c\\u200d\\u2060\\ufeff]",
+   "[a-z\\u00e0-\\u00ff]*[\\u0430\\u0435\\u043e\\u0440\\u0441\\u0445\\u0443\\u043a\\u043c\\u043d\\u0432\\u0442][a-z\\u00e0-\\u00ff]+"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "duikеn in (de tweede e is Cyrillisch U+0435, midden in een verder Latijns woord)",
+    "na": "duiken in, opnieuw getypt op je eigen toetsenbord"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "bypass-trick-characters",
+  "notities": "Taalonafhankelijk; transfereert onveranderd. De tweede regex vindt een Cyrillische lookalike midden in een woord met Latijnse letters eromheen en werkt in het Nederlands even goed.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Rollenspel-regieaanwijzingen",
+  "categorie": "artifacts",
+  "definitie": "Regieaanwijzingen tussen sterretjes uit rollenspelchat die in het proza zijn blijven staan: '*knikt*', '*zucht*', '*haalt zijn schouders op*'. De frase erbinnen opent met een handelingswerkwoord, en dat onderscheidt hem van gewone cursivering. Twee of meer in een document is de drempel, want een enkel paar sterretjes kan Markdown-cursief zijn.",
+  "cues": [
+   "*knikt*",
+   "*zucht*",
+   "*lacht*",
+   "*knikt bedachtzaam*",
+   "*haalt zijn schouders op*",
+   "*leunt naar voren*"
+  ],
+  "regex": [
+   "\\*(?:knikt|zucht|lacht|glimlacht|grinnikt|fronst|haalt (?:zijn|haar|de) schouders op|leunt (?:naar voren|achterover))[^*\\n]{0,30}\\*"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "*knikt bedachtzaam* De migratie liep schoon.",
+    "na": "De migratie liep schoon."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "roleplay-action-markers",
+  "notities": "Transfereert; de handelingswerkwoorden zijn vertaald en staan in de derde persoon enkelvoud, zoals het Nederlandse rollenspel dat doet.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Generatorwikkel en sprekerlabel",
+  "categorie": "artifacts",
+  "definitie": "De transportverpakking rond het antwoord wordt met de inhoud mee geplakt. Subvormen: een containerdirectief boven het geleverde stuk (':::writing{variant=\"document\" id=\"68427\"}' met een willekeurig vijfcijferig id, gelokaliseerd als ':::schrijven{variant=...}' en vaak gesloten met een kale ':::'), en een sprekerlabel uit een transcript dat het model noemt ('Claude antwoordde:', 'ChatGPT: Ik heb de tekst herschreven'). Haal de wikkel weg.",
+  "cues": [
+   ":::writing{variant=\"document\" id=\"",
+   ":::schrijven{variant=",
+   ":::",
+   "Claude antwoordde:",
+   "ChatGPT: Ik heb de tekst herschreven",
+   "Gemini zei:"
+  ],
+  "regex": [
+   ":::\\s*(?:writing|schrijven|\\u00e9criture)\\{",
+   "(?m)^:::\\s*$",
+   "(?mi)^(?:claude|chatgpt|gemini|copilot|gpt-\\d)\\s*(?:antwoordde|zei|schreef|reageerde)\\s*:"
+  ],
+  "voorbeelden": [
+   {
+    "voor": ":::writing{variant=\"document\" id=\"68427\"}\nAK7 is een Belgische rapper.",
+    "na": "AK7 is een Belgische rapper."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "generation-wrapper-and-speaker-label",
+  "notities": "Transfereert; de wikkel zelf is machinetekst, maar de sprekerlabels krijgen in Nederlandse transcripten Nederlandse werkwoorden ('antwoordde', 'zei').",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Herkomstsignalen buiten de tekst",
+  "categorie": "artifacts",
+  "definitie": "Aanwijzingen over hoe de tekst is aangekomen in plaats van hoe hij leest: het hele document dat in de versiegeschiedenis als een enkele plakactie verschijnt, en een auteur die plotseling foutloos of formeel schrijft tegen zijn eigen basislijn in, zeker als die basislijn van voor eind 2022 is. Zulk procesbewijs is beter verdedigbaar dan een detectorscore, en op zichzelf nooit een reden om de tekst te wijzigen.",
+  "cues": [
+   "2000 woorden in een enkele bewerking geplakt",
+   "account dat verder alleen tweeregelige bewerkingen doet",
+   "stijlsprong tegen de eigen basislijn in"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Een sectie van 2000 woorden arriveert in een plakactie, vanaf een account dat verder alleen bewerkingen van twee regels doet.",
+    "na": "(geen tekstwijziging; vraag de auteur hoe de sectie tot stand kwam)"
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "out-of-text-provenance-signal",
+  "notities": "Taalonafhankelijk; transfereert onveranderd, geen lexicale cues.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Wegwerpbewerkingen om een staat van dienst op te bouwen",
+  "categorie": "artifacts",
+  "definitie": "Veel onschuldig ogende, niet-constructieve AI-herschrijvingen over losstaande pagina's in korte tijd, gemaakt om een bewerkingsaantal of een staat van dienst op te bouwen voordat een ander doel wordt nagestreefd. De losse bewerkingen zien er onschadelijk uit; het volume, de spreiding en de timing zijn het signaal.",
+  "cues": [
+   "veertig kleine herschrijvingen op veertig losse pagina's op een avond",
+   "geen enkele bewerking verandert een feit",
+   "volume en spreiding in plaats van inhoud"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Veertig kleine herschrijvingen op veertig niet-verwante artikelen op een avond, waarvan er geen enkele een feit verandert.",
+    "na": "(als patroon beoordeeld in plaats van per bewerking, en met de bijdrager besproken voordat er iets gebeurt)"
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "permissions-gaming",
+  "notities": "Gedragspatroon, geen taalpatroon; transfereert onveranderd naar elke wiki, ook de Nederlandstalige.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ }
+]

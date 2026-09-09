@@ -1,0 +1,1264 @@
+[
+ {
+  "naam": "Samenvattende slotzin",
+  "categorie": "structure",
+  "definitie": "Een alinea of paragraaf eindigt met een zin die de kern nog eens herhaalt zonder iets toe te voegen.",
+  "cues": [
+   "Kortom",
+   "Samenvattend",
+   "Al met al",
+   "Concluderend",
+   "Alles bij elkaar genomen",
+   "Om het samen te vatten",
+   "Uiteindelijk komt het erop neer dat"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Kortom, de meetup is een waardevolle toevoeging aan de regio.",
+    "na": "(zin schrappen; de alinea erboven zegt het al)"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "In wetenschappelijke tekst is de samenvattende zin een conventie, in encyclopedische, journalistieke en zakelijke tekst hoort de samenvatting alleen bovenaan. De Duitse pagina formuleert het scherp: in een lemma vat je nooit een tekstblok samen, behalve in de inleiding.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Kop 'Conclusie' als afsluiter",
+  "categorie": "structure",
+  "definitie": "Het document sluit met een genummerde of vetgedrukte slotsectie die alleen herhaalt wat er al stond.",
+  "cues": [
+   "kop 'Conclusie'",
+   "kop 'Tot slot'",
+   "kop 'Slotwoord'",
+   "kop 'Afsluitende gedachten'",
+   "kop 'Samenvatting' onderaan het stuk"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Conclusie\n\nDe Twentse techscene groeit gestaag en biedt kansen voor iedereen die zich wil ontwikkelen.",
+    "na": "(sectie schrappen; de tekst erboven bevat de feiten al)"
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "In een wetenschappelijk artikel, scriptie of onderzoeksrapport is een conclusiesectie normaal. Het signaal is de conclusiekop in genres die er geen kennen: een lemma, een productpagina, een blogpost, een projectdocument, een README.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Uitdagingen-en-toekomst-slot",
+  "categorie": "structure",
+  "definitie": "Een vaste slotsectie die eerst successen erkent, dan uitdagingen opsomt en eindigt met een positieve of speculatieve blik vooruit, zonder concrete feiten.",
+  "cues": [
+   "Ondanks deze successen",
+   "Ondanks zijn populariteit",
+   "staat voor verschillende uitdagingen",
+   "kop 'Uitdagingen en toekomstperspectief'",
+   "kop 'Toekomstperspectieven'",
+   "kop 'Nalatenschap'",
+   "blijft een belangrijke rol spelen",
+   "de toekomst zal uitwijzen",
+   "met de juiste inzet"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Ondanks deze successen staat de meetup voor verschillende uitdagingen, waaronder groei en financiering. Met de juiste inzet kan het initiatief echter blijven bijdragen aan de regio.",
+    "na": "De meetup zoekt sinds juni een grotere zaal: de huidige locatie zit vol bij zestig aanmeldingen."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Het bezwaar geldt de formule, niet het benoemen van problemen. Een probleem met een naam, een datum en een gevolg is het tegengif. Verwant aan humanizer-de patroon 44 (Standard-Kapitel ohne Substanz): een hele sectie die alleen bestaat omdat het sjabloon hem voorschrijft.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Overstructurering",
+  "categorie": "structure",
+  "definitie": "De tekst is opgedeeld in meer koppen, bullets en scheidingslijnen dan de inhoud draagt, met alinea's van vrijwel gelijke lengte. Een lopende redenering is vervangen door een reeks gelijkwaardige puntjes.",
+  "cues": [
+   "een kop per drie zinnen",
+   "alles in bullets, geen lopende alinea",
+   "alinea's van steeds drie tot vijf zinnen",
+   "scheidingslijnen tussen alle secties",
+   "bullets met een vet label vooraan",
+   "sublijstjes onder elke bullet",
+   "een tabel voor twee gegevens"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "**Voordelen**\n- Netwerken\n- Leren\n- Plezier\n\n---\n\n**Nadelen**\n- Tijdsinvestering",
+    "na": "De meetup kost een avond en levert twee talks en een borrel op."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina vat dit samen als 'chatbots zijn spraakzaam': lange, overgestructureerde teksten met veel vet, opsommingen en scheidingslijnen. De opmaakrichtlijn van Copilot die de pagina citeert schrijft die vorm letterlijk voor (alinea's van drie tot vijf zinnen, gelabelde subsecties, --- tussen delen), wat verklaart waarom de vorm zo constant terugkeert. Verwant aan humanizer-de patronen 61 (Isometrisches Dokument) en 55 (Gleichförmiger Satzrhythmus).",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Tweedelige kop met dubbele punt",
+  "categorie": "structure",
+  "definitie": "Koppen volgen steeds hetzelfde schema: een pakkende frase, een dubbele punt, en dan de uitleg of de belofte.",
+  "cues": [
+   "kop met een dubbele punt in het midden",
+   "Frase: wat, waarom en hoe",
+   "De complete gids: alles over ...",
+   "Titel: een diepere blik",
+   "elke tussenkop volgens hetzelfde schema"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Meetups in Twente: waarom regelmaat het verschil maakt",
+    "na": "Waarom de meetup elke maand op dezelfde dag valt"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina noemt bij de zachte signalen 'onpassende, vaak tweedelige tussenkoppen'; humanizer-de heeft het als patroon 54 (Doppelpunkt-Titel-Schema). Eén dubbelepuntkop is normale redactionele praktijk; het signaal is dat elke kop in het document hem heeft.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Overgestructureerde schoolopbouw",
+  "categorie": "structure",
+  "definitie": "Elke alinea even lang, elke paragraaf een tussenkop, inleiding met drie tot vijf punten en een nette conclusie — een schoolopstel in plaats van een verhaal.",
+  "cues": [
+   "elke alinea is even lang",
+   "elke paragraaf heeft een tussenkop",
+   "een inleiding, drie tot vijf punten met kopjes, en een conclusie",
+   "vergelijkbare inleidingen en conclusies",
+   "overgestructureerd"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "AI-teksten volgen vaak een bijna schoolse opbouw: elke alinea is even lang, elke paragraaf heeft een tussenkop, en de tekst sluit netjes af met een conclusie."
+   },
+   {
+    "voor": "Een tekst geschreven door AI klinkt vaak als een schoolopstel met een heleboel woordjes uit de bonuslijst. Alles klopt. Maar het lééft niet."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "b2bmarketeers: menselijke schrijvers brengen juist variatie aan in lengte, toon en ritme. Promptmaster: 'Echte teksten zijn rommeliger — en dat is juist menselijk.' De VU citeert Herbold et al. (2023) voor uniforme inleidingen die met sleutelbegrippen beginnen.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Verplichte conclusie / Kortom-slot",
+  "categorie": "structure",
+  "definitie": "De tekst eindigt met een expliciet gemarkeerde samenvatting, ook bij teksten die helemaal geen conclusie nodig hebben.",
+  "cues": [
+   "Kortom",
+   "als conclusie",
+   "In conclusie",
+   "Samenvattend",
+   "Concluderend",
+   "Overall",
+   "Tot slot"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Soms is het een nieuwe alinea met een heading genaamd Conclusie, soms zijn het een aantal zinnen aan het eind van het artikel."
+   },
+   {
+    "voor": "'In conclusie/Overall' aan het einde van alinea's of secties."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Aikundig: bijna alle snel door AI geschreven teksten bevatten een conclusie. Digiwijzer zet het in de checklist voor docenten: jongeren doen dit in schoolwerk meestal niet zo consequent.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Verplichte intro én conclusie waar ze niet horen",
+  "categorie": "structure",
+  "definitie": "De tekst krijgt standaard een inleidende en een afsluitende sectie, ongeacht of het genre of de lengte daarom vraagt.",
+  "cues": [
+   "Er is altijd een introductie en een conclusie"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Intro en Conclusie: Er is altijd een introductie en een conclusie, ook bij teksten waarbij dit helemaal niet nodig is."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Aikundig noemt dit apart van de 'Kortom'-formulering: het gaat om de architectuur, niet om het signaalwoord.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Alinea's die eindigen in een samenvatting",
+  "categorie": "structure",
+  "definitie": "Elke alinea sluit af met een zin die herhaalt wat er net stond, in plaats van door te stoten naar het volgende punt.",
+  "cues": [
+   "Samenvattend kunnen we zeggen…",
+   "elke alinea eindigt met een samenvatting"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Samenvattend kunnen we zeggen…",
+    "na": "Wat betekent dit voor jouw team? Kies één tool en richt workflows opnieuw in."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Jouw Copiloot, signaal 3 uit de Wikipedia-lijst 'Signs of AI writing'; zijn fix is eindigen met een tip of vervolgstap.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Opsommingen-overdaad",
+  "categorie": "structure",
+  "definitie": "Om de paar alinea's een bullet- of genummerde lijst, ook als het onderwerp of de opdracht daar niet om vraagt. Daarmee verliest de opsomming zijn kracht.",
+  "cues": [
+   "veel opsommingen",
+   "een ongenummerde lijst",
+   "in elke alinea een opsomming",
+   "leest als een stappenplan in plaats van een verhaal"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Bij AI-teksten duiken ze vaak om de paar alinea's op. Ook als dat niet echt nodig is."
+   },
+   {
+    "voor": "Het is verdacht als een tekst ineens vol staat met een ongenummerde lijst terwijl dat niet bij de opdracht past."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Donna van de Ven: bij de tweede opsomming denkt de lezer 'blijkbaar is het toch niet zo belangrijk'. Rubens gebruikt het als docentensignaal: verdacht wanneer het niet bij de opdracht past.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Vetgedrukte koppen in bullets en overdreven opmaak",
+  "categorie": "structure",
+  "definitie": "Lijsten waarvan elk item met een vetgedrukt kernwoord opent, plus vet in de lopende tekst om losse woorden te benadrukken.",
+  "cues": [
+   "bullet points met vetgedrukte koppen",
+   "overmatig vetgedrukte woorden",
+   "key takeaways",
+   "alles vetgedrukt"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Overmatig vetgedrukte woorden: vooral in lijstjes of key takeaways."
+   },
+   {
+    "voor": "alles vetgedrukt, rare aanhalingstekens of emoji",
+    "na": "spaarzaam gebruiken. Eén kernzin per alinea vetgedrukt, klaar."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "VU-gids: AI-teksten bevatten vaak vetgedrukte woorden of bullet points om stukken in de lopende tekst te benadrukken. AI Slop Checker rekent het tot de structuurpatronen.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Weinig tekst onder tussenkopjes",
+  "categorie": "structure",
+  "definitie": "Onder elke subtitel staan maar een paar zinnen, terwijl een tussenkop normaal een substantiëler blok aankondigt.",
+  "cues": [
+   "weinig zinnen onder een tussenkopje"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Bij teksten waar gebruik wordt gemaakt van titels en subtitels staan er bij AI-teksten vaak weinig zinnen onder een tussenkopje."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Aikundig, uit eigen praktijk als webtekstschrijver.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Te lange antwoorden zonder kern",
+  "categorie": "structure",
+  "definitie": "Meer tekst dan gevraagd of nodig, die toch de kern mist of niet precies op de vraag aansluit.",
+  "cues": [
+   "overbodig lange, uitgebreide antwoorden",
+   "lang, maar toch de kern mist",
+   "lange antwoorden zonder veel diepgang"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Als een lerende plotseling veel meer schrijft dan gevraagd, kan dit een teken van het gebruik van generatieve AI zijn. Vooral als de tekst lang is, maar toch de kern mist of niet precies aansluit op de opdracht."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Rubens (docentenperspectief) en Hulz ('AI-teksten hebben de neiging om het onderwerp breed aan te pakken, maar missen soms de expertise en precisie van een menselijke specialist').",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "LinkedIn-slotvraag (engagement bait)",
+  "categorie": "structure",
+  "definitie": "De post eindigt met een voorspelbare vraag die alleen bestaat om reacties te lokken.",
+  "cues": [
+   "Thoughts?",
+   "Agree?",
+   "Herkenbaar?",
+   "Wat denk jij?",
+   "een voorspelbare vraag aan het eind om reacties te lokken"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Elke post begint met 'In het huidige landschap' en eindigt met 'Thoughts? Agree?'"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "AI Slop Checker noemt het 'Engagement-bait afsluiters'; Frankwatching (2026) beschrijft LinkedIn-posts vol emoji's met een voorspelbare vraag aan het eind — 'een eenheidsworst geworden waar de creativiteit helemaal uit is verdwenen'.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Kopjes die de volgende alinea aankondigen",
+  "categorie": "structure",
+  "definitie": "Tussenkopjes die niet meer doen dan het onderwerp van de eropvolgende alinea benoemen, ook in genres waar kopjes ongebruikelijk zijn (essays).",
+  "cues": [
+   "kopjes die het onderwerp van de volgende alinea aankondigen"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "door AI gegenereerde essays gebruiken soms kopjes die het onderwerp van de volgende alinea('s) aankondigen om de inhoud van het artikel te structureren"
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "VU-gids, structurele aanwijzingen.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Te constante stijl door de hele tekst",
+  "categorie": "structure",
+  "definitie": "Toon, aanspreekvorm en woordkeus blijven van begin tot eind exact gelijk — consistenter dan menselijke schrijvers volhouden.",
+  "cues": [
+   "tekst is te constant",
+   "dezelfde aanspreekvorm",
+   "consistentie in stijl en woordkeuze"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Ik ken maar weinig schrijvers die door de hele tekst heen hun eigen stijl kunnen behouden, dezelfde aanspreekvorm blijven gebruiken e.d. AI kan dit vaak wel."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Aikundig noemt het twee keer (eigen ervaring en algemene kenmerken). Let op de spanning met het tegenovergestelde signaal bij Jouw Copiloot: abrupte stijlwissels binnen één tekst.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "De LinkedIn-slotvraag",
+  "categorie": "structure",
+  "definitie": "De post eindigt met een vraag aan de lezer die alleen bestaat om reacties te lokken, letterlijk uit What do you think? Share your thoughts in the comments.",
+  "cues": [
+   "Wat denk jij?",
+   "Wat is jouw ervaring?",
+   "Deel je gedachten in de reacties",
+   "Laat het weten in de comments",
+   "Herkenbaar?",
+   "Ben jij het ermee eens?"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Wat denk jij? Deel je gedachten in de reacties!",
+    "na": "Als je dit anders aanpakt, hoor ik graag welke stap je overslaat."
+   },
+   {
+    "voor": "Herkenbaar? Laat het weten in de comments."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "translationese",
+  "en_id": "call-to-action-closer",
+  "notities": "Een echte vraag aan een specifiek publiek, die de schrijver zelf niet kan beantwoorden, is geen signaal. Het signaal is de vraag die op elke post past en niets over het onderwerp vraagt. In dezelfde familie hoort de AI-reactie eronder: ‘Interessant perspectief, Piet! Dank voor het delen van deze waardevolle inzichten.’",
+  "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput."
+ },
+ {
+  "naam": "Slotformule als vertaalrest",
+  "categorie": "structure",
+  "definitie": "De tekst sluit af met een samenvattende formule, waaronder vormen die alleen als vertaling van In conclusion bestaan.",
+  "cues": [
+   "In conclusie",
+   "Als conclusie",
+   "Concluderend",
+   "Samenvattend",
+   "Samenvattend kunnen we zeggen",
+   "Al met al",
+   "Kortom",
+   "Om af te sluiten",
+   "Tot slot kunnen we stellen"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In conclusie: AI kan helpen, mits je het goed inzet.",
+    "na": "AI helpt hier alleen als iemand de tekst daarna nog leest."
+   },
+   {
+    "voor": "Samenvattend kunnen we zeggen dat structuur belangrijk is.",
+    "na": "Begin met de volgorde. De rest volgt vanzelf."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "translationese",
+  "en_id": "signposted-conclusion",
+  "notities": "‘In conclusie’ en ‘als conclusie’ bestaan niet als Nederlandse formule en zijn altijd een vertaalrest. ‘Kortom’ en ‘Samenvattend’ zijn correct Nederlands en pas een signaal als de slotalinea niets toevoegt aan wat er al stond.",
+  "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput."
+ },
+ {
+  "naam": "‘Conclusie’ als kopje boven een kort stuk",
+  "categorie": "structure",
+  "definitie": "Een tekst van een paar honderd woorden krijgt een aparte kop ‘Conclusie’, of een inleiding en een conclusie terwijl het genre daar niet om vraagt.",
+  "cues": [
+   "## Conclusie",
+   "Conclusie:",
+   "kop ‘Conclusie’ onder minder dan achthonderd woorden",
+   "Inleiding en Conclusie als kopjes in een blogpost",
+   "Conclusie: X herkennen doe je zo"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Conclusie\nZoals je ziet zijn de tools nog niet sterk.",
+    "na": "Vertrouw dus niet op de tools. Lees zelf."
+   },
+   {
+    "voor": "Conclusie: ChatGPT herkennen doe je zo!",
+    "na": "Let vooral op het woord ‘verheugd’. Dat is genoeg."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "translationese",
+  "en_id": "headers-over-short-text",
+  "notities": "In scripties, rapporten, wetenschappelijke artikelen en offertes is een conclusiekop de norm en geen signaal. Het signaal is de kop in een blogpost, nieuwsbrief of productpagina waar de laatste alinea vanzelf al de conclusie is.",
+  "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput."
+ },
+ {
+  "naam": "Engelse kopsjablonen",
+  "categorie": "structure",
+  "definitie": "Tussenkoppen zijn woordelijke vertalingen van Amerikaanse artikelkoppen.",
+  "cues": [
+   "Waarom dit ertoe doet",
+   "Wat je moet weten",
+   "Hoe het werkt",
+   "De onderste regel",
+   "De bottom line",
+   "Belangrijkste inzichten",
+   "Wat betekent dit voor jou",
+   "Waar gaat dit artikel over"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Waarom dit ertoe doet",
+    "na": "Wat het je scheelt"
+   },
+   {
+    "voor": "Wat je moet weten over AI-detectie",
+    "na": "AI-detectors halen Nederlands slechter dan Engels"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "translationese",
+  "en_id": "formulaic-section-headers",
+  "notities": "‘Hoe het werkt’ is een gangbare Nederlandse kop op een productpagina. Het signaal is de reeks: drie of meer koppen uit hetzelfde Amerikaanse sjabloon, en koppen die niets zeggen over de inhoud eronder.",
+  "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput."
+ },
+ {
+  "naam": "‘Van X naar Y’-titelformule",
+  "categorie": "structure",
+  "definitie": "De titel volgt een Engelse marketingformule met een dubbele punt: een transformatie ervoor en een belofte erna.",
+  "cues": [
+   "Van X naar Y: hoe Z",
+   "Van chaos naar controle",
+   "X: waarom het werkt",
+   "De ultieme gids voor",
+   "N manieren om",
+   "Zo doe je het in N stappen",
+   "SEO Geheimen Onthuld"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Van chaos naar controle: hoe je met AI je contentproces stroomlijnt",
+    "na": "Wat er misging toen we ons contentproces aan AI overlieten"
+   },
+   {
+    "voor": "De ultieme gids voor AI-detectie in 2026",
+    "na": "Waarom AI-detectors op Nederlands niet werken"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "translationese",
+  "en_id": "colon-subtitle-headings",
+  "notities": "Een dubbele punt in een titel is normaal bij een wetenschappelijke hoofdtitel met ondertitel en bij een serietitel. Het signaal is de vaste transformatieformule, herkenbaar aan het tegenstellingspaar voor de dubbele punt.",
+  "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput."
+ },
+ {
+  "naam": "Ondanks-de-uitdagingen-slot",
+  "categorie": "structure",
+  "definitie": "Een vast slotblok, vaak onder een kop als 'Uitdagingen en toekomstperspectief', in twee slagen: 'Ondanks zijn [positieve woorden] kampt X met uitdagingen ...' gevolgd door 'Ondanks deze uitdagingen blijft X floreren', of speculatie over investeringen die het onderwerp zouden kunnen helpen. Het benoemt problemen alleen om ze weg te wuiven en voegt geen enkel feit toe. Houd de concrete feiten, schrap de verkooppraat, en voeg alleen data of handelingen toe die de bron of de gebruiker aanlevert.",
+  "cues": [
+   "Ondanks deze uitdagingen",
+   "Ondanks de uitdagingen blijft",
+   "kampt met uitdagingen",
+   "staat voor de nodige uitdagingen",
+   "blijft floreren",
+   "blijft gedijen",
+   "Toch blijft",
+   "Uitdagingen en toekomstperspectief",
+   "Uitdagingen en kansen",
+   "Toekomstperspectief",
+   "Vooruitblik",
+   "biedt ook kansen voor de toekomst",
+   "met de juiste investeringen",
+   "zal de komende jaren"
+  ],
+  "regex": [
+   "\\bondanks (?:deze|de|die|zijn|haar|hun) uitdagingen\\b",
+   "\\bkampt (?:\\w+ )?met (?:de nodige|verschillende|diverse|flinke|een aantal) uitdagingen\\b",
+   "\\bstaat (?:\\w+ ){0,3}voor (?:de nodige|verschillende|diverse|flinke|een aantal) uitdagingen\\b",
+   "\\bblijft (?:\\w+ ){0,3}(?:floreren|gedijen|bloeien)\\b",
+   "(?m)^#{1,6}\\s*(?:uitdagingen en (?:toekomstperspectief|kansen|vooruitzichten)|toekomstperspectief|toekomstige ontwikkelingen|vooruitblik)\\s*$"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Ondanks de industriële voorspoed kampt Hengelo met uitdagingen die typisch zijn voor stedelijk gebied, zoals filedruk en waterschaarste. Ondanks deze uitdagingen blijft Hengelo dankzij zijn strategische ligging floreren.",
+    "na": "Hengelo heeft dagelijks filedruk op de Boekelosestraat en in droge zomers een drinkwatertekort."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "despite-challenges-outlook",
+  "notities": "Transfereert een-op-een; 'ondanks deze uitdagingen' is de meest voorkomende Nederlandse vorm en komt bijna nooit voor in menselijk zakelijk proza zonder dat er direct daarna een concrete uitdaging genoemd wordt. Let op: 'ondanks de uitdagingen' met daarna een benoemde uitdaging is geen tell.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Aangekondigde conclusie (Kortom-slot)",
+  "categorie": "structure",
+  "definitie": "Een slotalinea die wordt aangekondigd met een vaste samenvatmarkeerder ('Kortom', 'Samengevat', 'Samenvattend', 'Concluderend', 'Al met al', 'Tot slot', 'Resumerend') of een sectie die letterlijk 'Conclusie' heet, en die herhaalt wat de tekst net zei, soms met een opbeurende afsluiter erbovenop. De lezer was er net. Schrap de herhaling en eindig op het laatste inhoudelijke punt, de les of de volgende stap.",
+  "cues": [
+   "Kortom",
+   "Samengevat",
+   "Samenvattend",
+   "Concluderend",
+   "Resumerend",
+   "Al met al",
+   "Tot slot",
+   "Kort samengevat",
+   "Om het samen te vatten",
+   "Om af te sluiten",
+   "## Conclusie",
+   "Onthoud dat",
+   "Aan het eind van de dag"
+  ],
+  "regex": [
+   "(?m)^\\s*(?:kortom|samengevat|samenvattend|concluderend|resumerend|al met al|kort samengevat|om het samen te vatten|om af te sluiten)\\b",
+   "(?m)^#{1,6}\\s*(?:conclusie|slotwoord|tot slot|afsluitend|samenvatting)\\s*$",
+   "\\baan het eind van de dag\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Kortom, de weg van masterstudent naar postdoc verloopt in drie stappen, zoals hierboven beschreven. Die opbouw zorgt voor een stevige onderzoeksbasis.",
+    "na": "(geschrapt; de alinea ervoor liep al van master naar postdoc en eindigt daar)"
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "signposted-conclusion",
+  "notities": "De Engelse ingang noemde 'Kortom' al als Nederlandse vorm. 'Tot slot' als laatste item van een opsomming is legitiem; de tell is 'Tot slot' aan het begin van een alinea die niets nieuws zegt.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Cirkelslot",
+  "categorie": "structure",
+  "definitie": "Een slotzin die terugkeert naar het openingsbeeld of de openingsvraag ('En zo zijn we terug bij het begin') in plaats van ergens nieuws te landen. Het is de spiegelvariant van de aangekondigde conclusie: symmetrie in plaats van een punt.",
+  "cues": [
+   "En zo zijn we terug bij het begin",
+   "Daarmee zijn we terug bij de vraag waarmee we begonnen",
+   "Terug bij af",
+   "Zoals we aan het begin al zeiden",
+   "En daarmee is de cirkel rond"
+  ],
+  "regex": [
+   "\\b(?:en zo|daarmee|hiermee|zo)\\s+(?:zijn|komen) we (?:weer )?terug bij (?:het begin|af|de vraag|waar we begonnen)\\b",
+   "\\bterug bij de vraag waarmee (?:we|ik) (?:begon|begonnen)\\b",
+   "\\bdaarmee is de cirkel rond\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "En zo zijn we terug bij het begin: is de tool het waard?",
+    "na": "Vanaf tien man verdient de tool zichzelf terug; daaronder kost het opzetten meer dan het oplevert."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "circular-return-ending",
+  "notities": "Transfereert; de Nederlandse formulering is korter en komt vaker als 'daarmee is de cirkel rond'.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Fractale samenvattingen",
+  "categorie": "structure",
+  "definitie": "'Zeg wat je gaat zeggen, zeg het, zeg wat je gezegd hebt' op elk niveau: een aankondigingszin onder elke kop ('In deze sectie bespreken we ...'), een minisamenvatting aan het eind van elke sectie ('Zoals we hebben gezien ...'), en secties die openen met een recap van de vorige. Schrap de aankondiging en de recap; begin elke sectie met de inhoud en laat de kop het aankondigen.",
+  "cues": [
+   "In deze sectie bespreken we",
+   "In dit hoofdstuk behandelen we",
+   "In dit onderdeel kijken we naar",
+   "Zoals we hebben gezien",
+   "Zoals hierboven beschreven",
+   "In het vorige hoofdstuk zagen we",
+   "Samengevat:"
+  ],
+  "regex": [
+   "\\bin (?:dit|deze) (?:hoofdstuk|onderdeel|sectie|paragraaf|deel|artikel)[^.\\n]{0,30}\\b(?:bespreken|behandelen|bekijken|kijken|gaan|leggen) we\\b",
+   "\\bzoals we (?:hierboven|eerder|net|in (?:deze|dit) \\w+) (?:hebben )?(?:gezien|besproken|behandeld)\\b",
+   "\\bin (?:het|de) (?:vorige|voorgaande) (?:hoofdstuk|paragraaf|sectie) (?:zagen|bespraken) we\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In deze sectie bespreken we hoe caching werkt. [...] Zoals we in deze sectie hebben gezien, verlaagt caching de latency.",
+    "na": "Caching haalt de p95 omlaag omdat het token een keer per uur wordt opgehaald in plaats van bij elk verzoek."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "fractal-summaries",
+  "notities": "Transfereert. 'Zoals we hebben gezien' is in Nederlands academisch proza ook legitiem als er echt naar een eerdere passage verwezen wordt; de tell is de vaste plaatsing aan het eind van elke sectie.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Kop herhaald in de eerste regel",
+  "categorie": "structure",
+  "definitie": "Op een kop volgt een regel die alleen de kop herhaalt ('## Prestaties' gevolgd door 'Prestaties zijn belangrijk.') voordat de echte inhoud begint. De aanloopregel doet het werk van de kop nog een keer; de luidste variant herhaalt het kopwoord als eerste woord van de regel. Schrap de regel en begin bij de eerste zin die iets zegt.",
+  "cues": [
+   "## Prestaties\n\nPrestaties zijn belangrijk.",
+   "## Veiligheid\n\nVeiligheid is cruciaal.",
+   "kopwoord als eerste woord van de eerste zin",
+   "eerste regel zegt alleen dat het onderwerp belangrijk is"
+  ],
+  "regex": [
+   "(?mi)^#{2,6}\\s*([a-z\\u00e0-\\u00ff][\\w-]{3,})[^\\n]*\\n+\\1\\b",
+   "(?mi)^#{2,6}\\s*[^\\n]{3,40}\\n+[^\\n]{0,40}\\b(?:is|zijn) (?:heel |erg )?(?:belangrijk|cruciaal|essentieel|van belang|onmisbaar)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Prestaties\n\nPrestaties zijn belangrijk.\n\nWie een trage pagina opent, klikt weg.",
+    "na": "## Prestaties\n\nWie een trage pagina opent, klikt weg."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "heading-restated-below",
+  "notities": "Transfereert; de eerste regex is hoofdletterongevoelig omdat de kop een hoofdletter heeft en de herhaling in de zin niet altijd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Vetgedrukte bullet-openers",
+  "categorie": "structure",
+  "definitie": "Een lijst waarvan elk item opent met een kort vet label, een dubbele punt, en dan een zin die het label vaak herhaalt ('**Prestaties:** De prestaties zijn verbeterd ...'). Subvormen: dezelfde vorm zonder leesteken, genummerde varianten ('1. Kop: tekst'), en een aankondigende regel voor de lijst ('De belangrijkste punten:', 'bestaat uit drie kernonderdelen:'). Maak er proza van, of houd een gewone lijst van hele zinnen over.",
+  "cues": [
+   "- **Gebruikerservaring:**",
+   "- **Prestaties:**",
+   "- **Veiligheid:**",
+   "**Kernpunt**:",
+   "**Aanpak:** uitleg",
+   "De belangrijkste punten:",
+   "bestaat uit drie kernonderdelen:",
+   "1. Kop: tekst",
+   "- **Wat het is:**",
+   "- **Waarom het werkt:**"
+  ],
+  "regex": [
+   "(?m)^\\s*[-*\\u2022+]\\s*\\*\\*[^*\\n]{2,45}\\*\\*\\s*[:.]",
+   "(?m)^\\s*[-*\\u2022+]\\s*\\*\\*[^*\\n]{2,45}:\\*\\*",
+   "(?m)^\\s*\\d+\\.\\s*\\*\\*[^*\\n]{2,45}[:.]?\\*\\*\\s*[:.]?",
+   "\\b(?:de belangrijkste punten|de kernpunten|de belangrijkste kenmerken|bestaat uit \\w+ (?:kern)?(?:onderdelen|lagen|pijlers|elementen|stappen))\\s*:"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "- **Gebruikerservaring:** De gebruikerservaring is sterk verbeterd met een nieuwe interface.\n- **Prestaties:** De prestaties zijn verbeterd door geoptimaliseerde algoritmes.\n- **Veiligheid:** De veiligheid is versterkt met end-to-end-versleuteling.",
+    "na": "De update brengt een nieuwe interface en end-to-end-versleuteling, en pagina's laden sneller omdat de sortering is herschreven."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "inline-header-lists",
+  "notities": "Transfereert een-op-een; opmaak is taalonafhankelijk, alleen de labels zijn vertaald.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Opsomming van kale naamwoordgroepen",
+  "categorie": "structure",
+  "definitie": "Vijf of meer bullets achter elkaar die elk een korte naamwoordgroep zijn (bijvoeglijk naamwoord plus zelfstandig naamwoord, hoogstens zes woorden), zonder persoonsvorm, allemaal dezelfde vorm en lengte, en geen ervan controleerbaar ('Stabiele prestaties', 'Betrouwbare verbinding'). De symmetrie is de tell: een echte lijst waarnemingen varieert in lengte, heeft af en toe een werkwoord en heeft minstens een item dat uit de pas loopt. Maak er proza van, of herschrijf elk item als een claim met een getal.",
+  "cues": [
+   "- Stabiele prestaties",
+   "- Betrouwbare verbinding",
+   "- Efficiënte inzet van middelen",
+   "- Consistente kwaliteit",
+   "- Geoptimaliseerde doorvoer",
+   "reeks van 5 of meer, twee tot zes woorden per item, geen persoonsvorm",
+   "werkwoordfilter: is|zijn|was|waren|heeft|hebben|wordt|worden|kan|kunnen|moet|moeten|zal|zullen"
+  ],
+  "regex": [
+   "(?mi)^\\s*[-*\\u2022+]\\s+(?![^\\n]{0,70}\\b(?:is|zijn|was|waren|heeft|hebben|had|hadden|wordt|worden|werd|werden|kan|kunnen|zal|zullen|moet|moeten|mag|mogen|doet|doen|deed|deden|blijft|blijven)\\b)[a-z\\u00e0-\\u00ff][\\w'-]*(?:[ \\t]+[\\w'/-]+){1,5}[ \\t]*$"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "- Stabiele mining-efficiëntie\n- Betrouwbare poolverbinding\n- Geoptimaliseerde RandomX-prestaties\n- Laag aandeel mislukte shares\n- Effectieve inzet van hardware",
+    "na": "Over twaalf uur bleef de hashrate binnen 2 procent van nominaal, mislukte shares onder 1 procent, en de heetste kern zat op 71 graden."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "bare-noun-phrase-bullets",
+  "notities": "Transfereert; het werkwoordfilter is vertaald naar Nederlandse hulp- en koppelwerkwoorden. De regex vindt losse kandidaatregels: de poort blijft een reeks van vijf of meer met 75 procent kale items. Sla YAML-frontmatter en tag-lijsten over, want die bestaan per definitie uit kale naamwoordgroepen.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Opgepompte genummerde lijst",
+  "categorie": "structure",
+  "definitie": "Een lijst met een getal in de kop ('Drie belangrijke inzichten', 'Vijf dingen die je moet weten', 'Dit zijn de zeven redenen') die is gekozen omdat genummerde lijsten structureel veilig zijn, en daarna is opgevuld tot het getal klopt in plaats van omdat er zoveel losse punten waren. Gebruik een genummerde lijst alleen als de inhoud zoveel zelfstandige, gelijkwaardige punten heeft; snijd anders terug naar de echte punten of schrijf proza.",
+  "cues": [
+   "Drie belangrijke inzichten",
+   "Vijf dingen die je moet weten",
+   "De 7 belangrijkste redenen",
+   "Hier zijn de vijf",
+   "Dit zijn de drie lessen",
+   "belangrijkste takeaways"
+  ],
+  "regex": [
+   "(?m)^#{0,6}\\s*(?:hier zijn |dit zijn |de )?(?:drie|vier|vijf|zes|zeven|acht|negen|tien|[3-9]|\\d{2})\\s+(?:belangrijkste\\s+|grootste\\s+|grote\\s+|opvallendste\\s+)?(?:inzichten|lessen|redenen|tips|manieren|dingen|punten|voordelen|takeaways)\\b",
+   "\\b(?:drie|vier|vijf|zes|zeven|[3-9]|\\d{2}) (?:dingen|tips|manieren|lessen|redenen) die je (?:moet weten|niet mag missen|zou moeten kennen)\\b",
+   "\\b(?:hier zijn|dit zijn) de (?:top\\s?\\d{1,2}|\\w+)\\s+(?:belangrijkste\\s+)?(?:redenen|tips|manieren|lessen|punten|inzichten)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Dit zijn de zeven redenen om over te stappen: 1. Snellere builds. 2. Licentie per gebruiker. 3. Snellere builds op CI. 4. Goedkoper. 5. Betere documentatie. 6. Sneller incrementeel bouwen. 7. Lagere kosten per plek.",
+    "na": "We stapten over omdat de build 40 procent sneller is en de licentie per gebruiker gaat in plaats van per core."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "numbered-list-inflation",
+  "notities": "Transfereert; 'X dingen die je moet weten' is een gangbare Nederlandse kopvorm bij echte listicles, dus ernst blijft context.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Sjabloonkoppen",
+  "categorie": "structure",
+  "definitie": "Koppen die een sjabloonvakje benoemen in plaats van de inhoud: 'Inleiding', 'Overzicht', 'Samenvatting', 'Conclusie', studiegids- en slidetitels ('Belangrijkste punten', 'Kernpunten', 'Kerncijfers', 'Vragen om over na te denken'), en de standaard 'X en Y'-encyclopediekop, waarvan 'Prijzen en erkenning' bijna altijd in gegenereerde artikelen staat. Haal de kop weg in prozagenres; laat hem in rapporten zeggen wat er onder staat.",
+  "cues": [
+   "## Inleiding",
+   "## Overzicht",
+   "## Samenvatting",
+   "## Conclusie",
+   "## Belangrijkste punten",
+   "## Kernpunten",
+   "## Kerncijfers",
+   "## Achtergrond",
+   "## Tot slot",
+   "## Prijzen en erkenning",
+   "## Vragen om over na te denken"
+  ],
+  "regex": [
+   "(?m)^#{1,6}\\s*(?:inleiding|introductie|overzicht|samenvatting|conclusie|slotwoord|belangrijkste punten|kernpunten|kernboodschap|kerncijfers|tot slot|achtergrond|vragen om over na te denken|prijzen en (?:erkenning|onderscheidingen))\\s*$"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Belangrijkste punten",
+    "na": "## Wat de migratie kostte"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "formulaic-section-headers",
+  "notities": "Transfereert. 'Inleiding' en 'Conclusie' zijn in Nederlandse scripties en rapporten de voorgeschreven kopnamen; alleen buiten die genres is het een tell.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Dubbelepuntkop (X: Y)",
+  "categorie": "structure",
+  "definitie": "Elke kop heeft de vorm 'Zelfstandig naamwoord: ondertitel', of de transformatievariant 'X: van A naar B'. De dubbelepuntkop is de standaardkoppengenerator van het model. Comprimeer elke kop tot een naamwoordgroep die de inhoud benoemt; laat echte rapport- en scriptiekoppen staan.",
+  "cues": [
+   "## Observability: van logs naar traces",
+   "X: van A naar B",
+   "## Caching: sneller dan je denkt",
+   "kop met dubbele punt en ondertitel"
+  ],
+  "regex": [
+   "(?m)^#{1,6}\\s*[^:\\n]{3,45}:\\s*van\\s+[^\\n]{2,40}\\s+naar\\s+\\S",
+   "(?m)^#{1,6}\\s*[^:\\n]{3,45}:\\s+\\S[^\\n]{3,60}$"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Observability: van logs naar traces",
+    "na": "## Traces vervangen de logs"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "colon-subtitle-headings",
+  "notities": "Transfereert; de 'van A naar B'-variant is in het Nederlands even productief als in het Engels.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Titelkop boven de tekst herhaald",
+  "categorie": "structure",
+  "definitie": "De tekst opent met een kop van niveau 1 (vaak vet of als link) die de titel van het document of artikel herhaalt, omdat het model niet aanneemt dat het vlak de titel al toont. Op een wiki, in een CMS, op een blog met een titelveld, in een issue of in een PR-beschrijving is dat een dubbele H1; schrap hem.",
+  "cues": [
+   "eerste regel is een H1 die de paginatitel herhaalt",
+   "# <artikelnaam> als eerste regel",
+   "= '''Titel''' =",
+   "kop van niveau 1 gelijk aan de paginanaam"
+  ],
+  "regex": [
+   "\\A\\s*#\\s+[^\\n]{3,80}\\n",
+   "\\A\\s*=\\s*'{0,3}[^\\n=]{3,80}'{0,3}\\s*=\\s*\\n"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "# Twente.dev\n\nTwente.dev is een stack-agnostische meetup in Twente.",
+    "na": "Twente.dev is een stack-agnostische meetup in Twente."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "title-heading-duplicate",
+  "notities": "Taalonafhankelijk: de cue is de positie van de kop, niet de woordkeuze. Alleen een tell op vlakken die de titel zelf al renderen.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Koppen die alleen koppen bevatten",
+  "categorie": "structure",
+  "definitie": "Een kop waarvan de hele inhoud uit lagere koppen bestaat, zonder eigen proza: een tak uit de opzet die als sectie is gerenderd ('## Hoofdpersonen' met daaronder meteen '### Pixy'). Geef de bovenliggende kop een zin die hem verdient, of promoveer de kinderen.",
+  "cues": [
+   "kop direct gevolgd door een subkop",
+   "## Sectie\n### Subsectie",
+   "= Sectie =\n== Subsectie =="
+  ],
+  "regex": [
+   "(?m)^#{1,5}\\s*[^\\n]+\\n+#{2,6}\\s"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Hoofdpersonen\n\n### Pixy\n\n[...]",
+    "na": "### Pixy\n\n[...]"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "empty-parent-headings",
+  "notities": "Taalonafhankelijk structuurpatroon; transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Koppen boven te korte tekst",
+  "categorie": "structure",
+  "definitie": "Kopjes opgelegd aan tekst die te kort is om navigatie nodig te hebben: een kop boven een sectie van hoogstens twee zinnen, meer dan drie koppen in minder dan 300 woorden, H2's en H3's in een kort stuk, of een reactie of comment opgedeeld in getitelde secties. Haal de koppen weg, voeg de tekst samen en verbind met proza.",
+  "cues": [
+   "## Context / ## Analyse / ## Conclusie boven twee zinnen",
+   "meer dan drie koppen in minder dan 300 woorden",
+   "kopjes in een reactie of comment",
+   "## Aanleiding",
+   "## Aanpak",
+   "## Resultaat"
+  ],
+  "regex": [
+   "(?m)^#{2,6}\\s*(?:context|aanleiding|analyse|conclusie|aanpak|resultaat|gevolg|oplossing)\\s*$"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "## Context\n\nWe zagen een piek.\n\n## Analyse\n\nDie kwam van de cronjob.\n\n## Conclusie\n\nWe verzetten hem.",
+    "na": "We zagen een piek; die kwam van de cronjob, dus we verzetten hem naar 03:00."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "headers-over-short-text",
+  "notities": "Transfereert; de regex vindt alleen de meest voorkomende sjabloonkopjes, de eigenlijke poort is de verhouding koppen tot woorden.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Bullets waar proza hoort",
+  "categorie": "structure",
+  "definitie": "Bullets, en zeker geneste bullets, opgelegd aan gedachten die samenhangen of context nodig hebben en die beter als alinea lezen: acht of meer bullets in minder dan 200 woorden, drie of meer bulletblokken achter elkaar, of elke lijst waar twee zinnen proza het werk doen. Lijsten helpen als items gelijkwaardig en zelfstandig zijn; maak van de rest proza en houd een lijst alleen waar het opsommen zelf betekenis draagt.",
+  "cues": [
+   "acht of meer bullets in minder dan 200 woorden",
+   "drie bulletblokken achter elkaar",
+   "geneste bullets voor samenhangende gedachten",
+   "lijst waar twee zinnen proza volstaan"
+  ],
+  "regex": [
+   "(?m)(?:^\\s*[-*\\u2022+]\\s+[^\\n]+\\n){8,}",
+   "(?m)^\\s{2,}[-*\\u2022+]\\s+[^\\n]+\\n\\s{4,}[-*\\u2022+]\\s"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "- De latency daalde\n  - Doordat we het token cachen\n    - Wat ook de 401's oploste",
+    "na": "De latency daalde toen we het token gingen cachen, wat meteen de 401's oploste."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "bullets-instead-of-prose",
+  "notities": "Taalonafhankelijk; transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Lijstje als proza (rangtelwoordsteiger)",
+  "categorie": "structure",
+  "definitie": "Genummerde punten vermomd als lopende tekst: opeenvolgende zinnen of alinea's die elk met een rangtelwoord openen ('Ten eerste ... Ten tweede ... Ten derde', 'Allereerst ... Vervolgens ... Tot slot', 'De eerste muur is ... De tweede muur is ...'), of inline-markeringen 1) 2) 3) binnen een alinea. Vaak het gevolg van de opdracht om te stoppen met lijstjes. Houd hoogstens drie items aan; maak er bij vier of meer een of twee tot proza, en varieer de bewegwijzering.",
+  "cues": [
+   "Ten eerste",
+   "Ten tweede",
+   "Ten derde",
+   "Allereerst",
+   "Vervolgens",
+   "Daarnaast",
+   "Tot slot",
+   "De eerste reden is",
+   "De tweede stap is",
+   "1) ... 2) ... 3)"
+  ],
+  "regex": [
+   "\\bten (?:eerste|tweede|derde|vierde|vijfde)\\b",
+   "\\ballereerst\\b[^.\\n]{0,120}\\.\\s+(?:vervolgens|daarnaast|ten tweede|ten slotte|tot slot)\\b",
+   "\\bde (?:eerste|tweede|derde|vierde) (?:reden|stap|les|muur|factor|conclusie|voorwaarde) is\\b",
+   "\\(\\s?1\\s?\\)[^.\\n]{2,90}\\(\\s?2\\s?\\)"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De eerste muur is het ontbreken van een gratis API. De tweede muur is het ontbreken van gedelegeerde toegang. De derde muur is het ontbreken van scopes.",
+    "na": "De echte muur zijn de ontbrekende scopes; zonder die zijn een gratis API en gedelegeerde toegang nutteloos."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "listicle-in-prose",
+  "notities": "Transfereert; 'ten eerste/ten tweede' is de directe Nederlandse tegenhanger en komt in gegenereerd proza veel vaker voor dan in geschreven Nederlands, waar 'eerst' en 'daarna' gewoner zijn.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Vijfparagrafenopstel en drieslagsteiger",
+  "categorie": "structure",
+  "definitie": "Inleiding plus drie middenstukken plus samenvattend slot, opgelegd bij elke lengte, ook bij een antwoord van honderd woorden. Subvormen: drie punten per sectie ongeacht het echte aantal, en drie opeenvolgende alinea's die met de vaste these-antithese-synthesevoegwoorden openen ('Eerst ... Daarentegen ... Uiteindelijk'). Laat het aantal dingen dat je te zeggen hebt het aantal secties bepalen, en snijd de voegwoorden terug tot een of geen.",
+  "cues": [
+   "Er zijn drie redenen",
+   "Ten eerste ... Ten tweede ... Ten derde ... Samen laten deze drie zien",
+   "Eerst ... Daarentegen ... Uiteindelijk",
+   "drie punten in elke sectie",
+   "Bij elkaar tonen deze drie"
+  ],
+  "regex": [
+   "\\ber zijn (?:drie|vier|vijf) (?:redenen|factoren|manieren|punten|oorzaken|voordelen)\\b",
+   "\\b(?:samen|al met al|bij elkaar) (?:laten|tonen|maken) deze (?:drie|vier)\\b",
+   "\\beerst\\b[^.\\n]{0,120}\\.\\s+[^.\\n]{0,80}\\bdaarentegen\\b[^.\\n]{0,120}\\.\\s+[^.\\n]{0,80}\\buiteindelijk\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Er zijn drie redenen waarom dit ertoe doet. Ten eerste de kosten. Ten tweede de snelheid. Ten derde het vertrouwen. Samen laten deze drie redenen zien waarom dit ertoe doet.",
+    "na": "Het is goedkoper, en de snelheidswinst gaf de doorslag; het vertrouwen kwam daarna."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "five-paragraph-essay",
+  "notities": "Transfereert. Het Nederlandse schoolopstel kent dezelfde vorm, dus de vorm alleen is geen bewijs; de tell is de vorm bij een lengte die er niet om vraagt.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Gelijke alinealengte",
+  "categorie": "structure",
+  "definitie": "Elke alinea is ongeveer even lang, meestal drie tot vijf zinnen of 30 tot 50 woorden, zodat het stuk op alineaniveau geen ritme heeft. Detectiepoort: elke alinea binnen een zin van het gemiddelde, gemiddelde minstens 3 zinnen, over minstens 4 alinea's. Varieer bewust: een enkele alinea van een zin, een enkele van zes.",
+  "cues": [
+   "elke alinea drie tot vijf zinnen",
+   "alle alinea's binnen een zin van het gemiddelde",
+   "gemiddelde minstens 3 zinnen over minstens 4 alinea's",
+   "geen enkele alinea van een regel"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "(vier alinea's van elk precies vier zinnen)",
+    "na": "(een alinea van een zin, dan een van zeven)"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "uniform-paragraph-length",
+  "notities": "Metrisch patroon, taalonafhankelijk; geen regex mogelijk, de poort is de meting.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Herhaalde zins- en alineavormen",
+  "categorie": "structure",
+  "definitie": "Mechanische symmetrie voorbij lengte: dezelfde zinsbouw die terugkeert, identieke alineasjablonen (dezelfde volgorde van zetten, dezelfde slotzin) binnen een stuk of over losse stukken heen, elke alinea met dezelfde interne cadans, een vlakke leestekendichtheid van alinea tot alinea, en elke zin af, in balans en netjes, zonder ruwheid of terzijde. Varieer de vorm alleen waar het iets doet.",
+  "cues": [
+   "elke alinea dezelfde volgorde van zetten",
+   "elke zin af, netjes en in balans",
+   "geen enkele terzijde of onafgemaakte zin",
+   "trigramentropie functiewoorden onder 0,82",
+   "leestekendichtheid vlak over alle alinea's",
+   "NL functiewoorden: de het een en of maar van te in op aan bij voor met uit is was zijn waren wordt worden heeft hebben had zal zou kan kunnen moet moeten mag dit dat deze die er hier we ons ik je jij u hij zij ze hun haar niet geen dus als dan toen waar welke wie wat hoe waarom omdat want"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "(elke alinea: stelling, uitleg, voorbeeld, afsluitende zin met dezelfde cadans)",
+    "na": "(een alinea die met een cijfer opent en na twee zinnen stopt, gevolgd door een lange)"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "repeated-sentence-shapes",
+  "notities": "Metrisch patroon; wel aangepast voor Nederlands doordat de functiewoordenlijst voor de trigramentropie vertaald is. De Engelse lijst op Nederlandse tekst geeft onbruikbare entropie.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Kernzin aan het begin van elke alinea",
+  "categorie": "structure",
+  "definitie": "Elke alinea opent met een samenvattende kernzin, de vorm uit het Angelsaksische opstelonderwijs die het model integraal overneemt. Laat sommige alinea's openen met een geval, een scene, een getal of een citaat, en het punt als tweede komen.",
+  "cues": [
+   "elke alinea opent met een samenvattende stelling",
+   "eerste zin vat de alinea samen",
+   "kernzin gevolgd door de uitwerking"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Caching verlaagt de latency. Toen we het token gingen cachen, zakte de p95 van 800 naar 120 milliseconden.",
+    "na": "Toen we het token gingen cachen, zakte de p95 van 800 naar 120 milliseconden."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "topic-sentence-every-paragraph",
+  "notities": "Transfereert; het Nederlandse schrijfonderwijs kent de kernzin ook, dus alleen de mechanische toepassing op elke alinea is de tell.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Aanloop voor het punt",
+  "categorie": "structure",
+  "definitie": "Het stuk opent met brede context voordat het iets specifieks zegt: een wijdse openingszin ('In de snel veranderende wereld van vandaag ...'), achtergrondalinea's die niets toevoegen, of onderbouwing die voor het punt staat dat ze onderbouwt. Schrap de wijdse zin en begin bij de tweede; open met het nieuws of het inzicht en laat de context volgen. Houd een openingsanekdote of bekentenis alleen als die spanning, context of karakter oplevert.",
+  "cues": [
+   "In de snel veranderende wereld van vandaag",
+   "In het huidige digitale landschap",
+   "In een tijd waarin",
+   "In de wereld van vandaag",
+   "belangrijker dan ooit",
+   "Het is geen geheim dat",
+   "Sinds jaar en dag",
+   "In een steeds digitaler wordende samenleving"
+  ],
+  "regex": [
+   "\\bin de (?:[a-z\\u00e0-\\u00ff]+ ){0,3}wereld van (?:vandaag|nu|morgen)\\b",
+   "\\bin (?:het|de) (?:huidige|snel veranderende|steeds veranderende|snel evoluerende) (?:digitale )?(?:landschap|tijdperk|klimaat|samenleving)\\b",
+   "\\bin een tijd waarin\\b",
+   "\\bin de wereld van vandaag\\b",
+   "\\bbelangrijker dan ooit\\b",
+   "\\bhet is geen geheim dat\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In de snel veranderende digitale wereld van vandaag hebben teams snellere builds nodig. Wij brachten de onze terug van veertig naar zes minuten.",
+    "na": "We brachten onze build terug van veertig naar zes minuten."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "en_id": "preamble-before-the-point",
+  "notities": "Transfereert sterk. 'In de snel veranderende wereld van vandaag' is de vaste Nederlandse vorm van 'in today's fast-paced world' en is in gegenereerd Nederlands minstens zo frequent.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Verwisselbare alinea's",
+  "categorie": "structure",
+  "definitie": "Middenalinea's die van plek kunnen wisselen zonder dat de lezer het merkt: elke alinea is een zelfstandige module zonder dragend verband met zijn buren, zodat het stuk een lijst punten is en geen betoog dat opbouwt. Los het structureel op: leg een lijn waarin elke alinea op de vorige steunt, voeg verbindend weefsel toe, of maak er een expliciete lijst van als de alinea's echt zelfstandig zijn.",
+  "cues": [
+   "alinea's kunnen van plek wisselen zonder dat de lezer het merkt",
+   "geen verbindende zin tussen alinea's",
+   "elk alinea een zelfstandige module"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Alinea over kosten. Alinea over snelheid. Alinea over vertrouwen. (elke volgorde leest hetzelfde)",
+    "na": "We keken vanwege de kosten en vonden snelheid; die winst houdt alleen stand als de cache te vertrouwen is, en daar gaat de volgende alinea over."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "paragraph-reshuffle-immunity",
+  "notities": "Taalonafhankelijk; transfereert onveranderd, geen lexicale cues mogelijk.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Muur van tekst als reactie",
+  "categorie": "structure",
+  "definitie": "In gespreksregisters (issue- en PR-reacties, chat, DM's, losse mail) een reactie van ruwweg minder dan 150 woorden met vier of meer zinnen, geleverd als een ononderbroken blok. Mensen breken een reactie op de gedachtegrens; het model levert standaard een dicht blok. Breek op de gedachtegrenzen.",
+  "cues": [
+   "vier of meer zinnen in een blok in een reactie onder 150 woorden",
+   "PR-reactie als een alinea",
+   "drie losse vragen beantwoord in een blok"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "(een blok van 140 woorden dat drie losse reviewvragen beantwoordt)",
+    "na": "(drie korte alinea's, een per vraag)"
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "en_id": "wall-of-text-replies",
+  "notities": "Taalonafhankelijk; transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Toegeven-redden-weerleggen",
+  "categorie": "structure",
+  "definitie": "Wanneer iemand op een fout wijst en het model het toegeeft, volgt de eerste alinea van het antwoord een vaste drieslag: geef de ander gelijk, wijs aan wat nog wel klopt, en sluit af met een variant van 'maar dat is niet alles wat er speelt, en daar zit precies je punt'. Herken de reeks toegeven-redden-weerleggen en beantwoord de correctie gewoon.",
+  "cues": [
+   "Je hebt gelijk dat",
+   "Je hebt helemaal gelijk",
+   "Dat klopt, en toch",
+   "Maar dat is niet alles wat er speelt",
+   "En daar zit precies je punt"
+  ],
+  "regex": [
+   "\\bje hebt (?:helemaal |volkomen )?gelijk dat\\b",
+   "\\b(?:maar|alleen) dat is niet (?:alles|het enige) (?:wat|dat)\\b",
+   "\\bdat klopt,? (?:en|maar) (?:toch|tegelijk|tegelijkertijd)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Je hebt gelijk dat de cache helpt. Hij halveert de p95 nog steeds. Maar dat is niet alles wat hij doet, en daar zit precies je punt.",
+    "na": "Klopt, de cache verbergt ook de retry-bug. Ik pak de retry eerst aan."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "concede-salvage-rebut-template",
+  "notities": "In het Engels als scope english genoteerd, maar de vorm komt in Nederlandse chatuitvoer even hard terug; alleen de bewoording is vertaald.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Sjabloon-profielpagina",
+  "categorie": "structure",
+  "definitie": "Een profiel- of biopagina volgens een vast sjabloon: koppen als 'Over mij', 'Mijn interesses', 'Mijn bijdragen', 'Laten we connecten!', bullets met een emoji per item, vetgedrukte aantallen ('20+ artikelen') en een opgewekte afsluiter. Dezelfde vorm verschijnt op GitHub en LinkedIn. Herschrijf tot twee of drie gewone zinnen over wat iemand werkelijk doet.",
+  "cues": [
+   "Over mij",
+   "Wie ben ik",
+   "Mijn interesses",
+   "Mijn bijdragen",
+   "Laten we connecten!",
+   "Laten we samenwerken",
+   "Neem gerust contact met mij op",
+   "Stuur me gerust een bericht",
+   "Veel plezier!"
+  ],
+  "regex": [
+   "(?m)^#{1,6}\\s*(?:[\\U0001F300-\\U0001FAFF\\u2728]\\s*)?(?:over mij|wie ben ik|mijn interesses|mijn bijdragen|laten we (?:connecten|samenwerken))\\s*$",
+   "\\bneem gerust contact (?:met (?:mij|me) )?op\\b",
+   "\\bstuur (?:me|mij) gerust een (?:bericht|berichtje)\\b",
+   "\\blaten we (?:connecten|samenwerken)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "== Over mij ==\n* Ik schrijf graag over Twentse techbedrijven.\n== Laten we connecten! ==\nNeem gerust contact met mij op als je wilt samenwerken!",
+    "na": "Ik schrijf over techbedrijven in Twente, meestal over de maakindustrie. Een stuk of twintig stukken tot nu toe; mijn overlegpagina staat open."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "canned-profile-page",
+  "notities": "Transfereert; 'Over mij' en 'Laten we connecten' zijn de gangbare Nederlandse sjabloonkoppen op LinkedIn en persoonlijke pagina's.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Standaardvormen in poëzie",
+  "categorie": "structure",
+  "definitie": "Poëzie die in de standaarden van het model valt ongeacht de opdracht: rijm waar niemand erom vroeg, strofen van vier regels bij elke vorm, jambe als default, en oppervlakkige trouw aan een vorm (een 'sonnet' van veertien regels, een 'sestine' van 39 regels die het regelaantal haalt maar de interne regel niet). Vormgebaren zonder vormgevolg; gegenereerde poëzie is veel eenvormiger dan menselijke.",
+  "cues": [
+   "sonnet",
+   "villanelle",
+   "sestine",
+   "kwatrijn",
+   "rijm zonder dat erom gevraagd is",
+   "vier regels per strofe",
+   "jambisch"
+  ],
+  "regex": [
+   "\\b(?:sonnet|villanelle|sestine|kwatrijn|jambisch|rijmschema)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Een 'sestine' van 39 regels waarvan de zes eindwoorden nooit rouleren, in rijmende jamben.",
+    "na": "Laat de zes eindwoorden door alle strofen en de envoi rouleren, of noem het geen sestine; laat het rijm weg als er niet om gevraagd is."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "verse-form-defaults",
+  "notities": "Transfereert; de vormnamen zijn in het Nederlands vrijwel gelijk. De Nederlandse default neigt bovendien naar eindrijm met -aar/-en, wat een extra Nederlandse tell is.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Verhaaldefaults (vast perspectief, vlak tempo, alles rond)",
+  "categorie": "structure",
+  "definitie": "Fictie die een verteltrant kiest en er met onnatuurlijke consequentheid in blijft (geen drift tussen vrije indirecte rede, innerlijke monoloog en buitenscene), elke scene op hetzelfde tempo laat verlopen (geen weglating, samenvatting of versnelling), en elk einde dichtknoopt omdat het model de lezer geen dubbelzinnigheid toevertrouwt tenzij dat gevraagd wordt. Laat het perspectief schuiven, vat de saaie stukken samen, en laat een draad open.",
+  "cues": [
+   "elke scene op hetzelfde tempo",
+   "geen wisseling tussen vrije indirecte rede en scene",
+   "alle vragen aan het eind beantwoord",
+   "geen tijdsprong of samenvatting"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "(elke scene op dezelfde afstand verteld, met een slot waarin elke vraag beantwoord wordt)",
+    "na": "(de reis in een zin, de aankomst in een bladzijde, een vraag blijft bij de lezer liggen)"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "narrative-flatness",
+  "notities": "Taalonafhankelijk verteltechnisch patroon; transfereert onveranderd.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ },
+ {
+  "naam": "Vlak zinsritme",
+  "categorie": "structure",
+  "definitie": "Zinslengte en zinsvorm klonteren rond een instelling zonder variatie: of een metronomische mediaan van 14 tot 22 woorden zonder korte mededelende zin, of louter enkelvoudige hoofdzinnen (typisch na 'houd het kort'), of lange gestapelde bijzinnen met gedachtestreepjes ertussen. Varieer het ritme: bind losse korte zinnen met voegwoorden, splits echt verknoopte zinnen, en houd korte zinnen voor nadruk en wendingen.",
+  "cues": [
+   "alle zinnen 14 tot 22 woorden",
+   "alleen hoofdzinnen",
+   "geen enkele korte zin",
+   "lange bijzinketens met gedachtestreepjes",
+   "geen zin langer dan 100 tekens",
+   "elke zin begint met onderwerp plus persoonsvorm"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "De service start. Hij laadt de configuratie. Hij opent een socket. Hij wacht op verzoeken.",
+    "na": "De service laadt zijn configuratie, opent een socket en wacht dan op verzoeken."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "en_id": "sentence-rhythm-uniformity",
+  "notities": "Metrisch; de Koreaanse maten uit de Engelse ingang vervallen. Een bruikbare Nederlandse maat is de variatie in zinslengte (standaarddeviatie gedeeld door gemiddelde) plus het aandeel zinnen dat met onderwerp-persoonsvorm opent, want het Nederlands kent inversie en gegenereerd Nederlands gebruikt die opvallend weinig.",
+  "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)"
+ }
+]

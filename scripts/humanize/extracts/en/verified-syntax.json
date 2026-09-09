@@ -1,0 +1,1747 @@
+{
+  "category": "syntax",
+  "entries": [
+    {
+      "id": "negative-parallelism",
+      "name": "Negative parallelism (not X but Y, in every form)",
+      "definition": "A point is staged as the correction of a claim nobody made: a weaker or literal framing is denied and the real one asserted in the same breath. Sub-forms: the joined pivot ('it's not X, it's Y' on a comma, dash or semicolon), the additive correlative ('not just / not only X but (also) Y'), the split-sentence reframe ('The question isn't X. The question is Y.', 'That's not X. That's Y.', 'This isn't about X. It's about Y.'), the causal variant ('not because X but because Y'), the reversed and diplomatic forms ('X, not Y', 'X rather than Y', 'X — not Y'), the cross-sentence 'however' turn, the alternative-question antithesis ('Is it A, or is it B?', Korean 'A인가, B인가'), Korean 'A가 아니라 B' / 'A라기보다 B다', Dutch 'het is niet x, het is y' / 'niet omdat x maar omdat y', and the poetry line pair ('Not an ending / but a beginning'). Delete the denied half and state Y directly, optionally as a plain comparative ('Y matters more than X').",
+      "cues": [
+        "It's not X, it's Y",
+        "It's not X — it's Y",
+        "It's not X. It's Y.",
+        "it's not X — it's Y",
+        "This is not X. It's Y.",
+        "The question isn't X, it's Y.",
+        "The question isn't X. The question is Y.",
+        "The problem isn't ... The problem is",
+        "The headline isn't the speed. The real story is Y.",
+        "The real story is",
+        "That's not X. That's Y.",
+        "That's not",
+        "This isn't about X. It's about Y.",
+        "This isn't about X, it's about Y",
+        "This isn't about",
+        "It's about",
+        "it's about",
+        "isn't about",
+        "It's not just X, it's Y",
+        "It's not just X — it's Y",
+        "It's not just X but Y.",
+        "It's not just",
+        "it's not just X, it's Y",
+        "It's not merely a song, it's a statement",
+        "isn't just",
+        "doesn't just",
+        "not just",
+        "not just about",
+        "not merely",
+        "This isn't just a",
+        "Not only...but...",
+        "Not only X, but Y",
+        "Not only",
+        "not only ... but",
+        "not only",
+        "but also",
+        "but",
+        "however",
+        "rather",
+        ", however,",
+        "not because X, but because Y",
+        "not because X but because Y",
+        "not because",
+        "but because",
+        "niet omdat x maar omdat y",
+        "X -- not Y",
+        " -- not ",
+        "X rather than Y",
+        "rather than",
+        "no X but Y",
+        "X is not Y; it is Z",
+        "not X but Y",
+        "not X — Y",
+        "isn't ... It's",
+        "aren't ... They're",
+        "isn't",
+        "it's",
+        "It's not",
+        "it's not",
+        "— it's",
+        "het is niet x, het is y",
+        "het is geen x, het is y",
+        "It's not about X, it's about Y",
+        "niet-x-maar-y",
+        "A인가, B인가",
+        "A가 아니라 B",
+        "A라기보다 B다",
+        "아니라",
+        "라기보다",
+        "~것이 아니라",
+        "~것은 아니다",
+        "Not an ending / but a beginning",
+        "I am not water, / I am the thirst.",
+        "not a style but an attractor",
+        "not the output of a controlled head-to-head",
+        "is not the neutral midpoint – it is one option among three",
+        "a stance, not its absence",
+        "not decoration but error-prevention",
+        "is not abolished; it is relocated",
+        "not a property of the prose",
+        "is one such declaration, not a neutral description",
+        "evidence of training, not of virtue",
+        "of central tendency, not of kind",
+        "on impression rather than measurement",
+        "not only dismissive but also unnecessarily harsh and confrontational",
+        "doesn’t just undermine the editor’s argument; it questions their very right to participate",
+        "should be encouraged, not belittled",
+        "doesn’t help resolve disputes or improve content; it only escalates tensions",
+        "not just dismissive—they’re outright disrespectful",
+        "not only discourage participation but also damage the collaborative spirit",
+        "not only a work of self-representation, but a visual document",
+        "isn’t just sourcing—it’s framing",
+        "doesn’t mean it doesn’t exist",
+        "That’s not just a sourcing issue—it’s a systemic bias",
+        "Collaboration, not confrontation, should be the goal",
+        "is not grounded in visual mastery, but in",
+        "is not dissolution. Rather, it constitutes",
+        "not a mirror but a portal",
+        "not a representation of self, but a mechanism",
+        "This isn’t WP:NBIO — it’s WP:1EVENT in disguise",
+        "is not who feels warm fuzzies from visibility, it’s whether",
+        "This ain’t bludgeoning — it’s surgical teardown",
+        "That's",
+        "It's not X -- it's Y",
+        "The question isn't",
+        "The question is",
+        "Not only ... but ...",
+        "It is not just ..., it's ...",
+        "It's not ..., it's ..."
+      ],
+      "regex": [
+        "\\b(?:it|this|that|there)(?:'s|’s| is|'re|’re| are)\\s+not\\s+(?:just|only|merely|simply|about)\\b",
+        "\\b(?:isn't|isn’t|aren't|aren’t|wasn't|wasn’t)\\s+(?:just|only|merely|simply|about)\\b",
+        "\\bnot\\s+because\\s+[^.!?\\n]{2,60}?,?\\s+but\\s+because\\b",
+        "\\b(?:the\\s+)?(?:question|problem|issue|point|answer|goal|challenge|real\\s+story|headline|hard\\s+part)\\s+(?:isn't|isn’t|is\\s+not|wasn't|wasn’t|was\\s+not)\\b[^.!?\\n]{0,80}[.;]\\s+(?:the\\s+)?(?:question|problem|issue|point|answer|goal|challenge|real\\s+story|it)(?:'s|’s|\\s+is)\\b",
+        "\\bthat(?:'s|’s|\\s+is)\\s+not\\s+[^.!?\\n]{1,40}\\.\\s+that(?:'s|’s|\\s+is)\\s+(?!not\\b)",
+        "\\b(?:isn't|isn’t|aren't|aren’t|wasn't|wasn’t|is\\s+not|are\\s+not)\\s+(?:just\\s+|merely\\s+|only\\s+|about\\s+)?[^.!?\\n;]{1,40}?\\s*(?:—|–|--|;)\\s*(?:it's|it’s|it\\s+is|they're|they’re|they\\s+are)\\b",
+        "\\b(?:het|dit|dat)\\s+is\\s+(?:niet|geen)\\s+[^.!?\\n]{1,40},\\s+(?:het|dit|dat)\\s+is\\b",
+        "\\bniet\\s+omdat\\b[^.!?\\n]{2,60}\\bmaar\\s+omdat\\b"
+      ],
+      "examples": [
+        {
+          "before": "It's not just about efficiency — it's about transformation.",
+          "after": "The main gain is a different way of working; the speed is a side effect."
+        },
+        {
+          "before": "The question isn't the model. It's the eval.",
+          "after": "The eval matters more than the model."
+        },
+        {
+          "before": "Het is niet de snelheid, het is de betrouwbaarheid die telt.",
+          "after": "Betrouwbaarheid telt hier zwaarder dan snelheid."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-detector",
+        "im-not-ai-taxonomy",
+        "im-not-ai-method",
+        "wikipedia-a",
+        "tropes-fyi",
+        "hassid",
+        "velitchkov",
+        "vollmer",
+        "willfrancis",
+        "goedecke",
+        "baseline"
+      ],
+      "merged_from": [
+        "§9a Not X but Y (negative parallelism)",
+        "Binary contrasts",
+        "\"It's not X — it's Y\" / \"This isn't about X, it's about Y\" (joined negative parallelism)",
+        "Split-sentence negation (negation and correction in two sentences)",
+        "'It's not X — it's Y' / split-sentence / multi-negation countdown / tailing negation",
+        "C-8 A인가, B인가 antithesis and negative antithesis A가 아니라 B / A라기보다 B다 (not A but B)",
+        "C-8 대칭 대구 공식 'A인가, B인가' / 'A가 아니라 B' (negative antithesis)",
+        "Negative parallelism (WP:AIPARALLEL)",
+        "Not just X, but also Y",
+        "Not X, but Y",
+        "X rather than Y (reversed negative parallelism)",
+        "Negative Parallelism",
+        "Causal Negative Parallelism (\"not because X, but because Y\")",
+        "Em-Dash Dismissal (\"X -- not Y\")",
+        "Cross-Sentence Reframe (\"The question isn't X. The question is Y.\")",
+        "\"That's not X. That's Y.\" (contrast structure)",
+        "[CB] The contrastive binary",
+        "The Negated Contrast ('It's not X, it's Y')",
+        "Negate-and-redefine at the line level (poetry)",
+        "It's not just X — it's Y",
+        "Not only X, but Y",
+        "This isn't about X. It's about Y.",
+        "it's not X — it's Y",
+        "Negative parallelism (niet-x-maar-y-sjabloon)",
+        "Not because X but because Y"
+      ],
+      "false_positives": "One genuine contrast that corrects a belief the reader actually holds is legitimate, and 'common misconceptions' or 'myths busted' pieces use the form on purpose; density is the tell, so one per piece at most and only where the denied half does work. A plain 'not only X but also Y' listing two real things can stay in flowing prose where the reader would otherwise assume only X. Ordinary 'rather than' with two concrete options is common in human prose; flag it only when the first half is an abstract inflation and the second an invented opposite. Do not remove every antithesis from a text: the im-not-ai gate treats 'antithesis annihilation' as over-editing. The twente.dev house rule bans the 'niet x maar y' template outright in its own copy.",
+      "in_baseline": true
+    },
+    {
+      "id": "negation-countdown",
+      "name": "Negation countdown and negation chains (No X. No Y. Just Z.)",
+      "definition": "Two or more negated items are stacked before the affirmed answer, performing decisiveness by clearing away options nobody proposed. Sub-forms: the fragment countdown ('Not a bug. Not a feature. A fundamental design flaw.', 'No X. No Y. Just Z.', Dutch 'Geen X. Geen Y. Gewoon Z.'), the sentence-initial 'no' chain ('No fluff, no filler, no jargon.'), the full-sentence countdown ('It's not the price. It's not the features. It's the trust.'), elided-subject 'didn't X, didn't Y' chains, the negated-then-repeated verb ('Don't call it a pivot. Call it a correction.'), and the negation-tricolon armature ('not A, not B, not C; but X, Y, and Z'). Say what the thing is; one negation earns its place only when the reader would otherwise assume the opposite.",
+      "cues": [
+        "Not a X. Not a Y. A Z.",
+        "Not X. Not Y. Just Z.",
+        "Not ... Not ... A ...",
+        "not ..., not ..., but ...",
+        "Just",
+        "No X. No Y. Just Z.",
+        "No ... No ... Just",
+        "Geen X. Geen Y. Gewoon Z.",
+        "no ..., no ..., just ...",
+        "It's not the price. It's not the features. It's the trust.",
+        "No fluff, no filler, no jargon.",
+        "It didn't ask. It didn't wait.",
+        "It didn't ask, didn't wait.",
+        "Don't call it a pivot. Call it a correction.",
+        "Don't call it X. Call it Y.",
+        "no X, no Y",
+        "not A — not B — not C; but X, Y, and Z",
+        "Not a career, not a body of work, not sustained relevance — just an algorithmic moment",
+        "Not X. Not Y. Z."
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)no\\s+(?!matter\\b|one\\b|doubt\\b|longer\\b|more\\b|less\\b|way\\b|such\\b|other\\b)[a-z'’-]+(?:\\s+[a-z'’-]+)?,\\s*no\\s+[a-z'’-]+(?:\\s+[a-z'’-]+)?,\\s*(?:and\\s+|or\\s+|just\\s+)?no\\s+[a-z'’-]+",
+        "(?:^|[.!?]\\s+|\\n)(?:not|no)\\s+(?:a\\s+|an\\s+|the\\s+)?[a-z'’-]+(?:\\s+[a-z'’-]+){0,3}\\.\\s+(?:not|no)\\s+(?:a\\s+|an\\s+|the\\s+)?[a-z'’-]+(?:\\s+[a-z'’-]+){0,3}\\.\\s+(?:just|only|simply|a|an|the)\\s+",
+        "\\b(?:did\\s+not|didn't|didn’t)\\s+[a-z]+[^,.;!?\\n]{0,20},\\s*(?:did\\s+not|didn't|didn’t)\\s+[a-z]+",
+        "\\b(?:do\\s+not|don't|don’t)\\s+(?:just\\s+)?(\\w+)\\s+it\\b[^.!?\\n]{0,60}[.!?;:,][\\s'\"”’]*(?:just\\s+)?\\1\\s+it\\b",
+        "\\bit(?:'s|’s|\\s+is)\\s+not\\s+(?:the\\s+|a\\s+|an\\s+)?[^.!?\\n]{1,30}\\.\\s+it(?:'s|’s|\\s+is)\\s+not\\s+(?:the\\s+|a\\s+|an\\s+)?[^.!?\\n]{1,30}\\.\\s+it(?:'s|’s|\\s+is)\\b",
+        "(?:^|[.!?]\\s+|\\n)geen\\s+[^.!?\\n]{1,30}\\.\\s+geen\\s+[^.!?\\n]{1,30}\\.\\s+(?:gewoon|alleen|maar)\\b"
+      ],
+      "examples": [
+        {
+          "before": "No fluff, no filler, no jargon.",
+          "after": "Every section states a fact you can check."
+        },
+        {
+          "before": "It's not the price. It's not the features. It's the trust.",
+          "after": "Customers stay because they trust the company."
+        },
+        {
+          "before": "Not a bug. Not a feature. A fundamental design flaw.",
+          "after": "The behaviour comes from a flaw in the original design."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "tropes-fyi",
+        "vollmer",
+        "willfrancis",
+        "baseline"
+      ],
+      "merged_from": [
+        "Negative listing",
+        "Multi-negation countdown",
+        "Negation chains",
+        "negation chain",
+        "two-item negation chains",
+        "\"Not X. Not Y. Just Z.\"",
+        "Negation-tricolon armature",
+        "No X. No Y. Just Z.",
+        "Negation triplet 'No X. No Y. Just Z.'"
+      ],
+      "false_positives": "Mid-sentence factual inventories are content, not a reveal ('the endpoint takes no arguments, no headers, and no body'; 'no dependencies, no telemetry' in a spec list). Sequential narration with the subject restated is ordinary prose ('I did not sleep well. I did not eat breakfast.'). Idiomatic pairs stay ('no more, no less', 'no matter what'). Two-item chains are a judgment call; the detector fires only on sentence-initial chains of three or more short items and on comma-joined elided-subject 'didn't' chains. On hard-wrapped source files a line break can put a mid-sentence clause at what looks like a line start, so check that a line-start match really begins a sentence.",
+      "in_baseline": true
+    },
+    {
+      "id": "tailing-negation",
+      "name": "Tailing negation fragment and deflating tail clause",
+      "definition": "A sentence ends with a comma and a terse negative tail in place of a full clause. Sub-forms: the bare negation fragment (', no guessing', ', no setup', ', no strings attached') and the deflating qualifier that theatrically narrows the claim just made (', and no more', ', and nothing more', ', and no evidence of anything finer'). Write the constraint as a real clause or cut it.",
+      "cues": [
+        ", no guessing",
+        "no guessing",
+        ", no ",
+        "and no more",
+        "and no evidence of anything finer",
+        "blind tagging is not optional"
+      ],
+      "regex": [
+        ",\\s+no\\s+(?:guessing|setup|fuss|strings\\s+attached|surprises|hassle|hidden\\s+fees|excuses|catch|config(?:uration)?|questions\\s+asked|exceptions)\\.",
+        ",\\s+and\\s+(?:no\\s+more|nothing\\s+more|nothing\\s+else|nothing\\s+less)\\."
+      ],
+      "examples": [
+        {
+          "before": "The options come from the selected item, no guessing.",
+          "after": "The options come from the selected item, so the user never has to guess."
+        },
+        {
+          "before": "The log records the request and the response, and no more.",
+          "after": "The log records only the request and the response."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "velitchkov"
+      ],
+      "merged_from": [
+        "§9b Clipped negative endings (tailing negation)",
+        "Tailing negation fragment",
+        "[DT] The deflating tail clause"
+      ],
+      "false_positives": "Negations enumerating spec constraints in a list ('no dependencies, no telemetry') are list content. A single 'and no more' that sets a real bound in measured prose is fine; the tell is the tail as a recurring flourish.",
+      "in_baseline": false
+    },
+    {
+      "id": "invented-contrast-pair",
+      "name": "Invented contrast-pair mirroring",
+      "definition": "A contrast is forced into symmetry where one half is a legitimate term of art and the other a phantom counterpart invented to balance the sentence ('false precision rather than genuine accuracy'). The parallelism exists only for rhythm and is invisible unless the reader knows which half is real. Reach for an actual opposite, or drop the contrast frame and state the positive claim.",
+      "cues": [
+        "False precision rather than genuine accuracy",
+        "rather than"
+      ],
+      "regex": [
+        "\\b(?:(?:false|mere|superficial|hollow|empty)\\s+\\w+\\s+rather\\s+than\\s+(?:genuine|true|real|actual|authentic)|(?:genuine|true|real|actual|authentic)\\s+\\w+\\s+rather\\s+than\\s+(?:mere|false|superficial|hollow|empty))\\s+\\w+\\b"
+      ],
+      "examples": [
+        {
+          "before": "The model gives false precision rather than genuine accuracy.",
+          "after": "The model gives a number that looks more exact than it is."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "Invented contrast-pair mirroring",
+        "invented contrast-pair mirroring"
+      ],
+      "false_positives": "Pairs where both halves are real ('real data rather than theoretical models', 'practical results rather than abstract speculation') are ordinary contrast, and ordinary 'rather than' is everywhere in human prose. Tolerance: strict for LinkedIn, blog and investor email; relaxed for technical blogs and docs; skip in casual writing.",
+      "in_baseline": false
+    },
+    {
+      "id": "litotes-confidence",
+      "name": "Confidence by litotes",
+      "definition": "A claim is made by negating its opposite ('not difficult', 'not optional') so that it is presupposed rather than asserted or argued, which puts it beyond questioning. Where a plain positive exists ('easy', 'mandatory'), use it and give the reason.",
+      "cues": [
+        "not difficult to specify",
+        "blind tagging is not optional"
+      ],
+      "regex": [
+        "\\b(?:is|are|was|were)\\s+not\\s+optional\\b",
+        "\\bnot\\s+(?:difficult|hard)\\s+to\\s+(?:specify|imagine|see\\s+why)\\b"
+      ],
+      "examples": [
+        {
+          "before": "Blind tagging is not optional.",
+          "after": "Every tagger must work blind, because sighted tagging skews the sample."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "sources": [
+        "velitchkov"
+      ],
+      "merged_from": [
+        "[CL] Confidence by litotes"
+      ],
+      "false_positives": "Litotes is a legitimate understatement in measured prose; the tell is its uniform use as a confidence device, several per piece, with no argument behind the presupposition.",
+      "in_baseline": false
+    },
+    {
+      "id": "mirrored-clause-symmetry",
+      "name": "Mirrored-clause symmetry and same-skeleton sentence runs",
+      "definition": "Two or more clauses or sentences are built on one grammatical frame with only a couple of slots swapped, set side by side to convey contrast or a second case: 'High-metadiscourse prose runs the channel at high redundancy; thinned prose runs it at high density', 'A cart is an object in the system. A chat room is an object in the system.', or three antithetical pairs run in a row ('Products impress people; platforms empower them.'). One mirrored pair can be effective; recurrence is the tell. Merge the cases into one sentence, or let the two halves differ in length and shape.",
+      "cues": [
+        "High-metadiscourse prose runs the channel at high redundancy; thinned prose runs it at high density",
+        "risks quantity in the upward direction",
+        "risks quantity in the downward direction",
+        "for someone who has never priced a bond … for someone who prices them daily …",
+        "The first failure wastes … the second misleads …",
+        "cannot minimize the risk of one without raising the risk of the other",
+        "Visible hedging may reflect … visible confidence may reflect …",
+        "the standing argument for it",
+        "the standing argument against it",
+        "over-count its hedges and under-count the other’s",
+        "A cart is an object in the system. A chat room is an object in the system."
+      ],
+      "regex": [
+        "\\b(?:a|an|the)\\s+\\w+(?:\\s+\\w+)?\\s+is\\s+(?:a|an)\\s+([^.!?\\n]{3,40})\\.\\s+(?:a|an|the)\\s+\\w+(?:\\s+\\w+)?\\s+is\\s+(?:a|an)\\s+\\1\\."
+      ],
+      "examples": [
+        {
+          "before": "A cart is an object in the system. A chat room is an object in the system.",
+          "after": "Carts and chat rooms are both objects in the system."
+        },
+        {
+          "before": "High-metadiscourse prose runs the channel at high redundancy; thinned prose runs it at high density.",
+          "after": "Prose with a lot of metadiscourse repeats itself, while thinned prose packs more into each sentence."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "velitchkov"
+      ],
+      "merged_from": [
+        "Same-skeleton sentence runs",
+        "[MCS] Mirrored-clause symmetry"
+      ],
+      "false_positives": "Judgment only: a single mirrored pair is a normal rhetorical device, and deliberate parallelism in a definition list or a comparison table is the correct form. Flag when the frame recurs across a piece without doing persuasive work.",
+      "in_baseline": false
+    },
+    {
+      "id": "same-opener-runs",
+      "name": "Same-opener sentence runs (anaphora)",
+      "definition": "Three or more consecutive sentences open on the same word or words ('They assume that ... They assume that ... They assume that ...', 'Maybe nobody needed it. Maybe it solved the wrong problem. Maybe the timing was off.'). Deliberate anaphora is a rhetorical device; a run that is not doing persuasive work is a tell. Keep the first, then merge sentences, change the subject, or begin with the action; do not ban the repeated word.",
+      "cues": [
+        "She noted... She noted... She filed...",
+        "Maybe nobody needed it. Maybe it solved the wrong problem. Maybe the timing was off.",
+        "They assume that ...",
+        "They could ...",
+        "They have built ..., but not ..."
+      ],
+      "regex": [
+        "\\b(they|we|you|maybe|it|this|there)\\s+(\\w+)\\b[^.!?\\n]{0,60}\\.\\s+\\1\\s+\\2\\b[^.!?\\n]{0,60}\\.\\s+\\1\\s+\\2\\b"
+      ],
+      "examples": [
+        {
+          "before": "They assume that users will pay. They assume that developers will build. They assume that ecosystems will emerge.",
+          "after": "Their plan rests on two assumptions: users will pay and developers will build. An ecosystem, they expect, will follow."
+        },
+        {
+          "before": "She noted the door. She noted the lock on it. She filed both away.",
+          "after": "She noted the door and its lock, then filed both away."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "tropes-fyi"
+      ],
+      "merged_from": [
+        "§11b Repeated sentence openings (anaphora)",
+        "Same-opener sentence runs",
+        "same-opener sentence runs",
+        "Anaphora Abuse"
+      ],
+      "false_positives": "Deliberate repeated openings for effect stay ('She came. She saw. She conquered.'); change them only when the repetition adds nothing. Pronoun-opener runs ('He ... He ... He ...') are ordinary narration. Whether the repetition is earned is what a pattern cannot read, so the regex is a prompt for judgment, not a verdict.",
+      "in_baseline": false
+    },
+    {
+      "id": "same-ending-runs",
+      "name": "Same sentence-ending runs (Korean 종결어미, 것이다, -다 streaks, automatic progressive)",
+      "definition": "Four or more consecutive sentences close on the identical ending ('~이다. ~이다. ~이다.', '~한다'), or the bound-noun ending 것이다 / ~일 것이다 recurs on three or more consecutive sentences, or a text converges on unbroken runs of the plain -다 declarative (the post-editese normalisation metric da_streak_rate). The same source files the mechanically applied progressive ~고 있다 wherever English used a progressive under this ID. Vary endings, reduce the progressive to simple tense, and flatten 것이다 only at three or more in a row, because humans use 것이다 about twice as often as models.",
+      "cues": [
+        "~고 있다",
+        "same ending 4+",
+        "~이다. ~이다. ~이다.",
+        "~한다",
+        "~한 것이다",
+        "~일 것이다",
+        "것이다",
+        "da_streak_rate",
+        "consecutive -다 endings"
+      ],
+      "regex": [
+        "것이다\\.[^.]{0,120}것이다\\.[^.]{0,120}것이다\\."
+      ],
+      "examples": [
+        {
+          "before": "이 방법은 효율적인 것이다. 비용도 낮은 것이다. 도입도 쉬운 것이다.",
+          "after": "이 방법은 효율적이다. 비용도 낮고 도입도 쉽다."
+        },
+        {
+          "before": "읽고 있다",
+          "after": "읽는다"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "E-2 Same sentence ending 4+ consecutively; automatic progressive ~고 있다",
+        "E-2 동일 종결어미 반복 (same sentence ending repeated)",
+        "I-1 ~한 것이다 / ~일 것이다 endings, 3+ consecutive",
+        "I-1 '것이다' 종결 남발 (bound-noun ending)",
+        "Post-editese: normalisation (metric-only)"
+      ],
+      "false_positives": "'Always flatten 것이다' was measured and rejected: AI 20.4 vs human 43.0 per 1k, so a single or paired 것이다 is human-normal and the default is to preserve it. Korean's closed set of sentence-final endings makes some repetition unavoidable in short factual passages; the thresholds (4+ identical, 3+ 것이다) are the trigger, not any repetition. The mechanism (over-regular, unmarked form choice) transfers to other languages but the thresholds are Korean.",
+      "in_baseline": false
+    },
+    {
+      "id": "rule-of-three",
+      "name": "Rule of three (tricolon, colon into a triple)",
+      "definition": "Ideas are padded or trimmed to exactly three items so the sentence sounds complete: three adjectives ('faster, cheaper, smarter'), three abstract nouns ('innovation, inspiration, and industry insights'), three parallel phrases, a colon opening onto exactly three comma-separated items, a catch-all third item ('and other ...'), three one-word fragments each closed with a period ('Fast. Simple. Effective.'), or antithetical pairs run three times. The tell is the constancy of the count across a text, not any single triplet. Use the number of items the meaning has: two, four, or a full sentence.",
+      "cues": [
+        "innovation, inspiration, and industry insights",
+        "keynote sessions, panel discussions, and networking opportunities",
+        "adjective, adjective, and adjective",
+        "adjective, adjective, adjective",
+        "short phrase, short phrase, and short phrase",
+        "separate ports, processes, and local state.",
+        "tiles, metals, and plastics",
+        "drywall, plywood, and other construction materials",
+        "electrical outlets, switches, and plumbing fixtures",
+        "model making, woodworking, and other craft projects",
+        "and other",
+        "X, Y, and Z",
+        "X, Y, Z",
+        "identity, payments, compute, distribution",
+        "workflows, decisions, and interactions",
+        "Faster, cheaper, smarter.",
+        "faster, cheaper, smarter",
+        "three adjectives",
+        "three reasons",
+        "Fast. Simple. Effective.",
+        "No fluff. No filler. No stress.",
+        "Dream big. Start small. Scale fast.",
+        "Learn it. Own it. Live it."
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)[a-z]+(?:er)?,\\s+[a-z]+(?:er)?,\\s+(?:and\\s+)?[a-z]+(?:er)?\\.(?:\\s|$)",
+        "\\b(?:innovation|inspiration|insights?|creativity|collaboration|efficiency|excellence|growth|impact|transparency|resilience|empowerment),\\s+(?:innovation|inspiration|insights?|creativity|collaboration|efficiency|excellence|growth|impact|transparency|resilience|empowerment),?\\s+and\\s+(?:\\w+\\s+)?(?:innovation|inspiration|insights?|creativity|collaboration|efficiency|excellence|growth|impact|transparency|resilience|empowerment)\\b"
+      ],
+      "examples": [
+        {
+          "before": "The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.",
+          "after": "The event has talks and panels, with time between sessions for meeting other attendees."
+        },
+        {
+          "before": "Faster, cheaper, smarter.",
+          "after": "It runs faster and costs less."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-a",
+        "tropes-fyi",
+        "hassid",
+        "vollmer",
+        "baseline"
+      ],
+      "merged_from": [
+        "§10 Forced groups of three (tricolon)",
+        "Compulsive rule of three",
+        "Colon into a triple",
+        "colon into a triple",
+        "Rule of three (WP:RO3)",
+        "Tricolon Abuse",
+        "Always three things (tricolon)",
+        "The Tricolon / Rule of Three (algorithmic flattening)",
+        "Drieslag (tricolon)"
+      ],
+      "false_positives": "A real three-item list is not a tell, and in technical writing three-item lists are often simply true; weigh by genre and by recurrence, never per hit. A single rule-of-three in a piece is noise; flag when every section or paragraph closes on a triad, when the third item is a catch-all, or when the items are abstract nouns with no supporting detail. Classical tricolon used once for emphasis is legitimate rhetoric. The same line-wrap caveat applies: a three-item tail of a longer sentence can land at the start of a wrapped line.",
+      "in_baseline": true
+    },
+    {
+      "id": "staccato-fragments",
+      "name": "Staccato fragments and manufactured punchlines",
+      "definition": "Two or more short verbless fragments are set back to back as dramatic beats: the paired fragment ('Fast. Simple.', 'No fluff. Just answers.'), the fragment run ('It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste.'), the polysyndetic chain ('X. And Y. And Z.') and the mic-drop pair ('That's it. That's the whole thing.'). One short sentence can carry emphasis; a row of fragments each engineered to land like a quotable closer is the tell. Keep the one fragment that earns emphasis and fold the rest into full sentences with the claim stated.",
+      "cues": [
+        "Fast. Simple.",
+        "No fluff. Just answers.",
+        "No X. Just Y.",
+        "X. And Y. And Z.",
+        "That's it. That's the whole thing.",
+        "And",
+        "stacked punchy fragments",
+        "It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone."
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)(?!esq\\b|mrs\\b|etc\\b)[a-z]{3,}\\.\\s+(?!esq\\b|mrs\\b|etc\\b)[a-z]{3,}\\.(?:\\s+[a-z]{3,}\\.)?(?:\\s|$)",
+        "\\.\\s+and\\s+[^.!?\\n]{1,25}\\.\\s+and\\s+[^.!?\\n]{1,25}\\.",
+        "\\bthat(?:'s|’s)\\s+it\\.\\s+that(?:'s|’s)\\s+the\\s+whole\\s+(?:thing|point|story|trick)\\b",
+        "(?:^|[.!?]\\s+|\\n)no\\s+[a-z]+(?:\\s+[a-z]+)?\\.\\s+(?:just|only)\\s+[a-z]+(?:\\s+[a-z]+)?\\."
+      ],
+      "examples": [
+        {
+          "before": "Fast. Simple.",
+          "after": "It is fast and easy to set up."
+        },
+        {
+          "before": "Then AlphaEvolve arrived. It had no preference for symmetry. No aesthetic prior. No nostalgia for human taste. The old rules were gone.",
+          "after": "AlphaEvolve changed the search because it did not favour symmetry or human-looking designs. That made some of the older assumptions less useful."
+        },
+        {
+          "before": "That's it. That's the whole thing.",
+          "after": "There is nothing more to the setup."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-b",
+        "hassid",
+        "baseline"
+      ],
+      "merged_from": [
+        "§31 Forced punchlines and dramatic fragments",
+        "Dramatic fragmentation",
+        "Manufactured punchlines and staccato drama",
+        "Two short bits stuck together (paired fragments)",
+        "Paired fragments 'Fast. Simple.'"
+      ],
+      "false_positives": "One short sentence for emphasis is rhythm, not a tell; flag fragments only when several appear in a row. Keep fragments, longer spoken sentences and changes of pace that are clear and characteristic of the writer's voice. Dialogue ('No. Never.') and short-form registers such as LinkedIn posts, where the fragment is the register, get relaxed treatment.",
+      "in_baseline": true
+    },
+    {
+      "id": "copula-avoidance",
+      "name": "Copula avoidance (serves as, stands as, boasts, refers to)",
+      "definition": "Plain 'is', 'are' or 'has' is replaced by a longer stand-in: 'serves as', 'stands as', 'marks', 'functions as', 'operates as', 'acts as', 'represents', the marketing verbs 'boasts', 'features', 'offers', 'maintains', the lead-sentence dodge 'X refers to', 'holds the distinction of being', and in newer output whole detours such as 'ventured into politics as a candidate' for 'was a candidate' or 'began his career as' for 'was'. Plain existential and possessive phrases ('there is a', 'it has a') are the human counter-indicator that models suppress. Restore the copula or 'has' unless a more specific verb genuinely adds meaning.",
+      "cues": [
+        "serves as/stands as/marks/represents [a]",
+        "boasts/features/offers [a]",
+        "serves as",
+        "stands as",
+        "marks",
+        "represents",
+        "represents a",
+        "boasts",
+        "boasts a",
+        "features",
+        "features a",
+        "offers",
+        "offers a",
+        "presents",
+        "maintains a",
+        "functions as",
+        "operates as",
+        "acts as",
+        "refers to",
+        "ventured into politics as a candidate",
+        "began his career as",
+        "holds the distinction of being",
+        "stands as a testament to",
+        "centralized hub",
+        "there is a",
+        "it has a",
+        "The building serves as a reminder of the city's heritage.",
+        "The station marks a pivotal moment in the evolution of regional transit."
+      ],
+      "regex": [
+        "\\b(?:serves|serve|serving)\\s+as\\s+(?:a|an|the)\\s+(?:[\\w'’]+\\s+){0,2}(?:hub|reminder|testament|platform|space|gateway|bridge|foundation|catalyst|cornerstone|centerpiece|centrepiece|symbol|backbone)\\b",
+        "\\bstands\\s+as\\s+(?:a|an)\\s+(?:\\w+\\s+)?(?:testament|reminder|symbol|beacon|monument|example)\\b",
+        "\\bboasts\\s+(?:a|an|over|more\\s+than|some|\\d)",
+        "\\bholds\\s+the\\s+distinction\\s+of\\b",
+        "\\b(?:functions|operates)\\s+as\\b",
+        "\\b(?:marks|represents)\\s+(?:a|an|the)\\s+(?:pivotal|significant|new|major|turning|important|crucial|fundamental|key|notable)\\s+(?:moment|shift|milestone|step|departure|change|advance|turning|point|chapter)\\b",
+        "\\bventured\\s+into\\s+(?:politics|business|acting|music)\\s+as\\b"
+      ],
+      "examples": [
+        {
+          "before": "Gallery 825 serves as LAAA's exhibition space for contemporary art. The gallery features four separate spaces and boasts over 3,000 square feet.",
+          "after": "Gallery 825 is LAAA's exhibition space for contemporary art. It has four rooms totalling 3,000 square feet."
+        },
+        {
+          "before": "Harian Metro holds the distinction of being the first Malay-language afternoon tabloid.",
+          "after": "Harian Metro was the first Malay-language afternoon tabloid."
+        },
+        {
+          "before": "He ventured into politics as a candidate in 1998.",
+          "after": "He was a candidate in 1998."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-a",
+        "wikipedia-c",
+        "tropes-fyi",
+        "baseline"
+      ],
+      "merged_from": [
+        "§8 Avoiding is and are (copula avoidance)",
+        "Fake-strong verbs",
+        "Copula avoidance",
+        "copula avoidance",
+        "Avoidance of basic copulatives (WP:AINOCOPULA / WP:AIREPRESENTS)",
+        "'Refers to' in lead sentences",
+        "The \"Serves As\" Dodge",
+        "Human counter-indicator: simple is/has phrases"
+      ],
+      "false_positives": "'marks', 'represents', 'features' and 'serves' have literal uses (a lawyer represents a client, a soldier served as a scout, a face's features) that are not hits. Do not confuse 'has' with the past-perfect auxiliary in 'has been featured'. 'X refers to' is legitimate when the article really is about a term. Tolerance: skip on LinkedIn, in docs and in casual writing; strict in blogs and investor email; relaxed in technical blogs, though a technical voice still prefers plain 'X is Y'. Wikipedia lead paragraphs are formulaic '[subject] is ...' and skew any count.",
+      "in_baseline": true
+    },
+    {
+      "id": "nominalization-inflation",
+      "name": "Nominalization and verb periphrasis (made a decision, has the ability to, N 능력)",
+      "definition": "A single direct verb or adjective is replaced by a verb plus abstract noun or a modal periphrasis: 'made a decision' for 'decided', 'has the ability to' for 'can', 'the implementation of' for 'implementing', 'X capability' or 'ability to X' rendered as noun + 능력 in Korean. Korean sub-forms: Sino-Korean nominalisers -성/-적/-화 and literal renderings of English -tion/-ment/-ness/-ity at twelve or more per document (F-4), and -적 + abstract noun compounds ('전략적 함의', '실천적 기반') at three or more (F-5). Restore the verb or adjective root and name who does what.",
+      "cues": [
+        "made a decision",
+        "has the ability to",
+        "-성",
+        "-적",
+        "-화",
+        "-tion",
+        "-ment",
+        "-ness",
+        "-ity",
+        "~적 N",
+        "전략적 함의",
+        "실천적 기반",
+        "N 능력",
+        "능력",
+        "사고 능력",
+        "수행 능력",
+        "the implementation of the policy"
+      ],
+      "regex": [
+        "\\b(?:has|have|had|having)\\s+the\\s+(?:ability|capability|capacity)\\s+to\\b",
+        "\\b(?:make|made|makes|making)\\s+(?:a|the)\\s+(?:decision|determination)\\s+to\\b",
+        "\\bthe\\s+(?:implementation|utilization|utilisation|optimization|optimisation|facilitation|operationalization)\\s+of\\b"
+      ],
+      "examples": [
+        {
+          "before": "The team made a decision to delay the launch.",
+          "after": "The team decided to delay the launch."
+        },
+        {
+          "before": "The tool has the ability to parse nested queries.",
+          "after": "The tool can parse nested queries."
+        },
+        {
+          "before": "사고 능력은 뛰어나다",
+          "after": "잘 사고한다"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "no-ai-slop",
+        "im-not-ai-taxonomy"
+      ],
+      "merged_from": [
+        "Weak verb phrases",
+        "F-4 Nominaliser inflation -성/-적/-화 and literal English -tion/-ment/-ness/-ity, 12+ per document",
+        "F-5 ~적 N abstraction chains 3+ (strategic implications, practical foundation)",
+        "I-6 N 능력 3+ per document (ability to X / X capability)"
+      ],
+      "false_positives": "A nominalisation that names a thing under discussion ('the implementation shipped late') is a noun, not periphrasis. Legal, academic and policy registers carry nominalised style by convention; apply the Korean thresholds (12+ per document, 3+ chains, cap of two 능력) and an English equivalent of density, never a single hit.",
+      "in_baseline": false
+    },
+    {
+      "id": "participial-tail",
+      "name": "Participial tail (superficial -ing analysis)",
+      "definition": "A trailing present-participle clause is bolted onto a plain fact to supply an interpretation the source does not provide: significance ('underscoring the importance of', 'highlighting the need for'), a trend ('reflecting a broader trend toward', 'marking a significant shift in'), legacy or symbolism ('symbolizing', 'showcasing', 'contributing to the region's rich cultural heritage'), or a purpose ('ensuring', 'fostering'). Finite-verb forms ('This highlights the enduring legacy of') are the same move. The construction survives explicit neutrality prompts. Cut the clause, or turn its claim into a separate sentence with a source and a concrete effect.",
+      "cues": [
+        "highlighting/underscoring/emphasizing...",
+        "ensuring...",
+        "reflecting/symbolizing...",
+        "contributing to...",
+        "cultivating/fostering...",
+        "encompassing...",
+        "showcasing...",
+        "highlighting",
+        "underscoring",
+        "reflecting",
+        "showcasing",
+        "symbolizing",
+        "symbolizing the region's commitment to progress, reflecting decades of investment, and showcasing a new era of collaboration",
+        "highlighting ...",
+        "underscoring ...",
+        "emphasizing ...",
+        "ensuring ...",
+        "reflecting ...",
+        "symbolizing ...",
+        "contributing to ...",
+        "cultivating ...",
+        "fostering ...",
+        "encompassing ...",
+        "enhancing ...",
+        "valuable insights",
+        "align with",
+        "resonate with",
+        "creating a lively community within its borders",
+        "further enhancing its significance as a dynamic hub of activity and culture",
+        "offering a diverse range of experiences",
+        "serving as a major railway hub with historical significance",
+        "facilitating the movement of passengers and goods",
+        "contributing to the socio-economic development of the region",
+        "reflecting its continued relevance in the regional and national transportation landscape",
+        "emphasizing the importance of solidarity and collective action",
+        "shaping their values, community structures, and approaches",
+        "driving a commitment to empowerment and social change that echoes through generations",
+        "fosters a sense of connection and shared purpose",
+        "embodying the spirit of unity",
+        "underscores its role in bringing together",
+        "reflecting the rich culture and landscape",
+        "celebrate the area’s agricultural roots",
+        "resonates with the region’s natural beauty",
+        "evoke enduring faith and resilience",
+        "honors the Spanish colonial heritage",
+        "creating a space where the past and present come together",
+        "highlighting their historical and pedagogical significance",
+        "demonstrating the ongoing relevance",
+        "confirming its relevance in modern research",
+        "illustrate Blois' lasting influence",
+        "a perspective that still fuels linguistic debates today",
+        "reflecting the public image that the record company sought to project",
+        "underscoring the image that the label aimed to cultivate",
+        "highlighting the image that the record label wished to promote",
+        "highlighting its importance",
+        "reflecting broader trends",
+        "contributing to the development of",
+        "contributing to",
+        "underscoring its role",
+        "highlights the enduring legacy",
+        "transformative power",
+        "rich cultural heritage",
+        "dynamic hub",
+        ", marking a pivotal moment",
+        ", underscoring its importance",
+        ", highlighting",
+        "...underscoring the importance of...",
+        "...highlighting the need for...",
+        "highlighting the need",
+        "...reflecting a broader trend toward...",
+        "...marking a significant shift in...",
+        "reflecting a broader trend",
+        "marking a significant shift"
+      ],
+      "regex": [
+        ",\\s+(?:highlighting|underscoring|emphasizing|emphasising|showcasing|symbolizing|symbolising|demonstrating|illustrating|reflecting|marking|signaling|signalling|cementing|solidifying|reinforcing|fostering|cultivating|encompassing|contributing\\s+to|ensuring|enhancing|embodying)\\s+(?:the|its|their|his|her|a|an|how|this|that|both)\\b",
+        "\\b(?:highlights|underscores|emphasizes|emphasises|reflects|showcases)\\s+(?:the|its|their)\\s+(?:\\w+\\s+){0,2}(?:importance|significance|need|legacy|role|commitment|relevance|trend|shift|dedication)\\b"
+      ],
+      "examples": [
+        {
+          "before": "The launch adds file search, highlighting the team's commitment to better workflows.",
+          "after": "The launch adds file search, so users can find old drafts without leaving the editor."
+        },
+        {
+          "before": "The initiative represented a significant shift, marking a pivotal moment in the evolution of regional transit.",
+          "after": "The initiative changed how the region plans its transit."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "wikipedia-a",
+        "tropes-fyi",
+        "vollmer",
+        "willfrancis"
+      ],
+      "merged_from": [
+        "§3 Shallow analysis with -ing phrases",
+        "Superficial analysis",
+        "Superficial -ing analyses (participle chains)",
+        "Superficial analyses via sentence-final present-participle phrase (WP:SUPERFICIAL)",
+        "Superficial Analyses",
+        "The Participial Tail",
+        "Trailing significance participle",
+        "Trailing trend participle"
+      ],
+      "false_positives": "Participle clauses that describe a real, concurrent action are not this pattern ('running the tests, she found the leak'; 'reflecting the light off the water'). The tell is interpretive content in the -ing clause: an evaluation, a trend, a legacy or an unsourced purpose. An attributed, sourced statement of significance in its own sentence is fine.",
+      "in_baseline": false
+    },
+    {
+      "id": "false-range",
+      "name": "False range (from X to Y)",
+      "definition": "'From X to Y' is used where X and Y are not endpoints of any real scale, so the phrase implies a span with a meaningful middle that does not exist ('from the Big Bang to dark matter', 'from ancient civilizations to modern startups', 'From innovation to implementation to cultural transformation'). The Korean paradigm-shift formula 'X에서 Y로 / X을 넘어 Y로' is the same move. Ask what sits between X and Y; if nothing does, list the actual topics or pick the one that matters.",
+      "cues": [
+        "from X to Y",
+        "from ... to ...",
+        "From ... to ...",
+        "From ... to ... to ...",
+        "from the singularity of the Big Bang to the grand cosmic web",
+        "from the birth and death of stars to the enigmatic dance of dark matter",
+        "from the Big Bang to dark matter",
+        "from ancient civilizations to modern startups",
+        "X에서 Y로",
+        "X을 넘어 Y로"
+      ],
+      "regex": [
+        "\\bfrom\\s+(?:the\\s+)?[a-z]{4,}(?:\\s+[a-z]{4,})?\\s+to\\s+(?:the\\s+)?[a-z]{4,}(?:\\s+[a-z]{4,})?\\s+to\\s+(?:the\\s+)?[a-z]{4,}",
+        "\\bfrom\\s+ancient\\s+\\w+\\s+to\\s+modern\\b",
+        "\\bfrom\\s+the\\s+(?:singularity|big\\s+bang)\\b",
+        "\\bfrom\\s+[^,.;:\\n]{2,40}\\s+to\\s+[^,.;:\\n]{2,40},\\s+from\\s+[^,.;:\\n]{2,40}\\s+to\\b"
+      ],
+      "examples": [
+        {
+          "before": "Our journey has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.",
+          "after": "The book covers the Big Bang and star formation, and ends with current theories about dark matter."
+        },
+        {
+          "before": "From innovation to implementation to cultural transformation.",
+          "after": "The programme funds the first prototype and stays involved until the tool is in daily use."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-detector",
+        "tropes-fyi",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "§12 False from X to Y ranges",
+        "False ranges",
+        "false ranges",
+        "False Ranges",
+        "D-7 변환 공식 'X에서 Y로 / X을 넘어 Y로' (from-X-to-Y formula)"
+      ],
+      "false_positives": "A genuine range with a real scale is not this pattern: 'from 1990 to 2005', 'from beginner to expert', 'from Paris to Rome'. Legitimate 'from X to Y' implies a spectrum with a meaningful middle; the test is whether anything sits between the endpoints.",
+      "in_baseline": false
+    },
+    {
+      "id": "rhetorical-self-question",
+      "name": "Rhetorical self-question (The result? Devastating.)",
+      "definition": "The writer poses a question to themself and answers it, or fires questions as a stalling device. Sub-forms: the answered self-question ('The result? Devastating.', 'Would I go back? Absolutely.', 'And the food? Simply divine.'), the transition opener ('So why should you care?', 'But what does this mean for developers?', 'One might wonder:'), the fake-casual self-QA volley ('Is it fast? Yes. Is it cheap? Also yes.'), and the stacked question chain ('Do I know how it works? Where it breaks? Which corners it cut?'). Convert to a direct statement; if you know the answer, say it, and keep at most one question that a strong setup has earned.",
+      "cues": [
+        "Would I go back? Absolutely.",
+        "And the food? Simply divine.",
+        "Is it worth the price? Honestly?",
+        "Is it fast? Yes. Is it cheap? Also yes.",
+        "But what does this mean for developers?",
+        "So why should you care?",
+        "What's next?",
+        "Do I know how it works? Where it breaks? Which corners it cut?",
+        "One might wonder:",
+        "One might ask",
+        "Why would a human fight you on this?",
+        "Have a suggestion, correction, or just want to say hi?",
+        "The result?",
+        "The worst part?",
+        "The scary part?",
+        "The X? A Y."
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)the\\s+(?:result|catch|kicker|upshot|takeaway|twist|verdict|lesson|bottom\\s+line|good\\s+news|bad\\s+news|(?:best|worst|scary|hard|crazy|wild|sad|funny|strange)\\s+part)\\?",
+        "\\b(?:so\\s+)?why\\s+(?:should|does)\\s+(?:you|this|it|that|any\\s+of\\s+this)\\s+(?:care|matter)\\?",
+        "\\bone\\s+might\\s+(?:wonder|ask)\\b",
+        "\\?\\s+(?:absolutely|exactly|precisely|also\\s+yes|simply\\s+\\w+|honestly\\?)[.!]",
+        "\\bwhat\\s+does\\s+this\\s+mean\\s+for\\b",
+        "\\?\\s+(?:where|which|what|how|why|who)\\s+[^?.!\\n]{1,40}\\?\\s+(?:where|which|what|how|why|who)\\s+[^?.!\\n]{1,40}\\?"
+      ],
+      "examples": [
+        {
+          "before": "The result? Devastating.",
+          "after": "The outage cost the company two days of sales."
+        },
+        {
+          "before": "Is it worth the price? Honestly? It depends on how often you'll use it.",
+          "after": "Whether it is worth the price depends on how often you will use it."
+        },
+        {
+          "before": "Is it fast? Yes. Is it cheap? Also yes.",
+          "after": "It is fast and cheap."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-b",
+        "tropes-fyi"
+      ],
+      "merged_from": [
+        "Implied: rhetorical self-question answered immediately",
+        "Fake-casual register: self-QA volley",
+        "Rhetorical question openers",
+        "Stacked rhetorical questions",
+        "stacked rhetorical questions",
+        "Rhetorical self-question as transition",
+        "\"The X? A Y.\""
+      ],
+      "false_positives": "Interviews, FAQs, dialogue and essays stack and answer questions legitimately, and a regex cannot read register. One question as a hook is fine on LinkedIn; a rhetorical question is earned by a strong setup in any genre. An established fake-casual voice that already talks this way is exempt. The tell is the device recurring between listicle items or as the transition into every section.",
+      "in_baseline": false
+    },
+    {
+      "id": "agentless-passive-subjectless-fragment",
+      "name": "Agentless passive and subjectless fragment",
+      "definition": "The actor is hidden or the subject dropped in the clipped shape models use to compress feature descriptions: agentless passives ('The results are preserved automatically.', 'Support for nested queries was added.') and verbless or subjectless fragments ('No configuration file needed.'). Name the actor when it makes the sentence clearer and prefer active voice with a human subject; restore the subject and verb in flowing prose.",
+      "cues": [
+        "are preserved automatically",
+        "The results are preserved",
+        "The results are preserved automatically.",
+        "No configuration file needed.",
+        "Support for nested queries was added.",
+        "was added",
+        "passive voice"
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)no\\s+(?:(?!\\b(?:is|are|was|were|will|would|has|have)\\b)[a-z]+\\s+){0,2}(?:needed|required)\\.",
+        "\\b(?:are|is)\\s+(?:preserved|handled|managed|saved|synced|persisted|tracked)\\s+automatically\\b",
+        "\\bsupport\\s+for\\s+[^.!?\\n]{2,40}\\s+(?:was|has\\s+been)\\s+added\\b"
+      ],
+      "examples": [
+        {
+          "before": "No configuration file needed. The results are preserved automatically.",
+          "after": "You do not need a configuration file. The CLI preserves results automatically."
+        },
+        {
+          "before": "Support for nested queries was added.",
+          "after": "The 2.3 release added nested queries."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "§13a Passive voice hiding the actor",
+        "§13b Missing subjects (verbless or subjectless fragments)",
+        "Passive voice",
+        "Subjectless fragments and agentless passives",
+        "subjectless fragments and agentless passives"
+      ],
+      "false_positives": "A passive with an irrelevant or unknown actor stays; use active voice only where it makes the actor and action clearer. Terse reference registers are the correct form for fragments: README feature lists, changelog entries, parameter docs, commit subjects ('No breaking changes'). Tolerance: skip in docs and casual writing, relaxed on LinkedIn and in technical blogs, strict in blogs and investor email. A single deliberate fragment for emphasis is rhythm.",
+      "in_baseline": false
+    },
+    {
+      "id": "inanimate-agent",
+      "name": "Inanimate agent doing a human verb (false agency, personified abstraction)",
+      "definition": "An abstraction or object is made the grammatical subject of a verb only people perform: 'the decision emerged', 'the data tells us', 'the codebase invites you to', Korean '기술이 묻는다' (technology asks), '시대가 부른다' (the era calls). Rewrite with the person or organisation that acted, or weaken the personifying verb.",
+      "cues": [
+        "the decision emerged",
+        "기술이 묻는다",
+        "시대가 부른다",
+        "invites you to",
+        "the codebase invites you to…"
+      ],
+      "regex": [
+        "\\b(?:the\\s+)?(?:data|codebase|code|research|evidence|technology|market|numbers|architecture|era|moment|history|science|future|industry)\\s+(?:tells?|asks?|invites?|calls?|demands?|wants?|reminds?|urges?|teaches|begs)\\s+(?:us|you|me)\\b",
+        "\\bthe\\s+(?:decision|answer|solution|consensus|idea|strategy)\\s+emerged\\b",
+        "\\b(?:codebase|code|data|design|architecture|framework|api|interface|text|prose|essay|landscape)\\s+invites\\s+(?:you|us|the\\s+reader)\\s+to\\b"
+      ],
+      "examples": [
+        {
+          "before": "The decision emerged after weeks of discussion.",
+          "after": "The team decided after weeks of discussion."
+        },
+        {
+          "before": "The codebase invites you to refactor.",
+          "after": "You will want to refactor once you have read the codebase."
+        },
+        {
+          "before": "기술이 묻는다",
+          "after": "연구자들이 묻는다"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "no-ai-slop",
+        "im-not-ai-taxonomy",
+        "im-not-ai-method",
+        "baseline"
+      ],
+      "merged_from": [
+        "Inanimate agents doing human verbs",
+        "D-5 Personified abstract subjects (technology asks, the era calls)",
+        "D-5 의인화된 추상 주어 (personified abstract subject)",
+        "False agency"
+      ],
+      "false_positives": "Conventional metaphors with a fixed technical meaning stay ('the function returns', 'the server listens', 'the study shows'). The milder 'abstract subject + generic verb' form is a separate, weaker signal; the tell is a human act (asks, calls, invites, decides) performed by a concept.",
+      "in_baseline": true
+    },
+    {
+      "id": "orphaned-demonstrative",
+      "name": "Orphaned demonstrative and bad-subject sentence",
+      "definition": "'This', 'that' or 'these' opens a sentence as its subject with no clear referent, typically 'This highlights ...' or 'This underscores ...' after a paragraph of mixed claims; more generally the grammatical subject is not the topic of the sentence and the real agent or idea sits in an object or modifier ('Readers are better guided when the subject matches the main idea'). Korean shows the same as demonstrative meta-entries '이는 ~을 의미한다', '이 점에서', '이 관점에서' three or more times in a paragraph. Name the referent, or make the actual topic the subject.",
+      "cues": [
+        "This highlights…",
+        "this",
+        "that",
+        "these",
+        "이는 ~",
+        "이는 ~을 의미한다",
+        "이 점에서",
+        "이 관점에서",
+        "이 말은"
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)this\\s+(?:highlights|underscores|demonstrates|illustrates|reinforces|signals|speaks\\s+to|matters\\s+because)\\b"
+      ],
+      "examples": [
+        {
+          "before": "Readers are better guided when the subject matches the main idea. This highlights the importance of subject choice.",
+          "after": "Choosing the right subject keeps the writing clear and focused."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "vollmer",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "The Bad-Subject Problem",
+        "Orphaned demonstratives",
+        "H-3 '이는 ~' 지시 반복 (demonstrative meta-entry)"
+      ],
+      "false_positives": "A demonstrative whose antecedent is the single claim of the previous sentence is ordinary cohesion. Flag when the referent is a whole paragraph of mixed claims, or when the demonstrative meta-entry recurs three or more times in one paragraph.",
+      "in_baseline": false
+    },
+    {
+      "id": "hedge-stack",
+      "name": "Hedge-stacked prediction (could potentially, may eventually)",
+      "definition": "A modal (could, may, might) is stacked with a hedge adverb (potentially, eventually, ultimately, possibly, conceivably) in either order, with at most one non-negating word between. Either word alone is acceptable; the stack asserts nothing because each hedge cancels the next. Pick one.",
+      "cues": [
+        "could potentially create",
+        "may eventually unlock",
+        "might ultimately transform",
+        "could potentially",
+        "may eventually",
+        "might ultimately"
+      ],
+      "regex": [
+        "\\b(?:(?:could|may|might)\\s+(?:(?!not\\b|never\\b|hardly\\b|scarcely\\b|barely\\b)\\w+\\s+)?(?:potentially|eventually|ultimately|possibly|conceivably)|(?:potentially|eventually|ultimately)\\s+(?:could|may|might))\\b"
+      ],
+      "examples": [
+        {
+          "before": "This could potentially create new opportunities.",
+          "after": "This could create new opportunities."
+        },
+        {
+          "before": "The tooling may eventually unlock value.",
+          "after": "The tooling may unlock value once the integrations ship."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "Hedge-stacked predictions",
+        "hedge-stacked prediction"
+      ],
+      "false_positives": "A negated modal is not a stack ('could not possibly', 'could a savage possibly'); the earlier two-word gap over-matched exactly these on the human control corpus, so the gap is one non-negating word. 'may well eventually' with a genuine time meaning is a judgment call. 'may possibly' / 'could possibly' in the sense of physical possibility is ordinary English and predates models (Twain: 'as graceful as they could possibly be'), so in expository prose weigh the stack by density and by whether the sentence is a prediction.",
+      "in_baseline": false
+    },
+    {
+      "id": "modal-flattening",
+      "name": "Modality flattening (every hedge rendered as ~수 있다 / can)",
+      "definition": "Every shade of epistemic uncertainty ('might', 'may well', 'could possibly', 'there is a chance') is rendered with the same modal, Korean ~수 있다, so the modality of a text is monotone. The fix is to diversify the hedge, not remove it: ~을지 모른다, ~을 가능성도 있다, ~을 수도 있겠다, and in English 'is likely to', 'may well', 'is an open question'.",
+      "cues": [
+        "~수 있다",
+        "~을지 모른다",
+        "~을 가능성도 있다",
+        "~을 수도 있겠다"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "이 접근은 실패할 수 있다. 비용이 늘 수 있다. 일정이 밀릴 수 있다.",
+          "after": "이 접근은 실패할지 모른다. 비용이 늘 가능성도 있고, 일정은 밀릴 수도 있겠다."
+        },
+        {
+          "before": "The plan could fail. Costs could grow.",
+          "after": "The plan will probably fail, and costs are almost certain to grow."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy"
+      ],
+      "merged_from": [
+        "Modality flattening to ~수 있다 (implied, from E-7 prescription)"
+      ],
+      "false_positives": "A single ~수 있다 or 'could' is the normal modal. The tell is uniformity across a passage that expresses different degrees of confidence. Distinct from the removal-fix for hedging: here the hedges are kept and varied.",
+      "in_baseline": false
+    },
+    {
+      "id": "parenthetical-hedge",
+      "name": "Parenthetical hedge",
+      "definition": "A parenthetical aside that adds no information but performs thoughtfulness: '(and increasingly, X)', '(or more precisely, Y)', '(though to be fair, Z)', '(at least in theory)'. Cut the aside, or move a genuine clarification into the sentence.",
+      "cues": [
+        "(and increasingly, X)",
+        "(or more precisely, Y)",
+        "(though to be fair, Z)",
+        "(at least in theory)"
+      ],
+      "regex": [
+        "\\(\\s*(?:and\\s+)?(?:increasingly|notably|importantly|crucially|interestingly|perhaps),?\\s+[^)]{3,60}\\)",
+        "\\(\\s*or\\s+more\\s+(?:precisely|accurately|specifically),?\\s+[^)]{1,60}\\)",
+        "\\(\\s*though\\s+to\\s+be\\s+fair,?\\s+[^)]{1,60}\\)",
+        "\\(\\s*at\\s+least\\s+(?:in\\s+)?(?:theory|principle|part)(?:,?\\s+[^)]{0,60})?\\)"
+      ],
+      "examples": [
+        {
+          "before": "The tool works for most teams (and increasingly, for individuals).",
+          "after": "The tool works for most teams, and lately for individuals too."
+        },
+        {
+          "before": "It solves the problem (at least in theory).",
+          "after": "It solves the problem on paper; nobody has run it in production."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "parenthetical hedge"
+      ],
+      "false_positives": "A genuine tangent or a clarification that carries a fact (a date, a number, a name) is not this pattern.",
+      "in_baseline": false
+    },
+    {
+      "id": "false-concession",
+      "name": "False concession (While X is impressive, Y remains a challenge)",
+      "definition": "A concessive clause grants a vague compliment or a vague challenge in order to pivot, without conceding anything specific: 'While X is impressive, Y remains a challenge', 'Although X has made strides, Y is still an open question', 'Despite its challenges, ...'. Make the concession specific by naming what is impressive and what the actual challenge is, or pick a side and argue it.",
+      "cues": [
+        "While X is impressive, Y remains a challenge",
+        "Although X has made strides, Y is still an open question",
+        "remains a challenge",
+        "is still an open question",
+        "While X is impressive, ...",
+        "Despite its challenges, ..."
+      ],
+      "regex": [
+        "\\bwhile\\s+\\w+\\s+is\\s+impressive\\b",
+        "\\balthough\\s+\\w+\\s+has\\s+made\\s+strides\\b",
+        "\\bdespite\\s+(?:\\w+\\s+){0,2}challenges\\b",
+        "\\bremains?\\s+a\\s+(?:significant\\s+|major\\s+|key\\s+)?challenge\\b",
+        "\\bis\\s+still\\s+an\\s+open\\s+question\\b"
+      ],
+      "examples": [
+        {
+          "before": "While the tooling is impressive, adoption remains a challenge.",
+          "after": "The compiler is fast, yet only two of the twelve teams have switched to it."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "False concession structure",
+        "false concession"
+      ],
+      "false_positives": "A concession with named specifics on both sides is argument, not padding. 'Despite these challenges' as a closing-outlook formula is catalogued under structure as well; count it once.",
+      "in_baseline": false
+    },
+    {
+      "id": "template-phrase",
+      "name": "Template phrase and slot-fill construction (Whether you're X or Y, the X of Y)",
+      "definition": "A fill-in-the-blank sentence frame with the nouns swapped in: the false-breadth audience pair 'Whether you're a startup founder or an enterprise architect', 'a significant step towards ...', 'I recently had the pleasure of ...', and the aphorism formula 'X is the Y of Z' ('the Uber of dog-walking'). Pick the audience you are actually addressing, state the concrete change, or cut.",
+      "cues": [
+        "Whether you're [X] or [Y]",
+        "Whether you're",
+        "whether you're a beginner or an expert",
+        "a significant step towards ...",
+        "I recently had the pleasure of ...",
+        "X is the Y of Z"
+      ],
+      "regex": [
+        "\\bwhether\\s+you(?:'re|’re|\\s+are)\\s+(?:a|an)\\s+\\w+(?:\\s+\\w+)?\\s+or\\s+(?:a|an)\\s+\\w+",
+        "\\ba\\s+(?:significant|major|important|big|crucial|key|giant|huge)\\s+step\\s+(?:towards?|forward)\\b",
+        "\\bi\\s+recently\\s+had\\s+the\\s+pleasure\\s+of\\b",
+        "\\b(?:is|as)\\s+the\\s+(?:uber|netflix|airbnb|spotify|amazon|google|tesla|linux|whatsapp|slack|tinder|github|swiss\\s+army\\s+knife)\\s+(?:of|for)\\b"
+      ],
+      "examples": [
+        {
+          "before": "Whether you're a startup founder or an enterprise architect, this guide is for you.",
+          "after": "This guide is for engineers who run their own deployment pipeline."
+        },
+        {
+          "before": "This release is a significant step towards better observability.",
+          "after": "This release adds tracing to the billing service."
+        },
+        {
+          "before": "Slack is the WhatsApp of the office.",
+          "after": "Slack replaced most internal email at the office."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "baseline"
+      ],
+      "merged_from": [
+        "\"Whether you're [X] or [Y]\" false-breadth construction",
+        "Template phrases and slot-fill constructions",
+        "template phrase",
+        "Aphorism formula 'X is the Y of Z'"
+      ],
+      "false_positives": "'Whether you are X or Y' followed by two genuinely different instructions for the two audiences is content. An analogy that the text then unpacks with specifics is not the formula. The gerund pair ('whether you're building or buying') is the same construction; the regex only reaches the 'a/an' noun form, so read the sentence rather than trusting a miss.",
+      "in_baseline": true
+    },
+    {
+      "id": "lets-construction",
+      "name": "'Let's' construction",
+      "definition": "A first-person-plural imperative opener stages the exposition instead of starting it: 'Let's explore how ...', 'Let's take a look', 'Let's break this down', 'Let's examine', 'Let's unpack'. Delete the opener and begin with the content.",
+      "cues": [
+        "Let's explore how ...",
+        "Let's break this down.",
+        "let's explore",
+        "let's take a look",
+        "let's break this down",
+        "let's examine",
+        "let's unpack",
+        "let's walk through"
+      ],
+      "regex": [
+        "\\blet(?:'s|’s)\\s+(?:explore|examine|consider|discuss|delve|unpack|break\\s+(?:this|it)\\s+down|take\\s+a\\s+(?:closer\\s+)?look|walk\\s+through)\\b"
+      ],
+      "examples": [
+        {
+          "before": "Let's explore how caching works.",
+          "after": "Caching works like this."
+        },
+        {
+          "before": "Let's break this down.",
+          "after": "The cost splits into hosting and support."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "\"Let's\" construction"
+      ],
+      "false_positives": "'Let's dive in' is catalogued with the chatbot artifacts. A spoken 'let's' in dialogue or a tutorial voice that the writer already uses is register, not a tell.",
+      "in_baseline": false
+    },
+    {
+      "id": "stranded-auxiliary-contrast",
+      "name": "Stranded auxiliary contrast (the data didn't.)",
+      "definition": "A reversal lands on a bare auxiliary: 'The tool died; the data didn't.', 'Reading mostly passed. Writing didn't.', 'It does.' One is fine; as a recurring rhythm it is a signature move in which the clipped contrast poses as earned insight. If the piece already has one, write the next contrast out in full.",
+      "cues": [
+        "The tool died; the data didn't.",
+        "Reading mostly passed. Writing didn't.",
+        "didn't."
+      ],
+      "regex": [
+        ";\\s+(?:the|this|that|it|they|we|you|others|some|its)\\s+\\w+(?:\\s+\\w+)?\\s+(?:didn't|didn’t|did\\s+not|doesn't|doesn’t|does\\s+not|isn't|isn’t|won't|won’t|wasn't|wasn’t|don't|don’t|aren't|aren’t|can't|can’t|couldn't|couldn’t)\\.",
+        "\\.\\s+(?:[a-z]+\\s+){1,2}(?:didn't|didn’t|doesn't|doesn’t|isn't|isn’t|wasn't|wasn’t|won't|won’t|couldn't|couldn’t|aren't|aren’t|weren't|weren’t|hasn't|hasn’t|haven't|haven’t)\\."
+      ],
+      "examples": [
+        {
+          "before": "The tool died; the data didn't.",
+          "after": "The tool died, and the data survived it."
+        },
+        {
+          "before": "Reading mostly passed. Writing didn't.",
+          "after": "Reading mostly passed, while writing failed."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "Stranded auxiliary contrast",
+        "stranded auxiliary contrast"
+      ],
+      "false_positives": "The single instance is legitimate style; only density across a piece distinguishes voice from tic. Dialogue answers ('I don't.') are speech.",
+      "in_baseline": false
+    },
+    {
+      "id": "hyphenated-modifier-stack",
+      "name": "Hyphenated modifier stacking",
+      "definition": "Several compound modifiers are stacked before one noun: 'a high-quality, well-architected, future-proof solution'. The individual hyphens may be correct; the density is the tell. Cut to the modifier that matters.",
+      "cues": [
+        "a high-quality, well-architected, future-proof solution",
+        "high-quality",
+        "well-architected",
+        "future-proof"
+      ],
+      "regex": [
+        "\\b\\w+-\\w+,\\s+\\w+-\\w+,\\s+(?:and\\s+)?\\w+-\\w+\\s+\\w+\\b"
+      ],
+      "examples": [
+        {
+          "before": "a high-quality, well-architected, future-proof solution",
+          "after": "a solution that will still run on next year's hardware"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-skill-a"
+      ],
+      "merged_from": [
+        "Hyphenated modifier stacking"
+      ],
+      "false_positives": "A single compound modifier is correct English. Two stacked compounds that each carry a fact ('a 32-bit, little-endian value') are spec content. A deliberate literary triple in a description is voice, not a tell ('a long-legged, lantern-jawed, unprepossessing-looking specter').",
+      "in_baseline": false
+    },
+    {
+      "id": "synonym-doubling",
+      "name": "Synonym doubling (role and function, new and innovative)",
+      "definition": "Two near-synonymous modifiers or abstract nouns are coordinated on one head so the phrase says the same thing twice: Korean '중요하고 핵심적인 역할' (important and core role), '새롭고 혁신적인 접근' (new and innovative approach), '지속적이고 꾸준한 노력' (continuous and steady effort), and the noun-pair variant '~로서의 역할과 기능' (role and function as ...), '~의 의미와 가치' (meaning and value of ...). Keep one of the two.",
+      "cues": [
+        "중요하고 핵심적인 역할",
+        "새롭고 혁신적인 접근",
+        "지속적이고 꾸준한 노력",
+        "~로서의 역할과 기능",
+        "~의 의미와 가치",
+        "역할과 기능",
+        "의미와 가치"
+      ],
+      "regex": [
+        "\\b(?:role\\s+and\\s+function|function\\s+and\\s+role|meaning\\s+and\\s+value|new\\s+and\\s+innovative|important\\s+and\\s+(?:core|essential|vital|key|central)|continuous\\s+and\\s+steady|steady\\s+and\\s+continuous)\\b",
+        "역할과\\s*기능|의미와\\s*가치|새롭고\\s*혁신적인|중요하고\\s*핵심적인|지속적이고\\s*꾸준한"
+      ],
+      "examples": [
+        {
+          "before": "중요하고 핵심적인 역할",
+          "after": "핵심 역할"
+        },
+        {
+          "before": "a new and innovative approach",
+          "after": "a new approach"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy"
+      ],
+      "merged_from": [
+        "F-2 Synonym doubling",
+        "F-3 Function + role compounds (role and function / meaning and value)"
+      ],
+      "false_positives": "Legal doublets ('terms and conditions', 'null and void') and pairs whose members genuinely differ ('cost and schedule') are not doubling.",
+      "in_baseline": false
+    },
+    {
+      "id": "prescriptive-agentless-necessity",
+      "name": "Agentless prescription (must be addressed, X is needed)",
+      "definition": "Deontic statements pile up with no actor named: Korean ~해야 한다 (must) / ~할 필요가 있다 (there is a need to) five or more times, and the abstract-noun necessity '혁신이 필요하다' (innovation is needed), '변화가 필요하다' (change is needed). English shows the same as 'there is a need to', 'must be addressed', 'it is essential that'. Say who must do what: name the actor and the action as subject and verb, and vary with conditionals.",
+      "cues": [
+        "~해야 한다",
+        "~할 필요가 있다",
+        "~이 필요하다",
+        "~가 필요하다",
+        "혁신이 필요하다",
+        "변화가 필요하다"
+      ],
+      "regex": [
+        "\\b(?:there\\s+is\\s+a\\s+(?:clear\\s+|pressing\\s+|growing\\s+|real\\s+|urgent\\s+)?need\\s+(?:to|for)|(?:must|needs?\\s+to|should)\\s+be\\s+(?:addressed|prioritized|prioritised|taken\\s+into\\s+account|carefully\\s+considered))\\b",
+        "\\b(?:innovation|change|action|reform|investment|collaboration)\\s+is\\s+(?:needed|required|essential)\\b",
+        "이\\s*필요하다|가\\s*필요하다|할\\s*필요가\\s*있다"
+      ],
+      "examples": [
+        {
+          "before": "혁신이 필요하다",
+          "after": "개발팀이 배포 절차를 바꿔야 한다"
+        },
+        {
+          "before": "There is a need to address the backlog; change is needed.",
+          "after": "The maintainers should close the backlog before the release."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy"
+      ],
+      "merged_from": [
+        "I-4 Prescriptive endings 5+ (must / need to / should)",
+        "I-5 ~이/가 필요하다 with no actor (X is needed)"
+      ],
+      "false_positives": "Policy and standards documents are prescriptive by genre; a single 'must' with a named actor is a requirement, not a tell. The Korean threshold is five or more per document.",
+      "in_baseline": false
+    },
+    {
+      "id": "cleft-dummy-noun",
+      "name": "Cleft and dummy-noun emphasis (what matters is, the point is that, which is to say)",
+      "definition": "A claim is foregrounded through a cleft or a dummy noun instead of being stated: 'What matters is X', 'What's important here is', 'The key is that', Korean '주목할 점은' (the point to note is), 'X은 ~라는 점에 있다' (X lies in the point that), '필요한/중요한 것은 X이다', '문제는 / 핵심은 / 관건은'; the wrap-up ending '~다는 것이다 / ~다는 뜻이다' (the thing is that / which is to say); the bound nouns 점·바·수·데 ('나아갈 바는', '할 수가 있다', '하는 데에'); and the inverted this-is-why closer '~하는 이유다'. Rewrite as the direct statement, and cap the wrap-up endings at two per document.",
+      "cues": [
+        "주목할 점은",
+        "X은 ~라는 점에 있다",
+        "중요한 점은",
+        "점은",
+        "~다는 것이다",
+        "~다는 뜻이다",
+        "~라는 것",
+        "필요한 것은 ~이다",
+        "중요한 것은 ~이다",
+        "문제는",
+        "핵심은",
+        "관건은",
+        "~하는 이유다",
+        "나아갈 바는",
+        "할 수가 있다",
+        "하는 데에"
+      ],
+      "regex": [
+        "\\b(?:what(?:'s|’s|\\s+is)\\s+(?:really\\s+|truly\\s+)?(?:important|notable|striking|interesting|crucial|key|remarkable|telling)\\s+(?:here\\s+)?is|what\\s+(?:matters|counts)\\s+(?:most\\s+|here\\s+)?is)\\b",
+        "\\bthe\\s+(?:key|takeaway|lesson|upshot|bottom\\s+line|real\\s+question|crux)\\s+(?:here\\s+)?is\\s+that\\b",
+        "\\bwhich\\s+is\\s+to\\s+say\\b",
+        "주목할\\s*점은|중요한\\s*점은|라는\\s*점에\\s*있다|다는\\s*것이다|다는\\s*뜻이다|하는\\s*이유다"
+      ],
+      "examples": [
+        {
+          "before": "What's important here is that the cache is warm. The key is that nobody warms it by hand.",
+          "after": "The cache is warm, and nobody warms it by hand."
+        },
+        {
+          "before": "이에 있어서 중요한 점은",
+          "after": "여기서 중요한 건"
+        },
+        {
+          "before": "The margin is thin, which is to say the project barely broke even.",
+          "after": "The project barely broke even."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "I-2 Dummy-noun emphasis 주목할 점은 / X은 ~라는 점에 있다 (what is notable is … / X lies in the fact that …)",
+        "I-3 ~다는 것이다 / ~다는 뜻이다 endings (this means that … / which is to say …)",
+        "D-8 분열문 공식 '필요한/중요한 것은 X이다' (cleft formula)",
+        "D-10 역방향 결산 '~하는 이유다' (this-is-why inversion)",
+        "I-2 '점·바·수·데' 반복 (bound-noun emphasis)",
+        "I-3 '~라는 것' 결말 (that-nominalization ending)"
+      ],
+      "false_positives": "One cleft that genuinely shifts focus after a list of alternatives is ordinary emphasis. Korean '할 수 있다' as the plain ability modal is not the bound-noun tell; the tell is 점/바/데 used to stage a claim, or the wrap-up ending recurring beyond two per document. 'Which is to say' that introduces a genuine restatement carrying new information is ordinary English and appears in human prose at about 0.1 per 10,000 words.",
+      "in_baseline": false
+    },
+    {
+      "id": "honorific-register-drift",
+      "name": "Honorific and register drift within one text",
+      "definition": "Addressee speech levels (해라/하게/하오/해요/합쇼체) drift within one document or within one speaker's dialogue because English carries no such marking, so a single English line comes back rendered at two levels ('좀 도와주시겠어요?' and '도와줄래?' from the same speaker). The transferable mechanism is T-V or formal-informal address drifting inside one text. Fix one grade at the outset and hold it.",
+      "cues": [
+        "해라",
+        "하게",
+        "하오",
+        "해요",
+        "합쇼",
+        "해라체",
+        "하게체",
+        "하오체",
+        "해요체",
+        "합쇼체"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "좀 도와주시겠어요? 도와줄래?",
+          "after": "좀 도와주시겠어요?"
+        }
+      ],
+      "severity": "context",
+      "scope": "language-specific",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "E-7 Addressee honorific levels mixed within one document or dialogue",
+        "E-7 청자 경어법 일관성 손실 (speech-level mixing)"
+      ],
+      "false_positives": "Genre guard: dialogue and speech only (fiction dialogue, interview transcripts, quoted speech); uniformly formal genres such as reports and policy documents are exempt. A deliberate level shift that marks a change in relationship between characters is craft. The severity estimate rests on an abstract-only reading of 김혜영 2019.",
+      "in_baseline": false
+    },
+    {
+      "id": "past-tense-avoidance",
+      "name": "Past-tense avoidance (했다/었다 rare)",
+      "definition": "Past-tense endings 했다/었다 are rare in model prose relative to human prose, so narrated events read in a flat present. Provisional and genre-confounded (opinion versus narrative); restore the past tense where the text narrates something that happened.",
+      "cues": [
+        "했다",
+        "었다"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "회의는 길다. 결론은 없다.",
+          "after": "회의는 길었다. 결론은 없었다."
+        }
+      ],
+      "severity": "context",
+      "scope": "language-specific",
+      "sources": [
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "과거시제 회피 (past-tense avoidance)"
+      ],
+      "false_positives": "Opinion, explanation and documentation are legitimately in the present; the measurement (AI 29.9 vs human 135.6 per 1k) is confounded by genre and is marked provisional by its source, so it is not a rule.",
+      "in_baseline": false
+    },
+    {
+      "id": "sentence-rhythm-uniformity",
+      "name": "Sentence rhythm uniformity (low burstiness, all-simple or all-tangled)",
+      "definition": "Sentence length and shape cluster around one setting with no variation: either a metronomic median of 14 to 22 words with no short declaratives, or nothing but single-clause simple sentences (common after 'be concise'), or long stacked-subordination sentences with dashes mid-sentence and verbose, flat rhythm. Korean metrics: mean eojeol per comma-delimited clause above 7 (human 4.35 vs AI 8.56) and inflated part-of-speech diversity around commas. Vary the rhythm: bind adjacent simple sentences with connectives, split genuinely tangled ones, and keep short sentences for emphasis and turns.",
+      "cues": [
+        "long sentences",
+        "tangled structure",
+        "-며",
+        "-고",
+        "-는데",
+        "-면서",
+        "-자",
+        "clause length between commas > 7 eojeol",
+        "단문 일변도",
+        "복문·중문 부재",
+        "쉼표 분절 평균 어절 수",
+        "쉼표 전후 POS 다양성"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "The service starts. It loads the config. It opens a socket. It waits for requests.",
+          "after": "After loading its config, the service opens a socket and waits for requests."
+        },
+        {
+          "before": "The migration, which had been planned for months and which touched every table in the schema, ran overnight while the on-call engineer, who had volunteered, watched the dashboards that the platform team had built for exactly this purpose.",
+          "after": "The migration ran overnight. It touched every table, so the on-call engineer watched the dashboards until it finished."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "no-ai-slop",
+        "im-not-ai-taxonomy",
+        "im-not-ai-method",
+        "vollmer"
+      ],
+      "merged_from": [
+        "Tangled long sentences",
+        "E-4 Nothing but simple sentences",
+        "E-5 Long average clause length between commas (English-style stacked subordination)",
+        "E-4 단문 일변도 (simple sentences only)",
+        "E-5 쉼표 분절 평균 길이 (long comma-delimited clauses)",
+        "E-6 쉼표 전후 POS 다양성 높음 (POS diversity around commas)",
+        "Uniform sentence length (low burstiness)",
+        "Long multi-clause sentences (Claude) / verbose bulkiness (Gemini)"
+      ],
+      "false_positives": "Do not split long spoken sentences that are clear and characteristic of the writer, and do not flatten cadence while untangling. Non-native writers naturally produce lower-burstiness text, so the metric alone is not evidence of a model. The eojeol thresholds are Korean and need recalibration per language.",
+      "in_baseline": true
+    },
+    {
+      "id": "hypotactic-smoothness",
+      "name": "Hypotactic smoothness (suspiciously clean grammar)",
+      "definition": "Every sentence resolves grammatically: no fragments, no sentences starting with 'And' or 'But', no comma splices for effect, no anacoluthon or broken-off constructions, and no occasional wordy phrasing ('as a result of', 'in order to', 'the fact that'), which are the human fingerprints that models sand away. This is a preserve-rule: keep those features where the natural voice would use them, and do not cure the flatness by injecting typos.",
+      "cues": [
+        "And",
+        "But",
+        "as a result of",
+        "in order to",
+        "all of the",
+        "a part of",
+        "the fact that"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "The build failed; therefore, we reverted the commit, after which it passed.",
+          "after": "The build failed. So we reverted the commit. And it passed."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "vollmer",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Suspiciously clean grammar",
+        "Hypotactic smoothness (no fragments, no misbehaviour)",
+        "Human counter-indicator: isolated wordy constructions"
+      ],
+      "false_positives": "Counter-indicator: an isolated wordy construction or a sentence-initial 'And' is a sign of a human hand, not a flaw to fix. Formal registers (legal, academic) are clean by convention. Never add deliberate typos or fake errors; that is the paranoia-spiral anti-goal.",
+      "in_baseline": false
+    },
+    {
+      "id": "sentence-initial-connective-excess",
+      "name": "Sentence-initial connective excess (Furthermore, Moreover, however in every paragraph)",
+      "definition": "Sentences and paragraphs open on additive or consequential connectives clustered in one paragraph (Korean 또한, 따라서, 즉, 나아가, 아울러, 게다가, 더욱이; English 'Furthermore', 'Moreover', 'Additionally', 'Therefore'), or an adversative ('하지만', '그러나', 'However') appears in every paragraph. Let the logic carry itself: drop the connective, or merge the sentences it was gluing.",
+      "cues": [
+        "또한",
+        "따라서",
+        "즉",
+        "나아가",
+        "아울러",
+        "게다가",
+        "더욱이",
+        "하지만",
+        "그러나"
+      ],
+      "regex": [
+        "(?:^|[.!?]\\s+|\\n)(?:furthermore|moreover|additionally|therefore|thus|however|in\\s+addition|consequently),\\s[^.!?\\n]+[.!?]\\s+(?:furthermore|moreover|additionally|therefore|thus|however|in\\s+addition|consequently),\\s",
+        "(?:^|[.!?]\\s+|\\n)(?:또한|따라서|나아가|아울러|게다가|더욱이),?\\s[^.!?\\n]+[.!?]\\s+(?:또한|따라서|나아가|아울러|게다가|더욱이),?\\s"
+      ],
+      "examples": [
+        {
+          "before": "Furthermore, the API is stable. Moreover, it is documented. Additionally, it is fast.",
+          "after": "The API is stable and documented. It is also fast."
+        },
+        {
+          "before": "또한 비용이 낮다. 따라서 도입이 쉽다.",
+          "after": "비용이 낮아서 도입이 쉽다."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "H-1 문두 접속사 과다 (sentence-initial conjunction excess)",
+        "H-2 '하지만'과 '그러나' 혼용 남발 (contrast in every paragraph)"
+      ],
+      "false_positives": "One connective that marks a real turn in the argument is fine; the signature is per paragraph (several openers in one paragraph, or an adversative in every paragraph). The individual words are also catalogued under vocabulary; count the cluster once.",
+      "in_baseline": false
+    }
+  ],
+  "report": "Nothing over-matched: all 86 regexes compile under re.IGNORECASE and the worst rate on the human controls is 0.20 per 10,000 words (hedge-stack, on Twain's genuine 'as graceful as they could possibly be'), followed by hyphenated-modifier-stack at 0.15 and rule-of-three, 'which is to say' and the stacked-question chain at 0.10, all kept with a false-positive note naming the human use. One source regex was dropped: the detector's negation-chain pattern uses a variable-width JavaScript lookbehind that Python cannot compile, so it was rewritten as an anchored (?:^|[.!?]\\s+|\\n) equivalent; two more were retuned rather than dropped during verification, since 'no ... needed/required' was firing on Twain's full clause 'No introduction is required.' and now rejects an intervening copula, and the narrow \"don't call it X. Call it Y\" was widened back to the source's general mirror. The 149 raw names fold into 34 entries: the largest merge is the 25 names of the contrast binary (joined pivot, split-sentence reframe, causal 'not because X but because Y', reversed 'X rather than Y', correlative 'not only ... but also', the Korean 'A가 아니라 B' antithesis, the Dutch 'niet x maar y' and the poetry line pair) into negative-parallelism, while the stacked forms stay separate as negation-countdown because a run of negated fragments is detectable on its own; eight -ing-tail names became participial-tail, nine triad names became rule-of-three, and eight copula dodges plus the two human counter-indicators ('there is a', 'in order to') became copula-avoidance and hypotactic-smoothness, the latter carrying the preserve-rule half of the catalog.",
+  "added": 26,
+  "regex_dropped": 1
+}

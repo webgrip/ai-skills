@@ -1,0 +1,485 @@
+{
+  "source": "wikipedia-a — Wikipedia:Signs of AI writing (wikitext), lines 1-500: lead, Caveats, Content, Language and grammar, first lines of Style (Title heading)",
+  "patterns": [
+    {
+      "name": "Regression to the mean (specific fact replaced by generic inflation)",
+      "category": "content",
+      "definition": "The model drops a rare, specific, nuanced fact and substitutes the statistically common, positive, important-sounding description; the subject becomes less specific and more exaggerated at the same time. Detect prose in which concrete detail is missing while claims of importance are loud.",
+      "cues": ["a revolutionary titan of industry"],
+      "examples": [
+        {"before": "a revolutionary titan of industry", "after": "inventor of the first train-coupling device"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "The source presents this as the mechanism behind most content tells: LLMs infer the most statistically likely continuation that applies to the widest variety of cases. Simile used: shouting louder that a portrait shows a uniquely important person while the portrait fades from a sharp photograph into a blurry generic sketch. Same effect is visible in text-to-image output (blurry background objects and text). The 'after' here is the human-specific original; the 'before' is the AI smoothing."
+    },
+    {
+      "name": "Undue emphasis on significance, legacy, and broader trends (WP:AILEGACY / WP:AITREND)",
+      "category": "content",
+      "definition": "Statements that puff up the subject by asserting that arbitrary aspects of it represent, mark, contribute to, or reflect a broader trend, movement, legacy or turning point. The repertoire of phrasings is small and recognisable.",
+      "cues": ["stands as", "serves as", "is a testament", "is a reminder", "a crucial role", "a pivotal role", "a vital role", "a significant role", "a key role", "a crucial moment", "a pivotal moment", "a key moment", "underscores its importance", "highlights its importance", "underscores its significance", "highlights its significance", "reflects broader", "symbolizing its ongoing", "symbolizing its enduring", "symbolizing its lasting", "contributing to the", "setting the stage for", "marking the", "shaping the", "represents a shift", "marks a shift", "key turning point", "evolving landscape", "focal point", "indelible mark", "deeply rooted", "marking a pivotal moment", "represented a significant shift", "was part of a broader movement", "an important center", "solidify its role as a regional hub"],
+      "examples": [
+        {"before": "The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. [...] The founding of Idescat represented a significant shift toward regional statistical independence, enabling Catalonia to develop a statistical system tailored to its unique socio-economic context. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance."},
+        {"before": "Kumba has long been an important center for trade and agriculture. [...] The establishment of road networks connecting Kumba to other parts of the Southwest Region, such as Mamfe and Buea, helped solidify its role as a regional hub."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The words-to-watch box ends in an ellipsis: the list is non-exhaustive. Cited to Chronicle, Sun and Juzek. The lead screenshot on the page shows the same sign under a 'Legacy & Interpretation' header ('The \"Black Hole Edition\" is not just a meme — it's a celebration of grassroots car culture')."
+    },
+    {
+      "name": "Situating the subject amid broader debates and public discussions",
+      "category": "content",
+      "definition": "The subject is said to have generated, shaped, or prompted debates, discussions or reflection, or to have participated in public discussions, without any specific debate, participant or venue being named.",
+      "cues": ["generated debate", "debates", "participated in public discussions", "shaped emerging policy discussions", "prompted broader reflection", "raising philosophical questions"],
+      "examples": [
+        {"before": "The phenomenon has generated debate about authenticity, consent, and the psychological effects of digitally extending personhood."},
+        {"before": "Collectively, these works have shaped emerging policy discussions about ownership, consent, and dignity in digital resurrection technologies."},
+        {"before": "GriefBots have prompted broader reflection on mortality and memory in a digital age. They blur boundaries between life and data, raising philosophical questions about identity, authenticity, and what it means to “live on” through algorithms."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source treats this as 'another common manifestation' of the significance/legacy sign. Example is from the October 2025 revision to Deadbot."
+    },
+    {
+      "name": "Significance attached to mundane facts (etymology, population data)",
+      "category": "content",
+      "definition": "A legacy or importance claim is bolted onto a purely factual detail such as a name change or a census figure, where no significance is plausible.",
+      "cues": ["This etymology highlights the enduring legacy", "the transformative power", "enduring legacy", "transformative power"],
+      "examples": [
+        {"before": "During the Spanish colonial period, the name Bakunutan was hispanized to Bacnotan, a modification reflected in official documents preserved in the National Archives in Manila. This etymology highlights the enduring legacy of the community's resistance and the transformative power of unity in shaping its identity."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'LLMs may even include these statements for even the most mundane of subjects like etymology or population data.' See also the Douera population sentence under superficial analyses."
+    },
+    {
+      "name": "Hedging preamble conceding low importance, then asserting importance anyway",
+      "category": "rhetoric",
+      "definition": "A concessive opener admits the subject is minor or saw limited use, and the same sentence then claims it contributes to a broader history or reflects a wider influence.",
+      "cues": ["Though it saw only limited application", "contributes to the broader history", "reflects the influence of"],
+      "examples": [
+        {"before": "Though it saw only limited application, it contributes to the broader history of early aviation engineering and reflects the influence of French rotary designs on German manufacturers."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'Sometimes, they add hedging preambles acknowledging that the subject is of relatively low importance, before talking about its importance anyway.' Example from Draft:Goebel Goe II (July 2025)."
+    },
+    {
+      "name": "Tenuous ecosystem or heritage connections in biology writing",
+      "category": "content",
+      "definition": "When describing a species, the text over-emphasises generic connections to the broader ecosystem, environment or cultural heritage even where the connection is tenuous or unsupported.",
+      "cues": ["plays a role in the ecosystem", "contributes to Hawaii's rich cultural heritage", "crucial for the survival of this and other endemic species", "the general health of the ... ecosystem"],
+      "examples": [
+        {"before": "It plays a role in the ecosystem and contributes to Hawaii's rich cultural heritage. [...] Preserving this endemic species is vital not only for ecological diversity but also for sustaining the cultural traditions connected to Hawaii’s native flora."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'LLMs tend to over-emphasize connections to the broader ecosystem or environment, even when those connections are tenuous or generic.'"
+    },
+    {
+      "name": "Belabored conservation status and preservation efforts",
+      "category": "content",
+      "definition": "Species text dwells on conservation status, threats and research or preservation efforts even when the status is unknown and no serious efforts exist, typically by conceding the absence of an assessment and then speculating about threats anyway.",
+      "cues": ["there is no specific conservation assessment", "Preserving this endemic species is vital", "could potentially impact their populations", "Factors such as overfishing, pollution, and habitat destruction", "conservation status"],
+      "examples": [
+        {"before": "Currently, there is no specific conservation assessment for Lethrinops lethrinus by the International Union for Conservation of Nature (IUCN). However, the general health of the Lake Malawi ecosystem is crucial for the survival of this and other endemic species. Factors such as overfishing, pollution, and habitat destruction could potentially impact their populations."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'LLMs also tend to belabor the species' conservation status and research and preservation efforts, even if the status is unknown and no serious efforts exist.'"
+    },
+    {
+      "name": "Canned emphasis on notability, attribution, and media coverage (WP:OVERATTRIBUTION / WP:AIATTR)",
+      "category": "content",
+      "definition": "The text proves the subject matters by cataloguing the outlets it appeared in and classifying those outlets (trade publications, regional media, independent coverage), so that the focus is on characteristics of the sources themselves rather than on what they say about the subject.",
+      "cues": ["independent coverage", "local media outlets", "regional media outlets", "national media outlets", "[country name] media outlets", "music outlets", "business outlets", "tech outlets", "trade publications", "cited in", "featured in", "profiled in", "written by a leading expert", "active social media presence", "other media", "other prominent media outlets", "documented in archived school event programs and regional press coverage", "has also been mentioned in ... coverage relating to", "profiled in multiple high-quality, independent, and widely-read outlets", "appearing in platforms", "significant, substantial, secondary coverage", "Repeated national media coverage", "reported by", "highlighted by multiple independent reports", "recognised by universities, specialist publications, and health system institutions", "Ongoing public presence in respected media", "independent news commentary, landmark survival stories, and national health initiatives", "significant, sustained, and verifiable coverage"],
+      "examples": [
+        {"before": "She spoke about AI on CNN, and was featured in Vogue, Wired, Toronto Star, and other media. [...] Her insights have also been featured in *Wired*, *Refinery29*, and other prominent media outlets."},
+        {"before": "Its significance is documented in archived school event programs and regional press coverage, including the *Mesabi Daily News*, which regularly reviewed performances held there."},
+        {"before": "The restaurant has also been mentioned in ABC News coverage relating to incidents in the surrounding precinct, underscoring its role as a well-known late-night venue in the city [of Adelaide]."},
+        {"before": "The subject has been profiled in multiple high-quality, independent, and widely-read outlets, including The Australian, SBS News, 7News, and coverage syndicated through the Associated Press—appearing in platforms like The Senior and Perth Now. These sources provide significant, substantial, secondary coverage, not trivial mentions or press releases."},
+        {"before": "• Repeated national media coverage for both professional and advocacy work (reported by SBS, 7News, The Australian, etc.) • Leadership roles in international and national health campaigns [...] • National ambassador role for the National Heart Foundation of Australia, highlighted by multiple independent reports • Academic and economic contributions recognised by universities, specialist publications, and health system institutions [...] Together, these factors clearly demonstrate significant, sustained, and verifiable coverage—meeting both WP:BIOSIGand WP:SIGCOV."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "More common in AI tools released in 2025 or later. The source stresses this sign is narrow and distinct from human press releases, which have cited clippings for decades: the distinguishing marks are the idiosyncratic phrasing and the focus on the sources' contents, their availability in public searching, and their classification within the media landscape. Often paired with superficial analyses inaccurately attributed to the source. In the Original Pancake Kitchen example the reference added for the sentence did not exist (fabricated citation)."
+    },
+    {
+      "name": "Guideline or justification vocabulary collapsed into the deliverable",
+      "category": "artifacts",
+      "definition": "The output echoes the exact wording of the criteria it was asked to satisfy (for Wikipedia: notability guideline phrases such as 'independent coverage', 'significant coverage', 'not trivial mentions') inside the article text itself, as if the model conflated the edit with its justification.",
+      "cues": ["independent coverage", "significant, substantial, secondary coverage", "not trivial mentions or press releases", "meeting both WP:BIOSIG and WP:SIGCOV", "verifiable coverage"],
+      "examples": [
+        {"before": "These sources provide significant, substantial, secondary coverage, not trivial mentions or press releases."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'the result often echoes the exact wording of Wikipedia's guidelines like \"independent coverage,\" as if the LLM has collapsed the context between the edit and its justification', with a footnote comparing it to Claude's reasoning leaking into its conversational output. The Wikipedia instance is platform-specific; the mechanism (instruction vocabulary surfacing in the product) transfers to any brief."
+    },
+    {
+      "name": "'Maintains an active social media presence'",
+      "category": "vocabulary",
+      "definition": "A stock sentence noting that a person or organisation maintains an active or strong social-media or digital presence, usually followed by praise of its posting.",
+      "cues": ["maintain an active social media presence", "maintains an active social media presence", "maintains a strong digital presence", "actively shares the latest updates and events", "demonstrated excellence in digital promotions"],
+      "examples": [
+        {"before": "The mall maintains a strong digital presence, particularly on Instagram, where it actively shares the latest updates and events. Forum Kochi has consistently demonstrated excellence in digital promotions, with high-quality, engaging, and impactful video content playing a key role in its outreach."}
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source: 'This wording is particularly idiosyncratic to AI text and relatively uncommon on Wikipedia before ~2024.'"
+    },
+    {
+      "name": "Superficial analyses via sentence-final present-participle phrase (WP:SUPERFICIAL)",
+      "category": "syntax",
+      "definition": "A factual clause is followed by a comma and an '-ing' phrase that supplies an unsupported interpretation of the fact's significance, recognition or impact (highlighting..., reflecting..., contributing to...). Regex-able as ', (highlighting|underscoring|emphasizing|reflecting|symbolizing|contributing to|fostering|showcasing|demonstrating|...)' near sentence end.",
+      "cues": ["highlighting ...", "underscoring ...", "emphasizing ...", "ensuring ...", "reflecting ...", "symbolizing ...", "contributing to ...", "cultivating ...", "fostering ...", "encompassing ...", "enhancing ...", "valuable insights", "align with", "resonate with", "creating a lively community within its borders", "further enhancing its significance as a dynamic hub of activity and culture", "offering a diverse range of experiences", "serving as a major railway hub with historical significance", "facilitating the movement of passengers and goods", "contributing to the socio-economic development of the region", "reflecting its continued relevance in the regional and national transportation landscape", "emphasizing the importance of solidarity and collective action", "shaping their values, community structures, and approaches", "driving a commitment to empowerment and social change that echoes through generations", "fosters a sense of connection and shared purpose", "embodying the spirit of unity", "underscores its role in bringing together", "reflecting the rich culture and landscape", "celebrate the area’s agricultural roots", "resonates with the region’s natural beauty", "evoke enduring faith and resilience", "honors the Spanish colonial heritage", "creating a space where the past and present come together", "highlighting their historical and pedagogical significance", "demonstrating the ongoing relevance", "confirming its relevance in modern research", "illustrate Blois' lasting influence", "a perspective that still fuels linguistic debates today", "reflecting the public image that the record company sought to project", "underscoring the image that the label aimed to cultivate", "highlighting the image that the record label wished to promote"],
+      "examples": [
+        {"before": "As of the April 2008 census, the population of Douera stood at approximately 56,998 inhabitants, creating a lively community within its borders. Situated in the central-north region of the country, Douera enjoys close proximity to the capital city, Algiers, further enhancing its significance as a dynamic hub of activity and culture. With its coastal charm and convenient location, Douera captivates both residents and visitors alike, offering a diverse range of experiences against the backdrop of Algeria's stunning natural beauty."},
+        {"before": "It holds a pivotal place in the East Central Railway Zone of Indian Railways, serving as a major railway hub with historical significance. [...] Historically, it has been crucial for linking Darbhanga with significant cities like Delhi, Patna, and Kolkata, facilitating the movement of passengers and goods. The station has supported various services, including passenger trains and express trains like the Satyagrah Express and Mithila Express, contributing to the socio-economic development of the region. [...] Over the years, Darbhanga Junction has seen several upgrades and modernization efforts aimed at improving facilities and operational efficiency, reflecting its continued relevance in the regional and national transportation landscape."},
+        {"before": "The civil rights movement emerged as a powerful continuation of this struggle, emphasizing the importance of solidarity and collective action in the fight for justice. This historical legacy has influenced contemporary African-American families, shaping their values, community structures, and approaches to political engagement."},
+        {"before": "Its bilingual monument sign, with inscriptions in both English and Spanish, underscores its role in bringing together Latter-day Saints from the United States and Mexico. The temple’s architectural and decorative elements are thoughtfully imbued with local symbolism, reflecting the rich culture and landscape of the Rio Grande Valley. Citrus blossom motifs, seen throughout the exterior and interior, celebrate the area’s agricultural roots and its vital citrus industry."},
+        {"before": "1. **Recommended:** The cover of Columbia's Tunisian record supplement featured the popular Tunisian Jewish singer Louisa Tounsia, reflecting the public image that the record company sought to project. 2. **More formal:** Louisa Tounsia, one of Tunisia's most popular Jewish performers, appeared on the cover of Columbia's Tunisian record supplement, underscoring the image that the label aimed to cultivate. 3. **Closer to the original:** Columbia's Tunisian record supplement featured Louisa Tounsia on its cover, highlighting the image that the record label wished to promote through its marketing."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Cited to Reinhart et al., PNAS 2025 ('Do LLMs write like humans?') and Chronicle. Sometimes carries vague third-party attributions. For Wikipedia these are synthesis or unattributed opinion. The Louisa Tounsia example shows that even when asked for neutral paraphrases, all three variants end with the trailing -ing analysis, so the construction survives explicit neutrality prompts. A rewriter removes the trailing clause or replaces it with an attributed, sourced statement."
+    },
+    {
+      "name": "Superficial analysis misattributed to a named source (RAG)",
+      "category": "content",
+      "definition": "A retrieval-augmented chatbot attaches its own interpretive -ing analysis to a real named source or citation, regardless of whether that source says anything of the kind.",
+      "cues": ["Roger Ebert highlighted the lasting influence", "Fridrichová highlights that", "emphasizing their critical view", "This citation demonstrates the", "demonstrating his influence"],
+      "examples": [
+        {"before": "Fridrichová analyzes the distinction made by Blois and Bar between acronyms, abbreviations, and truncations, emphasizing their critical view on the impact of truncations in the French language. [...] This citation demonstrates the **enduring relevance of Blois's work in modern linguistic studies** and its **critical reception by researchers**."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: newer chatbots with retrieval-augmented generation 'may attach these statements to named sources—e.g., \"Roger Ebert highlighted the lasting influence\"—regardless of whether those sources say anything close.' Verification against the cited source is the only check."
+    },
+    {
+      "name": "Promotional and advertisement-like language (WP:AIPUFFERY / WP:AIPEACOCK)",
+      "category": "content",
+      "definition": "Output drifts toward advertisement or travel-guide tone even when an encyclopedic register was requested, reusing the same small set of promotional phrases regardless of topic.",
+      "cues": ["boasts a", "vibrant", "rich", "profound", "enhancing", "showcasing", "exemplifies", "commitment to", "natural beauty", "nestled", "in the heart of", "groundbreaking", "renowned", "featuring", "diverse array"],
+      "examples": [
+        {"before": "Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and a significant place within the Amhara region."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Words-to-watch list ends in an ellipsis (non-exhaustive). Happens both when generating new text and when rewriting: the source cites an edit summary claiming a rewrite 'removed promotional tone' while actually introducing it, and notes it occurs even when the editor is not deliberately advertising (Walker Rettberg, 'Genre glitches and unexpected promotional phrases'). False-positive rule: not all promotional or spammy writing is AI. Model drift: older LLMs (GPT-4) output more blatantly positive text (Sussman & Carter 2025); newer LLMs are more subtly positive and avoid obvious superlatives like 'the best', so absence of superlatives is not evidence of human authorship."
+    },
+    {
+      "name": "Cultural-heritage travel-guide subtype",
+      "category": "content",
+      "definition": "When the subject can be framed as cultural heritage (a town, region, monument, tourism body), the text reads like a brochure and repeatedly reminds the reader of the subject's importance and attractiveness.",
+      "cues": ["Nestled", "breathtaking", "stands as a vibrant town with a rich cultural heritage and a significant place", "From its scenic landscapes to its historical landmarks", "offers visitors a fascinating glimpse into the diverse tapestry", "unique characteristics", "a town worth visiting", "its significance", "acts as the gateway", "diverse attractions", "every traveller's journey", "dependable, value-driven experiences", "rich history, spiritual heritage, and natural beauty"],
+      "examples": [
+        {"before": "Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and a significant place within the Amhara region. From its scenic landscapes to its historical landmarks, Alamata Raya Kobo offers visitors a fascinating glimpse into the diverse tapestry of Ethiopia. In this article, we will explore the unique characteristics that make Alamata Raya Kobo a town worth visiting and shed light on its significance within the Amhara region."},
+        {"before": "TTDC acts as the gateway to Tamil Nadu’s diverse attractions, seamlessly connecting the beginning and end of every traveller's journey. It offers dependable, value-driven experiences that showcase the state’s rich history, spiritual heritage, and natural beauty."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'When writing about something that could be considered \"cultural heritage,\" LLMs constantly remind the reader of its importance.' Cross-links to the significance/legacy sign."
+    },
+    {
+      "name": "Press-release or corporate tone for people and companies",
+      "category": "content",
+      "definition": "Articles about people or companies adopt the register of a press release or product brochure: goals, commitments, sustainability, craftsmanship, emotional design language.",
+      "cues": ["align with KQ's goals of reducing its environmental footprint, improving operational efficiency, and fostering community development", "emphasized the airline's commitment to sustainability, customer focus, and Africa's prosperity", "communicates a powerful emotional presence", "staying true to Cadillac's signature bold proportions", "enhances accessibility to the spacious rear cabin", "accentuate the vehicle’s overall length", "imparts a sense of refined dynamism", "reinforcing the car’s cohesive and elegant design", "preserving the vehicle’s clean and modern profile", "showcasing the brand’s dedication to craftsmanship and historical reverence", "commitment to"],
+      "examples": [
+        {"before": "These projects align with KQ's goals of reducing its environmental footprint, improving operational efficiency, and fostering community development through job creation. CEO Allan Kilavuka emphasized the airline's commitment to sustainability, customer focus, and Africa's prosperity through responsible corporate practices."},
+        {"before": "The SOLLEI’s exterior design communicates a powerful emotional presence, staying true to Cadillac's signature bold proportions. Its low, elongated silhouette is highlighted by a wide stance and an extended coupe door, which enhances accessibility to the spacious rear cabin. Smooth, uninterrupted surfaces and a pronounced A-line accentuate the vehicle’s overall length, while a sleek, low tail imparts a sense of refined dynamism."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'When writing about people or companies, LLMs will often adopt a press-release or commercial-esque tone.' Overlaps heavily with the sentence-final -ing analysis pattern (most Cadillac clauses are trailing participles)."
+    },
+    {
+      "name": "Essay-style meta-signpost opener ('In this article, we will explore')",
+      "category": "rhetoric",
+      "definition": "The text announces what it is about to do ('in this article we will explore ... and shed light on ...') instead of doing it; a chatbot essay frame carried into a reference article.",
+      "cues": ["In this article, we will explore", "shed light on"],
+      "examples": [
+        {"before": "In this article, we will explore the unique characteristics that make Alamata Raya Kobo a town worth visiting and shed light on its significance within the Amhara region."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied: the phrase appears in the source's Alamata example but is not highlighted or named in lines 1-500; listed because it is a distinct tell from the promotional vocabulary around it."
+    },
+    {
+      "name": "Vague attributions to unnamed authorities (WP:AIWEASEL)",
+      "category": "content",
+      "definition": "Opinions or claims are credited to an unspecified authority (experts, observers, critics, industry reports, scholarship, researchers) that the text never identifies; weasel wording.",
+      "cues": ["Industry reports", "Observers have cited", "Experts argue", "Some critics argue", "researchers and conservationists", "according to Indian sources", "described in scholarship", "modern researchers treat", "reviewers", "scholars"],
+      "examples": [
+        {"before": "Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Efforts are ongoing to monitor its ecological health and preserve the surrounding grassland environment, which is part of a larger initiative to protect China’s semi-arid ecosystems from degradation."},
+        {"before": "While Pakistan was not directly named, the reference to cross-border terrorism, according to Indian sources, was widely interpreted as aimed at Islamabad."},
+        {"before": "The Kwararafa (Kororofa) confederacy is described in scholarship as a shifting Benue valley coalition led by Jukun groups and incorporating a range of Middle Belt peoples. Because much of the historical record derives from Hausa chronicles, Bornu sources and oral tradition, modern researchers treat Kwararafa as a fluid political and cultural formation rather than a fixed state."}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Points to Wikipedia:Manual of Style/Words to watch#Unsupported attributions for the non-AI version of the rule. Often combined with the overgeneralization pattern below. In the BRICS example the single cited source is The Indian Express, so 'Indian sources' plural is itself an overgeneralization."
+    },
+    {
+      "name": "Overgeneralization of source quantity and opinion spread",
+      "category": "content",
+      "definition": "The number or breadth of sources is inflated: views from one or two sources are presented as widely held, plural 'reviewers' or 'scholars' stand for a single cited person, 'several sources/publications' is used when few are cited, and 'such as' implies a non-exhaustive list when the sources give no indication that other examples exist.",
+      "cues": ["several sources", "several publications", "such as", "widely interpreted", "Toy industry publications such as", "multiple", "widely held"],
+      "examples": [
+        {"before": "Toy industry publications such as The Toy Insider and Mojo Nation have presented Rubik's WOWCube as a STEM-oriented platform that brings the Rubik's Cube \"into the future\" with motion controls and an open software ecosystem."}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "The source's own qualifiers: 'several sources/publications (when only few sources are cited)', 'such as (before exhaustive word lists)'. Check the citation count against the plural before flagging."
+    },
+    {
+      "name": "Outline-like conclusions about challenges and future prospects (WP:FACESCHALLENGES)",
+      "category": "structure",
+      "definition": "A rigid two-beat closing formula: 'Despite its [positive words], [subject] faces challenges...' followed by either a vaguely positive assessment or speculation about initiatives that could benefit the subject, often under a 'Challenges' or 'Future Prospects' heading at the end of a rigidly outlined article.",
+      "cues": ["Despite its... faces several challenges...", "Despite these challenges", "Challenges and Legacy", "Future Outlook", "Future Prospects", "Challenges and Future Directions", "faces new challenges and opportunities", "adapt to these emerging trends", "faces several challenges, including", "potential developments", "Despite its industrial and residential prosperity, Korattur faces challenges", "strategic location and ongoing initiatives", "continues to thrive", "presents numerous challenges, including", "continue to provide a vital service", "Despite their promising applications, pyroelectric materials face several challenges", "positions them as critical components", "Despite its success, the Panama Canal faces challenges", "Future investments in technology ... could enhance", "can be challenging", "continues to evolve in response to these challenges", "future challenges", "main contemporary challenge", "for the coming decades"],
+      "examples": [
+        {"before": "== Challenges and Future Directions == As the global economy continues to evolve, international economic law faces new challenges and opportunities. [...] The future of international economic law lies in its ability to adapt to these emerging trends and continue to facilitate a stable and equitable global economic order."},
+        {"before": "Despite its industrial and residential prosperity, Korattur faces challenges typical of urban areas, including[...] With its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of the Ambattur industrial zone, embodying the synergy between industry and residential living."},
+        {"before": "Operating in the current Afghan media environment presents numerous challenges, including[...] Despite these challenges, Amu TV has managed to continue to provide a vital service to the Afghan population."},
+        {"before": "Despite their promising applications, pyroelectric materials face several challenges that must be addressed for broader adoption. One key limitation is[...] Despite these challenges, the versatility of pyroelectric materials positions them as critical components for sustainable energy solutions and next-generation sensor technologies."},
+        {"before": "Despite its success, the Panama Canal faces challenges, including[...] Future investments in technology, such as automated navigation systems, and potential further expansions could enhance the canal’s efficiency and maintain its relevance in global trade."},
+        {"before": "For example, while the methodology supports transdisciplinary collaboration in principle, applying it effectively in large, heterogeneous teams can be challenging. [...] SCE continues to evolve in response to these challenges."},
+        {"before": "== Sociology, sustainability, and future challenges == The main contemporary challenge facing the fashion industry in Spain is its environmental impact [...] marking the sector's mandatory transition towards sustainable and traceable business models for the coming decades."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Explicit false-positive rule from the source: 'This sign is about the rigid formula, not simply the mention of challenges or challenging.' The source colour-codes the two beats: yellow for the 'faces challenges' opener, light green for the positive-outlook or future-speculation close. Ending on a vaguely positive assessment is cited to Russell et al."
+    },
+    {
+      "name": "Outline placeholder left in the body ('This section would speculate on...')",
+      "category": "artifacts",
+      "definition": "A sentence describing what a section would contain is emitted instead of the content, leaving the model's outline plan in the published text.",
+      "cues": ["This section would speculate on", "This section would"],
+      "examples": [
+        {"before": "The future of hydrocarbon economies faces several challenges, including[...] This section would speculate on potential developments and the changing landscape of global energy."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied: the source highlights only 'potential developments' as part of the challenges formula; the placeholder sentence itself is a distinct chatbot leftover worth its own rule."
+    },
+    {
+      "name": "Leads treating list or descriptive titles as proper nouns",
+      "category": "content",
+      "definition": "The first sentence defines a descriptive or list title as though it were a standalone real-world entity ('X refers to', 'X is the chronological list of', 'The \"List of ...\" is a curated compilation of') instead of introducing the subject naturally.",
+      "cues": ["refers to", "is the chronological list", "is a curated compilation", "The “List of ...” is"],
+      "examples": [
+        {"before": "Catchment area (health) refers to the geographic area from which a health facility, such as a hospital or clinic, draws its patients."},
+        {"before": "EuroGames editions is the chronological list of the biennial EuroGames, a European LGBT+ multi-sport event organized by the European Gay and Lesbian Sport Federation (EGLSF)."},
+        {"before": "The “List of songs about Mexico” is a curated compilation of musical works that reference Mexico its culture, geography, or identity as a central theme."}
+      ],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "Wikipedia MOS allows such titles at the start of the lead 'in a natural way'; the AI leads are not natural. Cross-linked from the copula section: 'refers to' treats the article as being about the word or term rather than the subject. The mechanism (defining a working title as a named thing) transfers to other CMSs where the title is a separate field."
+    },
+    {
+      "name": "'Awards and recognition' section and 'X and Y' headers",
+      "category": "structure",
+      "definition": "Section headers shaped 'X and Y', and in particular an 'Awards and recognition' (or bare 'Recognition') section, appear almost by default in generated articles as the structural outlet for legacy and coverage claims.",
+      "cues": ["Awards and recognition", "Recognition", "Challenges and Legacy", "Challenges and Future Directions", "Legacy & Interpretation", "Sociology, sustainability, and future challenges"],
+      "examples": [
+        {"before": "== Awards and recognition =="}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'X and Y' headers are 'common in (but not exclusive to) AI generated articles', while 'the specific wording of \"Awards and recognition\" is nearly ubiquitous in AI generated articles.' Human editors also write legacy/impact sections, so the header shape alone is weak; the exact wording is the tell."
+    },
+    {
+      "name": "High density of 'AI vocabulary' words (WP:AIVOCAB / WP:AIWORDS)",
+      "category": "vocabulary",
+      "definition": "A closed list of words whose frequency jumped after 2022 and which co-occur in LLM output; one or two are coincidence, many of them many times in one post-2022 edit is among the strongest tells. Take each word literally, with its stated sense.",
+      "cues": ["Additionally (especially beginning a sentence)", "align with", "boasts (meaning \"has\")", "bolstered", "crucial", "deep dive", "delve", "emphasizing", "enduring", "enhance", "fostering", "garner", "highlight (as a verb)", "interplay", "intricate/intricacies", "key (as an adjective)", "landscape (as an abstract noun)", "meticulous/meticulously", "pivotal", "robust", "showcase", "tapestry (as an abstract noun)", "testament", "underscore (as a verb)", "valuable", "vibrant"],
+      "examples": [
+        {"before": "The event was notable for the joint address by Narendra Modi, the Prime Minister of India, and Donald Trump, then President of the United States, showcasing the strong ties and strategic partnerships between the two countries. == Background == Organized by the Texas India Forum, the event highlighted the contributions of Indian Americans to American society [...] * **Donald Trump** spoke about the strategic partnership and economic ties, emphasizing defense, technology, and energy sector collaborations. == Impact == Howdy Modi significantly impacted the Indian-American community, fostering a greater understanding and deeper political engagement. It also underscored the strategic importance of U.S.-India relations on the global stage."},
+        {"before": "The inscriptions also offer valuable insights into the construction of the mosque. They record the names of the key craftsmen involved [...] These names highlight the collaborative nature of mosque construction and emphasize the contributions of skilled artisans. [...] the repeated invocation of the names of Muhammad and the Twelve Imams in Kufic script highlights the Shi'ite character of the mosque [...] This inscription, commissioned during the reign of the Aq Qoyunlu ruler Uzun Hasan, also underscores the enduring practice of pious patronage for mosque upkeep and renovation."},
+        {"before": "Somali cuisine is an intricate and diverse fusion of a multitude of culinary influences, drawing from the rich tapestry of Arab, Indian, and Italian flavours. This culinary tapestry is a direct result of Somalia's longstanding heritage of vibrant trade and bustling commerce. [...] Additionally, a distinctive feature of Somali culinary tradition is the incorporation of camel meat and milk. They are considered a delicacy and serve as cherished and fundamental elements in the rich tapestry of Somali cuisine. [...] An enduring testament to the influence of Italian colonial rule in Somalia is the widespread adoption of pasta and lasagne in the local culinary landscape, espicially in the south, showcasing how these dishes have integrated into the traditional diet alongside rice. [...] Additionally, Somali merchants played a pivotal role in the global coffee trade, being one of the first to export coffee beans."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Sources per word (as cited in the box): Additionally: Geng, Huang; align with: Juzek, Kobak; boasts: Juzek2; bolstered: Kobak; crucial: Russell, Geng, Huang; deep dive: Economist Jul 2026; delve: Juzek, Kobak, Russell, Kriss (NYT 'Why Does A.I. Write Like ... That?'); emphasizing: Juzek, Kobak; enduring: Kobak; enhance: Kobak, Russell; fostering: Kobak, Russell; garner: Juzek, Kobak; highlight: Russell, Kriss; interplay: Kobak; intricate: Juzek, Kobak, Reinhart, Kriss; key: citation needed (Nov 2025); landscape: Russell; meticulous: Juzek2, Kobak; pivotal: Kobak, Russell; robust: uncited; showcase: Juzek, Kobak, Kriss; tapestry: Russell, Reinhart, Kriss; testament: Russell; underscore: Juzek, Kobak, Russell, Kriss; valuable: Geng; vibrant: Reinhart. Studies: Juzek & Ward 2025 ('Why Does ChatGPT \"Delve\" So Much?'), Kobak et al. Science Advances 2025 (biomedical excess vocabulary), Kousha & Thelwall 2025 (co-occurrence). Also ubiquitous in LLM-based encyclopedias such as Grokipedia. Rules stated by the source: (1) take the list literally, a word being overused does not imply its synonyms are; (2) keep context in mind, e.g. 'underscore' can be a literal underline mark or incidental music; (3) 'One or two of these words appearing in an edit may be coincidental, but an edit (post-2022) introducing lots of them, lots of times, is one of the strongest tells'; (4) 'where there is one, there are likely others'. Curation gate in the page's hidden comment: only add words whose overuse is corroborated by at least one reliable, non-pop-science external source and is seen on Wikipedia often too. GPT-4o (May 2024 to Aug 2025) deviates more from human writing than contemporaneous models (Reinhart)."
+    },
+    {
+      "name": "Era-specific AI vocabulary clusters (dating aid)",
+      "category": "vocabulary",
+      "definition": "Which overused words co-occur shifts by model generation; the cluster present in a text gives a rough date and model era, and 'delve' in particular peaked in 2023 to early 2024 and dropped sharply in 2025.",
+      "cues": ["2023 to mid-2024 (GPT-4): Additionally, boasts, bolstered, crucial, delve, emphasizing, enduring, garner, intricate/intricacies, interplay, key, landscape, meticulous/meticulously, pivotal, underscore, tapestry, testament, valuable, vibrant", "Mid-2024 to mid-2025 (GPT-4o): align with, bolstered, crucial, emphasizing, enhance, enduring, fostering, highlighting, pivotal, showcasing, underscore, vibrant", "Mid-2025 and on (GPT-5): emphasizing, enhance, highlighting, showcasing (plus the canned notability/coverage vocabulary)"],
+      "examples": [
+        {"before": "delve (famously overused by ChatGPT in 2023 and early 2024, less frequent later in 2024, dropped off sharply in 2025)"}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'While these are not hard cutoffs, they should give you a rough idea of how \"earlier\" vs \"later\" LLM output reads.' Cited to Merrill et al. (Washington Post, Nov 2025) and Geng & Trotta ('Human-LLM Coevolution'). Consequence for a rewriter: absence of 'delve' or 'tapestry' says nothing about 2025+ text, where the tell has moved to highlighting/showcasing/emphasizing plus coverage claims."
+    },
+    {
+      "name": "Grok-specific pseudo-scientific vocabulary",
+      "category": "vocabulary",
+      "definition": "Grok output overuses superficially scientific words (causal, empirical, correlate) and keeps overusing 'underscore' after other models stopped.",
+      "cues": ["causal", "empirical", "correlate", "underscore"],
+      "examples": [
+        {"before": "Chiang's strategy emphasized military suppression of these holdouts to enforce subordination, prioritizing empirical consolidation of power amid fragmented loyalties rather than ideological purity."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'The distribution of \"AI vocabulary\" is also somewhat different depending on the chatbot or LLM used. Grok output is particularly idiosyncratic ... and continues to overuse underscore as of 2026.' The example is from a Grokipedia-sourced revision to First Battle of Guilin."
+    },
+    {
+      "name": "Avoidance of basic copulatives (WP:AINOCOPULA / WP:AIREPRESENTS)",
+      "category": "syntax",
+      "definition": "Plain 'is'/'are'/'has' is replaced by 'serves as', 'stands as', 'marks', 'functions as', 'represents', or by marketing verbs 'boasts/features/maintains/offers'; in newer output by longer detours such as 'ventured into politics as a candidate' for 'was a candidate' or 'began his career as' for 'was'.",
+      "cues": ["serves as", "stands as", "marks", "functions as", "operates as", "represents a", "boasts a", "features a", "maintains a", "offers a", "refers to", "ventured into politics as a candidate", "began his career as", "holds the distinction of being", "acts as"],
+      "examples": [
+        {"before": "Gallery 825 on La Cienega Boulevard serves as LAAA's exhibition space for contemporary art. The gallery features four separate spaces[...]", "after": "Gallery 825 on La Cienega Boulevard, which was purchased in 1958, is LAAA's exhibition arm for contemporary art. There are four individual gallery spaces[...]"},
+        {"before": "It was established in March 1991 as Malaysia's first Malay-language afternoon tabloid [...] Harian Metro holds the distinction of being the first and oldest Malay-language tabloid [...]", "after": "It is Malaysia's first Malay daily afternoon Tabloid [...] The Harian Metro was established in March 1991 and is the first and oldest Malay-language tabloid [...]"},
+        {"before": "ventured into politics as a candidate", "after": "was a candidate"},
+        {"before": "began his career as", "after": "was"}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "In the two diff examples the source shows the human original first and the AI copyedit second; here 'before' is the AI version and 'after' the human original, since that is the rewrite direction. Observed in GPT and Gemini models (Huang et al.). Geng & Trotta documented an over 10% drop in 'is' and 'are' in 2023 academic writing with no prior trend, and the same drop when GPT-3.5 was prompted to 'Revise the following sentence' on 10,000 abstracts. Wikipedia shows the same decline when controlling for lead paragraphs, which are formulaic '[subject] is ...' and skew the data. Especially visible in AI copyedits that 'improve' text this way. False-positive rule: do not confuse 'has' with the past-perfect auxiliary in 'has been featured'. Note that the Gallery 825 copyedit also silently dropped the fact 'which was purchased in 1958' (loss of specificity)."
+    },
+    {
+      "name": "'Refers to' in lead sentences",
+      "category": "syntax",
+      "definition": "A lead avoids 'is' by writing 'X refers to ...', framing the article as being about the word or term rather than about the subject.",
+      "cues": ["refers to"],
+      "examples": [
+        {"before": "Catchment area (health) refers to the geographic area from which a health facility, such as a hospital or clinic, draws its patients."}
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Listed in the copula words-to-watch box and cross-linked to the proper-noun-lead sign; legitimate when the article really is about a term."
+    },
+    {
+      "name": "Vague expression of connection or association (WP:AICONNECT / WP:AIASSOCIATION)",
+      "category": "content",
+      "definition": "A concrete relationship (was CEO of, taught at, composed for, received) is replaced by an unspecified link: 'associated with', 'in connection with', 'connected to'. The rewriter must recover the actual relation from the source.",
+      "cues": ["in connection with", "in connection to", "connected with", "connected to", "in association with", "associated with", "particularly associated", "widely associated", "has been associated with", "associated principally with", "is associated with", "became associated with"],
+      "examples": [
+        {"before": "In 2017, sources identified John Doe as being associated with leadership of ExampleCorp", "after": "In 2017, John Doe was the CEO of ExampleCorp"},
+        {"before": "Professor Jane Doe was connected with science education at Example University", "after": "Professor Jane Doe taught science at Example University"},
+        {"before": "In 1969, L’Athénée (volume 58), published by the Federation of Belgian Public Secondary Education, cited his work, in connection with the \"Grammaire Blois,\" demonstrating his influence in Belgian secondary education."},
+        {"before": "The system has been associated with residential water management applications including swimming-pool backwash and sump-pump discharge. [...] Environmental organizations have also referenced the inventor in connection with environmental award recognition related to water management initiatives. [...] Uses associated with the patented method include: [...] The New Jersey Department of Environmental Protection announced Governor’s Environmental Excellence Award recipients associated with water conservation and environmental innovation."},
+        {"before": "Strickler was also quoted in National Journal discussing the role of training programs for women candidates and grassroots political organizing, in connection with her work founding Fifty Plus One, an organization focused on training pro-choice candidates in campaign strategy and electoral leadership."},
+        {"before": "That literature — associated principally with Malcolm Comeaux (Atchafalaya Swamp Life, 1972), William Faulkner Rushton (The Cajuns: From Acadia to Louisiana, 1979), and James Dormon (The People Called Cajuns, 1983) — advanced what Conrad termed the \"Comeaux-Rushton theory\""},
+        {"before": "He is associated with the Rajhans Orchestra, a multicultural ensemble combining Western classical and Indian musicians and instruments. [...] He later became associated with musical education in Knokke-Heist, where he taught violin, viola and chamber music and conducted local ensembles. [...] Contemporary material associated with the ensemble documents performances in India, the United States, Belgium and Pakistan. [...] The concerts were organised in connection with celebrations of the 50th anniversary of Pakistan"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "The first two examples are the source's own synthetic pairs (AI-style vs direct). False-positive rule from the source: 'this indirection alone is not enough to allege that the writing is AI-generated, but its abundance and appearance in combination with other signs may be.' Often combined with promotional buzzspeak and generic AI vocabulary ('particularly/widely associated'), sometimes iteratively (Draft:Amir Tajik, Aug 2026)."
+    },
+    {
+      "name": "Negative parallelism (WP:AIPARALLEL)",
+      "category": "syntax",
+      "definition": "The text frames a description as correcting a misconception the reader never voiced: a downplayed or denied characteristic is contrasted with an asserted one, retroactively challenging an assumed incomplete conclusion. Three subtypes follow.",
+      "cues": ["not only", "not just", "but also", "but", "however", "rather", "isn't just", "doesn't just", "it's not", "it's"],
+      "examples": [
+        {"before": "The \"Black Hole Edition\" is not just a meme — it's a celebration of grassroots car culture, where ideas are limitless and fun is more important than spec sheets."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "False-positive rule: 'While it is common among human writers (especially in \"common misconceptions\" or \"myths busted\" listicles), it is stereotypically an \"AI sign.\"' The example here is from the page's lead screenshot caption. The source colour-codes the denied half pink and the asserted half yellow."
+    },
+    {
+      "name": "Not just X, but also Y",
+      "category": "syntax",
+      "definition": "Parallel construction with 'not', 'but' or 'however' in which the first item is kept and a second is added: 'Not only ... but ...', 'It is not just ..., it's ...'; can also stretch across sentences with a sentence-initial 'however'.",
+      "cues": ["Not only ... but ...", "It is not just ..., it's ...", "not only dismissive but also unnecessarily harsh and confrontational", "doesn’t just undermine the editor’s argument; it questions their very right to participate", "should be encouraged, not belittled", "doesn’t help resolve disputes or improve content; it only escalates tensions", "not just dismissive—they’re outright disrespectful", "not only discourage participation but also damage the collaborative spirit", "not only a work of self-representation, but a visual document", "isn’t just sourcing—it’s framing", "doesn’t mean it doesn’t exist", "That’s not just a sourcing issue—it’s a systemic bias", "Collaboration, not confrontation, should be the goal", ", however,"],
+      "examples": [
+        {"before": "This choice of language is not only dismissive but also unnecessarily harsh and confrontational. It shuts down the possibility of constructive dialogue and disrespects the effort that others put into contributing to this platform."},
+        {"before": "This remark doesn’t just undermine the editor’s argument; it questions their very right to participate based on how long they’ve been active, which is contrary to the inclusive nature that Wikipedia aims to foster. New contributors should be encouraged, not belittled, and it’s disheartening to see you take such a dismissive stance."},
+        {"before": "These comments are not just dismissive—they’re outright disrespectful. Accusations like these don’t belong in a professional and collaborative setting."},
+        {"before": "By continuing to engage with others in such a dismissive and harsh manner, you not only discourage participation but also damage the collaborative spirit that is essential to Wikipedia’s success."},
+        {"before": "Self-Portrait by Yayoi Kusama, executed in 2010 and currently preserved in the famous Uffizi Gallery in Florence, constitutes not only a work of self-representation, but a visual document of her obsessions, visual strategies and psychobiographical narratives."},
+        {"before": "The issue here isn’t just sourcing—it’s framing. [...] The fact that it doesn’t always use the exact phrase “Northern English nationalism” doesn’t mean it doesn’t exist. Movements evolve before they’re neatly labelled. [...] That’s not just a sourcing issue—it’s a systemic bias."},
+        {"before": "He hailed from the esteemed Duse family, renowned for their theatrical legacy. Eugenio's life, however, took a path that intertwined both personal ambition and familial complexities."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Cited to Robbins ('How to Tell if Something is AI Written'), Russell et al. 2025, Merrill (Washington Post) and The Economist (Jul 2026). The Eugenio Duse example is the source's 'negative parallelism across multiple sentences'. The Eric Dick talk-page example also carries em dashes and 'It’s important to recognize that', neither flagged by the source in this range."
+    },
+    {
+      "name": "Not X, but Y",
+      "category": "syntax",
+      "definition": "Parallelism that denies the first characteristic outright and asserts the second: 'It's not ..., it's ...', 'no ..., no ..., just ...', 'not a mirror but a portal'.",
+      "cues": ["It's not ..., it's ...", "no ..., no ..., just ...", "is not grounded in visual mastery, but in", "is not dissolution. Rather, it constitutes", "not a mirror but a portal", "not a representation of self, but a mechanism", "This isn’t WP:NBIO — it’s WP:1EVENT in disguise", "Not a career, not a body of work, not sustained relevance — just an algorithmic moment", "is not who feels warm fuzzies from visibility, it’s whether", "This ain’t bludgeoning — it’s surgical teardown"],
+      "examples": [
+        {"before": "The viewer is presented with a self-image that is not grounded in visual mastery, but in what Amelia Jones terms “the performative enactment of subjectivity”. [...] This dispersal is not dissolution. Rather, it constitutes what Deleuze might describe as “becoming”—an identity in flux, constituted through iterative difference. Through this lens, Kusama’s self-portrait is not a mirror but a portal: not a representation of self, but a mechanism for its constant reinvention."},
+        {"before": "This isn’t WP:NBIO — it’s WP:1EVENT in disguise, trying to wear a press badge like armor. [...] Not a career, not a body of work, not sustained relevance — just an algorithmic moment. [...] the topic is not who feels warm fuzzies from visibility, it’s whether this article meets the threshold for inclusion. It doesn’t. [...] This ain’t bludgeoning — it’s surgical teardown of a weak argument hiding behind fake neutrality."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Cited to Kriss (NYT) and The Economist (Jul 2026). The Lilly Contino AfD example shows the pattern combined with em dashes, colloquial register ('ain’t') and mixed metaphors, none of which the source flags separately here."
+    },
+    {
+      "name": "X rather than Y (reversed negative parallelism)",
+      "category": "syntax",
+      "definition": "The asserted characteristic comes first and the denied one is appended with 'rather than'.",
+      "cues": ["rather than"],
+      "examples": [
+        {"before": "Chiang's strategy emphasized military suppression of these holdouts to enforce subordination, prioritizing empirical consolidation of power amid fragmented loyalties rather than ideological purity."}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source: 'This pattern may also be reversed, a construction particularly common in Grok output.' Example from a revision that explicitly states it is from Grokipedia. Ordinary 'rather than' is common in human prose; the tell is the pairing with an abstract, inflated first half."
+    },
+    {
+      "name": "Rule of three (WP:RO3)",
+      "category": "syntax",
+      "definition": "Lists and modifiers default to exactly three items: 'adjective, adjective, adjective' or 'short phrase, short phrase, and short phrase', often padding a superficial analysis so it looks comprehensive, and often closing with a catch-all third item ('and other ...').",
+      "cues": ["tiles, metals, and plastics", "drywall, plywood, and other construction materials", "electrical outlets, switches, and plumbing fixtures", "model making, woodworking, and other craft projects", "and other", "adjective, adjective, adjective", "short phrase, short phrase, and short phrase"],
+      "examples": [
+        {"before": "* **Standard Rotary Saws**: Typically used for drywall and light materials. * **Heavy-Duty Rotary Saws**: Designed for tougher materials such as tiles, metals, and plastics. * **Corded and Cordless Versions**: Corded rotary saws offer continuous power, while cordless versions provide portability and convenience [...] * **Construction and Renovation**: For cutting drywall, plywood, and other construction materials. * **Electrical and Plumbing**: To create openings for electrical outlets, switches, and plumbing fixtures. * **Hobby and Craft**: Used in model making, woodworking, and other craft projects. * **Automotive**: Employed in auto body repair and modification tasks."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Cited to Russell, Kriss and The Economist. Source: 'LLMs often use this structure to make superficial analyses appear more comprehensive.' The example is also flagged as canned-format lists (WP:AILIST) written in Markdown (WP:MARKDOWN) with bold-first bullets; those signs are in the Style section beyond line 500."
+    },
+    {
+      "name": "Title heading repeated above the content",
+      "category": "structure",
+      "definition": "The generated document opens with a heading carrying the article or page title, because the model does not assume the surface already renders the title.",
+      "cues": ["a top-level heading equal to the article name before any content"],
+      "examples": [
+        {"before": "(examples are at lines 500+ and were not read)"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Lines 496-499 only; the '==Style==' section starts at line 490 and its examples fall outside this extractor's range. Included because the definition sentence is in range: 'AI chatbots tend to put a heading with the article name before all the content, since they don't usually imagine the title header when you make an article as being already there.'"
+    }
+  ],
+  "methodology": [
+    {"topic": "false-positives", "rule": "Treat every listed sign as a possible indicator, not proof: LLMs are trained on human writing (Wikipedia included), and editorials, blogs and fan fiction carry many of the same elements. Never conclude AI authorship from a single sign."},
+    {"topic": "modes", "rule": "Read the catalog as descriptive observations, not prescriptive style rules. Style advice on what to avoid belongs to the style guide (for Wikipedia: the policies, guidelines and Manual of Style), not to the sign list."},
+    {"topic": "gates", "rule": "Do not merely scrub the surface signs (boldface, broken markup, citation quirks, vocabulary). They point to deeper problems such as fabricated sources, synthesis and unverifiable claims; fix or flag those, because removing only the tells makes detection harder and leaves the real damage in place."},
+    {"topic": "other", "rule": "Anti-goal: do not use this catalog to make AI text pass as human. The page explicitly warns that treating the signs as the problems to be fixed 'could just make detection harder'."},
+    {"topic": "scoring", "rule": "Only the most objective signs (those listed in Wikipedia speedy-deletion criterion G15) justify summary removal on their own; the remaining signs are not sufficient by themselves for that action."},
+    {"topic": "workflow", "rule": "Do not rely solely on automated AI detectors (GPTZero, Pangram). They beat chance but have non-trivial error rates and are defeated by paraphrasing, markup and spacing changes, and by models unseen during detector training. A high detector percentage is not a valid criterion for deletion."},
+    {"topic": "workflow", "rule": "Do not rely too much on your own judgment either: untrained humans distinguish LLM from human text at roughly chance level (Cheng et al. 2025; 57% for AI texts and 64% for human texts on German theses, Fiedler & Doepke 2025). Calibrate yourself, e.g. with the Wikipedia:AI or not quiz."},
+    {"topic": "scoring", "rule": "Budget for false positives: heavy LLM users identify AI-generated articles about 90% of the time (Russell et al. 2025), so tagging 10 pages as AI probably includes one false positive; occasional LLM users do only slightly better than chance in both directions."},
+    {"topic": "false-positives", "rule": "Expect human writing to drift toward LLM style over time (measured in spoken podcasts by 2024, and in academic semantics and word choice), and expect writers to adjust their style to avoid AI accusations; recalibrate thresholds rather than freezing them."},
+    {"topic": "register", "rule": "This catalog is tuned to informational writing. Fiction-specific tells (whispering woods, Elara Voss and similar name choices) are deliberately excluded and need a separate list."},
+    {"topic": "register", "rule": "Some signs are Wikipedia-specific (guideline-wording echoes, lead-sentence conventions, speedy-deletion criteria); when applying the catalog outside Wikipedia, keep the mechanism and drop the platform-specific instance."},
+    {"topic": "workflow", "rule": "Use loss of specificity as a detection heuristic: LLM output regresses to the mean, replacing rare specific facts with generic positive descriptions. Where importance claims rise while concrete detail falls, suspect generation and restore the specific fact from sources."},
+    {"topic": "false-positives", "rule": "Apply the AI-vocabulary list literally: a word being overused does not imply its synonyms are, and sense matters ('underscore' as an underline mark or as incidental music, 'has been featured' as past perfect, 'boasts' only in the sense 'has')."},
+    {"topic": "scoring", "rule": "Score vocabulary by density and co-occurrence, not presence: one or two list words may be coincidental; a post-2022 edit introducing many of them many times is one of the strongest tells, and where one appears others are likely."},
+    {"topic": "facts", "rule": "Gate for adding a word to the vocabulary list: its overuse must be corroborated by at least one reliable, non-pop-science external source and be seen frequently in real edits. Do not extend the list from intuition."},
+    {"topic": "workflow", "rule": "Date the text by its vocabulary cluster: GPT-4 era (2023 to mid-2024) delve/tapestry/testament/intricate, GPT-4o era (mid-2024 to mid-2025) align with/enhance/fostering/showcasing, GPT-5 era (mid-2025 on) emphasizing/enhance/highlighting/showcasing plus coverage-claim vocabulary; cutoffs are soft. Absence of 'delve' is not evidence of human authorship in 2025+ text."},
+    {"topic": "false-positives", "rule": "Model-specific profiles differ: Grok overuses causal/empirical/correlate/underscore and the reversed 'X rather than Y'; GPT-4o deviates more from human writing than contemporaneous models. Do not expect one uniform fingerprint."},
+    {"topic": "false-positives", "rule": "For copula avoidance, control for lead paragraphs, which follow the formulaic '[subject] is ...' and skew any is/are frequency count."},
+    {"topic": "false-positives", "rule": "For vague connection wording ('associated with', 'in connection with'), indirection alone is never enough to allege AI; count only its abundance and its co-occurrence with buzzspeak and AI vocabulary."},
+    {"topic": "false-positives", "rule": "For the challenges/future-prospects sign, flag only the rigid formula ('Despite its ..., X faces challenges ...' closing on a vaguely positive note or speculative initiatives), never the mere mention of challenges."},
+    {"topic": "false-positives", "rule": "For promotional tone, remember that not all promotional or spammy writing is AI; the AI tell is the same small phrase set recurring regardless of topic. Newer models avoid blatant superlatives such as 'the best', so their puffery is subtler."},
+    {"topic": "false-positives", "rule": "For canned coverage claims, distinguish from ordinary press-release clipping lists: the AI tell is the idiosyncratic phrasing and the focus on the sources' own characteristics (their contents, public availability, and classification in the media landscape)."},
+    {"topic": "false-positives", "rule": "Negative parallelism is common in human 'common misconceptions' and 'myths busted' listicles; treat it as a cluster signal, not a standalone one."},
+    {"topic": "facts", "rule": "Verify every named-source attribution attached to an interpretive -ing clause: retrieval-augmented chatbots attach 'X highlighted the lasting influence' to real sources that say nothing of the kind, and cited references may not exist at all (the Original Pancake Kitchen reference did not)."},
+    {"topic": "facts", "rule": "When counting attributed authorities, compare the plural ('several sources', 'scholars', 'Indian sources', 'such as') against the actual number of citations before accepting the claim."},
+    {"topic": "voice", "rule": "Linguistic signs occur regardless of subject matter and give AI text an identifiable 'voice'; conversely AI text struggles to reproduce human syntactic variation. Judge voice across the whole text, not per sentence."},
+    {"topic": "workflow", "rule": "Signs cluster by cause: undue legacy claims, canned coverage claims, superficial -ing analyses, promotional tone, rule of three and 'Awards and recognition' headers are manifestations of the same regression-to-the-mean mechanism, so finding one should prompt a check for the others."},
+    {"topic": "output", "rule": "Present evidence as real examples with provenance (diff or permalink, date, model where known) and highlight the trigger phrases inline; for two-beat formulas colour the halves differently (denied half vs asserted half in parallelisms; 'faces challenges' opener vs positive close in the challenges formula)."}
+  ],
+  "coverage_note": "Read lines 1-500 of /private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/lists/wikipedia-signs-of-ai-writing.wikitext in eight sed chunks (1-60, 61-120, 121-180, 181-250, 251-310, 311-370, 371-430, 431-500). Covered: the lead and its screenshot caption, Caveats (AI detection tools, Your detection ability), the whole Content section (regression-to-the-mean preamble, undue significance/legacy, canned notability/coverage, superficial analyses, promotional language with two subtypes, vague attributions, outline-like challenges conclusions, proper-noun leads, Awards and recognition), and the whole Language and grammar section (AI vocabulary list verbatim with era breakdown and Grok note, copula avoidance, vague connection, negative parallelisms with three subtypes, rule of three). The '==Style==' section begins at line 490; only the 'Title heading' definition (lines 496-498) is in range and its examples are not, so that pattern is listed with a placeholder example. Deliberately left out as belonging to the other extractor even though they appear inside my range's examples: Markdown asterisks leaking into wikitext (**bold**, *italics* in the Blois, Bovell, Howdy Modi, Louisa Tounsia and Rotary saw examples), bold-first canned bullet lists (WP:AILIST), inline bullet characters (•) in the AfC help-desk comment, em dashes and curly quotes throughout the 2025-2026 examples, and the pasted chatbot answer frame ('Answer: Here are several neutral, Wikipedia-style paraphrases: 1. **Recommended:** ...') in the noticeboard example. Wiki markup ({{highlight}}, [[links]], ''italics'') was stripped from quoted examples; wording is otherwise verbatim. Three patterns are marked as implied rather than named by the source: the essay meta-signpost opener 'In this article, we will explore', the outline placeholder 'This section would speculate on', and the guideline-vocabulary collapse (which the source describes inside the coverage section without giving it a heading). Not classified: stock phrases visible in examples but not flagged by the source in this range ('It’s important to recognize that', 'Together, these factors clearly demonstrate', the mixed metaphor 'wear a press badge like armor'); the reference-name-only citations (Russell, Juzek, Kobak, Reinhart, Kriss, geng, huang, economistJul2026, chronicle, sun) whose full bibliographic entries partly live outside 1-500."
+}

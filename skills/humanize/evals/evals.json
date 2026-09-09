@@ -1,0 +1,61 @@
+{
+  "skill_name": "humanize",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "en-detect-only",
+      "prompt": "Is this slop? Don't edit it, just tell me.\n\nIn today's fast-paced landscape, observability isn't just a tool—it's a mindset. Teams that embrace it unlock faster incident response, deeper insights, and a culture of ownership. It's not about dashboards; it's about trust. Experts agree that the future of reliability is already here.",
+      "assertions": [
+        "Names at least four distinct patterns with the quoted span for each: the fast-paced opener, the em dash, the not-X-but-Y contrast (twice), the rule of three, the vague attribution, the future-is-here closer",
+        "Does not rewrite the text and does not offer a rewritten version unasked",
+        "States no probability or verdict about whether an AI wrote it; describes patterns, offers to edit"
+      ]
+    },
+    {
+      "id": "nl-edit-meetup",
+      "prompt": "Maak dit even normaal, niet zo AI. Het is de eerste alinea van onze meetup-tekst.\n\n🔧 Eén avond, geen verkooppraatje.\n\nTwente heeft veel goede mensen die technologie bouwen, en weinig plekken waar ze elkaar tegenkomen buiten hun eigen kantoor. Op woensdag 4 november openen we in Code14, Hogepad 81 in Rijssen, met twee talks van ongeveer een halfuur — en daarna is er tijd om bij te praten.",
+      "assertions": [
+        "Replaces the X-geen-Y slogan opener with a plain statement of what happens, and removes the em dash without adding a hyphen or en dash in its place",
+        "Keeps every fact verbatim: woensdag 4 november, Code14, Hogepad 81, Rijssen, twee talks, ongeveer een halfuur",
+        "Leaves the second sentence, which carries no tell, byte-identical, and reports what changed and what was left",
+        "Answers in Dutch, and the reply itself contains no em dash and no niet-x-maar-y construction"
+      ]
+    },
+    {
+      "id": "en-rewrite-keep-numbers",
+      "prompt": "Rewrite this so it sounds like a person wrote it. Keep every number.\n\nOur migration wasn't just a technical upgrade—it was a transformation. By leveraging a robust, cutting-edge pipeline we reduced deploy time from 42 minutes to 9, cut the image from 2.1 GB to 1.12 GB, and empowered every team to ship with confidence. In short, the results speak for themselves.",
+      "assertions": [
+        "All five numbers survive unchanged: 42, 9, 2.1 GB, 1.12 GB, and the counts implied by 'every team' are not turned into a specific number",
+        "Contains no em dash, no 'not just X, it was Y' contrast, no 'leveraging', 'robust', 'cutting-edge', 'empowered', and no 'In short' closer",
+        "Adds no fact, cause, team name or outcome that the source did not state",
+        "Returns the rewritten text plus a short account of what changed, with a second-pass check"
+      ]
+    },
+    {
+      "id": "en-write-fresh",
+      "prompt": "Write the 120-word meetup.com description for a monthly developer meetup in Enschede: first Wednesday, 18:00 doors and food, two half-hour talks, free, 40 places, venue rotates.",
+      "assertions": [
+        "The text contains no em dash, no 'not X but Y' or 'No X. No Y. Just Z.' construction, no colon reveal, no rule-of-three padding, no summary or inspirational closer",
+        "Every fact from the prompt appears and nothing is invented (no speaker names, no sponsor, no invented history)",
+        "Returns the description only, without preamble or a restated brief"
+      ]
+    },
+    {
+      "id": "scan-docs-folder",
+      "prompt": "Scan the docs folder for AI tells and tell me which files need work.",
+      "assertions": [
+        "Runs scripts/scan.py over the markdown files rather than reading every file by hand",
+        "Reports findings per file with pattern ids, line numbers and the density metrics, and separates always-severity hits from cluster-only ones",
+        "Recommends which files to edit without claiming any file was written by an AI"
+      ]
+    },
+    {
+      "id": "should-not-trigger-code",
+      "prompt": "Add a unit test for the date parser that covers ISO week numbers and the year rollover.",
+      "expect_trigger": false,
+      "assertions": [
+        "Writes the test without invoking the humanize skill"
+      ]
+    }
+  ]
+}

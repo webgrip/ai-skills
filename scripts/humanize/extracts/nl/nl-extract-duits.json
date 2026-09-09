@@ -1,0 +1,938 @@
+{
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep.",
+  "patronen": [
+    {
+      "naam": "Verzonnen of onverifieerbare bronvermelding",
+      "categorie": "content",
+      "definitie": "Een bronvermelding die compleet oogt en niet klopt: het werk bestaat niet, de DOI, ISBN of URL leidt nergens heen, of de bron bestaat wel en bevat de bewering niet. De controle gaat in twee stappen: bestaat de bron, en staat de bewering er daadwerkelijk in.",
+      "cues": [
+        "DOI of ISBN die nergens naar verwijst",
+        "auteur en titel die samen niet bestaan",
+        "keurige opmaak met verzonnen paginanummers",
+        "bron bestaat wel maar zegt niets over de bewering",
+        "meerdere bronnen bij één alinea die allemaal net niet kloppen",
+        "een link naar een zoekopdracht in plaats van naar het document",
+        "verwijzing naar een rapport zonder uitgever of jaartal"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Volgens Jansen (2019, p. 143) telde Twente destijds ruim vierhonderd softwarebedrijven.",
+          "na": "Het CBS telde in 2019 in de regio Twente 412 bedrijven in SBI-klasse 62 (StatLine, tabel 81589NED, geraadpleegd op 5 september 2026)."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina zet dit bovenaan als hardste signaal: één verkeerd jaartal is een vergissing, meerdere foute bronvermeldingen zijn een werkwijze. Voor Nederlandse teksten is de controle vaak goedkoop, omdat CBS, KvK, rechtspraak.nl en regionale kranten online na te lopen zijn."
+    },
+    {
+      "naam": "Brieftoon met aanhef en onderwerpregel",
+      "categorie": "artifacts",
+      "definitie": "Resten van een brief of e-mail in een tekst die geen brief is: een onderwerpregel, een aanhef, beleefdheidsformules over goede bedoelingen, en een groet aan het eind.",
+      "cues": [
+        "Onderwerp:",
+        "Geachte heer/mevrouw",
+        "Beste redactie",
+        "Ik hoop dat dit bericht u in goede gezondheid bereikt",
+        "Ik schrijf u om",
+        "Ik zou graag",
+        "Bij voorbaat dank voor uw tijd",
+        "Dank voor uw overweging",
+        "Met vriendelijke groet"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Onderwerp: bijdrage over Twente\n\nGeachte redactie,\n\nIk hoop dat dit bericht u in goede gezondheid bereikt. Ik schrijf u om een tekst aan te leveren over de regionale meetupcultuur.",
+          "na": "Twente kent sinds 2015 een vaste meetupcultuur rond software."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "'Ik hoop dat dit bericht u in goede gezondheid bereikt' is een letterlijke vertaling van 'I hope this message finds you well' en komt in spontaan Nederlands vrijwel niet voor. In gepubliceerde tekst is elke aanhef of groet een reststuk uit het chatvenster; een onderwerpregel boven lopende tekst is het duidelijkste geval."
+    },
+    {
+      "naam": "Assistenttaal uit het chatvenster",
+      "categorie": "artifacts",
+      "definitie": "Zinnen die tot het gesprek met de chatbot horen en niet tot de tekst: dienstbare bevestigingen, aanbiedingen om door te gaan, en aankondigingen van wat er nu volgt.",
+      "cues": [
+        "Ik hoop dat dit helpt",
+        "Natuurlijk!",
+        "Zeker!",
+        "Uiteraard!",
+        "Goede vraag",
+        "Je hebt helemaal gelijk",
+        "Laat het me weten",
+        "Wil je dat ik",
+        "Is er nog iets waarmee ik kan helpen",
+        "Hier is een",
+        "Hieronder volgt",
+        "een gedetailleerdere uitsplitsing",
+        "Zoals gevraagd"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Natuurlijk! Hier is een overzicht van de Twentse tech-meetups. Ik hoop dat dit helpt, laat het me weten als je een gedetailleerdere uitsplitsing wilt.",
+          "na": "Twente heeft vier terugkerende tech-meetups."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Hieronder valt ook de variant waarin het model zijn eigen opdracht benoemt ('Zoals gevraagd volgt hier het artikel voor je website') of naar de conventies van het doelplatform verwijst. 'Een gedetailleerdere uitsplitsing' is een leenvertaling van 'a more detailed breakdown' en klinkt in het Nederlands meteen vertaald."
+    },
+    {
+      "naam": "Kennisgrensdisclaimer",
+      "categorie": "content",
+      "definitie": "Een mededeling dat de informatie onvolledig, verouderd of onzeker kan zijn omdat de kennis van het model op een datum stopt of omdat het zoeken niets opleverde.",
+      "cues": [
+        "Tot mijn laatste update",
+        "Op het moment van mijn laatste kennisupdate",
+        "Stand van zaken per",
+        "Op basis van de beschikbare informatie",
+        "Hoewel specifieke details beperkt zijn",
+        "voor zover publiekelijk gedocumenteerd",
+        "niet algemeen beschikbaar",
+        "in de beschikbare bronnen",
+        "in de gevonden zoekresultaten"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Tot mijn laatste update in juni 2024 waren er geen specifieke cijfers over de opkomst beschikbaar.",
+          "na": "Over de opkomst zijn geen cijfers gepubliceerd."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De disclaimer zelf is het signaal, ongeacht of hij klopt. Wat erop volgt is bovendien vaak speculatie (zie 'Speculatieve opvulling bij ontbrekende bron'). In een gepubliceerde Nederlandse tekst hoort de peildatum bij de bewering ('cijfers tot en met 2025'), niet bij de schrijver."
+    },
+    {
+      "naam": "Speculatieve opvulling bij ontbrekende bron",
+      "categorie": "content",
+      "definitie": "Als er niets te vinden is, vult de tekst het gat met wat de informatie waarschijnlijk zou zijn, plus een verklaring waarom die informatie ertoe doet. Alles na de erkenning dat iets niet gedocumenteerd is, is dan verzonnen.",
+      "cues": [
+        "waarschijnlijk",
+        "vermoedelijk",
+        "naar alle waarschijnlijkheid",
+        "het is aannemelijk dat",
+        "hoewel hierover weinig bekend is",
+        "hoewel niet gedocumenteerd",
+        "de organisatie doet hier geen uitspraken over",
+        "dit suggereert dat",
+        "dit wijst erop dat"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Het bezoekersaantal is niet gedocumenteerd, maar ligt naar alle waarschijnlijkheid rond de honderd, wat het belang van het evenement voor de regio onderstreept.",
+          "na": "Het bezoekersaantal is niet gepubliceerd."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Een losse 'waarschijnlijk' met een onderbouwing is normaal Nederlands. Het signaal is de combinatie: eerst erkennen dat de bron ontbreekt, dan toch een getal, een reden of een gevolg leveren. De Duitse pagina beschrijft dit als het RAG-gedrag van een chatbot die geen bronnen vindt; humanizer-de heeft het als patroon 53 (Lückenfüllende Spekulation)."
+    },
+    {
+      "naam": "AI-zelfonthulling en promptweigering",
+      "categorie": "artifacts",
+      "definitie": "De tekst zegt zelf dat er een taalmodel aan het werk is, of bevat een weigering die op de opdracht slaat en niet op het onderwerp.",
+      "cues": [
+        "Als AI-taalmodel",
+        "Als AI kan ik niet",
+        "Ik ben een taalmodel",
+        "Het spijt me, maar ik kan",
+        "Ik heb geen toegang tot internet",
+        "Ik kan geen actuele informatie geven",
+        "Dit antwoord is gegenereerd door"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Als AI-taalmodel kan ik geen actuele bezoekersaantallen geven, maar ik kan wel een algemeen beeld schetsen.",
+          "na": "Actuele bezoekersaantallen ontbreken."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina noemt een expliciete aanwijzing in het artikel dat het door een AI is gemaakt als grond voor onmiddellijke verwijdering; humanizer-de heeft dit als patroon 20 (Prompt-Ablehnung)."
+    },
+    {
+      "naam": "Plaatshouders die blijven staan",
+      "categorie": "artifacts",
+      "definitie": "Invulvelden uit een gegenereerd sjabloon die nooit zijn ingevuld: haakjes met een instructie, een generieke naam, of een openstaande takenmarkering.",
+      "cues": [
+        "[naam invullen]",
+        "[datum]",
+        "[vul hier in]",
+        "[jouw bedrijf]",
+        "[bron]",
+        "[link]",
+        "[voorbeeld toevoegen]",
+        "TODO:",
+        "Lorem ipsum",
+        "XX of XYZ als getal of naam"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Neem contact op met [naam contactpersoon] via [e-mailadres] voor meer informatie over de meetup op [datum].",
+          "na": "Vragen over de meetup van 24 september gaan naar de organisatie via hallo@voorbeeld.nl."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Vierkante haken zijn in Nederlandse lopende tekst zeldzaam, wat dit patroon goedkoop detecteerbaar maakt met een enkele zoekactie op '[' in de kopij."
+    },
+    {
+      "naam": "Zoek- en citatieresten uit de chatbot",
+      "categorie": "artifacts",
+      "definitie": "Resten van de manier waarop een chatbot naar bronnen verwijst, meegekopieerd in de tekst: interne citatietokens, een verwijzing naar een zoekopdracht in plaats van naar het document, of een trackingparameter in de URL.",
+      "cues": [
+        "utm_source=chatgpt.com",
+        "(ga naar zoekopdracht nr.)",
+        "turn0search0",
+        "citeturn0search1",
+        ":contentReference[oaicite:0]{index=0}",
+        "oaicite",
+        "google.com/search?q= als bronlink",
+        "chatgpt.com/share/ als bron",
+        "losse cijfers of Unicode-bolletjes aan het eind van een zin"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De vereniging werd in 1998 opgericht. citeturn0search2 Meer staat op https://voorbeeld.nl/?utm_source=chatgpt.com",
+          "na": "De vereniging werd in 1998 opgericht (Kamer van Koophandel, dossier 06012345)."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina beschrijft de vorm 'Gehe zu Suche Nr.' aan het zinseinde met oplopend nummer, en het misbruikfilter 453 van de Duitse Wikipedia logt puur op 'chatgpt.com' in een URL. Beide vormen zijn taalonafhankelijk en gelden onveranderd voor Nederlandse kopij; een grep op 'utm_source=chatgpt' en 'oaicite' hoort in elke redactieslag."
+    },
+    {
+      "naam": "Opgeblazen betekenis en symboliek",
+      "categorie": "rhetoric",
+      "definitie": "Het onderwerp krijgt gewicht toegekend dat de feiten niet dragen: het staat ergens symbool voor, speelt een rol, laat een indruk achter, of markeert een keerpunt.",
+      "cues": [
+        "getuigt van",
+        "geldt als een symbool van",
+        "staat symbool voor",
+        "speelt een belangrijke rol",
+        "onderstreept het belang van",
+        "blijft tot de verbeelding spreken",
+        "laat een blijvende indruk achter",
+        "keerpunt",
+        "sleutelmoment",
+        "diepgeworteld",
+        "rijke traditie",
+        "onwrikbare toewijding",
+        "een blijvende erfenis",
+        "bevestigt zijn positie als"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De meetup geldt als een symbool van de diepgewortelde samenwerkingscultuur in Twente en onderstreept het belang van kennisdeling in de regio.",
+          "na": "Bij de meetup komen ontwikkelaars uit Enschede, Hengelo en Almelo samen."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina noemt als voorbeeld dat teksten over dier- en plantensoorten steevast doorslaan over de beschermingsstatus, ook als er geen enkel initiatief bestaat. De Nederlandse variant is de verplichte alinea over 'duurzaamheid', 'innovatiekracht' of 'de rol in de regionale economie' waar de bron zwijgt. Het repertoire is klein: dezelfde tien frasen keren terug over totaal verschillende onderwerpen."
+    },
+    {
+      "naam": "Reclametaal en superlatieven",
+      "categorie": "content",
+      "definitie": "Toeristische of verkopende woordkeus in een tekst die informatief hoort te zijn, meestal rond erfgoed, plaatsen en organisaties.",
+      "cues": [
+        "rijke geschiedenis",
+        "rijk cultureel erfgoed",
+        "adembenemend",
+        "een absolute aanrader",
+        "niet te missen",
+        "indrukwekkende natuurlijke schoonheid",
+        "bruisend",
+        "gelegen in het hart van",
+        "genesteld tussen",
+        "unieke sfeer",
+        "iconisch",
+        "toonaangevend",
+        "hét adres voor"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Enschede, gelegen in het hart van Twente, heeft een rijke geschiedenis en een bruisende, niet te missen techscene.",
+          "na": "Enschede heeft een techsector die om de universiteit heen is gegroeid; in 2025 stonden er 340 ICT-bedrijven ingeschreven."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De cue 'rijk cultureel tapijt' (reicher kultureller Teppich, rich cultural tapestry) laat ik weg: die combinatie is in het Nederlands zo ongebruikelijk dat hij eerder onder translationese valt dan onder reclametaal. 'Genesteld' en 'in het hart van' komen wel echt voor, vooral in VVV- en vastgoedcopy, wat ze in andere genres juist verdacht maakt."
+    },
+    {
+      "naam": "Redactioneel commentaar",
+      "categorie": "rhetoric",
+      "definitie": "De tekst kondigt aan dat iets de moeite van het opmerken waard is, in plaats van het gewoon te vermelden. De aankondiging draagt geen informatie.",
+      "cues": [
+        "het is belangrijk om op te merken dat",
+        "het is belangrijk te beseffen dat",
+        "het is vermeldenswaard dat",
+        "opmerkelijk genoeg",
+        "het is goed om te bedenken dat",
+        "geen bespreking is compleet zonder",
+        "men mag niet vergeten dat",
+        "het valt niet te ontkennen dat"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Het is belangrijk om op te merken dat de meetup gratis toegankelijk is.",
+          "na": "De meetup is gratis."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De test is het schrappen: verdwijnt er geen informatie, dan was het meta-commentaar. De Duitse pagina wijst erop dat dit in de Duitse Wikipedia extra opvalt omdat de huisstijl zakelijker is; datzelfde geldt voor Nederlandse encyclopedische en journalistieke tekst."
+    },
+    {
+      "naam": "Mechanische voegwoorden",
+      "categorie": "vocabulary",
+      "definitie": "Verbindingswoorden die aan het begin van bijna elke zin of alinea opduiken en een redenering suggereren die er niet is.",
+      "cues": [
+        "Bovendien",
+        "Daarnaast",
+        "Verder",
+        "Tevens",
+        "Voorts",
+        "Anderzijds",
+        "Aan de andere kant",
+        "Daarbij komt dat",
+        "Daarenboven"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Bovendien groeit het aantal deelnemers. Daarnaast is de locatie verbeterd. Verder is er sinds kort koffie.",
+          "na": "Het aantal deelnemers groeit, de zaal is groter en er is koffie."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Losse voegwoorden zijn normaal Nederlands; het signaal is de dichtheid en de vaste plaats vooraan de zin. 'Voorts', 'Tevens' en 'Daarenboven' zijn in modern Nederlands al ambtelijk en vallen daardoor extra op. De Duitse tegenhangers zijn 'darüber hinaus', 'außerdem' en 'ferner'."
+    },
+    {
+      "naam": "Samenvattende slotzin",
+      "categorie": "structure",
+      "definitie": "Een alinea of paragraaf eindigt met een zin die de kern nog eens herhaalt zonder iets toe te voegen.",
+      "cues": [
+        "Kortom",
+        "Samenvattend",
+        "Al met al",
+        "Concluderend",
+        "Alles bij elkaar genomen",
+        "Om het samen te vatten",
+        "Uiteindelijk komt het erop neer dat"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Kortom, de meetup is een waardevolle toevoeging aan de regio.",
+          "na": "(zin schrappen; de alinea erboven zegt het al)"
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "In wetenschappelijke tekst is de samenvattende zin een conventie, in encyclopedische, journalistieke en zakelijke tekst hoort de samenvatting alleen bovenaan. De Duitse pagina formuleert het scherp: in een lemma vat je nooit een tekstblok samen, behalve in de inleiding."
+    },
+    {
+      "naam": "Kop 'Conclusie' als afsluiter",
+      "categorie": "structure",
+      "definitie": "Het document sluit met een genummerde of vetgedrukte slotsectie die alleen herhaalt wat er al stond.",
+      "cues": [
+        "kop 'Conclusie'",
+        "kop 'Tot slot'",
+        "kop 'Slotwoord'",
+        "kop 'Afsluitende gedachten'",
+        "kop 'Samenvatting' onderaan het stuk"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "## Conclusie\n\nDe Twentse techscene groeit gestaag en biedt kansen voor iedereen die zich wil ontwikkelen.",
+          "na": "(sectie schrappen; de tekst erboven bevat de feiten al)"
+        }
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "In een wetenschappelijk artikel, scriptie of onderzoeksrapport is een conclusiesectie normaal. Het signaal is de conclusiekop in genres die er geen kennen: een lemma, een productpagina, een blogpost, een projectdocument, een README."
+    },
+    {
+      "naam": "Uitdagingen-en-toekomst-slot",
+      "categorie": "structure",
+      "definitie": "Een vaste slotsectie die eerst successen erkent, dan uitdagingen opsomt en eindigt met een positieve of speculatieve blik vooruit, zonder concrete feiten.",
+      "cues": [
+        "Ondanks deze successen",
+        "Ondanks zijn populariteit",
+        "staat voor verschillende uitdagingen",
+        "kop 'Uitdagingen en toekomstperspectief'",
+        "kop 'Toekomstperspectieven'",
+        "kop 'Nalatenschap'",
+        "blijft een belangrijke rol spelen",
+        "de toekomst zal uitwijzen",
+        "met de juiste inzet"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Ondanks deze successen staat de meetup voor verschillende uitdagingen, waaronder groei en financiering. Met de juiste inzet kan het initiatief echter blijven bijdragen aan de regio.",
+          "na": "De meetup zoekt sinds juni een grotere zaal: de huidige locatie zit vol bij zestig aanmeldingen."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Het bezwaar geldt de formule, niet het benoemen van problemen. Een probleem met een naam, een datum en een gevolg is het tegengif. Verwant aan humanizer-de patroon 44 (Standard-Kapitel ohne Substanz): een hele sectie die alleen bestaat omdat het sjabloon hem voorschrijft."
+    },
+    {
+      "naam": "Negatief parallellisme",
+      "categorie": "syntax",
+      "definitie": "De constructies 'niet alleen ..., maar ook' en 'het is geen X, het is Y'. Ze leggen een argumentatieve nadruk waar een gewone mededeling volstaat, en komen in AI-tekst per alinea terug.",
+      "cues": [
+        "niet alleen ..., maar ook",
+        "het gaat niet alleen om ..., maar",
+        "het is geen ..., het is ...",
+        "niet ..., maar juist",
+        "meer dan alleen",
+        "niet zomaar een ..., maar"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De meetup is niet alleen een netwerkmoment, maar ook een plek om te leren. Het is geen conferentie, het is een gemeenschap.",
+          "na": "Bij de meetup wordt genetwerkt en geleerd. Er zijn twee talks van twintig minuten en daarna borrel."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "In het Nederlands is dit minstens zo hard als in het Duits, omdat 'niet alleen ..., maar ook' in gesproken Nederlands zeldzaam is. De variant met een tegenstelling zonder voegwoord ('Geen tool. Een gewoonte.') hoort er ook bij en komt uit Engelse marketingcopy."
+    },
+    {
+      "naam": "Drieslag",
+      "categorie": "syntax",
+      "definitie": "Opsommingen komen stelselmatig in drieën: drie bijvoeglijke naamwoorden, drie korte frasen, drie leden met 'en' voor het laatste, ook waar de werkelijkheid er twee of vier heeft.",
+      "cues": [
+        "drie bijvoeglijke naamwoorden achter elkaar",
+        "snel, eenvoudig en betrouwbaar",
+        "helder, concreet en meetbaar",
+        "zowel ... als ... en",
+        "drie korte frasen met 'en' voor de laatste",
+        "drie leden in elke opsomming in het stuk"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Het platform is snel, eenvoudig en betrouwbaar.",
+          "na": "Het platform laadt binnen 200 ms en draait sinds mei zonder storing."
+        }
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Eén drieslag in een tekst is stijl. Het signaal is de herhaling door het hele stuk heen. De Duitse pagina wijst erop dat de Duitse Wikipedia spaarzaam is met retorische middelen; hetzelfde geldt voor Nederlandse zakelijke en encyclopedische tekst."
+    },
+    {
+      "naam": "Oppervlakkige analyse als aanhangsel",
+      "categorie": "syntax",
+      "definitie": "Een bijzin achter de feiten die geen nieuwe informatie geeft en alleen betekenis toekent: wat het belang onderstreept, waarmee wordt benadrukt dat, wat aantoont dat.",
+      "cues": [
+        "wat het belang onderstreept",
+        "waarmee wordt benadrukt dat",
+        "wat aantoont dat",
+        "wat bijdraagt aan",
+        "waardoor wordt gewaarborgd dat",
+        "en zo een bijdrage levert aan",
+        "wat de rol van ... illustreert",
+        "daarmee benadrukkend"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De meetup vindt maandelijks plaats, wat het belang van regelmaat voor de gemeenschap onderstreept.",
+          "na": "De meetup vindt elke derde donderdag van de maand plaats."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse cues zijn Partizip-I-vormen ('gewährleistend', 'hervorhebend', 'betonend', 'widerspiegelnd'). Hun Nederlandse tegenhangers ('waarborgend', 'benadrukkend', 'weerspiegelend') komen als vrijstaande vorm nauwelijks voor; alleen 'daarmee benadrukkend' aan het zinseinde duikt op in vertaalde tekst. Zoek daarom in het Nederlands op de staart met 'wat' of 'waarmee', niet op deelwoorden. Verwant aan humanizer-de patroon 66 (Fake-Analyse-Anhang)."
+    },
+    {
+      "naam": "Vage autoriteiten",
+      "categorie": "content",
+      "definitie": "Een mening of bewering wordt toegeschreven aan een naamloze groep die het gezag moet leveren, zonder dat er iemand aanwijsbaar is.",
+      "cues": [
+        "experts zeggen",
+        "onderzoek toont aan",
+        "studies laten zien",
+        "brancherapporten wijzen uit",
+        "waarnemers merken op",
+        "sommige critici stellen",
+        "velen beschouwen",
+        "het wordt algemeen erkend dat",
+        "men zegt dat",
+        "er wordt vaak gewezen op"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Experts zeggen dat regionale meetups belangrijk zijn voor talentbehoud.",
+          "na": "Techniekpact Twente noemt in het jaarrapport 2025 (p. 12) meetups als een van de drie factoren in talentbehoud."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina noemt dit 'Weasel Wording' en wijst op de tweede beweging: het perspectief van één bron wordt uitvergroot tot dat van een hele groep. In het Nederlands is 'onderzoek toont aan' zonder verwijzing de meest voorkomende vorm."
+    },
+    {
+      "naam": "Valse reeks 'van X tot Y'",
+      "categorie": "syntax",
+      "definitie": "Voorbeelden uit een verzameling worden gepresenteerd als de uiteinden van een spectrum, terwijl er geen spectrum is.",
+      "cues": [
+        "van ... tot ...",
+        "variërend van ... tot ...",
+        "uiteenlopend van ... tot ...",
+        "van beginners tot experts",
+        "van klein tot groot",
+        "Of je nu ... of ..."
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De meetup trekt bezoekers van studenten tot doorgewinterde architecten.",
+          "na": "Bij de laatste editie kwamen achttien studenten en vierentwintig werkende ontwikkelaars."
+        }
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Letterlijk ruimtelijk of temporeel gebruik ('van Enschede tot Almelo', 'van 2019 tot 2023') is geen signaal; de Duitse pagina waarschuwt daar expliciet voor. De test uit de Duitse catalogus: laten X en Y zich door een willekeurig ander paar vervangen zonder dat de zin sneuvelt, dan is de reeks leeg. De aanspreekvariant 'Of je nu ... of ...' is dezelfde lege spanwijdte in de tweede persoon."
+    },
+    {
+      "naam": "Overmatig vet",
+      "categorie": "punctuation-format",
+      "definitie": "Losse woorden en frasen midden in de lopende tekst worden vetgedrukt ter benadrukking, vaak meerdere per alinea en aan het begin van elke bullet.",
+      "cues": [
+        "vetgedrukte kernwoorden midden in een alinea",
+        "elke bullet begint met een vet label",
+        "vet in plaats van een kop",
+        "meerdere vette frasen per alinea",
+        "vet op een cijfer of jaartal"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "**Belangrijk:** de meetup is **gratis** en vindt plaats in **Enschede**.",
+          "na": "De meetup is gratis en vindt plaats in Enschede."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina verklaart de herkomst: de modellen hebben dit overgenomen uit FAQ's, fanwiki's, handleidingen, verkooppraatjes en slidedecks. Nieuwere modellen krijgen instructies om het te matigen, dus de afwezigheid ervan zegt niets."
+    },
+    {
+      "naam": "Emoji voor koppen en bullets",
+      "categorie": "punctuation-format",
+      "definitie": "Emoji staan stelselmatig voor een kop of als opsommingsteken, in een genre dat ze verder niet kent.",
+      "cues": [
+        "emoji direct voor een kop",
+        "emoji als opsommingsteken",
+        "vaste emoji per sectie",
+        "🚀 in zakelijke tekst",
+        "✅ voor elk lijstitem",
+        "📌 of 💡 voor een tip"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "🚀 Wat je kunt verwachten\n✅ Twee talks\n✅ Borrel",
+          "na": "Programma: twee talks van twintig minuten, daarna borrel."
+        }
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Op sociale media is emojigebruik normaal en zegt het niets. Het signaal is de systematiek: precies één emoji voor elke kop of elk lijstitem, in een lemma, rapport of README."
+    },
+    {
+      "naam": "Gedachtestreepjes",
+      "categorie": "punctuation-format",
+      "definitie": "Streepjes als leesteken midden in de zin, vaak meerdere per alinea en in de Engelse vorm: het lange kastlijntje zonder spaties eromheen.",
+      "cues": [
+        "— zonder spaties eromheen",
+        "meerdere streepjes per alinea",
+        "gepaarde tussenzin tussen twee streepjes",
+        "streepje waar een komma of punt hoort",
+        "streepje voor een slotpointe"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De meetup groeit—en dat betekent een nieuwe zaal.",
+          "na": "De meetup groeit. Daarom zoeken we een nieuwe zaal."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina noemt dit expliciet zwak bewijs: pas samen met andere signalen zegt het iets, al lijken modellen het streepje structureel vaker te gebruiken dan mensen. Nederlandse typografie kent het halve kastlijntje met spaties eromheen; het lange kastlijntje zonder spaties is een Engelse conventie en dus tegelijk een vertaalspoor."
+    },
+    {
+      "naam": "Markdown-resten in een omgeving zonder markdown",
+      "categorie": "artifacts",
+      "definitie": "Markdown-tekens blijven zichtbaar omdat het doelsysteem ze niet rendert: sterretjes rond woorden, hekjes voor koppen, streepjeslijnen, pijptabellen of een codeblok in een e-mail, CMS-veld, wiki of commitbericht.",
+      "cues": [
+        "**vet** dat als sterretjes blijft staan",
+        "## voor een kop",
+        "--- als scheidingslijn",
+        "| kolom | kolom | in platte tekst",
+        "een ```-codeblok in een e-mail",
+        "• of - als opsommingsteken in een systeem met eigen lijstopmaak",
+        "genummerde lijst met 1. 2. 3. in lopende tekst",
+        "markdown vermengd met de opmaaktaal van het doelsysteem"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "## Programma\n\n- **19:00** inloop\n- **19:30** eerste talk",
+          "na": "Programma: 19.00 uur inloop, 19.30 uur de eerste talk."
+        }
+      ],
+      "ernst": "context",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina waarschuwt uitdrukkelijk dat markdown op zichzelf zwak bewijs is: ontwikkelaars, onderzoekers en technisch schrijvers gebruiken het overal. Sterk wordt het pas als markdown vermengd raakt met de opmaaktaal van het doelsysteem, of als een heel antwoord inclusief codeblok is geplakt. Het patroon is taalonafhankelijk en verandert niets in het Nederlands; de wikitext-specifieke uitwerking op de pagina heb ik weggelaten."
+    },
+    {
+      "naam": "Overstructurering",
+      "categorie": "structure",
+      "definitie": "De tekst is opgedeeld in meer koppen, bullets en scheidingslijnen dan de inhoud draagt, met alinea's van vrijwel gelijke lengte. Een lopende redenering is vervangen door een reeks gelijkwaardige puntjes.",
+      "cues": [
+        "een kop per drie zinnen",
+        "alles in bullets, geen lopende alinea",
+        "alinea's van steeds drie tot vijf zinnen",
+        "scheidingslijnen tussen alle secties",
+        "bullets met een vet label vooraan",
+        "sublijstjes onder elke bullet",
+        "een tabel voor twee gegevens"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "**Voordelen**\n- Netwerken\n- Leren\n- Plezier\n\n---\n\n**Nadelen**\n- Tijdsinvestering",
+          "na": "De meetup kost een avond en levert twee talks en een borrel op."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina vat dit samen als 'chatbots zijn spraakzaam': lange, overgestructureerde teksten met veel vet, opsommingen en scheidingslijnen. De opmaakrichtlijn van Copilot die de pagina citeert schrijft die vorm letterlijk voor (alinea's van drie tot vijf zinnen, gelabelde subsecties, --- tussen delen), wat verklaart waarom de vorm zo constant terugkeert. Verwant aan humanizer-de patronen 61 (Isometrisches Dokument) en 55 (Gleichförmiger Satzrhythmus)."
+    },
+    {
+      "naam": "Tweedelige kop met dubbele punt",
+      "categorie": "structure",
+      "definitie": "Koppen volgen steeds hetzelfde schema: een pakkende frase, een dubbele punt, en dan de uitleg of de belofte.",
+      "cues": [
+        "kop met een dubbele punt in het midden",
+        "Frase: wat, waarom en hoe",
+        "De complete gids: alles over ...",
+        "Titel: een diepere blik",
+        "elke tussenkop volgens hetzelfde schema"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Meetups in Twente: waarom regelmaat het verschil maakt",
+          "na": "Waarom de meetup elke maand op dezelfde dag valt"
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina noemt bij de zachte signalen 'onpassende, vaak tweedelige tussenkoppen'; humanizer-de heeft het als patroon 54 (Doppelpunkt-Titel-Schema). Eén dubbelepuntkop is normale redactionele praktijk; het signaal is dat elke kop in het document hem heeft."
+    },
+    {
+      "naam": "Registerwissel binnen één tekst",
+      "categorie": "rhetoric",
+      "definitie": "De toon springt binnen één tekst van spreektaal naar hoogformeel of andersom, of de tekst is plotseling foutloos terwijl dezelfde schrijver elders spelfouten maakt.",
+      "cues": [
+        "spreektalige tussenwerpsels in verder formele tekst",
+        "ambtelijke formules in een verder losse tekst",
+        "plotseling foutloze spelling na eerdere fouten",
+        "vaktaal en volkstaal in dezelfde alinea",
+        "een losse openingszin boven een strak geredigeerd vervolg"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Eerlijk gezegd is dit gewoon vet. Vervolgens dient te worden opgemerkt dat de organisatie een significante bijdrage levert aan het regionale ecosysteem.",
+          "na": "De organisatie regelt de zaal, de sprekers en de aankondiging."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina behandelt dit onder de gebruikersgebonden signalen (plotseling foutloos schrijven, wisseling van taalregister, Engelse constructies). Als tekstsignaal blijft het bruikbaar zonder bewerkingsgeschiedenis, omdat de sprong in de tekst zelf zit. Verwant aan humanizer-de patroon 69 (Struktureller Register-Kollaps)."
+    },
+    {
+      "naam": "AI-markervocabulaire",
+      "categorie": "vocabulary",
+      "definitie": "Een kleine, steeds terugkerende woordenschat van opwaarderende bijvoeglijke naamwoorden en abstracties die overal past en daardoor niets zegt.",
+      "cues": [
+        "cruciaal",
+        "essentieel",
+        "naadloos",
+        "robuust",
+        "innovatief",
+        "waardevol",
+        "veelzijdig",
+        "moeiteloos",
+        "krachtig",
+        "toonaangevend",
+        "op maat gemaakt",
+        "duurzame groei",
+        "een sleutelrol",
+        "in het huidige landschap"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Een naadloze en robuuste aanpak is cruciaal voor duurzame groei.",
+          "na": "De aanpak moet werken bij tweehonderd aanmeldingen; nu loopt hij vast bij zestig."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina noemt in de inleiding van de zachte signalen alleen 'veel floskels' zonder ze op te sommen; humanizer-de vult dat in als patroon 64 (KI-Marker-Vokabular). De cues hierboven zijn de Nederlandse woorden die modellen daadwerkelijk produceren, niet de vertaalde Duitse lijst. Test: staat het woord er ook nog als je het onderwerp vervangt, dan draagt het niets."
+    },
+    {
+      "naam": "Koppelwerkwoordvermijding",
+      "categorie": "syntax",
+      "definitie": "'Is' en 'heeft' worden vervangen door zwaardere constructies die precies hetzelfde zeggen: fungeert als, vormt, dient als, beschikt over, kenmerkt zich door.",
+      "cues": [
+        "fungeert als",
+        "dient als",
+        "vormt een belangrijk onderdeel van",
+        "beschikt over",
+        "kenmerkt zich door",
+        "wordt gekenmerkt door",
+        "geldt als",
+        "vertegenwoordigt",
+        "herbergt",
+        "biedt onderdak aan"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Het pand fungeert als ontmoetingsplek en beschikt over een zaal voor tachtig personen.",
+          "na": "In het pand komt de meetup samen; de zaal heeft tachtig stoelen."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina levert deze cues als onderdeel van de symboliek-lijst ('ist/steht als/dient als Zeugnis'); humanizer-de scheidt de nuchtere variant af als patroon 65 (Kopula-Vermeidung). Dezelfde opwaardering treft gewone werkwoorden: 'gebruikte' wordt 'hanteerde', 'stierf' wordt 'overleed', 'gaf' wordt 'verstrekte', 'hielp' wordt 'ondersteunde'."
+    },
+    {
+      "naam": "Engelse titelhoofdletters in koppen",
+      "categorie": "translationese",
+      "definitie": "Koppen staan in Engelse titelvorm, met hoofdletters op bijvoeglijke naamwoorden, werkwoorden en voorzetsels. Nederlands gebruikt zinsvorm: alleen het eerste woord en eigennamen krijgen een hoofdletter.",
+      "cues": [
+        "De Complete Gids Voor Moderne Marketing",
+        "Hoe Bedrijven Van AI Profiteren",
+        "hoofdletters midden in een kop",
+        "elk woord in de titel met een hoofdletter",
+        "hoofdletters in menu-items, knoppen en tabbladen"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De Complete Gids Voor Moderne Marketing",
+          "na": "De complete gids voor moderne marketing"
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Direct overgenomen van humanizer-de patroon 47, dat hetzelfde beschrijft voor het Duits. Voor het Nederlands is het signaal zo mogelijk nog harder, omdat het Nederlands ook zelfstandige naamwoorden klein schrijft: elke hoofdletter in het midden van een kop die geen eigennaam is, is fout."
+    },
+    {
+      "naam": "Engelse getal-, datum- en valutaopmaak",
+      "categorie": "translationese",
+      "definitie": "Getallen, datums en bedragen volgen de Engelse conventie: punt als decimaalteken, komma als duizendtalscheiding, maandnaam met hoofdletter, Amerikaanse datumvolgorde.",
+      "cues": [
+        "3.5 waar 3,5 hoort",
+        "1,000 waar 1.000 hoort",
+        "September 5, 2026",
+        "5 September 2026 met hoofdletter",
+        "12/05/2026 in Amerikaanse volgorde",
+        "$1,000 in een Nederlandse tekst",
+        "Maandag met een hoofdletter midden in de zin"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Op September 5, 2026 kwamen 1,250 bezoekers; de opkomst steeg met 3.5 procent.",
+          "na": "Op 5 september 2026 kwamen 1.250 bezoekers; de opkomst steeg met 3,5 procent."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Maandnamen en weekdagen krijgen in het Nederlands geen hoofdletter. Dat is een van de hardste en goedkoopst controleerbare vertaalsporen, en hij overleeft vaak een redactieronde omdat hij op een stijlkeuze lijkt. Overgenomen van humanizer-de patroon 48."
+    },
+    {
+      "naam": "Engelse leestekenconventies",
+      "categorie": "translationese",
+      "definitie": "Leestekens volgen de Engelse regels: een komma voor het laatste lid van een opsomming, punten en komma's binnen de aanhalingstekens, en de Engelse bezitsapostrof.",
+      "cues": [
+        "komma voor 'en' in een opsomming",
+        "punt of komma binnen de aanhalingstekens",
+        "Peter's boek",
+        "spatie voor een dubbele punt of vraagteken",
+        "hoofdletter na een dubbele punt midden in de zin",
+        "aanhalingstekens om een woord ter benadrukking"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "We regelen de zaal, de sprekers, en de borrel. Hij noemde het \"een goede avond,\" en vertrok. Dat was Peter's idee.",
+          "na": "We regelen de zaal, de sprekers en de borrel. Hij noemde het \"een goede avond\" en vertrok. Dat was Peters idee."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Humanizer-de heeft hier patroon 46 (Falsche deutsche Anführungszeichen): het Duits eist „…“ en krijgt van het model de Engelse variant. Die cue laat ik weg, omdat het Nederlands dezelfde dubbele aanhalingstekens gebruikt als het Engels en er dus geen verschil te zien is. Wat overblijft zijn de komma voor 'en', de leestekens binnen de aanhalingstekens en de bezitsapostrof (humanizer-de patroon 49)."
+    },
+    {
+      "naam": "Anglicistische zinsbouw en leenvertalingen",
+      "categorie": "translationese",
+      "definitie": "Engelse zinspatronen, collocaties en idiomen zijn letterlijk vertaald. Het gaat om harde transfers: leenvertalingen, valse vrienden en Engelse woordvolgorde.",
+      "cues": [
+        "aan het eind van de dag",
+        "op dezelfde pagina zitten",
+        "de olifant in de kamer",
+        "het beste van twee werelden",
+        "in termen van",
+        "op een dagelijkse basis",
+        "laten we duiken in",
+        "een diepe duik in",
+        "potentieel ontgrendelen",
+        "verandering omarmen",
+        "ik ben opgewonden om",
+        "zorg ervoor dat je",
+        "het bedrijf dat werd opgericht in 1990"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Aan het eind van de dag draait het allemaal om waarde leveren, dus laten we duiken in de details.",
+          "na": "Wat telt is wat de bezoeker meeneemt. De details staan hieronder."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Losse anglicismen in vaktaal ('deployen', 'commit', 'stack') zijn geen signaal; humanizer-de patroon 45 zegt hetzelfde over het Duits. Valse vrienden om op te letten in het Nederlands: 'eventueel' voor 'uiteindelijk' (eventually), 'actueel' voor 'eigenlijk' (actually), 'controleren' voor 'beheersen' (to control), 'sensibel' voor 'verstandig' (sensible)."
+    },
+    {
+      "naam": "'Je' en 'u' door elkaar",
+      "categorie": "translationese",
+      "definitie": "Binnen één tekst wisselt de aanspreekvorm, omdat het Engelse 'you' geen onderscheid kent en het model per zin opnieuw kiest. Ook mengvormen binnen één zin horen hier.",
+      "cues": [
+        "'je' in de ene alinea en 'u' in de volgende",
+        "'uw' naast 'jouw' in dezelfde tekst",
+        "u kunt je aanmelden",
+        "'Meld je aan' onder een tekst die 'u' gebruikt",
+        "'uw team' naast 'jullie team'",
+        "gebiedende wijs in de verkeerde beleefdheidsvorm"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Meld je aan via de site. Wij sturen u daarna een bevestiging.",
+          "na": "Meld je aan via de site. We sturen je daarna een bevestiging."
+        }
+      ],
+      "ernst": "always",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Dit patroon heeft geen Duitse tegenhanger op de Wikipedia-pagina, maar volgt rechtstreeks uit wat de pagina beschrijft als 'constructies die typisch zijn voor het Engels'. Het Duits kent hetzelfde probleem met du/Sie; in het Nederlands is de wissel harder zichtbaar omdat 'je' en 'u' ook de bezittelijke en wederkerende vormen meetrekken."
+    },
+    {
+      "naam": "Onvertaalde of half vertaalde Engelse termen",
+      "categorie": "translationese",
+      "definitie": "Engelse woorden blijven staan waar het Nederlands een gangbaar woord heeft, of krijgen een Nederlandse uitgang die de term half vertaald achterlaat.",
+      "cues": [
+        "insights",
+        "learnings",
+        "key takeaways",
+        "actionable",
+        "leveragen",
+        "empoweren",
+        "onboarden",
+        "een deep dive",
+        "de journey",
+        "alignment",
+        "quick wins"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "De belangrijkste learnings en actionable insights uit deze sessie helpen ons team te alignen.",
+          "na": "Twee dingen namen we mee uit de sessie: de zaal is te klein en de aankondiging moet twee weken eerder."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "Ingeburgerde vaktermen zijn geen signaal: 'stakeholder', 'framework', 'deployen', 'pull request' en 'meetup' zijn normaal Nederlands in hun vakgebied. Het gaat om Engelse woorden waarvoor het Nederlands een even kort en gangbaar alternatief heeft, en om de dichtheid ervan in één alinea."
+    },
+    {
+      "naam": "Mechanisch parallellisme uit het Engels",
+      "categorie": "translationese",
+      "definitie": "Zinsschema's die één op één uit Engelse copy komen en in het Nederlands stijf staan: de aanspreekreeks, de aankondigende wijzer, de opgesplitste pointe.",
+      "cues": [
+        "Of je nu ... of ...",
+        "Hier is waarom",
+        "Hier is wat je moet weten",
+        "Dit is wat het betekent",
+        "Laten we het opsplitsen",
+        "Het punt is dit",
+        "Zo werkt het",
+        "En dat is precies waarom"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Of je nu student bent of doorgewinterd architect, hier is waarom deze meetup ertoe doet.",
+          "na": "De meetup is voor iedereen die code schrijft. De talks gaan over problemen uit de praktijk."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "'Hier is waarom' en 'Hier is wat je moet weten' zijn letterlijke vertalingen van 'Here's why' en 'Here's what you need to know' en bestaan in spontaan Nederlands niet. De aanspreekreeks 'Of je nu ... of ...' overlapt met de valse reeks 'van X tot Y'; humanizer-de behandelt beide onder patroon 12."
+    },
+    {
+      "naam": "Engelse bron- en citatieopmaak",
+      "categorie": "translationese",
+      "definitie": "Bronvermeldingen volgen Engelse conventies in een Nederlandse tekst: Engelse signaalwoorden, Engelse datumvolgorde, Engelse afkortingen.",
+      "cues": [
+        "Retrieved from",
+        "Accessed on",
+        "n.d.",
+        "et al. in een Nederlandse literatuurlijst",
+        "pp. in plaats van p.",
+        "Ibid.",
+        "vol. 3, no. 2 zonder vertaling",
+        "Engelse datumvolgorde in de bronvermelding"
+      ],
+      "voorbeelden": [
+        {
+          "voor": "Jansen, P. (n.d.). Meetupcultuur in Twente. Retrieved from https://voorbeeld.nl on May 12, 2026.",
+          "na": "Jansen, P.: Meetupcultuur in Twente. Voorbeeld.nl, geraadpleegd op 12 mei 2026."
+        }
+      ],
+      "ernst": "cluster",
+      "herkomst": "nl-bron",
+      "en_id": "",
+      "notities": "De Duitse pagina beschrijft dit als 'inkorrekt formatierte Referenzen': modellen die op Engelse tekst zijn getraind leveren Engelse citatieconventies in een niet-Engelse omgeving, en struikelen over de implementatiedetails van de lokale stijl. Nederlandse bronvermelding gebruikt 'geraadpleegd op', maandnamen in kleine letters en 'e.a.' naast het ingeburgerde 'et al.'."
+    }
+  ],
+  "dekking": "Alle patronen die de Duitse pagina inhoudelijk benoemt zijn opgenomen, in 37 Nederlandse patronen. Eenduidige signalen: verzonnen bronnen, brieftoon, assistenttaal, kennisgrensdisclaimer, speculatieve opvulling, plaatshouders, AI-zelfonthulling en de zoek- en citatieresten (waaronder utm_source=chatgpt.com uit misbruikfilter 453 en de 'Gehe zu Suche Nr.'-vorm). Zachte signalen: opgeblazen betekenis, reclametaal, redactioneel commentaar, mechanische voegwoorden, samenvattende slotzin, conclusiekop, uitdagingen-en-toekomst-slot, negatief parallellisme, drieslag, oppervlakkige analyse, vage autoriteiten, valse reeks, overmatig vet, emoji, gedachtestreepjes, markdown-resten, overstructurering, tweedelige koppen en registerwissel. De losse opmerking uit de inleiding over 'veel floskels' is ingevuld als AI-markervocabulaire (humanizer-de 64) en koppelwerkwoordvermijding (65), omdat de pagina die niet uitwerkt. OVERGESLAGEN als Wikipedia-specifiek: niet-bestaande Vorlagen en niet-bestaande Kategorien (beide gaan over verzonnen verwijzingen naar MediaWiki-entiteiten; het generieke deel, markup die het doelsysteem niet kent, zit al in 'Markdown-resten'), foutieve wikitext-syntaxis als zodanig, en de uitgebreide ik-vorm-bewerkingssamenvattingen (generaliseerbaar naar commitberichten en PR-teksten in de eerste persoon, maar op de pagina puur een versiegeschiedenis-signaal). Ook overgeslagen omdat het geen tekstpatronen zijn: productiviteitssprong van een account, de datumcheck tegen de ChatGPT-lancering van 30 november 2022, en de waarschuwing dat detectietools als GPTZero onbetrouwbaar zijn (wel relevante context: menselijk oordeel blijft de maatstaf). CUES WEGGELATEN OMDAT ZE IN HET NEDERLANDS NIET BESTAAN: de Duitse Genderzeichen (Gendersternchen, Binnen-I) hebben geen Nederlandse tegenhanger; de verkeerde Duitse aanhalingstekens („…“ tegenover “…”) vervallen omdat het Nederlands dezelfde tekens gebruikt als het Engels, waardoor daar geen verschil te meten is; de Partizip-I-cues (gewährleistend, hervorhebend, betonend, widerspiegelnd) zijn vervangen door de Nederlandse realisatie als 'wat'- of 'waarmee'-staart, omdat vrijstaande -end-vormen in het Nederlands vrijwel niet voorkomen; 'rijk cultureel tapijt' is geschrapt als reclametaal-cue en genoemd als vertaalspoor. TOEGEVOEGD ten opzichte van de Duitse lijst, omdat de pagina expliciet 'constructies die typisch zijn voor het Engels' als signaal noemt: het door elkaar gebruiken van 'je' en 'u', onvertaalde Engelse termen, en het mechanische parallellisme uit Engelse copy ('Of je nu ... of ...', 'Hier is waarom')."
+}

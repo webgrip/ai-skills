@@ -1,0 +1,1682 @@
+{
+ "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput.",
+ "patronen": [
+  {
+   "naam": "Oxford-komma in een Nederlandse opsomming",
+   "categorie": "translationese",
+   "definitie": "In een opsomming van drie of meer delen staat een komma voor het laatste ‘en’ of ‘of’. Het Nederlands zet daar geen komma; de Engelse serial comma lekt mee uit de brontaal.",
+   "cues": [
+    ", en ",
+    ", of ",
+    "schrijven, lezen, en films kijken",
+    "snel, eenvoudig, en efficiënt",
+    "A, B, en C"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "We bieden e-mailmarketing, social media, en SEO.",
+     "na": "We bieden e-mailmarketing, social media en SEO."
+    },
+    {
+     "voor": "Het is helder, krachtig, en overtuigend.",
+     "na": "Het is helder, krachtig en overtuigend."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Geen tell wanneer de komma twee volledige hoofdzinnen scheidt (‘Hij belde, en zij nam op’), wanneer vlak voor ‘en’ een tussenzin of bijzin afsluit (‘Ze pakte de tas die er stond, en vertrok’), of wanneer de komma een dubbelzinnige nevenschikking uit elkaar houdt. Eén losse Oxford-komma zegt weinig; twee of meer in dezelfde opsommingsstijl is het signaal."
+  },
+  {
+   "naam": "Ongespatieerd kastlijntje",
+   "categorie": "translationese",
+   "definitie": "Het lange streepje staat zonder spaties tegen de woorden aan, volgens Amerikaanse zetconventie. Nederlandse typografie gebruikt op die plek een gespatieerd half streepje, of een komma, haakjes of een dubbele punt.",
+   "cues": [
+    "—",
+    "woord—woord",
+    "zin—en dan",
+    "lang streepje zonder spaties eromheen"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De tekst is glad en logisch—en toch klopt er iets niet.",
+     "na": "De tekst is glad en logisch, en toch klopt er iets niet."
+    },
+    {
+     "voor": "Dit werkt—altijd.",
+     "na": "Dit werkt altijd."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "em-dash-density",
+   "notities": "Het gespatieerde half streepje (‘de tekst is glad – en toch klopt er iets niet’) is gewoon Nederlands en geen signaal. Ook geen tell in geciteerd Engels, in overgenomen uitgeverstypografie, en bij schrijvers die het streepje aantoonbaar al voor 2023 gebruikten. Sinds de discussie op LinkedIn mijden veel Nederlandse schrijvers het juist, dus de afwezigheid bewijst niets."
+  },
+  {
+   "naam": "Het eenzame gedachtestreepje",
+   "categorie": "translationese",
+   "definitie": "Eén streepje midden in of vlak voor het einde van de zin, als los accent, waar het Nederlands een paar streepjes gebruikt om een tussenzin af te bakenen. De Engelse gebruikswijze lekt mee, los van de vraag welk streepje er staat.",
+   "cues": [
+    "– en dat is precies het punt.",
+    "streepje zonder tweede streepje",
+    "streepje in de laatste vier woorden van de zin",
+    "één accentstreepje per alinea"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "AI kan veel, maar het mist de ziel – en dat merk je.",
+     "na": "AI kan veel, maar het mist de ziel. Dat merk je."
+    },
+    {
+     "voor": "Het is snel – heel snel.",
+     "na": "Het is snel. Heel snel."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "em-dash-density",
+   "notities": "Een enkel accentstreepje is een normaal Nederlands stijlmiddel. Het patroon is de herhaling, meestal één per alinea en steeds op dezelfde plek in de zin. Een streepjespaar rond een echte tussenzin telt niet mee."
+  },
+  {
+   "naam": "Amerikaanse aanhalingstekens en leestekenplaatsing",
+   "categorie": "translationese",
+   "definitie": "Punt en komma staan binnen de aanhalingstekens volgens Amerikaanse conventie, of rechte en gekrulde tekens wisselen elkaar af binnen één document als rest van het kopiëren uit een chatvenster.",
+   "cues": [
+    "punt binnen het sluitende aanhalingsteken",
+    "komma binnen het sluitende aanhalingsteken",
+    "wisseling tussen rechte en gekrulde quotes",
+    "dubbele quotes in een tekst die verder enkele gebruikt"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "‘Dit is een gamechanger,’ zei de directeur.",
+     "na": "‘Dit is een gamechanger’, zei de directeur."
+    },
+    {
+     "voor": "Hij noemde het “naadloos.”",
+     "na": "Hij noemde het ‘naadloos’."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Nederlandse uitgevers verschillen in hun keuze tussen enkele en dubbele aanhalingstekens, dus die keuze zelf is geen signaal. Het signaal is de leestekenplaatsing binnen het sluitteken en het door elkaar lopen van rechte en gekrulde tekens in dezelfde tekst."
+  },
+  {
+   "naam": "Hoofdletter na de dubbele punt",
+   "categorie": "translationese",
+   "definitie": "Na een dubbele punt volgt een hoofdletter terwijl er geen volledige aangehaalde zin of reeks zinnen volgt. Het Nederlands schrijft daar een kleine letter.",
+   "cues": [
+    ": Dit",
+    ": Het",
+    ": Een",
+    ": Ja",
+    ": Begin",
+    "tussenkop met dubbele punt gevolgd door hoofdletter"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het antwoord is simpel: Begin met je punt.",
+     "na": "Het antwoord is simpel: begin met je punt."
+    },
+    {
+     "voor": "Eén regel vat het samen: De build was te traag.",
+     "na": "Eén regel vat het samen: de build was te traag."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "capitalized-after-colon",
+   "notities": "Wel een hoofdletter bij een volledige aangehaalde zin, bij meerdere zinnen achter elkaar, en bij een eigennaam. In lijsten met een dubbele punt als label is een hoofdletter een opmaakkeuze en geen fout."
+  },
+  {
+   "naam": "Titelhoofdletters in koppen",
+   "categorie": "translationese",
+   "definitie": "Elk woord in een titel of tussenkop krijgt een hoofdletter, volgens Engelse title case. Het Nederlands schrijft koppen als een zin, met alleen een hoofdletter aan het begin en bij eigennamen.",
+   "cues": [
+    "Elk Woord Een Hoofdletter",
+    "Hoe Je Meer Klanten Bereikt",
+    "De Voordelen Van Dakisolatie",
+    "SEO Geheimen Onthuld",
+    "Wat Dacht Je Van Titels Die Zo Zijn Geschreven"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De Vijf Belangrijkste Voordelen Van Dakisolatie",
+     "na": "De vijf belangrijkste voordelen van dakisolatie"
+    },
+    {
+     "voor": "Zo Herken Je Een AI-Tekst",
+     "na": "Zo herken je een AI-tekst"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "title-case-headings",
+   "notities": "Eigennamen, merknamen, productnamen en aangehaalde Engelse titels houden hun eigen hoofdletters. In het Nederlands bestaat geen genre waarin title case correct is, dus één kop is al genoeg signaal zolang het geen citaat is."
+  },
+  {
+   "naam": "Engelse hashtags met interne hoofdletters",
+   "categorie": "translationese",
+   "definitie": "Onder een Nederlandse post staat een rij hashtags in Engelse CamelCase of gewoon in het Engels.",
+   "cues": [
+    "#ElkWoordEenHoofdletter",
+    "#AIInnovatie",
+    "#DigitalTransformation",
+    "#FutureOfWork",
+    "rij van vijf of meer hashtags onder een Nederlandse post"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Mooi project opgeleverd! #DigitalTransformation #FutureOfWork #Innovation #AI #Leadership",
+     "na": "Mooi project opgeleverd. #twentedev"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "hashtag-stuffing",
+   "notities": "Vakhashtags die nu eenmaal Engels zijn (#kubernetes, #devops) zijn geen signaal, en twee of drie hashtags is op LinkedIn normaal. Het patroon is de lange rij plus de CamelCase."
+  },
+  {
+   "naam": "Getal-, datum- en tijdnotatie op zijn Engels",
+   "categorie": "translationese",
+   "definitie": "Cijfers, datums, tijden en eenheden staan in Amerikaanse notatie in een Nederlandse zin: decimaalpunt in plaats van komma, duizendkomma in plaats van punt, maand voor dag, klokstanden met AM of PM.",
+   "cues": [
+    "3.5 procent",
+    "1,000 euro",
+    "September 5, 2026",
+    "5th",
+    "2:30 PM",
+    "$1,200",
+    "70°F",
+    "10 miles"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De omzet steeg met 3.5% naar 1,200,000 euro.",
+     "na": "De omzet steeg met 3,5% naar 1.200.000 euro."
+    },
+    {
+     "voor": "De meetup is op September 5, 2026 om 7:00 PM.",
+     "na": "De meetup is op 5 september 2026 om 19.00 uur."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "In code, in versienummers, in tabellen die een Engelstalige bron overnemen en in geciteerde Engelse tekst is de Amerikaanse notatie correct. Ook in vakgebieden waar de puntnotatie de standaard is voor meetdata uit Engelstalige tooling."
+  },
+  {
+   "naam": "Hoofdletters in maandnamen, weekdagen en functietitels",
+   "categorie": "translationese",
+   "definitie": "Maanden, weekdagen, functietitels en vakgebieden krijgen een hoofdletter zoals in het Engels. Het Nederlands schrijft ze klein.",
+   "cues": [
+    "Maandag",
+    "Januari",
+    "September",
+    "de Directeur",
+    "onze Marketing Manager",
+    "de Klant",
+    "Machine Learning in lopende tekst"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Op Dinsdag spreekt onze Marketing Manager over Machine Learning.",
+     "na": "Op dinsdag spreekt onze marketingmanager over machine learning."
+    },
+    {
+     "voor": "De release staat gepland voor Oktober.",
+     "na": "De release staat gepland voor oktober."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Wel een hoofdletter aan het begin van een zin, bij eigennamen, bij officiële functiebenamingen in een aanhef of ondertekening, en bij merk- en productnamen. Talen en nationaliteiten krijgen in het Nederlands juist wel een hoofdletter, dus ‘Engels’ en ‘Nederlandse’ zijn geen signaal."
+  },
+  {
+   "naam": "Engelse ziekte: losgeschreven samenstellingen",
+   "categorie": "translationese",
+   "definitie": "Een Nederlandse samenstelling wordt met spaties geschreven omdat het Engelse origineel uit losse woorden bestaat. Het Nederlands schrijft samenstellingen aaneen, of met een streepje voor de leesbaarheid.",
+   "cues": [
+    "content marketing bureau",
+    "data analyse",
+    "klant ervaring",
+    "AI gedreven",
+    "machine learning model",
+    "bronzen medaille winnaar",
+    "software ontwikkelaar",
+    "e-mail adres"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wij zijn een content marketing bureau met veel data analyse ervaring.",
+     "na": "Wij zijn een contentmarketingbureau met veel ervaring in data-analyse."
+    },
+    {
+     "voor": "Hij is bronzen medaille winnaar.",
+     "na": "Hij is bronzenmedaillewinnaar."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Het model verdedigt de spatie ook nog: gevraagd naar ‘bronzen medaille winnaar’ noemde ChatGPT twee foute spellingen correct en de juiste vorm ‘minder correct’ (Onze Taal). Geen tell bij Engelse productnamen die officieel los staan (Visual Studio Code), bij woorden die geen samenstelling vormen, en bij samenstellingen waar een streepje hoort (‘e-mailadres’, ‘AI-gedreven’)."
+  },
+  {
+   "naam": "Engelse genitief en meervoudsapostrof",
+   "categorie": "translationese",
+   "definitie": "Een bezitsvorm krijgt een apostrof volgens Engelse regel waar het Nederlands er geen zet, en meervouden van afkortingen verliezen juist de apostrof die het Nederlands wel eist.",
+   "cues": [
+    "Ryan's laptop",
+    "de klant's wensen",
+    "APIs",
+    "URLs",
+    "KPIs",
+    "de 90s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ryan's laptop draait drie APIs.",
+     "na": "Ryans laptop draait drie API's."
+    },
+    {
+     "voor": "Bekijk de KPIs van dit kwartaal.",
+     "na": "Bekijk de KPI's van dit kwartaal."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Wel een apostrof bij namen op een enkele klinkerletter (‘Anna's boek’, ‘Otto's idee’) en bij meervouden als ‘foto's’, ‘cd's’ en ‘API's’. Merknamen die officieel een apostrof dragen blijven zoals ze zijn."
+  },
+  {
+   "naam": "Engelse afkortingen en de ampersand",
+   "categorie": "translationese",
+   "definitie": "Engelse afkortingen en het en-teken staan in Nederlandse lopende tekst waar het Nederlands eigen vormen heeft.",
+   "cues": [
+    "e.g.",
+    "i.e.",
+    "vs.",
+    "aka",
+    "FYI",
+    "ASAP",
+    "TL;DR",
+    "& in lopende tekst"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Kies een statische generator, e.g. Astro of Hugo, & test lokaal.",
+     "na": "Kies een statische generator, bijvoorbeeld Astro of Hugo, en test lokaal."
+    },
+    {
+     "voor": "Stuur het ASAP door, i.e. voor vrijdag.",
+     "na": "Stuur het voor vrijdag door."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "De ampersand hoort wel in bedrijfsnamen, in codenotatie en in vaste combinaties. ‘vs.’ is in sportuitslagen en vergelijkende koppen ingeburgerd."
+  },
+  {
+   "naam": "Duik- en delfwerkwoorden",
+   "categorie": "translationese",
+   "definitie": "Een onderwerp wordt ‘ingedoken’, letterlijk uit dive into en delve into. In het Nederlands duik je in water, zelden in een tekst.",
+   "cues": [
+    "laten we erin duiken",
+    "duiken in",
+    "we duiken dieper in",
+    "een diepe duik in",
+    "delven in",
+    "laten we ons verdiepen in",
+    "een deep dive"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Laten we erin duiken en de mogelijkheden verkennen.",
+     "na": "Hieronder staat wat het oplevert."
+    },
+    {
+     "voor": "In deze diepe duik bekijken we de cijfers.",
+     "na": "Hieronder staan de cijfers."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Gewoon Nederlands bij duiksport en letterlijk water, en in oudere vaste uitdrukkingen als ‘de boeken in duiken’ of ‘het archief in duiken’. ‘Verdiepen in’ is normaal Nederlands en pas een signaal in de combinatie ‘laten we ons verdiepen in’."
+  },
+  {
+   "naam": "Ontsluit- en ontketenwerkwoorden",
+   "categorie": "translationese",
+   "definitie": "Potentieel wordt ‘ontsloten’, ‘ontketend’ of ‘losgemaakt’, letterlijk uit unlock, unleash en empower. Het Nederlands zegt wat er dan gebeurt.",
+   "cues": [
+    "ontsluit het potentieel",
+    "ontsluiten",
+    "unlocken",
+    "ontgrendelen",
+    "ontketen",
+    "unleash",
+    "empoweren",
+    "stelt je in staat om",
+    "de kracht van X ontketenen",
+    "haal het maximale uit"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ontsluit nieuw groeipotentieel met onze aanpak.",
+     "na": "Je bereikt meer klanten met onze aanpak."
+    },
+    {
+     "voor": "Onze tool empowert je team.",
+     "na": "Je team kan hiermee zelf een release uitrollen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Ontsluiten’ is correct Nederlands voor gebieden, archieven en data die echt toegankelijk gemaakt worden (‘het archief is digitaal ontsloten’). Het signaal is het abstracte lijdend voorwerp: potentieel, mogelijkheden, kansen, waarde."
+  },
+  {
+   "naam": "Consultantwerkwoorden",
+   "categorie": "translationese",
+   "definitie": "Faciliteren, stroomlijnen, benutten, optimaliseren en maximaliseren staan waar een gewoon werkwoord hoort. Elk is een letterlijke overzetting van facilitate, streamline, leverage en optimize.",
+   "cues": [
+    "faciliteren",
+    "een oplossing faciliteren",
+    "stroomlijnen",
+    "processen stroomlijnen",
+    "benutten",
+    "leveragen",
+    "kansen benutten",
+    "optimaliseren",
+    "maximaliseren"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wij faciliteren een oplossing die je processen stroomlijnt.",
+     "na": "Wij bouwen iets dat drie handmatige stappen weghaalt."
+    },
+    {
+     "voor": "Benut de kracht van je data.",
+     "na": "Gebruik de cijfers die je al hebt."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Faciliteren’ is correct in de betekenis ‘de randvoorwaarden regelen’ (een zaal faciliteren, een sessie faciliteren). ‘Benutten’ is normaal in ‘de ruimte benutten’. Het signaal is de dichtheid en het abstracte object."
+  },
+  {
+   "naam": "Transformatie- en superchargewerkwoorden",
+   "categorie": "translationese",
+   "definitie": "Alles wordt getransformeerd, gerevolutioneerd of naar een hoger niveau getild. De Engelse hyperbool wordt woord voor woord overgezet, tot en met Engelse stammen met Nederlandse uitgang.",
+   "cues": [
+    "transformeren",
+    "transformatief",
+    "revolutioneren",
+    "superchargeer",
+    "boosten",
+    "naar een hoger niveau tillen",
+    "naar nieuwe hoogten tillen",
+    "in een stroomversnelling brengen",
+    "een revolutie in"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Superchargeer je online aanwezigheid en til je marketing naar een hoger niveau.",
+     "na": "Met deze aanpak kreeg de vorige klant 30 procent meer aanvragen."
+    },
+    {
+     "voor": "AI revolutioneert de manier waarop bedrijven marketing bedrijven.",
+     "na": "AI verandert marketing. Niet alles, maar een paar dingen flink."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Gewoon Nederlands bij een echte transformatie met bewijs erbij, zoals een organisatieverandering die benoemd en gedateerd is. Het signaal is de belofte zonder cijfer."
+  },
+  {
+   "naam": "Navigeer-, verken- en omarmwerkwoorden",
+   "categorie": "translationese",
+   "definitie": "Abstracte zaken worden ‘genavigeerd’, ‘verkend’ en ‘omarmd’, letterlijk uit navigate, explore en embrace.",
+   "cues": [
+    "navigeren door",
+    "het navigeren van het landschap",
+    "verkennen",
+    "we verkennen",
+    "omarm de verandering",
+    "omarmen",
+    "onthullen",
+    "blootleggen",
+    "ontdekken"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bedrijven moeten het complexe AI-landschap navigeren en verandering omarmen.",
+     "na": "Bedrijven moeten uitzoeken welke AI-tool hun werk echt sneller maakt."
+    },
+    {
+     "voor": "In dit artikel onthullen we de geheimen van SEO.",
+     "na": "Dit zijn de drie instellingen die bij ons het meest scheelden."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Navigeren’ is normaal bij schepen, routes en gebruikersinterfaces. ‘Verkennen’ is normaal bij terrein en bij een verkenning met een uitkomst. Het signaal is het abstracte object: landschap, mogelijkheden, uitdagingen."
+  },
+  {
+   "naam": "‘Bieden’ als vertaling van offer en provide",
+   "categorie": "translationese",
+   "definitie": "Bied, biedt en bieden staan overal waar het Engels offer, provide of deliver zegt. In natuurlijk Nederlands staat er een concreter werkwoord of gewoon ‘hebben’.",
+   "cues": [
+    "biedt een breed scala aan",
+    "wij bieden",
+    "biedt inzicht in",
+    "biedt de mogelijkheid om",
+    "biedt ondersteuning bij",
+    "biedt oplossingen voor"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Een dienstenbedrijf biedt een reeks software aan die inzicht biedt in je processen.",
+     "na": "Een dienstenbedrijf verkoopt software die laat zien waar je processen vastlopen."
+    },
+    {
+     "voor": "Onze training biedt de mogelijkheid om sneller te werken.",
+     "na": "Na de training doe je het in de helft van de tijd."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Bieden’ is gewoon Nederlands bij een bod, bij hulp en bij een aanbod met een prijs. Het signaal is de dichtheid, drie of meer vormen van bieden per tekst, telkens met een abstract lijdend voorwerp. Nederlandse waarnemers noemen dit een van de betrouwbaarste losse woordsignalen."
+  },
+  {
+   "naam": "‘-gedreven’ en ‘aangedreven door’ als achtervoegsel",
+   "categorie": "translationese",
+   "definitie": "Het Engelse -driven en -powered worden productief als Nederlands achtervoegsel op elk zelfstandig naamwoord geplakt.",
+   "cues": [
+    "AI-gedreven",
+    "datagedreven",
+    "data-gedreven",
+    "resultaatgedreven",
+    "aangedreven door AI",
+    "door AI aangedreven",
+    "AI-powered"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Een AI-gedreven, datagedreven aanpak, aangedreven door machine learning.",
+     "na": "We gebruiken machine learning om de meldingen te sorteren."
+    },
+    {
+     "voor": "Onze door AI aangedreven start-up groeit hard.",
+     "na": "Onze start-up bouwt een sorteermodel en groeit hard."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Marktgedreven’ en ‘vraaggedreven’ zijn ingeburgerde economische termen, en ‘datagedreven’ is in beleidstaal gewoon geworden. Het signaal is de stapeling en het gebruik als sierwoord zonder dat duidelijk wordt wat er aandrijft."
+  },
+  {
+   "naam": "Leenvertaalde discoursformules",
+   "categorie": "translationese",
+   "definitie": "Engelse gespreksformules worden woord voor woord overgezet en leveren zinnen op die in het Nederlands nergens uit spraak vandaan komen.",
+   "cues": [
+    "aan het eind van de dag",
+    "aan het einde van de dag",
+    "dat gezegd hebbende",
+    "maak geen vergissing",
+    "het is wat het is",
+    "om eerlijk te zijn",
+    "laten we eerlijk zijn",
+    "in alle eerlijkheid",
+    "aan de andere kant"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Aan het eind van de dag draait het om impact maken.",
+     "na": "Uiteindelijk telt alleen of de klant sneller geholpen is."
+    },
+    {
+     "voor": "Dat gezegd hebbende, er zijn ook risico's.",
+     "na": "Toch zijn er risico's."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Aan het einde van de dag’ is gewoon Nederlands als het letterlijk over het einde van een werkdag gaat. ‘Het is wat het is’ is in Nederlandse spreektaal doorgedrongen en telt in een gesproken of informeel stuk niet als signaal."
+  },
+  {
+   "naam": "‘In termen van’ en het als-het-gaat-om-frame",
+   "categorie": "translationese",
+   "definitie": "Een Engelse voorzetselomschrijving wordt overgenomen waar het Nederlands een gewoon voorzetsel of één bijwoord gebruikt.",
+   "cues": [
+    "in termen van",
+    "als het gaat om",
+    "wanneer het aankomt op",
+    "met betrekking tot",
+    "in de context van",
+    "op het gebied van",
+    "op een dagelijkse basis",
+    "op een consistente manier",
+    "op een tijdige manier"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In termen van snelheid scoort deze aanpak goed.",
+     "na": "Deze aanpak is sneller."
+    },
+    {
+     "voor": "We controleren dit op een dagelijkse basis.",
+     "na": "We controleren dit dagelijks."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "in-terms-of-frame",
+   "notities": "‘Met betrekking tot’ en ‘op het gebied van’ zijn correct Nederlands in juridische en formele teksten en in verwijzingen naar een dossier. Het signaal is de omweg waar één bijwoord volstaat, en drie of meer van deze frames in dezelfde tekst."
+  },
+  {
+   "naam": "Landschap-, reis- en ecosysteemmetafoor",
+   "categorie": "translationese",
+   "definitie": "Het onderwerp krijgt een Engelse ruimtemetafoor: een landschap waar je doorheen beweegt, een reis die je aflegt, een ecosysteem waar je deel van bent.",
+   "cues": [
+    "het huidige landschap",
+    "in dit snel veranderende landschap",
+    "een veranderend landschap",
+    "het AI-landschap",
+    "een dynamisch landschap",
+    "de reis van",
+    "jouw AI-reis",
+    "het ecosysteem",
+    "in ons huidige dynamische tijdperk"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In het huidige landschap is de digitale reis van elke organisatie anders.",
+     "na": "Elk bedrijf begint hier op een ander punt."
+    },
+    {
+     "voor": "Het navigeren van het complexe AI-landschap vraagt lef.",
+     "na": "Uitzoeken welke AI-tool werkt, kost een paar weken."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Landschap’ is gewoon Nederlands in aardrijkskunde, in beeldende kunst en in vaste termen als ‘medialandschap’ en ‘onderwijslandschap’, die ouder zijn dan de modellen. ‘Reis’ is normaal bij een echte reis en bij ‘klantreis’ als vakterm met een gedefinieerde betekenis."
+  },
+  {
+   "naam": "Leenvertaalde waardeclaims",
+   "categorie": "translationese",
+   "definitie": "De waarde van iets wordt uitgedrukt in een vaste Engelse formule: de sleutel tot, een gamechanger, een testament van, een baken van.",
+   "cues": [
+    "de sleutel tot",
+    "een gamechanger",
+    "een game-changer",
+    "een testament van",
+    "een testament aan",
+    "een baken van",
+    "een baken van hoop",
+    "een lichtend voorbeeld van",
+    "naar nieuwe hoogten"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit is een gamechanger en de sleutel tot groei.",
+     "na": "Dit bespaart je tien uur per week."
+    },
+    {
+     "voor": "Het project is een testament aan hun vakmanschap.",
+     "na": "Het project laat zien wat ze kunnen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘De sleutel tot’ bestaat als Nederlandse uitdrukking en is niet fout, maar staat in AI-tekst bijna altijd zonder dat er een slot benoemd wordt. ‘Testament’ is in het Nederlands een juridisch document; de betekenis ‘bewijs van’ bestaat alleen in het Engels."
+  },
+  {
+   "naam": "Letterlijk vertaalde Engelse uitdrukkingen",
+   "categorie": "translationese",
+   "definitie": "Een Engelse vaste uitdrukking wordt woordelijk vertaald en levert een zin op die grammaticaal klopt en in Nederlandse spraak niet bestaat.",
+   "cues": [
+    "de olifant in de kamer",
+    "buiten de doos denken",
+    "buiten de kaders denken",
+    "op de radar",
+    "de bal ligt bij jou",
+    "een win-winsituatie",
+    "het beste van beide werelden",
+    "op dezelfde pagina zitten",
+    "aan boord zijn",
+    "de onderste regel"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Laten we de olifant in de kamer benoemen: de bal ligt bij jou.",
+     "na": "Dan het punt dat niemand aansnijdt: jij bent nu aan zet."
+    },
+    {
+     "voor": "We moeten buiten de doos denken.",
+     "na": "We moeten iets proberen dat we nog nooit gedaan hebben."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Buiten de gebaande paden treden’ is een oude Nederlandse uitdrukking en geen calque; ‘buiten de doos denken’ is dat wel. ‘Win-winsituatie’ staat in Van Dale en is in zakelijke spraak ingeburgerd, dus alleen een signaal in een cluster."
+  },
+  {
+   "naam": "Beeldspraak zonder Nederlandse traditie",
+   "categorie": "translationese",
+   "definitie": "Engelse literaire beelden worden overgezet naar woorden die in het Nederlands nooit figuurlijk gebruikt worden: tapijt, symfonie, weerklank, diepten.",
+   "cues": [
+    "tapestry",
+    "het rijke tapijt van",
+    "een symfonie van",
+    "resoneert met",
+    "weerspiegelt",
+    "in de diepten van",
+    "een standvastige toewijding",
+    "een lichtend voorbeeld",
+    "hubs van",
+    "symboliseert"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit draagt bij aan het rijke tapijt van de gemeenschap.",
+     "na": "Hier komen mensen uit de hele regio op af."
+    },
+    {
+     "voor": "Het verhaal resoneert met veel lezers.",
+     "na": "Veel lezers herkennen zich erin."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Weerspiegelen’ is normaal Nederlands voor een spiegelbeeld en voor cijfers die iets laten zien. ‘Resoneren’ is een natuurkundige term en correct in die betekenis. Het signaal is het figuurlijke gebruik in een gewone zakelijke of journalistieke zin."
+  },
+  {
+   "naam": "Komma na een aanloopbijwoord",
+   "categorie": "translationese",
+   "definitie": "Een verbindingsbijwoord aan het begin van de zin krijgt een komma achter zich, zoals in het Engels. Het Nederlands laat die komma weg en keert het werkwoord om.",
+   "cues": [
+    "Echter,",
+    "Bovendien,",
+    "Daarnaast,",
+    "Uiteindelijk,",
+    "Ten slotte,",
+    "Bovenal,",
+    "Desalniettemin,",
+    "Sterker nog,",
+    "Niettemin,"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Echter, de resultaten vielen tegen.",
+     "na": "De resultaten vielen echter tegen."
+    },
+    {
+     "voor": "Bovendien, het kost minder tijd.",
+     "na": "Bovendien kost het minder tijd."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Een komma hoort wel na een langere bijwoordelijke aanloop die gevolgd wordt door inversie, en na ‘Kortom’ en ‘Met andere woorden’, die in het Nederlands wel een komma krijgen. Het signaal is de combinatie van komma en Engelse woordvolgorde."
+  },
+  {
+   "naam": "Ontbrekende inversie na een aanloop",
+   "categorie": "translationese",
+   "definitie": "Na een aanloop blijft het onderwerp voor het werkwoord staan, zoals in het Engels. Het Nederlands vraagt op die plek de omgekeerde volgorde.",
+   "cues": [
+    "In dit artikel, we bespreken",
+    "In 2024, we lanceerden",
+    "Na de update, het werkt",
+    "Volgens de onderzoekers, het model is",
+    "aanloop met komma zonder inversie"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In dit artikel, we bespreken drie manieren.",
+     "na": "In dit artikel bespreken we drie manieren."
+    },
+    {
+     "voor": "Na de migratie, de site werd sneller.",
+     "na": "Na de migratie werd de site sneller."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Geen tell in geciteerde spreektaal, in poëzie en in dialect, waar de volgorde bewust afwijkt. Ook niet bij een losse aanroep of een tussenwerpsel (‘Nou, dat viel mee’)."
+  },
+  {
+   "naam": "Losse deelwoordaanloop",
+   "categorie": "translationese",
+   "definitie": "De zin begint met een deelwoord dat naar het onderwerp verwijst, zoals het Engelse Based on, Given en Considering. Het Nederlands gebruikt daar een voorzetselgroep of een bijzin.",
+   "cues": [
+    "Gebaseerd op",
+    "Gezien het feit dat",
+    "Rekening houdend met",
+    "Kijkend naar",
+    "Sprekend over",
+    "Voortbouwend op"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Gebaseerd op onze ervaring, raden we optie B aan.",
+     "na": "Op basis van onze ervaring raden we optie B aan."
+    },
+    {
+     "voor": "Kijkend naar de cijfers, het is duidelijk.",
+     "na": "De cijfers zijn duidelijk."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Gelet op’ en ‘Gezien’ zijn correct Nederlands als voorzetsel (‘Gezien de kosten kiezen we B’), zonder komma en met inversie. Het signaal is het deelwoord plus komma plus rechte volgorde."
+  },
+  {
+   "naam": "Nominale stijl met ‘het … van’",
+   "categorie": "translationese",
+   "definitie": "Een werkwoord wordt tot zelfstandig naamwoord gemaakt en met ‘het’ en ‘van’ aan de zin geplakt, als overzetting van een Engelse -ing-vorm of een -tion-woord.",
+   "cues": [
+    "het bieden van",
+    "het creëren van",
+    "het waarborgen van",
+    "het verbeteren van",
+    "met het groeien van",
+    "bij het optimaliseren van",
+    "de implementatie van",
+    "de uitvoering van"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wij helpen bedrijven met het groeien van hun bereik.",
+     "na": "Wij helpen bedrijven hun bereik te vergroten."
+    },
+    {
+     "voor": "Dit draagt bij aan het waarborgen van de kwaliteit.",
+     "na": "Zo blijft de kwaliteit op peil."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "nominalization-inflation",
+   "notities": "Vaste vaktermen blijven staan: ‘de implementatie van de AVG’, ‘het beheer van de infrastructuur’. Het signaal is de nominalisatie terwijl de handelende partij en de handeling allebei al in de zin staan."
+  },
+  {
+   "naam": "‘Er zijn X die’-constructie",
+   "categorie": "translationese",
+   "definitie": "De zin opent met een bestaanszin naar Engels model, There are many X that, waar het Nederlands het onderwerp meteen voorop zet.",
+   "cues": [
+    "Er zijn veel bedrijven die",
+    "Er zijn een aantal",
+    "Er zijn verschillende manieren om",
+    "Er is een groeiende behoefte aan",
+    "Er zijn talloze"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Er zijn veel organisaties die worstelen met dit probleem.",
+     "na": "Veel organisaties worstelen hiermee."
+    },
+    {
+     "voor": "Er zijn drie redenen waarom dit werkt.",
+     "na": "Dit werkt om drie redenen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "De bestaanszin is gewoon Nederlands als er echt iets geïntroduceerd wordt dat de lezer nog niet kent (‘Er staat iemand voor de deur’). Het signaal is het gebruik als vaste opening, drie of meer keer per tekst."
+  },
+  {
+   "naam": "‘Worden’-passief waar het Nederlands actief zegt",
+   "categorie": "translationese",
+   "definitie": "De handeling komt in de lijdende vorm met ‘worden’ en de handelende partij verdwijnt of schuift met ‘door’ naar achteren.",
+   "cues": [
+    "wordt gebruikt door",
+    "wordt aangedreven door",
+    "er wordt gezegd dat",
+    "wordt aanbevolen om",
+    "kan worden bereikt",
+    "worden ingezet om",
+    "is ontworpen om te worden"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De data wordt door het model verwerkt en er wordt aanbevolen om te controleren.",
+     "na": "Het model verwerkt de data. Controleer de uitkomst."
+    },
+    {
+     "voor": "Deze aanpak wordt door veel teams gebruikt.",
+     "na": "Veel teams gebruiken deze aanpak."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "agentive-by-passive",
+   "notities": "De lijdende vorm is correct als de handelende partij onbekend is of er niet toe doet, en in procedureteksten en wetgeving waar dat de norm is. Het signaal is de dichtheid, en de passief op een onderwerp dat een zin eerder gewoon genoemd werd."
+  },
+  {
+   "naam": "Hedge-cascade met kan, kunnen en zou kunnen",
+   "categorie": "translationese",
+   "definitie": "Elke bewering krijgt een modaal werkwoord, vaak twee gestapeld, als overzetting van het Engelse can, could en may.",
+   "cues": [
+    "kan mogelijk",
+    "zou kunnen helpen",
+    "kan bijdragen aan",
+    "kunnen ervoor zorgen dat",
+    "kan een rol spelen bij",
+    "mogelijk zou kunnen",
+    "in sommige gevallen kan"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit zou mogelijk kunnen bijdragen aan een betere doorlooptijd.",
+     "na": "Dit verkort de doorlooptijd met een dag."
+    },
+    {
+     "voor": "AI kan mogelijk helpen bij het verbeteren van je content.",
+     "na": "AI schrijft je eerste versie. De rest doe je zelf."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "modal-ability-overuse",
+   "notities": "Eén afzwakking per bewering is normaal en soms verplicht, bijvoorbeeld in medische, juridische en wetenschappelijke tekst. Het signaal is de stapeling van twee of meer afzwakkers op dezelfde bewering, en de afzwakking op een feit dat vaststaat."
+  },
+  {
+   "naam": "Het-is-belangrijk-om-frame",
+   "categorie": "translationese",
+   "definitie": "Een aankondiging gaat aan de bewering vooraf, letterlijk uit It is important to note that.",
+   "cues": [
+    "het is belangrijk om op te merken dat",
+    "het is belangrijk om te overwegen",
+    "het is de moeite waard om te vermelden",
+    "het loont de moeite om te onthouden dat",
+    "het is essentieel om",
+    "het is cruciaal om"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het is belangrijk om op te merken dat de kosten stijgen.",
+     "na": "De kosten stijgen."
+    },
+    {
+     "voor": "Het is cruciaal om te overwegen wat dit voor je team betekent.",
+     "na": "Voor een team van vijf betekent dit twee uur extra per week."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "it-is-worth-noting-frame",
+   "notities": "Een aankondiging is legitiem als hij een uitzondering markeert die de lezer anders mist, bijvoorbeeld een waarschuwing in een handleiding. Het signaal is de aankondiging voor een gewone bewering."
+  },
+  {
+   "naam": "Aanhangsel met ‘wat resulteert in’",
+   "categorie": "translationese",
+   "definitie": "De zin krijgt een staart die het gevolg samenvat, als overzetting van het Engelse deelwoord: resulting in, leading to, allowing you to.",
+   "cues": [
+    ", wat resulteert in",
+    ", wat leidt tot",
+    ", waardoor je",
+    ", wat betekent dat",
+    ", waardoor het team",
+    ", wat zorgt voor"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "We hebben de build gesplitst, wat resulteert in kortere wachttijden.",
+     "na": "We hebben de build gesplitst. De wachttijd zakte van negen naar drie minuten."
+    },
+    {
+     "voor": "De tool automatiseert het proces, waardoor je tijd bespaart.",
+     "na": "De tool doet de export. Dat scheelt een half uur per week."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "participial-tail",
+   "notities": "Een gevolgzin met ‘waardoor’ is gewoon Nederlands en vaak de beste formulering. Het signaal is de herhaling, elke alinea dezelfde staart, en een staart die niets nieuws toevoegt."
+  },
+  {
+   "naam": "‘Of je nu X of Y bent’-sjabloon",
+   "categorie": "translationese",
+   "definitie": "Een vaste invulzin uit het Engels, Whether you're X or Y. Hij dekt de hele doelgroep af en zegt niets.",
+   "cues": [
+    "Of je nu",
+    "Of je nu beginner bent of expert",
+    "Of het nu gaat om",
+    "Ongeacht of je",
+    "Voor zowel starters als gevorderden"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Of je nu starter bent of doorgewinterd ondernemer, deze tips helpen je verder.",
+     "na": "Deze tips zijn voor wie net begint."
+    },
+    {
+     "voor": "Of het nu gaat om marketing of om development, AI verandert alles.",
+     "na": "In development scheelt het ons vooral tijd bij code review."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "template-phrase",
+   "notities": "De constructie is correct Nederlands als de twee genoemde gevallen echt verschillen en de zin daarna voor allebei iets anders zegt. Het signaal is de alomvattende doelgroep in de openingszin."
+  },
+  {
+   "naam": "Omschrijvende overtreffende trap met ‘meest’",
+   "categorie": "translationese",
+   "definitie": "De trappen van vergelijking worden met ‘meer’ en ‘meest’ omschreven zoals in het Engels, terwijl het Nederlands het achtervoegsel gebruikt.",
+   "cues": [
+    "meest belangrijke",
+    "meest simpele",
+    "meest snelle",
+    "meest makkelijke",
+    "meer simpel",
+    "een van de meest"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit is de meest belangrijke stap.",
+     "na": "Dit is de belangrijkste stap."
+    },
+    {
+     "voor": "De meest simpele oplossing werkt het best.",
+     "na": "De simpelste oplossing werkt het best."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Meest’ is correct bij lange bijvoeglijke naamwoorden en deelwoorden (‘de meest gebruikte tool’, ‘het meest voorkomende probleem’) en waar de vorm met -ste niet bestaat. Het signaal is ‘meest’ bij korte woorden die gewoon een -ste-vorm hebben."
+  },
+  {
+   "naam": "‘Hier is waarom’ en ‘Dit is waarom’",
+   "categorie": "translationese",
+   "definitie": "Een aankondigende overgangszin uit het Engels: Here's why, Here's how, This is why.",
+   "cues": [
+    "Hier is waarom",
+    "Hier is hoe",
+    "Dit is waarom",
+    "Dit is hoe",
+    "Hier komt het",
+    "En dit is waarom dat werkt"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Hier is waarom dat belangrijk is.",
+     "na": "Dat is belangrijk omdat de build dan twee keer draait."
+    },
+    {
+     "voor": "Dit is hoe je het aanpakt.",
+     "na": "Zo pak je het aan."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Daarom’ en ‘Zo werkt het’ zijn de Nederlandse vormen en geen signaal. In ondertiteling en in weergegeven spraak kan de directe vorm wel voorkomen."
+  },
+  {
+   "naam": "Die-dat-verwarring uit het Engelse that",
+   "categorie": "translationese",
+   "definitie": "Het betrekkelijk voornaamwoord klopt niet met het geslacht van het antecedent, omdat het Engels maar één vorm heeft en het model die op goed geluk overzet.",
+   "cues": [
+    "het model die",
+    "de tool dat",
+    "het bedrijf die",
+    "de organisatie dat",
+    "hetgeen wat",
+    "het systeem die"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het model die de tekst genereert, kent geen Nederlands.",
+     "na": "Het model dat de tekst genereert, kent geen Nederlands."
+    },
+    {
+     "voor": "De tool dat je gebruikt, bepaalt het resultaat.",
+     "na": "De tool die je gebruikt, bepaalt het resultaat."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Nederlandse schrijvers maken deze fout ook, en in gesproken taal en dialect is de afwijking normaal, dus dit telt alleen mee samen met andere signalen uit deze laag. Bij verwijzing naar personen achter een het-woord is ‘die’ een aparte kwestie en geen vertaalfout."
+  },
+  {
+   "naam": "Ontbrekend lidwoord bij abstracte naamwoorden",
+   "categorie": "translationese",
+   "definitie": "Het lidwoord verdwijnt voor een abstract of ontelbaar naamwoord, omdat het Engels daar geen lidwoord zet.",
+   "cues": [
+    "verbetert workflow",
+    "verlaagt kosten",
+    "verhoogt performance",
+    "zonder budget of planning in een mededelende zin",
+    "gebruik context om"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit verbetert workflow en verlaagt kosten.",
+     "na": "Dit verbetert de workflow en verlaagt de kosten."
+    },
+    {
+     "voor": "Team kan hierdoor sneller leveren.",
+     "na": "Het team kan hierdoor sneller leveren."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Het Nederlands laat het lidwoord ook weg in koppen, in opsommingen, in vaste combinaties (‘op kantoor’, ‘in overleg’) en bij stofnamen in algemene uitspraken (‘Water kookt bij 100 graden’). Het signaal is het ontbrekende lidwoord in een gewone mededelende zin."
+  },
+  {
+   "naam": "Overbodig bezittelijk voornaamwoord",
+   "categorie": "translationese",
+   "definitie": "Bij lichaamsdelen, gereedschap en vaste onderdelen staat een bezittelijk voornaamwoord waar het Nederlands een lidwoord gebruikt, naar Engels model.",
+   "cues": [
+    "open je browser",
+    "typ je URL in",
+    "pak je telefoon",
+    "was je handen",
+    "in je terminal",
+    "je adresbalk"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Open je browser en typ je URL in je adresbalk.",
+     "na": "Open de browser en typ de URL in de adresbalk."
+    },
+    {
+     "voor": "Schud je hoofd en pak je pen.",
+     "na": "Schud het hoofd en pak de pen."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "In instructies aan één lezer is ‘je’ vaak juist de duidelijkste keuze, en bij echt bezit is het bezittelijk voornaamwoord verplicht. Het signaal is de stapeling van drie of meer in één zin of stap."
+  },
+  {
+   "naam": "Singular they als ‘hen’ of ‘hun’",
+   "categorie": "translationese",
+   "definitie": "Een enkelvoudige onbekende persoon wordt met een meervoudsvorm aangeduid, als overzetting van het Engelse singular they.",
+   "cues": [
+    "als een gebruiker inlogt, ziet hen",
+    "de deelnemer krijgt hun bevestiging",
+    "iemand die hun mening geeft",
+    "hun account",
+    "de bezoeker en hun voorkeuren"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Als een deelnemer zich aanmeldt, krijgt hen een mail.",
+     "na": "Wie zich aanmeldt, krijgt een mail."
+    },
+    {
+     "voor": "Elke gebruiker beheert hun eigen profiel.",
+     "na": "Elke gebruiker beheert het eigen profiel."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Nederlandse teksten gebruiken bewust ‘die’ of ‘hen’ als genderneutrale verwijzing naar een specifieke persoon die dat zelf zo wil; dat is een keuze en geen fout. Het signaal is de meervoudsvorm bij een grammaticaal enkelvoudig onderwerp zonder dat er een persoon in beeld is."
+  },
+  {
+   "naam": "Kwantiteitscalques",
+   "categorie": "translationese",
+   "definitie": "Hoeveelheden worden met een Engelse omschrijving aangeduid: a wide range of, hundreds of, a wealth of.",
+   "cues": [
+    "een breed scala aan",
+    "een verscheidenheid aan",
+    "honderden van",
+    "duizenden van",
+    "een schat aan",
+    "een overvloed aan",
+    "talloze",
+    "een breed spectrum"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "We bieden een breed scala aan diensten en honderden van tevreden klanten.",
+     "na": "We doen e-mailmarketing, social media en SEO, voor ruim tweehonderd klanten."
+    },
+    {
+     "voor": "Er is een overvloed aan mogelijkheden.",
+     "na": "Je kunt kiezen uit drie opties."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Een schat aan ervaring’ en ‘talloze’ bestaan als Nederlandse uitdrukking. Het signaal is ‘van’ na een telwoord (‘honderden van bedrijven’) en de vage hoeveelheid die een opsomming vervangt."
+  },
+  {
+   "naam": "Engelse volgorde in de bijzin",
+   "categorie": "translationese",
+   "definitie": "In een bijzin blijft de werkwoordsgroep niet aan het eind staan, of hij wordt in Engelse volgorde uit elkaar getrokken met bepalingen erachter.",
+   "cues": [
+    "zodat het team kan focussen op groei",
+    "omdat we moeten kijken naar de cijfers eerst",
+    "die is ontworpen voor teams die willen groeien snel",
+    "bepaling systematisch achter de werkwoordsgroep"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "…, waardoor uw team tijd bespaart en zich kan focussen op groei en innovatie.",
+     "na": "…, waardoor het team tijd bespaart en zich op groei kan richten."
+    },
+    {
+     "voor": "Ik denk dat we moeten kijken naar de cijfers eerst.",
+     "na": "Ik denk dat we eerst naar de cijfers moeten kijken."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Een bepaling achter de werkwoordsgroep komt in gesproken Nederlands en in journalistiek proza gewoon voor, en is bij lange bepalingen zelfs de leesbaarste keuze. Het signaal is de systematiek: elke bijzin volgt de Engelse volgorde."
+  },
+  {
+   "naam": "‘Je’ en ‘u’ door elkaar",
+   "categorie": "translationese",
+   "definitie": "Binnen één tekst wisselt de aanspreekvorm tussen ‘je’ en ‘u’, omdat het Engelse you geen keuze afdwingt en het model per zin opnieuw kiest.",
+   "cues": [
+    "je … uw",
+    "jouw … u",
+    "je bedrijf … uw team",
+    "je in de lopende tekst, u in de knop of afsluiter",
+    "uw organisatie … jouw situatie"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ontdek hoe AI-agents processen automatiseren, waardoor uw team tijd bespaart. Benieuwd wat AI voor jouw bedrijf kan betekenen?",
+     "na": "Ontdek hoe AI-agents processen automatiseren, zodat je team tijd bespaart. Benieuwd wat AI voor jouw bedrijf kan betekenen?"
+    },
+    {
+     "voor": "Vul uw gegevens in en je ontvangt direct de gids.",
+     "na": "Vul je gegevens in en je krijgt de gids meteen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Sommige merken hanteren bewust ‘u’ in juridische teksten en ‘je’ in marketing; dat is beleid en geen fout, zolang de scheiding per tekst loopt. Het signaal is de wisseling binnen één alinea, of tussen de lopende tekst en de knop eronder."
+  },
+  {
+   "naam": "‘Verheugd’ en valse formaliteit",
+   "categorie": "translationese",
+   "definitie": "Blijdschap en beleefdheid komen in een register dat in het Nederlands vrijwel niemand meer gebruikt, als overzetting van delighted, excited en pleased.",
+   "cues": [
+    "wij zijn verheugd",
+    "verheugd om aan te kondigen",
+    "wij zijn opgetogen",
+    "het doet ons genoegen",
+    "in de hedendaagse maatschappij",
+    "wij informeren u graag over",
+    "wij zijn er trots op om"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wij zijn verheugd om aan te kondigen dat de nieuwe versie live is.",
+     "na": "De nieuwe versie staat live."
+    },
+    {
+     "voor": "In de hedendaagse maatschappij is het essentieel om te digitaliseren.",
+     "na": "Tegenwoordig kun je hier niet meer omheen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "‘Verheugd’ hoort wel in een officiële aanhef, in een koninklijke of academische mededeling en in een persbericht van een instelling die dat register aanhoudt. In gewone bedrijfscopy is het woord vrijwel uitgestorven, wat het volgens Nederlandse waarnemers tot het sterkste losse woordsignaal maakt."
+  },
+  {
+   "naam": "Formeel-archaïsche voegwoorden",
+   "categorie": "translationese",
+   "definitie": "Verbindingswoorden komen uit de zwaarste laag van het Nederlands, omdat het model therefore, thus en nevertheless op de meest formele beschikbare vorm afbeeldt.",
+   "cues": [
+    "derhalve",
+    "zodoende",
+    "desalniettemin",
+    "voorts",
+    "aldus",
+    "teneinde",
+    "bijgevolg",
+    "aangaande",
+    "in acht nemende",
+    "betreffende",
+    "voornoemd",
+    "niettemin",
+    "welke als betrekkelijk voornaamwoord"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Derhalve is het teneinde de kwaliteit te waarborgen noodzakelijk om, niettemin, te controleren.",
+     "na": "Controleer het daarom nog een keer."
+    },
+    {
+     "voor": "Voorts merken wij op dat de kosten stijgen.",
+     "na": "De kosten stijgen ook nog."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "In juridische stukken, notariële akten, jaarverslagen en overheidsbesluiten is dit register de norm en geen signaal. In een blog, nieuwsbrief of LinkedIn-post is het dat wel, zeker als drie of meer van deze woorden bij elkaar staan."
+  },
+  {
+   "naam": "Amerikaanse imperatiefkoppen",
+   "categorie": "translationese",
+   "definitie": "Koppen en knoppen bestaan uit een gebiedende wijs of een klaar-om-vraag, overgezet uit Amerikaanse advertentietaal.",
+   "cues": [
+    "Ontdek",
+    "Ontdek nu zelf",
+    "Klaar om",
+    "Ben je klaar om",
+    "Start vandaag nog",
+    "Begin nu",
+    "Mis het niet",
+    "Ontdek hoe"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Klaar om je marketing te transformeren? Ontdek nu zelf de mogelijkheden!",
+     "na": "Wil je zien hoe dit werkt? Kom naar de meetup van 5 september."
+    },
+    {
+     "voor": "Ontdek de mogelijkheden voor jullie organisatie.",
+     "na": "Bel Ryan als je wilt weten wat dit voor jullie kost."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "social-ad-boilerplate",
+   "notities": "Een gebiedende wijs op een knop is normaal en vaak het duidelijkst (‘Meld je aan’, ‘Download het rapport’). Het signaal is de reeks: elke tussenkop een aansporing, en de klaar-om-vraag die niets concreets belooft."
+  },
+  {
+   "naam": "‘Laten we’-opener",
+   "categorie": "translationese",
+   "definitie": "Een sectie of alinea begint met een gezamenlijke uitnodiging, uit het Engelse Let's.",
+   "cues": [
+    "Laten we",
+    "Laten we erin duiken",
+    "Laten we eens kijken",
+    "Laten we beginnen met",
+    "Laten we samen ontdekken",
+    "Laten we het opsplitsen"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Laten we eens kijken wat dit betekent voor jouw organisatie.",
+     "na": "Voor een team van vijf betekent dit het volgende."
+    },
+    {
+     "voor": "Laten we samen ontdekken hoe dit werkt.",
+     "na": "Zo werkt het."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "lets-invitation-opener",
+   "notities": "‘Laten we’ is gewoon Nederlands in een echt voorstel aan een groep (‘Laten we dat volgende week bespreken’). Het signaal is het gebruik als vaste sectieopener, twee keer of vaker per tekst."
+  },
+  {
+   "naam": "De LinkedIn-slotvraag",
+   "categorie": "structure",
+   "definitie": "De post eindigt met een vraag aan de lezer die alleen bestaat om reacties te lokken, letterlijk uit What do you think? Share your thoughts in the comments.",
+   "cues": [
+    "Wat denk jij?",
+    "Wat is jouw ervaring?",
+    "Deel je gedachten in de reacties",
+    "Laat het weten in de comments",
+    "Herkenbaar?",
+    "Ben jij het ermee eens?"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wat denk jij? Deel je gedachten in de reacties!",
+     "na": "Als je dit anders aanpakt, hoor ik graag welke stap je overslaat."
+    },
+    {
+     "voor": "Herkenbaar? Laat het weten in de comments."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "call-to-action-closer",
+   "notities": "Een echte vraag aan een specifiek publiek, die de schrijver zelf niet kan beantwoorden, is geen signaal. Het signaal is de vraag die op elke post past en niets over het onderwerp vraagt. In dezelfde familie hoort de AI-reactie eronder: ‘Interessant perspectief, Piet! Dank voor het delen van deze waardevolle inzichten.’"
+  },
+  {
+   "naam": "‘Bij [merknaam] begrijpen we’",
+   "categorie": "translationese",
+   "definitie": "De tekst opent met een merk dat zichzelf empathie toeschrijft, letterlijk uit At X, we understand.",
+   "cues": [
+    "Bij [merknaam] begrijpen we",
+    "Bij ons geloven we",
+    "Wij bij",
+    "Bij X weten we hoe belangrijk",
+    "Wij begrijpen als geen ander"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bij Webgrip begrijpen we hoe belangrijk snelheid is.",
+     "na": "Een trage build kost ons twintig minuten per release. Daarom doen we dit."
+    },
+    {
+     "voor": "Bij ons geloven we in de kracht van samenwerking.",
+     "na": "We werken met twee mensen per klant, zodat er altijd iemand bereikbaar is."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Een merk dat zijn eigen ervaring beschrijft en met een feit onderbouwt, valt hier niet onder. Het signaal is de geclaimde empathie zonder inhoud, meestal in de eerste zin van een bedrijfspagina."
+  },
+  {
+   "naam": "Onvertaald Engels waar het Nederlands een woord heeft",
+   "categorie": "translationese",
+   "definitie": "Engelse marketing- en managementwoorden blijven onvertaald staan terwijl er een gewoon Nederlands woord bestaat.",
+   "cues": [
+    "insights",
+    "learnings",
+    "seamless",
+    "leverage",
+    "craft",
+    "delve",
+    "tapestry",
+    "realm",
+    "cutting-edge",
+    "next-level",
+    "value proposition",
+    "customer journey",
+    "best practices",
+    "key takeaways",
+    "deep dive",
+    "gamechanger",
+    "Enshittification"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De key takeaways van deze deep dive: onze seamless customer journey is cutting-edge.",
+     "na": "Wat je hieruit meeneemt: klanten hoeven nu geen formulier meer in te vullen."
+    },
+    {
+     "voor": "Dit levert waardevolle insights op.",
+     "na": "Hieruit bleek dat de helft afhaakt bij stap drie."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "untranslated-marketing-loanword",
+   "notities": "Vaktermen zonder Nederlands equivalent blijven staan: API, prompt, token, pipeline, container, repository. Het onderscheid is of een gewoon Nederlands woord hetzelfde zegt. In een Engelstalig team is codeswitching bovendien de normale werktaal."
+  },
+  {
+   "naam": "Engelse stam met Nederlandse vervoeging",
+   "categorie": "translationese",
+   "definitie": "Een Engels werkwoord wordt Nederlands vervoegd terwijl er een Nederlands werkwoord bestaat, of terwijl de vorm in het Nederlands niet bestaat.",
+   "cues": [
+    "superchargeer",
+    "leveragen",
+    "unlocken",
+    "empoweren",
+    "geleveraged",
+    "gedisrupt",
+    "onboarden",
+    "gecraft"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Superchargeer je online aanwezigheid en leverage je data.",
+     "na": "Zorg dat mensen je site vinden en gebruik de cijfers die je al hebt."
+    },
+    {
+     "voor": "We hebben de markt gedisrupt.",
+     "na": "We hebben twee concurrenten uit de markt geprijsd."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Ingeburgerde Engelse werkwoorden met Nederlandse vervoeging zijn gewoon Nederlands: mailen, downloaden, deployen, mergen, updaten. Het signaal is de vervoeging van een marketingwerkwoord dat een gangbaar Nederlands equivalent heeft."
+  },
+  {
+   "naam": "Engelse brok middenin Nederlandse tekst",
+   "categorie": "translationese",
+   "definitie": "Een zin, kop, opsommingsonderdeel of antwoord staat plotseling in het Engels, als rest van de Engelse generatie eronder.",
+   "cues": [
+    "Here's the thing",
+    "In conclusion",
+    "Note that",
+    "Overall",
+    "Engelse kop boven Nederlandse tekst",
+    "één Engelse bullet in een Nederlandse lijst",
+    "Engels antwoord op een Nederlandse vraag"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De drie stappen zijn helder. Here's the thing: de laatste kost het meeste tijd.",
+     "na": "De drie stappen zijn helder. De laatste kost het meeste tijd."
+    },
+    {
+     "voor": "Het antwoord op de puzzel is Horseshoes.",
+     "na": "Het antwoord op de puzzel is hoefijzers."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "",
+   "notities": "Citaten, songteksten, productnamen, foutmeldingen en codefragmenten horen in het Engels te blijven. Het signaal is de onaangekondigde wissel in lopende tekst, meestal in de overgangszin of de laatste alinea."
+  },
+  {
+   "naam": "Mechanisch parallellisme uit het Engels",
+   "categorie": "translationese",
+   "definitie": "Elke zin heeft dezelfde bouw en ongeveer dezelfde lengte, en elk opsommingsonderdeel telt evenveel woorden. Het Engelse ritme is meevertaald zonder dat het Nederlands erom vraagt.",
+   "cues": [
+    "drie of meer zinnen achter elkaar met dezelfde opbouw",
+    "bullets van gelijke lengte",
+    "elke alinea drie zinnen",
+    "elke zin begint met hetzelfde woord",
+    "elke tussenkop even lang"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "AI schrijft sneller. AI schrijft netter. AI schrijft goedkoper.",
+     "na": "AI schrijft sneller en netter. Goedkoper is het pas als je de eindredactie meetelt."
+    },
+    {
+     "voor": "Het werkt razendsnel. De toon is netjes. Het geeft structuur aan chaos.",
+     "na": "Het werkt razendsnel en de toon is netjes. Wat het echt oplevert, is structuur in een hoop losse aantekeningen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "repeated-sentence-shapes",
+   "notities": "Bewuste herhaling als stijlmiddel, bijvoorbeeld in een slotalinea of een speech, is geen signaal. Ook niet in technische documentatie en checklists, waar gelijkvormigheid de leesbaarheid dient. Het signaal is de gelijkvormigheid over een hele tekst, inclusief de alinealengte."
+  },
+  {
+   "naam": "Staccato-drieslag",
+   "categorie": "syntax",
+   "definitie": "Drie korte fragmenten achter elkaar als klapper, met punten in plaats van komma's. Het is het Engelse punchline-ritme in Nederlandse woorden.",
+   "cues": [
+    "Snel. Simpel. Slim.",
+    "Helder, krachtig, overtuigend.",
+    "Geen gedoe. Geen kosten. Geen excuses.",
+    "drie bijvoeglijke naamwoorden met punten ertussen",
+    "razendsnel, foutloos en verrassend goed opgebouwd"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Snel. Simpel. Slim.",
+     "na": "Het draait in twee minuten en je hoeft niets in te stellen."
+    },
+    {
+     "voor": "AI-teksten zijn razendsnel, foutloos en vaak verrassend goed opgebouwd.",
+     "na": "AI-teksten zijn snel klaar en bevatten zelden een spelfout."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "rule-of-three",
+   "notities": "De drieslag is een oud en legitiem Nederlands stijlmiddel; één per tekst valt niemand op. Het signaal is de herhaling, meestal in de intro, in een tussenkop en in de slotzin, en de fragmenten zonder werkwoord."
+  },
+  {
+   "naam": "‘In dit artikel verkennen we’",
+   "categorie": "rhetoric",
+   "definitie": "De tekst kondigt zichzelf aan in plaats van te beginnen, letterlijk uit In this article, we'll explore.",
+   "cues": [
+    "In dit artikel verkennen we",
+    "Dit artikel verkent",
+    "In dit blog leer je",
+    "In deze gids behandelen we",
+    "In dit artikel onthullen we",
+    "Hieronder bespreken we",
+    "In deze blog vertel ik"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In dit artikel verkennen we hoe je een meetup opzet.",
+     "na": "Een meetup opzetten kost ongeveer zes weken. Dit is de volgorde."
+    },
+    {
+     "voor": "In dit blog leer je hoe je AI-teksten herkent.",
+     "na": "Er zijn drie dingen waaraan ik een AI-tekst herken."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "meta-signposting",
+   "notities": "Een leeswijzer is nuttig in een lang rapport, een handleiding of een wetenschappelijk artikel, waar de lezer moet kunnen kiezen wat hij overslaat. Het signaal is de aankondiging in een kort stuk dat toch al gelezen wordt."
+  },
+  {
+   "naam": "Slotformule als vertaalrest",
+   "categorie": "structure",
+   "definitie": "De tekst sluit af met een samenvattende formule, waaronder vormen die alleen als vertaling van In conclusion bestaan.",
+   "cues": [
+    "In conclusie",
+    "Als conclusie",
+    "Concluderend",
+    "Samenvattend",
+    "Samenvattend kunnen we zeggen",
+    "Al met al",
+    "Kortom",
+    "Om af te sluiten",
+    "Tot slot kunnen we stellen"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In conclusie: AI kan helpen, mits je het goed inzet.",
+     "na": "AI helpt hier alleen als iemand de tekst daarna nog leest."
+    },
+    {
+     "voor": "Samenvattend kunnen we zeggen dat structuur belangrijk is.",
+     "na": "Begin met de volgorde. De rest volgt vanzelf."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "signposted-conclusion",
+   "notities": "‘In conclusie’ en ‘als conclusie’ bestaan niet als Nederlandse formule en zijn altijd een vertaalrest. ‘Kortom’ en ‘Samenvattend’ zijn correct Nederlands en pas een signaal als de slotalinea niets toevoegt aan wat er al stond."
+  },
+  {
+   "naam": "‘Conclusie’ als kopje boven een kort stuk",
+   "categorie": "structure",
+   "definitie": "Een tekst van een paar honderd woorden krijgt een aparte kop ‘Conclusie’, of een inleiding en een conclusie terwijl het genre daar niet om vraagt.",
+   "cues": [
+    "## Conclusie",
+    "Conclusie:",
+    "kop ‘Conclusie’ onder minder dan achthonderd woorden",
+    "Inleiding en Conclusie als kopjes in een blogpost",
+    "Conclusie: X herkennen doe je zo"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Conclusie\nZoals je ziet zijn de tools nog niet sterk.",
+     "na": "Vertrouw dus niet op de tools. Lees zelf."
+    },
+    {
+     "voor": "Conclusie: ChatGPT herkennen doe je zo!",
+     "na": "Let vooral op het woord ‘verheugd’. Dat is genoeg."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "headers-over-short-text",
+   "notities": "In scripties, rapporten, wetenschappelijke artikelen en offertes is een conclusiekop de norm en geen signaal. Het signaal is de kop in een blogpost, nieuwsbrief of productpagina waar de laatste alinea vanzelf al de conclusie is."
+  },
+  {
+   "naam": "Engelse kopsjablonen",
+   "categorie": "structure",
+   "definitie": "Tussenkoppen zijn woordelijke vertalingen van Amerikaanse artikelkoppen.",
+   "cues": [
+    "Waarom dit ertoe doet",
+    "Wat je moet weten",
+    "Hoe het werkt",
+    "De onderste regel",
+    "De bottom line",
+    "Belangrijkste inzichten",
+    "Wat betekent dit voor jou",
+    "Waar gaat dit artikel over"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Waarom dit ertoe doet",
+     "na": "Wat het je scheelt"
+    },
+    {
+     "voor": "Wat je moet weten over AI-detectie",
+     "na": "AI-detectors halen Nederlands slechter dan Engels"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "translationese",
+   "en_id": "formulaic-section-headers",
+   "notities": "‘Hoe het werkt’ is een gangbare Nederlandse kop op een productpagina. Het signaal is de reeks: drie of meer koppen uit hetzelfde Amerikaanse sjabloon, en koppen die niets zeggen over de inhoud eronder."
+  },
+  {
+   "naam": "‘Van X naar Y’-titelformule",
+   "categorie": "structure",
+   "definitie": "De titel volgt een Engelse marketingformule met een dubbele punt: een transformatie ervoor en een belofte erna.",
+   "cues": [
+    "Van X naar Y: hoe Z",
+    "Van chaos naar controle",
+    "X: waarom het werkt",
+    "De ultieme gids voor",
+    "N manieren om",
+    "Zo doe je het in N stappen",
+    "SEO Geheimen Onthuld"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Van chaos naar controle: hoe je met AI je contentproces stroomlijnt",
+     "na": "Wat er misging toen we ons contentproces aan AI overlieten"
+    },
+    {
+     "voor": "De ultieme gids voor AI-detectie in 2026",
+     "na": "Waarom AI-detectors op Nederlands niet werken"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "translationese",
+   "en_id": "colon-subtitle-headings",
+   "notities": "Een dubbele punt in een titel is normaal bij een wetenschappelijke hoofdtitel met ondertitel en bij een serietitel. Het signaal is de vaste transformatieformule, herkenbaar aan het tegenstellingspaar voor de dubbele punt."
+  }
+ ],
+ "dekking": "60 patronen. Gedekt: Engelse interpunctie- en orthografieconventies (12), leenvertaalde werkwoorden (7), leenvertaald idioom en beeldspraak (6), Engelse zinsbouw en woordvolgorde (18), aanspreek- en registerdrift plus onvertaalde termen (10), mechanisch parallellisme (2) en vormresten (7). Alle in de opdracht genoemde items zitten erin, meestal als cue binnen een familiepatroon in plaats van als los patroon: de twaalf AI-werkwoorden zijn ondergebracht in vijf semantische families plus bieden en het achtervoegsel -gedreven, het twaalftal idiomen in zes families. Zeven patronen kregen een andere categorie dan translationese omdat ze daar volgens de taxonomie thuishoren: de LinkedIn-slotvraag, de slotformule, de conclusiekop, de Engelse kopsjablonen en de Van X naar Y-titel als structure, de staccato-drieslag als syntax, en In dit artikel verkennen we als rhetoric. Herkomst is overal translationese. Drieentwintig patronen dragen een en_id naar de Engelse catalogus (tweeentwintig unieke ids); de overige zevenendertig hebben geen Engelse tegenhanger omdat het verschijnsel in het Engels correct is (Oxford-komma, ongespatieerd kastlijntje, title case, Amerikaanse getalnotatie) of alleen in het Nederlands bestaat (Engelse ziekte, die-dat-verwarring, je-en-u-wisseling, verheugd, meest-overtreffende trap, bieden). Niet gedekt en bewust overgelaten aan andere lagen: de Nederlandse buzzwoordenlijsten zelf (cruciaal, naadloos, robuust, baanbrekend) die tot vocabulary horen, emoji-dichtheid en vetgedruk die taalonafhankelijk zijn, en chatbotresten als contentReference, turn0search en utm_source die tot artifacts horen. Onzeker en als context gemarkeerd: ontbrekend lidwoord, overbodig bezittelijk voornaamwoord, singular they en Engelse volgorde in de bijzin, omdat Nederlandse schrijvers dezelfde vormen produceren en er voor het Nederlands geen contrastieve meting bestaat zoals KatFish die voor het Koreaans levert. Die-dat-verwarring is om dezelfde reden op cluster gezet in plaats van always."
+}

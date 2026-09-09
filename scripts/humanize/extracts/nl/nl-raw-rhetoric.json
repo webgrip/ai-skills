@@ -1,0 +1,1418 @@
+[
+ {
+  "naam": "Opgeblazen betekenis en symboliek",
+  "categorie": "rhetoric",
+  "definitie": "Het onderwerp krijgt gewicht toegekend dat de feiten niet dragen: het staat ergens symbool voor, speelt een rol, laat een indruk achter, of markeert een keerpunt.",
+  "cues": [
+   "getuigt van",
+   "geldt als een symbool van",
+   "staat symbool voor",
+   "speelt een belangrijke rol",
+   "onderstreept het belang van",
+   "blijft tot de verbeelding spreken",
+   "laat een blijvende indruk achter",
+   "keerpunt",
+   "sleutelmoment",
+   "diepgeworteld",
+   "rijke traditie",
+   "onwrikbare toewijding",
+   "een blijvende erfenis",
+   "bevestigt zijn positie als"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De meetup geldt als een symbool van de diepgewortelde samenwerkingscultuur in Twente en onderstreept het belang van kennisdeling in de regio.",
+    "na": "Bij de meetup komen ontwikkelaars uit Enschede, Hengelo en Almelo samen."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina noemt als voorbeeld dat teksten over dier- en plantensoorten steevast doorslaan over de beschermingsstatus, ook als er geen enkel initiatief bestaat. De Nederlandse variant is de verplichte alinea over 'duurzaamheid', 'innovatiekracht' of 'de rol in de regionale economie' waar de bron zwijgt. Het repertoire is klein: dezelfde tien frasen keren terug over totaal verschillende onderwerpen.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Redactioneel commentaar",
+  "categorie": "rhetoric",
+  "definitie": "De tekst kondigt aan dat iets de moeite van het opmerken waard is, in plaats van het gewoon te vermelden. De aankondiging draagt geen informatie.",
+  "cues": [
+   "het is belangrijk om op te merken dat",
+   "het is belangrijk te beseffen dat",
+   "het is vermeldenswaard dat",
+   "opmerkelijk genoeg",
+   "het is goed om te bedenken dat",
+   "geen bespreking is compleet zonder",
+   "men mag niet vergeten dat",
+   "het valt niet te ontkennen dat"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het is belangrijk om op te merken dat de meetup gratis toegankelijk is.",
+    "na": "De meetup is gratis."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De test is het schrappen: verdwijnt er geen informatie, dan was het meta-commentaar. De Duitse pagina wijst erop dat dit in de Duitse Wikipedia extra opvalt omdat de huisstijl zakelijker is; datzelfde geldt voor Nederlandse encyclopedische en journalistieke tekst.",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Registerwissel binnen één tekst",
+  "categorie": "rhetoric",
+  "definitie": "De toon springt binnen één tekst van spreektaal naar hoogformeel of andersom, of de tekst is plotseling foutloos terwijl dezelfde schrijver elders spelfouten maakt.",
+  "cues": [
+   "spreektalige tussenwerpsels in verder formele tekst",
+   "ambtelijke formules in een verder losse tekst",
+   "plotseling foutloze spelling na eerdere fouten",
+   "vaktaal en volkstaal in dezelfde alinea",
+   "een losse openingszin boven een strak geredigeerd vervolg"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Eerlijk gezegd is dit gewoon vet. Vervolgens dient te worden opgemerkt dat de organisatie een significante bijdrage levert aan het regionale ecosysteem.",
+    "na": "De organisatie regelt de zaal, de sprekers en de aankondiging."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "De Duitse pagina behandelt dit onder de gebruikersgebonden signalen (plotseling foutloos schrijven, wisseling van taalregister, Engelse constructies). Als tekstsignaal blijft het bruikbaar zonder bewerkingsgeschiedenis, omdat de sprong in de tekst zelf zit. Verwant aan humanizer-de patroon 69 (Struktureller Register-Kollaps).",
+  "bron": "de.wikipedia.org, Wikipedia:Anzeichen für KI-generierte Inhalte (wikitext-export, 161 regels, gelezen 2026-09-06), met humanizer-de docs/muster-katalog.md (72 patronen in 10 categorieën) als naamgevings- en afbakeningsreferentie; enkele definities uit references/patterns.md (patronen 10, 12, 18, 45, 47, 65) gecontroleerd via grep."
+ },
+ {
+  "naam": "Dramatisering en overdrijving",
+  "categorie": "rhetoric",
+  "definitie": "Gebeurtenissen worden groter voorgesteld dan ze zijn: een kleine wijziging verandert alles, een alledaagse blunder is een levensdrama.",
+  "cues": [
+   "veranderde alles",
+   "ongekend",
+   "drastisch veranderen",
+   "superkrachten",
+   "Wat. Een. DRAMA."
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Twintig jaar deden we het zo. Eén kleine wijziging veranderde alles."
+   },
+   {
+    "voor": "Twintig jaar lang deden we het zo. Nu, door één kleine verandering, doen we het zus. De winst die we hiermee behalen is ongekend."
+   },
+   {
+    "voor": "Wat. Een. DRAMA. Zoiets had ik nog nooit meegemaakt – in mijn hele leven niet."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "b2bmarketeers: bij menselijke schrijvers is dat drama gereserveerd voor écht grote wendingen; in b2b-teksten is het bijna lachwekkend welke superkrachten tools krijgen toegedicht. Donna van de Ven: extra verdacht als de plaatser normaal gesproken vrij nuchter is.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Opgeblazen belang (van cruciaal belang)",
+  "categorie": "rhetoric",
+  "definitie": "Het onderwerp krijgt een gewicht toegekend dat het niet draagt, vaak meerdere keren in dezelfde tekst.",
+  "cues": [
+   "van cruciaal belang",
+   "cruciaal",
+   "essentieel",
+   "belangrijker dan ooit"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Als je Valencia bezoekt is het van cruciaal belang dat je een wandeling maakt door het oude stadscentrum"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Aikundig: soms staat het twee of meer keer in één tekst terwijl sommige teksten zich er helemaal niet voor lenen.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Vleierij bij de opening (Goede vraag)",
+  "categorie": "rhetoric",
+  "definitie": "Het antwoord opent met een compliment over de vraag of de vraagsteller voordat er inhoud komt.",
+  "cues": [
+   "Goede vraag —",
+   "Goede en terechte vraag",
+   "fijn dat je dat kritisch vraagt",
+   "dat is een mooie, vrij oude uitdrukking",
+   "Interessant perspectief"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Goede vraag — er zijn eigenlijk een paar correcte manieren om 'bronzen medaille winnaar' te schrijven in het Nederlands, afhankelijk van de context."
+   },
+   {
+    "voor": "Goede en terechte vraag — en fijn dat je dat kritisch vraagt."
+   },
+   {
+    "voor": "Goede vraag — dat is een mooie, vrij oude uitdrukking."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Onze Taal citeert drie ChatGPT-antwoorden die alle drie zo openen, telkens met em-dash. Bikkelhart citeert dezelfde opening bij een bronvraag en merkt op: 'meteen weer met een em-dash!'",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Neutraliteit zonder standpunt",
+  "categorie": "rhetoric",
+  "definitie": "De tekst neemt geen positie in, mijdt controverse en blijft afstandelijk objectief, ook waar een mening het interessant zou maken.",
+  "cues": [
+   "neutraal en objectief van toon",
+   "zelden een controversieel standpunt",
+   "AI is altijd neutraal",
+   "geen persoonlijke mening"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het is allemaal erg algemeen en er wordt zelden een (controversieel) standpunt ingenomen.",
+    "na": "De meeste AI tools zijn nog niet goed genoeg voor Nederlandstalige content — dat is een standpunt. Dat maakt het interessant."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Aikundig: LLM's zijn getraind om niemand te beledigen, dat merk je in de tekst. Hulz: ChatGPT komt zelden met onverwachte, creatieve of controversiële standpunten tenzij er expliciet om gevraagd wordt. So-MC: 'Durf een mening te hebben (als dat bij je merk/imago hoort).' Wel: LinkAI merkt op dat een uitgesproken merktoon (scherp, speels, direct, rebels) juist verloren gaat.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Zelfverzekerde toon: veel boosters, weinig hedges",
+  "categorie": "rhetoric",
+  "definitie": "Beweringen worden versterkt met zekerheidswoorden en zelden voorzichtig geformuleerd, waardoor de tekst overmoedig klinkt.",
+  "cues": [
+   "certainly",
+   "undoubtedly",
+   "essential",
+   "by far",
+   "ongetwijfeld",
+   "zonder twijfel",
+   "zeker weten"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Door AI gegenereerde teksten klinken vaak zelfverzekerder en misschien zelfs overmoedig.",
+    "na": "hedges toevoegen: almost, in general, probable, appear to be"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "VU-gids, naar Johansson (2023). Let op de spanning met Frankwatching (2024), dat juist afgezwakte beweringen met 'kan', 'mag', 'zou kunnen' als AI-signaal noemt — de twee bronnen wijzen tegengestelde kanten op; per tekst bepalen welke van de twee je ziet.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Afgezwakte beweringen (kan, mag, zou kunnen)",
+  "categorie": "rhetoric",
+  "definitie": "Uitspraken worden systematisch in modale slagen om de arm gegoten in plaats van gedaan.",
+  "cues": [
+   "kan",
+   "mag",
+   "zou kunnen",
+   "mogelijk",
+   "wellicht"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "afgezwakte beweringen met 'kan', 'mag', 'zou kunnen'"
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Frankwatching (2024). Op de Beeck zet 'zou kunnen' en 'mogelijk' ook in zijn top-20. Tegengesteld aan de booster-bevinding van de VU-gids.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Overoptimistische marketing- en goeroetoon",
+  "categorie": "rhetoric",
+  "definitie": "De hele tekst baadt in een positieve sfeer die aan een verkooppraatje of zelfhulpverhaal doet denken, zonder dat er iets wordt geclaimd dat je kunt narekenen.",
+  "cues": [
+   "onverholen marketingpraatje",
+   "het schreeuwerige geblaat van een zelfhulpgoeroe",
+   "overoptimistische sfeer",
+   "uniek",
+   "adembenemend",
+   "baanbrekend",
+   "lege gebeuzel"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "woorden als uniek, adembenemend, baanbrekend",
+    "na": "Onze klant verkortte de wachttijd met 31 procent in drie maanden."
+   },
+   {
+    "voor": "Zo blijft je content authentiek, geloofwaardig en effectief toch? Jazeker! Dat zal —in de meeste gevallen alles volledig veranderen, en zo ook jouw eigen leven! 🔥"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "PC-Active: 'Als ik de laatste tijd op Twitter, LinkedIn of een blog iets lees, krijg ik steeds vaker de indruk dat ik met het lege gebeuzel van een zelfverklaarde zelfhulpgoeroe te maken heb.' Jouw Copiloot noemt dit signaal 1 (promotie-taal) en vervangt het door bewijs. b2bmarketeers stelt voor om 'enig calvinisme' in de prompt in te bouwen.",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "De vraag herhalen en netjes samenvatten",
+  "categorie": "rhetoric",
+  "definitie": "Het antwoord begint met een parafrase van de vraag en sluit af met een samenvatting van wat er net stond.",
+  "cues": [
+   "AI herhaalt graag de vraag",
+   "sluit af met een keurige samenvatting"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "AI herhaalt graag de vraag en sluit af met een keurige samenvatting.",
+    "na": "Verwijder de samenvatting. Je lezer heeft het net gelezen"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "AI-tekstdetector.nl; AI Slop Checker geeft dezelfde tip ('Verwijder de samenvatting').",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "Opbouw creëren en om het onderwerp heen praten",
+  "categorie": "rhetoric",
+  "definitie": "De tekst bouwt spanning op naar een punt dat pas laat of nooit komt, in plaats van meteen te zeggen waar het om gaat.",
+  "cues": [
+   "een opbouw creëren",
+   "om een onderwerp heen praten",
+   "straight to the point"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "AI-tools houden van een opbouw creëren in een tekst en praten vaak een beetje om een onderwerp heen.",
+    "na": "Staat het belangrijkste wat ik wil vertellen vooraan?"
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "nl-bron",
+  "en_id": "",
+  "notities": "Bikkelhart geeft drie controlevragen: is het doel duidelijk, voor wie schrijf ik, staat het belangrijkste vooraan?",
+  "bron": "nl-artikelen"
+ },
+ {
+  "naam": "‘In dit artikel verkennen we’",
+  "categorie": "rhetoric",
+  "definitie": "De tekst kondigt zichzelf aan in plaats van te beginnen, letterlijk uit In this article, we'll explore.",
+  "cues": [
+   "In dit artikel verkennen we",
+   "Dit artikel verkent",
+   "In dit blog leer je",
+   "In deze gids behandelen we",
+   "In dit artikel onthullen we",
+   "Hieronder bespreken we",
+   "In deze blog vertel ik"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "In dit artikel verkennen we hoe je een meetup opzet.",
+    "na": "Een meetup opzetten kost ongeveer zes weken. Dit is de volgorde."
+   },
+   {
+    "voor": "In dit blog leer je hoe je AI-teksten herkent.",
+    "na": "Er zijn drie dingen waaraan ik een AI-tekst herken."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "translationese",
+  "en_id": "meta-signposting",
+  "notities": "Een leeswijzer is nuttig in een lang rapport, een handleiding of een wetenschappelijk artikel, waar de lezer moet kunnen kiezen wat hij overslaat. Het signaal is de aankondiging in een kort stuk dat toch al gelezen wordt.",
+  "bron": "Translationese-laag Nederlands. Methode overgenomen van im-not-ai (Koreaans): translationese als aparte laag met eigen ernstschaal, plus de post-editese-assen simplificatie, normalisatie en interferentie als meetkant zonder eigen patroon-id. Nederlandse verankering uit Onze Taal (ChatGPT en taalvragen: het model klinkt als vertaald Engels en neemt bij taalvragen het Engels als uitgangspunt; de samenstellingsvraag bronzenmedaillewinnaar), Frankwatching 2023 (title case, onvertaalde termen, verengelste zinsbouw, training overwegend op Common Crawl-Engels), Frankwatching 2024 en 2026 (emoji, hashtags met hoofdletters, de slotvraag om reacties), Op de Beeck (verheugd en de formeel-archaische reeks derhalve, desalniettemin, teneinde), Rubens (Angelsaksische zinsconstructies, rechte tegenover gekrulde aanhalingstekens), b2bmarketeers (Oxford-komma, het eenzame gedachtestreepje, de drieslag), aikundig (bieden als vertaling van offer, duiken, Elke Zin Een Hoofdletter, tapestry en testament, de conclusiekop), Contentkantoor (faciliteren, aan het eind van de dag, testament aan als Engelse calque), So-MC (revolutioneren, faciliteren, navigeren, ontsluiten, benutten, delven, een breed scala aan), Rhinoz (de sleutel tot, ben je klaar om, naar nieuwe hoogten tillen), Linkai (Engelse zinsstructuur help you grow your reach, valse formaliteit, letterlijke idioomvertalingen, Title Case tegenover sentence case, de Van X naar Y-titel), Jouw Copiloot (hoofdletters in koppen, abrupte stijlwissels Nederlands-Engels), Digiwijzer, Bikkelhart, Donna van de Ven (em-dash, Oxford comma), Promptmaster (curly quotes, em-dashes) en de VU ALP-gids (er is veel minder Nederlands onderzoek dan Engels; verwacht verschillen in zinsstructuur en woordenschat). Duitse zusterlaag humanizer-de gebruikt voor de patroonvorm 45 Anglizismus-Strukturen, Verbalstil statt Nominalstil, 55/61 Rhythmus und Isometrie, 65 Kopula-Vermeidung en de Nicht-anfassen-carve-outs, die hier als notities terugkomen. De rest komt uit eigen waarneming van Nederlandstalige modeloutput."
+ },
+ {
+  "en_id": "sycophancy",
+  "naam": "Vleierij (de lezer eerst gelijk geven)",
+  "categorie": "rhetoric",
+  "definitie": "Lof voor de vrager, zijn vraag of zijn gevoel gaat vooraf aan het antwoord: Goede vraag!, Je hebt helemaal gelijk, Dat is een scherpe observatie, Wat een mooie vraag. Bijvormen: de gespeelde inleving (Ik begrijp helemaal hoe je je voelt) en het stempel dat een correctie bevestigt en meteen een betere versie belooft. Schrap de lof en geef antwoord.",
+  "cues": [
+   "Goede vraag!",
+   "Wat een goede vraag",
+   "Je hebt helemaal gelijk",
+   "Dat is een scherpe observatie",
+   "Terecht punt",
+   "Goed dat je dit aankaart",
+   "Ik begrijp helemaal hoe je je voelt",
+   "Wat een mooie vraag"
+  ],
+  "regex": [
+   "\\b(?:goede\\s+vraag|wat\\s+een\\s+(?:goede|mooie|scherpe|interessante)\\s+vraag|je\\s+hebt\\s+(?:helemaal\\s+)?gelijk|dat\\s+is\\s+een\\s+(?:scherpe|goede|terechte)\\s+(?:observatie|opmerking|vraag)|terecht\\s+punt|goed\\s+dat\\s+je\\s+dit\\s+(?:aankaart|noemt)|ik\\s+begrijp\\s+(?:helemaal\\s+)?(?:hoe\\s+je\\s+je\\s+voelt|je\\s+frustratie))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Goede vraag! Je hebt helemaal gelijk dat dit een ingewikkeld onderwerp is.",
+    "na": "De economische factoren die je noemt spelen hier inderdaad mee."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "meta-signposting",
+  "naam": "Metabewegwijzering (de tekst aankondigen in plaats van schrijven)",
+  "categorie": "rhetoric",
+  "definitie": "De tekst vertelt wat hij gaat doen in plaats van het te doen: openingsaankondigingen (In dit artikel bespreken we, We behandelen achtereenvolgens), gezamenlijke overgangen (Laten we beginnen, Nu naar het volgende punt), structuurpraat in de tekst zelf (zoals eerder genoemd, hieronder een overzicht) en de opsommingsaanloop die een lijst aankondigt voordat hij komt (Dit valt uiteen in drie delen).",
+  "cues": [
+   "In dit artikel bespreken we",
+   "In deze blog neem ik je mee",
+   "We behandelen achtereenvolgens",
+   "Hieronder een overzicht",
+   "Zoals eerder genoemd",
+   "Dit valt uiteen in drie delen",
+   "Laten we beginnen",
+   "Allereerst kijken we naar"
+  ],
+  "regex": [
+   "\\b(?:in\\s+(?:dit\\s+artikel|deze\\s+blog|dit\\s+stuk)\\s+(?:bespreken|behandelen|kijken|nemen|leg\\s+ik)|we\\s+behandelen\\s+achtereenvolgens|hieronder\\s+(?:een|vind\\s+je\\s+een)\\s+overzicht|zoals\\s+(?:eerder|hierboven)\\s+(?:genoemd|beschreven|vermeld)|(?:dit|het)\\s+(?:valt\\s+uiteen|laat\\s+zich\\s+onderverdelen)\\s+in|laten\\s+we\\s+beginnen|allereerst\\s+kijken\\s+we)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Laten we induiken hoe caching werkt in Next.js. Dit is wat je moet weten.",
+    "na": "Next.js cachet op vier plekken: het verzoek, de data, de router en de build."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "candor-flag-opener",
+  "naam": "Oprechtheidsvlag (Eerlijk? Kijk,)",
+  "categorie": "rhetoric",
+  "definitie": "Een geënsceneerde pauze of claim van openhartigheid gaat vooraf aan een gewoon punt: Eerlijk?, Eerlijk gezegd, Even eerlijk, Kijk,, Laten we eerlijk zijn, De harde waarheid is, Om maar meteen met de deur in huis te vallen. Het frame suggereert dat de rest minder eerlijk was en stelt het antwoord één tel uit.",
+  "cues": [
+   "Eerlijk?",
+   "Eerlijk gezegd",
+   "Even eerlijk",
+   "Kijk,",
+   "Laten we eerlijk zijn",
+   "Ik zal eerlijk zijn",
+   "De harde waarheid is",
+   "Om maar meteen met de deur in huis te vallen"
+  ],
+  "regex": [
+   "(?m)(?:^|[.!?]\\s)(?:eerlijk\\?|eerlijk\\s+gezegd|even\\s+eerlijk|kijk,|laten\\s+we\\s+eerlijk\\s+zijn|ik\\s+zal\\s+eerlijk\\s+zijn|de\\s+(?:harde|ongemakkelijke)\\s+waarheid\\s+is|om\\s+maar\\s+meteen\\s+met\\s+de\\s+deur\\s+in\\s+huis\\s+te\\s+vallen)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Is het de prijs waard? Eerlijk? Dat hangt ervan af hoe vaak je het gebruikt.",
+    "na": "Of het de prijs waard is, hangt af van hoe vaak je het gebruikt."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "narrated-candor",
+  "naam": "Aangekondigde openheid",
+  "categorie": "rhetoric",
+  "definitie": "De schrijver kondigt zijn openheid aan in plaats van open te zijn, of speelt zelfkennis die niets kost: Ik wil vooraf eerlijk zijn:, Voor de volledigheid:, Twee kanttekeningen die ik liever nu noem dan dat je ze later ontdekt:, Ik had dit kunnen weglaten, maar. Het frame is los te knippen van de inhoud: haal het weg en de zin verliest geen informatie.",
+  "cues": [
+   "Ik wil vooraf eerlijk zijn:",
+   "Voor de volledigheid:",
+   "Volledige transparantie:",
+   "die ik liever nu noem dan dat je ze later ontdekt",
+   "Ik had dit kunnen weglaten, maar",
+   "En ja, ik ben"
+  ],
+  "regex": [
+   "\\b(?:ik\\s+wil\\s+(?:vooraf\\s+)?(?:eerlijk|transparant)\\s+zijn|voor\\s+de\\s+volledigheid|volledige\\s+transparantie|liever\\s+nu\\s+(?:noem|zeg|meld)\\s+dan|ik\\s+had\\s+dit\\s+kunnen\\s+weglaten|en\\s+ja,\\s+ik)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Twee kanttekeningen die ik liever nu noem dan dat je ze later ontdekt: de steekproef is klein en de runs waren niet gerandomiseerd.",
+    "na": "Twee kanttekeningen: de steekproef is klein en de runs waren niet gerandomiseerd."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "false-suspense-hook",
+  "naam": "Valse spanning (Het addertje? Hier komt het.)",
+  "categorie": "rhetoric",
+  "definitie": "Een kort zinsdeel maakt spanning rond informatie die dat niet nodig had: Het addertje?, Hier komt het:, En nu wordt het interessant, Het mooiste?, En dan komt de clou, Wat de meeste mensen missen. Schrap de haak en zeg het.",
+  "cues": [
+   "Het addertje?",
+   "Hier komt het:",
+   "En nu wordt het interessant",
+   "Het mooiste?",
+   "Het gekke?",
+   "En dan komt de clou",
+   "Wat de meeste mensen missen",
+   "En dan dit:"
+  ],
+  "regex": [
+   "\\b(?:het\\s+addertje\\??|hier\\s+komt\\s+(?:het|de\\s+clou)|en\\s+nu\\s+wordt\\s+het\\s+(?:interessant|leuk)|het\\s+(?:mooiste|beste|gekke|rare|ergste)\\s*[:?]|en\\s+dan\\s+dit\\s*:|wat\\s+de\\s+meeste\\s+mensen\\s+missen)"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het addertje? Het werkt alleen in het weekend.",
+    "na": "Het werkt alleen in het weekend."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "colon-reveal",
+  "naam": "Aanloop, dubbele punt, clou",
+  "categorie": "rhetoric",
+  "definitie": "Een aanloopzin, een dubbele punt, en dan een keurig ingepakte onthulling in kleine letters: de dubbele punt wordt gebruikt voor spanning in plaats van om een lijst, een label of een citaat in te leiden. Schrijf het als een gewone zin.",
+  "cues": [
+   "Het detail dat het laat werken: ...",
+   "Wat het verschil maakt: ...",
+   "De reden dat het werkt: ...",
+   "zelfstandig naamwoord + dubbele punt + onthulling in kleine letters"
+  ],
+  "regex": [
+   "(?m)(?:^|[.!?]\\s+)[^.:!?\\n]{10,70}:\\s+[a-zà-ü][^.\\n]{5,90}\\.",
+   "\\b(?:het\\s+detail\\s+dat\\s+het\\s+laat\\s+werken|wat\\s+het\\s+verschil\\s+maakt|de\\s+reden\\s+dat\\s+het\\s+werkt)\\s*:"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het detail dat het laat werken: een tweede agent kijkt het na.",
+    "na": "Een tweede agent kijkt het na, en daardoor werkt het."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Deze vorm heet in de Nederlandse huiscopy de aanloop-dubbelepunt-clou; hij zit vooral in koppen en openingszinnen.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "deeper-truth-framing",
+  "naam": "Diepere-waarheidsframe (waar het werkelijk om gaat)",
+  "categorie": "rhetoric",
+  "definitie": "Een vaste frase presenteert een gewoon punt als verborgen of fundamenteel inzicht, of beweert dat de zaak duidelijk is in plaats van het te laten zien: De echte vraag is, In werkelijkheid, Waar het werkelijk om draait, Vergis je niet, De waarheid is, De realiteit is simpeler, Het echte verhaal is. Laat het frame vallen en zeg het punt.",
+  "cues": [
+   "De echte vraag is",
+   "Waar het werkelijk om draait",
+   "In werkelijkheid",
+   "Vergis je niet",
+   "De waarheid is",
+   "De realiteit is simpeler",
+   "Het echte verhaal is",
+   "De kern van de zaak is"
+  ],
+  "regex": [
+   "\\b(?:de\\s+echte\\s+vraag\\s+is|waar\\s+het\\s+(?:werkelijk|echt)\\s+om\\s+(?:gaat|draait)|in\\s+werkelijkheid|vergis\\s+je\\s+niet|de\\s+waarheid\\s+is|de\\s+realiteit\\s+is|het\\s+echte\\s+verhaal\\s+is|de\\s+kern\\s+van\\s+de\\s+zaak)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De echte vraag is of teams zich aanpassen. In de kern draait het om organisatorische bereidheid.",
+    "na": "Of teams zich aanpassen, hangt ervan af of de organisatie haar gewoontes verandert."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "significance-signaling",
+  "naam": "Betekenis vooraf aankondigen (dit is belangrijk, omdat)",
+  "categorie": "rhetoric",
+  "definitie": "Een bijzin vertelt de lezer dat wat volgt belangrijk is, of hoe hij het moet lezen, in plaats van het te laten zijn: Dit is belangrijk, omdat, Dat laatste is belangrijker dan het klinkt, Zoals je ziet, Het belangrijkste punt is, Dit onderscheid doet ertoe. De rechtvaardiging komt vóór de bewering die ze moet dienen. Zet de bewering eerst.",
+  "cues": [
+   "Dit is belangrijk, omdat",
+   "Dat laatste is belangrijker dan het klinkt",
+   "Zoals je ziet",
+   "Het belangrijkste punt is",
+   "Dit onderscheid doet ertoe",
+   "En dat doet ertoe"
+  ],
+  "regex": [
+   "\\b(?:dit\\s+is\\s+belangrijk,?\\s+omdat|dat\\s+laatste\\s+is\\s+belangrijker\\s+dan\\s+het\\s+(?:klinkt|lijkt)|zoals\\s+je\\s+(?:ziet|kunt\\s+zien)|het\\s+belangrijkste\\s+punt\\s+is|dit\\s+onderscheid\\s+doet\\s+ertoe|en\\s+dat\\s+doet\\s+ertoe)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Dit is belangrijk, omdat het verandert hoe de scheduler zich onder druk gedraagt.",
+    "na": "Onder druk laat de scheduler eerst de laagste prioriteit vallen."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "importance-labelling",
+  "naam": "Belang aanplakken (speelt een cruciale rol)",
+  "categorie": "rhetoric",
+  "definitie": "Een bijvoeglijk naamwoord, een overtreffende trap of een toelichting beweert dat iets belangrijk, cruciaal, opvallend of vanzelfsprekend is, in plaats van te laten zien waarom: speelt een cruciale rol, kan niet genoeg benadrukt worden, een van de belangrijkste, past in een bredere trend, staat symbool voor, is tekenend voor. Schrap het etiket, houd het feit en het gevolg dat het gewicht geeft.",
+  "cues": [
+   "speelt een cruciale rol",
+   "kan niet genoeg benadrukt worden",
+   "een van de belangrijkste",
+   "past in een bredere trend",
+   "staat symbool voor",
+   "is tekenend voor",
+   "van onschatbare waarde",
+   "niet te onderschatten belang"
+  ],
+  "regex": [
+   "\\bspeelt\\s+een\\s+(?:cruciale|belangrijke|centrale|sleutel)\\s*rol\\b",
+   "\\b(?:kan\\s+niet\\s+genoeg\\s+(?:benadrukt|onderschat)\\s+worden|een\\s+van\\s+de\\s+(?:belangrijkste|grootste|meest)|past\\s+in\\s+een\\s+bredere\\s+trend|staat\\s+symbool\\s+voor|is\\s+tekenend\\s+voor|van\\s+onschatbare\\s+waarde)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het station speelt een cruciale rol in het regionale netwerk, en het belang ervan kan niet genoeg benadrukt worden.",
+    "na": "Vier van de vijf regionale lijnen eindigen op dit station."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "stakes-inflation",
+  "naam": "Opgeblazen belang",
+  "categorie": "rhetoric",
+  "definitie": "Het belang van het onderwerp of van wat komen gaat wordt opgeblazen tot ver voorbij wat de inhoud draagt: verandert alles, zet de wereld op zijn kop, bepaalt het komende decennium, de inzet was nog nooit zo hoog, nu meer dan ooit. Een stuk over prijzen wordt een beschouwing over de toekomst van de beschaving, en de betaling blijft uit.",
+  "cues": [
+   "verandert alles",
+   "zet de wereld op zijn kop",
+   "bepaalt het komende decennium",
+   "de inzet was nog nooit zo hoog",
+   "nu meer dan ooit",
+   "fundamenteel veranderen hoe we",
+   "in een wereld waarin alles"
+  ],
+  "regex": [
+   "\\b(?:verandert\\s+alles|zet\\s+(?:de\\s+wereld|alles)\\s+op\\s+zijn\\s+kop|bepaalt\\s+het\\s+(?:komende|volgende)\\s+decennium|de\\s+inzet\\s+(?:was|is)\\s+nog\\s+nooit\\s+zo\\s+hoog|nu\\s+meer\\s+dan\\s+ooit|fundamenteel\\s+verander\\w+\\s+hoe\\s+we)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Dit verandert fundamenteel hoe we over alles denken, en de inzet was nog nooit zo hoog.",
+    "na": "De prijswijziging kost een team van tien ongeveer 40 euro per maand extra."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "self-ranking-claim",
+  "naam": "Zelfrangschikking (dit is het belangrijkste punt)",
+  "categorie": "rhetoric",
+  "definitie": "De schrijver vertelt welk van zijn eigen punten het diepe, slimme, tegendraadse of over het hoofd geziene is, in plaats van dat aan de lezer te laten: het belangrijkste punt is, dit is het interessantste stuk, dat laatste is het verrassende, dat is precies het punt, en dat telt. Schrap de etiketzin, of zet het uitgelichte punt vooraan en werk het uit met details.",
+  "cues": [
+   "het belangrijkste punt is",
+   "dit is het interessantste stuk",
+   "dat laatste is het verrassende",
+   "dat is precies het punt",
+   "en dat telt",
+   "dit is waar het spannend wordt",
+   "het slimste eraan is"
+  ],
+  "regex": [
+   "\\b(?:het\\s+(?:belangrijkste|interessantste|mooiste|slimste|verrassendste)\\s+(?:punt|deel|stuk|eraan)\\s+is|dat\\s+is\\s+precies\\s+het\\s+punt|en\\s+dat\\s+telt|dit\\s+is\\s+waar\\s+het\\s+(?:spannend|interessant)\\s+wordt|dat\\s+laatste\\s+is\\s+(?:het|de)\\s+(?:verrassende|tegendraadse))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Twee losse indexen voor gelaagde opslag. Dat laatste is het tegendraadse.",
+    "na": "Twee losse indexen voor gelaagde opslag. Bij elkaar zetten helpt meestal voor de cache, en juist het splitsen houdt het hete pad goedkoop."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "announced-interest",
+  "naam": "Aangekondigde interesse (Wat mij opviel)",
+  "categorie": "rhetoric",
+  "definitie": "Een aankondiging duidt het belang vooraf of claimt een reactie die de tekst nog niet heeft verdiend: Wat mij opviel, Dit vond ik interessant, Hier wordt het interessant, Wat me verbaasde, Ik was verrast te zien dat, Het interessantste deel. Het werkt alleen als er echt verrassende gegevens volgen.",
+  "cues": [
+   "Wat mij opviel",
+   "Wat me verbaasde",
+   "Dit vond ik interessant",
+   "Hier wordt het interessant",
+   "Ik was verrast te zien dat",
+   "Het interessantste deel",
+   "Wat me raakte"
+  ],
+  "regex": [
+   "\\b(?:wat\\s+(?:mij|me)\\s+(?:opviel|verbaasde|raakte|verraste)|dit\\s+vond\\s+ik\\s+(?:interessant|opvallend)|hier\\s+wordt\\s+het\\s+interessant|ik\\s+was\\s+verrast|het\\s+(?:leukste|interessantste)\\s+(?:deel|stuk))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Hier wordt het interessant.",
+    "na": "De omzet daalde 8 procent terwijl het personeelsbestand met 20 procent groeide."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "aphoristic-ender",
+  "naam": "Aforistische slotzin",
+  "categorie": "rhetoric",
+  "definitie": "Een alinea, hoofdstuk of stuk landt op een compacte spreuk die het punt als wijsheid herhaalt in plaats van iets toe te voegen: De toekomst komt niet, die is er al. En dat telt. Zo simpel is het. Nu is het moment om. Veel voorkomende bijvormen zijn het contrastslot (X, geen Y) en de oproep tot actie. Schrap hem in plaats van hem te herschrijven naar een betere beeldspraak, en eindig op de helderste concrete zin die al in het stuk staat.",
+  "cues": [
+   "En dat telt.",
+   "Zo simpel is het.",
+   "De toekomst is al begonnen.",
+   "Daar begint het pas.",
+   "Nu is het moment om",
+   "En dat is precies het punt."
+  ],
+  "regex": [
+   "(?m)(?:^|[.!?]\\s)(?:en\\s+dat\\s+telt\\.|zo\\s+simpel\\s+is\\s+het\\.|de\\s+toekomst\\s+(?:is\\s+al\\s+begonnen|begint\\s+nu)\\.|daar\\s+begint\\s+het\\s+pas\\.|nu\\s+is\\s+het\\s+moment\\s+om)"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De toekomst komt niet. Die is er al.",
+    "na": "Drie van de vijf teams draaien het al in productie."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "aphorism-formula",
+  "naam": "Aforismesjabloon (X is de taal van Y)",
+  "categorie": "rhetoric",
+  "definitie": "Een gewone bewering wordt omgegoten tot citeerbare wetmatigheid door een invulmetafoor: X is de taal van Y, de munt van Z, de architectuur van vertrouwen, X wordt een valkuil, X is de Excel van de agents, plus het transformatieframe dat een verschuiving dramatiseert (van X naar Y, voorbij X richting Y). De vorm doet het overtuigingswerk in plaats van bewijs.",
+  "cues": [
+   "is de taal van",
+   "is de munt van",
+   "de architectuur van vertrouwen",
+   "wordt een valkuil",
+   "is geen tool maar een spiegel",
+   "de Excel van",
+   "van X naar Y",
+   "voorbij X richting Y"
+  ],
+  "regex": [
+   "\\bis\\s+de\\s+(?:taal|munt|valuta|architectuur|ruggengraat|motor|brandstof)\\s+van\\b",
+   "\\bwordt\\s+een\\s+valkuil\\b",
+   "\\bis\\s+geen\\s+\\w+\\s+maar\\s+een\\s+spiegel\\b",
+   "\\bvoorbij\\s+\\w+\\s+richting\\s+\\w+\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Symmetrie is de taal van vertrouwen. Efficiëntie wordt een valkuil zodra teams de mens vergeten.",
+    "na": "Symmetrische schermen voelen voorspelbaarder. Een team kan een proces zo strak maken dat het niet meer past bij hoe mensen werken."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "pull-quote-density",
+  "naam": "Elke zin een quote",
+  "categorie": "rhetoric",
+  "definitie": "Regel na regel is geschreven om eruit geknipt te worden: overgepolijste citeerbare zinnen in elke alinea, gestapelde spreuken zonder verbindend weefsel, en losse regels als alinea voor het effect. De tell is de dichtheid, niet die ene goede regel. Houd de sterkste en laat de rest gewone zinnen zijn die het betoog dragen.",
+  "cues": [
+   "elke regel citeerbaar",
+   "gestapelde spreuken",
+   "losse regel als alinea",
+   "geen verbindende zinnen tussen de uitsmijters"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "Snelheid is een keuze. Stilte ook. En stilte is duur.",
+    "na": "We besloten wekelijks te releasen. Dat betekent dat we storingen binnen een uur melden, wat per release ongeveer twee uur supporttijd kost."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Geen regex: dit is een dichtheidsoordeel over een hele tekst.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "false-profundity-truism",
+  "naam": "Schijndiepzinnigheid (open deur in inzichtvorm)",
+  "categorie": "rhetoric",
+  "definitie": "Een zin heeft de vorm van inzicht, een tegenstelling of een omkering, maar bevat niets waar een lezer iets mee kan of het mee oneens kan zijn: Iedereen twijfelt weleens. Verandering is de enige constante. Uiteindelijk zijn we allemaal mensen. Het zijn de veiligst mogelijke zinnen, waar van iedereen en dus van niemand. Vervang door de concrete bewering, of schrap.",
+  "cues": [
+   "Verandering is de enige constante.",
+   "Uiteindelijk zijn we allemaal mensen.",
+   "Iedereen twijfelt weleens.",
+   "Het begint bij jezelf.",
+   "Niets is zwart-wit."
+  ],
+  "regex": [
+   "\\b(?:verandering\\s+is\\s+de\\s+enige\\s+constante|uiteindelijk\\s+zijn\\s+we\\s+allemaal\\s+(?:maar\\s+)?mensen|iedereen\\s+twijfelt\\s+weleens|het\\s+begint\\s+(?:allemaal\\s+)?bij\\s+jezelf|niets\\s+is\\s+(?:ooit\\s+)?zwart[- ]wit)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Uiteindelijk zijn we allemaal mensen, en verandering is de enige constante.",
+    "na": "Het team haalde de deadline twee keer niet, en beide keren lag het aan dezelfde ongedocumenteerde afhankelijkheid."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "generic-conclusion",
+  "naam": "Nietszeggend slot (de tijd zal het leren)",
+  "categorie": "rhetoric",
+  "definitie": "Een slotzin wijst naar de toekomst of naar zekerheid zonder een bewering die iemand kan nakijken: De toekomst ziet er rooskleurig uit, De tijd zal het leren, Eén ding is zeker, We kijken uit naar wat komt. De toekomstvariant heeft een vaste vorm: hulpwerkwoord plus worden plus een vaag kernwoord (wordt misschien wel hét verhaal van de komende jaren, belooft de standaard te worden). Vervang door een toetsbare versie of schrap.",
+  "cues": [
+   "De toekomst ziet er rooskleurig uit",
+   "De tijd zal het leren",
+   "De toekomst zal het uitwijzen",
+   "Eén ding is zeker",
+   "We kijken uit naar wat komt",
+   "wordt misschien wel hét verhaal van",
+   "belooft de standaard te worden",
+   "Wordt ongetwijfeld vervolgd"
+  ],
+  "regex": [
+   "\\b(?:de\\s+(?:toekomst|tijd)\\s+zal\\s+het\\s+(?:leren|uitwijzen)|de\\s+toekomst\\s+(?:ziet\\s+er\\s+rooskleurig\\s+uit|is\\s+veelbelovend)|(?:één|een)\\s+ding\\s+is\\s+zeker|we\\s+kijken\\s+uit\\s+naar\\s+wat\\s+(?:er\\s+)?komt|wordt\\s+ongetwijfeld\\s+vervolgd|belooft\\s+(?:de|het|een)\\s+\\w+\\s+te\\s+worden)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De combinatie van AI en infrastructuur wordt misschien wel hét verhaal van de komende jaren. De tijd zal het leren.",
+    "na": "Zakt de prijs per rekenuur onder die van AWS, dan verhuizen onze batchjobs in 2027."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "call-to-action-closer",
+  "naam": "Slot dat de lezer opdrachten geeft",
+  "categorie": "rhetoric",
+  "definitie": "Een slotregel geeft de lezer een instructie in plaats van iets te zeggen: de aanbeveling (Zeker de moeite waard:, Bewaar deze post., Doe jezelf een plezier en lees dit.), de uitnodiging (Laten we connecten!, Stuur me gerust een bericht) en het beleidsstuk dat alinea na alinea eindigt op er moet iets gebeuren. Zeg wat het ding is en voor wie, en laat de oproep weg.",
+  "cues": [
+   "Zeker de moeite waard:",
+   "Bewaar deze post.",
+   "Doe jezelf een plezier en lees dit.",
+   "Laten we connecten!",
+   "Stuur me gerust een bericht",
+   "Volg mij voor meer",
+   "Deel het in de reacties"
+  ],
+  "regex": [
+   "\\b(?:zeker\\s+de\\s+moeite\\s+waard|bewaar\\s+(?:deze|dit)\\s+(?:post|bericht|artikel)|doe\\s+jezelf\\s+een\\s+plezier|laten\\s+we\\s+(?:connecten|verbinden)|stuur\\s+me\\s+gerust\\s+een\\s+(?:bericht|dm)|volg\\s+(?:mij|ons)\\s+voor\\s+meer|deel\\s+(?:het|je\\s+ervaring)\\s+in\\s+de\\s+reacties)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Zeker de moeite waard:",
+    "na": "Sarahs uitleg over lekkende contextvensters, de helderste die ik ken als je een RAG-pijplijn debugt."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "speculative-scenario-opener",
+  "naam": "Hypothetische opening (Stel je een wereld voor waarin)",
+  "categorie": "rhetoric",
+  "definitie": "Een betoog opent met een verzonnen wereld die wenselijke uitkomsten opsomt in plaats van een bewering te doen: Stel je een wereld voor waarin, Stel je voor dat, Beeld je in dat, Wat als. Het scenario doet het overtuigingswerk en er volgt geen bewijs. Schrap de hypothese en zeg de echte bewering.",
+  "cues": [
+   "Stel je een wereld voor waarin",
+   "Stel je voor dat",
+   "Beeld je in dat",
+   "Wat als je",
+   "In die wereld"
+  ],
+  "regex": [
+   "\\b(?:stel\\s+je\\s+(?:eens\\s+)?(?:voor\\s+dat|een\\s+wereld\\s+voor)|beeld\\s+je\\s+in\\s+dat|wat\\s+als\\s+(?:je|we|elke|elk))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Stel je een wereld voor waarin elke deploy meteen live staat.",
+    "na": "Als een deploy meteen live stond, ging onze release van een dag naar een paar minuten."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "phantom-rebuttal",
+  "naam": "Schijntegenwerping en correctieve draai",
+  "categorie": "rhetoric",
+  "definitie": "De tekst discussieert met een gesprekspartner die hij zelf verzon: het ontkennen van een standpunt dat niemand innam (Begrijp me niet verkeerd, Om duidelijk te zijn, Dit gaat niet zozeer over, Ik zeg niet dat), de stroman die in één bijzin wordt opgeworpen en weggezet (Een voor de hand liggende aanpak zou zijn ..., maar), en het geënsceneerde zelfgesprek. Meestal een restant van een eerdere versie. Haal de verzonnen tegenwerping weg en noem de echte beperking.",
+  "cues": [
+   "Begrijp me niet verkeerd",
+   "Om duidelijk te zijn",
+   "Dit gaat niet zozeer over",
+   "Ik zeg niet dat",
+   "Je zou kunnen tegenwerpen dat",
+   "Een voor de hand liggende aanpak zou zijn",
+   "Sommigen zullen zeggen"
+  ],
+  "regex": [
+   "\\b(?:begrijp\\s+me\\s+niet\\s+verkeerd|om\\s+(?:heel\\s+)?duidelijk\\s+te\\s+zijn|dit\\s+gaat\\s+niet\\s+zozeer\\s+over|ik\\s+(?:zeg|beweer)\\s+niet\\s+dat|je\\s+zou\\s+kunnen\\s+(?:zeggen|tegenwerpen)\\s+dat|een\\s+voor\\s+de\\s+hand\\s+liggende\\s+(?:aanpak|oplossing)\\s+zou\\s+zijn|sommigen\\s+zullen\\s+zeggen)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Begrijp me niet verkeerd, documentatie doet ertoe. Het gaat erom of de agent de instructie kan gebruiken.",
+    "na": "Het gaat erom of de agent de instructie kan gebruiken als hij handelt."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "invented-crowd-contrast",
+  "naam": "Verzonnen massa als contrast",
+  "categorie": "rhetoric",
+  "definitie": "Een bewering leunt op een achterblijvende menigte die niemand benoemt: Iedereen zegt X, maar, de gangbare wijsheid klopt niet, en de gedateerde staart terwijl de rest nog vergaderde, terwijl de markt nog nadacht. De tegenstander is verzonnen, dus het contrast kost niets. Noem het feit en schrap de menigte, of noem de echte concurrent en wat die deed.",
+  "cues": [
+   "terwijl de rest nog vergaderde",
+   "terwijl anderen nog discussieerden",
+   "terwijl de markt nog nadacht",
+   "Iedereen zegt X, maar",
+   "de gangbare wijsheid",
+   "men denkt vaak dat"
+  ],
+  "regex": [
+   "\\bterwijl\\s+(?:de\\s+rest|iedereen|anderen|de\\s+markt|de\\s+branche)\\s+nog\\b",
+   "\\biedereen\\s+(?:zegt|denkt|roept)\\s+[^.!?]{0,40}\\s+maar\\b",
+   "\\bde\\s+gangbare\\s+(?:wijsheid|opvatting)\\b",
+   "\\bmen\\s+denkt\\s+vaak\\s+dat\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Wij leverden het in 2022, terwijl de rest nog over tijdlijnen vergaderde.",
+    "na": "Wij leverden in 2022. De eerste concurrent met een vergelijkbare functie was Acme, eind 2023."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "scarcity-of-knowledge-claim",
+  "naam": "Claim van verzwegen kennis (wat niemand je vertelt)",
+  "categorie": "rhetoric",
+  "definitie": "De tekst beweert dat haar punt onopgemerkt, verborgen of weggemoffeld is terwijl daar geen sprake van is: wat niemand je vertelt, waar niemand het over heeft, het punt dat iedereen mist, wat de meeste mensen fout doen, dit slaat bijna iedereen over. Het vleit de schrijver als enige kenner en blaast de nieuwswaarde op.",
+  "cues": [
+   "wat niemand je vertelt",
+   "waar niemand het over heeft",
+   "het punt dat iedereen mist",
+   "wat de meeste mensen fout doen",
+   "dit slaat bijna iedereen over",
+   "het stuk dat vaak vergeten wordt"
+  ],
+  "regex": [
+   "\\b(?:wat\\s+niemand\\s+je\\s+vertelt|waar\\s+niemand\\s+het\\s+over\\s+heeft|het\\s+(?:punt|stuk)\\s+dat\\s+(?:iedereen|bijna\\s+niemand)\\s+(?:mist|ziet|vergeet)|wat\\s+de\\s+meeste\\s+mensen\\s+(?:fout\\s+doen|missen)|dit\\s+slaat\\s+bijna\\s+iedereen\\s+over)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Wat iedereen mist: distributie is de echte slotgracht.",
+    "na": "Distributie is de slotgracht."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "launch-copy-introduction",
+  "naam": "Lanceringsintro (Maak kennis met X)",
+  "categorie": "rhetoric",
+  "definitie": "Een product wordt aangekondigd als een deelnemer aan een spelshow in plaats van beschreven: Maak kennis met X, Zeg hallo tegen X, je nieuwe favoriete Y, Denk aan Notion, maar dan voor teams, dé nieuwe standaard. Bijna vaste vorm in korte lanceringscopy. Zeg wat het ding doet en voor wie.",
+  "cues": [
+   "Maak kennis met",
+   "Zeg hallo tegen",
+   "je nieuwe favoriete",
+   "Denk aan Notion, maar dan voor",
+   "dé nieuwe standaard",
+   "dé nieuwe manier om"
+  ],
+  "regex": [
+   "\\b(?:maak\\s+kennis\\s+met|zeg\\s+hallo\\s+tegen|denk\\s+aan\\s+\\w+,?\\s+maar\\s+dan\\s+(?:voor|met)|je\\s+nieuwe\\s+favoriete|dé\\s+nieuwe\\s+(?:standaard|manier|thuisbasis))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Maak kennis met Flowdesk, je nieuwe favoriete treasurydashboard.",
+    "na": "Flowdesk laat de hele treasurypositie van een fonds op één scherm zien."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "lingering-attention-claim",
+  "naam": "Claim van blijvende aandacht (deze zin blijft bij me hangen)",
+  "categorie": "rhetoric",
+  "definitie": "Een deelbericht opent met de claim dat het ding de schrijver al een tijd bezighoudt, voordat de lezer een reden heeft om te kijken: de zin die bij me blijft hangen, ik moet hier steeds aan denken, hier denk ik al de hele week over na. Niet te weerleggen en zelfstrelend. Begin bij het ding zelf.",
+  "cues": [
+   "de zin die bij me blijft hangen",
+   "ik moet hier steeds aan denken",
+   "hier denk ik al de hele week over na",
+   "dit blijft door mijn hoofd spelen",
+   "hier kauw ik al sinds dinsdag op"
+  ],
+  "regex": [
+   "\\b(?:blijft?\\s+(?:bij\\s+me\\s+)?hangen|ik\\s+moet\\s+hier\\s+steeds\\s+aan\\s+denken|daar\\s+denk\\s+ik\\s+al\\s+(?:de\\s+hele\\s+week|dagen)\\s+over\\s+na|blijft\\s+door\\s+mijn\\s+hoofd\\s+(?:spelen|gaan))\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De zin die bij me blijft hangen: agents zijn pubers.",
+    "na": "Jeetu noemt AI-agents pubers."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "performed-insight-phrase",
+  "naam": "Gespeeld inzicht (laat dat even bezinken)",
+  "categorie": "rhetoric",
+  "definitie": "Essayistische tics die diepzinnigheid aankondigen in plaats van leveren: laat dat even bezinken, en dat is niet niks, je weet het antwoord al, de clou is, geloof me niet op mijn woord, dat is precies het punt, blijkt maar weer. Elk ensceneert een onthulling en voegt geen feit toe. Zeg de bewering waar de frase naar wijst: en dat is niet niks wordt de werkelijke omvang van het ding.",
+  "cues": [
+   "laat dat even bezinken",
+   "en dat is niet niks",
+   "je weet het antwoord al",
+   "de clou is",
+   "geloof me niet op mijn woord",
+   "dat is precies het punt",
+   "blijkt maar weer"
+  ],
+  "regex": [
+   "\\b(?:laat\\s+dat\\s+even\\s+(?:bezinken|op\\s+je\\s+inwerken)|en\\s+dat\\s+is\\s+niet\\s+niks|je\\s+weet\\s+het\\s+antwoord\\s+al|de\\s+clou\\s+is|geloof\\s+me\\s+niet\\s+op\\s+mijn\\s+woord|blijkt\\s+maar\\s+weer)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "En dat is niet niks.",
+    "na": "Dat is vier uur per week per engineer."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "fake-casual-register",
+  "naam": "Nagespeelde spreektaal (rekwisieten in plaats van een stem)",
+  "categorie": "rhetoric",
+  "definitie": "Het kostuum dat een model aantrekt als om een losse toon wordt gevraagd: een kist met rekwisieten die het drama uitbesteden aan de rekwisiet. Terugkerende vormen zijn het eenwoordoordeel als slot (bizar., waanzinnig.), de regieaanwijzing tussen sterretjes (*checkt notities*), het knipoogje tussen haakjes (ja, echt), de labelopening (hot take:, leuk weetje:, pro tip:) en het nagespeelde vraaggesprek. Vervang de rekwisiet door de concrete verrassing.",
+  "cues": [
+   "bizar.",
+   "waanzinnig.",
+   "*checkt notities*",
+   "*mic drop*",
+   "(ja, echt)",
+   "(nee, serieus)",
+   "hot take:",
+   "leuk weetje:",
+   "pro tip:",
+   "onpopulaire mening:",
+   "want natuurlijk"
+  ],
+  "regex": [
+   "\\*[a-zà-ü ]{3,20}\\*",
+   "\\((?:ja|nee),?\\s+(?:echt|serieus)\\)",
+   "\\b(?:hot\\s+take|leuk\\s+weetje|pro\\s+tip|onpopulaire\\s+mening|even\\s+serieus)\\s*:",
+   "\\b(?:bizar|waanzinnig|absurd)\\.\\s"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Reageert in 40 ms. *checkt notities* ja echt. bizar.",
+    "na": "Hij antwoordt in 40 milliseconde, gemeten over 10.000 verzoeken met een koude cache."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "metaphor-overuse",
+  "naam": "Doorgevoerde metafoor",
+  "categorie": "rhetoric",
+  "definitie": "Eén beeld wordt geïntroduceerd en daarna nooit meer losgelaten: hetzelfde figuurlijke woord keert vijf tot tien keer terug in een stuk (ecosysteem, reis, kompas, fundament, motor, bouwstenen, rode draad), waar een mens het één keer gebruikt en doorloopt. Gebruik het beeld één keer en zeg het daarna gewoon.",
+  "cues": [
+   "ecosysteem",
+   "reis",
+   "kompas",
+   "fundament",
+   "motor",
+   "bouwstenen",
+   "rode draad",
+   "kruispunt",
+   "paraplu",
+   "stip op de horizon"
+  ],
+  "regex": [
+   "\\b(?:ecosysteem|reis|kompas|fundament|motor|bouwstenen|rode\\s+draad|kruispunt|paraplu|stip\\s+op\\s+de\\s+horizon)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het ecosysteem heeft ecosystemen nodig om ecosysteemwaarde te bouwen.",
+    "na": "Externe tools hebben een API nodig die stabiel genoeg is om op te bouwen, en die leveren we nu."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Poort op herhaling: vijf of meer treffers van hetzelfde woord in één stuk. Losse treffers zijn gewoon Nederlands.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "patronizing-analogy",
+  "naam": "Betuttelende vergelijking (Zie het als ...)",
+  "categorie": "rhetoric",
+  "definitie": "Een ongevraagde vergelijking komt in de plaats van de bewering of de instructie: Zie het als een zakmes voor je workflow, Het is een beetje als een snelweg voor data, Minder een hamer, meer een scalpel. De lezer krijgt twee plaatjes en geen advies. Zeg wat het ding doet, of wat je moet doen.",
+  "cues": [
+   "Zie het als",
+   "Het is een beetje als",
+   "Vergelijk het met",
+   "Het is net alsof",
+   "Minder een hamer, meer een scalpel",
+   "Stel je een X voor die"
+  ],
+  "regex": [
+   "\\b(?:zie\\s+het\\s+als|het\\s+is\\s+een\\s+beetje\\s+als|vergelijk\\s+het\\s+met|het\\s+is\\s+net\\s+als(?:of)?|minder\\s+een\\s+\\w+,\\s*meer\\s+een\\s+\\w+)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Zie het als een zakmes voor je workflow.",
+    "na": "Het draait shelltaken en zet de uitkomst in Slack, vanuit één configuratiebestand."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "historical-analogy-stacking",
+  "naam": "Stapel historische vergelijkingen",
+  "categorie": "rhetoric",
+  "definitie": "Een snelle opsomming van vroegere technieken, bedrijven of omwentelingen wordt aangehaald om hun gewicht te lenen: net als de boekdrukkunst, de telegraaf en het internet, elke grote technologische omwenteling, denk aan Spotify, of aan Uber. De montage vervangt het argument en geen enkele parallel wordt onderzocht. Noem de ene vergelijking die werk doet en zeg wat ze verklaart.",
+  "cues": [
+   "net als de boekdrukkunst",
+   "de telegraaf",
+   "de stoommachine",
+   "elke grote technologische omwenteling",
+   "volgde hetzelfde patroon",
+   "denk aan Spotify",
+   "net zoals Uber"
+  ],
+  "regex": [
+   "\\b(?:net\\s+als\\s+de\\s+boekdrukkunst|de\\s+boekdrukkunst|de\\s+telegraaf|de\\s+stoommachine|elke\\s+(?:grote\\s+)?technologische\\s+(?:omwenteling|revolutie)|volgde\\s+hetzelfde\\s+patroon|denk\\s+aan\\s+spotify|net\\s+zoals\\s+uber)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Net als de boekdrukkunst, de telegraaf en het internet verandert dit de distributie.",
+    "na": "Net als de telegraaf scheidt het de boodschap van de bode, zodat een redactie overal vandaan kan publiceren."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "clean-consequence-connector",
+  "naam": "Gladde gevolgtrekking (volgt direct uit)",
+  "categorie": "rhetoric",
+  "definitie": "Een verbindingswoord beweert dat de conclusie vanzelf uit het voorgaande volgt en leent daarmee onvermijdelijkheid die het betoog niet heeft verdiend: volgt direct uit, komt hier rechtstreeks uit voort, vloeit voort uit, leidt uiteindelijk tot, daarmee is het duidelijk. Laat de redenering zien, of vervang het verbindingswoord door de stap die de conclusie oplevert.",
+  "cues": [
+   "volgt direct uit",
+   "komt hier rechtstreeks uit voort",
+   "vloeit voort uit",
+   "leidt uiteindelijk tot",
+   "daarmee is het duidelijk",
+   "en dus is"
+  ],
+  "regex": [
+   "\\b(?:volgt\\s+(?:direct|rechtstreeks|logisch)\\s+uit|komt\\s+hier\\s+rechtstreeks\\s+uit\\s+voort|vloeit\\s+(?:logisch\\s+)?voort\\s+uit|leidt\\s+uiteindelijk\\s+tot|daarmee\\s+is\\s+(?:het\\s+)?duidelijk)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De kosten die het stuk beschrijft volgen hier direct uit.",
+    "na": "Elke nieuwe poging leest het manifest opnieuw, en daar komen die 200 milliseconde vandaan."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "reflexive-ai-humility",
+  "naam": "Reflexmatige AI-bescheidenheid",
+  "categorie": "rhetoric",
+  "definitie": "De schrijver meldt dat hij zelf een taalmodel is, of dat zijn beweringen wel eens onjuist kunnen zijn, als gebaar van bescheidenheid in plaats van als grens om een concrete bewering: als taalmodel, dit stuk is geschreven door een van de systemen die het beschrijft, het meeste hierboven is een indruk en kan onjuist zijn. Zelfidentificatie hoort nooit in een tekst met een menselijke stem; vervang de tweede vorm door de bewering die onzeker is, met de reden.",
+  "cues": [
+   "als taalmodel",
+   "als AI",
+   "geschreven door een taalmodel",
+   "dit is een indruk en kan onjuist zijn",
+   "ik kan me hierin vergissen"
+  ],
+  "regex": [
+   "\\b(?:als\\s+(?:taalmodel|ai|kunstmatige\\s+intelligentie)|geschreven\\s+door\\s+(?:een\\s+)?(?:taalmodel|ai)|ik\\s+kan\\s+me\\s+(?:hierin\\s+)?vergissen|is\\s+(?:vooral\\s+)?een\\s+indruk\\s+en\\s+kan\\s+onjuist\\s+zijn)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het meeste hierboven is een gestructureerde indruk en kan onjuist zijn.",
+    "na": "De tijden komen van één machine en één run. De volgorde hield stand over drie herhalingen, de absolute waarden niet."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "review-process-deflection",
+  "naam": "Afleiden naar het proces bij kritiek",
+  "categorie": "rhetoric",
+  "definitie": "Als de herkomst of kwaliteit van een bijdrage ter discussie staat, gaat het antwoord over het proces in plaats van over de tekst: de criticus vragen precies aan te wijzen wat er mis is, het bezwaar afdoen als ongefundeerde speculatie, doorverwijzen naar samenwerking (laten we samen het artikel verbeteren), of melden dat de feedback is verwerkt. Beantwoord de inhoud.",
+  "cues": [
+   "geef precies aan welke delen",
+   "laat me weten wat er precies mis is",
+   "ongefundeerde speculatie",
+   "laten we samen het artikel verbeteren",
+   "zonder te onderbouwen waarom",
+   "feedback verwerkt"
+  ],
+  "regex": [
+   "\\b(?:geef\\s+(?:alsjeblieft\\s+)?precies\\s+aan\\s+welke|laat\\s+me\\s+weten\\s+welke\\s+(?:delen|onderdelen)|ongefundeerde\\s+speculatie|laten\\s+we\\s+(?:samen|ons\\s+richten\\s+op)\\s+[^.!?]{0,30}\\s+verbeteren|feedback\\s+verwerkt|zonder\\s+te\\s+onderbouwen\\s+waarom)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Laten we ons richten op constructief overleg en samen het artikel verbeteren in plaats van onnodig conflict.",
+    "na": "Twee van de drie bronnen noemen het onderwerp niet. Ik heb ze vervangen door het provinciale register uit 2019."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "register-mismatch",
+  "naam": "Registermismatch (persbericht als standaard)",
+  "categorie": "rhetoric",
+  "definitie": "Het register komt uit gewoonte en niet uit de context: een gepolijst bedrijfsantwoord op een losse vraag, zinnen die hardop gelezen als persbericht klinken (Wij zijn verheugd te kunnen aankondigen, Met trots presenteren wij, Hierbij delen wij u mede). Lees het hardop; klinkt een zin als communicatie in plaats van als een mens, schrijf hem dan zoals je het zou zeggen.",
+  "cues": [
+   "Wij zijn verheugd te kunnen aankondigen",
+   "Met trots presenteren wij",
+   "Hierbij delen wij u mede",
+   "In het kader van onze doorlopende inspanningen",
+   "Wij streven ernaar om"
+  ],
+  "regex": [
+   "\\b(?:wij\\s+zijn\\s+(?:verheugd|trots|blij)\\s+(?:om\\s+)?(?:te|aan)\\b|met\\s+trots\\s+presenteren\\s+wij|hierbij\\s+delen\\s+wij\\s+u\\s+mede|in\\s+het\\s+kader\\s+van\\s+onze\\s+(?:doorlopende|voortdurende)|wij\\s+streven\\s+ernaar\\s+om)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Wij zijn verheugd te kunnen aankondigen dat wij een verbetering in de deploy-ervaring hebben doorgevoerd.",
+    "na": "Deployen gaat nu ongeveer een minuut sneller."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "flat-affect",
+  "naam": "Vlak affect (één toon van begin tot eind)",
+  "categorie": "rhetoric",
+  "definitie": "Eén toon wordt een heel stuk lang vastgehouden zonder verschuiving van analytisch naar boos naar zacht, de cadans varieert nooit, en de tekenen van een sprekende stem worden dunner: minder vragen, minder terzijdes, minder directe aanspraak. Naast menselijk schrijven in hetzelfde genre leest het tegelijk gelijkmatig warm en gelijkmatig afstandelijk. Laat het register meebewegen met het onderwerp.",
+  "cues": [
+   "geen registerwissel",
+   "cadans varieert nooit",
+   "weinig terzijdes",
+   "geen directe aanspraak",
+   "overal dezelfde zinslengte"
+  ],
+  "regex": [],
+  "voorbeelden": [
+   {
+    "voor": "De storing duurde zes uur. Het team reageerde adequaat. Klanten zijn geïnformeerd. De evaluatie is afgerond.",
+    "na": "De storing duurde zes uur. Een klant mailde ons eerder dan onze eigen monitoring, en dat steekt nog steeds."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Geen regex: dit is een leesoordeel over het hele stuk.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "contrast-slogan-opener",
+  "naam": "Contrastslogan als opening of kop",
+  "categorie": "rhetoric",
+  "definitie": "Een tweedelige contrastslogan staat als eerste regel of kop van een tekst en bepaalt het ding door te zeggen wat het niet is: Eén avond, geen verkooppraatje. De opening hoort te zeggen wat er gebeurt; wat het niet is hoort verderop in een eigen blok, als het al ergens hoort. De constructie zelf staat onder syntax; deze regel gaat over het gebruik op de kopregel.",
+  "cues": [
+   "X, geen Y",
+   "Eén avond, geen verkooppraatje.",
+   "Gewoon code, geen praatjes."
+  ],
+  "regex": [
+   "(?m)^\\s*[^.!?\\n]{3,40},\\s+geen\\s+[^.!?\\n]{3,40}\\.?\\s*$"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Eén avond, geen verkooppraatje.",
+    "na": "Twee talks, wat te eten, en daarna tijd om bij te praten."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "nl-bron",
+  "notities": "Deze entry kwam al uit Nederlandse huiscopy; het Engelse origineel nam het Nederlandse voorbeeld over. Herkomst daarom nl-bron, niet transfer.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "stacked-hedges",
+  "naam": "Gestapelde slagen om de arm",
+  "categorie": "rhetoric",
+  "definitie": "Twee of meer voorbehouden op één gezegde tot het niets meer zegt: het zou mogelijk kunnen zijn dat, er is wellicht een kans dat het misschien, hoewel dit kan verschillen is het over het algemeen in de meeste gevallen goed om op te merken. Bijvormen: de gestapelde voorspelling (zou uiteindelijk kunnen), het terzijde tussen haakjes (en, in toenemende mate, Z) en het etiket dit is een aanname. Houd precies één voorbehoud dat de bron ondersteunt.",
+  "cues": [
+   "zou mogelijk kunnen",
+   "er is wellicht een kans dat",
+   "hoewel dit kan verschillen",
+   "over het algemeen, in de meeste gevallen",
+   "zou uiteindelijk kunnen",
+   "(en, in toenemende mate, ...)",
+   "dit is een aanname"
+  ],
+  "regex": [
+   "\\bzou(?:den)?\\s+(?:mogelijk|wellicht|misschien|uiteindelijk)\\s+kunnen\\b",
+   "\\bhet\\s+zou\\s+kunnen\\s+dat\\s+[^.!?]{0,40}\\s+(?:wellicht|misschien)\\b",
+   "\\bover\\s+het\\s+algemeen[^.!?]{0,40}\\bin\\s+(?:de\\s+meeste|veel)\\s+gevallen\\b",
+   "\\(\\s*(?:en|of),\\s+(?:in\\s+toenemende\\s+mate|preciezer\\s+gezegd|misschien\\s+nog\\s+belangrijker)[^)]*\\)"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Het zou mogelijk kunnen zijn dat het beleid enig effect heeft op de uitkomsten.",
+    "na": "Het beleid heeft mogelijk effect op de uitkomsten."
+   }
+  ],
+  "ernst": "always",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "reflexive-hedging",
+  "naam": "Reflexmatig relativeren (overal lijkt en grotendeels)",
+  "categorie": "rhetoric",
+  "definitie": "Kalibratiewoorden (vrijwel, grotendeels, veelal, doorgaans, ruwweg, op enkele uitzonderingen na) en getuigenisvormen (lijkt, blijkt, wordt geacht, naar het zich laat aanzien) worden op elke bewering geplakt, zodat ze een reflex worden in plaats van echte onzekerheid te volgen. Meet de dichtheid per zin en de herhaling van hetzelfde woord. Het spiegelbeeld is een menselijke tegenindicator: stellige uitspraken (de enige, de eerste, de beste) komen juist vaker van mensen, dus relativeer die niet weg.",
+  "cues": [
+   "lijkt",
+   "blijkt",
+   "grotendeels",
+   "veelal",
+   "doorgaans",
+   "in grote lijnen",
+   "op het eerste gezicht",
+   "naar het zich laat aanzien",
+   "vrijwel altijd",
+   "op enkele uitzonderingen na"
+  ],
+  "regex": [
+   "\\b(?:grotendeels|veelal|doorgaans|in\\s+grote\\s+lijnen|op\\s+het\\s+eerste\\s+gezicht|naar\\s+het\\s+zich\\s+laat\\s+aanzien|op\\s+enkele\\s+uitzonderingen\\s+na|vrijwel\\s+altijd)\\b",
+   "\\b(?:lijkt|blijkt|wordt\\s+geacht)\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "De index lijkt doorgaans grotendeels de bottleneck, en de cache lijkt op het eerste gezicht de tweede.",
+    "na": "De index is de bottleneck. De cache komt daarna."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "Lijkt en blijkt staan in een aparte regex omdat ze los volstrekt gewoon zijn; poort die op dichtheid per zin.",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "didactic-disclaimers",
+  "naam": "Belerende voorbehouden",
+  "categorie": "rhetoric",
+  "definitie": "Waarschuwingen aan de lezer in een tekst die gewoon feiten zou moeten melden: het is belangrijk om te onthouden, houd er rekening mee dat, dit kan per situatie verschillen, raadpleeg altijd een deskundige, controleer dit altijd zelf, let op. Haal voorbehouden weg die de lezer niet vroeg en die de bewering niet nodig heeft; houd er één als het verandert wat de lezer moet doen.",
+  "cues": [
+   "het is belangrijk om te onthouden",
+   "houd er rekening mee dat",
+   "dit kan per situatie verschillen",
+   "raadpleeg altijd een deskundige",
+   "controleer dit altijd zelf",
+   "Let op:",
+   "ter voorkoming van verwarring"
+  ],
+  "regex": [
+   "\\b(?:het\\s+is\\s+(?:belangrijk|goed)\\s+om\\s+te\\s+onthouden|houd\\s+er\\s+rekening\\s+mee\\s+dat|dit\\s+kan\\s+per\\s+(?:situatie|land|geval)\\s+verschillen|raadpleeg\\s+(?:altijd\\s+)?een\\s+(?:deskundige|specialist|arts|adviseur)|controleer\\s+dit\\s+altijd\\s+zelf|ter\\s+voorkoming\\s+van\\s+verwarring|let\\s+op\\s*:)"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Let op: het is belangrijk om te onthouden dat de invloed hiervan per situatie kan verschillen.",
+    "na": "Deze werkgroepen staan buiten de formele structuur van de partij."
+   }
+  ],
+  "ernst": "context",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ },
+ {
+  "en_id": "both-sides-hedge",
+  "naam": "Twee-kanten-opvulling (gespeelde balans)",
+  "categorie": "rhetoric",
+  "definitie": "De symmetrische beweging critici zeggen X, voorstanders zeggen Y, de waarheid ligt in het midden speelt nuance zonder iets te beweren, samen met de veilige woordenschat van niet-kiezen (beide kanten, heeft voordelen maar, zorgvuldig, balans, voor- en nadelen) vanaf vier keer per document. Kies een kant, geef een concrete vergelijking, of maak de bewering afhankelijk van iets wat de lezer kan nakijken. Het toont zich ook als voor- en nadelenlijstjes die even lang zijn gemaakt terwijl het bewijs scheef ligt.",
+  "cues": [
+   "de waarheid ligt in het midden",
+   "beide kanten hebben een punt",
+   "aan de ene kant ... aan de andere kant",
+   "voor- en nadelen",
+   "critici stellen ... voorstanders wijzen op",
+   "het is een kwestie van balans"
+  ],
+  "regex": [
+   "\\b(?:de\\s+waarheid\\s+ligt\\s+(?:ergens\\s+)?in\\s+het\\s+midden|beide\\s+(?:kanten|partijen)\\s+hebben\\s+een\\s+punt|voor-?\\s*en\\s+nadelen|het\\s+is\\s+een\\s+kwestie\\s+van\\s+balans)\\b",
+   "\\baan\\s+de\\s+ene\\s+kant[^.!?]{0,140}aan\\s+de\\s+andere\\s+kant\\b",
+   "\\bcritici\\s+(?:stellen|zeggen|wijzen)[^.!?]{0,80}voorstanders\\b"
+  ],
+  "voorbeelden": [
+   {
+    "voor": "Critici noemen de heffing oneerlijk, voorstanders wijzen op de opbrengst. De waarheid ligt waarschijnlijk in het midden.",
+    "na": "De heffing kost lage inkomens verhoudingsgewijs meer, en de opbrengst gaat naar het busnetwerk. Of die ruil klopt, hangt af van wie er in de bus zit."
+   }
+  ],
+  "ernst": "cluster",
+  "herkomst": "transfer",
+  "notities": "",
+  "bron": "catalog-en.json, categorieën vocabulary/syntax/rhetoric/translationese (123 canonieke entries)"
+ }
+]

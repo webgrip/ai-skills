@@ -1,0 +1,17 @@
+# Uit het Wikipedia-artikel Rijssen (menselijk geschreven)
+
+Rijssen (Nedersaksisch: Riesn) is een stad in de gemeente Rijssen-Holten en ligt in de Nederlandse provincie Overijssel, tussen Deventer en Almelo. De stad telde op   inwoners en is 2806 hectare groot.
+
+De stad bezat ook het recht van een Hoge Bank, dat wil zeggen de hoge rechtbank voor het richterambt Kedingen dat tot aan de Franse tijd heeft bestaan. Hierover zijn meerdere disputen gehouden tussen de stad Goor en de stad Rijssen, om te besluiten wie dit recht mocht bezitten. Rijssen bestuurde het recht over de zogenaamde Rijssense Kwartieren: Hoge Hexel, Wierden, Rectum, Ypelo, Enter, Notter, Zuna en Elsen.
+
+Rijssen kreeg met de stadsrechten ook het recht om zich te verdedigen en er kwamen wallen en grachten. Rijssen had drie stadspoorten: de Molenpoort, de Elsenerpoort en de Haarpoort. 's Avonds werd de avondklok geluid ten teken dat de poorten werden gesloten, een traditie die nog steeds in ere wordt gehouden. De toegang naar het zuiden werd extra bewaakt door de Holtentoren (houten toren) op de Koerbelt. Een verdere verdediging was niet nodig omdat de stad aan de andere zijden was omringd door waterrijke en moerassige gebieden.
+
+De stad Rijssen was later na de 18e eeuw onderverdeeld in zes kwartieren van samen 12 rotten. De rotten of wijken in Rijssen bestonden grotendeels uit de oudste straten. Daarvoor was ze alleen onderverdeeld in rotten. De nu nog bekende rotten zijn: Het Schild, Haarstraat, Elsenerstraat, Bouwstraat, Walstraat, Rozengaarde, Grotestraat, Boomkamp, Huttenwal. Het gebied rondom Rijssen werd markegrond genoemd. Langzaam werd dit door de stad opgeslokt en ging dit tot het buitenrot behoren. In de 18e eeuw bestond Rijssen uit twaalf rotten en één buitenrot. Het buitenrot telde voor de verkiezing niet mee. Dit had te maken met dat het markegrond was en buiten het stadswigbold viel. In elk kwartier mocht de bevolking twee mensen kiezen voor de keur. In totaal waren er derhalve twaalf mensen van wie er uiteindelijk zes overbleven; die zes vormden de Rijssense regering.
+
+In de nacht van 25 op 26 maart 1945 werd Rijssen door een ramp getroffen. Ds. Lamain van de gereformeerde gemeente zou die avond vanaf de kansel gezegd hebben dat er iets ernstigs zou gaan gebeuren. “Er zijn mensen in de kerk voor wie het de laatste keer is dat ze er zijn geweest.” Enkele uren later werden deze woorden bewaarheid. Een V1 stortte neer waarbij 9 mensen om het leven kwamen. Een uit Duitsland terugkerend Engels vliegtuig gooide een bom op de plaats van de vlammenzee, waardoor nog meer slachtoffers vielen. In totaal kwamen bij deze ramp 23 mensen om het leven.
+
+Na de teloorgang van de jute-industrie in de jaren 70 en 80 van de vorige eeuw ontstond in Rijssen een bloeiende bouwnijverheid en transportsector. In 2001 werd de gemeente Rijssen samengevoegd met de Sallandse gemeente Holten. De stad behoort tot de regio Twente en wordt wel de Poort van Twente genoemd.
+
+De grootste kerk van Rijssen, de (Hervormde Gemeente) telt 8916 leden (2016). Daarna komen de Gereformeerde Gemeenten met 6680 leden (2018). De Noorderkerk van de Gereformeerde Gemeente telt circa 1970 zitplaatsen, De Tabernakel telt ruim 1100 zitplaatsen en de Zuiderkerk heeft 1900 zitplaatsen.
+
+Zowel de Noorderkerk als de Zuiderkerk behoort tot de grootste kerken in Nederland voor wat betreft het aantal zitplaatsen. Daarnaast kent Rijssen nog een kerk van de Oud Gereformeerde Gemeenten en een van de Gereformeerde Gemeenten in Nederland.

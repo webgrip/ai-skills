@@ -1,0 +1,185 @@
+{
+  "source": "hassid",
+  "patterns": [
+    {
+      "name": "\"That's not X. That's Y.\" (contrast structure)",
+      "category": "syntax",
+      "definition": "A negation of one framing immediately followed by a parallel sentence that supplies the 'real' framing, typically two short sentences both starting with the same demonstrative (\"That's not ... That's ...\"). The first half exists only to set up the second.",
+      "cues": ["That's not X. That's Y.", "That's not", "That's"],
+      "examples": [
+        {"before": "That's not compliance. That's stalling.", "after": "They're stalling."}
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source rule: \"Say the second half only.\" The negated half carries no information the reader needs. Listed as pattern 1 of nine 'dead giveaways'."
+    },
+    {
+      "name": "Two short bits stuck together (paired fragments)",
+      "category": "syntax",
+      "definition": "Two sentence fragments of one to three words placed back to back as if they were sentences, each ending with a full stop, forming a staccato pair. Often a bare adjective pair or a 'No X. Just Y.' pair.",
+      "cues": ["Fast. Simple.", "No fluff. Just answers.", "No X. Just Y."],
+      "examples": [
+        {"before": "Fast. Simple."},
+        {"before": "No fluff. Just answers."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rule: \"Pick only one to write like a real person.\" No verbatim after is given; the fix is to keep a single fragment or sentence. The 'No X. Just Y.' variant overlaps with the contrast structure in pattern 1 but is a fragment pair, not a full-sentence pair."
+    },
+    {
+      "name": "\"Less a hammer, more a scalpel.\" (comparative metaphor pair)",
+      "category": "rhetoric",
+      "definition": "A 'less X, more Y' construction that contrasts two images or objects instead of stating the instruction. The reader is handed two pictures and left to infer what to do.",
+      "cues": ["Less a hammer, more a scalpel.", "Less X, more Y", "less a", "more a"],
+      "examples": [
+        {"before": "Less a hammer, more a scalpel."}
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Source diagnosis: \"Visualizing two pictures with no advice.\" Source rule: \"Directly say what to do instead.\" The failure is the metaphor standing in for the instruction; a metaphor that is followed by the concrete instruction is a lesser offence, which is why severity is context rather than always."
+    },
+    {
+      "name": "Clapping for itself (self-congratulation)",
+      "category": "rhetoric",
+      "definition": "A short sentence appended after a point that tells the reader the point was important, insightful or exactly right, without adding information. It applauds the preceding sentence.",
+      "cues": ["And that matters.", "That's the part everyone misses.", "Which is exactly the point.", "that matters", "everyone misses", "exactly the point"],
+      "examples": [
+        {"before": "And that matters."},
+        {"before": "That's the part everyone misses."},
+        {"before": "Which is exactly the point."}
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source rule: \"Delete them all. You lose nothing. I promise.\" The fix is pure deletion; nothing replaces the sentence. A deletion test applies: if removing the sentence loses no information, it was self-applause."
+    },
+    {
+      "name": "\"It's the Excel of AI agents.\" (inexact comparison)",
+      "category": "rhetoric",
+      "definition": "An analogy of the form 'the X of Y' that explains a thing by mapping it onto a supposedly familiar reference. It only communicates when the reader already knows both sides of the mapping, which the writer cannot assume.",
+      "cues": ["It's the Excel of AI agents.", "the X of Y", "It's the ... of ..."],
+      "examples": [
+        {"before": "It's the Excel of AI agents."}
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Source: \"Only works if I know both things. Usually I don't.\" No rewrite is given. Tolerable only when both referents are certain to be known by the audience; a tell otherwise. The frame is English but the mechanism transfers to any language."
+    },
+    {
+      "name": "Warming up before talking (filler openers)",
+      "category": "vocabulary",
+      "definition": "A stock throat-clearing sentence at the start of a paragraph or post that announces that something is about to be said instead of saying it. The content begins one sentence later.",
+      "cues": ["Here's the thing.", "Let me be clear.", "The truth is.", "Here's the thing", "Let me be clear", "The truth is"],
+      "examples": [
+        {"before": "Here's the thing."},
+        {"before": "Let me be clear."},
+        {"before": "The truth is."}
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source rule: \"Start one sentence later.\" The fix is deletion of the opener. Related to the candor-flag family (\"the honest answer\") but the source frames it as warm-up, not as a truth claim."
+    },
+    {
+      "name": "Always three things (tricolon)",
+      "category": "syntax",
+      "definition": "Lists, adjective strings and reasons that always come in exactly three items, regardless of how many items the subject actually has. The tell is the constancy of the count, not any single triplet.",
+      "cues": ["Faster, cheaper, smarter.", "X, Y, Z", "three adjectives", "three reasons"],
+      "examples": [
+        {"before": "Faster, cheaper, smarter."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: \"Real life gives you two reasons. Or five. Never always three.\" Severity is cluster because the source itself locates the tell in the repetition of the count across a text, not in one three-item list. Rule: let the number of items be the real number."
+    },
+    {
+      "name": "\"5 to 10 minutes.\" (vague ranges)",
+      "category": "content",
+      "definition": "A numeric range given where a single measured number would exist if the writer had actually done the thing. The range signals that the figure was estimated rather than observed.",
+      "cues": ["5 to 10 minutes", "X to Y minutes", "to", "between X and Y"],
+      "examples": [
+        {"before": "5 to 10 minutes.", "after": "7 minutes."}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source: \"A range means you never did it. Just say 7 minutes.\" Severity is context because a range from genuine variance or a documented measurement is honest; the tell is a range standing in for a number the writer never measured. Implies a fact gate: state only numbers you actually obtained."
+    },
+    {
+      "name": "The ending that repeats the whole post (redundant conclusion)",
+      "category": "structure",
+      "definition": "A closing paragraph that restates the body in summary form, usually introduced by a summarizing connective, instead of ending on the last substantive point.",
+      "cues": ["In short…", "At the end of the day…", "In short", "At the end of the day"],
+      "examples": [
+        {"before": "In short…"},
+        {"before": "At the end of the day…"}
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source rule: \"Just stop typing. End on a high note.\" The fix is to delete the summary and let the strongest last point be the ending. The cue phrases are English; the mechanism (a summary ending) is universal."
+    },
+    {
+      "name": "Em dash (the old tell)",
+      "category": "punctuation-format",
+      "definition": "Heavy use of the em dash as a clause separator. The source names it as the tell everyone learned and states that models are now trained away from it, so its absence proves nothing and its presence is a weaker signal than before.",
+      "cues": ["—", "em dash"],
+      "examples": [
+        {"before": "Everyone learned the em dash trick. AI is trained to not write with em dashes anymore."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Named in the framing, not in the numbered list. Source: \"Everyone learned the em dash trick. AI is trained to not write with em dashes anymore.\" The nine patterns above are presented as the em dash's replacement, so the em dash is a historic tell to keep in the catalog with reduced weight."
+    },
+    {
+      "name": "Perfectly structured sentences",
+      "category": "structure",
+      "definition": "Prose in which every sentence is complete, balanced and grammatically tidy, with no roughness, asides or uneven rhythm. Over-polish itself now reads as machine output.",
+      "cues": ["perfectly structured sentences"],
+      "examples": [
+        {"before": "Now you can get accused of using AI if you write in perfectly structured sentences."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied by the framing sentence, not a numbered pattern. It is a density signal: only a tell when the whole text is uniformly polished. The source offers no rewrite rule beyond the nine patterns and Zinsser's 'Humanity'."
+    },
+    {
+      "name": "Self-repetition in long sessions",
+      "category": "structure",
+      "definition": "The same point, phrase or sentence recurring across a draft, which the source attributes to long chat contexts where the model starts repeating itself.",
+      "cues": ["repeats itself"],
+      "examples": [
+        {"before": "If your chat is long, the writing gets worse. It repeats itself & goes back to the pretty sentences."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied from Step 6. The source's remedy is procedural (start a new chat when the context is half full and paste the files back), not a rewrite rule."
+    },
+    {
+      "name": "Pretty sentences (ornamental regression)",
+      "category": "rhetoric",
+      "definition": "Ornamental, rhythmically pleasing phrasing chosen over the plain statement of the point; the source describes the model drifting back to it in long sessions even after being told to write plainly.",
+      "cues": ["pretty sentences"],
+      "examples": [
+        {"before": "It repeats itself & goes back to the pretty sentences."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied from Step 6. Overlaps with several numbered patterns (contrast structure, paired fragments, tricolon) which are the concrete forms 'pretty sentences' take; kept separate because the source names it as a distinct regression symptom."
+    }
+  ],
+  "methodology": [
+    {"topic": "workflow", "rule": "Put \"Use ASD-STE100.\" in the prompt first: the aerospace Simplified Technical English standard (short words, short sentences, written so that a confusing sentence cannot kill someone). The source claims those two words remove about 80% of the bad writing and that the instruction works on Claude, ChatGPT, Gemini and Grok."},
+    {"topic": "workflow", "rule": "Install the full rule set as a reusable skill rather than retyping the instruction: download the zip from ste.rubenhassid.ai, upload it as a skill (Claude: Customize > Skills > Upload a skill), invoke it with /ste."},
+    {"topic": "register", "rule": "Apply the STE-style plain-writing mode to guides, steps, explanations, emails and documents only. Turn it off for anything with a heart (poems, LinkedIn posts, personal writing): the source reports STE output for a poem was unreadable and a LinkedIn post 'sounded German'."},
+    {"topic": "voice", "rule": "Add to the project instruction file (claude.md): \"follow Zinsser's four principles of quality writing: 1. Simplicity 2. Brevity 3. Clarity 4. Humanity\". STE delivers the first three and forgets Humanity; this line puts it back."},
+    {"topic": "workflow", "rule": "Keep a 'forbidden' markdown file containing the nine patterns and instruct the model to check every draft against it before returning it (detect against a catalog, then fix)."},
+    {"topic": "workflow", "rule": "Iterate the catalog: every time you spot a new AI pattern in a draft, add a line to the forbidden file. The file is expected to grow weekly."},
+    {"topic": "workflow", "rule": "Start a new chat more often. When the context feels half full, open a fresh chat and paste the rule files back in, because writing quality degrades in long chats (repetition, return to pretty sentences)."},
+    {"topic": "facts", "rule": "Do not write a numeric range where a measured number should exist. \"A range means you never did it.\" State the number you actually obtained (\"Just say 7 minutes\")."},
+    {"topic": "modes", "rule": "Prefer deletion over rewriting: for self-applause sentences, filler openers and summary endings the fix is to remove the sentence entirely (\"Delete them all. You lose nothing.\", \"Start one sentence later.\", \"Just stop typing.\")."},
+    {"topic": "modes", "rule": "For the contrast structure, keep only the affirmative half (\"Say the second half only.\"); for paired fragments keep one of the two (\"Pick only one\"); for a comparative metaphor replace it with the direct instruction (\"Directly say what to do instead.\")."},
+    {"topic": "output", "rule": "End on the strongest substantive point; do not append a summary paragraph (\"End on a high note.\")."},
+    {"topic": "false-positives", "rule": "A single three-item list is not the tell; the tell is that every list has three items. Let the item count be the real count (\"Real life gives you two reasons. Or five. Never always three.\")."},
+    {"topic": "false-positives", "rule": "An 'X of Y' analogy is acceptable only when the reader is certain to know both referents; otherwise it fails to communicate."},
+    {"topic": "other", "rule": "The em dash is no longer a reliable tell: models are trained away from it, so detection must rest on the structural patterns instead."},
+    {"topic": "other", "rule": "Anti-goal implied by the framing: the aim is to 'write like a real person', not to defeat a detector; the source gives no detector-bypass tactic and no fact-bending advice."}
+  ],
+  "coverage_note": "Read the whole file /private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/lists/ruben-hassid-new-em-dash.txt (110 lines, lines 1-110 in one sed pass; the file is shorter than one 250-line chunk). Extracted all nine numbered patterns with their verbatim cues and examples, plus four implied patterns from the framing and Step 6 (em dash as the superseded tell, perfectly structured sentences, self-repetition in long sessions, pretty sentences). Left out deliberately: Substack page chrome (navigation, 'Start your Substack', 'Relevant people', date and time stamps) and the promotional lines for ste.rubenhassid.ai except where they carry a procedural rule. Nothing unclassifiable; two judgment calls: 'pretty sentences' and 'self-repetition' are named together as one symptom in Step 6 and were split because they describe different defects. The source gives explicit 'after' text only for patterns 1 and 8; for the others only the fix rule is stated, so those examples carry a before only. Severity labels are my assignment informed by the source's rules (the source calls all nine 'dead giveaways' and gives no tiering); the source offers no scoring scheme, no change-rate limit and no quote/name protection gate."
+}

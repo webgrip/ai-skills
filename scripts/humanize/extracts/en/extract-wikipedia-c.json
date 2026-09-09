@@ -1,0 +1,802 @@
+{
+  "source": "wikipedia-c",
+  "patterns": [
+    {
+      "name": "Use of Markdown (WP:MARKDOWN)",
+      "category": "artifacts",
+      "definition": "Markdown syntax appears on a surface that does not render Markdown: asterisks or underscores for bold/italic, hash symbols for headings, parenthesised URLs after bracketed link text, and ---/***/___ thematic breaks. Chatbots default to Markdown because their system prompts instruct it, and copy-to-clipboard preserves it.",
+      "cues": ["**bold**", "*italic*", "_italic_", "# Header 1", "## Heading", "### Heading", "#### Heading", "[text](url)", "---", "***", "___", "single space after hash symbols for headers", "blank line before and after headers, lists, and code blocks", "two spaces before the asterisk (*) or hyphen (-) for each level of nesting", "three spaces before the number and period (e.g., \"1.\")"],
+      "examples": [
+        {"before": "every unblock request has been met with **summary rejection** — not based on specific diffs or policy violations, but instead on **speculation about motive**, assertions of being \"unhelpful\", and a general impression that I am \"not here to build an encyclopedia\". No one has meaningfully addressed the fact that I have **not made disruptive edits**, **not engaged in edit warring**, and have consistently tried to **collaborate through talk page discussion**"},
+        {"before": "**Concise edit summary:** Improved clarity, flow, and readability of the plot section; reduced redundancy and refined tone for better encyclopedic style."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Markdown ALONE is not a strong indicator: developers, researchers, technical writers and users of Obsidian, GitHub, Reddit, Discord, Slack, iOS Notes, Google Docs and Windows Notepad use it routinely, and new editors may assume the platform supports it. Faulty platform markup MIXED with Markdown is the strong signal, strongest when wrapped in a fenced code block. Claude Sonnet 3.5 (Nov 2024) system prompt quoted as the reason chatbots emit Markdown by default."
+    },
+    {
+      "name": "Wikitext wrapped in Markdown code blocks (fenced ```wikitext)",
+      "category": "artifacts",
+      "definition": "The deliverable is enclosed in a Markdown fenced code block, often with a language tag such as ```wikitext, with Markdown-formatted chatter around it. Three backticks in pasted prose are the literal trigger.",
+      "cues": ["```wikitext", "```", "```markdown"],
+      "examples": [{"before": "```wikitext"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source calls faulty wikitext mixed with Markdown 'a strong indicator', 'especially if in the form of a fenced Markdown code block'. Outside Wikipedia the same footprint is any fenced block leaking into an email, ticket, CMS field or comment."
+    },
+    {
+      "name": "Markdown ## headings rendered as numbered list",
+      "category": "artifacts",
+      "definition": "Section headings written as ## Heading, which MediaWiki interprets as a numbered-list item rather than a heading; the rendered page shows stray '1.' items where sections should be.",
+      "cues": ["## Geography", "## History", "## Administration", "## Population"],
+      "examples": [{"before": "## Geography\n\nVillers-Chief is situated in the [[Jura Mountains]], in the eastern part of the Doubs department. [...]\n## History\n\nLike many communes in the region, Villers-Chief has an agricultural past."}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "wikipedia-only rendering consequence; the underlying cue (hash headings on a non-Markdown surface) is covered by the Markdown pattern. Heading titles are generic topic labels (Geography, History, Administration, Population)."
+    },
+    {
+      "name": "Markdown link with the URL duplicated as its label",
+      "category": "artifacts",
+      "definition": "A bare URL autolinked by the chatbot renderer and then copied out as [URL](URL), so the same address appears twice back to back inside brackets and parentheses.",
+      "cues": ["[https://", "](https://"],
+      "examples": [{"before": "as detailed in the interview with THE FUTURIST ([https://consciouscreativity.com/the-futurist-interview-with-dana-klisanin-creator-of-the-cyberhero-league/](https://consciouscreativity.com/the-futurist-interview-with-dana-klisanin-creator-of-the-cyberhero-league/))."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied by the Talk:Dana Klisanin example rather than named. Regex: \\[(https?://[^\\]]+)\\]\\(\\1\\)."
+    },
+    {
+      "name": "Offer to convert into the target format",
+      "category": "artifacts",
+      "definition": "A chatbot sentence inside the pasted text offering to turn the output into the platform's own markup, left in because the user pasted the whole reply.",
+      "cues": ["Would you like me to ... turn this into actual Wikipedia markup format (`wikitext`)?"],
+      "examples": [{"before": "Would you like me to ... turn this into actual Wikipedia markup format (`wikitext`)?"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Same family as the closing offer of further help; kept separate because it appears mid-output as a format question rather than as a closer."
+    },
+    {
+      "name": "Broken wikitext / garbled template syntax",
+      "category": "artifacts",
+      "definition": "Platform markup that a chatbot attempted but produced syntactically wrong, notably a garbled Template:AfC submission whose timestamp parameters exploded into repeated date strings.",
+      "cues": ["[[Category:AfC submissions by date/<0030Fri, 13 Jun 2025", "{{AfC submission"],
+      "examples": [{"before": "[[Category:AfC submissions by date/<0030Fri, 13 Jun 2025 08:18:00 +0000202568 2025-06-13T08:18:00+00:00Fridayam0000=error>EpFri, 13 Jun 2025 08:18:00 +0000UTC0000... June 2025|sandbox]]"}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "wikipedia-only. General mechanism transfers: markup the model is not fluent in comes out rudimentary or invalid."
+    },
+    {
+      "name": "ChatGPT contentReference / oaicite placeholder (WP:OAICITE)",
+      "category": "artifacts",
+      "definition": "ChatGPT's internal citation token emitted verbatim in place of a link: :contentReference[oaicite:N]{index=N}, with N increasing through the text.",
+      "cues": [":contentReference[oaicite:0]{index=0}", "contentReference", "oaicite"],
+      "examples": [{"before": "1. **Ethnicity clarification**\n  - :contentReference[oaicite:17]{index=17}\n    * :contentReference[oaicite:18]{index=18} :contentReference[oaicite:19]{index=19}.\n    * Denzil Ibbetson's *Panjab Castes* classifies Sial as Rajputs :contentReference[oaicite:20]{index=20}."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'unambiguous indicator that the text originated with AI'. Search: \"contentReference\" OR \"oaicite\" OR \"oai_citation\"."
+    },
+    {
+      "name": "ChatGPT oai_citation link",
+      "category": "artifacts",
+      "definition": "Markdown link whose label is oai_citation:N‡domain, ChatGPT's browsing-citation form, usually paired with a utm_source=chatgpt.com URL.",
+      "cues": ["[oai_citation:0‡", "oai_citation", "‡"],
+      "examples": [{"before": "launched a \"Zero Rates Increase Roadshow\" on 15 June, with events in Karori, Hataitai, Tawa, and Newtown  [oai_citation:0‡wellington.scoop.co.nz](https://wellington.scoop.co.nz/?p=171473&utm_source=chatgpt.com)."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The double-dagger ‡ between the index and the domain is a strong literal cue on its own."
+    },
+    {
+      "name": "ChatGPT source-count suffix (Wikipedia+1, Site+3)",
+      "category": "artifacts",
+      "definition": "A run of source names each followed by +N (the chatbot UI's 'and N more sources' chip) pasted as plain text at sentence end.",
+      "cues": ["Wikipedia+1", "IT Governance+3ISO+3ISO+3", "Ignyte+3Microsoft Learn+3Google Cloud+3", "Example+1"],
+      "examples": [{"before": "This was created conjointly by technical committee ISO/IEC JTC 1/SC 27 (Information security, cybersecurity, and protection of privacy) IT Governance+3ISO+3ISO+3. It belongs to the ISO/IEC 27000 family that talks about information security management systems (ISMS) and related practice controls. Wikipedia+1."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Regex idea: ([A-Z][\\w .]+\\+\\d+){1,} adjacent to a full stop with no space."
+    },
+    {
+      "name": "ChatGPT citeturn0search0 marker (turn0search0)",
+      "category": "artifacts",
+      "definition": "The token citeturnNsearchM, wrapped in Unicode Private Use Area code points, at sentence ends where the chatbot linked an external site; M increases through the text. First observed February 2025.",
+      "cues": ["citeturn0search0", "turn0search0", "turn0search1", "turn0search2", "citeturn0news0", "citeturn1file0", "turn0news", "turn1file", "cite<generated-reference-identifier>", "<ref name=\"0search12\">"],
+      "examples": [{"before": "The school is also a center for the US College Board examinations, SAT I & SAT II, and has been recognized as an International Fellowship Centre by Cambridge International Examinations. citeturn0search1\n\nFor more information, you can visit their official website: citeturn0search0"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Regex from source: turn0(search|image|news|file)[0-9]+. The PUA wrappers are often invisible; match the bare token. Less often it appears as a ref name, e.g. <ref name=\"0search12\">."
+    },
+    {
+      "name": "ChatGPT bare trailing numeral (stripped PUA citation)",
+      "category": "artifacts",
+      "definition": "The shorter form of the citeturn marker: only an increasing integer wrapped in PUA characters, which after paste shows as a lone digit glued to the end of a sentence with no superscript or bracket.",
+      "cues": ["Demon Slayer''.2", "Love is War''.3", "adaptation.5"],
+      "examples": [{"before": "* **Japanese:** Reze is voiced by Reina Ueda, an established voice actress known for roles such as Cha Hae-In in ''Solo Leveling'' and Kanao Tsuyuri in ''Demon Slayer''.2\n* **English:** In the English dub of the anime film, Reze is voiced by Alexis Tipton, noted for her work in series such as ''Kaguya-sama: Love is War''.3\n[...]\nThe film itself holds a high rating on **Rotten Tomatoes** and has been described as a major anime release of 2025, indicating strong overall reception for the Reze Arc storyline and its adaptation.5"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Regex: [.!?]\\d{1,2}(\\s|$) with numerals strictly increasing across the document. Distinguish from genuine footnote superscripts, which are marked up."
+    },
+    {
+      "name": "ChatGPT image placeholder run (turn0image0)",
+      "category": "artifacts",
+      "definition": "A set of images in a chatbot response pasted as the concatenated token iturn0image0turn0image1turn0image4turn0image5.",
+      "cues": ["iturn0image0turn0image1turn0image4turn0image5", "turn0image0", "turn0image1"],
+      "examples": [{"before": "iturn0image0turn0image1turn0image4turn0image5"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Search list in source: turn0image0 OR ... OR turn0image7."
+    },
+    {
+      "name": "ChatGPT attributableIndex JSON",
+      "category": "artifacts",
+      "definition": "Each sentence wrapped as ^[sentence]({\"attribution\":{\"attributableIndex\":\"X-Y\"}}) with X and Y increasing numeric indices; ChatGPT's per-sentence attribution payload leaking as text.",
+      "cues": ["({\"attribution\":{\"attributableIndex\":", "attributableIndex", "^["],
+      "examples": [
+        {"before": "^[Evdokimova was born on 6 October 1939 in Osnova, Kharkov Oblast, Ukrainian SSR (now Kharkiv, Ukraine).]({\"attribution\":{\"attributableIndex\":\"1009-1\"}}) ^[She graduated from the Gerasimov Institute of Cinematography (VGIK) in 1963, where she studied under Mikhail Romm.]({\"attribution\":{\"attributableIndex\":\"1009-2\"}})"},
+        {"before": "‘‘Sociological Science’’ (2018).]({“attribution”:{“attributableIndex”:“3795-0”}})"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The French Wikipedia example shows the quotes turned curly (“attribution”), so match on the word attributableIndex, not on the quote character."
+    },
+    {
+      "name": "Gemini [cite: N] marker",
+      "category": "artifacts",
+      "definition": "Google Gemini's inline citation form [cite: 1] or [cite: 3, 12, 13] left in copied text, typically before the full stop.",
+      "cues": ["[cite: 1]", "[cite: 3, 12, 13]", "[cite: 17]", "[cite: 19, 20, 21]"],
+      "examples": [{"before": "Maloo founded '''Kreative Machinez''' in February 2010[cite: 17].  The agency provides services in search engine marketing, social media marketing, web development, and online branding[cite: 18].  The company employs more than 100 people and has worked with over 1,000 client accounts across sectors such as healthcare, real estate, and e-commerce[cite: 19, 20, 21]."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Regex: \\[cite: \\d+(, \\d+)*\\]. Note the doubled spaces after sentences in the example."
+    },
+    {
+      "name": "Gemini [span_N](start_span) / (end_span) markers (WP:STARTSPAN)",
+      "category": "artifacts",
+      "definition": "Gemini grounding-span markup [span_N](start_span) and [span_N](end_span) wrapped around sentences or fragments, sometimes splitting a word or title.",
+      "cues": ["[span_1](start_span)", "[span_1](end_span)", "(start_span)", "(end_span)", "start span", "end span"],
+      "examples": [{"before": "the group released their fourth studio album, ''[[Fore!]][span_2](start_span)'', in August 1986[span_2](end_span). [span_3](start_span)The album mirrored the multi-platinum status of its predecessor and topped the ''Billboard'' 200 chart[span_3](end_span). ''Fore[span_4](start_span)!'' yielded two number-one singles"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Search list: \"span 0 start span\", insource:/\\(start_span\\)/."
+    },
+    {
+      "name": "Grok grok-card XML tag (WP:GROKCARD)",
+      "category": "artifacts",
+      "definition": "An XML-styled <grok-card data-id=\"...\" data-type=\"citation_card\"> tag after a citation, emitted by Grok.",
+      "cues": ["<grok-card data-id=", "data-type=\"citation_card\"", "grok_card", "grok-card"],
+      "examples": [{"before": "though she has faced societal challenges related to her identity. [...]<grok-card data-id=\"e8ff4f\" data-type=\"citation_card\">"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Search: \"grok-card data-id\"."
+    },
+    {
+      "name": "Grok grok_render_citation_card_json",
+      "category": "artifacts",
+      "definition": "An empty Markdown link whose target is grok_render_citation_card_json={\"cardIds\":[...]} in place of a reference link.",
+      "cues": ["[](grok_render_citation_card_json=", "grok_render_citation_card_json", "\"cardIds\":["],
+      "examples": [{"before": "The platform was showcased at the SAHA Expo 2026 in Istanbul alongside the jet-powered kamikaze UAV AYAZ. [](grok_render_citation_card_json={\"cardIds\":[\"3bb883\"]})"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Example also shows a bare ---- thematic break and **bold** phrases in the same paste."
+    },
+    {
+      "name": "DeepSeek lenticular-bracket dagger citation 【N†L..】",
+      "category": "artifacts",
+      "definition": "Citation marker using CJK lenticular brackets and a dagger: 【85†L261-269】 (source id, dagger, line range). Seen since June 2025; appears specific to DeepSeek and derivatives.",
+      "cues": ["【85†L261-269】", "【854140639155648†L119-L123】", "【29†L582-L589】", "【", "†L", "】"],
+      "examples": [{"before": "In 2024 MP Naushabah Khan launched the \"Love Gillingham\" campaign and a high-street taskforce to improve cleanliness, safety and commerce【85†L261-269】. A community panel is drafting a Gillingham Action Plan, and events like the September 2024 \"Big Day Out\" carnival (2,500+ attendees) help draw people in【85†L269-274】."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Regex from source: 【[0-9]+†. The source id can be a 15-digit number."
+    },
+    {
+      "name": "Source domain names glued to sentence end",
+      "category": "artifacts",
+      "definition": "Bare domain names of cited sources concatenated directly onto the last word of a sentence with no space or punctuation, where a citation chip was flattened to text (e.g. prioritiesmedway.gov.ukmedway.gov.uk).",
+      "cues": ["medway.gov.ukmedway.gov.uk"],
+      "examples": [{"before": "identified preservation of historic shopfronts and pedestrian enhancements as prioritiesmedway.gov.ukmedway.gov.uk."}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied by the Gillingham High Street example, not named. Regex: [a-z]+(?:[a-z0-9-]+\\.)+(?:gov\\.uk|com|org|net)(?:[a-z0-9-]+\\.)+"
+    },
+    {
+      "name": "Perplexity [attached_file:N] / [web:N] tags",
+      "category": "artifacts",
+      "definition": "Bracketed source tags [attached_file:1] or [web:1] at sentence ends, seen since fall 2025, likely Perplexity-specific.",
+      "cues": ["[attached_file:1]", "[web:1]", "attached_file", "[web:"],
+      "examples": [{"before": "During his time as CEO, Philip Morris's reputation management and media relations brought together business and news interests in ways that later became controversial, with effects still debated in contemporary regulatory and legal discussions.[attached_file:1]"}],
+      "severity": "always",
+      "scope": "universal"
+    },
+    {
+      "name": "Perplexity ppl-ai-file-upload S3 URL",
+      "category": "artifacts",
+      "definition": "A citation URL pointing at an Amazon S3 bucket containing ppl-ai-file-upload, i.e. the user's own uploaded file cited as a source.",
+      "cues": ["ppl-ai-file-upload"],
+      "examples": [{"before": "ppl-ai-file-upload"}],
+      "severity": "always",
+      "scope": "universal"
+    },
+    {
+      "name": ":::writing{variant=\"document\"} document wrapper (unclassified)",
+      "category": "artifacts",
+      "definition": "A container directive :::writing{variant=\"document\" id=\"NNNNN\"} (random 5-digit id) opening the deliverable, often closed by a bare ::: at the end; localised variants exist (:::écriture{variante=\"document\" ...}). Seen from June 2026; tool not identified.",
+      "cues": [":::writing{variant=\"document\" id=\"", ":::écriture{variante=\"document\"", ":::", "writing{variant="],
+      "examples": [
+        {"before": ":::writing{variant=\"document\" id=\"68427\"}"},
+        {"before": ":::écriture{variante=\"document\" id=\"28471\"} == AK7== '''AK7''', aussi connu sous le nom de '''Yanixak7'''"},
+        {"before": ":::\n\nEt petite corr :::"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Triple colons at the start may be interpreted as an indent on wikis. The French example also shows machine-translated section titles ('Célibataires' for Singles, 'Privilèges externes' for External links), a translationese cue."
+    },
+    {
+      "name": "Chatbot preamble before the deliverable",
+      "category": "artifacts",
+      "definition": "The assistant's lead-in sentences (caveat, restatement of the task, 'here's a draft:') pasted along with the content they introduce.",
+      "cues": ["I can help draft a", "but I should be clear:", "Based only on the information you've shared with me, here's a", "here's a professional encyclopedia-style draft:"],
+      "examples": [{"before": "I can help draft a Wikipedia-style biography, but I should be clear: a page written this way is not automatically suitable for Wikipedia. Wikipedia requires facts to be supported by independent, reliable sources, and promotional or unsourced claims may be removed.\n\nBased only on the information you've shared with me, here's a professional encyclopedia-style draft:"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied by the User:Drrbharanidharan example. The preamble often contains the honest caveat the pasted content then ignores."
+    },
+    {
+      "name": "Chatbot name or 'X responded:' prefix leaking into output",
+      "category": "artifacts",
+      "definition": "The model's name, or a transcript label such as 'Claude responded:', at the start of a summary or comment, followed by the assistant's coaching commentary about the text.",
+      "cues": ["ChatGPT I revised", "Claude responded:", "That last sentence is the killer", "you're speaking their language and daring them to argue with it"],
+      "examples": [
+        {"before": "ChatGPT I revised the content to provide a neutral and informative description of the Indira Gandhi National Centre for the Arts (IGNCA)."},
+        {"before": "Claude responded: That last sentence is the killer — \"Subject meets WP:BIO\" — you're speaking their language and daring them to argue with it.Comprehensive rewrite: Early life sourced from University of Miami Athletics official roster"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Both examples are edit summaries; the mechanism is copy of the whole chat turn including the transcript label."
+    },
+    {
+      "name": "Offer of further help / next-step question (collaborative closer)",
+      "category": "artifacts",
+      "definition": "A closing question offering to continue the task (formatting, submitting, guiding step by step) left inside the pasted deliverable, often right before or after the references.",
+      "cues": ["Would you like help formatting and submitting this to Wikipedia, or do you plan to post it yourself?", "I can guide you step-by-step through that too.", "Would you like me to"],
+      "examples": [{"before": "Would you like help formatting and submitting this to Wikipedia, or do you plan to post it yourself? I can guide you step-by-step through that too.\n\n'''Footnotes'''\n\n# KLAS Research. (2024). ''Top Performing RCM Vendors     2024''. https://klasresearch.com ↩ ↩<sup>2</sup>"}],
+      "severity": "always",
+      "scope": "universal"
+    },
+    {
+      "name": "Non-existent or out-of-place categories (WP:AIREDCAT)",
+      "category": "content",
+      "definition": "Hallucinated taxonomy tags: plausible-sounding but non-existent categories (generic concepts or SEO-like keywords), obsolete or renamed categories from training data, or category redirects; on Wikipedia these render as red links.",
+      "cues": ["[[Category:American hip hop musicians]]", "[[Category:Entrepreneurs]]"],
+      "examples": [{"before": "[[Category:American hip hop musicians]]", "after": "[[Category:American hip-hop musicians]]"}],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "wikipedia-only. Not proof on its own: humans make the same mistakes; new users don't know style guidelines; returning editors remember deleted categories. Valid only as corroborating evidence; check earlier revisions because reviewers may have deleted the broken ones. Transferable mechanism: invented tags/labels that look right but don't exist in the system."
+    },
+    {
+      "name": "Non-existent templates and parameters",
+      "category": "artifacts",
+      "definition": "Hallucinated template names (especially plausible infobox types) and parameters that do not exist in the target system, so they render as red links or have no effect.",
+      "cues": ["{{Infobox ancient population", "| descendants =", "| archaeological_sites =", "{{Update submission", "== <!-- EDIT BELOW THIS LINE --> =="],
+      "examples": [
+        {"before": "{{Infobox ancient population\n| name = Gangetic Hunter-Gatherer (GHG)\n| image = [[File:GHG_reconstruction.png|250px]]\n| regions = Ganga Valley (from Haryana to Bengal, between the Vindhyas and Himalayas)\n| descendants = Gangetic peoples, Indus Valley Civilisation, South Indian populations\n| archaeological_sites = Bhimbetka, Sarai Nahar Rai, Mahadaha, Jhusi, Chirand\n}}", "after": "{{Infobox archaeological culture\n| name = Gangetic Hunter-Gatherer (GHG)\n| map = [[File:GHG_reconstruction.png|250px]]\n| region = Ganga Valley (from Haryana to Bengal, between the Vindhyas and Himalayas)\n| followedby = Gangetic peoples, Indus Valley Civilisation, South Indian populations\n| majorsites = Bhimbetka, Sarai Nahar Rai, Mahadaha, Jhusi, Chirand\n}}"},
+        {"before": "== <!-- EDIT BELOW THIS LINE --> == markup\n{{Update submission |reasons=Complete biographical rewrite executed to strip out promotional prose. Incorporated independent third-party literary journal analysis from Ashvamegh Journal to satisfy WP:NBIOGRAPHY. |ts=2026-06-08T12:19:00Z}}"}
+      ],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "wikipedia-only. Many broken templates are legitimate mistakes; the 'infobox' and 'lang' sections of the non-existent-templates report are the likely LLM hallucinations. Transferable: invented API/config keys that look like the real schema."
+    },
+    {
+      "name": "Templates deleted after the knowledge cutoff",
+      "category": "content",
+      "definition": "Use of markup or templates that existed in training data but were deleted since (e.g. the lang-?? series deleted September 2024), a knowledge-cutoff fingerprint.",
+      "cues": ["{{lang-en", "{{lang-fr", "lang-??"],
+      "examples": [{"before": "{{lang-??|...}}"}],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "wikipedia-only instance; general mechanism is stale-API/stale-convention use dated to the model's cutoff."
+    },
+    {
+      "name": "Broken external links in several citations",
+      "category": "content",
+      "definition": "Multiple citations in one new text whose URLs are non-existent sites or 404, and which have no copy in web archives, meaning the link was probably never real.",
+      "cues": ["404", "non-existent websites"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Strong only when SEVERAL are broken and absent from the Internet Archive. False positives: links that work for others (journal via university library), links mangled by bots/scripts, links missing their start or end (a human copy-paste error)."
+    },
+    {
+      "name": "Invalid DOI and ISBN checksums",
+      "category": "content",
+      "definition": "ISBNs that fail checksum validation and DOIs that do not resolve; both indicate a hallucinated reference because real identifiers are checksummed and DOIs resist link rot.",
+      "cues": ["doi", "ISBN", "bad isbn"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Gate: validate every ISBN checksum and resolve every DOI before trusting a citation."
+    },
+    {
+      "name": "DOIs that lead to unrelated articles",
+      "category": "content",
+      "definition": "References to non-existent papers carrying DOIs that are syntactically valid and resolve, but to a different, unrelated article; authors, volumes and dates are invented around a real-looking identifier.",
+      "cues": ["Proceedings of the IEEE", "10.1109/PROC.1974.9547", "10.1109/PROC.1967.6033"],
+      "examples": [{"before": "1. M. E. Van Valkenburg, \"The validity and limitations of Ohm's law in non-linear circuits,\" Proceedings of the IEEE, vol. 62, no. 6, pp. 769–770, Jun. 1974. doi:10.1109/PROC.1974.9547\n\n2. C. L. Fortescue, \"Ohm's Law in alternating current circuits,\" Proceedings of the IEEE, vol. 55, no. 11, pp. 1934–1936, Nov. 1967. doi:10.1109/PROC.1967.6033"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Both IEEE citations were made up; Fortescue had been dead 30+ years at the purported date and the volume/issue lists nothing similar. False positive: 2018–2023 VisualEditor bug inserted low-numbered PubMed IDs (PMID 9, rat livers, in a Disney film list), which look like hallucinations but are not. Gate: resolve the DOI and compare title/authors; check author lifespan against date."
+    },
+    {
+      "name": "Book citations without page numbers or URLs",
+      "category": "content",
+      "definition": "A real, plausibly relevant book cited for a specific claim with no page number, so the citation cannot verify anything; or with a page number but no link to an online text and pages that do not contain the claim.",
+      "cues": ["(8th ed.)", "p. 12"],
+      "examples": [
+        {"before": "1. Dorf, R. C., & Svoboda, J. A. (2010). Introduction to Electric Circuits (8th ed.). Hoboken, NJ: John Wiley & Sons. ISBN 9780470521571."},
+        {"before": "Analysts note that traditionalists often appeal to prudence, stability, and Edmund Burke's notion of \"prescription,\" while reactionaries invoke moral urgency and cultural emergency, framing the present as a deviation from an idealized past. [1]\n\n1. Goldwater, Barry (1960). The Conscience of a Conservative. Victor Publishing. p. 12."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Signs: the book is on a general topic or frequently cited in its field; no URL (legitimate editors often link an online version). Verification: search the online edition for a key term ('Burke' returns nothing in The Conscience of a Conservative)."
+    },
+    {
+      "name": "Incorrect reference re-use syntax after every full stop (WP:AICITESTYLE)",
+      "category": "artifacts",
+      "definition": "An attempt at platform citation conventions that fails in implementation detail: the same wrong re-use marker (e.g. <sup>[3]</sup>) diligently appended after every sentence.",
+      "cues": ["<sup>[3]</sup>", "<sup>[", "]</sup>"],
+      "examples": [{"before": "Only a few psychologists were developing rehabilitation software for individuals with Traumatic Brain Injury (TBI), resulting in a scarcity of available programs.<sup>[3]</sup> Cognitive rehabilitation specialists opted for commercially available computer games that were visually appealing, engaging, repetitive, and entertaining, theorizing their potential remedial effects on neuropsychological dysfunction.<sup>[3]</sup>"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "wikipedia-only syntax; the example also shows 'delved into' and one real reference beside a fabricated one. Predates Bing Deep Search (Dec 2023)."
+    },
+    {
+      "name": "Irrelevant low-ID placeholder link (pubmed.ncbi.nlm.nih.gov/3)",
+      "category": "content",
+      "definition": "A citation URL built from a trivially small identifier (the 'third source' becomes /3), which resolves to a real but wholly irrelevant record; the human then formats it as a proper citation without checking.",
+      "cues": ["https://pubmed.ncbi.nlm.nih.gov/3", "pmid=3"],
+      "examples": [{"before": "<ref>{{Cite journal |last=Smith |first=R. J. |last2=Bryant |first2=R. G. |date=1975-10-27 |title=Metal substitutions incarbonic anhydrase: a halide ion probe study |url=https://pubmed.ncbi.nlm.nih.gov/3 |journal=Biochemical and Biophysical Research Communications |volume=66 |issue=4 |pages=1281–1286 |doi=10.1016/0006-291x(75)90498-2 |issn=0006-291X |pmid=3}}</ref>"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Links resolve, so link-checking alone will not catch it; relevance of the target to the sentence is the test."
+    },
+    {
+      "name": "↩ return-arrow characters around footnotes",
+      "category": "artifacts",
+      "definition": "The ↩ (leftwards arrow with hook) character, used on websites as a jump-back link after a footnote, pasted into the footnote list of a chatbot reply, sometimes doubled with a superscript count.",
+      "cues": ["↩", "↩ ↩<sup>2</sup>"],
+      "examples": [{"before": "# KLAS Research. (2024). ''Top Performing RCM Vendors     2024''. https://klasresearch.com ↩ ↩<sup>2</sup>\n# PR Newswire. (2025, February 18). ''CureMD AI Scribe     Launch Announcement''. https://www.prnewswire.com/news-releases/curemd-ai-scribe ↩"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Example also shows runs of multiple spaces inside titles and a 'Footnotes' list of bare homepage URLs."
+    },
+    {
+      "name": "utm_source=chatgpt.com / utm_source=openai referrer parameter",
+      "category": "artifacts",
+      "definition": "UTM or referrer query parameters that a chatbot appends to URLs it cites: utm_source=chatgpt.com or utm_source=openai (ChatGPT), utm_source=copilot.com (Microsoft Copilot), referrer=grok.com (Grok).",
+      "cues": ["utm_source=chatgpt.com", "utm_source=openai", "utm_source=copilot.com", "referrer=grok.com"],
+      "examples": [{"before": "[https://www.theguardian.com/sport/2025/feb/11/sam-burgess-interview-warrington-rugby-league-luke-littler?utm_source=chatgpt.com]", "after": "[https://www.theguardian.com/sport/2025/feb/11/sam-burgess-interview-warrington-rugby-league-luke-littler]"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Near-definitively proves ChatGPT involvement (rare exception: Google occasionally indexed URLs carrying the parameter) but does NOT prove ChatGPT wrote the prose: some people use AI only to find citations for existing text, visible in edit history. Gemini and Claude use UTM parameters less often. Rewrite action: strip the parameter."
+    },
+    {
+      "name": "Named references declared but unused, or used but undefined",
+      "category": "artifacts",
+      "definition": "A references block listing named sources that are never cited inline (list-defined references with no body use), or inline named refs with no definition; produces 'Cite error: A list-defined reference named ... is not used in the content'.",
+      "cues": ["<references>", "<ref name=", "Cite error: A list-defined reference named", "is not used in the content"],
+      "examples": [{"before": "<references>\n<ref name=\\\"fiercebiotech\\\">https://www.fiercebiotech.com/cro/parexel-co-founder-josef-von-rickenbach-to-end-35-year-run-as-ceo</ref>\n<ref name=\\\"statnews\\\">https://www.statnews.com/2018/03/16/parexel-josef-von-rickenbach-cro/</ref>\n</references>"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "wikipedia-only syntax. Undefined named refs can also come from copy-pasting another article. Transferable: a bibliography that the body never points to."
+    },
+    {
+      "name": "Backslash-escaped quotes in markup",
+      "category": "artifacts",
+      "definition": "Attribute quotes escaped as \\\" inside pasted markup, a JSON/string-escaping leftover from the generating tool's transport layer.",
+      "cues": ["name=\\\"", "\\\""],
+      "examples": [{"before": "<ref name=\\\"fiercebiotech\\\">"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Implied by the Josef von Rickenbach example, not named by the source."
+    },
+    {
+      "name": "Misquoted policies and made-up shortcuts (WP:AIFICTPOLICY, WP:AISHORTCUT)",
+      "category": "content",
+      "definition": "Comments cite rules, guidelines or shortcut links that do not exist or say something other than claimed; fabricated authority references in argument.",
+      "cues": ["WP:", "per policy", "guidelines state"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "wikipedia-only in form; the mechanism (invented rule names, dead internal links) transfers to any community with a rulebook."
+    },
+    {
+      "name": "Transcluding maintenance banners when mentioning them (WP:AITRANSCLUSION)",
+      "category": "artifacts",
+      "definition": "Writing {{Template}} instead of {{tl|Template}} when merely referring to a banner in discussion, so the full banner renders inside the comment.",
+      "cues": ["{{Notability}}", "{{Advert}}"],
+      "examples": [],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "wikipedia-only."
+    },
+    {
+      "name": "Lengthy comments divided into titled sections (WP:AISECTION, WP:AISUBHEADING)",
+      "category": "structure",
+      "definition": "A discussion reply or comment structured like a document: long, split into sections with titles, written as Markdown headings, plain-text titles, or level-2/level-3 subheadings.",
+      "cues": ["## ", "### ", "== ", "=== ", "Conclusion", "#### 📌 Key facts needing addition or correction:"],
+      "examples": [{"before": "#### 📌 Key facts needing addition or correction:\n1. **Group launch & meetings**"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Universal outside Wikipedia: a chat reply, PR comment or email with headings and an emoji-decorated heading."
+    },
+    {
+      "name": "Downplaying AI use by claiming effort to ensure compliance (WP:AIMADEBUTSTILLOK)",
+      "category": "artifacts",
+      "definition": "The writer reassures that they put in effort to make the content adhere to the rules, typically itemising the checks (WP:ITEMIZE), or asserts that the comments reflect their own thoughts (WP:AICOMMENTSAREMINE).",
+      "cues": ["I understand [the/your] concern(s) [about/regarding] AI-generated", "I understand (that) my [contributions] may [have been] perceived as", "to ensure (that) [the content obeys] Wikipedia's [rules]", "to ensure the article adheres to Wikipedia's", "reflect my thoughts"],
+      "examples": [{"before": "I understand concerns regarding AI-generated content"}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Canned assurance of policy adherence; the search phrases are the literal high-yield triggers. Shortcut WP:AIASSURE is referenced as the comment-form sibling of the edit-summary pattern."
+    },
+    {
+      "name": "Requesting input to determine exactly what to improve (WP:AIWANTFEEDBACK, WP:AIREVIEW, WP:WHERESTHEAI)",
+      "category": "rhetoric",
+      "definition": "Asking critics or other participants to point out precisely which parts are AI or what needs fixing, shifting the burden of identification onto the accuser.",
+      "cues": ["please point out exactly", "let me know which parts", "help me determine what I need to improve"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal"
+    },
+    {
+      "name": "Dismissing origin concerns as unsubstantiated speculation (WP:AIUNPROVEN)",
+      "category": "rhetoric",
+      "definition": "Rejecting the accusation of AI use as speculation rather than concrete evidence, demanding proof while addressing none of the substance.",
+      "cues": ["unsubstantiated speculation", "speculation about motive", "concrete", "without explaining how they are substantively flawed"],
+      "examples": [{"before": "some editors have chosen to mock, speculate about my motives, or label my arguments \"AI-generated\" — without explaining how they are substantively flawed."}],
+      "severity": "cluster",
+      "scope": "universal"
+    },
+    {
+      "name": "Urging critics to focus on content instead (WP:LETSFOCUSON)",
+      "category": "rhetoric",
+      "definition": "Redirecting the discussion from provenance to 'improving the content' or 'constructive dialogue', a deflection that pairs with calls for collaboration.",
+      "cues": ["let's focus on", "I urge you to focus on constructive dialogue", "Let's work together to strengthen the article", "rather than engage in unnecessary conflict"],
+      "examples": [{"before": "I urge you to focus on constructive dialogue and respect for all contributors. Let's work together to strengthen the article rather than engage in unnecessary conflict."}],
+      "severity": "cluster",
+      "scope": "universal"
+    },
+    {
+      "name": "Formal-letter opener in a comment (Dear Wikipedia Editorial Team)",
+      "category": "artifacts",
+      "definition": "A discussion post or appeal shaped like business correspondence: a 'Dear ... Team' salutation, 'I am writing to', and 'I hope this message finds you well'.",
+      "cues": ["Dear Wikipedia Editorial Team", "I am writing to", "I hope this message finds you well", "I trust this message finds you well"],
+      "examples": [{"before": "Dear Wikipedia Editorial Team, I am writing to ..."}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Universal shape (email-template register on a chat or forum surface); the salutation itself is platform-specific."
+    },
+    {
+      "name": "Templated AI edit summary (WP:AISUMMARY)",
+      "category": "artifacts",
+      "definition": "Change descriptions that follow a rigid formula unseen before 2023: a full-sentence, exhaustively procedural summary of what was done and how it complies, instead of a terse human note.",
+      "cues": ["Improved clarity, flow, and readability", "reduced redundancy and refined tone for better encyclopedic style", "Reorganized article per", "Comprehensive rewrite:", "Comprehensive formatting update:"],
+      "examples": [
+        {"before": "Improved clarity, flow, and readability of the plot section; reduced redundancy and refined tone for better encyclopedic style.", "after": "ce plot"},
+        {"before": "Reorganized article per RfC to address structural and content management concerns. Separated responses into four sections: Government (senators, DOJ, antitrust review, court hearings), Industry (guilds, trade orgs, notable industry figures), Shareholder (WBD shareholder actions/votes), and Foreign (international regulatory reviews and executive meetings). Background is now limited to developments only: reduced news-style phrasing and close paraphrasing."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Rigid formulae: the more a summary deviates, the less likely it is AI, even if long or formal. Common abbreviations ('ce' for copy edit) are unlikely to be AI. Presence strongly suggests the edit itself is AI (nobody uses AI for the summary but not the writing). Transfers to commit messages and PR descriptions."
+    },
+    {
+      "name": "Older-style edit summary: first person, AI vocabulary, emoji, list or Markdown formatting",
+      "category": "artifacts",
+      "definition": "2023-era summaries written in first person with the same tells as article text (AI vocabulary, emoji, attempted list formatting, Markdown bold), e.g. '**Concise edit summary:**'.",
+      "cues": ["**Concise edit summary:**", "I revised the content to", "The tone was adjusted to be more encyclopedic and less promotional"],
+      "examples": [{"before": "I revised the content to provide a neutral and informative description of the Indira Gandhi National Centre for the Arts (IGNCA). The focus was on presenting the institution's objectives, approach, and programs in a way that adheres to Wikipedia's guidelines. The tone was adjusted to be more encyclopedic and less promotional."}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Historical; newer summaries drop these and become procedural instead. A GPT-3.5-turbo edit-summary dataset (msakota/edisum_dataset) holds older examples."
+    },
+    {
+      "name": "Canned assurance of adherence to policies and guidelines (edit summaries)",
+      "category": "artifacts",
+      "definition": "Reassurance, to a nearly self-conscious extent, that the change complies with the platform's rules, verbose yet unspecific ('ensure neutrality', 'comply with the manual of style'), often stating the obvious that edits to the platform are for the platform.",
+      "cues": ["ensured that... adheres to", "refined", "enhanced", "enriched", "streamlined", "improved", "in compliance with", "complies with", "Wikipedia guidelines", "Wikipedia style", "Wikipedia standards", "revised", "verifiability", "neutrality", "neutral tone", "encyclopedic tone", "clarity", "flow", "for clarity and compliance with the Manual of Style", "corrected promotional wording", "improved sourcing and neutrality", "for a more neutral tone", "Removed promotional", "Improve citations"],
+      "examples": [
+        {"before": "Revised the Capabilities section for clarity and compliance with the Manual of Style; removed unnecessary language parameters, consolidated overlapping fine-tuning sections, corrected promotional wording, and distinguished preprints from established findings.", "after": "removed excessive links per MOS:OVERLINK"},
+        {"before": "Updated the feature-film section with current release information, added coverage of David and Solo Mio, corrected Sound of Freedom details, and improved sourcing and neutrality."},
+        {"before": "Reorganize and copyedit for a more neutral tone. Condensed lists. Removed promotional and mostly unrelated material. Improve citations with museums, grant-organization, independent arts sources, etc. Added 2026 SOLA Award."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Humans do cite a guideline, but briefly and specifically with a link. The more assurances stacked in one summary, covering a wide variety of 'improvements' a human would not bundle, the stronger the sign. The operator behind the bot does not know the rules well enough to prompt anything more specific than 'make this more neutral'."
+    },
+    {
+      "name": "Procedural 'preserved / retained / avoided' statements",
+      "category": "artifacts",
+      "definition": "Mentioning what was deliberately NOT changed or NOT done ('while preserving the original meaning'), which echoes the prompt's constraint ('change X and Y but keep Z') and is unusual in a human change note. Formula: 'Revised [section] to [improve/ensure] [neutrality/verifiability] while preserving [whatever]', or the inverse.",
+      "cues": ["preserved", "preserving", "retained", "retaining", "avoided", "avoiding", "ensured", "ensuring", "aimed to", "aiming to", "while preserving the original meaning and technical details", "preserved existing structure and lead emphasis", "preserved references and categories", "while preserving sourced criticisms"],
+      "examples": [
+        {"before": "Removed promotional language and revised the passage to use a more neutral, balanced tone while preserving the original meaning and technical details."},
+        {"before": "...preserved existing structure and lead emphasis while improving verifiability, neutrality, layout and consistency."},
+        {"before": "Reworded lead and body for neutrality and balance: attributed contested claims to critics/sources, noted internal diversity of views, clarified Peterson's position as adjacent rather than core, and removed loaded phrasing while preserving sourced criticisms."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Goes hand in hand with canned assurance. Transfers directly to commit messages ('while maintaining backward compatibility') and PR descriptions."
+    },
+    {
+      "name": "Overemphasis on presence or reliability of citations",
+      "category": "content",
+      "definition": "The change note stresses that content is 'sourced', 'verified', 'closely attributed to reliable sources', with 'independent/secondary' sources, instead of saying what the content is; the edit-summary form of alluding to coverage without summarising it (WP:AIATTR).",
+      "cues": ["added sourced [information/content/infobox/section]", "added verified [information/content/infobox/section]", "added [coverage/citations/references]", "improved attribution", "with [independent/secondary/third-party/peer-reviewed] sources", "with sourced content", "with ESSA citations", "added sourced information, references", "sourced Military culture section", "All claims verified"],
+      "examples": [
+        {"before": "Build out Professional associations, Regulatory status, and Scope of practice sections with sourced content; add Exercise Physiology row to comparison table with ESSA citations", "after": "Added info about the artist's debut"},
+        {"before": "Expanded the article with new sections, added sourced information, references, and internal/external links."},
+        {"before": "Add sourced Military culture section covering samurai households,literature, ritual, religion, firearms, naval traditions, martial training, medicine, games and Meiji-era bushidō."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "A human is far more likely to describe the content added than the fact that it is sourced. Echoes notability/reliability guideline wording."
+    },
+    {
+      "name": "Overemphasis on parameter, template and markup names",
+      "category": "artifacts",
+      "definition": "Itemising the specific infobox/reference parameters and templates touched, often with their raw markup (brackets, equals signs), and naming 'inline citations' or 'internal links', a granularity a human, especially a newcomer, would not spell out.",
+      "cues": ["infobox parameters (image_size)", "inline citations", "internal links", "internal/external links", "Corrected infobox parameters"],
+      "examples": [{"before": "Comprehensive formatting update: Corrected infobox parameters (image_size), integrated the market actors diagram into the regulation section for context, and added a gallery for additional institutional imagery. Refined leadership data and mission details to match the 2025-2026 digital transition milestones"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Transfers to commit messages that enumerate every field/key touched with its literal syntax."
+    },
+    {
+      "name": "Stating that the edit addresses reviewer feedback",
+      "category": "rhetoric",
+      "definition": "Explicitly announcing that changes were made to address a reviewer's decline or feedback, a statement so obvious a human would not usually make it.",
+      "cues": ["Addressing reviewer feedback", "per reviewer feedback", "Addressed reviewer feedback", "Rewrote from scratch per reviewer feedback"],
+      "examples": [
+        {"before": "Addressing reviewer feedback by integrating independent secondary coverage from mainstream financial media."},
+        {"before": "Rewrote from scratch per reviewer feedback. All claims verified. Added ISNI."},
+        {"before": "Addressed reviewer feedback by improving sourcing, formatting, and neutrality."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Wikipedia AfC origin; transfers to PR follow-up commits ('Addressed review comments') combined with the canned-assurance vocabulary."
+    },
+    {
+      "name": "Pronounced shift in writing style",
+      "category": "artifacts",
+      "definition": "An author's contribution is suddenly flawless or formal compared with their other writing (talk comments versus added text), especially when the baseline predates November 2022; a provenance signal, not a text feature.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Only suspect on a dramatic, not easily explainable shift. Consistency with pre-LLM edits (e.g. habitual boldface, list formatting) argues AGAINST AI. Many writers code-switch to formal prose in certain venues (though they may do so with AI). Long-term AI users drift in parallel with contemporary models: 2023 edits look like 2023 output, 2025 like 2025."
+    },
+    {
+      "name": "Sudden shift in English variety",
+      "category": "vocabulary",
+      "definition": "Mismatch between the author's location, the topic's national ties and the English variety used; several LLMs default to American English unless prompted, so an Indian writer on an Indian university appearing in American spelling is a cue.",
+      "cues": ["American English spelling on non-American topics"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Non-native speakers also mix varieties; treat only as corroboration. Cited to Ju et al. 2025."
+    },
+    {
+      "name": "Reviewer-directed 'submission statement' inside the deliverable",
+      "category": "artifacts",
+      "definition": "A note addressed to the reviewer, pasted into the draft itself, explaining why the subject is notable and which rules the draft meets, ending with thanks; the audience-mismatch reveals the text was generated as a package.",
+      "cues": ["Reviewer note (for AfC):", "This draft is a neutral and well-sourced biography", "All references are from independent, reliable sources", "It meets WP:RS and WP:BLP standards and demonstrates clear notability per WP:NBIO through:", "Thank you for your review."],
+      "examples": [{"before": "Reviewer note (for AfC): This draft is a neutral and well-sourced biography of Portuguese public manager Jorge Patrão. All references are from independent, reliable sources (Público, Diário de Notícias, Jornal de Negócios, RTP, O Interior, Agência Lusa) covering his public career and cultural activity. It meets WP:RS and WP:BLP standards and demonstrates clear notability per WP:NBIO through: – Presidency of Serra da Estrela Tourism Region (1998–2013); [...] Thank you for your review. -->"}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "wikipedia-only in form; transferable as 'cover letter pasted into the document'. Source: lets reviewers know the draft is LLM-generated and should be declined without a second thought."
+    },
+    {
+      "name": "Pre-declined AfC submission template (WP:AIDECLINE)",
+      "category": "artifacts",
+      "definition": "A draft that arrives already carrying a content-free 'submission declined' header because the chatbot supplied {{AfC submission|d}}, whose 'd' parameter pre-declines it; the creator then asks why it was declined with no feedback.",
+      "cues": ["{{AfC submission|d}}", "you declined your", "you declined it yourself", "put a decline"],
+      "examples": [{"before": "{{AfC submission|d}}"}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "wikipedia-only. Source rates a content-free declined header a STRONG indicator; the contribution history shows the creator inserted it."
+    },
+    {
+      "name": "Implausible pre-placed maintenance or protection templates",
+      "category": "artifacts",
+      "definition": "A brand-new page that already carries maintenance tags, protection templates, or dated style templates whose dates predate the page (e.g. {{Use American English|date=September 2022}} on a 2025 creation).",
+      "cues": ["{{Use American English|date=September 2022}}", "{{Use mdy dates|date=February 2025}}", "{{Short description|"],
+      "examples": [{"before": "{{Short description|French inventor and engineer (1861–1942)}}\n{{Use American English|date=September 2022}}\n{{Use mdy dates|date=February 2025}}"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "wikipedia-only. Transferable mechanism: boilerplate metadata copied from training examples with stale dates."
+    },
+    {
+      "name": "Canned user page (WP:AIUSERPAGE)",
+      "category": "structure",
+      "definition": "A profile page following a fixed template: headings like 'Welcome To My User Page!', 'About Me', 'My Interests', 'Let's Connect!', inline-header vertical lists, emoji per bullet, bold or Markdown-bold counts, and a cheerful sign-off.",
+      "cues": ["Welcome To My User Page!", "About Me", "My Interests", "Let's Connect!", "Let's Collaborate", "My Contributions", "Feel free to leave a message on my", "if you have any suggestions, questions, or would like to collaborate", "Happy Editing! 🚀", "✨", "🖊️", "📚", "🔧", "🏆", "💬"],
+      "examples": [{"before": "== ✨ About Me ==\n* 🖊️ I enjoy writing about Indian cinema, culture, and history.\n* 📚 I ensure accuracy by citing reliable sources.\n* 🔧 I work on improving Wikipedia pages through editing and formatting.\n\n== 🏆 My Contributions ==\n* Created and improved '''20+ Wikipedia articles'''\n* Fixed formatting, citations, and grammar issues\n* Engaged in discussions to enhance Wikipedia content\n\n== 💬 Let's Connect! ==\nFeel free to leave a message on my **[[User talk:Arumobileworld|Talk Page]]** if you have any suggestions, questions, or would like to collaborate.\n\n'''Happy Editing! 🚀'''"}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Attempted bold via Markdown (**...**) is 'typically the strongest giveaway'. Search pairs: \"About Me\" + \"Let's Connect\" / \"Let's Collaborate\". Same shape appears on GitHub/LinkedIn bios."
+    },
+    {
+      "name": "Permissions gaming with throwaway AI rewrites (WP:PGAME)",
+      "category": "content",
+      "definition": "Many benign-seeming, unconstructive AI rewrites across dozens of unrelated pages in quick succession, done to inflate an edit count before pursuing a real goal.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "wikipedia-only. One direction only: rapid AI additions are NOT evidence of permissions gaming; but a confirmed permissions gamer's rapid text edits may be AI."
+    },
+    {
+      "name": "Pro-authoritarian bias",
+      "category": "content",
+      "definition": "For some prompts (as of 2026) frontier models lean pro-authoritarian: state-media framing on political topics, more so in Chinese-language responses than English, and more willingness to criticise governments of freer countries than repressive regimes, sometimes citing safety.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Attributed to training on the whole internet including propaganda, and to model makers' user-safety rationale in authoritarian countries (WSJ, Fortune, Aug 2026)."
+    },
+    {
+      "name": "Human counter-indicator: simple is/has phrases",
+      "category": "syntax",
+      "definition": "Plain existential and possessive constructions ('there is a', 'it has a') are more common in human text than in AI text, which avoids them in pursuit of 'formal, neutral, encyclopedic tone'.",
+      "cues": ["there is a", "it has a"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Counter-indicator: presence suggests human. Rewriters should reintroduce these rather than avoid them. Cited to Geng."
+    },
+    {
+      "name": "Human counter-indicator: plain words over stiff or euphemistic synonyms",
+      "category": "vocabulary",
+      "definition": "Humans write 'wrote', 'moved', 'used', 'tried', 'died'; AI prefers 'authored', 'relocated', 'utilized', 'attempted', 'passed away'.",
+      "cues": ["wrote", "moved", "used", "tried", "died", "authored", "relocated", "utilized", "attempted", "passed away"],
+      "examples": [{"before": "authored", "after": "wrote"}, {"before": "relocated", "after": "moved"}, {"before": "utilized", "after": "used"}, {"before": "attempted", "after": "tried"}, {"before": "passed away", "after": "died"}],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Rewrite rule: choose the plain verb."
+    },
+    {
+      "name": "Human counter-indicator: superlative or definitive statements",
+      "category": "rhetoric",
+      "definition": "Committed claims such as 'one of the best', 'is the only', 'was the first' appear more in human writing; AI hedges away from them.",
+      "cues": ["one of the best", "is the only", "was the first"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Counter-indicator; the Manual of Style sometimes prefers them."
+    },
+    {
+      "name": "Human counter-indicator: hedging qualifiers and intensifiers",
+      "category": "vocabulary",
+      "definition": "Small hedges and intensifiers ('very', 'perhaps', 'tends to') are more frequent in human prose than in AI prose.",
+      "cues": ["very", "perhaps", "tends to"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Cited to Reinhart et al., PNAS. Counter-indicator; do not strip these when humanising."
+    },
+    {
+      "name": "Human counter-indicator: isolated wordy constructions",
+      "category": "syntax",
+      "definition": "Occasional wordy phrasings ('as a result of', 'in order to', 'all of the', 'a part of', 'the fact that') occur in human writing and are smoothed away by AI.",
+      "cues": ["as a result of", "in order to", "all of the", "a part of", "the fact that"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Counter-indicator: an isolated wordy construction is a human fingerprint, not a flaw to fix."
+    },
+    {
+      "name": "Didactic disclaimers (WP:DIDACTIC, Nov 2022–2024)",
+      "category": "rhetoric",
+      "definition": "Advice-to-the-reader disclaimers about what is important to note, remember or consider, safety caveats, jurisdiction-varies warnings, and 'to prevent confusion' disambiguation, in text that should simply state facts.",
+      "cues": ["it's important to note", "it's critical to note", "it's crucial to note", "important to remember", "important to consider", "worth noting", "may vary", "It is crucial to differentiate", "to prevent confusion", "However, it's important to note", "It's important to remember"],
+      "examples": [
+        {"before": "However, it's important to note that these caucuses operate outside the formal ANC structure and their influence on policy decisions may vary."},
+        {"before": "It is crucial to differentiate the independent AI research company based in Yerevan, Armenia, which is the subject of this report, from these unrelated organizations to prevent confusion."},
+        {"before": "It's important to remember that what's free in one country might not be free in another, so always check before you use something."}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Historical (~2023), much rarer in newer models; still useful for old text. GPT-4 system card lists such disclaimers as 'partial refusals'. Cited to Pangram technical report."
+    },
+    {
+      "name": "Section summaries / In conclusion (WP:CONCLUSION)",
+      "category": "structure",
+      "definition": "A 'Conclusion' section or a paragraph/section ending that restates its core idea, opened with 'In summary', 'In conclusion' or 'Overall'.",
+      "cues": ["In summary", "In conclusion", "Overall", "Conclusion", "Conclusion:"],
+      "examples": [
+        {"before": "In summary, the educational and training trajectory for nurse scientists typically involves a progression from a master's degree in nursing to a Doctor of Philosophy in Nursing, followed by postdoctoral training in nursing research. This structured pathway ensures that nurse scientists acquire the necessary knowledge and skills to engage in rigorous research and contribute meaningfully to the advancement of nursing science."},
+        {"before": "In conclusion, while the concern about undue focus on Eric Dick's involvement with HCDE is valid, the solution should not be to simply cut large sections of content without proper research and verification. [...] Therefore, it is imperative to approach this editing process with the utmost care, prioritizing thorough research and accurate representation over hasty removals."},
+        {"before": "Conclusion: I'm committed to ensuring that all content in the article meets Wikipedia's standards for reliability and neutrality. However, this requires a collaborative effort."}
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Historical (older LLMs when told to 'write an article'); cited to Ju et al. ACL 2025. The Eric Dick talk-page run shows seven consecutive comments each ending with a summary paragraph."
+    },
+    {
+      "name": "Prompt refusal / 'as an AI language model'",
+      "category": "artifacts",
+      "definition": "A declined or partially declined request left in the output: the model apologises, reminds the reader it is an AI language model, and offers an alternative.",
+      "cues": ["as an AI language model", "as a large language model", "I cannot offer medical advice, but I can...", "I'm sorry", "I can't directly add content to Wikipedia for you, but I can help you"],
+      "examples": [{"before": "As an AI language model, I can't directly add content to Wikipedia for you, but I can help you draft your bibliography."}],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Historical; outright refusals have become increasingly rare."
+    },
+    {
+      "name": "Abrupt cut-off mid-text",
+      "category": "artifacts",
+      "definition": "Text that stops mid-sentence or mid-section because the response hit a token limit and the user never clicked 'continue generating'.",
+      "cues": ["continue generating"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Historical (ChatGPT). Not foolproof: a malformed local copy/paste, or a copyright-violating partial copy, produce the same shape."
+    },
+    {
+      "name": "Outdated access-date parameters",
+      "category": "artifacts",
+      "definition": "Citations carrying a default access-date that is implausibly old relative to the edit (e.g. a December 2025 creation with |access-date=12 December 2024 on multiple citations), because the model's notion of 'today' is stale.",
+      "cues": ["|access-date=12 December 2024", "access-date="],
+      "examples": [{"before": "|access-date=12 December 2024"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "wikipedia-only field; general mechanism is a knowledge-cutoff date leaking into metadata. Newer chatbots seldom do it; legitimate causes: copied citations, offline work, batch moves/merges."
+    },
+    {
+      "name": "Lexical diversity / elegant variation (WP:AIELEVAR)",
+      "category": "vocabulary",
+      "definition": "Systematic avoidance of repeating a noun phrase: the same referent is renamed with a fresh synonym each time it recurs, a footprint of the repetition penalty in older models.",
+      "cues": ["the constraints of socialist realism", "the challenging climate of Soviet artistic constraints", "the confines of state-imposed artistic norms", "the constraints imposed by the Soviet regime", "the artistic norms", "non-conformist artists", "these artists", "like-minded artists", "Russian avant-garde artists", "diverse yet united front of non-conformist artists", "their creativity", "the immense talent", "their artistic aspirations", "his distinctive artistic vision"],
+      "examples": [{"before": "Vierny, after a visit in Moscow in the early 1970's, committed to supporting artists resisting the constraints of socialist realism and discovered Yankilevskly, among others such as Ilya Kabakov and Erik Bulatov. In the challenging climate of Soviet artistic constraints, Yankilevsky, alongside other non-conformist artists, faced obstacles in expressing their creativity freely. Dina Vierny, recognizing the immense talent and the struggle these artists endured, played a pivotal role in aiding their artistic aspirations. [...] shared a common goal—to break free from the confines of state-imposed artistic norms, particularly socialist realism. [...] could further explore and exhibit his distinctive artistic vision without the constraints imposed by the Soviet regime. [...] contributing to the rich tapestry of artistic expression in the vibrant cultural landscape of Paris."}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Observed on Wikipedia pre-2023 vs post-2023 and vs GPT-4o-mini / Gemini-1.5-Flash output (Huang). Does not apply when several pieces were generated in isolation across separate edits. False positive: non-native speakers, e.g. Italian schools teach avoiding repetition. The example also carries 'rich tapestry', 'vibrant cultural landscape', 'pivotal role', 'crucial role', 'groundbreaking', 'flourish', 'fostering'."
+    }
+  ],
+  "methodology": [
+    {"topic": "false-positives", "rule": "Treat Markdown by itself as weak evidence; developers, researchers and users of Obsidian, GitHub, Reddit, Discord, Slack, iOS Notes, Google Docs and Notepad write Markdown habitually. Escalate only when Markdown is mixed with faulty platform markup, and most when the deliverable sits in a fenced code block."},
+    {"topic": "scoring", "rule": "Treat exposed internal formatting code (contentReference, oaicite, citeturn, [cite: N], span markers, grok-card, lenticular-bracket citations, attached_file, :::writing) as an unambiguous indicator of AI origin; no further corroboration needed for that passage."},
+    {"topic": "workflow", "rule": "Search for machine citation ghosts with literal and regex probes: \"contentReference\" OR \"oaicite\" OR \"oai_citation\"; turn0(search|image|news|file)[0-9]+; 【[0-9]+†; \\(start_span\\); \"grok-card data-id\"; \"ppl-ai-file-upload\"; utm_source=chatgpt.com, utm_source=openai, utm_source=copilot.com, referrer=grok.com."},
+    {"topic": "false-positives", "rule": "Do not treat bad or nonexistent categories/tags as proof of AI on their own; humans make the same mistakes. Count them as corroborating evidence only when other signs are present, and check earlier revisions because reviewers may have removed them."},
+    {"topic": "gates", "rule": "Verify identifiers before trusting a citation: validate ISBN checksums, resolve every DOI and compare the resolved title and authors to the citation, check author lifespan against the purported date, and check that the cited volume/issue lists the article."},
+    {"topic": "false-positives", "rule": "Before calling a low-numbered PubMed citation a hallucination, remember the 2018–2023 VisualEditor bug that inserted irrelevant low-PMID references; fix them regardless but do not count them as AI evidence."},
+    {"topic": "gates", "rule": "Treat a set of citations as suspect only when SEVERAL links are dead AND absent from web archives; discount links that work for others (library access), links mangled by bots, and links truncated by a human paste."},
+    {"topic": "gates", "rule": "For book citations, require a page number and prefer a link to an online text; when a page is given, search the online edition for a key term from the claim and reject the citation if it is absent."},
+    {"topic": "false-positives", "rule": "A utm_source=chatgpt.com parameter proves ChatGPT touched the citation, not that it wrote the prose; some writers use AI only to find sources for existing text. Check the edit history before concluding authorship. Rare exception: Google occasionally indexes URLs carrying the parameter."},
+    {"topic": "scoring", "rule": "For change descriptions (edit summaries, commit messages), apply the rigid-formula test: the closer the text follows the procedural template, the likelier AI; the more it deviates, the less likely, even if long and formal. Common abbreviations such as 'ce' argue against AI. Stacked assurances covering many unrelated 'improvements' in one note strengthen the sign."},
+    {"topic": "scoring", "rule": "If the change description is AI-templated, presume the change itself is AI-generated; nobody uses AI for a one-line summary and hand-writes the body."},
+    {"topic": "voice", "rule": "When writing a change note like a human, cite a specific rule briefly with a link ('removed excessive links per MOS:OVERLINK') and describe the content added ('Added info about the artist's debut') rather than that it is sourced, neutral or compliant. Do not mention what was preserved, retained or avoided."},
+    {"topic": "false-positives", "rule": "Raise suspicion on a writing-style shift only if it is dramatic and not easily explainable; non-native speakers mix English varieties, and many writers code-switch to formal prose in certain venues. Consistency with the author's pre-November-2022 style argues against AI."},
+    {"topic": "workflow", "rule": "Compare the suspect text with the author's other writing in the same venue (comments versus contributions) and with their pre-2023 output; expect a long-term AI user's style to drift in step with contemporary models (2023 edits resemble 2023 output, 2025 resemble 2025)."},
+    {"topic": "false-positives", "rule": "Use the permissions-gaming sign in one direction only: rapid AI additions are not evidence of gaming; a confirmed gamer's rapid text edits may be AI."},
+    {"topic": "other", "rule": "Do not assume one model's tells generalise: each model and version has its own idiolect. ChatGPT (GPT-4o) and Grok focus on broader context more than Gemini and Claude; Gemini and Claude are more concise; ChatGPT is likely the most widely used for Wikipedia edits."},
+    {"topic": "gates", "rule": "Rule out AI for any text inserted before November 30, 2022 (ChatGPT public launch); use revision-attribution tools (Who Wrote That?, WikiBlame) to date the passage. Older text can coincidentally show AI signs."},
+    {"topic": "workflow", "rule": "Before concluding fabrication, ask the author to explain the choice: a human can supply the correct link, explain a typo, or quote the passage from the real source."},
+    {"topic": "scoring", "rule": "Count plain human constructions as counter-evidence and preserve them when rewriting: simple is/has phrases, plain verbs (wrote, moved, used, tried, died), committed superlatives, small hedges and intensifiers (very, perhaps, tends to), and isolated wordy constructions (as a result of, in order to, the fact that)."},
+    {"topic": "false-positives", "rule": "Do not use perfect grammar as an indicator; many writers are professionals."},
+    {"topic": "false-positives", "rule": "Do not use a mix of casual and formal registers, or 'clinical plus emotional' tone, as an indicator; it reflects technical-field writers, youth, playfulness, neurodivergence, or multiple authors on one page."},
+    {"topic": "false-positives", "rule": "Do not use 'bland' or 'robotic' impressions as an indicator; LLM output skews positive and verbose, and its specific traits do not necessarily scan as robotic to readers unfamiliar with AI writing."},
+    {"topic": "false-positives", "rule": "Do not treat fancy, academic or formal prose as an indicator; AI overuses SPECIFIC words, and the correlation does not extend to formal register in general."},
+    {"topic": "false-positives", "rule": "Do not treat transition words in isolation (Additionally, Consequently, Notably) as a strong tell; only a few are overused by AI, humans use them in essay-like writing, and style guides accept them."},
+    {"topic": "false-positives", "rule": "Do not treat unsourced content as an AI indicator (over 570,000 articles predate LLMs and lack sources); modern chatbots search the web, so citations are common in AI text even when inaccurate."},
+    {"topic": "false-positives", "rule": "Do not treat random-seeming markup errors as AI: stray <span> tags point to browser extensions or the content-translation tool, and misplaced italics like ''Catch-22 i''s point to VisualEditor mistakes. Only the specific artifacts catalogued under Markup count."},
+    {"topic": "false-positives", "rule": "Do not treat correct platform markup as evidence against AI; visual editors and previews make correct formatting normal."},
+    {"topic": "false-positives", "rule": "Before accusing, check for Dunning–Kruger and confirmation bias; false accusations drive away newcomers and foster suspicion. Detecting LLM text on style alone is not as easy as it seems."},
+    {"topic": "modes", "rule": "Keep historical indicators (didactic disclaimers, In conclusion summaries, prompt refusals, abrupt cut-offs, stale access-dates, elegant variation) in a dated tier: rare in current models, useful for auditing older text; dates are approximate."},
+    {"topic": "false-positives", "rule": "Elegant variation is not a tell when the pieces were generated in separate edits, and non-native speakers (e.g. Italian-schooled writers) are taught to avoid repetition."},
+    {"topic": "false-positives", "rule": "An abrupt cut-off can also be a malformed copy/paste or a partial copyright violation; a stale access-date can come from copied citations, offline work or batch moves."},
+    {"topic": "other", "rule": "When collecting AI citation mistakes as examples, prevent automated citation-fixing bots from repairing them so the artifacts stay accurately represented."},
+    {"topic": "output", "rule": "On Wikipedia, mark suspected pages with the {{Looks AI-generated}} template and collapse suspected AI comments with {{collapse AI}} per WP:AITALK (wikipedia-only)."},
+    {"topic": "workflow", "rule": "Cross-check newly observed markers against external pattern directories (canyoupasstheturingtest.com, tropes.fyi/directory) and the NYT Magazine piece 'Why Does A.I. Write Like … That?' for naming."}
+  ],
+  "coverage_note": "Read lines 1117–1894 of wikipedia-signs-of-ai-writing.wikitext in five sed calls (1117–1366, 1367–1616, 1617–1740, 1741–1866, 1867–1894); the 1617–1866 call was truncated by the tool and re-read in two halves, so every line was seen. Covered: Markup (Markdown, broken wikitext, ChatGPT/Gemini/Grok/DeepSeek/Perplexity/:::writing artifacts, non-existent categories and templates), Citations (broken links, DOI/ISBN, unrelated DOIs, book citations, ref misuse, ↩, utm_source, unused named refs), Comment-specific indicators, Edit summaries (all five sub-sections), Miscellaneous (style shift, submission statements, pre-placed templates, canned user pages, permissions gaming, model differences, pro-authoritarian bias), Signs of human writing, Ineffective indicators, Historical indicators, and the See also / Notes / Further reading / External links tail. Left out deliberately: vocabulary in examples that other sections of the page own (rich tapestry, pivotal role, delved, 'Additionally/Consequently/Notably' as WP:AIVOCAB/transition items) is mentioned only in notes, not extracted as patterns, because the naming sections are outside my range; the huge URL-encoded search-link lists were reduced to their literal search terms; per-example diff/permalink citations and the reference list were not extracted. Implied-by-example patterns I added and flagged as such: duplicated-URL Markdown link, source domains glued to sentence ends, backslash-escaped quotes, chatbot preamble, chatbot-name prefix. Hard to classify: 'Pronounced shift in writing style' and 'Permissions gaming' are author-behaviour signals rather than text features (filed under artifacts/content with notes); 'Differences between LLMs' and 'Age of text' went to methodology; the pro-authoritarian bias section is a content bias rather than a writing sign. The Claude Sonnet 3.5 system-prompt quote was folded into the Markdown pattern's cues."
+}

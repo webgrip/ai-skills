@@ -1,0 +1,25 @@
+{
+  "name": "humanize",
+  "displayName": "Humanize",
+  "description": "Detects and removes the tells of AI-generated writing in English and Dutch, or keeps them out while drafting: a consolidated catalog (negative parallelism, colon reveals, rule of three, em-dash density, hollow intensifiers, promotional and vague-attribution content, chatbot artifacts, and for Dutch the translationese layer of English-shaped Dutch), a register-aware procedure with fact and voice protection, and a dependency-free regex scanner for CI.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "writing",
+    "editing",
+    "ai-tells",
+    "ai-slop",
+    "humanize",
+    "dutch",
+    "nederlands",
+    "copy",
+    "prose-lint",
+    "style"
+  ],
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/humanize",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills"
+}

@@ -1,0 +1,2069 @@
+{
+ "category": "vocabulary",
+ "entries": [
+  {
+   "id": "ai-vocabulary-lexicon",
+   "name": "AI vocabulary lexicon (delve / tapestry / pivotal)",
+   "definition": "A closed list of words whose corpus frequency jumped abruptly after November 2022 and which LLMs reach for regardless of fit. It spans three families that behave identically: figurative verbs used where a concrete one belongs (delve, showcase, underscore, leverage, embark, unpack, garner, shed light on, pave the way), grand abstract nouns borrowed for prestige (tapestry, realm, beacon, landscape, paradigm, mosaic, labyrinth, symphony, bedrock, odyssey, testament), and stock compounds (cutting-edge, game-changer, ever-evolving, deep dive, best practices, thought leadership, at its core, watershed moment, only time will tell). Replace each with the plain word the sentence needs, or cut the clause when it carried no claim.",
+   "cues": [
+    "delve",
+    "delve into",
+    "delves",
+    "delving",
+    "tapestry",
+    "rich tapestry",
+    "realm",
+    "in the realm of",
+    "beacon",
+    "testament",
+    "testament to",
+    "stands as a testament to",
+    "landscape",
+    "ever-evolving landscape",
+    "navigating the complex landscape",
+    "paradigm",
+    "pivotal",
+    "marking a pivotal moment",
+    "meticulous",
+    "meticulously",
+    "seamless",
+    "seamlessly",
+    "showcase",
+    "showcases",
+    "showcasing",
+    "underscore",
+    "underscores",
+    "underscoring",
+    "embark",
+    "embarks",
+    "embarked",
+    "nestled",
+    "vibrant",
+    "thriving",
+    "bustling",
+    "intricate",
+    "intricacies",
+    "complexities",
+    "ever-evolving",
+    "enduring",
+    "daunting",
+    "holistic",
+    "holistically",
+    "actionable",
+    "impactful",
+    "learnings",
+    "synergy",
+    "synergies",
+    "interplay",
+    "symphony",
+    "embrace",
+    "robust",
+    "comprehensive",
+    "cutting-edge",
+    "game-changer",
+    "game-changing",
+    "leverage",
+    "leveraging",
+    "leveraged",
+    "garner",
+    "garnered",
+    "bolstered",
+    "align with",
+    "aligns",
+    "underpins",
+    "notably",
+    "deep dive",
+    "dive into",
+    "dives deep into",
+    "unpack",
+    "unpacking",
+    "thought leader",
+    "thought leadership",
+    "best practices",
+    "at its core",
+    "watershed moment",
+    "the future looks bright",
+    "only time will tell",
+    "despite challenges… continues to thrive",
+    "shed light on",
+    "pave the way",
+    "mosaic",
+    "labyrinth",
+    "cacophony",
+    "kaleidoscope",
+    "odyssey",
+    "bedrock",
+    "cornerstone",
+    "commendable",
+    "surpass",
+    "unwavering",
+    "alignment",
+    "explore",
+    "foster",
+    "elevate",
+    "harness",
+    "streamline",
+    "facilitate",
+    "utilize",
+    "supercharge",
+    "empower",
+    "multifaceted",
+    "paramount",
+    "transformative",
+    "realm of",
+    "key (as an adjective)",
+    "highlight (as a verb)",
+    "emphasizing",
+    "enhance",
+    "fostering",
+    "valuable",
+    "crucial",
+    "boasts (meaning \"has\")",
+    "gate/gated/gating (figurative; preserve established technical usage)",
+    "quietly",
+    "keen",
+    "genuinely",
+    "genuine",
+    "load-bearing",
+    "hit differently",
+    "hits different"
+   ],
+   "regex": [
+    "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|underscor(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|comprehensive|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
+    "\\b(?:best\\s+practices|thought\\s+leader(?:ship|s)?|deep\\s+dive|dives?\\s+deep\\s+into|at\\s+its\\s+core|testament\\s+to|in\\s+the\\s+realms?\\s+of|watershed\\s+moment|marking\\s+a\\s+pivotal\\s+moment|only\\s+time\\s+will\\s+tell|the\\s+future\\s+looks\\s+bright|shed(?:s|ding)?\\s+light\\s+on|paves?\\s+the\\s+way|unpack(?:s|ing)?)\\b",
+    "\\b(?:ever[- ]evolving|evolving|changing|shifting|competitive|digital|technological|business|marketing|political|regulatory|current|modern|broader|complex|cultural|culinary|startup|crypto)\\s+landscape\\b",
+    "\\bdespite\\s+(?:the\\s+)?challenges[^.]{0,80}?continues?\\s+to\\s+thrive\\b"
+   ],
+   "examples": [
+    {
+     "before": "Somali cuisine is an intricate fusion drawing from the rich tapestry of Arab, Indian and Italian flavours, showcasing a pivotal role in global trade.",
+     "after": "Somali cuisine mixes Arab, Indian and Italian influences. Somali merchants were among the first exporters of coffee beans."
+    },
+    {
+     "before": "This comprehensive chapter delves into the intricate web connecting the two conditions.",
+     "after": "This chapter examines how the two conditions are linked."
+    },
+    {
+     "before": "An enduring testament to Italian colonial rule is the widespread adoption of pasta in the local culinary landscape.",
+     "after": "Pasta, introduced under Italian colonial rule, is still common in the south."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "wikipedia-a",
+    "tropes-fyi",
+    "vollmer",
+    "willfrancis",
+    "goedecke"
+   ],
+   "merged_from": [
+    "§7 Overused AI words",
+    "Banned words",
+    "Tier 1A — AI frequency markers",
+    "Word-list violations (Tier 1 word table)",
+    "tier1 (AI vocabulary, single words)",
+    "tier1 multi-word phrases",
+    "High density of 'AI vocabulary' words (WP:AIVOCAB / WP:AIWORDS)",
+    "\"Delve\" and Friends",
+    "\"Tapestry\" and \"Landscape\"",
+    "The 'Delve' family (Kobak excess words)",
+    "Focal words (ChatGPT-3.5, 'Why does ChatGPT delve so much?')",
+    "The 'Tapestry' nouns (metaphors for abstract prestige)",
+    "Banned words: figurative verbs",
+    "Banned words: figurative nouns",
+    "delve",
+    "Flowery words (explore, tapestry)"
+   ],
+   "false_positives": "Take each word in the sense listed: highlight and underscore as verbs, key as an adjective, landscape and tapestry as abstract nouns, boasts meaning 'has', gate/gated/gating only in the figurative sense (feature gating and CI quality gates are established technical usage). Literal senses are not hits: an underscore is a typed mark and can be incidental music, a realm is a kingdom, embark is boarding a ship, a symphony is an orchestral work, intricate designs are literally intricate, a landscape is scenery, a mosaic is tiles, foster can be a family arrangement. Robust, comprehensive, seamless, ecosystem, leverage (of actual platform leverage or APIs), facilitate, underpin and streamline pass in technical writing; still flag delve, tapestry, beacon, embark, testament to and game-changer there. A word being overused does not condemn its synonyms. One or two hits are coincidence and prove nothing about authorship; many of them many times in one post-2022 text is among the strongest available tells, and where there is one there are usually others. Native speakers of Nigerian, Indian and other post-colonial Englishes use delve and other formal diction natively, so a single hit from such a writer is not evidence. Preserve any of these words inside a quotation or when discussing the word itself.",
+   "in_baseline": false
+  },
+  {
+   "id": "elevated-vocabulary-cluster",
+   "name": "Elevated vocabulary cluster (2+ buzz words in one paragraph)",
+   "definition": "Words that are legitimate alone but become a strong signal when two or more appear in one paragraph: inflated verbs (harness, foster, navigate, empower, elevate, unleash, streamline, bolster, spearhead, facilitate, catalyze, cultivate, illuminate, elucidate, augment, unlock, optimize) and their noun and adjective company (ecosystem, cornerstone, myriad, plethora, nuanced, crucial, multifaceted, paramount, poised, burgeoning, nascent, quintessential, overarching, transformative). The paragraph, not the word, is the unit: rewrite it around the concrete action.",
+   "cues": [
+    "harness",
+    "navigate",
+    "navigating",
+    "foster",
+    "elevate",
+    "unleash",
+    "streamline",
+    "empower",
+    "bolster",
+    "spearhead",
+    "resonate",
+    "resonates with",
+    "revolutionize",
+    "facilitate",
+    "facilitates",
+    "underpin",
+    "underpinning",
+    "underpinnings",
+    "nuanced",
+    "crucial",
+    "multifaceted",
+    "ecosystem",
+    "myriad",
+    "plethora",
+    "encompass",
+    "catalyze",
+    "reimagine",
+    "galvanize",
+    "augment",
+    "cultivate",
+    "illuminate",
+    "elucidate",
+    "juxtapose",
+    "paradigm-shifting",
+    "transformative",
+    "transformation",
+    "cornerstone",
+    "paramount",
+    "poised",
+    "poised to",
+    "burgeoning",
+    "nascent",
+    "quintessential",
+    "overarching",
+    "quietly",
+    "deeply",
+    "deeply integrated",
+    "deeply committed",
+    "deeply rooted",
+    "unlock",
+    "supercharge",
+    "optimize",
+    "delve",
+    "dive (into)",
+    "embrace",
+    "align",
+    "unpack",
+    "explore",
+    "utilize",
+    "thriving ecosystem"
+   ],
+   "regex": [
+    "\\b(?:harness(?:es|ing|ed)?|navigat(?:e|es|ing)|foster(?:s|ing|ed)?|elevat(?:e|es|ing|ed)|unleash(?:es|ing|ed)?|streamlin(?:e|es|ing|ed)|empower(?:s|ing|ed)?|bolster(?:s|ing|ed)?|spearhead(?:s|ing|ed)?|resonat(?:e|es|ing|ed)|revolutioniz(?:e|es|ing|ed)|facilitat(?:e|es|ing|ed)|underpin(?:s|ning|ned|nings)?|nuanced|crucial|multifaceted|ecosystems?|myriad|plethora|encompass(?:es|ing|ed)?|catalyz(?:e|es|ing|ed)|reimagin(?:e|es|ing|ed)|galvaniz(?:e|es|ing|ed)|augment(?:s|ing|ed)?|cultivat(?:e|es|ing|ed)|illuminat(?:e|es|ing|ed)|elucidat(?:e|es|ing|ed)|juxtapos(?:e|es|ing|ed)|transformative|transformation|cornerstone|paramount|poised|burgeoning|nascent|quintessential|overarching|paradigm[- ]shifting|unlock(?:s|ing|ed)?|supercharg(?:e|es|ing|ed)|optimiz(?:e|es|ing|ed))\\b",
+    "\\b(?:harness(?:es|ing|ed)?|navigat(?:e|es|ing)|foster(?:s|ing|ed)?|elevat(?:e|es|ing|ed)|unleash(?:es|ing|ed)?|streamlin(?:e|es|ing|ed)|empower(?:s|ing|ed)?|bolster(?:s|ing|ed)?|spearhead(?:s|ing|ed)?|facilitat(?:e|es|ing|ed)|underpin(?:s|ning|ned)?|nuanced|crucial|multifaceted|ecosystems?|myriad|plethora|catalyz(?:e|es|ing|ed)|cultivat(?:e|es|ing|ed)|transformative|cornerstone|paramount|poised|burgeoning|nascent|overarching)\\b(?=[\\s\\S]{0,300}?\\b(?:harness(?:es|ing|ed)?|navigat(?:e|es|ing)|foster(?:s|ing|ed)?|elevat(?:e|es|ing|ed)|unleash(?:es|ing|ed)?|streamlin(?:e|es|ing|ed)|empower(?:s|ing|ed)?|bolster(?:s|ing|ed)?|facilitat(?:e|es|ing|ed)|underpin(?:s|ning|ned)?|nuanced|crucial|multifaceted|ecosystems?|myriad|plethora|transformative|cornerstone|paramount|poised|burgeoning|nascent|overarching)\\b)"
+   ],
+   "examples": [
+    {
+     "before": "The platform empowers teams to harness a thriving ecosystem and foster nuanced collaboration.",
+     "after": "The platform lets teams reuse the plugins other teams publish, so two people can edit one document at once."
+    },
+    {
+     "before": "A crucial, multifaceted cornerstone of the transformation.",
+     "after": "The change rests on one thing: the shared schema."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "vollmer",
+    "baseline"
+   ],
+   "merged_from": [
+    "Tier 2 — Flag when 2+ appear in the same paragraph",
+    "tier2 (word cluster)",
+    "Inflated verbs",
+    "Buzz-verbs"
+   ],
+   "false_positives": "One of these words on its own is ordinary English and is not a finding; the threshold is two or more distinct entries in the same paragraph. Ecosystem flags only as a metaphor, never for an actual biological or package ecosystem. Leverage in finance is a term of art. Navigate is exempt when it means literal navigation. Deeply counts only in significance collocations (deeply integrated, deeply committed, deeply rooted); deeply nested and cares deeply never count. Crucial and cultivate in a paragraph that otherwise reads as the writer's own is noise. The replacement suggestions are defaults, not mandates: if the flagged word is clearly the right one, keep it.",
+   "in_baseline": true
+  },
+  {
+   "id": "vague-praise-adjectives",
+   "name": "Vague praise and hype adjectives (flag at density)",
+   "definition": "Evaluative adjectives and adverbs that assert quality, novelty, scale or importance without a measurable referent: significant, innovative, effective, dynamic, scalable, compelling, unprecedented, exceptional, remarkable, sophisticated, instrumental, plus the marketing superlatives (world-class, state-of-the-art, best-in-class, groundbreaking, unparalleled, revolutionary, transformative) and the performative-enthusiasm set (exciting, incredible, powerful). Korean carries the same set as the hype lexicon 혁신적/획기적/압도적/파격적/폭발적/전례 없는/괄목할 만한. Flag when the text is saturated with them, then replace with a number, a comparison, an example or the concrete property.",
+   "cues": [
+    "significant",
+    "significantly",
+    "innovative",
+    "innovation",
+    "effective",
+    "effectively",
+    "dynamic",
+    "dynamics",
+    "scalable",
+    "scalability",
+    "compelling",
+    "unprecedented",
+    "exceptional",
+    "exceptionally",
+    "remarkable",
+    "remarkably",
+    "sophisticated",
+    "instrumental",
+    "world-class",
+    "state-of-the-art",
+    "best-in-class",
+    "verbatim",
+    "groundbreaking",
+    "unparalleled",
+    "profound",
+    "revolutionary",
+    "game-changing",
+    "transformative",
+    "powerful",
+    "seamless",
+    "robust",
+    "cutting-edge",
+    "vibrant",
+    "multifaceted",
+    "nuanced",
+    "holistic",
+    "ever-evolving",
+    "ever-changing",
+    "exciting",
+    "incredible",
+    "혁신적",
+    "획기적",
+    "압도적",
+    "파격적",
+    "폭발적",
+    "전례 없는",
+    "괄목할 만한",
+    "혁신적인",
+    "획기적인"
+   ],
+   "regex": [
+    "\\b(?:significant|significantly|innovative|innovation|effective|effectively|dynamics?|scalable|scalability|compelling|unprecedented|exceptional|exceptionally|remarkable|remarkably|sophisticated|instrumental|world[- ]class|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|groundbreaking|game[- ]changing|unparalleled)\\b(?=[\\s\\S]{0,300}?\\b(?:significant|significantly|innovative|innovation|effective|effectively|dynamics?|scalable|scalability|compelling|unprecedented|exceptional|exceptionally|remarkable|remarkably|sophisticated|instrumental|world[- ]class|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|groundbreaking|game[- ]changing|unparalleled)\\b)",
+    "\\b(?:groundbreaking|unparalleled|world[- ]class|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|transformative|game[- ]changing)\\b",
+    "혁신적|획기적|압도적|파격적|폭발적|전례\\s*없는|괄목할\\s*만한"
+   ],
+   "examples": [
+    {
+     "before": "An innovative, world-class platform delivering exceptional results and remarkable scalability.",
+     "after": "The platform handled 40,000 requests a second in the March load test, four times what the old one managed."
+    },
+    {
+     "before": "This is an exciting and incredibly powerful release.",
+     "after": "This release cuts cold-start time from 900ms to 120ms."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "vollmer",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "Tier 3 — Flag only at high density",
+    "tier3 (overused word by density)",
+    "D-4 Hype vocabulary (innovative / groundbreaking / overwhelming / radical / explosive / unprecedented)",
+    "D-4 hype 어휘 (hype vocabulary)",
+    "Corporate-inflation adjectives",
+    "Banned words: empty-praise adjectives",
+    "Performative enthusiasm",
+    "Vague praise"
+   ],
+   "false_positives": "These are ordinary words; a single use is not a finding. Detector threshold: one word repeating at or above roughly 3% of the word count with a floor of three occurrences, or three or more distinct hype adjectives in a short piece (the Korean rule is 3+ per document). A significant result in a statistics context, a dynamic in physics or group dynamics, an effective date, and scalable in a capacity discussion are all literal. Verbatim is a term of art in legal, research and QA registers (verbatim transcript, verbatim record); elsewhere it is usually redundant with the verb. Nuanced is fine when the nuance is actually argued. Do not simplify a formal word merely for being formal.",
+   "in_baseline": true
+  },
+  {
+   "id": "boilerplate-phrase-stack",
+   "name": "Stock multi-word boilerplate (repeated or stacked)",
+   "definition": "Two- and three-word phrases that are individually unobjectionable but stack heavily in generated content, worst in crypto, web3, DePIN and AI-infrastructure writing: emerging sector/space/category, the integration of, the intersection of, community-driven, long-term sustainability, user engagement, decentralized compute, (sustainable) reward emissions, tokenized incentive structures, designed for long-term X. Flag one phrase used twice, or three distinct phrases from the family anywhere in one piece even if each appears once.",
+   "cues": [
+    "emerging sector",
+    "emerging space",
+    "emerging category",
+    "the integration of",
+    "the intersection of",
+    "community-driven",
+    "long-term sustainability",
+    "user engagement",
+    "decentralized compute",
+    "reward emissions",
+    "sustainable reward emissions",
+    "tokenized incentive structures",
+    "designed for long-term"
+   ],
+   "regex": [
+    "\\bemerging\\s+(?:sector|space|category|industry)\\b",
+    "\\bthe\\s+(?:integration|intersection)\\s+of\\b",
+    "\\bcommunity-?driven\\b|\\blong-?term\\s+sustainability\\b|\\buser\\s+engagement\\b|\\bdecentrali[sz]ed\\s+compute\\b|\\btokeni[sz]ed\\s+incentive\\s+structures?\\b|\\bdesigned\\s+for\\s+long-?term\\b|\\b(?:sustainable\\s+)?reward\\s+emissions?\\b"
+   ],
+   "examples": [
+    {
+     "before": "A community-driven project at the intersection of decentralized compute and user engagement, designed for long-term sustainability.",
+     "after": "Node operators vote on the fee split, and rewards come from the 0.3% swap fee rather than from emissions."
+    },
+    {
+     "before": "This emerging sector is defined by the integration of AI and blockchain.",
+     "after": "Three of the four teams here run inference on GPUs rented through an on-chain marketplace."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Tier 3 phrases — boilerplate multi-word phrases",
+    "tier3-phrase (boilerplate phrase repeated)",
+    "tier3-phrase-cluster (boilerplate cluster)",
+    "Tier 3 phrase clustering",
+    "Tier 3 phrase repetition"
+   ],
+   "false_positives": "The per-phrase threshold (two uses) is lower than for single words because repeating the same two-word boilerplate is stronger evidence than re-using 'significant'. Overlapping spans count once, so 'designed for long-term sustainability' is one hit rather than two. In a paper actually about system integration or about a named sector, these phrases can be the accurate technical description; weigh whether the sentence names anything specific. Three or more distinct phrases in one short piece is near-dispositive on social-length posts and should outweigh a low per-phrase count.",
+   "in_baseline": false
+  },
+  {
+   "id": "dense-ai-vocabulary-composite",
+   "name": "Dense AI vocabulary composite (corroborator)",
+   "definition": "A composite threshold rather than a phrase: at least 150 words, at least five distinct hits from the always-flag lexicon, at least two paragraphs carrying an elevated-vocabulary cluster, and at least one stock transition, all in the same text. The combination is treated as a strong corroborator on its own; no single tier is enough, because each overlaps with legitimate technical idiom.",
+   "cues": [
+    "wordCount >= 150 && tier1Distinct >= 5 && tier2Clusters >= 2 && hasTransition"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "A 400-word post with delve, tapestry, seamless, robust and showcase, two paragraphs each carrying crucial plus ecosystem, and a Moreover opener.",
+     "after": "Rewrite the piece around the two or three things it actually reports, using the plain word for each."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "dense AI vocabulary trifecta"
+   ],
+   "false_positives": "The 150-word gate exists so a short ESL sentence or an adversarial fragment cannot trip it. Systems-programming prose legitimately carries robust, comprehensive, leverage and ecosystem, which is exactly why one tier alone is never enough. Note the implementation discrepancy in the source: its comment says four distinct lexicon hits while its code requires five; prefer the stricter five.",
+   "in_baseline": false
+  },
+  {
+   "id": "model-era-vocabulary-drift",
+   "name": "Model-era vocabulary drift (which words are the tell)",
+   "definition": "Which overused words co-occur shifts by model generation, so the absent word proves nothing and the present cluster roughly dates the text. 2023 to mid-2024 (GPT-4 era): delve, boasts, bolstered, crucial, intricate, interplay, meticulous, pivotal, tapestry, testament, underscore, vibrant. Mid-2024 to mid-2025 (GPT-4o): align with, enhance, fostering, highlighting, showcasing, underscore, vibrant. Mid-2025 on (GPT-5): emphasizing, enhance, highlighting, showcasing plus canned notability vocabulary. Grok output keeps its own fingerprint: superficially scientific words (causal, empirical, correlate) and continued heavy use of underscore.",
+   "cues": [
+    "2023 to mid-2024 (GPT-4): Additionally, boasts, bolstered, crucial, delve, emphasizing, enduring, garner, intricate/intricacies, interplay, key, landscape, meticulous/meticulously, pivotal, underscore, tapestry, testament, valuable, vibrant",
+    "Mid-2024 to mid-2025 (GPT-4o): align with, bolstered, crucial, emphasizing, enhance, enduring, fostering, highlighting, pivotal, showcasing, underscore, vibrant",
+    "Mid-2025 and on (GPT-5): emphasizing, enhance, highlighting, showcasing (plus the canned notability/coverage vocabulary)",
+    "causal",
+    "empirical",
+    "correlate",
+    "underscore",
+    "delve (peaked 2023 to early 2024, dropped sharply in 2025)"
+   ],
+   "regex": [
+    "\\b(?:empirical|causal|correlates?)\\b[\\s\\S]{0,200}?\\b(?:underscor(?:e|es|ing|ed)|empirical|causal|correlates?)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Chiang's strategy emphasized military suppression, prioritizing empirical consolidation of power amid fragmented loyalties, which underscores the fragility of the alliance.",
+     "after": "Chiang put down the holdouts by force to secure their obedience, since their loyalty was already split."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Era-specific AI vocabulary clusters (dating aid)",
+    "Grok-specific pseudo-scientific vocabulary"
+   ],
+   "false_positives": "These are not hard cutoffs and give only a rough sense of earlier versus later output. A text with no delve and no tapestry can still be 2025-or-later machine prose, where the tell has moved to highlighting, showcasing and emphasizing plus coverage claims; treat the absence of an old word as no evidence at all. Empirical, causal and correlate are ordinary in genuine scientific writing and only count where the subject matter does not call for them. GPT-4o output (May 2024 to August 2025) deviates further from human writing than other models of the same period, so era matters when calibrating.",
+   "in_baseline": false
+  },
+  {
+   "id": "load-bearing-metaphor",
+   "name": "load-bearing (figurative)",
+   "definition": "The hyphenated compound load-bearing applied to something that carries no load: an argument, an assumption, a component, a sentence. Replace with essential or critical, or say what breaks when it is removed.",
+   "cues": [
+    "load-bearing",
+    "the load-bearing structure of his argument",
+    "the load-bearing assumption"
+   ],
+   "regex": [
+    "\\bload-bearing\\b(?!\\s+(?:(?:structural|exterior|interior|internal|external|concrete|steel|timber|wooden|brick|masonry|perimeter|basement|main|primary|existing|original)\\s+)?(?:walls?|beams?|columns?|joists?|truss(?:es)?|members?|footings?|slabs?|studs?|partitions?|masonry|lintels?|piers?|rafters?|girders?|capacity|capacities)\\b)"
+   ],
+   "examples": [
+    {
+     "before": "That clause is the load-bearing part of the argument.",
+     "after": "Remove that clause and the argument does not stand."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "load-bearing (metaphor)",
+    "load-bearing (metaphorical)"
+   ],
+   "false_positives": "The hyphen is required: unhyphenated 'load bearing' is ordinary English ('the load bearing down on the bridge'). Attributive use before a literal structural noun, optionally with one material or position adjective in between ('load-bearing structural wall'), is building terminology and is exempt. Abstract-capable nouns (structure, element, frame, foundation) are deliberately outside the exemption, so 'the load-bearing structure of his argument' still flags. Known gap: predicative use ('the wall is load-bearing') still flags and must be dismissed by hand.",
+   "in_baseline": false
+  },
+  {
+   "id": "wordy-circumlocution",
+   "name": "Circumlocution for a single word (in order to, due to the fact that)",
+   "definition": "Multi-word constructions standing in for one word: in order to (to), due to the fact that (because), at this point in time (now), in the event that (if), has the ability to (can), in terms of and with regard to (rewrite). The fix is mechanical substitution; a hit is a wordiness defect, not evidence of machine authorship.",
+   "cues": [
+    "In order to",
+    "Due to the fact that",
+    "At this point in time",
+    "In the event that",
+    "has the ability to",
+    "It is important to note that",
+    "in order to",
+    "in terms of",
+    "with regard to",
+    "going forward"
+   ],
+   "regex": [
+    "\\bin\\s+order\\s+to\\b",
+    "\\bdue\\s+to\\s+the\\s+fact\\s+that\\b",
+    "\\b(?:at\\s+this\\s+point\\s+in\\s+time|in\\s+the\\s+event\\s+that|ha(?:s|ve|d)\\s+the\\s+ability\\s+to|with\\s+regard\\s+to|in\\s+terms\\s+of)\\b"
+   ],
+   "examples": [
+    {
+     "before": "In order to achieve this goal",
+     "after": "To achieve this"
+    },
+    {
+     "before": "Due to the fact that it was raining",
+     "after": "Because it was raining"
+    },
+    {
+     "before": "The system has the ability to process batches.",
+     "after": "The system can process batches."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a"
+   ],
+   "merged_from": [
+    "§23 Filler phrases"
+   ],
+   "false_positives": "'In order to' is sometimes needed to prevent a misreading where a bare 'to' would attach to the wrong verb, and legal or contractual drafting uses 'in the event that' as settled language. The edit is good writing regardless of who wrote the sentence, so never present a hit here as authorship evidence.",
+   "in_baseline": false
+  },
+  {
+   "id": "latinate-inflation",
+   "name": "Latinate inflation (utilize, commence, serves as)",
+   "definition": "Choosing the longer Latinate or euphemistic word where a short Anglo-Saxon one says the same thing: utilize for use, commence for start, ascertain for find out, endeavor for try, demonstrate for show, numerous for many, boasts and features and serves as for has and is, authored for wrote, relocated for moved, attempted for tried, passed away for died. The counter-indicator is the tell in reverse: human writers reach for the plain verb.",
+   "cues": [
+    "utilize",
+    "in order to",
+    "due to the fact that",
+    "serves as",
+    "features",
+    "boasts",
+    "presents",
+    "commence",
+    "ascertain",
+    "endeavor",
+    "demonstrate",
+    "numerous",
+    "additionally",
+    "authored",
+    "relocated",
+    "utilized",
+    "attempted",
+    "passed away",
+    "wrote",
+    "moved",
+    "used",
+    "tried",
+    "died"
+   ],
+   "regex": [
+    "\\b(?:utiliz(?:e|es|ing|ed|ation)|commenc(?:e|es|ing|ed|ement)|ascertain(?:s|ing|ed)?|endeavou?r(?:s|ing|ed)?)\\b",
+    "\\b(?:boasts|serves?\\s+as)\\b",
+    "\\b(?:authored|relocated|attempted|passed\\s+away)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The team utilized the new pipeline and commenced testing.",
+     "after": "The team used the new pipeline and started testing."
+    },
+    {
+     "before": "He authored three books and relocated to Utrecht.",
+     "after": "He wrote three books and moved to Utrecht."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "wikipedia-c",
+    "baseline"
+   ],
+   "merged_from": [
+    "Tier 1B — Clarity edits",
+    "tier1-clarity (wordiness)",
+    "Human counter-indicator: plain words over stiff or euphemistic synonyms",
+    "Latinate bias"
+   ],
+   "false_positives": "Formal vocabulary in a genuinely formal register is not a defect, and these words fire on ordinary professional and academic prose at a meaningful rate; report them separately from the AI-frequency lexicon and never let a wordiness fix push a document toward an authorship claim. 'Passed away' is the right register in an obituary or a condolence. 'Features' is correct where a product genuinely has features, 'presents' where something is literally presented, 'serves as' where a thing substitutes for another. Attempted has a specific legal and medical sense.",
+   "in_baseline": true
+  },
+  {
+   "id": "it-is-worth-noting-frame",
+   "name": "Announcement frame ('it's worth noting that')",
+   "definition": "A clause that announces that the next statement matters instead of making it: it's worth noting that, it's important to note that, it bears mentioning, the reality is that. Delete the frame and keep the content; if the sentence loses nothing, the frame carried nothing.",
+   "cues": [
+    "it's worth noting",
+    "It's worth noting that",
+    "it's important to note",
+    "It's important to note that",
+    "It is important to note that",
+    "It's worth mentioning that…",
+    "It bears mentioning",
+    "it's worth noting that…",
+    "It's important/worth noting that...",
+    "The reality is that",
+    "In terms of"
+   ],
+   "regex": [
+    "\\b(?:it'?s|it\\s+is)\\s+(?:worth|important)\\s+(?:noting|mentioning|to\\s+note|to\\s+mention)\\b",
+    "\\bit\\s+bears\\s+(?:mentioning|noting|repeating)\\b"
+   ],
+   "examples": [
+    {
+     "before": "It's worth noting that the build time dropped by half.",
+     "after": "The build time dropped by half."
+    },
+    {
+     "before": "It is important to note that the data shows a decline.",
+     "after": "The data shows a decline."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "tropes-fyi",
+    "willfrancis"
+   ],
+   "merged_from": [
+    "\"It's worth noting that\" / \"Notably\"",
+    "filler phrase",
+    "\"It's Worth Noting\"",
+    "It's important/worth noting that",
+    "Filler phrases"
+   ],
+   "false_positives": "Legitimate where the note really is an aside that would otherwise read as part of the main claim, and in legal or technical writing where 'note that' flags a genuine exception the reader will otherwise miss. A single instance in a long piece is noise; the fix is still deletion, because the sentence almost always survives it intact.",
+   "in_baseline": false
+  },
+  {
+   "id": "confidence-calibration-adverb",
+   "name": "Confidence-calibration adverbs (Notably, Importantly, Interestingly)",
+   "definition": "Sentence adverbs that tell the reader how to feel about a fact instead of letting the fact carry itself: Notably, Importantly, Interestingly, Surprisingly, Significantly, Crucially, Certainly, Undoubtedly, Without a doubt. The tell is stacking, not the individual word.",
+   "cues": [
+    "Interestingly",
+    "Surprisingly",
+    "Importantly",
+    "Significantly",
+    "Notably",
+    "Certainly",
+    "Undoubtedly",
+    "Without a doubt",
+    "Crucially",
+    "importantly",
+    "crucially",
+    "inherently",
+    "inevitably"
+   ],
+   "regex": [
+    "(?:^|(?<=[.!?]\\s)|(?<=\\n))\\s*(?:notably|importantly|interestingly|surprisingly|crucially|undoubtedly|certainly|significantly)\\s*,",
+    "\\bwithout\\s+a\\s+doubt\\b"
+   ],
+   "examples": [
+    {
+     "before": "Notably, the build time dropped by half. Importantly, memory use fell too.",
+     "after": "The build time dropped by half and memory use fell with it."
+    },
+    {
+     "before": "Interestingly, this pattern repeats across industries.",
+     "after": "The same pattern shows up in shipping and in insurance."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Confidence calibration phrases",
+    "confidence calibration (confidence stacking)"
+   ],
+   "false_positives": "One 'notably' in a two-thousand-word piece is fine; three in five hundred words is emphasis stacking. The detector gates on three or more raw hits before deduplication, because the stacking is the signal rather than the vocabulary. 'Significantly' in a statistical sense and 'certainly' inside reported speech or a concessive ('it is certainly true that, but') are not hits. Warm hedges in a casual voice ('honestly', 'I think') are kept while the corporate ones are cut.",
+   "in_baseline": false
+  },
+  {
+   "id": "topic-framing-filler",
+   "name": "Topic-framing filler (when it comes to, at its core, at the end of the day)",
+   "definition": "Idioms that introduce a topic or announce a summary while carrying no information: when it comes to, at its core, at the heart of, at the end of the day, the reality is, the truth is, here's the thing, let me be clear, going forward, in this article, in the world of. Cut the phrase and start the sentence at its subject; with a warm-up opener, start one sentence later.",
+   "cues": [
+    "at the end of the day",
+    "when it comes to",
+    "at its core",
+    "in today's world",
+    "in the age of",
+    "in the world of",
+    "the reality is",
+    "the truth is",
+    "in terms of",
+    "with regard to",
+    "going forward",
+    "in this article",
+    "let's dive in",
+    "At its core...",
+    "At the heart of…",
+    "When it comes to...",
+    "At the end of the day...",
+    "Here's the thing.",
+    "Let me be clear.",
+    "The truth is.",
+    "In the realm of…",
+    "A deeper understanding of…",
+    "Navigating the complexities of…",
+    "Play a (vital / pivotal / crucial / significant) role in…",
+    "Stand(s) as a testament to…",
+    "A nuanced take / a nuanced understanding of…",
+    "Delve into the intricacies of…",
+    "Dive deep into…",
+    "Sit with that for a moment",
+    "That said",
+    "That being said"
+   ],
+   "regex": [
+    "\\bwhen\\s+it\\s+comes\\s+to\\b",
+    "\\bat\\s+(?:its\\s+core|the\\s+heart\\s+of)\\b",
+    "\\bat\\s+the\\s+end\\s+of\\s+the\\s+day\\b",
+    "\\bthe\\s+(?:reality|truth)\\s+is(?:\\s+that)?\\b",
+    "\\bhere'?s\\s+the\\s+thing\\b|\\blet\\s+me\\s+be\\s+clear\\b|\\bgoing\\s+forward\\b|\\bin\\s+this\\s+article\\b",
+    "\\bthat\\s+(?:being\\s+)?said\\b"
+   ],
+   "examples": [
+    {
+     "before": "When it comes to caching, the main risk is staleness.",
+     "after": "The main caching risk is staleness."
+    },
+    {
+     "before": "Here's the thing. The migration took nine months.",
+     "after": "The migration took nine months."
+    },
+    {
+     "before": "That being said, the numbers held up.",
+     "after": "The numbers held up anyway."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "vollmer",
+    "willfrancis",
+    "hassid"
+   ],
+   "merged_from": [
+    "Often-empty phrases",
+    "\"When it comes to\"",
+    "\"At the end of the day\"",
+    "\"That said\" / \"That being said\"",
+    "Empty framing phrases",
+    "Signposting filler phrases",
+    "Warming up before talking (filler openers)"
+   ],
+   "false_positives": "Keep an occasional one where it is part of the writer's recognisable voice and the sentence still earns its place; the defect is delay, not the words themselves. 'The truth is' can be a real correction of something just claimed. 'That said' is a legitimate concessive pivot when the concession is real, though 'but' or 'yet' usually does the same work; do not overuse any one of those replacements either. 'At the heart of' is fine when describing a literal centre.",
+   "in_baseline": false
+  },
+  {
+   "id": "generic-scene-setting-opener",
+   "name": "Generic scene-setting opener (In today's fast-paced world)",
+   "definition": "An opening phrase that situates the topic in a generic present or an unnamed trend instead of naming the specific occasion: In today's X, In an era where, In the age of, In the ever-evolving landscape of, In the rapidly evolving world of, Imagine a scenario where. Cut it, or state the actual context that made this worth writing.",
+   "cues": [
+    "In today's fast-paced world",
+    "In the ever-evolving landscape of",
+    "Imagine a scenario where",
+    "In the realm of",
+    "In today's",
+    "In an era where",
+    "In today's rapidly evolving digital landscape…",
+    "In an ever-evolving landscape…",
+    "In the age of",
+    "In the world of"
+   ],
+   "regex": [
+    "\\bin\\s+today'?s\\b",
+    "\\bin\\s+an\\s+era\\s+where\\b|\\bin\\s+the\\s+age\\s+of\\b|\\bimagine\\s+a\\s+(?:scenario|world)\\s+where\\b",
+    "\\bin\\s+the\\s+(?:ever[- ]evolving|rapidly\\s+(?:evolving|changing)|fast[- ]paced)\\b"
+   ],
+   "examples": [
+    {
+     "before": "In today's fast-paced world, teams need better tooling.",
+     "after": "Our release took four hours last Friday, so we rebuilt the pipeline."
+    },
+    {
+     "before": "In an era where AI is everywhere, documentation matters more than ever.",
+     "after": "Three of last month's incidents traced back to a stale runbook."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "vollmer",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "\"In today's [X]\" / \"In an era where\"",
+    "Generic scene-setting"
+   ],
+   "false_positives": "'In today's' is legitimate when followed by something genuinely dated and specific ('in today's build', 'in today's release notes'). A historical essay may need 'in the age of Napoleon'. The tell is a broad present tense standing in for a reason to write, not the words alone.",
+   "in_baseline": true
+  },
+  {
+   "id": "additive-transition-pileup",
+   "name": "Additive-transition pile-up (Moreover, Furthermore, Additionally)",
+   "definition": "Formal additive connectives used as paragraph glue, stacked across consecutive sentences: Moreover, Furthermore, Additionally, Consequently. Korean shows the same habit with sentence-initial 또한/따라서/즉/나아가/아울러/게다가/더욱이 and with 하지만/그러나 opening a sentence in every paragraph. Restructure so the connection is obvious, or use and, also, on top of that; delete more than half of the adversatives.",
+   "cues": [
+    "Additionally",
+    "moreover",
+    "consequently",
+    "Moreover",
+    "Furthermore",
+    "또한",
+    "따라서",
+    "즉",
+    "나아가",
+    "아울러",
+    "게다가",
+    "더욱이",
+    "하지만",
+    "그러나"
+   ],
+   "regex": [
+    "(?:^|(?<=[.!?]\\s)|(?<=\\n))\\s*(?:moreover|furthermore|additionally|consequently)\\s*,",
+    "\\b(?:moreover|furthermore)\\b",
+    "(?:^|[.!?]\\s+|\\n)\\s*(?:또한|따라서|즉|나아가|아울러|게다가|더욱이|하지만|그러나)"
+   ],
+   "examples": [
+    {
+     "before": "Additionally, camel meat is common. Moreover, pasta arrived with the Italians. Furthermore, coffee was exported early.",
+     "after": "Camel meat is common, pasta arrived with the Italians, and coffee was exported early."
+    },
+    {
+     "before": "Moreover, the cache was cold.",
+     "after": "The cache was also cold."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "im-not-ai-taxonomy"
+   ],
+   "merged_from": [
+    "Implied: transition-word pile-up",
+    "Additive transitions: Moreover / Furthermore / Additionally",
+    "Transition phrases",
+    "transition (AI transition phrases)",
+    "H-1 Sentence-initial connectives 5+ (also / therefore / that is / furthermore / additionally / moreover / further)",
+    "H-2 하지만 / 그러나 in every paragraph (however / but)"
+   ],
+   "false_positives": "Common transition words in isolation are not a tell: one 'however' is not a finding, and a well-placed 'moreover' in an argument that really is adding a second reason is correct. Flag on density. The Korean rule fires at five or more sentence-initial connectives per document, and the adversative rule only when nearly every paragraph opens with one. Academic and legal writing use these connectives structurally; weigh the register before flagging. Short-form social copy skips the check entirely.",
+   "in_baseline": false
+  },
+  {
+   "id": "restatement-gloss",
+   "name": "Restatement gloss ('in other words', 즉)",
+   "definition": "A stock phrase announces a paraphrase of what was just said, so the point is delivered twice: in other words, put differently, to put it another way, Korean 즉 (and its variants 곧, 말하자면). Check whether the second version adds anything; if not, delete one of the two.",
+   "cues": [
+    "in other words",
+    "put differently",
+    "즉",
+    "곧",
+    "말하자면"
+   ],
+   "regex": [
+    "\\bin\\s+other\\s+words\\b|\\bput\\s+differently\\b|\\bto\\s+put\\s+it\\s+(?:another\\s+way|differently)\\b",
+    "(?<![가-힣])즉(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "The queue drains slowly. In other words, messages pile up.",
+     "after": "The queue drains slower than it fills, so messages pile up."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "velitchkov",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "[RG] The restatement gloss",
+    "H-4 즉 overused (i.e. / that is / in other words)",
+    "H-4 재정의 접속사 '즉' 남발 (i.e. / that is)"
+   ],
+   "false_positives": "A genuine gloss that translates jargon for a lay reader, or restates a formula in words, earns its place. The problem is overuse: the Korean cap is two 즉 per document, and the English equivalent should be about as rare. If the paraphrase is clearer than the original, delete the original instead of the gloss.",
+   "in_baseline": false
+  },
+  {
+   "id": "summation-signpost",
+   "name": "Summation signpost (In conclusion, In summary, Ultimately)",
+   "definition": "A formulaic wrap-up phrase opening the final paragraph or sentence: In conclusion, In summary, To summarize, To sum up, Overall, Ultimately, In short, and the exhortation forms (Remember, when doing X…, As we navigate X…, The journey doesn't end here). Korean uses 결론적으로/요약하면/종합하면/정리하자면/따라서/이를 통해/그러므로. Keep at most one; delete the rest and let the last concrete point end the piece.",
+   "cues": [
+    "In conclusion…",
+    "In summary…",
+    "Overall…",
+    "Ultimately…",
+    "Remember, when doing X it's important to consider…",
+    "As we navigate [X], it's essential that we…",
+    "The journey doesn't end here…",
+    "in conclusion",
+    "in summary",
+    "to summarize",
+    "In short",
+    "결론적으로",
+    "따라서",
+    "이를 통해",
+    "그러므로",
+    "요약하면",
+    "정리하자면",
+    "종합하면"
+   ],
+   "regex": [
+    "\\b(?:in\\s+conclusion|in\\s+summary|to\\s+summari[sz]e|to\\s+sum\\s+up|in\\s+short)\\b",
+    "(?:^|[.!?]\\s+|\\n)\\s*(?:ultimately|overall)\\s*,",
+    "결론적으로|요약하면|정리하자면|종합하면|이를\\s*통해"
+   ],
+   "examples": [
+    {
+     "before": "In conclusion, caching is a trade-off that every team must weigh carefully.",
+     "after": "We kept the cache and accepted five minutes of staleness."
+    },
+    {
+     "before": "Ultimately, the journey doesn't end here.",
+     "after": "Next we move the same check into CI."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "vollmer",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "D-1 Summation lexicon (in conclusion / therefore / through this / thus / to summarise / to sum up)",
+    "D-1 종결·요약류 (closing / summary signposts)",
+    "Closing ritual phrases ('preachy conclusions')"
+   ],
+   "false_positives": "A long technical document or a legal brief legitimately signals its summary, and an abstract may need 'in conclusion'. The Korean trigger is three or more of the summation lexicon combined, not the first one. Overlaps with the structure-level signposted-conclusion pattern; flag it once, in whichever place the fix will be made.",
+   "in_baseline": false
+  },
+  {
+   "id": "significance-inflation-phrase",
+   "name": "Significance inflation (the implications are significant)",
+   "definition": "A closing or evaluative sentence that asserts importance without supplying any: the implications are significant, this is noteworthy, this is very important, Korean 시사하는 바가 크다 / 주목할 만하다 / 매우 중요하다 / 의미가 크다, plus the stock評 forms 기록적인 성과를 거두었다, ~로 평가된다, 주목받았다. Delete it, or state the concrete conclusion the significance is supposed to rest on.",
+   "cues": [
+    "시사하는 바가 크다",
+    "주목할 만하다",
+    "매우 중요하다",
+    "기록적인 성과를 거두었다",
+    "~로 평가된다",
+    "주목받았다",
+    "의미가 크다",
+    "carries significant implications",
+    "this is noteworthy",
+    "the implications are significant"
+   ],
+   "regex": [
+    "\\bcarries\\s+significant\\s+implications\\b|\\bthe\\s+implications\\s+are\\s+significant\\b|\\bis\\s+(?:noteworthy|of\\s+great\\s+significance)\\b",
+    "시사하는\\s*바가\\s*크다|주목할\\s*만하다|매우\\s*중요하다|의미가\\s*크다|기록적인\\s*성과를\\s*거두었다|주목받았다"
+   ],
+   "examples": [
+    {
+     "before": "In conclusion, the implications of this are significant.",
+     "after": "Two of the three services will need new indexes before the next release."
+    },
+    {
+     "before": "결론적으로, 이는 시사하는 바가 크다.",
+     "after": "(deleted; state the concrete conclusion instead)"
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy"
+   ],
+   "merged_from": [
+    "D-2 Significance inflation (carries significant implications / noteworthy / very important)"
+   ],
+   "false_positives": "A significance claim that names what follows from it is not inflation ('the implications are significant: every client must re-key before March'). In academic abstracts the significance sentence is a genre requirement, though it should still carry content. Overlaps with the content-level inflated-significance pattern; report once.",
+   "in_baseline": false
+  },
+  {
+   "id": "hollow-intensifier",
+   "name": "Hollow intensifier (genuinely, truly, to be honest)",
+   "definition": "Sincerity and emphasis markers that assert conviction instead of supplying a fact: genuinely, genuine, truly, real (as intensifier), quite frankly, to be honest, let's be clear, actually. Dutch does the same with echt and gewoon used as filler. Cut the word and state the fact; the default fix is deletion, not substitution.",
+   "cues": [
+    "genuine",
+    "genuinely",
+    "real",
+    "truly",
+    "quite frankly",
+    "to be honest",
+    "let's be clear",
+    "it's worth noting that",
+    "actually",
+    "structurally",
+    "echt",
+    "gewoon",
+    "very",
+    "incredibly",
+    "genuine insight",
+    "genuine value",
+    "a real improvement"
+   ],
+   "regex": [
+    "\\b(?:genuinely|truly|quite\\s+frankly|to\\s+be\\s+honest|let'?s\\s+be\\s+clear)\\b",
+    "\\bgenuine\\s+(?:insight|value|understanding|improvement|interest|problem|need|surprise)\\b"
+   ],
+   "examples": [
+    {
+     "before": "This actually makes the process simpler.",
+     "after": "This makes the process simpler."
+    },
+    {
+     "before": "A genuinely useful feature.",
+     "after": "A useful feature."
+    },
+    {
+     "before": "The overuse of tics like genuinely and structurally is genuinely annoying.",
+     "after": "Those tics are annoying."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "velitchkov",
+    "baseline"
+   ],
+   "merged_from": [
+    "Hollow intensifiers",
+    "hollow intensifier",
+    "context-dependent 'actually' as hollow intensifier",
+    "Lexical tics (overused words)",
+    "Holle versterkers (hollow intensifiers)"
+   ],
+   "false_positives": "Keep 'actually' when it marks a specific correction or an expectation gap the sentence names ('we expected a cache hit; it was actually a miss'), though a direct contrast is usually clearer still. 'Real' counts only as the intensifier in 'a real improvement', never in the factual sense ('real numbers', 'real time'). Dutch 'echt' and 'gewoon' are ordinary words and are only a tell as filler that carries no meaning, which is why they stay prose cues rather than regex. Keep any of these inside a quotation, and keep a warm hedge that belongs to the writer's spoken voice in a deliberately casual register.",
+   "in_baseline": true
+  },
+  {
+   "id": "degree-adverb-padding",
+   "name": "Degree-adverb padding (very, really, just, simply)",
+   "definition": "Intensifying degree adverbs bolted onto predicates that do not need them: very, really, just, literally, simply, incredibly, fundamentally, importantly, crucially, inherently, inevitably; Korean 매우, 정말, 진짜로, 대단히, 극히. Mostly delete, and use a concrete figure or a stronger verb where emphasis is genuinely wanted.",
+   "cues": [
+    "just",
+    "literally",
+    "honestly",
+    "simply",
+    "actually",
+    "truly",
+    "fundamentally",
+    "importantly",
+    "crucially",
+    "inherently",
+    "inevitably",
+    "very",
+    "incredibly",
+    "매우",
+    "정말",
+    "진짜로",
+    "대단히",
+    "극히"
+   ],
+   "regex": [
+    "\\b(?:very|really|truly|incredibly|genuinely|honestly|simply|actually)\\b[^.!?]{0,50}?\\b(?:very|really|truly|incredibly|genuinely|honestly|simply|actually)\\b",
+    "(?<![가-힣])(?:매우|정말|진짜로|대단히|극히)(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "It's really very simple, honestly.",
+     "after": "It takes one command."
+    },
+    {
+     "before": "The change is fundamentally just a rename.",
+     "after": "The change is a rename."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-b",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Often-empty adverbs",
+    "Intensifiers",
+    "F-1 Degree-adverb addiction (very / really / truly / greatly / extremely)",
+    "F-1 정도부사 중독 (degree-adverb addiction)"
+   ],
+   "false_positives": "Cut them when they add nothing; keep them when they carry emphasis, uncertainty, contrast, or the writer's natural spoken rhythm. Where the source text is colloquial and the adverb is part of the voice, preserve it; the rule targets adverbs the machine added, not the ones the writer speaks with. These words are ubiquitous in ordinary human prose (they fire many times per ten thousand words on Strunk and Twain), which is why only the stacked form is matched by regex and the single words stay prose cues.",
+   "in_baseline": false
+  },
+  {
+   "id": "understated-significance-adverb",
+   "name": "Understated-significance adverb (quietly, deeply)",
+   "definition": "An adverb or its adjective form that asserts subtle importance instead of showing it, making a mundane description feel weighty: quietly (quietly building, a quiet revolution), deeply in significance collocations (deeply integrated, deeply committed, deeply rooted, deeply human), and the neighbouring fundamentally, remarkably, arguably. Cut it, or name the concrete contrast that makes the thing quiet or deep.",
+   "cues": [
+    "quietly",
+    "quiet",
+    "deeply",
+    "fundamentally",
+    "remarkably",
+    "arguably",
+    "deeply integrated",
+    "deeply committed",
+    "deeply rooted",
+    "quietly orchestrating workflows, decisions, and interactions",
+    "the one that quietly suffocates everything else",
+    "a quiet intelligence behind it"
+   ],
+   "regex": [
+    "\\bquietly\\s+(?:became|becomes|becoming|building|built|builds|reshap\\w*|transform\\w*|revolutioni\\w*|dominat\\w*|orchestrat\\w*|power\\w*|running|runs|shaping|shifting|redefin\\w*|emerg\\w*)\\b",
+    "\\ba\\s+quiet\\s+(?:revolution|intelligence|confidence|power|shift|force)\\b",
+    "\\bdeeply\\s+(?:integrated|committed|rooted|personal|human|flawed|resonant|transformative|interconnected|ingrained|embedded|meaningful)\\b"
+   ],
+   "examples": [
+    {
+     "before": "It has been quietly reshaping how teams ship.",
+     "after": "Four of the six teams switched to it last quarter without announcing it."
+    },
+    {
+     "before": "The two systems are deeply integrated.",
+     "after": "The two systems share one session store and one deploy."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "tropes-fyi",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "\"Quietly\" and Other Magic Adverbs",
+    "tier2 conditional: 'deeply' + significance collocation"
+   ],
+   "false_positives": "A literal 'quietly' describing sound level is never a hit ('she closed the door quietly'). 'Deeply' counts only in the significance collocations listed; deeply nested, deeply buried and cares deeply are literal and never count, and the bare word fires far too often in innocent prose to match unconditionally. Match the stem, since the adjective form ('a quiet intelligence') does the same work as the adverb.",
+   "in_baseline": false
+  },
+  {
+   "id": "hedging",
+   "name": "Empty hedging (perhaps, could potentially, seems)",
+   "definition": "Softening words and clauses that dilute a claim without expressing real uncertainty: perhaps, could potentially, seems, might, appears, tends to, to be clear, I think, maybe. Each either becomes a concrete claim or disappears. Note the counter-indicator: small hedges are more frequent in human prose than in machine prose, so their presence is weak evidence of a human hand.",
+   "cues": [
+    "perhaps",
+    "could potentially",
+    "it's important to note that",
+    "to be clear",
+    "seems",
+    "might",
+    "appears",
+    "tends to",
+    "I think",
+    "maybe",
+    "to be honest",
+    "very"
+   ],
+   "regex": [
+    "\\b(?:could|may|might|can)\\s+potentially\\b",
+    "\\b(?:might|may|could|perhaps|possibly)\\b[^.!?]{0,40}?\\b(?:somewhat|arguably|perhaps|possibly|potentially|in\\s+some\\s+cases|to\\s+some\\s+extent)\\b"
+   ],
+   "examples": [
+    {
+     "before": "This could potentially improve throughput somewhat.",
+     "after": "This raised throughput by about 15% in the staging test."
+    },
+    {
+     "before": "It seems that the cache might be stale.",
+     "after": "The cache is stale."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "wikipedia-c",
+    "baseline"
+   ],
+   "merged_from": [
+    "Empty qualifiers and hedges",
+    "Hedging",
+    "Human counter-indicator: hedging qualifiers and intensifiers",
+    "Hedge words"
+   ],
+   "false_positives": "Keep every hedge that expresses real uncertainty, self-awareness or the writer's spoken rhythm: 'I think', 'maybe' and 'to be honest' are on the keep list when they are genuine, and a measurement that really is uncertain must stay hedged. Bare 'seems', 'might', 'appears' and 'tends to' are everywhere in ordinary human prose, so only the stacked and doubled forms are matched by regex. Do not strip hedges when humanising a text, because you would be removing a human signal. Sentence-opening candor flags ('I'll be honest') are cut; genuine mid-sentence hedges stay.",
+   "in_baseline": true
+  },
+  {
+   "id": "synonym-cycling",
+   "name": "Synonym cycling (elegant variation)",
+   "definition": "The same referent is renamed with a fresh synonym on each recurrence to avoid repeating a word (protagonist / main character / central figure / hero, agent / assistant / tool, developers / engineers / practitioners / builders), a footprint of the repetition penalty rather than a choice. It also shows as whole noun phrases being re-worded ('the constraints of socialist realism' / 'state-imposed artistic norms' / 'the constraints imposed by the Soviet regime'). If the clear word is right, repeat it.",
+   "cues": [
+    "protagonist... main character... central figure... hero",
+    "agent / assistant / tool rotation",
+    "developers… engineers… practitioners… builders",
+    "the constraints of socialist realism",
+    "the challenging climate of Soviet artistic constraints",
+    "the confines of state-imposed artistic norms",
+    "the constraints imposed by the Soviet regime",
+    "the artistic norms",
+    "non-conformist artists",
+    "these artists",
+    "like-minded artists",
+    "Russian avant-garde artists",
+    "diverse yet united front of non-conformist artists",
+    "their creativity",
+    "the immense talent",
+    "their artistic aspirations",
+    "his distinctive artistic vision"
+   ],
+   "regex": [
+    "\\bprotagonist\\b[\\s\\S]{0,300}?\\b(?:main\\s+character|central\\s+figure|the\\s+hero)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The protagonist faces many challenges. The main character must overcome obstacles. The central figure eventually triumphs. The hero returns home.",
+     "after": "The protagonist faces many challenges but eventually triumphs and returns home."
+    },
+    {
+     "before": "The agent reviews the draft. The assistant scores the piece. The tool suggests fixes.",
+     "after": "The agent reviews the draft, scores it, and suggests fixes."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "§11a Changing names (synonym cycling)",
+    "Synonym cycling",
+    "Vocabulary repetition vs. synonym cycling",
+    "synonym cycling",
+    "Lexical diversity / elegant variation (WP:AIELEVAR)"
+   ],
+   "false_positives": "Does not apply when the pieces were generated or written in isolation across separate edits, so a long collaboratively edited article can vary its terms innocently. Non-native writers trained to avoid repetition (Italian schooling teaches it explicitly) do this naturally. Genuine variation for rhythm is normal human writing; the tell is systematic renaming of the same referent on every recurrence. Human writers repeat when the word is right and vary when it feels natural; there is no formula, so do not enforce the opposite rule either.",
+   "in_baseline": false
+  },
+  {
+   "id": "real-actual-adjective-inflation",
+   "name": "Real / actual adjective inflation",
+   "definition": "real, actual, genuine or true used as an empty intensifier on an abstract noun (real tokenomics, actual reward sustainability, genuine utility, true product-market fit), implying the rest of the field is fake without ever naming what makes this one the real version. Drop the adjective and add the specific claim.",
+   "cues": [
+    "real",
+    "actual",
+    "genuine",
+    "true",
+    "Real on-chain tokenomics",
+    "actual reward sustainability",
+    "genuine utility",
+    "true product-market fit",
+    "real on-chain tokenomics"
+   ],
+   "regex": [
+    "\\b(?:real|actual|genuine|true)\\s+(?:on-?chain\\s+)?(?:tokenomics|economics|utility|adoption|sustainability|impact|revenue|fundamentals|demand|value|innovation|traction|product[- ]market\\s+fit)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Real reward sustainability, at last.",
+     "after": "Rewards are funded from about $40k a month in fees rather than from emissions."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "\"Real/actual\" adjective inflation",
+    "Real/actual adjective inflation",
+    "real/actual adjective inflation"
+   ],
+   "false_positives": "Named-contrast carve-out: if the sentence explicitly names the fake or superficial version it is honest contrastive writing and stays ('real on-chain settlement, not bridged IOUs', 'actual revenue from paying customers, not grants'). The tell is the unsaid contrast. Literal senses are exempt: real numbers, real time, actual size, true north, a genuine antique, 'lessons of real value'. Common in crypto, AI and web3 copy; tolerance is strictest in investor communication and relaxed in documentation and casual writing.",
+   "in_baseline": false
+  },
+  {
+   "id": "moral-adjective-category-error",
+   "name": "Moral adjective on a non-agentic noun (an honest shape)",
+   "definition": "A moral or character adjective (honest, genuine, faithful, truthful) attached to something that cannot hold a moral quality (a shape, a number, a representation, an accuracy, a curve, an output), or the adverb form hidden in a passive ('described honestly', 'flagged honestly'), where the passive conceals that there is no subject capable of honesty. State the concrete property instead, and cut moral adverbs from passives.",
+   "cues": [
+    "honest",
+    "genuine",
+    "faithful",
+    "truthful",
+    "shape",
+    "number",
+    "representation",
+    "accuracy",
+    "curve",
+    "output",
+    "described honestly",
+    "flagged honestly",
+    "an honest shape",
+    "honest shape"
+   ],
+   "regex": [
+    "\\b(?:honest|genuine|faithful|truthful)\\s+(?:shape|number|representation|accuracy|curve|output|estimate|signal|metric)s?\\b",
+    "\\b(?:described|flagged|reported|measured|presented)\\s+honestly\\b"
+   ],
+   "examples": [
+    {
+     "before": "An honest shape for the data.",
+     "after": "A more realistic curve."
+    },
+    {
+     "before": "The limitation was flagged honestly.",
+     "after": "We noted the limitation."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "Moral-adjective category errors"
+   ],
+   "false_positives": "A faithful representation is settled technical vocabulary in graphics, serialization and translation, and 'a faithful reproduction' is idiomatic; flag only where the moral reading is the intended one. 'An honest mistake' and 'honest work' are idioms about people. Tolerance is relaxed in technical writing and documentation and skipped in casual registers. Let the evidence carry the honesty claim rather than the adjective.",
+   "in_baseline": false
+  },
+  {
+   "id": "ontological-slop-assumptions",
+   "name": "Assumption \"stops being true\"",
+   "definition": "Describing an assumption as flipping from true to false. Assumptions degrade in adequacy rather than in truth value; write that the assumption breaks down or no longer holds.",
+   "cues": [
+    "The assumption stops being true",
+    "stops being true"
+   ],
+   "regex": [
+    "\\bstops\\s+being\\s+true\\b"
+   ],
+   "examples": [
+    {
+     "before": "At scale, the assumption stops being true.",
+     "after": "At scale, the assumption no longer holds."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a"
+   ],
+   "merged_from": [
+    "Ontological slop on assumptions"
+   ],
+   "false_positives": "A proposition with a genuine truth value can stop being true ('after the merger the sentence \"they are competitors\" stops being true'); the error is specifically applying it to an assumption, model or premise, which becomes inadequate rather than false.",
+   "in_baseline": false
+  },
+  {
+   "id": "dev-blog-boilerplate",
+   "name": "Dev-blog boilerplate slogans (it just works, zero config)",
+   "definition": "Stock simplicity slogans borrowed from developer marketing that stand in for a property you could demonstrate: batteries included, it just works, zero config, sane defaults, small enough to fit in your head. Name the concrete behaviour instead.",
+   "cues": [
+    "batteries included",
+    "it just works",
+    "zero config",
+    "sane defaults",
+    "small enough to fit in your head",
+    "fits in your head"
+   ],
+   "regex": [
+    "\\bit\\s+just\\s+works\\b",
+    "\\bzero[-\\s]config(?:uration)?\\b|\\bsane\\s+defaults\\b|\\b(?:fits?|holds?)\\s+in\\s+your\\s+head\\b"
+   ],
+   "examples": [
+    {
+     "before": "Zero config, sane defaults, and it just works.",
+     "after": "It installs with no config file, and the whole API is six functions."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Dev-blog boilerplate",
+    "dev-blog boilerplate"
+   ],
+   "false_positives": "Quoting a product's own tagline, or discussing the phrase itself, is exempt. 'Batteries included' is deliberately left out of automatic matching because a software slogan and literal package contents share the surface form; judge it by hand. 'It just works out of the box' in a genuine comparison against a tool that needs setup can be the accurate report. Adapted from Simon Willison's LLM cliché highlighter.",
+   "in_baseline": false
+  },
+  {
+   "id": "vague-endorsement-worth-verbing",
+   "name": "Vague endorsement (worth reading, worth a look)",
+   "definition": "A generic thumbs-up built on 'worth' that substitutes for a specific reason: worth reading, worth paying attention to, worth a look, worth exploring, worth checking out, worth your time. Cut it, or say what the thing gives the reader.",
+   "cues": [
+    "worth reading",
+    "worth paying attention to",
+    "worth a look",
+    "worth exploring",
+    "worth checking out",
+    "worth your time"
+   ],
+   "regex": [
+    "\\bworth\\s+(?:reading|a\\s+look|exploring|checking\\s+out|your\\s+time|paying\\s+attention\\s+to)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Their changelog is worth a look.",
+     "after": "Their changelog lists the exact flags that changed defaults in v3."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a"
+   ],
+   "merged_from": [
+    "Vague endorsement (\"worth [verb]ing\")"
+   ],
+   "false_positives": "Legitimate where the reason is given in the same breath ('worth reading for the appendix on retry budgets'), and in a link roundup whose whole purpose is a short recommendation. 'Not worth reading' as a judgment with a stated reason is fine, and Strunk's own 'his books are not worth reading' is ordinary English.",
+   "in_baseline": false
+  },
+  {
+   "id": "trendy-colloquialism",
+   "name": "Trendy colloquialism ('hits different')",
+   "definition": "A borrowed trend phrase used as a shortcut to sound relatable without earning the emotional beat: hits different, hit differently. Describe what actually changed, or cut.",
+   "cues": [
+    "hit differently",
+    "hits different"
+   ],
+   "regex": [
+    "\\bhits?\\s+different(?:ly)?\\b"
+   ],
+   "examples": [
+    {
+     "before": "Reading that changelog hits different.",
+     "after": "That changelog named the exact bug I spent Tuesday on."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "Trendy-colloquialism shortcut ('hits different')"
+   ],
+   "false_positives": "Literal use is exempt ('the second dose hit differently than the first'). Inside quoted speech, or in writing whose register genuinely is that of the phrase's community, it can be the writer's own voice; the tell is a formal piece reaching for it once.",
+   "in_baseline": false
+  },
+  {
+   "id": "social-ad-boilerplate",
+   "name": "Stale social-ad vocabulary (unlock, elevate, link in bio)",
+   "definition": "Worn social-media advertising diction imported into ordinary writing: unlock the potential, elevate your X, link in bio. Say what the reader gets and where.",
+   "cues": [
+    "unlock",
+    "elevate",
+    "link in bio"
+   ],
+   "regex": [
+    "\\blink\\s+in\\s+bio\\b|\\bunlock\\s+the\\s+(?:power|potential|secrets)\\b|\\belevate\\s+your\\b"
+   ],
+   "examples": [
+    {
+     "before": "Unlock the potential of your data. Link in bio.",
+     "after": "The export lives at /reports/csv."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "Stale social-ad tells"
+   ],
+   "false_positives": "'Link in bio' is the correct and only instruction on platforms that strip links from post bodies, so it is not a defect there. 'Unlock' is literal for doors, phones and feature flags. Judge by whether the surrounding piece is advertising.",
+   "in_baseline": false
+  },
+  {
+   "id": "canned-stock-sentence",
+   "name": "Canned stock sentence (I hope this email finds you well)",
+   "definition": "A whole prefabricated sentence that acknowledges nothing specific: I hope this email finds you well; I recently had the pleasure of X-ing; the subject maintains an active social media presence / a strong digital presence and actively shares the latest updates. Say what happened, or open on the actual reason for writing.",
+   "cues": [
+    "I hope this email finds you well",
+    "I recently had the pleasure of",
+    "had the pleasure of",
+    "maintain an active social media presence",
+    "maintains an active social media presence",
+    "maintains a strong digital presence",
+    "actively shares the latest updates and events",
+    "demonstrated excellence in digital promotions"
+   ],
+   "regex": [
+    "\\bi\\s+hope\\s+this\\s+(?:e-?mail|message|note)\\s+finds\\s+you\\s+well\\b",
+    "\\b(?:i\\s+)?(?:recently\\s+)?had\\s+the\\s+pleasure\\s+of\\b",
+    "\\bmaintains?\\s+(?:an?\\s+)?(?:active|strong)\\s+(?:social\\s+media|digital|online)\\s+presence\\b"
+   ],
+   "examples": [
+    {
+     "before": "I recently had the pleasure of attending their meetup.",
+     "after": "I went to their meetup on Thursday."
+    },
+    {
+     "before": "The mall maintains a strong digital presence, particularly on Instagram, where it actively shares the latest updates.",
+     "after": "The mall posts opening hours and event notices on Instagram."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "wikipedia-a",
+    "vollmer"
+   ],
+   "merged_from": [
+    "\"I recently had the pleasure of [verb]-ing\"",
+    "'Maintains an active social media presence'",
+    "Formulaic email opening"
+   ],
+   "false_positives": "'Had the pleasure of' is sincere in a genuine thank-you or a tribute where the pleasure is the point. A social-media presence is worth documenting when the article cites follower counts, a controversy or a source; the tell is the empty assertion of activity followed by praise of the posting. The social-presence wording in particular is idiosyncratic to machine text and was uncommon before 2024.",
+   "in_baseline": false
+  },
+  {
+   "id": "template-slot-fill-phrase",
+   "name": "Template slot-fill phrase (a bold step towards X)",
+   "definition": "A construction with a blank where any adjective or noun would fit and the sentence would sound the same: a [adjective] step towards [adjective] X, a [adjective] step forward for [noun]. Replace with the specific capability, benchmark or outcome.",
+   "cues": [
+    "a [adjective] step towards [adjective] AI infrastructure",
+    "a [adjective] step forward for [noun]",
+    "step towards",
+    "step forward for"
+   ],
+   "regex": [
+    "\\ba\\s+\\w+\\s+step\\s+(?:towards?|forward)\\b"
+   ],
+   "examples": [
+    {
+     "before": "A significant step towards scalable AI infrastructure.",
+     "after": "It runs a 70B model on one A100 at 40 tokens a second."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a"
+   ],
+   "merged_from": [
+    "Template slot-fill phrases: \"a [adjective] step towards/forward\""
+   ],
+   "false_positives": "A literal step ('a short step forward for balance'), and cases where the step is quantified in the same sentence, are exempt. The test is the blank: if a noun or adjective could be swapped in and the sentence would sound the same, it is too generic.",
+   "in_baseline": false
+  },
+  {
+   "id": "lets-invitation-opener",
+   "name": "'Let's' invitation opener (let's dive in, let's unpack this)",
+   "definition": "A section or paragraph opened with a 'Let's …' invitation: let's dive in, let's delve into, let's unpack this, let's break it down, let's explore, let's take a look. It stages a shared journey and postpones the point by one sentence. Delete the opener and begin at the claim.",
+   "cues": [
+    "Let's",
+    "let's dive in",
+    "Let's break it down",
+    "Let's unpack this",
+    "Let's delve into",
+    "Sit with that for a moment"
+   ],
+   "regex": [
+    "(?:^|(?<=[.!?]\\s)|(?<=\\n))\\s*let'?s\\s+(?:dive|delve|unpack|break|explore|take\\s+a\\s+look|talk\\s+about|get\\s+into)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Let's dive into how the scheduler works.",
+     "after": "The scheduler polls every 200ms and drops anything older than a minute."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "vollmer"
+   ],
+   "merged_from": [
+    "'Let's' transition openers"
+   ],
+   "false_positives": "A genuine first-person-plural invitation in a workshop script, a talk transcript or teaching material is the right register there. 'Let's be clear' is a candor flag handled with the hollow intensifiers, not here.",
+   "in_baseline": false
+  },
+  {
+   "id": "uncontracted-forms",
+   "name": "Uncontracted forms in speech-register copy",
+   "definition": "Writing it is, do not, will not, cannot where speech would contract, producing an over-formal register in marketing, social and newsletter copy. Use the contraction.",
+   "cues": [
+    "it is",
+    "do not",
+    "will not",
+    "cannot"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "It is not ready, and we will not ship it.",
+     "after": "It isn't ready, and we won't ship it."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "willfrancis"
+   ],
+   "merged_from": [
+    "Uncontracted forms"
+   ],
+   "false_positives": "Formal, academic, legal and specification registers legitimately avoid contractions, and an uncontracted form can carry deliberate emphasis ('we will not ship it'). The uncontracted words are ordinary English at very high frequency in human prose (over 35 hits per ten thousand words in the controls), so no regex is offered; judge the register by hand. Contractions have no equivalent in many languages, so the mechanism (drop the over-formal register marker) transfers but the cues do not.",
+   "in_baseline": false
+  },
+  {
+   "id": "english-variety-drift",
+   "name": "Sudden shift in English variety",
+   "definition": "A mismatch between the author's location, the topic's national ties and the spelling convention used. Several models default to American English unless prompted otherwise, so American spellings in an article about an Indian university written by an Indian editor are a cue, as is a variety switch mid-document. Check the author, the topic and the rest of the article before treating it as anything.",
+   "cues": [
+    "American English spelling on non-American topics",
+    "-ize / -ise mismatch",
+    "color / colour mismatch"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "An article on a British institution that switches from 'organisation' to 'organization' halfway through.",
+     "after": "One variety throughout, matching the topic's national ties."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Sudden shift in English variety"
+   ],
+   "false_positives": "Non-native speakers routinely mix varieties, and so do multi-author documents, so treat this only as corroboration and never on its own. Oxford spelling uses -ize in British English legitimately. No regex is offered because a bare -ize match fires roughly five to ten times per ten thousand words on ordinary English prose; the signal is the mismatch with author and topic, which a pattern match cannot see.",
+   "in_baseline": false
+  },
+  {
+   "id": "register-mismatch",
+   "name": "Vocabulary / level mismatch",
+   "definition": "Register-elevated words appearing out of proportion to the surrounding writing or to the writer's own history: ubiquitous, paradigm, juxtapose dropped into otherwise plain prose. Only a tell relative to a baseline of how this writer normally writes.",
+   "cues": [
+    "ubiquitous",
+    "paradigm",
+    "juxtapose"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "we got the thing working, and the paradigm is now ubiquitous across our juxtaposed services",
+     "after": "we got it working, and every service uses it now"
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Vocabulary/level mismatch"
+   ],
+   "false_positives": "Requires a baseline: an academic or a writer with a large vocabulary uses these words natively, and a piece written for a specialist audience may legitimately sit at that register throughout. No regex, because the pattern is a comparison between the text and a reference sample rather than a matchable string. The same words also appear in the always-flag lexicon; count once.",
+   "in_baseline": false
+  },
+  {
+   "id": "undefined-jargon",
+   "name": "Undefined jargon",
+   "definition": "A term of art used without definition where the reader cannot be assumed to know it, or corporate vocabulary that makes the text harder to read without adding precision. Give the term one clause of definition, or replace it. Strip only what obstructs reading: jargon, long sentences, abstract nouns and tangled structure, never the substance, nuance or precision.",
+   "cues": [
+    "jargon"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "We moved the reconciliation loop behind the CRD.",
+     "after": "We moved the reconciliation loop (the controller that keeps live state matching the config) behind a custom Kubernetes resource."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "baseline"
+   ],
+   "merged_from": [
+    "Jargon",
+    "Undefined jargon"
+   ],
+   "false_positives": "Writing for a specialist audience that shares the vocabulary needs no definitions, and defining a term the reader already knows is condescending. This is a general editing defect rather than an AI tell, so never count it toward an authorship judgment. Open the text up without dumbing it down: keep the substance, the nuance and the precision.",
+   "in_baseline": true
+  },
+  {
+   "id": "flat-lexical-statistics",
+   "name": "Flat lexical statistics (low TTR, low perplexity, uniform n-grams)",
+   "definition": "Measured rather than read. The text is statistically flatter than human prose on five axes: type-token ratio (distinct words over total), lexical density, sentence-ending diversity, n-gram transition uniformity, and per-token perplexity. Human English prose of 200+ words usually lands around 0.50 to 0.65 TTR; machine text trends flatter and can fall under 0.40 when locked on a small vocabulary loop, and its next word is consistently the expected one.",
+   "cues": [
+    "low TTR",
+    "low lexical density",
+    "low ending diversity",
+    "type-token ratio below 0.40",
+    "uniform word-triplet transitions",
+    "low and uniform perplexity"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "A 900-word post with a TTR of 0.36 that reuses one abstract noun in every paragraph.",
+     "after": "Name the specific things: replace the reused abstract noun with the instance it stands for in each paragraph."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "im-not-ai-taxonomy",
+    "vollmer"
+   ],
+   "merged_from": [
+    "Low type-token ratio (vocabulary diversity)",
+    "Post-editese: simplification (metric-only)",
+    "Low perplexity (predictable next word)",
+    "N-gram uniformity / low type-token ratio",
+    "First-person plural perspective (poetry)"
+   ],
+   "false_positives": "A very low TTR is not proof of machine authorship: narrow topics, technical reference material, controlled vocabularies and second-language writing all legitimately compress vocabulary, and the numeric thresholds are calibrated for English only. Under about 200 words the measure is noise. The post-editese simplification finding is flagged speculative by its own source (the underlying study covered en-de, de-en, es-de, en-fr and zh-en, not Korean). The fix is rarely to run a thesaurus over the text; broaden what is being said instead, naming specific things, citing specific cases, and replacing a reused abstract noun with the concrete instance. The first-person-plural over-representation found in machine poetry (we/us/our) belongs here as a countable signal; the bare pronouns match roughly 150 times per ten thousand words in ordinary prose, so no regex is offered.",
+   "in_baseline": false
+  },
+  {
+   "id": "ai-poetry-register",
+   "name": "Machine-poetry register (whisper, echo, ache, hollow)",
+   "definition": "The narrow lexicon generated verse returns to compulsively: a signature set (heart, embrace, echo, echoes, whisper, whispers) and an emotive abstract-fragile set piled up in place of image (ache, hollow, tether, linger, fragile, fractured, ember, bloom, cradle, ruin, veil, threadbare). Two registers collapsed into one: Instagram poetry and the most-shared anthology pages.",
+   "cues": [
+    "heart",
+    "embrace",
+    "echo",
+    "echoes",
+    "whisper",
+    "whispers",
+    "ache",
+    "hollow",
+    "tether",
+    "linger",
+    "fragile",
+    "fractured",
+    "ember",
+    "bloom",
+    "cradle",
+    "ruin",
+    "veil",
+    "threadbare",
+    "we",
+    "us",
+    "our"
+   ],
+   "regex": [
+    "\\b(?:whispers?|whispering|echoes|echoing|tether|threadbare|ember|liminal)\\b",
+    "\\b(?:ache|hollow|linger|fragile|fractured|cradle|veil|ember|threadbare|tether)\\b[^.!?]{0,60}?\\b(?:ache|hollow|linger|fragile|fractured|cradle|veil|ember|threadbare|tether)\\b"
+   ],
+   "examples": [
+    {
+     "before": "a hollow ache lingers in the fragile veil of morning",
+     "after": "the kettle ticks as it cools, and the window is still cold"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Poetry signature vocabulary",
+    "Mood-word accumulation (Instagram-poetry register)"
+   ],
+   "false_positives": "Every one of these words is a legitimate poetic word; the tell is accumulation in place of image, not any single use. Literal senses are common in prose (an echo in a canyon, a hollow log, a fragile package, a veil at a wedding), which is why the mood-word regex requires two of them close together. Compare against human-authored poems of the same length before concluding anything; the pronoun over-representation is measured in the flat-lexical-statistics entry.",
+   "in_baseline": false
+  },
+  {
+   "id": "untranslated-marketing-loanword",
+   "name": "Untranslated English marketing buzzword in a non-English text",
+   "definition": "English marketing adjectives and verbs (seamless, robust, leverage, scalable, synergy, holistic) dropped untranslated and unexplained into a target-language sentence, breaking its rhythm and reading as display. Render marketing words in the target language, and keep standard technical terms in the original, which is the counter-rule.",
+   "cues": [
+    "seamless",
+    "robust",
+    "leverage",
+    "scalable",
+    "synergy",
+    "holistic",
+    "API",
+    "prompt",
+    "token",
+    "pipeline"
+   ],
+   "regex": [
+    "(?<![a-z])(?:seamless|robust|leverage|scalable|synergy|holistic|impactful|actionable)(?![a-z])(?=[^a-zA-Z]{0,12}[가-힣ぁ-んァ-ン一-鿿])"
+   ],
+   "examples": [
+    {
+     "before": "이 도구는 seamless한 경험을 제공합니다.",
+     "after": "이 도구는 끊김 없는 경험을 제공합니다."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "B-2 Unexplained marketing buzzwords left in English",
+    "B-2 불필요한 영어 장식·일회성 jargon (buzzword decoration)"
+   ],
+   "false_positives": "Never mechanically translate established technical terms: API, prompt, token and pipeline stay in the original, and rendering 'prompt' as 지시문 is the error this rule is most often misapplied to produce. A loanword that has entered the target language as ordinary vocabulary is not a hit. Quoted English, product names and brand taglines are exempt. The regex only fires where the English word sits directly against CJK or Hangul text, so it is inert on English prose.",
+   "in_baseline": false
+  },
+  {
+   "id": "redundant-synonym-pair",
+   "name": "Redundant synonym pair (important and central role)",
+   "definition": "Two near-synonymous modifiers stacked on one noun, or a redundant noun pairing where one word already covers the other: 중요하고 핵심적인 역할 (an important and central role), ~로서의 역할과 기능 (the role and function as). Keep one.",
+   "cues": [
+    "중요하고 핵심적인 역할",
+    "~로서의 역할과 기능",
+    "role and function",
+    "important and central"
+   ],
+   "regex": [
+    "\\b(?:important|key|critical|vital|essential|crucial)\\s+and\\s+(?:central|key|critical|vital|essential|crucial|fundamental|core)\\b|\\brole\\s+and\\s+function\\b",
+    "중요하고\\s*핵심적인|역할과\\s*기능"
+   ],
+   "examples": [
+    {
+     "before": "It plays an important and central role.",
+     "after": "It carries the routing."
+    },
+    {
+     "before": "중요하고 핵심적인 역할",
+     "after": "핵심 역할"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "F-2 동의어 이중 수식 (synonym double modification)",
+    "F-3 기능+역할 복합구 (function-and-role compound)"
+   ],
+   "false_positives": "A pair whose members genuinely differ ('cheap and fast', 'the role and the budget') is not redundant. Legal drafting deliberately doubles terms ('null and void', 'terms and conditions') for coverage. The tell is two words that mean the same thing modifying one noun.",
+   "in_baseline": false
+  },
+  {
+   "id": "nominalization-suffix-excess",
+   "name": "Nominalization excess (-tion / -ment / -ness, -성 / -적 / -화)",
+   "definition": "Abstract nouns built by suffix where a plain verb or adjective would serve, chained across a sentence: English -tion, -ment, -ness; Korean Sino-Korean -성/-적/-화, the '~적 N' abstract compound chain (전략적 함의, 실천적 기반), and the 'N 능력' pattern that describes an ability with a noun phrase instead of a verb. Turn the noun back into the verb.",
+   "cues": [
+    "~적 측면",
+    "~적 관점",
+    "-성",
+    "-적",
+    "-화",
+    "-tion",
+    "-ment",
+    "-ness",
+    "전략적 함의",
+    "실천적 기반",
+    "~적 N",
+    "~능력",
+    "N 능력",
+    "문제 해결 능력",
+    "의사소통 능력"
+   ],
+   "regex": [
+    "\\b\\w{4,}(?:tion|ment|ness)\\s+of\\s+(?:the\\s+)?\\w+(?:tion|ment|ness)\\b",
+    "[가-힣]{1,4}적\\s*[가-힣]{1,6}.{0,40}?[가-힣]{1,4}적\\s*[가-힣]{1,6}",
+    "[가-힣]{2,}\\s*능력"
+   ],
+   "examples": [
+    {
+     "before": "the presentation of the implementation of the requirement",
+     "after": "how we implemented what was required"
+    },
+    {
+     "before": "전략적 함의와 실천적 기반",
+     "after": "무엇을 바꿔야 하는지, 그리고 어디서 시작하는지"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "F-4 과잉 접두·접미 (nominalization suffix excess)",
+    "F-5 '~적 N' 복합 추상어 체인 (abstract '-적 N' chain)",
+    "I-6 '~능력' 추상명사 연쇄 (N-ability chain)"
+   ],
+   "false_positives": "Many -tion and -ment nouns are the only available word (information, government, management, environment) and carry no inflation; a single nominalization is normal English. The Korean '~적 N' trigger is three or more per document. Technical and legal registers nominalize for precision ('the authentication of the request'). The chained form is the tell, not the suffix, which is why the English regex requires two nominalizations joined by 'of' rather than matching the suffix alone.",
+   "in_baseline": false
+  },
+  {
+   "id": "generic-policy-verb-convergence",
+   "name": "Generic policy-verb convergence (확대 / 강화 / 개선 / 구축)",
+   "definition": "Every action slot in the text filled by a handful of generic Sino-Korean policy verbs (확대 expand, 강화 strengthen, 개선 improve, 확보 secure, 마련 prepare, 구축 build) plus the all-purpose 설계 (design), each taking an abstract object. Name the concrete action and who performs it.",
+   "cues": [
+    "확대",
+    "강화",
+    "개선",
+    "확보",
+    "마련",
+    "구축",
+    "설계"
+   ],
+   "regex": [
+    "(?<![가-힣])(?:확대|강화|개선|확보|마련|구축|설계)(?:하|되|를|가|의|\\s)"
+   ],
+   "examples": [
+    {
+     "before": "협력 체계를 구축하고 지원을 강화한다",
+     "after": "두 부서가 매주 목요일에 함께 검토하고, 예산을 3천만 원 늘린다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "F-7 범용 정책동사 수렴 (generic policy-verb convergence)"
+   ],
+   "false_positives": "These verbs are correct and unavoidable in genuine policy and administrative documents, where they are the register's standard vocabulary; the tell is convergence, a few of them filling every action slot with abstract objects, rather than any single use. A concrete object rescues the verb (건물을 구축한다 is literal). Note that F-6 does not exist in the source's index; the numbering gap is not a missing pattern.",
+   "in_baseline": false
+  },
+  {
+   "id": "abstract-need-predicate",
+   "name": "Abstract 'X is needed' predicate (~이/가 필요하다)",
+   "definition": "A bare 'X is needed' predicate with an abstract subject (혁신이 필요하다, 변화가 필요하다) that names no actor, no deadline and no mechanism. Say who must do what, by when.",
+   "cues": [
+    "~이/가 필요하다",
+    "혁신이 필요하다",
+    "변화가 필요하다",
+    "innovation is needed",
+    "change is needed"
+   ],
+   "regex": [
+    "[가-힣]{2,}[이가]\\s*필요하다",
+    "\\b(?:innovation|change|transformation|collaboration|awareness|investment|reform|leadership)\\s+is\\s+needed\\b"
+   ],
+   "examples": [
+    {
+     "before": "근본적인 변화가 필요하다",
+     "after": "운영팀이 3월까지 배포 절차를 다시 쓴다"
+    },
+    {
+     "before": "Greater collaboration is needed.",
+     "after": "The two teams share one on-call rota from March."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "I-5 '~이/가 필요하다' (X is needed)"
+   ],
+   "false_positives": "A concrete subject makes the predicate fine (두 번째 서버가 필요하다, 'a second server is needed'); the defect is the abstract subject. In a requirements document 'X is needed' is the genre's own phrasing and the actor is established elsewhere. Overlaps with the agentless-prescription pattern in syntax; count once.",
+   "in_baseline": false
+  },
+  {
+   "id": "reflective-adverb-formula",
+   "name": "Reflective adverb formula (어쩌면 / 비로소 / 천천히)",
+   "definition": "The three lyrical adverbs of essay endings and awakening moments used as a formula: 어쩌면 ~일 것이다 (perhaps it is …), 비로소 (only then), 천천히 ~이 됐다 (slowly became …). Cut the adverb and let the last concrete detail carry the ending.",
+   "cues": [
+    "어쩌면 ~일 것이다",
+    "비로소",
+    "천천히 ~이 됐다",
+    "어쩌면",
+    "천천히"
+   ],
+   "regex": [
+    "(?<![가-힣])(?:어쩌면|비로소|천천히)(?![가-힣])"
+   ],
+   "examples": [
+    {
+     "before": "어쩌면 그것이 답일 것이다",
+     "after": "그래서 우리는 그 방법을 택했다"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "language-specific",
+   "sources": [
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "D-13 에세이 성찰 부사 공식 '어쩌면·비로소·천천히' (reflective adverb formula)"
+   ],
+   "false_positives": "Each adverb is ordinary Korean: 천천히 describing literal slowness, 비로소 marking a real turning point after a stated condition, and 어쩌면 expressing genuine uncertainty are all correct. The tell is the trio appearing as an essay's closing formula, in the essay genre specifically.",
+   "in_baseline": false
+  }
+ ],
+ "report": "Only shape-free word lists over-matched the human control, and every one that did was a bare high-frequency adverb or auxiliary: very/really, just/simply/literally/actually and seems/might/appears/tends-to all fired 5 to 18 times per 10k words on Strunk and Twain, the uncontracted-forms list (do not, it is) hit 38 to 54, we/us/our hit 147, and a bare -ize spelling probe hit 5 to 10, so those six regexes were dropped and their words kept as prose cues, with the stacked two-in-one-clause form retained where it stayed under 1.2. The tier-3 praise list (2.38 on Strunk) and a three-nominalisation chain (4.16 on Strunk, which caught Strunk's own 'presentation of a single complex idea') were tightened rather than dropped, into a co-occurrence lookahead and an X-of-Y form; the surviving lexicon regexes peak at 1.78 and their remaining control hits are exactly the documented literal senses (Boston Symphony, manuscript underscoring, embarking for Mecca, the realm of tragedy). The 129 raw names fold into 44 entries: the delve/tapestry lexicon from ten sources is one always-flag entry with the tier-2 cluster, the tier-3 praise density and the crypto boilerplate stack kept separate because each carries its own threshold, the announce-a-fact family splits into the clause frame (always) and the confidence adverb (density) the way the detector splits them, and the Korean D/F/H/I rules are grouped by mechanism with their English twins so summation, restatement, degree-adverb padding and nominalisation stay one entry each across both languages.",
+ "added": 37,
+ "regex_dropped": 6
+}

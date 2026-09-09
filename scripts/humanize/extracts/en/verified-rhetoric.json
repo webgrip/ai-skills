@@ -1,0 +1,2134 @@
+{
+ "category": "rhetoric",
+ "entries": [
+  {
+   "id": "sycophancy",
+   "name": "Sycophancy (validating the reader before answering)",
+   "definition": "Praise of the requester, their question or their feelings precedes the answer: 'Great question!', 'You're absolutely right', 'That's an excellent point', 'What a thoughtful observation'. Sub-forms: the performative-empathy opener ('I completely understand how you feel'), the warm-up preamble before a reply, and the validate-then-promise stamp that ratifies a correction and announces a better version in the same sentence ('is correct, and it can be made precise'). Cut the praise and answer; where acknowledgement is warranted, keep the source's own rather than adding one.",
+   "cues": [
+    "Great question!",
+    "You're absolutely right",
+    "That's an excellent point",
+    "Excellent point!",
+    "You're absolutely right!",
+    "That's a really insightful observation",
+    "That's a great question",
+    "Excellent question",
+    "What a thoughtful question!",
+    "You're absolutely right to push back on this",
+    "That's a brilliant observation.",
+    "What a thoughtful observation!",
+    "I completely understand how you feel",
+    "is correct, and it can be made precise",
+    "is right, and this is its exact form"
+   ],
+   "regex": [
+    "\\bgreat question\\b",
+    "\\byou'?re absolutely right\\b",
+    "\\bthat'?s (?:a really |an? )?(?:great|excellent|insightful|brilliant|thoughtful) (?:question|point|observation)\\b",
+    "\\bwhat a (?:thoughtful|great|excellent) (?:question|observation|point)\\b",
+    "\\bi completely understand how you feel\\b",
+    "\\bis (?:correct|right), and (?:it can be made precise|this is its exact form)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Great question! You're absolutely right that this is a complex topic. That's an excellent point about the economic factors.",
+     "after": "The economic factors you mentioned are relevant here."
+    },
+    {
+     "before": "That is correct, and it can be made precise: the cache expires after ten minutes.",
+     "after": "The cache expires after ten minutes."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "vollmer",
+    "willfrancis",
+    "velitchkov"
+   ],
+   "merged_from": [
+    "§22 Overly agreeable tone (sycophancy)",
+    "Sycophantic tone",
+    "sycophantic tone",
+    "Sycophancy",
+    "Preamble",
+    "Performative-empathy openers",
+    "[VP] Validate, then promise precision"
+   ],
+   "false_positives": "A short, specific thank-you that then moves on is not sycophancy. Agreement with a stated reason ('you're right that the index is missing, because the migration never ran') is an argument, not flattery. Quoted dialogue and transcribed speech stay.",
+   "in_baseline": false
+  },
+  {
+   "id": "acknowledgment-recap-opener",
+   "name": "Acknowledgment loop and recap-flattery opener",
+   "definition": "The reply restates the question, or summarises the other person's own work back at them with praise, before getting to the point: 'To answer your question', 'You're asking about', 'Thanks for all the legwork here, the migration script and the rollback plan you worked through are what made this possible'. The recap repeats specifics the reader already knows and delays the answer. Open with the answer; if thanks are warranted, one plain clause without the recap.",
+   "cues": [
+    "you're asking about",
+    "the question of whether",
+    "to answer your question",
+    "Thanks for all the legwork here — the migration script and the rollback plan you worked through are what made this possible."
+   ],
+   "regex": [
+    "\\bto answer your question\\b",
+    "\\byou'?re asking (?:about|whether)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Thanks for all the legwork here, the migration script and the rollback plan you worked through are what made this possible.",
+     "after": "Thanks for the legwork. This looks right to me, one comment below."
+    },
+    {
+     "before": "To answer your question, you're asking about whether the cache is shared. It is.",
+     "after": "The cache is shared."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-detector",
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "acknowledgment loop",
+    "Recap-flattery opener",
+    "recap-flattery opener"
+   ],
+   "false_positives": "Restating a question is fine when the original was ambiguous and the restatement picks one reading ('If you mean the write cache, then...'). A one-line thank-you that adds nothing else is ordinary courtesy, and a review that summarises a change to show what was understood is doing work.",
+   "in_baseline": false
+  },
+  {
+   "id": "meta-signposting",
+   "name": "Meta-signposting (announcing the text instead of writing it)",
+   "definition": "The text narrates its own moves rather than making them: opening announcements ('In this article, we will explore', 'In this section, we will discuss', 'First, we'll look at... Second, we'll examine...'), collaborative transitions ('Let's dive in', 'Let's break this down', 'Now let's turn to'), in-body structure talk ('Four caveats belong at the front', 'as discussed above', 'below I try to specify'), sentence-level meta lead-ins that comment on the previous sentence (Korean 이는 ~, 이 점에서, 이 관점에서), and the enumeration preamble that announces a list before giving it ('This can be broadly divided into three parts', 'Below is a detailed overview based on available information:', 'Key highlights:'). Delete the announcement and deliver the content.",
+   "cues": [
+    "Let's dive in",
+    "let's explore",
+    "let's break this down",
+    "here's what you need to know",
+    "now let's look at",
+    "without further ado",
+    "heads up",
+    "quick note",
+    "before I forget",
+    "one thing that bit me",
+    "In this article, we will explore…",
+    "In this article, we will",
+    "we will explore",
+    "Let's dive in!",
+    "Let's explore",
+    "Let's take a look",
+    "Let's examine",
+    "let's",
+    "Let's break this down",
+    "Let's unpack this",
+    "step by step",
+    "Now let's turn to",
+    "Let's break it down",
+    "First, we'll look at…",
+    "Second, we'll examine…",
+    "Finally, we'll conclude by…",
+    "Four caveats belong at the front",
+    "below I try to specify",
+    "any sentence below",
+    "One qualification carries through the rest of this piece",
+    "kept separate from the functional account above",
+    "This matters because",
+    "Vier kanttekeningen vooraf",
+    "In this post, I will…",
+    "Before we dive in…",
+    "In this section, we will discuss",
+    "This will include a discussion of",
+    "The purpose is to provide a comprehensive understanding of",
+    "to inform the reader about",
+    "existing knowledge and gaps in the field",
+    "shed light on",
+    "Let's decode exactly what's happening here:",
+    "Key highlights:",
+    "consists of three key layers:",
+    "Below is a detailed overview",
+    "Here are some topics I love exploring and contributing to:",
+    "크게 세 가지로 나눌 수 있다",
+    "다음과 같은",
+    "다음과 같다",
+    "이는 ~",
+    "이 점에서",
+    "이 관점에서",
+    "이 말은"
+   ],
+   "regex": [
+    "\\bin this (?:article|post|section|chapter|piece|guide),? (?:we|i) (?:will|'?ll|are going to)\\b",
+    "\\blet'?s (?:dive in|dive into|explore|unpack|break (?:this|it) down|take a look|examine|decode)\\b",
+    "\\bwithout further ado\\b",
+    "\\bhere'?s what you need to know\\b",
+    "\\bbelow is a detailed overview\\b",
+    "\\bthe purpose (?:of this section )?is to provide a comprehensive\\b",
+    "\\bnow let'?s (?:turn to|look at)\\b",
+    "\\bwe'?ll (?:look at|examine|conclude by)\\b",
+    "크게 세 가지로 나눌 수 있다|다음과 같습니다|이 관점에서"
+   ],
+   "examples": [
+    {
+     "before": "Let's dive into how caching works in Next.js. Here's what you need to know.",
+     "after": "Next.js caches data at multiple layers, including request memoization, the data cache, and the router cache."
+    },
+    {
+     "before": "In this section, we will discuss the background information related to the topic. The purpose is to provide a comprehensive understanding of the subject matter.",
+     "after": "The department was founded in 1957 and absorbed the provincial road authority in 1974."
+    },
+    {
+     "before": "This can be broadly divided into three parts, as follows:",
+     "after": "The three parts are intake, review and dispatch."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "tropes-fyi",
+    "willfrancis",
+    "vollmer",
+    "velitchkov",
+    "baseline",
+    "wikipedia-a",
+    "wikipedia-b",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "§28 Announcing the next point (meta-signposting)",
+    "AI meta-narration openers",
+    "\"Let's\" constructions",
+    "\"Let's Break This Down\"",
+    "Signposting",
+    "Excessive signposting (telegraphing every move)",
+    "[MS] Meta-signposting about the document itself",
+    "Meta-bewegwijzering (meta-signposting)",
+    "Throat-clearing (announcing the post)",
+    "Essay-style meta-signpost opener ('In this article, we will explore')",
+    "Meta prewriting section plan",
+    "Colon lead-in announcing a breakdown",
+    "D-3 Enumeration preamble (can be broadly divided into three / as follows)",
+    "D-3 열거 도입 (enumeration announcement)",
+    "H-3 Meta lead-ins 3+ (this is … / in this respect / from this perspective / what this means is)"
+   ],
+   "in_baseline": true,
+   "false_positives": "A long technical document, a thesis chapter or a spec may genuinely need a road map, and a cross-reference that saves the reader a search ('the token format is in section 4') is navigation, not signposting. 'Let's' is fine as a real invitation to act ('let's run the migration on staging first'). Flag the announcement that is followed immediately by the thing it announced."
+  },
+  {
+   "id": "candor-flag-opener",
+   "name": "Candor flag and fake-candid opener",
+   "definition": "A staged pause or claim of frankness precedes an ordinary point: 'Honestly?', 'Look,', 'Here's the thing', 'Let's be honest', 'Real talk', 'Let me be clear', 'I'll be honest', 'The uncomfortable truth is', 'the honest answer is'. The frame implies the surrounding text was less honest and delays the answer by one beat. The tell is the standalone theatrical opener, not the word; state the point directly.",
+   "cues": [
+    "Honestly?",
+    "Look,",
+    "Here's the thing",
+    "The thing is",
+    "Let's be honest",
+    "Real talk",
+    "Real talk:",
+    "Let's be honest —",
+    "Here's what I mean",
+    "Let me be clear",
+    "I'll be honest",
+    "The uncomfortable truth is",
+    "the honest answer",
+    "Here's the thing:"
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s|\\n)\\s*honestly[?!]",
+    "(?:^|[.!?]\\s|\\n)\\s*(?:look|real talk|here'?s the thing)\\s*[,:.]",
+    "\\blet'?s be honest\\b",
+    "\\bthe honest answer\\b",
+    "\\bthe uncomfortable truth is\\b",
+    "\\blet me be clear\\b"
+   ],
+   "examples": [
+    {
+     "before": "Is it worth the price? Honestly? It depends on how often you'll use it.",
+     "after": "Whether it is worth the price depends on how often you use it."
+    },
+    {
+     "before": "Let's be honest, the migration took longer than planned.",
+     "after": "The migration took three weeks instead of one."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "velitchkov",
+    "baseline"
+   ],
+   "merged_from": [
+    "§33 Fake-candid openings",
+    "Fake-candid openers",
+    "Throat-clearing openers",
+    "Keelschraper / conversational-cosplay opener",
+    "[CDF] The candor flag",
+    "Candor flag"
+   ],
+   "in_baseline": true,
+   "false_positives": "'Honestly' or 'look' mid-sentence is ordinary in casual writing and in dialogue. Keep 'to be honest' where it marks real uncertainty, self-correction or spoken rhythm in a voice that already runs that way. Quoted speech stays."
+  },
+  {
+   "id": "narrated-candor",
+   "name": "Narrated candor and performed vulnerability",
+   "definition": "Announcing one's own disclosure instead of disclosing, or performing self-awareness that costs nothing: 'I want to be upfront:', 'To be fully transparent:', 'in the interest of full disclosure', 'Two caveats I would rather flag than let you discover later:', 'And yes, I'm openly in love with the platform model'. The frame is separable from the content; cut it and the sentence loses no information. Real vulnerability is specific and uncomfortable, this version is polished and risk-free.",
+   "cues": [
+    "Two caveats I would rather flag than let you discover later:",
+    "I want to be upfront:",
+    "To be fully transparent:",
+    "Rather than bury this, I'll say it plainly:",
+    "I could have left this out, but:",
+    "Being honest about the limitations here:",
+    "I would rather flag this than let you discover it later",
+    "in the interest of full disclosure",
+    "I'd rather ... than",
+    "And yes,",
+    "I'm openly",
+    "since we're being honest",
+    "I'm looking at you",
+    "This is not a rant; it's a diagnosis"
+   ],
+   "regex": [
+    "\\bin the interest of full disclosure\\b",
+    "\\bi want to be upfront\\b",
+    "\\bto be fully transparent\\b",
+    "\\b(?:rather than bury this|i could have left this out, but)\\b",
+    "\\bsince we'?re being honest\\b"
+   ],
+   "examples": [
+    {
+     "before": "Two caveats I would rather flag than let you discover later: the sample is small and the runs were not randomised.",
+     "after": "Two caveats: the sample is small and the runs were not randomised."
+    },
+    {
+     "before": "And yes, since we're being honest: I'm openly in love with the platform model.",
+     "after": "I prefer the platform model, and I have shipped three products on it."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Narrated candor",
+    "narrated candor",
+    "False Vulnerability"
+   ],
+   "false_positives": "The disclosure itself always stays ('I haven't tested this on Windows', 'the numbers don't reproduce on my hardware', 'this is a mitigation, not a fix'), and a real conflict-of-interest note stays with its frame ('In the interest of full disclosure, I own shares in the company discussed here'). The ordinary comparative is not this pattern ('I'd rather fix it than let you inherit the mess'). Every regex tight enough to spare those carve-outs stops matching the tell, so treat detection as judgement.",
+   "in_baseline": false
+  },
+  {
+   "id": "false-suspense-hook",
+   "name": "False suspense hook (teaser before an ordinary point)",
+   "definition": "A short fragment or clause manufactures suspense around information that needed none: 'The catch?', 'The kicker?', 'Here's the kicker', 'Here's where it gets interesting', 'The best part?', 'The result?', 'This is where X comes in', and the withheld-term beat ('has a name', 'the cleanest organizing idea is this.'). Mid-flow teasers pad the rhythm and promise a revelation the next sentence cannot pay for. Delete the hook and state the thing.",
+   "cues": [
+    "The catch?",
+    "The kicker?",
+    "Here's the thing.",
+    "But here's the kicker:",
+    "The best part?",
+    "Plot twist:",
+    "The result?",
+    "Here's the kicker",
+    "Here's where it gets interesting",
+    "Here's what most people miss",
+    "Here's the starting point",
+    "Here's the deal",
+    "has a name",
+    "the cleanest organizing idea is this.",
+    "This is where X comes in",
+    "This is where ... comes in",
+    "what nobody tells you"
+   ],
+   "regex": [
+    "\\b(?:here'?s|but here'?s) the (?:kicker|deal|catch)\\b",
+    "(?:^|[.!?]\\s|\\n)\\s*the (?:catch|kicker|best part|result)\\?",
+    "\\bhere'?s where it gets (?:interesting|clever|weird|good)\\b",
+    "\\bthis is where [a-z][\\w'-]* comes in\\b"
+   ],
+   "examples": [
+    {
+     "before": "The catch? It only works on weekends.",
+     "after": "It only works on weekends."
+    },
+    {
+     "before": "Here's where it gets interesting: the cache never filled.",
+     "after": "The cache never filled."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "tropes-fyi",
+    "velitchkov",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "Infomercial engagement hooks",
+    "\"Here's the Kicker\"",
+    "[SH] The suspense hook",
+    "Spanningshaakje (suspense hook)",
+    "This is where X comes in"
+   ],
+   "in_baseline": true,
+   "false_positives": "A genuine reveal that the reader has been set up to want, in a narrative or a mystery, is craft. Quoted speech and comedy where a punchline is literal stay. A one-line paragraph is only a hook when the sentence after it does not repay the build-up."
+  },
+  {
+   "id": "colon-reveal",
+   "name": "Colon reveal (staged payoff after a colon)",
+   "definition": "A setup clause, a colon, then a tidy payload in lower case: the colon is used for suspense rather than to introduce a list, a label or a quote ('The detail that makes it work: a separate agent grades it', 'not a style but an attractor: the center of gravity of a distribution'). Rewrite as a plain sentence. In Dutch house copy the same shape is the aanloop-dubbelepunt-clou.",
+   "cues": [
+    "The detail that makes it work:",
+    "The best part:",
+    "noun phrase + colon + lowercase reveal",
+    ":",
+    "not a style but an attractor: the center of gravity of a distribution",
+    "a measurable claim: markers per thousand words"
+   ],
+   "regex": [
+    "(?:^|\\n)[ \\t]*[A-Z][^.!?:\\n]{5,45}: [a-z][^.!?\\n]{5,80}[.!?]"
+   ],
+   "examples": [
+    {
+     "before": "The detail that makes it work: a separate agent grades it.",
+     "after": "A separate agent does the grading, which is what makes it work."
+    },
+    {
+     "before": "The best part: it learns.",
+     "after": "It learns from every correction."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "velitchkov",
+    "baseline"
+   ],
+   "merged_from": [
+    "Colon reveals",
+    "[CR] The colon-reveal",
+    "Dubbelepunt-onthulling (colon reveal)"
+   ],
+   "in_baseline": true,
+   "false_positives": "Colons introducing a list, a definition, a label, a quotation, a ratio or a time are ordinary. Headings, table cells and code do not count. One colon reveal in a piece is a stylistic choice; the tell is the shape recurring, especially alongside a contrastive binary before the colon."
+  },
+  {
+   "id": "deeper-truth-framing",
+   "name": "Deeper-truth framing and the reframe",
+   "definition": "A stock phrase presents an ordinary point as a hidden or fundamental insight, or asserts that the matter is obvious instead of showing it: 'the real question is', 'at its core', 'what really matters', 'the heart of the matter', 'make no mistake', 'the truth is', 'The reality is simpler', 'History is unambiguous on this point', and the reveal that waves away everything said so far ('but none of them is the real story. The real story is...'). The reframe variant repositions the question as a setup for the writer's preferred version ('Better posed:', 'the harder skill is usually'). Drop the frame and state the point.",
+   "cues": [
+    "The real question is",
+    "at its core",
+    "in reality",
+    "what really matters",
+    "fundamentally",
+    "the deeper issue",
+    "the heart of the matter",
+    "make no mistake",
+    "the truth is",
+    "The truth is simple",
+    "The reality is simpler",
+    "History is unambiguous",
+    "is clear",
+    "the metrics are clear",
+    "the examples are clear",
+    "but none of them is the real story",
+    "The real story is",
+    "Better posed:",
+    "the harder skill is usually"
+   ],
+   "regex": [
+    "\\bthe real question is\\b",
+    "\\bat its core\\b",
+    "\\bmake no mistake\\b",
+    "\\bthe (?:real|actual) story is\\b",
+    "\\bthe (?:truth|reality) is (?:simple|simpler)\\b",
+    "\\bthe heart of the matter\\b",
+    "\\bbetter posed:",
+    "\\bwhat really matters (?:is|here)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The real question is whether teams can adapt. At its core, what really matters is organisational readiness.",
+     "after": "Whether teams adapt depends on whether the organisation changes its habits."
+    },
+    {
+     "before": "The reality is simpler and less flattering: nobody read the spec.",
+     "after": "Nobody read the spec."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b",
+    "tropes-fyi",
+    "velitchkov"
+   ],
+   "merged_from": [
+    "§27 Pretending to reveal a deeper truth",
+    "Persuasive-authority tropes",
+    "\"The Truth Is Simple\"",
+    "\"The Real Story Is...\" Reveal",
+    "[RF] The reframe"
+   ],
+   "false_positives": "A genuine reframing that names what the first question missed and then answers the better one is argument. 'In reality' contrasting with a stated appearance is ordinary. If you have to tell the reader the point is clear, it usually is not, but a summary of evidence already laid out may legitimately say so.",
+   "in_baseline": false
+  },
+  {
+   "id": "significance-signaling",
+   "name": "Significance signaling (framing before the content lands)",
+   "definition": "A clause tells the reader that what follows is significant, or how to read it, instead of letting it be: 'This matters because', 'That reduction is useful, because', 'That last part matters more than it sounds', 'The key point is', 'As you can see', 'In other words' restating what was just said. The justification is placed before the assertion it serves, so the claim arrives inside a frame telling the reader how to take it. Put the claim first and let the explanation follow, or drop it.",
+   "cues": [
+    "That last part matters more than it sounds",
+    "The key point is",
+    "As you can see",
+    "This distinction matters",
+    "In other words",
+    "That reduction is useful, because",
+    "This matters for the comparison, because.",
+    "this matters because",
+    "this matters because…",
+    "what's going on here is…",
+    "frequent meta-explanations",
+    "pre-justification"
+   ],
+   "regex": [
+    "\\bthis matters (?:because|for)\\b",
+    "\\bthat (?:last )?(?:part|point|detail) matters more than it (?:sounds|looks)\\b",
+    "\\bthe key (?:point|takeaway|insight) (?:here )?is\\b",
+    "\\bwhat'?s going on here is\\b",
+    "\\bthis distinction matters\\b"
+   ],
+   "examples": [
+    {
+     "before": "This matters because it changes how the scheduler behaves under load.",
+     "after": "Under load the scheduler drops the lowest-priority queue first."
+    },
+    {
+     "before": "The key point is that the token expires after an hour. As you can see, that shortens the window.",
+     "after": "The token expires after an hour, which shortens the window to one retry."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "velitchkov",
+    "no-ai-slop"
+   ],
+   "merged_from": [
+    "[SS] Significance-signaling",
+    "Heavy framing before content lands (pre-justification, implied)",
+    "Interpretive metadiscourse"
+   ],
+   "false_positives": "A causal explanation that adds a fact is not signposting ('this matters because the certificate expires on Friday'). 'In other words' earning a genuinely new formulation, and reader guidance in teaching material aimed at beginners, both stay. The tell is a frame that could be deleted without losing information.",
+   "in_baseline": false
+  },
+  {
+   "id": "importance-labelling",
+   "name": "Importance labelling (telling the reader what weight to give)",
+   "definition": "An adjective, superlative or gloss asserts that something is important, crucial, significant, surprising, subtle or obvious in place of showing why: 'plays a crucial role in', 'it cannot be overstated', 'one of the most important', 'this represents a broader shift', 'the decision symbolizes a commitment to excellence', 'it speaks to a larger trend in the industry'. The hedged-superlative form ranks the subject against an unnamed field, and the concessive form concedes the subject is minor and then claims broader significance anyway. Delete the label, keep the fact and the consequence that makes it matter.",
+   "cues": [
+    "important",
+    "surprising",
+    "subtle",
+    "obvious",
+    "significant",
+    "Plays a crucial role in...",
+    "It cannot be overstated...",
+    "crucial",
+    "One of the most [important/significant/crucial]...",
+    "One of the most important",
+    "One of the most significant",
+    "One of the most crucial",
+    "this represents a broader shift",
+    "the decision symbolizes a commitment to excellence",
+    "it speaks to a larger trend in the industry",
+    "represents a broader shift",
+    "symbolizes a commitment",
+    "speaks to a larger trend",
+    "매우 중요하다",
+    "반드시 기억해야 한다",
+    "시사하는 바가 크다",
+    "주목할 만하다",
+    "Though it saw only limited application",
+    "contributes to the broader history",
+    "reflects the influence of"
+   ],
+   "regex": [
+    "\\bplays? an? (?:crucial|vital|pivotal|key|central) role\\b",
+    "\\b(?:it )?cannot be overstated\\b",
+    "\\bone of the most (?:important|significant|crucial|notable|influential)\\b",
+    "\\brepresents a (?:broader|larger|wider) (?:shift|trend|movement)\\b",
+    "\\bspeaks to a (?:larger|broader) trend\\b",
+    "\\bsymbol(?:ize|ise)s a commitment\\b",
+    "\\bcontributes to the broader (?:history|story|understanding)\\b",
+    "매우 중요하다|시사하는 바가 크다|주목할 만하다"
+   ],
+   "examples": [
+    {
+     "before": "The station plays a crucial role in the regional network, and its significance cannot be overstated.",
+     "after": "Four of the five regional lines terminate at the station."
+    },
+    {
+     "before": "Though it saw only limited application, it contributes to the broader history of early aviation engineering and reflects the influence of French rotary designs.",
+     "after": "Two airframes used the engine, both built in 1913. Its cylinder layout copies the Gnome Lambda."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "willfrancis",
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "im-not-ai-method",
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Importance labelling",
+    "Evaluative labelling (telling instead of showing)",
+    "One of the most [important/significant/crucial]...",
+    "Declarative meaning-telling",
+    "D-2 의의·중요성 과장 (significance inflation)",
+    "Hedging preamble conceding low importance, then asserting importance anyway"
+   ],
+   "false_positives": "A sourced ranking with the ranker named stays ('the largest of the four by tonnage, per the 2024 port register'). Statistical 'significant' with a test behind it is a term of art. In a summary or an abstract, naming which finding the paper treats as primary is reporting, not labelling.",
+   "in_baseline": false
+  },
+  {
+   "id": "stakes-inflation",
+   "name": "Stakes inflation (world-historical framing of an ordinary subject)",
+   "definition": "The importance of the subject or of what is about to be said is raised beyond anything the content supports: 'This will fundamentally reshape how we think about everything', 'will define the next era', 'the stakes have never been higher', 'now more than ever', 'because they shape everything that follows'. A post about API pricing becomes a meditation on the fate of civilisation, and the payoff never matches the build-up. Cut the inflation and let the specific claim carry its own size.",
+   "cues": [
+    "fundamentally reshape",
+    "how we think about everything",
+    "will define the next era",
+    "something entirely new",
+    "In a world where",
+    "now more than ever",
+    "the stakes have never been higher",
+    "because they shape everything that follows"
+   ],
+   "regex": [
+    "\\bfundamentally (?:reshape|redefine|transform|change) (?:how|the way)\\b",
+    "\\bthe stakes have never been higher\\b",
+    "\\bnow more than ever\\b",
+    "\\bwill define the (?:next|coming) (?:era|decade|generation)\\b",
+    "\\bshapes? everything that follows\\b",
+    "\\bhow we think about everything\\b"
+   ],
+   "examples": [
+    {
+     "before": "This will fundamentally reshape how we think about everything, and the stakes have never been higher.",
+     "after": "The price change adds about 40 euro a month for a team of ten."
+    },
+    {
+     "before": "Four caveats matter here, because they shape everything that follows.",
+     "after": "Four caveats: the sample is small, the runs are unrandomised, one host was shared, and the baseline predates the upgrade."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "tropes-fyi",
+    "avoid-ai-writing-skill-b",
+    "velitchkov"
+   ],
+   "merged_from": [
+    "Grandiose Stakes Inflation",
+    "Manufactured stakes (speculative scenario openers)",
+    "[SK] Stakes-raising"
+   ],
+   "false_positives": "Subjects whose stakes are genuinely large (a safety recall, a fatality, a systemic outage) may be described plainly in strong terms; the tell is scale asserted without a mechanism. Marketing copy in a genre where hyperbole is the convention still reads as this pattern to anyone outside it.",
+   "in_baseline": false
+  },
+  {
+   "id": "self-ranking-claim",
+   "name": "Self-ranking and self-applause about one's own point",
+   "definition": "The writer tells the reader which of their own points is the deep, clever, contrarian or overlooked one instead of letting the reader judge: 'the deepest point is', 'the cleanest organizing idea', 'That last move is the contrarian one', 'That's the part everyone misses', 'And that matters.', 'Which is exactly the point.'. The contribution-framing variant claims the point completes what earlier accounts left open ('supplies the other half', 'pins down something the earlier explanations left open'). Cut the labelling sentence, or restructure so the highlighted item comes first and is expanded with specifics.",
+   "cues": [
+    "most important",
+    "cleanest organizing idea",
+    "The deepest point in the usual comparison is",
+    "a deflationary point",
+    "the deepest point is",
+    "That last move is the contrarian one",
+    "This is the interesting part",
+    "That third bullet is the real story",
+    "Here's where it gets clever",
+    "The last bit is the counterintuitive one",
+    "contrarian",
+    "clever",
+    "surprising",
+    "counterintuitive",
+    "interesting",
+    "key",
+    "important",
+    "unusual",
+    "smart",
+    "brilliant",
+    "real",
+    "actual",
+    "And that matters.",
+    "That's the part everyone misses.",
+    "Which is exactly the point.",
+    "that matters",
+    "everyone misses",
+    "exactly the point",
+    "That's the part everyone misses",
+    "supplies the other half",
+    "it pins down something the earlier explanations left open"
+   ],
+   "regex": [
+    "\\bthat'?s the part (?:everyone|most people|nobody|no one) (?:misses|skips|gets wrong)\\b",
+    "\\bwhich is exactly the point\\b",
+    "\\bthe (?:deepest|cleanest|sharpest|most important) (?:point|idea|insight|part) (?:here |in .{0,30})?is\\b",
+    "\\bthat (?:last|third|second) (?:move|bullet|bit|point) is the (?:contrarian|counterintuitive|interesting|real) one\\b",
+    "\\bsupplies the other half\\b"
+   ],
+   "examples": [
+    {
+     "before": "Two separate indexes for tiered storage. That last move is the contrarian one.",
+     "after": "Two separate indexes for tiered storage. Co-locating related data usually helps cache locality, and splitting the indexes is what keeps the hot path cheap."
+    },
+    {
+     "before": "The rollback took four minutes. And that matters.",
+     "after": "The rollback took four minutes, inside the ten-minute error budget."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "velitchkov",
+    "avoid-ai-writing-skill-b",
+    "baseline",
+    "hassid"
+   ],
+   "merged_from": [
+    "[SRC] Self-ranking one’s own claims",
+    "Self-labeling significance",
+    "Zelfbeoordeling (self-ranking claim)",
+    "Clapping for itself (self-congratulation)",
+    "[CF] Contribution framing"
+   ],
+   "in_baseline": true,
+   "false_positives": "An abstract or an executive summary may legitimately say which result the work treats as primary. A review that ranks options is doing the reader's work for them on purpose. The deletion test settles it: if cutting the sentence loses no information, it was applause."
+  },
+  {
+   "id": "announced-interest",
+   "name": "Announced interest and claimed emotion",
+   "definition": "A cue pre-interprets importance or claims a reaction the writing has not earned: 'Here's what's interesting', 'Here's the interesting part', 'What surprised me most', 'What struck me was', 'I was fascinated to discover', 'The most interesting part', and the bare section-header form ('Interesting aspect:'). It works only when genuinely surprising data follows; the default failure is a restatement of the obvious behind a promise of surprise. Cut the cue and present the thing, or make the lead-in specific to why it matters.",
+   "cues": [
+    "Here's what's interesting",
+    "Here's what caught my eye",
+    "Here's what stood out",
+    "Here's the interesting part",
+    "Here are the parts I found interesting",
+    "What surprised me most",
+    "I was fascinated to discover",
+    "What struck me was",
+    "I was excited to learn",
+    "The most interesting part",
+    "Interesting part of the project:",
+    "Interesting thing here:",
+    "Interesting aspect:"
+   ],
+   "regex": [
+    "\\bhere'?s (?:what'?s|the) (?:interesting|surprising)(?: part)?\\b",
+    "\\bhere'?s what (?:caught my eye|stood out)\\b",
+    "\\bwhat surprised me most\\b",
+    "\\bwhat struck me was\\b",
+    "\\bi was fascinated to\\b",
+    "(?m)^\\s*interesting (?:part|thing|aspect|piece)(?: of [^:\\n]{1,30})?\\s*:"
+   ],
+   "examples": [
+    {
+     "before": "Here's the interesting part.",
+     "after": "Revenue fell 8 percent while headcount rose 20 percent."
+    },
+    {
+     "before": "What surprised me most was how fast the index rebuilt.",
+     "after": "The index rebuilt in 90 seconds, down from 40 minutes."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Reader-steering frames (\"Here's what's interesting\")",
+    "Reader-steering interest cue",
+    "Emotional flatline",
+    "emotional flatline (superficial -ing analyses)"
+   ],
+   "false_positives": "A first-person account may report a real reaction when the surrounding writing earns it ('I expected 40 minutes; it took 90 seconds'). The fix is not to ban the word surprised, it is to make the surprise visible. Interview and diary registers carry more of this legitimately.",
+   "in_baseline": false
+  },
+  {
+   "id": "aphoristic-ender",
+   "name": "Aphoristic ender (quotable closing line)",
+   "definition": "A paragraph, section or piece lands on a compact epigram that restates the point as a maxim instead of adding information: 'The future isn't coming. It's already here.', 'a stance, not its absence', 'evidence of training, not of virtue', 'Because in the end, the real question isn't what AI can do.' Frequent sub-forms are the ender built as a contrastive binary ('X, not Y') and the hortatory call-to-action ender (Korean ~할 때입니다 / ~시점입니다, 'now is the time to'). Delete it rather than rewriting it into a better metaphor, and end on the clearest concrete sentence already in the draft.",
+   "cues": [
+    "final deep line",
+    "metaphor",
+    "aphorism",
+    "mic-drop",
+    "a stance, not its absence",
+    "leaves fingerprints, and fingerprints can be counted",
+    "the dense version is the courtesy",
+    "it is relocated to the writer",
+    "not a property of the prose",
+    "evidence of training, not of virtue",
+    "Because in the end,",
+    "the real question isn't … it's",
+    "in the end",
+    "And that matters.",
+    "En dat telt.",
+    "~할 때입니다",
+    "~시점입니다",
+    "~할 순간입니다",
+    "~로 나아갈"
+   ],
+   "regex": [
+    "\\bbecause,? in the end,",
+    "할 때입니다|시점입니다|할 순간입니다"
+   ],
+   "examples": [
+    {
+     "before": "The future isn't coming. It's already here.",
+     "after": "Three of the five teams already run it in production."
+    },
+    {
+     "before": "Because in the end, the real question isn't what AI can do, it's what we will do with it.",
+     "after": "The next decision is whether we let it write migrations unattended."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "velitchkov",
+    "no-ai-slop",
+    "vollmer",
+    "baseline",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "[AE] The aphoristic ender",
+    "Aphoristic ender built as a binary (AE+CB compound)",
+    "Fake-profound kickers",
+    "Aphoristic closure (pseudo-profound kicker)",
+    "Aforistische slotzin (aphoristic ender)",
+    "D-6 Closing formula ~할 때입니다 / ~시점입니다 / ~할 순간입니다 (it is time to / now is the moment to)",
+    "D-6 완결 공식형 결말 '~할 때입니다 / 시점입니다' (it-is-time ender)"
+   ],
+   "in_baseline": true,
+   "false_positives": "One earned closing line in a whole piece is fine, and a quotation used as an ender belongs to its author. The tell is every paragraph landing this way, or a closer that would survive being pasted under a different article. Cap the hortatory 'now is the time' ender at one per document at most."
+  },
+  {
+   "id": "aphorism-formula",
+   "name": "Aphorism formula (X is the Y of Z)",
+   "definition": "An ordinary claim is recast as a quotable general law by a slot-fill metaphor: 'X is the language of Y', 'the currency of Z', 'the architecture of trust', 'X becomes a trap', 'X is not a tool but a mirror', 'It's the Excel of AI agents', and the transformation frame that dramatises a shift ('from X to Y', 'beyond X toward Y', Korean X에서 Y로 / X을 넘어 Y로). The shape does the persuading in place of evidence, and the comparison only communicates if the reader already knows both sides of the mapping. Replace with the concrete claim.",
+   "cues": [
+    "X is the Y of Z",
+    "X becomes a trap",
+    "X is not a tool but a mirror",
+    "the language of",
+    "the currency of",
+    "the architecture of",
+    "X is the language of Y",
+    "X is the currency of Z",
+    "the architecture of trust",
+    "becomes a trap",
+    "not a tool but a mirror",
+    "is the language of",
+    "is the currency of",
+    "It's the Excel of AI agents.",
+    "the X of Y",
+    "It's the ... of ...",
+    "X에서 Y로",
+    "X을 넘어 Y로",
+    "넘어"
+   ],
+   "regex": [
+    "\\bis the (?:language|currency|architecture|grammar|operating system) of\\b",
+    "\\bbecomes? a trap\\b",
+    "\\bnot a tool but a mirror\\b",
+    "\\bthe architecture of trust\\b"
+   ],
+   "examples": [
+    {
+     "before": "Symmetry is the language of trust. Efficiency becomes a trap when teams forget the human layer.",
+     "after": "Symmetric layouts feel more predictable to users. Teams can over-optimise a workflow and miss how people actually use it."
+    },
+    {
+     "before": "It's the Excel of AI agents.",
+     "after": "It runs scheduled jobs from a spreadsheet-style grid, one row per agent."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "hassid",
+    "im-not-ai-taxonomy"
+   ],
+   "merged_from": [
+    "§32 Formulaic sayings (invented aphorisms)",
+    "Aphorism formulas",
+    "aphorism formulas",
+    "\"It's the Excel of AI agents.\" (inexact comparison)",
+    "D-7 Transformation formula X에서 Y로 / X을 넘어 Y로 (from X to Y / beyond X toward Y)"
+   ],
+   "in_baseline": true,
+   "false_positives": "Quotations and established idioms are attributed speech or common coin ('time is money'). An ordinary genitive copula is not an aphorism ('Paris is the capital of France', 'HTTP is the protocol of the web'), which is why a general 'X is the Y of Z' regex cannot be used. A comparison stays when both referents are certain to be known by the audience and the mapping is spelled out. Cap the transformation frame at one per document."
+  },
+  {
+   "id": "pull-quote-density",
+   "name": "Pull-quote density (every line engineered to land)",
+   "definition": "Line after line is written to be extractable: over-polished quotable sentences in every paragraph, stacked aphorisms with no connective tissue between them, and short one-line paragraphs or fragments placed for dramatic effect. The tell is the density, not one good line. Keep the strongest one and let the rest be ordinary sentences that carry argument.",
+   "cues": [
+    "pull-quote-ready lines",
+    "every line a pull-quote",
+    "staccato drama",
+    "one-line paragraph for effect"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Speed is a choice.\n\nSo is silence.\n\nAnd silence is expensive.",
+     "after": "We chose to ship weekly. That meant telling customers about outages within the hour, which costs about two hours of support time per release."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer",
+    "baseline",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Aphorism density (every line a pull-quote)",
+    "Pull-quote-ready lines",
+    "manufactured punchlines / staccato drama"
+   ],
+   "in_baseline": true,
+   "false_positives": "Poetry, aphorism collections and deliberately staccato voices (columns, stand-up, some fiction) run on this by design. A single colourful line the author wrote themselves stays; when in doubt, keep it. Count across paragraphs before flagging."
+  },
+  {
+   "id": "false-profundity-truism",
+   "name": "False profundity (insight shape, no claim)",
+   "definition": "A sentence carries the shape of insight, a contrast, a reversal or an epigram, but contains nothing a reader could act on or disagree with: 'Everyone has moments of doubt.', 'Change is the only constant.', 'At the end of the day, we are all human.' These are the safest possible sentences, true of everyone and so of no one. The related regression is ornamental phrasing chosen over the plain statement, which returns in long sessions even after the model has been told to write plainly. Replace with the concrete claim, or delete.",
+   "cues": [
+    "Everyone has moments of doubt.",
+    "Change is the only constant.",
+    "At the end of the day, we are all human.",
+    "At the end of the day",
+    "pretty sentences",
+    "sentences that sound profound but say absolutely nothing"
+   ],
+   "regex": [
+    "\\bchange is the only constant\\b",
+    "\\bat the end of the day, we are all\\b",
+    "\\beveryone has moments of\\b"
+   ],
+   "examples": [
+    {
+     "before": "At the end of the day, we are all human, and change is the only constant.",
+     "after": "The team missed the deadline twice, and both times the cause was the same undocumented dependency."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "vollmer",
+    "willfrancis",
+    "hassid"
+   ],
+   "merged_from": [
+    "False profundity / universal-generic statements",
+    "Pseudo-profundity",
+    "Pretty sentences (ornamental regression)"
+   ],
+   "false_positives": "A proverb quoted and then argued with is doing work. Ceremonial registers (a eulogy, a toast, a preface) tolerate the general statement. The test is whether a reader could disagree with the sentence; if not, it is filler.",
+   "in_baseline": false
+  },
+  {
+   "id": "generic-conclusion",
+   "name": "Generic conclusion and future-narrative closer",
+   "definition": "A closing line gestures at the future or at certainty without a claim anyone could check: 'The future looks bright', 'Only time will tell', 'One thing is certain', 'As we move forward'. The future-narrative form is a fixed shape, modal plus 'become' plus a vague head noun ('may become one of the most important narratives of the next market cycle', 'is poised to become the defining trend of the coming decade'), and the Korean variant opens the last paragraphs with a bare time adverb (향후, 앞으로, 중장기적으로) and no date or condition. Replace with a falsifiable version or cut.",
+   "cues": [
+    "The future looks bright",
+    "Only time will tell",
+    "One thing is certain",
+    "As we move forward",
+    "May become one of the most important narratives of the next market cycle",
+    "could become the defining trend of the coming decade",
+    "is poised to become the next major chapter in [X]",
+    "may become",
+    "could become",
+    "will become",
+    "is poised to become",
+    "one of the most important",
+    "narrative",
+    "story",
+    "trend",
+    "theme",
+    "chapter",
+    "movement",
+    "force",
+    "may become one of the most important narratives…",
+    "향후",
+    "앞으로",
+    "중장기적으로"
+   ],
+   "regex": [
+    "\\bthe future looks bright\\b",
+    "\\bonly time will tell\\b",
+    "\\bone thing is certain\\b",
+    "\\bas we move forward\\b",
+    "\\b(?:may|could|will|is poised to|is set to) become (?:one of )?(?:the )?(?:most |defining |next major )?\\w* ?(?:narratives?|stories|trends?|themes?|chapters?|movements?|forces?)\\b",
+    "\\bone of the most important (?:narratives?|stories|trends?|themes?) of the (?:next|coming)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The intersection of AI and DePIN may become one of the most important narratives of the next market cycle. Only time will tell.",
+     "after": "DePIN compute may undercut AWS spot pricing for parallel workloads by 2027."
+    },
+    {
+     "before": "As we move forward, the future looks bright for the department.",
+     "after": "The department has budget for two more inspectors in 2027."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Generic conclusions",
+    "generic conclusion",
+    "Generic future-narrative closers",
+    "generic future-narrative closer",
+    "D-11 결말부 막연한 시간지평 (vague time horizon ender)"
+   ],
+   "false_positives": "A forecast with a number, a date or a named condition is a claim, not a closer ('the contract expires in March, and the council has not scheduled a tender'). Documentation and reference registers skip this pattern entirely because they rarely close on prediction.",
+   "in_baseline": false
+  },
+  {
+   "id": "call-to-action-closer",
+   "name": "Reader-directed closer (endorsement, CTA, obligation)",
+   "definition": "A closing line instructs the reader instead of saying anything: the social endorsement sign-off ('This one is worth your time:', 'Bookmark this.', 'Do yourself a favor and read this.', 'Thank me later.'), the landing-page invitation ('Let's Connect!', 'Drop me a message', 'I'm always happy to hear from fellow Wikimedians!'), and the policy-report obligation ending where paragraph after paragraph closes on 'there is a need to' (Korean ~할 필요가 있다). It is generic and demonstrative-anchored, so it would sit under any link. Say what the thing is and who it is for, then drop the call to action.",
+   "cues": [
+    "This one is worth your time:",
+    "This one's a must-read:",
+    "I highly recommend giving this a read.",
+    "Do yourself a favor and read this.",
+    "You won't want to miss this one.",
+    "Save this for later.",
+    "Bookmark this.",
+    "Don't sleep on this one.",
+    "Trust me, you'll want to read this.",
+    "Thank me later.",
+    "Let's Connect!",
+    "Drop me a message",
+    "Have a suggestion, correction, or just want to say hi?",
+    "I'm always happy to hear from fellow Wikimedians!",
+    "Gratitude",
+    "👉",
+    "~할 필요가 있다",
+    "당위로 끝나는 문단"
+   ],
+   "regex": [
+    "\\bthis one'?s? (?:is )?worth (?:your time|the read|a read)\\b",
+    "\\bdo yourself a favou?r and (?:read|watch|check out) (?:this|it)\\b",
+    "\\b(?:you )?won'?t want to miss this\\b",
+    "\\bthank me later\\b",
+    "\\bbookmark this\\b",
+    "\\bdon'?t sleep on this\\b",
+    "\\bthis one'?s? a must[- ]?(?:read|watch|listen)\\b",
+    "\\blet'?s connect!"
+   ],
+   "examples": [
+    {
+     "before": "This one is worth your time:",
+     "after": "Sarah's write-up of why context windows leak, the clearest version I have found for anyone debugging a RAG pipeline."
+    },
+    {
+     "before": "Have a suggestion, correction, or just want to say hi? Drop me a message. I'm always happy to hear from fellow contributors!",
+     "after": "Corrections are welcome on the talk page."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "wikipedia-b",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Social endorsement closers",
+    "social endorsement / CTA closer (engagement-bait)",
+    "Call-to-action closer",
+    "I-4 '~할 필요가 있다' 권고형 결말 (policy-report recommendation ending)"
+   ],
+   "false_positives": "A newsletter, a landing page or a campaign email is allowed one real call to action, and a recommendation carrying a reason is a review ('read the appendix if you run Postgres 14; the lock behaviour changed'). One obligation sentence in a policy report is normal, the tell is two or more paragraphs in a row ending that way. Encyclopedic, technical and documentation prose should carry none.",
+   "in_baseline": false
+  },
+  {
+   "id": "speculative-scenario-opener",
+   "name": "Speculative scenario opener (Imagine a world where)",
+   "definition": "An argument opens with a hypothetical world that lists desirable outcomes instead of making a claim: 'Imagine a world where every deploy is instant', 'Picture a future in which', 'Envision a world where'. The scenario does the persuading and no evidence follows; the payoff is always that the reader has accepted the premise. Cut the hypothetical and state the real claim.",
+   "cues": [
+    "Imagine a world where…",
+    "Picture a future in which…",
+    "Envision a world where…",
+    "Imagine a world where",
+    "Picture a future in which",
+    "Envision a world where",
+    "Imagine",
+    "In that world"
+   ],
+   "regex": [
+    "\\b(?:imagine|picture|envision)(?:\\s*,[^,\\n]{1,30},)?\\s+a\\s+(?:world|future|reality)\\s+(?:where|in which)\\b"
+   ],
+   "examples": [
+    {
+     "before": "Imagine a world where every deploy is instant.",
+     "after": "Instant deploys would cut our release cycle from a day to minutes."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Speculative scenario openers",
+    "speculative scenario opener",
+    "\"Imagine a World Where...\""
+   ],
+   "false_positives": "Fiction, and a thought experiment with a stated payoff, are the form working as intended. Instructional 'imagine you have a sorted array' points at a concrete example and is a teaching device. 'Consider a scenario where' is deliberately excluded because it reads as ordinary analytic prose.",
+   "in_baseline": false
+  },
+  {
+   "id": "formulaic-opener",
+   "name": "Formulaic scene-setting opener",
+   "definition": "The default essay opening that places the subject in a churning field before saying anything about it: 'In the rapidly evolving world of X, Y has emerged as a leading force', with its era and age relatives ('In an age where', 'As industries continue to evolve') and the 'has become increasingly important' tail. The opener is interchangeable across topics, which is what makes it a tell. Open on the specific fact instead.",
+   "cues": [
+    "In the rapidly evolving world of...",
+    "In the rapidly evolving world of…",
+    "In an age where",
+    "has emerged as a leading force",
+    "has become increasingly important"
+   ],
+   "regex": [
+    "\\bin the (?:rapidly |ever-?\\s*)?(?:evolving|changing|expanding|growing|shifting) (?:world|landscape|realm|space|field|domain|era) of\\b",
+    "\\bin (?:an?|the) (?:digital )?age (?:where|of)\\b",
+    "\\bhas emerged as (?:a|the|one of) (?:the )?(?:leading|key|major|critical|essential|fundamental|pivotal|prominent|dominant|important)\\b",
+    "\\bhas become increasingly (?:important|critical|popular|relevant|prominent|essential)\\b"
+   ],
+   "examples": [
+    {
+     "before": "In the rapidly evolving world of AI, prompt engineering has emerged as a critical discipline.",
+     "after": "Prompt engineering is now a job title at three of the five largest labs."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Formulaic openings",
+    "formulaic opener (formulaic challenges)"
+   ],
+   "in_baseline": true,
+   "false_positives": "Bare 'has emerged as a' is ordinary English ('Rust has emerged as a serious systems language'), so the inflated head noun is what carries the flag. A history that genuinely opens on a period ('In the years after the war') is scene-setting with content."
+  },
+  {
+   "id": "phantom-rebuttal",
+   "name": "Phantom rebuttal, straw option and corrective pivot",
+   "definition": "The text argues with an interlocutor it invented. Sub-forms: the disclaimer of a position nobody put forward ('This isn't mainly about X', 'I'm not arguing that Y doesn't matter', 'To be clear', 'Don't get me wrong'), the straw option raised and dismissed in one clause and never mentioned again ('A tempting approach would be to..., but that would...'), the staged self-debate ('It would be wrong, though, to call the difference padding'), and the anticipate-and-rebut reversal that voices a reading and knocks it down in a two-word sentence ('as though it carried no stance. It carries one'). Usually residue of an earlier draft. Remove the invented objection and state the real constraint.",
+   "cues": [
+    "This isn't (mainly/really) about",
+    "I'm not saying/arguing/trying to",
+    "To be clear",
+    "Don't get me wrong",
+    "This is not to say",
+    "You could argue/frame this differently but",
+    "Some might say... but",
+    "A tempting option/approach would be",
+    "One might be tempted to",
+    "An obvious approach would be",
+    "You might think... but",
+    "It would be easy to just",
+    "Some would suggest",
+    "It would be wrong, though, to call the difference padding",
+    "as though it carried no stance. It carries one",
+    "But that's not all it's doing, and the surplus is what you're pointing at"
+   ],
+   "regex": [
+    "\\ba tempting (?:option|approach|solution) would be\\b",
+    "\\bone might be tempted to\\b",
+    "\\bdon'?t get me wrong\\b",
+    "\\bi'?m not (?:saying|arguing|claiming) that\\b",
+    "\\bit would be wrong,? though,? to\\b",
+    "\\bthis isn'?t (?:mainly|really) about\\b"
+   ],
+   "examples": [
+    {
+     "before": "This isn't mainly about prompt length, and I'm not arguing that documentation doesn't matter. The issue is whether the agent can use the instruction when it acts.",
+     "after": "The issue is whether the agent can use the instruction when it acts."
+    },
+    {
+     "before": "A tempting approach would be to rotate tokens by restarting the auth service on a cron job, but that would drop every active session. Rotation happens in place.",
+     "after": "Tokens rotate in place every 24 hours, and clients refresh transparently."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "velitchkov"
+   ],
+   "merged_from": [
+    "§34 Answering objections no one raised (phantom rebuttal)",
+    "§35 Rejecting fake alternatives (straw option)",
+    "[ARR] The anticipate-and-rebut reversal",
+    "[CP] The corrective pivot"
+   ],
+   "false_positives": "An objection whose source is named, or which the text then answers in full, is argument. A design document, tutorial or RFC should record the alternatives a reader would actually consider, with the reason each was rejected. A direct factual negation is not this pattern ('the API is not thread-safe'). One rejected option may be real; several short unrelated rejections are the sign.",
+   "in_baseline": false
+  },
+  {
+   "id": "invented-crowd-contrast",
+   "name": "Invented crowd contrast (forced contrarianism)",
+   "definition": "A claim is propped on an implied lagging crowd nobody named: 'Everyone says X, but they're wrong', 'the conventional wisdom is backwards', and the date-stamped trailing clause 'while everyone else was still debating timelines', 'while the industry wrote thinkpieces', 'while everyone else played catch-up'. The foil is invented, so the contrast costs nothing and the writer wins for free. State the fact and cut the crowd clause, or name the actual competitor and what they did.",
+   "cues": [
+    "Everyone says X, but they're wrong",
+    "the conventional wisdom is backwards",
+    "while everyone else was still debating timelines",
+    "while the industry wrote thinkpieces",
+    "while everyone else wrote think-pieces",
+    "while everyone else played catch-up",
+    "everyone else",
+    "others",
+    "the industry",
+    "the market",
+    "the competition"
+   ],
+   "regex": [
+    "\\bwhile (?:everyone else|others|the (?:industry|market|competition)) (?:was|were|is|are) still (?:busy )?(?:debat|deliberat|hesitat|theoriz|philosophiz|pontificat|speculat|argu|dither|bicker)ing\\b",
+    "\\bwhile (?:everyone else|others|the (?:industry|market|competition)) (?:was |were )?(?:busy )?(?:writing|wrote) think-? ?pieces\\b",
+    "\\bwhile (?:everyone else|others|the (?:industry|market|competition)) (?:was |were |is |are )?(?:still )?play(?:ed|ing|s)? catch[- ]?up\\b",
+    "\\bthe conventional wisdom is backwards\\b"
+   ],
+   "examples": [
+    {
+     "before": "We shipped it in 2022, while everyone else was still debating timelines.",
+     "after": "We shipped in 2022. The next vendor to ship a comparable feature was Acme, in late 2023."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Dramatized contrast against the crowd",
+    "dramatized crowd contrast",
+    "Forced contrarianism"
+   ],
+   "false_positives": "Literal simultaneity is ordinary narrative ('she read while everyone else watched the movie'). A contrarian claim is legitimate when the source actually argued it and the crowd position is quoted or cited. 'While the market was still speculating about the price' can be literally true; accept that residue rather than loosening the crowd list.",
+   "in_baseline": false
+  },
+  {
+   "id": "scarcity-of-knowledge-claim",
+   "name": "Scarcity-of-knowledge claim (nobody talks about this)",
+   "definition": "The text claims that its point is unnoticed, hidden or suppressed, where no such scarcity exists: 'what nobody tells you about', 'the failure mode nobody's naming', 'a problem nobody talks about', 'the insight everyone's missing', 'This is the part most people skip', 'What most people get wrong'. It flatters the writer as the lone expert and inflates novelty. Drop the framing and let the claim stand on its own.",
+   "cues": [
+    "the failure mode nobody's naming",
+    "a problem nobody talks about",
+    "the insight everyone's missing",
+    "what nobody tells you about",
+    "nobody talks about",
+    "nobody tells you",
+    "everyone's missing",
+    "This is the part most people skip",
+    "What most people get wrong",
+    "Here's what nobody tells you",
+    "The part everyone misses",
+    "What nobody tells you is…",
+    "What nobody tells you"
+   ],
+   "regex": [
+    "\\bwhat nobody tells you\\b",
+    "\\bnobody (?:talks|is talking) about\\b",
+    "\\bthe (?:insight|thing|part) (?:that )?(?:everyone|most people)'?s? (?:is )?missing\\b",
+    "\\bthe failure mode nobody'?s naming\\b",
+    "\\bwhat most people get wrong\\b",
+    "\\bthe part (?:that )?most people skip\\b"
+   ],
+   "examples": [
+    {
+     "before": "The part everyone misses: distribution is the real moat.",
+     "after": "Distribution is the moat."
+    },
+    {
+     "before": "Here's what nobody tells you about index rebuilds.",
+     "after": "An index rebuild holds an exclusive lock for the first 200 milliseconds."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "no-ai-slop"
+   ],
+   "merged_from": [
+    "Scarcity-of-knowledge engagement bait",
+    "novelty inflation",
+    "Faux-insight setups"
+   ],
+   "false_positives": "A documented gap is a claim with evidence ('the manual does not mention this, and neither does the changelog'). Teaching material may legitimately flag a common misconception when it then names it. Invented concept labels used the same way are judgement calls; no regex can catch a coinage.",
+   "in_baseline": false
+  },
+  {
+   "id": "rhetorical-question-pivot",
+   "name": "Rhetorical question used as a pivot",
+   "definition": "A staged question stands in for a transition or an assertion: 'But what does this mean for you?', 'So why should you care?', 'What's next?', 'What if I told you...', 'Think about it:', and the self-answered question-answer pair where the writer asks and immediately answers ('Question? Answer.'). The question adds no information and delays the point. Make the assertion instead.",
+   "cues": [
+    "But what does this mean for you?",
+    "So why should you care?",
+    "What's next?",
+    "What if I told you...",
+    "Think about it:",
+    "Plot twist:",
+    "Question? Answer."
+   ],
+   "regex": [
+    "\\bbut what does this mean for\\b",
+    "\\bso why should you care\\b",
+    "\\bwhat if i told you\\b",
+    "(?:^|[.!?]\\s|\\n)\\s*think about it[:.]",
+    "(?:^|[.!?]\\s|\\n)\\s*plot twist[:.]"
+   ],
+   "examples": [
+    {
+     "before": "But what does this mean for you? It means faster builds.",
+     "after": "Builds get about 30 percent faster on the same hardware."
+    },
+    {
+     "before": "What if I told you the cache was never the problem?",
+     "after": "The cache was never the problem; the connection pool was."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-detector",
+    "no-ai-slop"
+   ],
+   "merged_from": [
+    "rhetorical question opener",
+    "Rhetorical setups"
+   ],
+   "false_positives": "Interviews, FAQs, Socratic teaching and dialogue stack questions legitimately, and a question a reader has actually asked is worth quoting. A question that the text then investigates over several paragraphs is a thesis, not a pivot.",
+   "in_baseline": false
+  },
+  {
+   "id": "launch-copy-introduction",
+   "name": "Launch-copy dramatic introduction (Meet X, your new favorite Y)",
+   "definition": "A product is introduced like a game-show contestant instead of described: 'Enter Flowdesk.', 'Meet Flowdesk, your new favorite treasury dashboard', 'Say hello to Flowdesk', 'Think Notion meets Figma'. Near-deterministic in short launch and announcement copy. Say what the thing does and for whom.",
+   "cues": [
+    "Enter Flowdesk.",
+    "Meet Flowdesk, your new favorite treasury dashboard",
+    "Say hello to Flowdesk",
+    "Think Notion meets Figma",
+    "Enter",
+    "Meet",
+    "Say hello to",
+    "Think",
+    "meets",
+    "your new favorite",
+    "your new go-to",
+    "the new home",
+    "the new way",
+    "the new standard",
+    "the new home of",
+    "the new way to",
+    "the new standard in",
+    "the new standard for",
+    "Enter X.",
+    "Say hello to X",
+    "Meet X, your new [role]"
+   ],
+   "regex": [
+    "(?:^|[.!?]\\s|\\n)meet [A-Z][\\w'-]{1,29}\\s*,\\s*(?:your new (?:favou?rite|go-to)\\b|the new (?:home of|way to|standard (?:in|for))\\b)",
+    "(?:^|[.!?]\\s|\\n)think [A-Z][\\w'-]{1,29} meets [A-Z][\\w'-]{1,29}\\b"
+   ],
+   "examples": [
+    {
+     "before": "Meet Flowdesk, your new favorite treasury dashboard.",
+     "after": "Flowdesk shows a fund's full treasury position on one screen."
+    },
+    {
+     "before": "Think Notion meets Figma.",
+     "after": "It stores documents like Notion and edits them on a shared canvas."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Launch-copy dramatic introductions",
+    "launch-copy introduction",
+    "bare 'Enter X.' / 'Say hello to X' / 'Meet X, your new [role]'"
+   ],
+   "false_positives": "Bare 'Enter X.' is a UI instruction ('Enter Password.'), a stage direction ('Enter Hamlet.') or column narrative ('Enter Rashford.'). 'Say hello to Grandma.' and 'Meet Sarah, your new account manager' are how people introduce colleagues, pets and babies; flag those only in launch or announcement copy, by judgement. Two-token product names ('Meet North Star') are a deliberate miss rather than a looser pattern.",
+   "in_baseline": false
+  },
+  {
+   "id": "lingering-attention-claim",
+   "name": "Lingering-attention claim (the line I keep coming back to)",
+   "definition": "A share post opens by claiming the thing has occupied the writer's mind for a duration, before the reader has any reason to care: 'the line I keep coming back to', 'I can't stop thinking about this', 'still thinking about this one', 'this has been rattling around in my head all week'. Unfalsifiable and self-flattering; the frame implies the quote earned repeat visits without showing what it earned them with. Open on the thing itself.",
+   "cues": [
+    "the line I keep coming back to",
+    "I can't stop thinking about this",
+    "still thinking about this one",
+    "this has been rattling around in my head all week",
+    "I've been chewing on this since Tuesday",
+    "I keep coming back to"
+   ],
+   "regex": [
+    "\\b(?:the|that|this) (?:one )?(?:line|quote|bit|part|idea|point|framing|comment|thing) (?:that )?i keep (?:coming back to|thinking about)\\b",
+    "\\bi can'?t stop thinking about\\b",
+    "\\bstill thinking about (?:this|that) one\\b",
+    "\\brattling around in my (?:head|brain)\\b",
+    "\\bi'?ve been chewing on (?:this|that)\\b"
+   ],
+   "examples": [
+    {
+     "before": "The line I keep coming back to: agents are teenagers.",
+     "after": "Jeetu describes AI agents as teenagers."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Lingering-attention claims",
+    "lingering-attention claim",
+    "bare 'I keep coming back to X'"
+   ],
+   "false_positives": "The frame stays when the sentence says why the thing recurred ('I keep coming back to Hirschman's exit-voice framing because it predicts which engineers quit and which file the RFC'). Bare 'I keep coming back to X' with a reason clause after it is legitimate, which is why the noun-anchored form is the detectable one.",
+   "in_baseline": false
+  },
+  {
+   "id": "performed-insight-phrase",
+   "name": "Performed-insight phrase",
+   "definition": "Essayist tics that announce profundity instead of delivering it: 'sit with that for a moment', 'that's not nothing', 'you already know the answer', 'the punchline is', 'don't take my word for it', 'that's the whole point', 'that's the part nobody mentions', 'the only metric that matters', 'X is dead; long live X', sentence-initial 'Turns out'. Each stages a reveal and adds no fact. State the claim the phrase gestures at: 'that's not nothing' becomes the actual size of the thing.",
+   "cues": [
+    "sit with that for a moment",
+    "that's not nothing",
+    "you already know the answer",
+    "the punchline is",
+    "worth naming",
+    "don't take my word for it",
+    "that's the whole point",
+    "is the entire business model",
+    "that's the part nobody mentions",
+    "the only metric that matters",
+    "X is dead; long live X",
+    "that's why it mattered",
+    "Turns out",
+    "the punchline",
+    "batteries included"
+   ],
+   "regex": [
+    "\\bsit(?:s|ting)? with (?:that|this)(?: for a (?:moment|minute|second|beat))?\\b",
+    "\\b(?:that|this|it)(?:'?s| is| was) not nothing\\b",
+    "\\byou already know the answer\\b",
+    "\\b(?:do not|don'?t) take my word for it\\b",
+    "(?:^|[.!?]\\s|\\n)turns out\\b",
+    "(?:'?s|\\b(?:is|was)) the (?:whole|entire) (?:point|game|ballgame|trick|business model)\\b",
+    "\\bthe only \\w+ that (?:matters|counts)\\b",
+    "\\bis dead[.;,:] long live\\b"
+   ],
+   "examples": [
+    {
+     "before": "That's not nothing.",
+     "after": "That is four hours a week per engineer."
+    },
+    {
+     "before": "Turns out the migration had been running twice.",
+     "after": "The migration had been running twice."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Performed-insight phrases",
+    "performed-insight phrase",
+    "literal-sense exclusions: 'the punchline', 'worth naming', 'batteries included'"
+   ],
+   "false_positives": "One hit can be a stylistic choice; several in one piece is the tell. Quoted speech and genuinely comedic writing where a punchline is literal stay. 'The punchline', 'worth naming' and 'batteries included' have common literal senses that no regex separates, so they remain judgement calls.",
+   "in_baseline": false
+  },
+  {
+   "id": "fake-casual-register",
+   "name": "Fake-casual register (props instead of a voice)",
+   "definition": "The costume a model puts on when asked for a lowercase-casual social voice: a kit of props that outsource drama to the prop instead of the content. Six recurring props are the one-word verdict closer ('wild.', 'insane.', 'unhinged.'), asterisk stage directions ('*checks notes*', '*chef's kiss*', '*mic drop*', '*sips coffee*'), wink asides ('(yes, really)', '(no, seriously)'), label-prefix openers ('hot take', 'fun fact', 'pro tip', 'PSA', 'unpopular opinion'), the resigned-irony tag 'because of course it does', and the self-QA volley ('Is it fast? Yes. Is it cheap? Also yes.'). A post can clear every vocabulary check and still wear this costume. Replace the prop with the specific surprise.",
+   "cues": [
+    "wild.",
+    "insane.",
+    "unhinged.",
+    "*checks notes*",
+    "*chef's kiss*",
+    "*mic drop*",
+    "*takes a deep breath*",
+    "*sips coffee*",
+    "*sips tea*",
+    "*nervous laughter*",
+    "(yes, really)",
+    "(no, seriously)",
+    "(yes, seriously)",
+    "(no, really)",
+    "hot take",
+    "fun fact",
+    "pro tip",
+    "PSA",
+    "unpopular opinion",
+    "because of course it does",
+    "Is it fast? Yes. Is it cheap? Also yes.",
+    "Also yes."
+   ],
+   "regex": [
+    "\\*\\s?(?:checks notes|chef'?s kiss|mic drop|takes a deep breath|sips (?:coffee|tea)|nervous laughter)\\s?\\*",
+    "\\(\\s?(?:yes|no)\\s?,\\s?(?:really|seriously)\\s?\\)",
+    "\\bbecause of course it (?:does|did)\\b",
+    "(?:^|\\n)\\s*(?:hot take|fun fact|pro tip|unpopular opinion|psa)\\s*:"
+   ],
+   "examples": [
+    {
+     "before": "Ships in 40ms. *checks notes* yes, really. wild.",
+     "after": "It answers in 40 milliseconds, measured over 10,000 requests on a cold cache."
+    },
+    {
+     "before": "hot take: monorepos are fine",
+     "after": "Monorepos work for us at 60 engineers, mostly because the CI cache is shared."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Fake-casual register",
+    "Fake-casual: one-word verdict closers",
+    "Fake-casual: stage directions",
+    "Fake-casual: wink asides",
+    "Fake-casual: label-prefix openers",
+    "Fake-casual: \"because of course it does\"",
+    "Fake-casual: self-QA volley",
+    "Fake-casual register: one-word verdict closers",
+    "Fake-casual register: stage directions",
+    "Fake-casual register: wink asides",
+    "Fake-casual register: label-prefix openers",
+    "Fake-casual register: 'because of course it does'",
+    "fake-casual prop (stage directions and wink asides)",
+    "fake-casual register: verdict closers, label-prefix openers, self-QA volley, 'because of course it does'"
+   ],
+   "false_positives": "A writer whose established voice already runs on these props keeps them; the register is a tell for imposed casualness, not a ban on playfulness. The ordinary grumble uses the same words as the wink ('the build failed because of course it did'), and a human can deploy a wink aside on purpose. The asterisk stage directions and the four (yes|no) x (really|seriously) winks are the deterministic half; verdict closers, label prefixes and the self-QA volley need register judgement. '*checks calendar*' and '(yes, honestly)' are disclosed misses.",
+   "in_baseline": false
+  },
+  {
+   "id": "metaphor-overuse",
+   "name": "Metaphor overuse (dead metaphor, generative metaphor)",
+   "definition": "One figure is introduced and then never dropped: the same figurative noun recurs five to ten times across a piece ('the ecosystem needs ecosystems to build ecosystem value', 'walls and doors' thirty times, 'primitives' in every paragraph), where a human writer would use it once and move on. The related form layers non-idiomatic conceptual metaphors onto argument or report prose, especially sensory predicates evaluating abstractions (Korean 진단은 서늘하다, 'the diagnosis is cool to the touch'). Use the figure once, then say the thing plainly.",
+   "cues": [
+    "ecosystem",
+    "walls and doors",
+    "primitives",
+    "same figurative noun recurring",
+    "진단은 서늘하다",
+    "경고는 아프다",
+    "감각 술어 평가문"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The ecosystem needs ecosystems to build ecosystem value across the ecosystem.",
+     "after": "Third-party tools need an API stable enough to build against, which is what we are shipping."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "tropes-fyi",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "The Dead Metaphor",
+    "D-14 생성형 은유 남용 (generative metaphor overuse)"
+   ],
+   "false_positives": "A sustained metaphor can be a deliberate structural device in an essay or a lecture, and domain terms that only look figurative ('tree', 'pipeline', 'garbage collection', 'ecosystem' in ecology) are literal vocabulary. Count recurrence across paragraphs before flagging, not per sentence.",
+   "in_baseline": false
+  },
+  {
+   "id": "patronizing-analogy",
+   "name": "Patronizing analogy (Think of it as, less a hammer more a scalpel)",
+   "definition": "An unrequested analogy is offered in place of the claim or the instruction: 'Think of it as a Swiss Army knife for your workflow', 'Think of it like a highway system for data', 'It's like asking someone to buy a car they are only allowed to sit in', and the paired-image form 'Less a hammer, more a scalpel', which hands the reader two pictures and no advice. The model defaults to teacher mode even for expert readers. Say what the thing does, or what to do.",
+   "cues": [
+    "Think of it as",
+    "Think of it like",
+    "It's like a",
+    "It's like asking",
+    "Less a hammer, more a scalpel.",
+    "Less X, more Y",
+    "less a",
+    "more a"
+   ],
+   "regex": [
+    "\\bthink of it (?:as|like) an?\\b",
+    "\\bless an? \\w+, more an? \\w+\\b"
+   ],
+   "examples": [
+    {
+     "before": "Think of it as a Swiss Army knife for your workflow.",
+     "after": "It runs shell tasks and posts the results to Slack from one config file."
+    },
+    {
+     "before": "Less a hammer, more a scalpel.",
+     "after": "Change one field at a time and re-run the failing test."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "tropes-fyi",
+    "hassid"
+   ],
+   "merged_from": [
+    "\"Think of It As...\"",
+    "\"Less a hammer, more a scalpel.\" (comparative metaphor pair)"
+   ],
+   "false_positives": "Genuinely introductory material for a lay audience is where analogy earns its place, and an analogy followed by the concrete instruction is a lesser offence than one standing in for it. Flag when the audience is expert, or when the analogy is murkier than the thing it explains.",
+   "in_baseline": false
+  },
+  {
+   "id": "historical-analogy-stacking",
+   "name": "Historical analogy stacking",
+   "definition": "A rapid-fire list of past technologies, companies or revolutions is invoked to borrow their weight: 'like the printing press, the telegraph, and the internet before it', 'Apple didn't build Uber. Facebook didn't build Spotify. Stripe didn't build Shopify.', 'Take Spotify... Or consider Uber... Airbnb followed a similar path...'. The montage substitutes for the argument, and no single parallel is examined. Name the one parallel that does analytical work and say what it explains, or cut.",
+   "cues": [
+    "like the printing press, the telegraph, and the internet before it",
+    "the printing press",
+    "the telegraph",
+    "Apple didn't build Uber",
+    "the web, mobile, social, cloud",
+    "Every major technological shift",
+    "followed the same pattern",
+    "Take Spotify",
+    "Or consider Uber",
+    "followed a similar path",
+    "is another example",
+    "Even Discord"
+   ],
+   "regex": [
+    "\\bthe printing press,? (?:the )?(?:telegraph|telephone|radio|internet)\\b",
+    "\\bevery major technolog(?:ical|y) shift\\b",
+    "\\bfollowed a similar path\\b"
+   ],
+   "examples": [
+    {
+     "before": "Like the printing press, the telegraph, and the internet before it, this changes distribution.",
+     "after": "Like the telegraph, it separates the message from the messenger, so newsrooms can file from anywhere."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Historical analogy stacking",
+    "Historical Analogy Stacking"
+   ],
+   "false_positives": "A history piece comparing several cases in depth is doing the work. One analogy developed over a paragraph is argument. Especially common in technical writing, where a single well-chosen precedent is often exactly right; the tell is the list with nothing examined.",
+   "in_baseline": false
+  },
+  {
+   "id": "clean-consequence-connector",
+   "name": "Clean-consequence connector (unearned inevitability)",
+   "definition": "A connector asserts that the conclusion follows automatically from what came before, lending inevitability the argument has not earned: 'comes straight out of this', 'falls out of', 'follows directly', and the paragraph closer that declares a consequence with no path (Korean 결국 ~로 이어진다, '(ultimately) leads to'). Show the inference, or replace the connector with the step that produces it.",
+   "cues": [
+    "The cost the essay described comes straight out of this",
+    "falls out of",
+    "follows directly",
+    "(으)로 이어진다",
+    "~에 직결된다",
+    "결국"
+   ],
+   "regex": [
+    "\\bfalls? (?:straight )?out of\\b",
+    "\\bcomes? straight out of (?:this|that)\\b",
+    "\\bfollows directly\\b",
+    "로 이어진다|에 직결된다"
+   ],
+   "examples": [
+    {
+     "before": "The cost the essay described comes straight out of this.",
+     "after": "Each retry re-reads the manifest, which is where the extra 200 milliseconds come from."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "velitchkov",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "[CCC] The clean-consequence connector",
+    "D-9 인과 결산 '결국 ~로 이어진다' (causal closer)"
+   ],
+   "false_positives": "In mathematics and formal proofs 'follows directly' is a precise claim about a derivation and stays. A connector is fine when the inference is actually shown in the same paragraph; the defect is inevitability asserted over a gap.",
+   "in_baseline": false
+  },
+  {
+   "id": "reflexive-ai-humility",
+   "name": "Reflexive AI-humility move",
+   "definition": "The writer flags that it is itself a language model, or that its own claims may be wrong, as a gesture of modesty rather than as a limit on a specific claim: 'this essay is written by one of the systems under examination', 'Most of the above is structured impression, and could be wrong'. Self-identification is a chatbot leftover in any human-voiced text and always comes out; the 'could be wrong' variant should be replaced by naming which claim is uncertain and why.",
+   "cues": [
+    "this essay is written by one of the systems under examination …",
+    "Most of the above is structured impression, and could be wrong",
+    "is a small instance of that, and no evidence of anything finer"
+   ],
+   "regex": [
+    "\\bmost of the above is\\b",
+    "\\bwritten by one of the systems under examination\\b"
+   ],
+   "examples": [
+    {
+     "before": "Most of the above is structured impression, and could be wrong.",
+     "after": "The timing numbers come from one machine and one run; the ordering held across three repeats, the absolute values did not."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "velitchkov"
+   ],
+   "merged_from": [
+    "[AHM] The reflexive AI-humility move"
+   ],
+   "false_positives": "A real limitation attached to a named claim stays ('I could not test this on Windows'). A methods section stating the confidence of a measurement is doing the same job properly. Disclosure of AI assistance where a venue requires it is policy, not a tell.",
+   "in_baseline": false
+  },
+  {
+   "id": "review-process-deflection",
+   "name": "Review-process deflection (defending contested text)",
+   "definition": "When the provenance or quality of a contribution is questioned, the reply argues about the process instead of the text: asking the critic to identify precisely what is wrong ('please point out exactly which parts', 'let me know which parts'), dismissing the concern as unproven ('unsubstantiated speculation', 'without explaining how they are substantively flawed'), redirecting to collaboration ('let's focus on improving the content', 'Let's work together to strengthen the article rather than engage in unnecessary conflict'), and announcing that an edit addressed reviewer feedback ('Addressed reviewer feedback by improving sourcing, formatting, and neutrality'). Answer the substance instead.",
+   "cues": [
+    "please point out exactly",
+    "let me know which parts",
+    "help me determine what I need to improve",
+    "unsubstantiated speculation",
+    "speculation about motive",
+    "concrete",
+    "without explaining how they are substantively flawed",
+    "let's focus on",
+    "I urge you to focus on constructive dialogue",
+    "Let's work together to strengthen the article",
+    "rather than engage in unnecessary conflict",
+    "Addressing reviewer feedback",
+    "per reviewer feedback",
+    "Addressed reviewer feedback",
+    "Rewrote from scratch per reviewer feedback"
+   ],
+   "regex": [
+    "\\bunsubstantiated speculation\\b",
+    "\\bplease point out exactly\\b",
+    "\\blet'?s work together to strengthen\\b",
+    "\\bi urge you to focus on constructive dialogue\\b",
+    "\\baddress(?:ed|ing) reviewer feedback\\b",
+    "\\bper reviewer feedback\\b"
+   ],
+   "examples": [
+    {
+     "before": "I urge you to focus on constructive dialogue and respect for all contributors. Let's work together to strengthen the article rather than engage in unnecessary conflict.",
+     "after": "Two of the three sources do not mention the subject; I have replaced them with the 2019 provincial register."
+    },
+    {
+     "before": "Addressed reviewer feedback by improving sourcing, formatting, and neutrality.",
+     "after": "Replaced the press release with the court filing and removed the awards section."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Requesting input to determine exactly what to improve (WP:AIWANTFEEDBACK, WP:AIREVIEW, WP:WHERESTHEAI)",
+    "Dismissing origin concerns as unsubstantiated speculation (WP:AIUNPROVEN)",
+    "Urging critics to focus on content instead (WP:LETSFOCUSON)",
+    "Stating that the edit addresses reviewer feedback"
+   ],
+   "false_positives": "Asking a reviewer to be specific is reasonable once, especially when the critique was a bare label. A changelog line naming what changed is good practice ('replaced two dead links'); the tell is the announcement with no diff behind it. Outside Wikipedia the same moves show up in pull-request replies.",
+   "in_baseline": false
+  },
+  {
+   "id": "register-mismatch",
+   "name": "Register mismatch (press-release voice by default)",
+   "definition": "The register is chosen by habit rather than by context: a polished corporate answer to a casual question, sentences that read like a press release when spoken aloud, and the friendly-helpful conversational default that reinforcement training rewards. Read it out loud; where a sentence sounds like communications rather than a person talking, rewrite it in the words you would say, and match the tone and stakes of the prompt.",
+   "cues": [
+    "press release",
+    "polished, lifeless, AI-sounding prose",
+    "Match tone to context. Casual question, casual answer."
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "We are pleased to announce that we have identified an opportunity to enhance the deployment experience for our users.",
+     "after": "Deploys are about a minute faster now."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "willfrancis",
+    "goedecke"
+   ],
+   "merged_from": [
+    "Register mismatch",
+    "Press-release sentence",
+    "RLHF-conversational register"
+   ],
+   "false_positives": "An actual press release, an investor update or a legal notice is written in that register on purpose. A chatty, helpful tone is part of the trained-in style and is not by itself evidence of a human author, nor of an AI one; judge it against what the context asks for.",
+   "in_baseline": false
+  },
+  {
+   "id": "flat-affect",
+   "name": "Flat affect (one tone, no engagement)",
+   "definition": "A single tone is held for a whole piece with no drift from analytical to angry to tender, the cadence never varies, and the interactional markers of an argumentative voice thin out: fewer questions, fewer asides, less direct address to the reader. Measured against human writing in the same genre, the prose reads evenly warm and evenly distant at once. Let the register move where the subject moves.",
+   "cues": [
+    "no register shift",
+    "cadence never varies",
+    "fewer engagement markers"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The outage lasted six hours. The team responded promptly. Customers were informed. The postmortem was completed.",
+     "after": "The outage ran six hours. A customer emailed us before our own alerting did, which still stings."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Flatness of affect (no register shift)",
+    "Fewer engagement markers"
+   ],
+   "false_positives": "Reference documentation, standards, legal text and academic abstracts hold one register on purpose. Long-form fiction from a model holds voice consistently too, which makes this weak evidence at paragraph level; judge across a whole piece and against the genre.",
+   "in_baseline": false
+  },
+  {
+   "id": "contrast-slogan-opener",
+   "name": "Contrast slogan as opener or heading",
+   "definition": "A two-part contrast slogan stands as the first line or heading of a text, defining the thing by what it is not: 'Eén avond, geen verkooppraatje.', 'One evening, no sales pitch.' The opener should say what happens; what the thing is not belongs further down in its own block, if anywhere. The contrastive construction itself is catalogued under syntax; this entry is about its use in the headline position.",
+   "cues": [
+    "X, geen Y",
+    "X, no Y",
+    "geen verkooppraatje"
+   ],
+   "regex": [
+    "(?m)^[ \\t]*[A-Z][^.!?\\n]{2,40}, geen [^.!?\\n]{2,40}\\.?$",
+    "(?m)^[ \\t]*[A-Z][^.!?\\n]{2,40}, no [a-z][^.!?\\n]{2,40}\\.?$"
+   ],
+   "examples": [
+    {
+     "before": "Eén avond, geen verkooppraatje.",
+     "after": "Twee talks, wat te eten, en daarna tijd om bij te praten."
+    },
+    {
+     "before": "One evening, no sales pitch.",
+     "after": "Two talks, food, and time to catch up afterwards."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "baseline"
+   ],
+   "merged_from": [
+    "Slogan opener 'X, geen Y'"
+   ],
+   "in_baseline": true,
+   "false_positives": "A list heading that happens to contain a negation is not a slogan ('Toegang, geen registratie vereist' inside a table of practical details). Deeper in the body, one contrast line may be the honest summary of a real difference; the rule is about the first line and the heading."
+  },
+  {
+   "id": "stacked-hedges",
+   "name": "Stacked hedges on one claim",
+   "definition": "Two or more qualifiers piled on a single predicate until it says nothing: 'could potentially possibly be argued that ... might', 'there may be a possibility that ... could', 'While this may vary, generally speaking, in most cases, it's worth noting that'. Sub-forms: hedge-stacked predictions ('may eventually', 'could potentially'), hedge-and-reassure (a qualifier followed at once by a reassurance), the parenthetical nuance aside ('(and, increasingly, Z)', '(or, more precisely, Y)', '(and perhaps more importantly, W)'), and the epistemic label 'this is an inference'. Keep exactly one hedge that the source supports; if a parenthetical matters, give it its own sentence.",
+   "cues": [
+    "to be fair",
+    "it's also possible",
+    "could potentially",
+    "might arguably",
+    "in some cases it may",
+    "this is an inference",
+    "may eventually",
+    "may",
+    "could",
+    "potentially",
+    "While this may vary",
+    "generally speaking",
+    "in most cases",
+    "it's worth noting that",
+    "In many cases",
+    "Generally speaking",
+    "(and, increasingly, Z)",
+    "(or, more precisely, Y)",
+    "(and perhaps more importantly, W)",
+    "and, increasingly,",
+    "or, more precisely,",
+    "and perhaps more importantly,",
+    "~할 가능성이 있을 수 있다",
+    "~로 보여질 수 있다",
+    "~할 수 있을 것으로 보인다"
+   ],
+   "regex": [
+    "\\b(?:may|might|could) (?:perhaps|possibly|potentially|arguably|conceivably)\\b",
+    "\\bpotentially possibly\\b",
+    "\\bin some cases it may\\b",
+    "\\bthis is an inference\\b",
+    "\\bmay eventually\\b",
+    "\\(\\s?(?:and|or),\\s?(?:increasingly|more precisely|perhaps more importantly),",
+    "\\bwhile this may vary\\b",
+    "\\bgenerally speaking, in most cases\\b",
+    "할 가능성이 있을 수 있다|로 보여질 수 있다|할 수 있을 것으로 보인다"
+   ],
+   "examples": [
+    {
+     "before": "It could potentially possibly be argued that the policy might have some effect on outcomes.",
+     "after": "The policy may affect outcomes."
+    },
+    {
+     "before": "While this may vary, generally speaking, in most cases, it's worth noting that the build takes longer on ARM.",
+     "after": "The build takes longer on ARM."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "vollmer"
+   ],
+   "merged_from": [
+    "§24 Too many qualifiers (stacked hedging)",
+    "Hedge-stacked predictions",
+    "Parenthetical hedging",
+    "G-2 Double and triple hedges",
+    "G-2 이중·삼중 완곡 (double / triple hedge)",
+    "Hedge-and-reassure (stacked hedges)"
+   ],
+   "false_positives": "One hedge marking a real limit stays. Scope statements, legal and safety notices, real corrections and named objections are not hedges. In technical writing 'may' and 'could' are often the accurate word; the tell is the stack, never a single modal. A casual voice keeps warm hedges ('honestly', 'I think') and cuts the corporate ones.",
+   "in_baseline": false
+  },
+  {
+   "id": "reflexive-hedging",
+   "name": "Reflexive hedging (uniform hedge density)",
+   "definition": "Calibration words ('almost', 'tends to', 'roughly', 'largely', 'with few exceptions') and evidential endings ('appears to', 'is judged to', 'is considered', 'seems', Korean ~로 보인다 / ~로 판단된다) are applied to every claim, so they read as a verbal reflex instead of tracking real uncertainty, and unsolicited caveats accumulate around claims that did not need them. Detect hedge density per sentence and repetition of the same hedge rather than any single hedge. The mirror image is a human counter-indicator: committed superlatives and definitive statements ('one of the best', 'is the only', 'was the first') appear more in human writing, so do not hedge those away.",
+   "cues": [
+    "almost",
+    "tends to",
+    "with few exceptions",
+    "roughly",
+    "largely",
+    "~로 보인다",
+    "~로 판단된다",
+    "~라고 여겨진다",
+    "~인 듯하다",
+    "~할 수 있을 것으로 보인다",
+    "one of the best",
+    "is the only",
+    "was the first"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The index almost always tends to be roughly the bottleneck, and it largely seems that the cache is, with few exceptions, the second.",
+     "after": "The index is the bottleneck. The cache comes second."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "velitchkov",
+    "avoid-ai-writing-skill-b",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "baseline",
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "[RH] Reflexive hedging",
+    "Hedging (general)",
+    "G-1 Speculative endings overused (appears to / is judged to / is considered / seems)",
+    "G-1 추측·관측형 종결 (speculative / observational ending)",
+    "Excessive hedging",
+    "Human counter-indicator: superlative or definitive statements"
+   ],
+   "in_baseline": true,
+   "false_positives": "A hedge covering an unverified claim stays until the claim is verified, and rewriting a source's 'judged low' into 'low' is a modality violation. Technical and documentation registers tolerate 'may' as accuracy. A committed superlative is evidence of a human hand, not a fault to be softened, though a house style guide may still ask for attribution."
+  },
+  {
+   "id": "didactic-disclaimers",
+   "name": "Didactic disclaimers and unsolicited caveats",
+   "definition": "Advice-to-the-reader disclaimers in text that should simply state facts: 'it's important to note', 'it's crucial to remember', 'always check before you use something', jurisdiction-varies warnings ('may vary'), 'to prevent confusion' disambiguation, and the closing recommendation that the reader go consult a source themselves ('For deeper insights, listening to tracks on platforms like Spotify or Deezer is recommended, as lyrics and production details aren't fully documented'). Remove caveats the reader did not ask for and the claim does not need; keep one only when it changes what the reader should do.",
+   "cues": [
+    "it's important to note",
+    "it's critical to note",
+    "it's crucial to note",
+    "important to remember",
+    "important to consider",
+    "worth noting",
+    "may vary",
+    "It is crucial to differentiate",
+    "to prevent confusion",
+    "However, it's important to note",
+    "It's important to remember",
+    "For deeper insights",
+    "is recommended",
+    "listening to tracks on platforms like Spotify or Deezer is recommended"
+   ],
+   "regex": [
+    "\\bit'?s (?:important|critical|crucial|essential) to (?:note|remember|consider|mention)\\b",
+    "\\bit is (?:important|critical|crucial|essential) to (?:note|remember|consider|differentiate)\\b",
+    "\\bto prevent confusion\\b",
+    "\\bfor deeper insights?\\b"
+   ],
+   "examples": [
+    {
+     "before": "However, it's important to note that these caucuses operate outside the formal ANC structure and their influence on policy decisions may vary.",
+     "after": "These caucuses operate outside the formal ANC structure."
+    },
+    {
+     "before": "For deeper insights, listening to tracks on platforms like Spotify or Deezer is recommended, as production details aren't fully documented.",
+     "after": "The album has twelve tracks; the label has not published production credits."
+    }
+   ],
+   "severity": "context",
+   "scope": "english",
+   "sources": [
+    "wikipedia-c",
+    "willfrancis",
+    "wikipedia-b"
+   ],
+   "merged_from": [
+    "Didactic disclaimers (WP:DIDACTIC, Nov 2022–2024)",
+    "Unsolicited caveats",
+    "Recommendation to the reader for deeper insight"
+   ],
+   "false_positives": "Requested caveats, material safety and legal notices, and any warning that changes what the reader will do all stay. A real citation is not a recommendation to go look. Largely a historical tell from 2022-2024 models and much rarer in newer output, but still useful on older text.",
+   "in_baseline": false
+  },
+  {
+   "id": "both-sides-hedge",
+   "name": "False concession / both-sides padding",
+   "definition": "A symmetrical 'critics say X, supporters say Y, the truth lies somewhere in between' move performs nuance while asserting nothing, alongside the safe-balance lexicon of non-commitment (both sides, both, has advantages but, carefully, balance) at four or more occurrences per document. Commit to one side, give a concrete comparison, or make the claim conditional on something the reader can check.",
+   "cues": [
+    "While critics argue",
+    "supporters maintain",
+    "The truth, as is often the case, lies somewhere in between",
+    "lies somewhere in between",
+    "양쪽 모두",
+    "두 가지 모두",
+    "장점도 있지만",
+    "신중하게",
+    "균형"
+   ],
+   "regex": [
+    "\\bthe truth,? (?:as is often the case,? )?lies somewhere in between\\b",
+    "\\blies somewhere in (?:between|the middle)\\b",
+    "\\bwhile critics argue\\b",
+    "\\bsupporters maintain\\b",
+    "양쪽 모두|두 가지 모두|장점도 있지만"
+   ],
+   "examples": [
+    {
+     "before": "While critics argue the tax is regressive, supporters maintain it funds essential services. The truth, as is often the case, lies somewhere in between.",
+     "after": "The tax takes a larger share from low incomes, and the revenue funds the bus network. Whether that trade is worth it depends on who rides the bus."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "vollmer",
+    "im-not-ai-taxonomy"
+   ],
+   "merged_from": [
+    "False concession / both-sides hedge",
+    "G-3 Safe-balance lexicon 4+ (both sides / both / has advantages but / carefully / balance)"
+   ],
+   "in_baseline": true,
+   "false_positives": "A genuine two-sided comparison that names the sides, their evidence and a criterion for choosing is analysis, not padding. Policy and report genres carry more balance vocabulary by nature, so count against the genre's norm. Neutral-point-of-view encyclopedia writing is required to present both sides."
+  }
+ ],
+ "report": "Nothing crossed the 2-per-10,000-word ceiling on Strunk and Twain, and the only regexes that touched the controls at all were two shape rules and one hedge stack: the colon-reveal line shape (1 hit in Strunk, 7 in Twain, 0.36/10k), the 'X, no Y' slogan line (11 in Twain, 0.56/10k) and 'may/might/could + possibly|potentially' (3 in Twain), each kept because it is anchored to a whole line or to a stacked modal, while every lexical rule was gated on a full phrase so that 'important', 'fundamentally', 'the truth is', 'Look,' and 'may' stay cues rather than patterns; two regexes were dropped for having no literal cue behind them, the detector's 'as we/society/industries continue to evolve' branch of the formulaic opener and 'as an ai language model', which belongs to artifacts anyway. The 175 raw entries fold into 42: the fifteen fake-casual props from three sources become one register entry with the six asterisk stage directions and four wink asides as its deterministic half, every announce-the-text-instead-of-writing-it form becomes one meta-signposting entry (English 'let's dive in', the Wikipedia section plan, Korean D-3 enumeration preamble and H-3 meta lead-ins, velitchkov's MS), and the closers split by mechanism into aphoristic ender, generic conclusion and reader-directed CTA. Performed candor stays two entries because the sources give them different fixes, the theatrical opener being deletable on sight while narrated candor has carve-outs no regex survives, and significance splits four ways for the same reason: the framing clause ('this matters because'), the adjective label ('crucial'), world-historical stakes inflation, and self-ranking one's own point.",
+ "added": 30,
+ "regex_dropped": 2
+}

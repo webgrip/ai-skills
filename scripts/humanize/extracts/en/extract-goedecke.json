@@ -1,0 +1,123 @@
+{
+  "source": "goedecke — Sean Goedecke, \"Why do AI models use so many em-dashes?\", seangoedecke.com, 2025-10-30 (plus the two HN/99% Invisible edits and five footnotes). File: scratchpad/deai/lists/goedecke-em-dashes.txt, lines 1-92.",
+  "patterns": [
+    {
+      "name": "Em-dash overuse",
+      "category": "punctuation-format",
+      "definition": "The em dash (U+2014) appears at a per-word rate well above the human baseline of roughly 0.25-0.275% of words, standing in for commas, parentheses, colons and full stops. The tell is density, not the mark: count em dashes per word and compare against the baseline.",
+      "cues": ["—", "em-dash", "em-dashes", "emdashes"],
+      "examples": [
+        {"before": "If you asked most people to name a defining feature of AI-generated writing, they'd probably say the em-dash — like this."},
+        {"before": "I do think I'm probably right that digitizing late-1800s/early-1900s works is the cause — but it would be really nice if someone who was at OpenAI between GPT-3.5 and GPT-4o (or who's in a position to know for some other reason) could confirm that this is what happened."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source calls it 'a defining feature of AI-generated writing' and 'one of the most identifiable features of AI prose'. Frequency: general English 0.25-0.275% of words (post-1950s), peak ~0.35% in 1860; Nigerian English 0.022%; late-1800s/early-1900s print books ~30% more than contemporary prose; Moby-Dick 1728 em dashes. Model-specific: GPT-3.5 did not overuse them, GPT-4o ~10x more than GPT-3.5, GPT-4.1 'even worse'; Anthropic, Google and Chinese open-source models also use them. 'Real humans who like em-dashes have stopped using them out of fear of being confused with AI', so in present-day text the mark reads as AI even below the historical baseline. 'Surprisingly hard to prompt models to avoid em-dashes' (OpenAI forum thread of failed attempts). Best-guess cause: digitized late-1800s/early-1900s print books; the source labels this 'largely based on speculation'. Secondary causes offered: RLHF raters preferring a conversational feel (Sam Altman clip: 'they added more em-dashes because people liked them'), and contamination from training on other models' output. Without the dash the model 'would have to write some connective tissue like \", therefore\"', so a rewrite may need to spell the connective out. The two examples are the author's own human uses, given for the shape of the construction only."
+    },
+    {
+      "name": "it's not X — it's Y",
+      "category": "syntax",
+      "definition": "A negated clause followed by an em dash and a corrective clause that restates the point ('it's not X — it's Y'). The source's fix is a comma in place of the dash; a rewriter can also drop the negation and state Y directly.",
+      "cues": ["it's not X — it's Y", "it's not", "— it's"],
+      "examples": [
+        {"before": "it's not X — it's Y", "after": "it's not X, it's Y"}
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source: 'Many em-dashes (e.g. the common \"it's not X — it's Y\" pattern) could simply be replaced with a comma, which is equally brief.' Named as 'the common' pattern, i.e. the single most frequent em-dash construction in model output. The 'after' is the source's stated substitution applied to its own template. The source addresses only the punctuation; the negative-parallelism move itself is named but not analysed. Because the comma is equally brief, brevity bias does not explain this construction."
+    },
+    {
+      "name": "Em dash as parenthetical bracket",
+      "category": "punctuation-format",
+      "definition": "A pair of em dashes bracketing an aside mid-sentence, doing the work of parentheses or a comma pair. Substitute parentheses when the aside is a true interruption, commas when it is not.",
+      "cues": ["— … —"],
+      "examples": [
+        {"before": "the punctuation mark that acts like parentheses"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "One of the two functions the source assigns to em-dash punctuation ('the punctuation mark that acts like parentheses or more punchy final comma'). The source contains no verbatim instance of the paired form; the 'before' is its description. The source stresses that typographic explanations (Unicode, Medium's '--' auto-conversion, mis-OCR'd hyphens, Wikipedia conventions, Russian-language data) cannot produce this use: 'Misreading a hyphen (e.g. in \"double-crossed\") as an em-dash during training will not make the model more likely to use em-dashes as parentheses'."
+    },
+    {
+      "name": "Em dash as punchy final comma",
+      "category": "punctuation-format",
+      "definition": "A single em dash before a closing clause or afterthought, used for emphasis where a comma, colon or full stop would do. Substitute a comma, or end the sentence and start a new one.",
+      "cues": ["—", "— but", "— like", "— and", "— which"],
+      "examples": [
+        {"before": "they'd probably say the em-dash — like this.", "after": "they'd probably say the em-dash, like this."},
+        {"before": "…is the cause — but it would be really nice if someone who was at OpenAI between GPT-3.5 and GPT-4o…could confirm that this is what happened.", "after": "…is the cause, but it would be really nice if someone who was at OpenAI between GPT-3.5 and GPT-4o…could confirm that this is what happened."}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "The second of the two functions the source assigns to em-dash punctuation ('more punchy final comma'). The 'before' sentences are the author's own human uses; the 'after' versions apply the source's comma substitution and are not verbatim from the source. When the dash carried a logical link rather than emphasis, the source's own alternative is explicit connective tissue such as ', therefore'."
+    },
+    {
+      "name": "delve",
+      "category": "vocabulary",
+      "definition": "The verb 'delve' ('delve into') used where 'look at', 'go into' or 'examine' is natural. The source attributes it to RLHF raters writing African English, where the word is used 'more liberally'.",
+      "cues": ["delve"],
+      "examples": [],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source: 'African English uses the word \"delve\" more liberally, which is the explanation for why GPT-4o really likes the word \"delve\"'. Model-dated: 'At least, in the era of GPT-4o.' Origin story: Paul Graham's tweet about 'delve' and the subsequent criticism 'from Nigerians, Indians, and other post-colonial countries that see a willingness to use flowery language as part of competency with language in general'. False positive: a human writer of Nigerian, Indian or other post-colonial English may use 'delve' natively. The source finds the em-dash and 'delve' are NOT caused by the same mechanism (Nigerian English em-dash rate is 0.022%, far below general English), so treat the two tells as independent."
+    },
+    {
+      "name": "Flowery words (explore, tapestry)",
+      "category": "vocabulary",
+      "definition": "Ornamental diction the source groups with 'delve' as GPT-4o favourites: 'explore' and 'tapestry'. Flag 'tapestry' on sight in expository prose; flag 'explore' only when it co-occurs with other flowery words or is used for 'discuss'/'look at'.",
+      "cues": ["explore", "tapestry"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: '(and other flowery words like \"explore\" and \"tapestry\")'. 'explore' is ordinary English and needs density or metaphorical misuse to count; 'tapestry' as a metaphor for a body of things is close to an unconditional tell, though the source assigns no tiers. Same RLHF-dialect explanation and same post-colonial-English false-positive caveat as 'delve'. 'delve' has its own entry because the source treats it as the headline instance."
+    },
+    {
+      "name": "Semicolon overuse",
+      "category": "punctuation-format",
+      "definition": "Semicolons joining independent clauses at a rate well above ordinary prose, replacing full stops or conjunctions. Substitute a full stop, or a comma plus conjunction.",
+      "cues": [";"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Footnote: 'I do think that GPT-5's overuse of semicolons probably is a brevity bias, because GPT-5 is noticeably less verbose than its predecessors.' Model-specific (GPT-5); the source contrasts this with the em-dash, which it does NOT attribute to brevity bias. Shows that the dominant punctuation tell shifts between model generations."
+    },
+    {
+      "name": "Waffle (verbosity)",
+      "category": "content",
+      "definition": "Prose that spends tokens on filler and connective tissue without adding a claim. The source treats it as a default trait of GPT-4o-era models ('it could simply waffle less') and notes GPT-5 is 'noticeably less verbose than its predecessors'.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied rather than catalogued: the source names no trigger phrase. Used as an argument that models are not micro-optimising tokens ('if it wanted to use fewer tokens, it could simply waffle less'). Verbosity is the trait the RL brevity bias acts against, so it is expected to be weaker in newer, terser models."
+    },
+    {
+      "name": "RLHF-conversational register",
+      "category": "rhetoric",
+      "definition": "A friendly, conversational tone that human raters reward during RLHF ('to make it more helpful and friendly'); the source proposes that em dashes 'read more conversational' and were selected for this reason, creating 'a vicious cycle that biased towards more and more em-dashes'.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Offered as a mechanism, not a detection cue; the source says 'Hard to say what evidence could confirm or deny it' and 'I don't know how you'd go about proving or disproving this'. Practical consequence for a detector: a chatty, helpful register is part of the trained-in style and is not evidence of a human author. Supported anecdotally by a Sam Altman interview clip saying more em dashes were added 'because people liked them'."
+    }
+  ],
+  "methodology": [
+    {"topic": "workflow", "rule": "Do not rely on a prompt-level ban ('avoid em dashes') to suppress em dashes; the source calls it 'surprisingly hard' and points to an OpenAI forum thread of unsuccessful attempts. Detect the mark in the output after generation and substitute it."},
+    {"topic": "workflow", "rule": "Rewrite 'it's not X — it's Y' by replacing the dash with a comma; the result is equally brief, so no length argument justifies keeping the dash."},
+    {"topic": "workflow", "rule": "Choose the substitute by the dash's function: a bracketing pair becomes parentheses or a comma pair; a single dash before a punchy closing clause becomes a comma or a full stop; a dash that carried a logical link becomes explicit connective tissue such as ', therefore'."},
+    {"topic": "scoring", "rule": "Score em-dash density per word, not per document. Baselines from the source: general English 0.25-0.275% of words (post-1950s), historical peak ~0.35% (1860), Nigerian English 0.022%; late-1800s/early-1900s print prose runs ~30% above contemporary prose. Treat a rate clearly above 0.275% as the signal."},
+    {"topic": "false-positives", "rule": "The em dash is not a tell on its own; density is. 'If em-dashes were as common in AI prose as human prose, they would be as unremarkable as the use of other punctuation marks.' Do not flag a text at or below the human baseline rate on this cue alone."},
+    {"topic": "false-positives", "rule": "Count the punctuation function (aside brackets, punchy final comma), not the code point. A hyphen inside a compound such as 'double-crossed' is not an em-dash use, and a '--' doing the em dash's work is one."},
+    {"topic": "false-positives", "rule": "'delve' and flowery diction are markers of competence in Nigerian, Indian and other post-colonial Englishes. Do not flag a human writer from those Englishes on vocabulary alone; require co-occurring tells."},
+    {"topic": "register", "rule": "Weight em-dash density more heavily in post-2023 text: real humans who like em dashes have stopped using them for fear of being mistaken for AI, so a present-day human text dense with them is rarer than the historical baseline suggests."},
+    {"topic": "register", "rule": "Do not treat a friendly, conversational register as evidence of a human author; RLHF selects for exactly that register, and the source proposes em dashes were rewarded for reading 'more conversational'."},
+    {"topic": "modes", "rule": "Calibrate tells per model generation. GPT-3.5 did not overuse em dashes; GPT-4o used ~10x more and GPT-4.1 more still; Anthropic, Google and Chinese open-source models use them too; GPT-5 shifts to semicolon overuse. A tell absent in one generation can dominate the next, and the dominant punctuation tell moves."},
+    {"topic": "other", "rule": "Treat vocabulary tells and punctuation tells as independent signals with separate causes. The source rules out a shared mechanism for 'delve' (RLHF dialect) and the em dash (training-data era)."},
+    {"topic": "other", "rule": "Expect tells to converge across labs: models 'are at least in part infected with em-dashes by training on the output of other AI models', either through synthetic data or by ingesting AI-generated web text. A cue learned from one vendor's output transfers."},
+    {"topic": "facts", "rule": "Present the digitized-print-books explanation as the author's best guess, not fact. The source states 'This is still largely based on speculation' and lists what would falsify it (OpenAI scanning books before GPT-3.5; public-domain books skewing the pirated corpus older)."},
+    {"topic": "scoring", "rule": "When testing whether removing a dash lengthens text, compare against a control paraphrase of non-dash sentences. 'I suspect that paraphrasing adds tokens no matter what', so an uncontrolled paraphrase experiment proves nothing about token efficiency."},
+    {"topic": "facts", "rule": "Do not accept typographic explanations (Unicode, Medium's '--' to em-dash conversion, Wikipedia conventions, Russian-language data, mis-OCR'd hyphens) as causes of em-dash punctuation use; they could only explain the choice of character, not the choice of construction."}
+  ],
+  "coverage_note": "Read the entire file, lines 1-92, in one sed pass (the file is shorter than a 250-line chunk): the essay body, the 'Summary' and 'Final thoughts' sections, both 'edit:' addenda (Hacker News / Medium CEO comment; 99% Invisible appearance), all five footnotes, and the site chrome. Deliberately left out: the site footer, subscribe line, and the 'Don't feed me AI slop' preview paragraph, which is a teaser for a different post and names no pattern; the RLHF labour-economics background (Kenya/Nigeria cost-of-living) except where it explains 'delve'; the OpenAI/Anthropic book-scanning chronology (Feb 2024 court filing) except as the basis of the speculation caveat; and the token-efficiency rebuttal except as the paraphrase-control scoring rule. The source is an explanatory essay, not a style catalog: it names only a handful of surface patterns (em dash and its two functions, 'it's not X — it's Y', delve/explore/tapestry, GPT-5 semicolons) and its substitution advice is one sentence (comma for the dash). The 'bare prohibition fails' claim rests on a single sentence citing an OpenAI forum thread; the post-generation detect-and-substitute instruction is the obvious consequence, not a step the source spells out. Could not classify as a pattern: the open question whether models 'are picking up fragments of older English prose stylings, like punctuation, but are still producing contemporary-sounding text' (period punctuation density on contemporary diction) — it is posed as a puzzle, not asserted as a tell. Two 'after' examples and one 'before' are marked in notes as derived from the source's substitution rule or description rather than verbatim. No anti-goals (detector bypass, fact bending), output formats, voice-matching or chunking guidance appear in the source."
+}

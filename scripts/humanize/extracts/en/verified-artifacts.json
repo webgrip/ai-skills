@@ -1,0 +1,1305 @@
+{
+  "category": "artifacts",
+  "entries": [
+    {
+      "id": "chatbot-opener",
+      "name": "Chatbot opener, preamble and helper self-reference",
+      "definition": "The assistant's framing before the content survives into the finished text. Sub-forms: a one-word acknowledgement ('Certainly!', 'Of course!', 'Absolutely!', 'Great question!', 'You're absolutely right!'); a lead-in that announces the deliverable ('Here is an overview of...', 'here's a professional encyclopedia-style draft:'); a preamble caveat about what the model can and cannot do, pasted along with the content it introduces; and first-person helper register in the body ('I'd be happy to help', 'Let me explain', 'I can help draft a...'). The article-framing variant ('In this article, we will explore...', 'Let's dive in!') is the same move dressed as an introduction. Delete the frame and open on the first real fact.",
+      "cues": [
+        "Of course!",
+        "Certainly!",
+        "Absolutely!",
+        "Great question!",
+        "Excellent point!",
+        "You're absolutely right!",
+        "here is a...",
+        "Here is an overview of",
+        "here's a...",
+        "I can help draft a",
+        "but I should be clear:",
+        "Based only on the information you've shared with me, here's a",
+        "here's a professional encyclopedia-style draft:",
+        "I'd be happy to help",
+        "Let me explain",
+        "I think it's worth considering…",
+        "In this article, we will explore",
+        "Let's dive in!",
+        "Let's dive in, shall we?",
+        "I'm so glad you asked…",
+        "물론입니다!",
+        "다음은 ~입니다:"
+      ],
+      "regex": [
+        "\\b(?:certainly|absolutely|of course)!",
+        "\\bgreat question\\b",
+        "\\bexcellent point!",
+        "\\byou['’]?re absolutely right\\b",
+        "\\bhere is an overview of\\b",
+        "\\bhere['’]?s (?:a|an|the) (?:draft|template|summary|revised|professional|quick|brief|complete)\\b",
+        "\\bi['’]?d be happy to (?:help|assist)\\b",
+        "\\bi can help (?:you )?(?:draft|write|put together)\\b",
+        "\\bin this (?:article|post|piece),? (?:we|i) (?:will |['’]ll )?(?:explore|discuss|examine|look at)\\b",
+        "\\blet['’]?s dive (?:in|into)\\b",
+        "물론입니다",
+        "다음은 .{0,20}입니다"
+      ],
+      "examples": [
+        {
+          "before": "Certainly! Here is an overview of the French Revolution. The revolution began in 1789 after years of financial crisis.",
+          "after": "The French Revolution began in 1789, after years of financial crisis and food shortages."
+        },
+        {
+          "before": "I'd be happy to help. Let me explain how the cache behaves on writes.",
+          "after": "The cache is invalidated on write."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "vollmer",
+        "wikipedia-b",
+        "wikipedia-c",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "§20a Chatbot greeting or lead-in left in the answer",
+        "'Certainly!' / 'Absolutely!' openers",
+        "Chatbot preamble before the deliverable",
+        "First-person assistant self-reference",
+        "Chatbot artifacts (conversational tics)",
+        "chatbot artifact",
+        "Tonal sprinkle (cheap warmth at open and close)",
+        "챗봇 잔재 (chatbot frame residue)",
+        "Collaborative communication"
+      ],
+      "false_positives": "'Of course' inside an argument ('Of course the number moved, the sample doubled') is ordinary emphasis, and 'certainly' as an adverb is fine; the tell is the standalone acknowledgement that opens the text. A real introduction that says what the piece covers and then covers it is not a chatbot lead-in, the tell is a frame that addresses the requester or presents the text as a deliverable. Letter-style openings on actual correspondence predate chatbots by centuries and stay. Similar phrasing woven into the body, rather than sitting in front of it, is left alone.",
+      "in_baseline": false
+    },
+    {
+      "id": "collaborative-closer",
+      "name": "Collaborative closer and offer of further help",
+      "definition": "The chat sign-off addressed to the requester survives into the text. Sub-forms: the helpfulness closer ('I hope this helps', 'Let me know if you need anything else', 'Feel free to reach out'); the follow-up offer as a question ('Would you like me to...?', 'Want me to give examples?', 'Should I continue?', 'Is there anything else...'); the offer to convert the output into the destination's own format ('Would you like me to turn this into wikitext?'); and usage instructions for the text itself ('You can copy and paste this onto your page and customize it further'). End on the last useful fact and delete the rest.",
+      "cues": [
+        "I hope this helps",
+        "I hope this helps!",
+        "Hope this helps!",
+        "let me know",
+        "Let me know if you'd like me to expand on any section",
+        "Let me know if you need anything else",
+        "Let me know if you'd like me to go deeper!",
+        "Please let me know if there's anything else I can help with!",
+        "Feel free to reach out",
+        "is there anything else",
+        "Would you like...",
+        "Would you like me to",
+        "Want me to...?",
+        "Want me to give examples?",
+        "Should I continue?",
+        "more detailed breakdown",
+        "Would you like help formatting and submitting this to Wikipedia, or do you plan to post it yourself?",
+        "I can guide you step-by-step through that too.",
+        "Would you like me to ... turn this into actual Wikipedia markup format (`wikitext`)?",
+        "Here's a template for your",
+        "You can copy and paste this",
+        "customize it further",
+        "도움이 되셨길 바랍니다",
+        "추가 질문이 있으시면"
+      ],
+      "regex": [
+        "\\bi hope this helps\\b",
+        "\\bhope (?:this|that) helps\\b",
+        "\\blet me know if\\b",
+        "\\bfeel free to (?:reach out|ask)\\b",
+        "\\bwould you like me to\\b",
+        "\\bwould you like help\\b",
+        "\\bwant me to (?:give|write|explain|expand|turn|make|continue|draft)\\b",
+        "\\bshould i continue\\b",
+        "\\bis there anything else\\b",
+        "\\bi can guide you step-?by-?step\\b",
+        "\\byou can copy and paste this\\b",
+        "\\bcustomize it further\\b",
+        "도움이 되셨길",
+        "추가 질문이 있으시면"
+      ],
+      "examples": [
+        {
+          "before": "The migration runs in two phases. I hope this helps! Let me know if you'd like me to expand on any section.",
+          "after": "The migration runs in two phases."
+        },
+        {
+          "before": "Would you like help formatting and submitting this, or do you plan to post it yourself?",
+          "after": "(deleted; the draft ends on its last source)"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "vollmer",
+        "wikipedia-b",
+        "wikipedia-c",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "§20b Chatbot closing (collaborative closer)",
+        "§20c Chatbot follow-up offer",
+        "Chatbot artifacts (conversational tics)",
+        "Chatbot artifacts",
+        "chatbot artifact",
+        "Collaborative communication",
+        "Offer of further help / next-step question (collaborative closer)",
+        "Offer to convert into the target format",
+        "Collaborative closer",
+        "Tonal sprinkle (cheap warmth at open and close)",
+        "챗봇 잔재 (chatbot frame residue)"
+      ],
+      "false_positives": "A genuine sign-off in real correspondence (an email, a Slack message, a cover letter) is not a leftover; salutations and valedictions predate ChatGPT by centuries. The tell is an offer of further assistance on a surface where nobody is being served: an article, a report, a commit message, a documentation page. A question that advances the argument is fine; the tell is a question offering the writer's further labour. Support and service copy ('reach out if the invoice is wrong') is doing its job.",
+      "in_baseline": false
+    },
+    {
+      "id": "acknowledgment-loop",
+      "name": "Restating the question before answering",
+      "definition": "The text opens by paraphrasing the request back to the person who made it: 'To answer your question...', 'You're asking about...', 'The question of whether...', 'That's a great question. The...', or the Korean 'to summarise what you asked'. In standalone text the reader never asked anything, so the restatement carries no information. Delete the paraphrase and lead with the answer.",
+      "cues": [
+        "You're asking about",
+        "The question of whether",
+        "To answer your question",
+        "That's a great question. The...",
+        "요청하신 내용을 정리하면",
+        "Don't restate the question back before answering it."
+      ],
+      "regex": [
+        "\\bto answer your question\\b",
+        "\\byou['’]?re asking (?:about|whether|if)\\b",
+        "\\bthat['’]?s a (?:great|good|fair) question\\b",
+        "요청하신 내용을 정리하면"
+      ],
+      "examples": [
+        {
+          "before": "To answer your question, the cache is invalidated on write.",
+          "after": "The cache is invalidated on write."
+        },
+        {
+          "before": "You're asking about retention. Retention is set per index.",
+          "after": "Retention is set per index."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "willfrancis",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "Acknowledgment loops",
+        "Restating the question before answering"
+      ],
+      "false_positives": "An FAQ, an interview transcript or a Q&A post quotes the question on purpose, and that is the format working. Restating a stakeholder's question in a decision record or a ticket so the record stands alone is context, not filler. 'The question of whether' inside an argument that then answers it is ordinary English and is kept as a cue only, without a regex.",
+      "in_baseline": false
+    },
+    {
+      "id": "reasoning-chain-leak",
+      "name": "Reasoning scaffolding and disclosed inference method",
+      "definition": "Chain-of-thought scaffolding published as prose: 'Let me think step by step', 'Breaking this down', 'To approach this systematically', 'Here's my thought process', 'First, let's consider', and numbered reasoning steps that read as an internal monologue rather than an argument for a reader. The first-person disclosure sub-form narrates the model's own inputs and derivation in place of a source ('My analysis is based on available track titles and public song snippets', 'Where lyrics aren't fully accessible, I've inferred common motifs'), which admits the content was inferred. State the conclusion and the evidence; when the disclosure admits inference, cut what it discloses as well.",
+      "cues": [
+        "Let me think step by step",
+        "Breaking this down",
+        "To approach this systematically",
+        "Step 1:",
+        "Here's my thought process",
+        "First, let's consider",
+        "Working through this logically",
+        "My analysis is based on available track titles",
+        "I've inferred common motifs from",
+        "Where lyrics aren't fully accessible",
+        "public song snippets from streaming platforms",
+        "overall discography themes"
+      ],
+      "regex": [
+        "\\blet me think step by step\\b",
+        "\\bbreaking this down\\b",
+        "\\bto approach this systematically\\b",
+        "\\bhere['’]?s my thought process\\b",
+        "\\bfirst,? let['’]?s consider\\b",
+        "\\bworking through this logically\\b",
+        "\\bmy analysis is based on\\b",
+        "\\bi['’]?ve inferred\\b"
+      ],
+      "examples": [
+        {
+          "before": "Let me think step by step. First, let's consider the write path. The cache is invalidated on write.",
+          "after": "The cache is invalidated on write."
+        },
+        {
+          "before": "My analysis is based on available track titles, and where lyrics aren't fully accessible I've inferred common motifs.",
+          "after": "(deleted; the inferred passage has no source and goes with it)"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Reasoning chain artifacts",
+        "reasoning chain artifact",
+        "Disclosed inference method in first person"
+      ],
+      "false_positives": "A methods section that states how a result was obtained is documentation, and a runbook or tutorial with numbered steps is the format. 'Breaking this down' about an actual cost breakdown is literal. The tell is process narration standing in for the result, or a first-person account of the writer's own guessing published as fact.",
+      "in_baseline": false
+    },
+    {
+      "id": "cutoff-disclaimer-and-ai-self-identification",
+      "name": "Knowledge-cutoff disclaimer and AI self-identification",
+      "definition": "The model's own limits stated in the first person and left in the text: a knowledge-cutoff caveat ('As of my last update', 'my training data goes up to', 'I don't have access to real-time data', 'my knowledge is current to ...'), self-identification as a model ('As an AI language model...', 'I am an AI assistant'), and the canned refusal of professional advice ('I cannot provide legal advice, but I can...'). The refusal sub-form usually arrives as a whole declined turn pasted in, apology and offered alternative included. Delete it; where a real date limit applies, name the date and the source.",
+      "cues": [
+        "As of my last update",
+        "as of my knowledge cutoff",
+        "my knowledge cutoff",
+        "I don't have access to real-time data",
+        "based on available information",
+        "As an AI language model",
+        "as a large language model",
+        "I am an AI assistant",
+        "I cannot provide legal advice",
+        "I cannot offer medical advice, but I can...",
+        "my training data only goes up to",
+        "I'm sorry",
+        "I can't directly add content to Wikipedia for you, but I can help you",
+        "제 지식은 ~까지입니다"
+      ],
+      "regex": [
+        "\\bas of my (?:last|latest|most recent) (?:update|training)\\b",
+        "\\bas of my (?:knowledge )?cut-?off\\b",
+        "\\bas an? (?:ai|artificial intelligence|large language)(?: language)? (?:model|assistant)\\b",
+        "\\bi (?:am|['’]m) an? (?:ai|artificial intelligence|large language) (?:model|assistant)\\b",
+        "\\bi (?:do not|don['’]?t) have access to real-?time\\b",
+        "\\bi cannot (?:provide|give|offer) (?:legal|medical|financial|professional) advice\\b",
+        "\\bmy training data (?:only )?(?:goes up to|extends to|ends)\\b",
+        "제 지식은"
+      ],
+      "examples": [
+        {
+          "before": "As of my last update, the council had not published the 2026 budget.",
+          "after": "The council had not published the 2026 budget as of 4 September 2026 (council minutes, 3 September)."
+        },
+        {
+          "before": "As an AI language model, I can't add content for you, but I can help you draft your bibliography.",
+          "after": "(deleted; the draft bibliography follows on its own)"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "sources": [
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-c",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "Cutoff disclaimers",
+        "cutoff disclaimer / LLM self-identification",
+        "Prompt refusal / 'as an AI language model'",
+        "챗봇 잔재 (chatbot frame residue)"
+      ],
+      "false_positives": "A dated scope statement ('figures are current to March 2026') is honest and stays. A human declining to give legal advice in their own voice, with a reason, is a real disclaimer. Writing about AI models in the third person is subject matter, not self-identification. 'Based on available information' is ordinary in modern business prose, so it is kept as a cue with no regex behind it.",
+      "in_baseline": false
+    },
+    {
+      "id": "citation-markup-leak",
+      "name": "Chat-tool citation markup left in the text",
+      "definition": "Internal citation tokens from a chat interface that survive copy-paste, in place of real references. Known forms: ChatGPT's ':contentReference[oaicite:N]{index=N}', '[oai_citation:N‡domain]', 'citeturn0search0' / 'turn0news' / 'turn0file' and the image run 'iturn0image0turn0image1', the bare trailing numeral left when the private-use wrappers are stripped ('...adaptation.5'), the per-sentence '^[sentence]({\"attribution\":{\"attributableIndex\":\"1009-1\"}})' payload, and the source-count chips flattened to text ('Wikipedia+1', 'IT Governance+3ISO+3ISO+3'); Gemini's '[cite: 3, 12, 13]' and '[span_1](start_span)' / '(end_span)' grounding markers; Grok's '<grok-card data-id=... data-type=\"citation_card\">' and '[](grok_render_citation_card_json={\"cardIds\":[...]})'; DeepSeek's lenticular dagger form '【85†L261-269】'; Perplexity's '[attached_file:1]' / '[web:1]' and 'ppl-ai-file-upload' S3 URLs; plus flattened chips that glue a source domain onto the last word of a sentence, and the '↩' jump-back arrow copied out of a footnote list. Delete every token and replace anything that was meant to be a citation with a real reference.",
+      "cues": [
+        "citeturn0search0",
+        "turn0search0",
+        "turn0search1",
+        "turn0search2",
+        "citeturn0news0",
+        "citeturn1file0",
+        "turn0news",
+        "turn1file",
+        "cite<generated-reference-identifier>",
+        "<ref name=\"0search12\">",
+        "turn0image0",
+        "turn0image1",
+        "iturn0image0turn0image1turn0image4turn0image5",
+        ":contentReference[oaicite:0]{index=0}",
+        "contentReference[oaicite:0]{index=0}",
+        "contentReference",
+        "oaicite",
+        "oai_citation",
+        "[oai_citation:0‡",
+        "‡",
+        "({\"attribution\":{\"attributableIndex\":",
+        "attributableIndex",
+        "^[",
+        "Wikipedia+1",
+        "IT Governance+3ISO+3ISO+3",
+        "Ignyte+3Microsoft Learn+3Google Cloud+3",
+        "Example+1",
+        "[cite: 1]",
+        "[cite: 3, 12, 13]",
+        "[cite: 17]",
+        "[cite: 19, 20, 21]",
+        "[span_1](start_span)",
+        "[span_1](end_span)",
+        "(start_span)",
+        "(end_span)",
+        "start span",
+        "end span",
+        "<grok-card data-id=",
+        "data-type=\"citation_card\"",
+        "grok_card",
+        "grok-card",
+        "[](grok_render_citation_card_json=",
+        "grok_render_citation_card_json",
+        "\"cardIds\":[",
+        "【85†L261-269】",
+        "【854140639155648†L119-L123】",
+        "【29†L582-L589】",
+        "【",
+        "†L",
+        "】",
+        "[attached_file:1]",
+        "[web:1]",
+        "attached_file",
+        "[web:",
+        "ppl-ai-file-upload",
+        "medway.gov.ukmedway.gov.uk",
+        "↩",
+        "↩ ↩<sup>2</sup>",
+        "Demon Slayer''.2",
+        "adaptation.5"
+      ],
+      "regex": [
+        "\\bcite(?:turn|news|search|navigation)\\d+(?:search|turn|news|navigation|image|file)\\d+",
+        "\\bturn\\d+(?:search|image|news|file)\\d+",
+        "contentreference\\s*\\[oaicite:",
+        "\\boaicite\\b",
+        "\\boai_citation\\b",
+        "\\battributableindex\\b",
+        "\\[cite:\\s*\\d{1,3}(?:\\s*,\\s*\\d{1,3})*\\]",
+        "\\[span_\\d+\\]\\((?:start|end)_span\\)",
+        "<grok-card\\b|\\bgrok[_-]card\\b",
+        "\\bgrok_render_citation_card_json\\b",
+        "【\\d+†",
+        "\\[attached_file:\\d+\\]",
+        "\\[web:\\d+\\]",
+        "\\bppl-ai-file-upload\\b",
+        "\\bwikipedia\\+\\d\\b",
+        "\\b[a-z][a-z .]{1,25}\\+\\d{1,2}(?:[a-z][a-z .]{0,25}\\+\\d{1,2})+",
+        "(?:[a-z0-9-]+\\.)+(?:com|org|net|edu|gov\\.uk)(?=[a-z])",
+        "[a-z]{3,}[.!?]\\d{1,2}(?=\\s|$)",
+        "↩"
+      ],
+      "examples": [
+        {
+          "before": "Ibbetson's Panjab Castes classifies Sial as Rajputs :contentReference[oaicite:20]{index=20}.",
+          "after": "Ibbetson's Panjab Castes classifies Sial as Rajputs (Ibbetson 1883, p. 143)."
+        },
+        {
+          "before": "The school is a centre for the SAT examinations. citeturn0search1",
+          "after": "The school is a centre for the SAT examinations (Cambridge International Examinations school directory, 2024)."
+        },
+        {
+          "before": "identified preservation of historic shopfronts as prioritiesmedway.gov.ukmedway.gov.uk.",
+          "after": "identified preservation of historic shopfronts as priorities (Medway Council, High Street taskforce report, 2024)."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-detector",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Chatbot citation markup leaks",
+        "chatbot citation markup leak",
+        "ChatGPT contentReference / oaicite placeholder (WP:OAICITE)",
+        "ChatGPT oai_citation link",
+        "ChatGPT source-count suffix (Wikipedia+1, Site+3)",
+        "ChatGPT citeturn0search0 marker (turn0search0)",
+        "ChatGPT bare trailing numeral (stripped PUA citation)",
+        "ChatGPT image placeholder run (turn0image0)",
+        "ChatGPT attributableIndex JSON",
+        "Gemini [cite: N] marker",
+        "Gemini [span_N](start_span) / (end_span) markers (WP:STARTSPAN)",
+        "Grok grok-card XML tag (WP:GROKCARD)",
+        "Grok grok_render_citation_card_json",
+        "DeepSeek lenticular-bracket dagger citation 【N†L..】",
+        "Source domain names glued to sentence end",
+        "Perplexity [attached_file:N] / [web:N] tags",
+        "Perplexity ppl-ai-file-upload S3 URL",
+        "↩ return-arrow characters around footnotes"
+      ],
+      "false_positives": "A real citation, footnote or reference marker produced by the destination's own system stays. Genuine footnote superscripts carry markup, so a numeral that is marked up is a footnote; only a bare digit glued to a full stop, in a run that climbs through the document, is the stripped artifact, and the same goes for a domain glued to a word: both sub-forms want a second instance before they are safe to call. A URL that legitimately contains 'turn' or a data field named 'web:1' is not a token. The token proves a specific tool touched the text; it does not by itself prove the prose was generated, since people also use chatbots only to find sources.",
+      "in_baseline": false
+    },
+    {
+      "id": "ai-url-tracking-parameter",
+      "name": "AI-tool tracking parameter on a URL",
+      "definition": "A query parameter that an AI tool appends to the links it writes: 'utm_source=chatgpt.com', 'utm_source=openai', 'utm_source=copilot.com', 'utm_source=claude.ai', 'utm_source=perplexity.ai', 'referrer=grok.com'. The parameter is the signature whatever the surrounding text says. Strip the AI referrer from the URL and leave the rest of the query string alone.",
+      "cues": [
+        "utm_source=chatgpt.com",
+        "utm_source=copilot.com",
+        "utm_source=openai",
+        "utm_source=claude.ai",
+        "utm_source=perplexity.ai",
+        "referrer=grok.com"
+      ],
+      "regex": [
+        "[?&]?utm_source=(?:chatgpt|openai|copilot|claude|grok|gemini|perplexity)\\b",
+        "[?&]?referrer=(?:chatgpt|copilot|grok|claude|gemini|perplexity)\\.(?:com|ai)\\b"
+      ],
+      "examples": [
+        {
+          "before": "https://www.theguardian.com/sport/2025/feb/11/sam-burgess-interview?utm_source=chatgpt.com",
+          "after": "https://www.theguardian.com/sport/2025/feb/11/sam-burgess-interview"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "AI-tool URL parameters",
+        "AI tracking parameters in URLs",
+        "AI-tool URL parameter",
+        "utm_source=chatgpt.com / utm_source=openai referrer parameter"
+      ],
+      "false_positives": "A functional parameter (?page=2, ?v=4) and a campaign parameter the destination set itself (utm_source=newsletter) are evidence of nothing; keep the link and keep those. The parameter proves a chat tool produced the link, and not that it wrote the prose: people use AI to find sources for text they wrote themselves, which the edit history often shows. Google has occasionally indexed URLs that already carried the parameter.",
+      "in_baseline": false
+    },
+    {
+      "id": "unfilled-placeholder",
+      "name": "Unfilled placeholder in the body",
+      "definition": "A fill-in-the-blank slot the writer was meant to replace, shipped as-is: bracketed nouns ('[Your Name]', '[Entertainer's Name]', '[Specific Topic]', '[link to source list]'), bracketed instructions ('[Describe the specific section that needs editing and provide clear reasons why]', '[INSERT SOURCE URL]'), parenthesised prompts ('(Add your channel URL here)', '(If available)') and template variables ('{client_name}'). Near-definitive evidence of pasted, unedited boilerplate. Fill in the real value or delete the sentence.",
+      "cues": [
+        "[Your Name]",
+        "[INSERT SOURCE URL]",
+        "[Describe the specific section]",
+        "[Describe the specific section or content that needs editing and provide clear reasons why the edit is necessary, including reliable sources if applicable]",
+        "[Specific Topic]",
+        "[Language, e.g., non-English]",
+        "[link to the revised article]",
+        "[link to source list]",
+        "[Entertainer's Name]",
+        "(Add your channel URL here)",
+        "(If available)",
+        "[insert",
+        "{client_name}",
+        "Hi {client_name},",
+        "<!-- Add citation if available -->",
+        "add",
+        "fill in",
+        "todo",
+        "insert"
+      ],
+      "regex": [
+        "\\[(?:your|insert|add|enter|describe|specify|choose|pick|link to|fill in|todo|tbd|placeholder)[^\\]\\n]{1,80}\\]",
+        "\\[(?:recipient|sender|topic|subject|salutation|closing|position|department|project name|company name|client name|entertainer['’]?s name)(?:\\s[^\\]\\n]{0,60})?\\]",
+        "\\{(?:client_name|your_name|company_name|first_name|recipient_name|topic)\\}",
+        "\\((?:add|insert|enter) your [^)\\n]{1,60}\\)"
+      ],
+      "examples": [
+        {
+          "before": "Best regards, [Your Name] and Chloe",
+          "after": "Best regards, Chloe Martens"
+        },
+        {
+          "before": "Hi {client_name}, thanks for the update.",
+          "after": "Hi Marieke, thanks for the update."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-detector",
+        "wikipedia-b",
+        "vollmer"
+      ],
+      "merged_from": [
+        "Unfilled placeholders",
+        "unfilled placeholder",
+        "Phrasal templates and placeholder text",
+        "Unedited placeholders"
+      ],
+      "false_positives": "Templates and scaffolds are supposed to carry slots: a preload template, a form, an article-creation boilerplate, a mail-merge draft. The tell is a slot in finished, published text. Bracketed editorial insertions inside a quotation ('[sic]', '[the minister]') and bracketed citation numbers are normal. Code and configuration that use {placeholders} as syntax are not prose, and '(if available)' is ordinary enough in human writing that it is kept as a cue with no regex. Humans forget template slots too, so treat this as a publishing bug rather than proof of authorship.",
+      "in_baseline": false
+    },
+    {
+      "id": "placeholder-in-metadata-field",
+      "name": "Placeholder value in a structured field",
+      "definition": "A citation, infobox or front-matter field holding a stub instead of a value: 'url=URL', 'INSERT_SOURCE_URL_30', 'SOURCE_PUBLISHER', 'PASTE_SPOTIFY_TRACK_URL_HERE', date stubs such as '2025-XX-XX' or '2022-11-XX' (usually in access-date, sometimes in date, and they raise tool errors), and hidden comments that defer content in a field ('<!-- Add if available with citation -->', instructions to upload an image). A numbered stub token means the reference list was generated without the sources, so the whole citation is suspect and not only the field.",
+      "cues": [
+        "2025-XX-XX",
+        "2025-xx-xx",
+        "2022-11-XX",
+        "access-date=2025-XX-XX",
+        "date=2022-11-XX",
+        "2025-XX-XX",
+        "url=URL",
+        "INSERT_SOURCE_URL_30",
+        "SOURCE_PUBLISHER",
+        "PASTE_SPOTIFY_TRACK_URL_HERE",
+        "PASTE_YOUTUBE_VIDEO_URL_HERE",
+        "INSERT_",
+        "PASTE_",
+        "_HERE",
+        "XX/XX/2025",
+        "<!-- Add if available with citation -->",
+        "Add if available",
+        "if/when sources are available",
+        "upload images to Wikimedia Commons",
+        "2025-XX-XX"
+      ],
+      "regex": [
+        "\\b(?:19|20)\\d{2}-xx-xx\\b",
+        "\\b(?:19|20)\\d{2}-\\d{2}-xx\\b",
+        "\\bxx/xx/(?:19|20)\\d{2}\\b",
+        "(?:\\||\\b)(?:url|publisher|author|access-?date)\\s*=\\s*url\\b",
+        "\\b(?:insert|paste)_[a-z0-9_]{0,40}(?:url|here|name|title|publisher)(?:_\\d+)?\\b",
+        "=\\s*source_[a-z_]{3,30}\\b",
+        "<!--\\s*add\\b[^>]{0,80}(?:if available|if reliably sourced|with citation)[^>]{0,40}-->"
+      ],
+      "examples": [
+        {
+          "before": "{{cite web |url=INSERT_SOURCE_URL_30 |publisher=SOURCE_PUBLISHER |date=2022-11-XX}}",
+          "after": "(citation deleted; nothing behind it was ever consulted)"
+        },
+        {
+          "before": "| leader_name = <!-- Add if available with citation -->",
+          "after": "| leader_name = Fatima Yusuf<ref>District council register, 2025.</ref>"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Placeholder dates in citations",
+        "Placeholder citation fields",
+        "Deferred-content comments in structured fields"
+      ],
+      "false_positives": "Boilerplate comments that ship inside a template ('Add spouse if reliably sourced' in a military-person infobox) belong to the template, so check the template before citing this. A schema field genuinely named URL, and an access date that is old because the work is old, are not stubs. Whoever wrote it, a date with XX in it is an error worth fixing.",
+      "in_baseline": false
+    },
+    {
+      "id": "outline-plan-left-in-body",
+      "name": "Outline plan published instead of the section",
+      "definition": "A sentence describing what a section would contain is emitted in place of the content: 'This section would speculate on potential developments and the changing landscape of global energy.' The model's outline survived into the published text. Write the section or delete the heading.",
+      "cues": [
+        "This section would speculate on",
+        "This section would",
+        "potential developments and the changing landscape"
+      ],
+      "regex": [
+        "\\bthis (?:section|chapter|part) would (?:speculate|cover|discuss|explore|detail|describe|include|address)\\b"
+      ],
+      "examples": [
+        {
+          "before": "This section would speculate on potential developments in global energy.",
+          "after": "The IEA's 2025 outlook puts peak oil demand between 2029 and 2032 under current policies."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-a"
+      ],
+      "merged_from": [
+        "Outline placeholder left in the body ('This section would speculate on...')"
+      ],
+      "false_positives": "'This section covers X' as a signpost in documentation is meta-signposting at worst, and belongs to another pattern; the tell here is the conditional 'would', describing content that was never written. An outline document, a table of contents or a proposal whose job is to describe planned sections is doing exactly that.",
+      "in_baseline": false
+    },
+    {
+      "id": "markdown-in-non-markdown-surface",
+      "name": "Markdown leaking into a surface that does not render it",
+      "definition": "Markdown syntax lands on a surface with its own markup or none at all (wikitext, plain-text email, a CMS field, a ticket, a code comment): '**bold**', '*italic*', '_italic_', '# Heading', '[text](url)', fenced code blocks and '---' / '***' / '___' breaks. Chatbots emit Markdown by default because their system prompts ask for it, and copy-to-clipboard keeps it. Sub-forms: the whole deliverable wrapped in a fenced block ('```wikitext'); a link pasted as '[URL](URL)' with the address duplicated as its own label; hash headings that the destination renders as numbered list items; and list items pasted as literal markers (•, -, –, #, emoji, or explicit '1.') where the surface has its own list syntax, sometimes run together in one paragraph because the copy lost the line breaks.",
+      "cues": [
+        "**bold**",
+        "**...**",
+        "**Computing & Open Source Technology**",
+        "*italic*",
+        "_italic_",
+        "# Header 1",
+        "## Heading",
+        "### Heading",
+        "#### Heading",
+        "## Geography",
+        "## History",
+        "## Administration",
+        "## Population",
+        "[text](url)",
+        "---",
+        "***",
+        "___",
+        "```wikitext",
+        "```",
+        "```markdown",
+        "[https://",
+        "](https://",
+        "•",
+        "- ",
+        "– ",
+        "# ",
+        "1. ",
+        "2. ",
+        "emoji before a list item",
+        "items run together with no line breaks",
+        "single space after hash symbols for headers",
+        "blank line before and after headers, lists, and code blocks",
+        "two spaces before the asterisk (*) or hyphen (-) for each level of nesting",
+        "three spaces before the number and period (e.g., \"1.\")",
+        "**Concise edit summary:**"
+      ],
+      "regex": [
+        "(?<!\\*)\\*\\*(?![\\s*])[^*\\n]{1,80}(?<![\\s*])\\*\\*(?!\\*)",
+        "(?:^|\\n)#{1,6} \\S",
+        "\\n\\n(?:-{3,}|\\*{3,}|_{3,})[ \\t]*\\n\\n",
+        "```",
+        "\\[(https?://[^\\]\\n]{5,300})\\]\\(\\1\\)",
+        "\\[[^\\]\\n]{1,60}\\]\\(https?://[^)\\n]{1,300}\\)"
+      ],
+      "examples": [
+        {
+          "before": "* 💻 **Computing & Open Source Technology**\n* 📚 **Education Systems in South Asia**",
+          "after": "* Computing and open source technology\n* Education systems in South Asia"
+        },
+        {
+          "before": "as detailed in the interview ([https://example.org/the-futurist-interview](https://example.org/the-futurist-interview)).",
+          "after": "as detailed in [the Futurist interview](https://example.org/the-futurist-interview)."
+        },
+        {
+          "before": "The platform was shown at SAHA Expo 2026.\n\n----\n\n**Specifications**",
+          "after": "The platform was shown at SAHA Expo 2026.\n\n== Specifications =="
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b",
+        "wikipedia-c",
+        "vollmer"
+      ],
+      "merged_from": [
+        "Use of Markdown (WP:MARKDOWN)",
+        "Wikitext wrapped in Markdown code blocks (fenced ```wikitext)",
+        "Markdown ## headings rendered as numbered list",
+        "Markdown link with the URL duplicated as its label",
+        "Markdown bold leaking into non-Markdown surfaces",
+        "Markdown leaking when not requested",
+        "Non-native list markers pasted from chat output"
+      ],
+      "false_positives": "Markdown on a surface that renders Markdown is correct, and this whole entry is conditioned on the surface. As an authorship signal Markdown alone is weak: developers, researchers and technical writers type asterisks and hashes by habit, Obsidian, GitHub, Reddit, Discord, Slack, Notes and Docs all encourage it, and a newcomer may reasonably assume the surface supports it. The strong signal is Markdown mixed with the destination's own markup, strongest inside a fenced code block. A '---' line in a Markdown file is usually YAML front matter, a hyphen or bullet character in plain text is an ordinary list, and a fenced block quoting code is the point; the bullet sub-form is only a tell where the surface has its own list syntax. Fenced blocks and Markdown links score on every Markdown document, so read this entry's hits together with the surface they were found on.",
+      "in_baseline": false
+    },
+    {
+      "id": "broken-target-markup",
+      "name": "Invented or broken markup for the destination system",
+      "definition": "Markup the model is not fluent in comes out invented, malformed or misapplied. Sub-forms: template and parameter names that match the shape of the real schema but do not exist ('{{Infobox ancient population}}', '| archaeological_sites ='), so they render as red links or do nothing; garbled template syntax (an AfC submission whose timestamp parameters explode into repeated date strings); transport-layer escaping left in place ('<ref name=\\\"fiercebiotech\\\">'); a maintenance banner transcluded where a mention of it was meant; and citation plumbing that does not connect, whether references declared in a list and never cited, inline names never defined, or the same wrong re-use marker ('<sup>[3]</sup>') appended dutifully after every sentence. The transferable form is an invented API or config key that looks exactly like the real one.",
+      "cues": [
+        "{{Infobox ancient population",
+        "| descendants =",
+        "| archaeological_sites =",
+        "{{Update submission",
+        "== <!-- EDIT BELOW THIS LINE --> ==",
+        "[[Category:AfC submissions by date/<0030Fri, 13 Jun 2025",
+        "{{AfC submission",
+        "<sup>[3]</sup>",
+        "<sup>[",
+        "]</sup>",
+        "<references>",
+        "<ref name=",
+        "Cite error: A list-defined reference named",
+        "is not used in the content",
+        "name=\\\"",
+        "\\\"",
+        "{{Notability}}",
+        "{{Advert}}"
+      ],
+      "regex": [
+        "<sup>\\[\\d{1,3}\\]</sup>",
+        "\\bcite error: a list-defined reference named\\b",
+        "=\\\\\\\"",
+        "\\[\\[category:afc submissions by date/<",
+        "<!--\\s*edit below this line\\s*-->"
+      ],
+      "examples": [
+        {
+          "before": "{{Infobox ancient population | regions = Ganga Valley | archaeological_sites = Bhimbetka }}",
+          "after": "{{Infobox archaeological culture | region = Ganga Valley | majorsites = Bhimbetka }}"
+        },
+        {
+          "before": "Specialists opted for commercial games.<sup>[3]</sup> They theorised remedial effects.<sup>[3]</sup>",
+          "after": "Specialists opted for commercial games.<ref name=\"lynch1981\" /> They theorised remedial effects.<ref name=\"lynch1981\" />"
+        }
+      ],
+      "severity": "always",
+      "scope": "language-specific",
+      "sources": [
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Broken wikitext / garbled template syntax",
+        "Non-existent templates and parameters",
+        "Incorrect reference re-use syntax after every full stop (WP:AICITESTYLE)",
+        "Named references declared but unused, or used but undefined",
+        "Backslash-escaped quotes in markup",
+        "Transcluding maintenance banners when mentioning them (WP:AITRANSCLUSION)"
+      ],
+      "false_positives": "Broken markup is often an ordinary human mistake, especially from a newcomer, and a single malformed template proves nothing on its own. Undefined named references also come from copy-pasting a passage out of another document, and a reference list the body never cites can be a deliberate further-reading section. Judge the cluster: plausible-but-invented names alongside markup faults and citation plumbing that does not connect. Escaped quotes are also normal inside JSON and shell strings, where the escaping is real syntax.",
+      "in_baseline": false
+    },
+    {
+      "id": "stale-boilerplate-metadata",
+      "name": "Stale or implausible boilerplate metadata",
+      "definition": "A new document arrives carrying metadata it could not have earned: maintenance, protection or style templates dated before the document existed ('{{Use American English|date=September 2022}}' on a 2025 creation), a submission header that pre-declines the submission ('{{AfC submission|d}}', whose 'd' parameter means declined, so the creator then asks why it was declined with no feedback), and access dates a year or more older than the work because the model's notion of 'today' is stale. The mechanism is boilerplate lifted from training examples plus a knowledge-cutoff date leaking into a metadata field.",
+      "cues": [
+        "{{AfC submission|d}}",
+        "you declined your",
+        "you declined it yourself",
+        "put a decline",
+        "{{Use American English|date=September 2022}}",
+        "{{Use mdy dates|date=February 2025}}",
+        "{{Short description|",
+        "|access-date=12 December 2024",
+        "access-date="
+      ],
+      "regex": [
+        "\\{\\{afc submission\\s*\\|\\s*d\\s*\\}\\}",
+        "\\{\\{use (?:american|british) english\\s*\\|\\s*date\\s*=",
+        "\\{\\{use mdy dates\\s*\\|\\s*date\\s*="
+      ],
+      "examples": [
+        {
+          "before": "A page created in February 2025 opening with {{Use American English|date=September 2022}}",
+          "after": "A page created in February 2025 opening with {{Use American English|date=February 2025}}"
+        },
+        {
+          "before": "{{AfC submission|d}} on a draft nobody has reviewed",
+          "after": "{{AfC submission}} on a draft nobody has reviewed"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "sources": [
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Implausible pre-placed maintenance or protection templates",
+        "Pre-declined AfC submission template (WP:AIDECLINE)",
+        "Outdated access-date parameters"
+      ],
+      "false_positives": "Copied citations, offline work and batch moves or merges all produce old access dates honestly; the tell is a set of them clustered on one stale date. A dated template that matches the document's own history is ordinary maintenance, and newer chatbots seldom get the date wrong at all. Check the page history before calling a banner implausible, and check who inserted it.",
+      "in_baseline": false
+    },
+    {
+      "id": "instructions-to-the-handler",
+      "name": "Instructions and notes to the person publishing the text",
+      "definition": "Text addressed to whoever will paste, submit or review the document, published inside it. Sub-forms: numbered submission notes ('Submit via WP:AFC, not directly to mainspace', 'Declare COI in the edit summary'), a line telling the handler to remove the note ('Delete this section before submission'), coaching on what to say if a reviewer objects, a checklist of what the subject should have 'before creating a real page', a cover letter arguing the document's merits to a reviewer ('Reviewer note: this draft is neutral and well-sourced ... Thank you for your review'), and editorial suggestions about the document written in its own register ('Including photos of the forge would enrich the article's section on culture', 'a map could be added to orient readers', 'could further engage readers'). Often hidden inside HTML comments, so scan comment blocks as well. None of it is content.",
+      "cues": [
+        "Delete this section before submission",
+        "After pasting the article",
+        "SUBMISSION NOTES",
+        "Final important tip:",
+        "Before creating a real Wikipedia page",
+        "To have a good chance of acceptance, your",
+        "This article should be created at",
+        "If a reviewer questions",
+        "convert as many items as possible in the citation list into inline references",
+        "would enrich the article's section",
+        "could be added to orient readers",
+        "could be illustrated with an image",
+        "Several such photographs are available (e.g., on Wikimedia Commons)",
+        "would also add depth to the article",
+        "could further engage readers",
+        "By leveraging these visual aids",
+        "the expanded article can provide a richer, more immersive picture",
+        "Reviewer note (for AfC):",
+        "This draft is a neutral and well-sourced biography",
+        "All references are from independent, reliable sources",
+        "Thank you for your review."
+      ],
+      "regex": [
+        "\\bdelete this (?:section|paragraph|note) before (?:submission|submitting|publishing|posting)\\b",
+        "\\bsubmission notes\\b",
+        "\\breviewer note\\b",
+        "\\bthank you for your review\\b",
+        "\\bwould enrich the (?:article|section|post|page)\\b",
+        "\\bcould (?:further )?engage readers\\b",
+        "\\bcould be added to orient readers\\b",
+        "\\bbefore (?:creating|submitting|publishing) (?:a|the|your) real\\b"
+      ],
+      "examples": [
+        {
+          "before": "Delete this section before submission. After pasting the article, convert the citation list into inline references.",
+          "after": "(deleted; the article starts at its first line)"
+        },
+        {
+          "before": "Including photos of the forge would enrich the article's section on culture, and a map could be added to orient readers.",
+          "after": "(moved to the talk page as a suggestion, over the editor's own signature)"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Submission notes and instructions to the paster",
+        "Editorial advice about the article, inside the article",
+        "Reviewer-directed 'submission statement' inside the deliverable"
+      ],
+      "false_positives": "A style guide, a contributing guide, a runbook or a README is instructions on purpose. An editorial note in something explicitly marked as a draft, or in a review thread, a ticket or a PR description, is doing its job; the tell is process instruction inside the finished artefact, addressed to its handler rather than its reader. Note also that advice of this kind is often wrong on the facts, so removing it loses nothing.",
+      "in_baseline": false
+    },
+    {
+      "id": "self-certification-of-compliance",
+      "name": "Self-certification of compliance",
+      "definition": "The text asserts its own neutrality, sourcing or rule-conformance instead of demonstrating it: 'Written to Wikipedia Manual of Style. Neutral tone, sourced throughout.', 'ensure that the content is presented in a neutral tone, supported by reliable sources', 'We remain committed to creating content that aligns with the mission'. The change-note form stacks verbose, unspecific assurances across a range of improvements nobody would bundle ('for clarity and compliance with the Manual of Style', 'corrected promotional wording, improved sourcing and neutrality'). The AI-disclosure form pre-empts the objection ('I understand concerns regarding AI-generated content, and I worked to ensure it adheres to the rules', 'these comments reflect my own thoughts'). Delete the claim and let the text carry it.",
+      "cues": [
+        "Written to Wikipedia Manual of Style",
+        "Neutral tone, sourced throughout",
+        "We remain committed to creating content that aligns with Wikipedia's mission",
+        "presented in a neutral tone, supported by reliable sources",
+        "I understand [the/your] concern(s) [about/regarding] AI-generated",
+        "I understand (that) my [contributions] may [have been] perceived as",
+        "to ensure (that) [the content obeys] Wikipedia's [rules]",
+        "to ensure the article adheres to Wikipedia's",
+        "reflect my thoughts",
+        "ensured that... adheres to",
+        "in compliance with",
+        "complies with",
+        "Wikipedia guidelines",
+        "Wikipedia style",
+        "Wikipedia standards",
+        "verifiability",
+        "neutrality",
+        "neutral tone",
+        "encyclopedic tone",
+        "for clarity and compliance with the Manual of Style",
+        "corrected promotional wording",
+        "improved sourcing and neutrality",
+        "for a more neutral tone",
+        "Removed promotional",
+        "Improve citations",
+        "refined",
+        "enhanced",
+        "enriched",
+        "streamlined",
+        "improved",
+        "revised",
+        "clarity",
+        "flow"
+      ],
+      "regex": [
+        "\\b(?:written|formatted) to (?:the )?[a-z ]{0,25}manual of style\\b",
+        "\\bneutral tone,? (?:and )?sourced throughout\\b",
+        "\\bin compliance with (?:wikipedia|the platform|the manual of style|the guidelines|the style guide)\\b",
+        "\\bi understand (?:the |your )?concerns? (?:about|regarding) ai-generated\\b",
+        "\\bto ensure (?:that )?(?:the )?(?:content|article|text|it) (?:adheres|complies|conforms)\\b",
+        "\\breflect my (?:own )?thoughts\\b",
+        "\\bfor clarity and compliance with\\b"
+      ],
+      "examples": [
+        {
+          "before": "Revised the section for clarity and compliance with the Manual of Style; corrected promotional wording and improved sourcing and neutrality.",
+          "after": "removed excessive links per MOS:OVERLINK"
+        },
+        {
+          "before": "This draft is written to the Manual of Style. Neutral tone, sourced throughout.",
+          "after": "(deleted; the draft's sources are listed under References)"
+        },
+        {
+          "before": "I understand concerns regarding AI-generated content; the page was rewritten in compliance with the manual of style.",
+          "after": "(deleted; the disputed sentence now carries a source)"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "sources": [
+        "wikipedia-b",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Self-certification of compliance",
+        "Downplaying AI use by claiming effort to ensure compliance (WP:AIMADEBUTSTILLOK)",
+        "Canned assurance of adherence to policies and guidelines (edit summaries)"
+      ],
+      "false_positives": "A human citing one rule, briefly and with a link ('removed excessive links per MOS:OVERLINK'), is normal practice, and a common abbreviation such as 'ce' for copy edit is not a chatbot. A compliance statement a process actually requires (an accessibility statement, a licence header, a declared conflict of interest) is content. The tell is unspecific assurance stacked several deep, covering improvements nobody would bundle in one pass. The move transfers to any venue with a rulebook, so the English wording of the cues is an instance rather than the limit.",
+      "in_baseline": false
+    },
+    {
+      "id": "brief-vocabulary-and-destination-naming",
+      "name": "The brief's vocabulary and the destination named inside the deliverable",
+      "definition": "The output echoes the wording of the criteria it was asked to satisfy, or names the venue it was written for, from inside the text. Sub-forms: guideline vocabulary collapsed into the product ('These sources provide significant, substantial, secondary coverage, not trivial mentions or press releases'); the destination named with a possessive and a rule noun ('adheres to Wikipedia's guidelines on verifiability and neutrality', 'the Animal Cruelty Controversy section of Foshan's Wikipedia page'); rule shortcodes glossed for the reader ('Submit via WP:AFC (Articles for Creation)'). Somebody writing in place does not spell out where they are or which rulebook they read. Cut the frame; the text already sits where it sits.",
+      "cues": [
+        "independent coverage",
+        "significant, substantial, secondary coverage",
+        "not trivial mentions or press releases",
+        "meeting both WP:BIOSIG and WP:SIGCOV",
+        "verifiable coverage",
+        "Wikipedia's guidelines on verifiability and neutrality",
+        "adheres to Wikipedia's",
+        "Foshan's Wikipedia page",
+        "is Wikipedia markup that",
+        "Submit via WP:AFC (Articles for Creation)",
+        "Post to WP:COIN (Conflict of Interest Noticeboard)",
+        "Before creating a real Wikipedia page",
+        "It meets WP:RS and WP:BLP standards and demonstrates clear notability per WP:NBIO through:"
+      ],
+      "regex": [
+        "\\bsignificant,? (?:and )?substantial,? (?:and )?secondary coverage\\b",
+        "\\bnot trivial mentions\\b",
+        "\\bindependent coverage\\b",
+        "\\bmeet(?:s|ing)? (?:both )?wp:[a-z]+\\b",
+        "\\b(?:wikipedia|the site|the platform)['’]?s guidelines on\\b",
+        "\\badheres to wikipedia['’]?s\\b"
+      ],
+      "examples": [
+        {
+          "before": "These sources provide significant, substantial, secondary coverage, not trivial mentions or press releases.",
+          "after": "(deleted from the article; the sources are cited where they support a sentence)"
+        },
+        {
+          "before": "Ensure the content is presented in a neutral tone and adheres to Wikipedia's guidelines on verifiability.",
+          "after": "(deleted; the passage now attributes each contested claim to its source)"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-a",
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Guideline or justification vocabulary collapsed into the deliverable",
+        "Explicit destination self-reference and policy name-dropping"
+      ],
+      "false_positives": "A discussion about whether a subject qualifies is exactly where guideline vocabulary belongs, and citing one rule with a link in a review or a change note is normal; the tell is that vocabulary inside the deliverable. Documentation that names its own platform because the platform is the subject is fine, as is a style guide quoting its own criteria. The Wikipedia instances are the reported case, and the mechanism transfers to any brief, so a blog post that says 'for this blog' or a PR that recites the contributing guidelines is the same move.",
+      "in_baseline": false
+    },
+    {
+      "id": "templated-change-note",
+      "name": "Templated change note (commit message, PR description, edit summary)",
+      "definition": "A change description written as exhaustive procedural prose rather than a terse human note. Sub-forms: the full-sentence summary of everything done and how it complies ('Improved clarity, flow, and readability of the plot section; reduced redundancy and refined tone for better encyclopedic style'); the statement of what was deliberately not changed, which echoes the prompt's constraint back ('while preserving the original meaning and technical details', 'while maintaining backward compatibility'); the enumeration of every field, parameter or template touched with its literal syntax ('Corrected infobox parameters (image_size)'); and the older first-person form carrying the same tells as the body text, with AI vocabulary, emoji or Markdown in the summary itself ('**Concise edit summary:** I revised the content to...'). The more rigidly formulaic, the stronger the sign.",
+      "cues": [
+        "Improved clarity, flow, and readability",
+        "reduced redundancy and refined tone for better encyclopedic style",
+        "Reorganized article per",
+        "Comprehensive rewrite:",
+        "Comprehensive formatting update:",
+        "preserved",
+        "preserving",
+        "retained",
+        "retaining",
+        "avoided",
+        "avoiding",
+        "ensured",
+        "ensuring",
+        "aimed to",
+        "aiming to",
+        "while preserving the original meaning and technical details",
+        "preserved existing structure and lead emphasis",
+        "preserved references and categories",
+        "while preserving sourced criticisms",
+        "infobox parameters (image_size)",
+        "inline citations",
+        "internal links",
+        "internal/external links",
+        "Corrected infobox parameters",
+        "while maintaining backward compatibility",
+        "**Concise edit summary:**",
+        "I revised the content to",
+        "The tone was adjusted to be more encyclopedic and less promotional",
+        "for a more neutral tone"
+      ],
+      "regex": [
+        "\\bimproved clarity,? flow,? and readability\\b",
+        "\\breduced redundancy\\b",
+        "\\brefined tone\\b",
+        "\\bfor a more neutral tone\\b",
+        "\\bcomprehensive (?:rewrite|formatting update)\\b",
+        "\\bwhile preserving (?:the )?(?:original|existing|sourced)\\b",
+        "\\bwhile maintaining backward compatibility\\b",
+        "\\bconcise edit summary\\b",
+        "\\bi revised the content to\\b"
+      ],
+      "examples": [
+        {
+          "before": "Improved clarity, flow, and readability of the plot section; reduced redundancy and refined tone for better encyclopedic style.",
+          "after": "ce plot"
+        },
+        {
+          "before": "Removed promotional language and revised the passage for a neutral tone while preserving the original meaning and technical details.",
+          "after": "drop marketing adjectives from the throughput claim"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Templated AI edit summary (WP:AISUMMARY)",
+        "Older-style edit summary: first person, AI vocabulary, emoji, list or Markdown formatting",
+        "Procedural 'preserved / retained / avoided' statements",
+        "Overemphasis on parameter, template and markup names"
+      ],
+      "false_positives": "A long, specific change note that says what changed and why, with links, is good practice: length and formality are not the tell, the formula is. Conventional-commit bodies, changelogs and release notes are meant to enumerate. 'While maintaining backward compatibility' is worth saying once, when it is the point of the change; the tell is the same constraint echoed on every commit. The further a summary deviates from the formula, the less likely it is generated, and a summary written by hand for a generated change is rare enough to ignore.",
+      "in_baseline": false
+    },
+    {
+      "id": "letter-register-on-non-correspondence",
+      "name": "Letter register on a surface that is not correspondence",
+      "definition": "Business-letter framing on a ticket, a talk page, a comment, a form or an article: 'Dear Editorial Team,', 'I hope this message finds you well', 'I am writing to request an edit', 'Thank you for your understanding and assistance in this matter', 'Best regards,'. The register is right in an actual letter; the tell is its arrival where nobody writes letters, and it usually travels with unfilled placeholders from the same paste.",
+      "cues": [
+        "I hope this message finds you well",
+        "I trust this message finds you well",
+        "I am writing to request",
+        "I am writing to express my deep concern",
+        "I am writing to",
+        "Thank you for your understanding and assistance in this matter",
+        "Best regards,",
+        "Dear Wikipedia Editorial Team",
+        "We hope to resubmit our work once these changes have been made"
+      ],
+      "regex": [
+        "\\bi hope this (?:message|email|letter) finds you well\\b",
+        "\\bi trust this (?:message|email|letter) finds you well\\b",
+        "\\bi am writing to (?:request|express|inform|inquire|raise|report)\\b",
+        "\\bthank you for your understanding and (?:assistance|cooperation)\\b",
+        "\\bdear [a-z]+(?: [a-z]+)? (?:team|editors?|committee)\\b"
+      ],
+      "examples": [
+        {
+          "before": "Dear Wikipedia Editorial Team, I hope this message finds you well. I am writing to request an edit to the entry.",
+          "after": "The second paragraph gives the wrong founding year: the charter is dated 1924, not 1932."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "sources": [
+        "wikipedia-b",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Letter and email register on non-correspondence surfaces",
+        "Formal-letter opener in a comment (Dear Wikipedia Editorial Team)"
+      ],
+      "false_positives": "In an actual email, cover letter or formal complaint this is the correct register and predates chatbots by centuries. Judge by surface: a talk page, an issue, a code comment, a commit message, an article. Formality alone is not a tell, and a non-native speaker leaning on a letter template is not a chatbot. A first contact with a stranger may reasonably borrow the register anywhere.",
+      "in_baseline": false
+    },
+    {
+      "id": "content-duplication",
+      "name": "Duplicated section or paragraph",
+      "definition": "A section or paragraph repeats verbatim or near-verbatim inside the same piece, because the generator lost track of what it had already written: the same section emitted twice word for word, or paragraph 3 restated as paragraph 17 with the wording shuffled. Detect by paragraph hashing or n-gram overlap. Delete the copy, and check first whether one half carries a fact the other lost.",
+      "cues": [
+        "word-for-word identical",
+        "the same section appeared twice",
+        "Paragraph 3 and paragraph 17 are the same sentence reworded"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "The same 'Reception' section appears twice, word for word, at positions 4 and 9.",
+          "after": "One 'Reception' section, at position 4."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "tropes-fyi"
+      ],
+      "merged_from": [
+        "Content Duplication"
+      ],
+      "false_positives": "A deliberate refrain, a summary that restates the lead, a legal notice repeated by requirement, and boilerplate that appears in every section by design are not duplication. Reference material where each entry repeats a stock sentence is the format. The tell is an exact or near-exact repeat that neither position needs, and it is less common in recent output than it was.",
+      "in_baseline": false
+    },
+    {
+      "id": "abrupt-cutoff",
+      "name": "Text that stops mid-sentence",
+      "definition": "The piece ends in the middle of a sentence or a section because generation hit a token limit and nobody continued it, or because the copy was truncated: 'Final important tip: The ~~~~ at the very end is Wikipedia markup that automatically'. Detect a final sentence with no terminal punctuation, ending on a function word or an auxiliary. Finish the sentence or cut back to the last complete one.",
+      "cues": [
+        "ends mid-sentence",
+        "is Wikipedia markup that automatically",
+        "continue generating"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "The ~~~~ at the very end is Wikipedia markup that automatically",
+          "after": "Four tildes at the end sign the post with your username and a timestamp."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "Abrupt cut off",
+        "Abrupt cut-off mid-text"
+      ],
+      "false_positives": "Deliberate aposiopesis in fiction or quoted speech, a heading as the last line, a table or code block at the end, and a list whose items carry no terminal punctuation are all normal. A malformed local copy-paste and a partial copy from another document produce the same shape, so this shows the text is unfinished and says nothing about who wrote it. 'Continue generating' as a phrase is ordinary English, so it stays a cue with no regex.",
+      "in_baseline": false
+    },
+    {
+      "id": "bypass-trick-characters",
+      "name": "Zero-width and homoglyph bypass characters",
+      "definition": "Invisible or lookalike characters inserted to defeat AI detectors: zero-width space, non-joiner, joiner, word joiner and byte-order mark (U+200B, U+200C, U+200D, U+2060, U+FEFF), and Cyrillic or Greek letters swapped in for Latin lookalikes (а е о р с х у к м н в т, ο Ο α Α ρ Ρ). Their presence means the text went through a humanizer or prompt-injection bypass tool. Strip the characters and retype the affected words from your own keyboard.",
+      "cues": [
+        "U+200B ZWSP",
+        "U+200C ZWNJ",
+        "U+200D ZWJ",
+        "U+FEFF BOM",
+        "U+2060 word joiner",
+        "[Ѐ-ӿͰ-Ͽ] swapped via CYRILLIC_LOOKALIKES / GREEK_LOOKALIKES (а е о р с х у к м н в т А Е О Р С Х У К М Н В Т ο Ο α Α ρ Ρ)"
+      ],
+      "regex": [
+        "[​‌‍⁠﻿]",
+        "[a-z][Ѐ-ӿ]|[Ѐ-ӿ][a-z]"
+      ],
+      "examples": [
+        {
+          "before": "dеlve (the e is Cyrillic U+0435, inside an otherwise Latin word)",
+          "after": "delve, retyped from your own keyboard"
+        },
+        {
+          "before": "deli​ver (a zero-width space sits between the i and the v)",
+          "after": "deliver, retyped from your own keyboard"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "bypass-trick characters (zero-width, homoglyph)"
+      ],
+      "false_positives": "A single stray zero-width character or a byte-order mark can come from Word, Notion, a CMS export or a file's own encoding, which is why the detector wants two or more before it counts; one ZWSP should never flip a verdict on its own. Genuine Cyrillic or Greek text, transliteration tables and linguistics examples contain those letters legitimately, and so does any multilingual document; the tell is a Cyrillic letter sitting inside an otherwise Latin word.",
+      "in_baseline": false
+    },
+    {
+      "id": "roleplay-action-markers",
+      "name": "Roleplay action markers",
+      "definition": "Asterisk-wrapped stage directions from chat roleplay left in prose: '*nods*', '*sighs*', '*sighs and looks away*', '*leans in*'. The inner phrase opens with a stage verb, which is what separates it from ordinary emphasis. Two or more in a document is the threshold, because a single pair of asterisks may be Markdown italics.",
+      "cues": [
+        "*nods thoughtfully*",
+        "*sighs*",
+        "*nods*",
+        "*leans in*"
+      ],
+      "regex": [
+        "(?<!\\*)\\*(?:nods|sighs|laughs|smiles|frowns|shrugs|grins|winks|chuckles|gasps|pauses|thinks|wonders|whispers|shouts|gestures|raises|leans|turns|looks|glances|smirks|blinks|nodding|sighing|laughing|smiling|thinking|gesturing)\\b[^*\\n]{0,60}\\*(?!\\*)"
+      ],
+      "examples": [
+        {
+          "before": "*nods thoughtfully* The migration ran clean.",
+          "after": "The migration ran clean."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "roleplay action markers"
+      ],
+      "false_positives": "Markdown emphasis around a word that happens to be one of these verbs ('it *looks* fine') is not a stage direction, which is exactly why the threshold is two. Fiction, screenplays and chat fiction use stage directions on purpose. Double-asterisk bold is excluded by the lookarounds.",
+      "in_baseline": false
+    },
+    {
+      "id": "generation-wrapper-and-speaker-label",
+      "name": "Generator wrapper and speaker label around the deliverable",
+      "definition": "The transport envelope around the answer gets pasted with the payload. Sub-forms: a container directive opening the deliverable, ':::writing{variant=\"document\" id=\"68427\"}' with a random five-digit id, localised as ':::écriture{variante=\"document\"}' and often closed by a bare ':::'; and a transcript speaker label naming the model ('Claude responded:', 'ChatGPT I revised the content to...') followed by the assistant's own commentary about the text it just produced. Delete the wrapper and the commentary and keep the payload.",
+      "cues": [
+        ":::writing{variant=\"document\" id=\"",
+        ":::écriture{variante=\"document\"",
+        ":::",
+        "writing{variant=",
+        "ChatGPT I revised",
+        "Claude responded:",
+        "That last sentence is the killer",
+        "you're speaking their language and daring them to argue with it"
+      ],
+      "regex": [
+        ":::\\s*(?:writing|écriture)\\s*\\{\\s*variante?\\s*=",
+        "\\b(?:chatgpt|claude|gemini|copilot|grok|deepseek|perplexity)\\s+(?:responded|said|wrote|replied)\\s*:"
+      ],
+      "examples": [
+        {
+          "before": ":::writing{variant=\"document\" id=\"68427\"}\nAK7 is a Belgian rapper.",
+          "after": "AK7 is a Belgian rapper."
+        },
+        {
+          "before": "Claude responded: That last sentence is the killer. Comprehensive rewrite: early life sourced from the university roster.",
+          "after": "Rewrote the early-life section from the university roster."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        ":::writing{variant=\"document\"} document wrapper (unclassified)",
+        "Chatbot name or 'X responded:' prefix leaking into output"
+      ],
+      "false_positives": "Triple-colon container directives are real syntax in MyST, Docusaurus, pandoc and several static-site generators, so on those surfaces they are the format; the tell is the wrapper on a surface with no such syntax, carrying a random numeric id. Quoting a model by name in a piece about models ('ChatGPT said it could not answer') is reporting, and a transcript that is presented as a transcript keeps its speaker labels.",
+      "in_baseline": false
+    },
+    {
+      "id": "out-of-text-provenance-signal",
+      "name": "Provenance signals outside the text",
+      "definition": "Evidence about how the text arrived rather than how it reads: the whole document appearing as a single paste event in the editor's version history, and an author's sudden shift to flawless or formal prose against their own baseline, especially where that baseline predates late 2022. Process evidence of this kind is more defensible than a detector score, and it is never on its own a reason to change a sentence.",
+      "cues": [],
+      "regex": [],
+      "examples": [
+        {
+          "before": "A 2,000-word section arrives in one paste, from an account whose other edits are two-line notes.",
+          "after": "(no text edit; ask the author how the section was written)"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "vollmer",
+        "wikipedia-c"
+      ],
+      "merged_from": [
+        "One-paste version history",
+        "Pronounced shift in writing style"
+      ],
+      "false_positives": "A single paste is often a draft written elsewhere, in a local editor, a notes app or another document. Writers code-switch to a formal register in some venues, and long-term AI users drift in parallel with the models, so a gradual change proves nothing; only a dramatic and otherwise unexplainable shift counts. Consistency with pre-2023 habits, the same boldface or the same list style, argues against AI. Never treat this as a defect in the prose.",
+      "in_baseline": false
+    }
+  ],
+  "report": "Only two regexes over-matched the control prose and both are gone: the Gutenberg convention of _underscore italics_ made a Markdown-italic pattern fire 166 times per 10,000 words in Strunk, and a bullet-character pattern fired 2.4 per 10,000 on the legitimate list in Strunk's Project Gutenberg licence. Five more were dropped by judgment rather than by score because the controls are pre-1960 prose and the phrases are ordinary in modern writing ('based on available information', 'the question of whether', 'Step 1:', 'continue generating', and a bare access-date= that would fire on every honest citation); three others were tightened instead of dropped, so the Gutenberg footer no longer trips Markdown bold, the stripped-citation numeral now needs three letters before the full stop rather than matching '$1.50', and a thematic break must sit between blank lines so YAML front matter is left alone. The 92 raw names fold into 24 entries: eighteen tool-specific citation tokens (oaicite, citeturn, attributableIndex, Gemini spans, grok-card, DeepSeek daggers, Perplexity tags, glued domains, return arrows) became one citation-markup entry, seven Markdown and pasted-list-marker rows became one surface-mismatch entry, six broken-wikitext and orphan-reference rows became one invented-or-broken-markup entry, and the chat frame was split by position into opener and closer because each needs its own trigger, and the five umbrella rows that name more than one position are listed under each entry they reach. No artifacts pattern was in the house baseline, so all 24 are new.",
+  "added": 24,
+  "regex_dropped": 7
+}

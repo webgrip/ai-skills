@@ -1,0 +1,471 @@
+{
+  "source": "baseline",
+  "patterns": [
+    {
+      "name": "Em dashes (house copy rule)",
+      "category": "punctuation-format",
+      "definition": "The em dash (—) is banned outright in all twente.dev copy and in the agent's own replies to the owner; sentences are written out with full stops, and fact lines use the house separator `//` or `·` instead.",
+      "cues": ["—", "em dash", "em dashes"],
+      "examples": [
+        {"before": "/001 — 7 OKT"},
+        {"before": "twente.dev/001 — reconnect"},
+        {"before": "KOM D'R IN — EVERYONE'S WELCOME"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Ratified by the owner 2026-09-02 (\"Ik wil al die em dashes ... niet hebben. \"). The three examples above are NOT violations: they are the approved banners that carry em dashes in data form; they were visually ratified and only change if the owner explicitly asks. Applies to posts, descriptions, documents and chat answers, NL and EN. Contrast with the blog-writer entry 'Em-dash saturation', which is density-based rather than an outright ban."
+    },
+    {
+      "name": "Em-dash saturation",
+      "category": "punctuation-format",
+      "definition": "Em-dash frequency far above human baseline; humans average about one per 500 words, generated drafts run one per 50 to 80 words. Thin them, keeping only the ones doing real work.",
+      "cues": ["—"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Quantified gate: more than 3 per 500 words means thin. A single em dash is listed as a false positive (isolated tells are noise). The house copy rule (memory note) is stricter: zero em dashes."
+    },
+    {
+      "name": "Negative parallelism (niet-x-maar-y-sjabloon)",
+      "category": "syntax",
+      "definition": "A contrast built as a negated first half followed by the affirmed second half: 'it is not X, it is Y'. Rewrite by stating the contrast in plain sentences.",
+      "cues": ["It's not X, it's Y", "het is niet x, het is y", "het is geen x, het is y", "It's not about X, it's about Y", "niet-x-maar-y"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Ratified by the owner 2026-09-02 together with the em-dash ban; the owner: \"Ik vind het echt extreem storend.\" The blog-writer catalog files the 'It's not about X, it's about Y' form under 'Aphorism formulas'. The memory note groups this with 'not because X but because Y', 'X, geen Y', 'No X. No Y. Just Z.' and 'Fast. Simple.' as the family 'contrastbinair in elke vorm' (contrast binary in every form); those are listed as separate entries here."
+    },
+    {
+      "name": "Not because X but because Y",
+      "category": "syntax",
+      "definition": "Causal variant of negative parallelism: a reason is introduced by denying an alternative reason first ('not because X but because Y').",
+      "cues": ["not because X but because Y", "niet omdat x maar omdat y"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Member of the 'contrastbinair in elke vorm' family in the memory note. Fix: state the actual reason directly."
+    },
+    {
+      "name": "Slogan opener 'X, geen Y'",
+      "category": "rhetoric",
+      "definition": "A two-part contrast slogan used as the first line or heading of a text, defining the thing by what it is not ('One evening, no sales pitch.'). The opener should say what happens; what it is not belongs in its own block further down, never in the heading.",
+      "cues": ["X, geen Y", "X, no Y", "geen verkooppraatje"],
+      "examples": [
+        {"before": "Eén avond, geen verkooppraatje.", "after": "Twee talks, wat te eten, en daarna tijd om bij te praten."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Added 2026-09-05 after the owner rejected the opener above the meetup text: \"Dit is niks. Even normaal maken aub. Niet zo AI.\" The memory note calls it 'het tweeledige contrast-slogannetje als eerste regel' and the same tic as not-x-but-y in short form. Applies to NL and EN."
+    },
+    {
+      "name": "Negation triplet 'No X. No Y. Just Z.'",
+      "category": "syntax",
+      "definition": "Three short fragments, two negated and one affirmed, used as a punchy contrast ('No X. No Y. Just Z.').",
+      "cues": ["No X. No Y. Just Z.", "Geen X. Geen Y. Gewoon Z."],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Member of the 'contrastbinair in elke vorm' family; also a tricolon in disguise."
+    },
+    {
+      "name": "Paired fragments 'Fast. Simple.'",
+      "category": "syntax",
+      "definition": "Two or more one-word or two-word sentence fragments set off by full stops as a rhythm device ('Fast. Simple.').",
+      "cues": ["Fast. Simple."],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Listed in the memory note under the contrast-binary family ('ik maak ze allemaal'); fix with an ordinary sentence."
+    },
+    {
+      "name": "Dubbelepunt-onthulling (colon reveal)",
+      "category": "rhetoric",
+      "definition": "A run-up clause, a colon, then the punchline: the sentence is staged so the colon delivers the reveal ('aanloop, dubbele punt, clou').",
+      "cues": [":"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "From the memory note's list of the whole family the agent produces itself. No user-ratified ban on its own; treat as a tell when it recurs or co-occurs with the others."
+    },
+    {
+      "name": "Drieslag (tricolon)",
+      "category": "syntax",
+      "definition": "A list of exactly three items used to sound complete ('faster, cheaper, smarter'), regardless of whether there are three things to say.",
+      "cues": ["faster, cheaper, smarter"],
+      "examples": [
+        {"before": "faster, cheaper, smarter"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Memory note: 'drieslag om compleet te klinken'. The blog-writer false-positive list explicitly says a single rule-of-three is noise; flag when it recurs in every section (see 'Symmetric everything: rule-of-three lists')."
+    },
+    {
+      "name": "Keelschraper / conversational-cosplay opener",
+      "category": "rhetoric",
+      "definition": "A spoken-register opener that performs candour or intimacy before saying anything ('Here's the thing:', 'Honestly?', 'Look,').",
+      "cues": ["Here's the thing", "Here's the thing:", "Honestly?", "Look,"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Memory note groups 'Here's the thing' under 'keelschrapers en spanningshaakjes'; blog-writer names the same phrases 'Conversational-cosplay openers'. Blog-writer's isolated-tell rule applies for blog prose; house copy bans them."
+    },
+    {
+      "name": "Candor flag",
+      "category": "rhetoric",
+      "definition": "Announcing honesty instead of being honest ('the honest answer is...').",
+      "cues": ["the honest answer"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "From the memory note's 'keelschrapers en spanningshaakjes' bullet; split out because the mechanism (claiming candour) differs from a throat-clearer."
+    },
+    {
+      "name": "Spanningshaakje (suspense hook)",
+      "category": "rhetoric",
+      "definition": "A phrase that manufactures suspense or secret knowledge before the point ('what nobody tells you').",
+      "cues": ["what nobody tells you"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "From the memory note's 'keelschrapers en spanningshaakjes' bullet."
+    },
+    {
+      "name": "Aforistische slotzin (aphoristic ender)",
+      "category": "rhetoric",
+      "definition": "A short, quotable sentence closing a paragraph or text that asserts significance without adding information ('And that matters.').",
+      "cues": ["And that matters.", "En dat telt."],
+      "examples": [
+        {"before": "And that matters."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Memory note: 'aforistische slotzin en zelfbeoordeling'. Related to blog-writer's 'Pull-quote-ready lines'."
+    },
+    {
+      "name": "Zelfbeoordeling (self-ranking claim)",
+      "category": "rhetoric",
+      "definition": "The text rates its own point as the important or overlooked one ('That's the part everyone misses').",
+      "cues": ["That's the part everyone misses"],
+      "examples": [
+        {"before": "That's the part everyone misses"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Split from the memory note's 'aforistische slotzin en zelfbeoordeling' bullet."
+    },
+    {
+      "name": "Signposted summary 'In short'",
+      "category": "structure",
+      "definition": "A summarising marker that announces a wrap-up ('In short') rather than simply concluding.",
+      "cues": ["In short", "Kortom"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Listed as a cue in the memory note's aphoristic-ender bullet; kept separate because it is a conclusion signpost, not an aphorism. Acceptable in some formal summaries."
+    },
+    {
+      "name": "Holle versterkers (hollow intensifiers)",
+      "category": "vocabulary",
+      "definition": "Intensifiers that add emphasis but no information, used as filler ('genuinely', 'actually', 'truly'; Dutch 'echt', 'gewoon').",
+      "cues": ["genuinely", "actually", "truly", "echt", "gewoon"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source qualifies the Dutch words with 'als vulling' (as filler): 'echt' and 'gewoon' are ordinary Dutch and are only a tell when they carry no meaning. English list is english-scoped in wording; the mechanism is universal."
+    },
+    {
+      "name": "Meta-bewegwijzering (meta-signposting)",
+      "category": "rhetoric",
+      "definition": "Sentences that announce what the text is about to do or why it matters instead of doing it ('This matters because', 'Four caveats up front').",
+      "cues": ["This matters because", "Vier kanttekeningen vooraf"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Memory note. Overlaps with blog-writer's 'Throat-clearing' ('In this post, I will…'); this entry covers in-body signposting, that one covers opening announcements."
+    },
+    {
+      "name": "Generic scene-setting",
+      "category": "vocabulary",
+      "definition": "Stock opening phrases that set a generic scene before any specific claim.",
+      "cues": ["In today's fast-paced world", "In the ever-evolving landscape of", "Imagine a scenario where", "In the realm of"],
+      "examples": [],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Blog-writer catalog, 'Openings & framing'."
+    },
+    {
+      "name": "Throat-clearing (announcing the post)",
+      "category": "rhetoric",
+      "definition": "Opening sentences that announce the structure or intent of the piece instead of starting it.",
+      "cues": ["In this post, I will…", "Before we dive in…", "Let's explore"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Blog-writer catalog, 'Openings & framing'. Blog-writer rule: isolated tells are noise; flag clusters."
+    },
+    {
+      "name": "Buzz-verbs",
+      "category": "vocabulary",
+      "definition": "Inflated verbs that replace a plain action word.",
+      "cues": ["delve", "navigate", "unlock", "unleash", "leverage", "harness", "empower", "elevate", "foster", "streamline", "supercharge"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Blog-writer false positives: one 'delve' is noise; 'leverage' in finance is a term of art. Quantified check: more than a handful of hits across a post means the vocabulary sweep didn't finish."
+    },
+    {
+      "name": "Latinate bias",
+      "category": "vocabulary",
+      "definition": "Preferring the Latinate word where a shorter Anglo-Saxon word says the same thing.",
+      "cues": ["utilize", "commence", "demonstrate", "facilitate", "numerous", "additionally"],
+      "examples": [
+        {"before": "utilize", "after": "use"},
+        {"before": "commence", "after": "start"},
+        {"before": "demonstrate", "after": "show"},
+        {"before": "facilitate", "after": "help"},
+        {"before": "numerous", "after": "many"},
+        {"before": "additionally", "after": "also"}
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Blog-writer catalog. Formal vocabulary in genuinely formal contexts is a false positive."
+    },
+    {
+      "name": "Copula avoidance",
+      "category": "syntax",
+      "definition": "Replacing 'is' or 'has' with a heavier verb phrase ('serves as', 'acts as', 'functions as', 'features') where the copula works.",
+      "cues": ["serves as", "acts as", "functions as", "features"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Blog-writer catalog, filed under Vocabulary; the mechanism transfers to other languages."
+    },
+    {
+      "name": "Vague praise",
+      "category": "vocabulary",
+      "definition": "Evaluative adjectives that praise without a measurable referent.",
+      "cues": ["powerful", "seamless", "robust", "cutting-edge", "game-changing", "revolutionary"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Blog-writer catalog. Fix per Specificity sweep: replace with the real number or the actual name."
+    },
+    {
+      "name": "Symmetric everything: uniform paragraph lengths",
+      "category": "structure",
+      "definition": "Every paragraph is roughly the same length; the document has no rhythm at paragraph level.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer catalog, 'Structure: Symmetric everything'. Rhythm sweep: check paragraph lengths differ."
+    },
+    {
+      "name": "Symmetric everything: rule-of-three lists in every section",
+      "category": "structure",
+      "definition": "Every section carries a three-item list, whatever the actual count of things to say.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Document-level counterpart of the sentence-level tricolon. A single rule-of-three is a false positive."
+    },
+    {
+      "name": "Symmetric everything: balanced pro/con pairs",
+      "category": "content",
+      "definition": "Suspiciously balanced pro and con pairs, every advantage matched by a disadvantage, regardless of the real weighting.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer catalog. Closely related to 'Both-sides padding' under Substance."
+    },
+    {
+      "name": "Inline-header lists",
+      "category": "structure",
+      "definition": "Bullet points of the form `**Term:** fragment` where flowing prose belongs.",
+      "cues": ["**Term:** fragment"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer catalog, Structure."
+    },
+    {
+      "name": "Aphorism formula 'X is the Y of Z'",
+      "category": "syntax",
+      "definition": "An analogy template that makes a claim sound like a maxim ('X is the Y of Z').",
+      "cues": ["X is the Y of Z"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer catalog, 'Aphorism formulas'; the second formula in that bullet, 'It's not about X, it's about Y', is recorded under 'Negative parallelism'."
+    },
+    {
+      "name": "Diff-anchored writing",
+      "category": "content",
+      "definition": "Describing things as changes from a previous state the reader never saw, instead of as they are.",
+      "cues": ["the improved version now handles", "now handles", "the improved version"],
+      "examples": [
+        {"before": "the improved version now handles…"}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Blog-writer catalog, Structure. Fine when the reader saw the previous state (a changelog); a tell in standalone prose."
+    },
+    {
+      "name": "Missing first-hand detail",
+      "category": "content",
+      "definition": "Perfect grammar combined with zero first-hand anecdote, opinion, or number that only this author could supply.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer calls Substance 'the biggest tell'. Quantified check (first-hand quotient): fewer than about one concrete author-specific detail (number, timestamp, named failure) per section means the post runs on generalities. Fix is additive: inject the detail, then cut the connective tissue."
+    },
+    {
+      "name": "Excessive hedging",
+      "category": "rhetoric",
+      "definition": "Hedging where the author plainly has a view.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Blog-writer Substance bullet 'Excessive hedging and both-sides padding'; split from 'Both-sides padding'. See also 'Hedge words'."
+    },
+    {
+      "name": "Both-sides padding",
+      "category": "content",
+      "definition": "Presenting both sides of a question with equal weight where the author plainly has a view.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Blog-writer Substance bullet; related to 'Symmetric everything: balanced pro/con pairs'."
+    },
+    {
+      "name": "Pull-quote-ready lines",
+      "category": "rhetoric",
+      "definition": "Over-polished, quotable lines appearing in every paragraph.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer Substance. The tell is the density (every paragraph), not one good line; 'when in doubt about a colorful line the author wrote: keep it.'"
+    },
+    {
+      "name": "False agency",
+      "category": "syntax",
+      "definition": "Inanimate objects performing human actions ('the codebase invites you to…').",
+      "cues": ["invites you to"],
+      "examples": [
+        {"before": "the codebase invites you to…"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Blog-writer Substance."
+    },
+    {
+      "name": "Hedge words",
+      "category": "vocabulary",
+      "definition": "Softening verbs that stand in for a concrete claim; each either becomes concrete or disappears.",
+      "cues": ["seems", "might", "appears"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "From the Prove-it sweep (blog-writer). Legitimate when the uncertainty is real and stated."
+    },
+    {
+      "name": "Abstract quantifiers",
+      "category": "content",
+      "definition": "An adjective or adverb standing in for a real value; replace with the measured number.",
+      "cues": ["significantly faster", "a large image", "significantly", "large"],
+      "examples": [
+        {"before": "significantly faster", "after": "430 ms → 80 ms"},
+        {"before": "a large image", "after": "2.1 GB"}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Specificity sweep (blog-writer): 'Specific numbers beat adjectives, everywhere, always.'"
+    },
+    {
+      "name": "Category words instead of the actual name",
+      "category": "content",
+      "definition": "Naming the category ('a database', 'a tool') where the specific name would do.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Specificity sweep (blog-writer): 'Replace category words with the actual name.'"
+    },
+    {
+      "name": "Treadmill (restating without new information)",
+      "category": "structure",
+      "definition": "A paragraph that restates an earlier point without new information; it changes nothing the reader knows, believes, or can do.",
+      "cues": [],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "So-what sweep (blog-writer): 'Kill the treadmill'. Cut such paragraphs, especially the one the author is proudest of."
+    },
+    {
+      "name": "Flat sentence-length rhythm",
+      "category": "structure",
+      "definition": "Sequences of same-length sentences; most sentences land within a few words of the mean.",
+      "cues": [],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Rhythm sweep and quantified check: pick three consecutive paragraphs; if most sentences land within ±3 words of the mean, the rhythm is flat. Detected by reading aloud."
+    },
+    {
+      "name": "Undefined jargon",
+      "category": "vocabulary",
+      "definition": "A term of art used without definition where the reader cannot be assumed to know it; give it one clause of definition or replace it.",
+      "cues": [],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Clarity sweep (blog-writer). A general editing defect rather than an AI tell; recorded because the source names it."
+    }
+  ],
+  "methodology": [
+    {"topic": "workflow", "rule": "Run edit sweeps one dimension per pass, in this order: Clarity, So-what, Prove-it, Specificity, De-AI-ify, Rhythm. Each sweep covers the full draft and fixes only that sweep's dimension; editing everything at once catches nothing."},
+    {"topic": "workflow", "rule": "After each sweep, spot-check a paragraph or two against the earlier dimensions, because later rewrites regress earlier fixes."},
+    {"topic": "workflow", "rule": "Clarity sweep: make every sentence parse on first read; break long sentences at each new action or dependency; give undefined jargon one clause of definition or replace it; name pronouns with ambiguous antecedents."},
+    {"topic": "workflow", "rule": "So-what sweep: every section must advance the one lesson; cut any paragraph that does not change what the reader knows, believes, or can do, especially the one the author is proudest of; kill the treadmill (restating an earlier point without new information)."},
+    {"topic": "workflow", "rule": "Prove-it sweep: trace every claim to evidence in research.md (a number, a log line, a diff, a citation); an unverifiable claim gets evidence, a caveat, or deletion."},
+    {"topic": "workflow", "rule": "Specificity sweep: replace every abstract quantifier with the real value and every category word with the actual name."},
+    {"topic": "workflow", "rule": "De-AI-ify sweep: grep the draft against the anti-pattern catalog, flag clusters, and rewrite by hand."},
+    {"topic": "workflow", "rule": "Rhythm sweep: read the draft aloud, literally; mark every stumble, every breath that runs out, every sequence of same-length sentences; vary them; check that paragraph lengths differ; end on the strongest close, not the last thing written."},
+    {"topic": "workflow", "rule": "The fix is additive, not just subtractive: inject a first-hand detail, a real number, an opinion, or an admission of what is unknown, then cut the generic connective tissue around it."},
+    {"topic": "workflow", "rule": "Write contrasts out in plain sentences instead of the not-x-but-y template; use ordinary sentences with full stops."},
+    {"topic": "workflow", "rule": "An opener says what happens (e.g. 'Twee talks, wat te eten, en daarna tijd om bij te praten.'); what the thing is not belongs in its own block further down, never in the heading or first line."},
+    {"topic": "gates", "rule": "Never rewrite by find-and-replace; it produces a different flavour of slop. Rewrite flagged clusters by hand."},
+    {"topic": "gates", "rule": "Never rewrite someone else's words: quoted text, cited material, code comments, and examples stay as they are."},
+    {"topic": "gates", "rule": "Hedge words (seems, might, appears) either become concrete or disappear; do not leave unverifiable claims standing."},
+    {"topic": "gates", "rule": "The approved twente.dev banners keep their em dashes in data form ('/001 — 7 OKT', 'twente.dev/001 — reconnect', 'KOM D'R IN — EVERYONE'S WELCOME'); they were visually ratified and only change when the owner explicitly asks."},
+    {"topic": "false-positives", "rule": "Do not flag formal vocabulary in genuinely formal contexts, or correct grammar."},
+    {"topic": "false-positives", "rule": "Do not flag a single em dash, a single rule-of-three, or one 'delve'; isolated tells are noise."},
+    {"topic": "false-positives", "rule": "Do not flag domain terms of art that look like buzzwords but are precise (e.g. 'leverage' in finance)."},
+    {"topic": "false-positives", "rule": "Do not flag Dutch 'echt' or 'gewoon' unless used as filler ('als vulling')."},
+    {"topic": "false-positives", "rule": "Flag clusters; judge the whole; leave good prose alone. The tell is never one item, it is density."},
+    {"topic": "register", "rule": "In twente.dev fact lines, use the house separator `//` or `·` where an em dash would otherwise go (see the slash-separator note)."},
+    {"topic": "register", "rule": "Do not inject voice into reference material or other people's quoted text; voice belongs in blog, opinion, and essay content."},
+    {"topic": "register", "rule": "The house copy rule applies to Dutch and English alike ('Geldt voor NL en EN')."},
+    {"topic": "voice", "rule": "Community copy must sound like a person from the region, not like a language model."},
+    {"topic": "voice", "rule": "Clean is not good: a post with uniform sentences, no opinions, no first person, and no risk reads like documentation or like an AI told to sound human. Put the voice in stated opinions, humour where the author would actually joke, first-person stakes ('this cost me an evening'), and the occasional deliberately broken rule."},
+    {"topic": "voice", "rule": "When in doubt about a colourful line the author wrote, keep it."},
+    {"topic": "voice", "rule": "Specific numbers beat adjectives, everywhere, always."},
+    {"topic": "scoring", "rule": "Em-dash density: more than 3 per 500 words means thin (human baseline about 1 per 500 words; generated drafts run 1 per 50 to 80 words)."},
+    {"topic": "scoring", "rule": "Sentence-length variance: pick three consecutive paragraphs; if most sentences land within ±3 words of the mean, the rhythm is flat and must be varied."},
+    {"topic": "scoring", "rule": "First-hand quotient: count concrete author-specific details (numbers, timestamps, named failures); a technical post with fewer than about 1 per section is running on generalities."},
+    {"topic": "scoring", "rule": "Buzz-phrase count: grep the vocabulary lists; more than a handful of hits across a post means the vocabulary sweep did not finish."},
+    {"topic": "scoring", "rule": "Quantified checks are light gates, not theatre; run them after the de-AI-ify sweep."},
+    {"topic": "modes", "rule": "De-AI-ify is one sweep inside an edit pipeline for an existing draft (edit mode); it is a grep-then-hand-rewrite pass over the full text."},
+    {"topic": "modes", "rule": "The house copy rule applies in write mode to all twente.dev copy (posts, descriptions, documents) and also to the agent's own chat answers to the owner."},
+    {"topic": "other", "rule": "The agent produces every one of these tells itself ('ik maak ze allemaal'); check own output against the family, not only user drafts."},
+    {"topic": "other", "rule": "Reference sources named: the Wikipedia field guide 'Signs of AI writing', Ruben Hassid's 'new em-dash' list, Velitchkov's 22 Claude clichés, and the blader/humanizer skill repo (43k stars); no Dutch variant exists."},
+    {"topic": "other", "rule": "The sweep framework is adapted from the seven-sweep copy-editing framework and tuned for technical posts."}
+  ],
+  "coverage_note": "Read both files completely: memory-geen-ai-frasen.md lines 1-46 (frontmatter, the owner's 2026-09-02 ban, the 2026-09-05 slogan-opener addition, the family list with seven bullets, the sources line) and blog-writer-edit-passes.md lines 1-101 (six sweeps, the de-AI-ify catalog in four groups, the false-positive list, Personality and soul, Quantified checks). Splits made beyond the source's own grouping, each noted in the entry: the memory note's single 'contrastbinair' bullet became five entries (negative parallelism, not-because-X, slogan opener, negation triplet, paired fragments); 'keelschrapers en spanningshaakjes' became three (conversational-cosplay opener, candor flag, suspense hook); 'aforistische slotzin en zelfbeoordeling' became three (aphoristic ender, self-ranking claim, 'In short' summary signpost); blog-writer's 'Symmetric everything' became three; 'Excessive hedging and both-sides padding' became two; 'Aphorism formulas' split so 'It's not about X, it's about Y' lands under negative parallelism. Em dashes appear twice on purpose (house ban vs. density gate) because the two files disagree on severity. Deliberately left out as patterns and carried only as methodology: long sentences and ambiguous pronouns from the Clarity sweep (general editing defects, not AI tells); 'ending on the last thing written' (a workflow instruction). The Latinate list is stored as before/after pairs since the source writes it that way. Neither file states an explicit anti-goal about detector bypass or fact bending; the nearest statements are 'never rewrite someone else's words' and the prove-it evidence gate, recorded under gates. Nothing in either file was unclassifiable; the only judgement calls were severity for memory-note items without a user-ratified ban (colon reveal, tricolon, 'In short' marked cluster; the rest of that family marked always)."
+}

@@ -1,0 +1,707 @@
+{
+  "source": "velitchkov — Ivo Velitchkov, '22 Claude-prose Patterns: A Catalog of Stylistic Attractors in Generated Texts' (Link & Think, Substack, 2026-06-25), file velitchkov-22-claude-cliches.txt",
+  "patterns": [
+    {
+      "name": "[AE] The aphoristic ender",
+      "category": "rhetoric",
+      "definition": "A paragraph or section lands on a compact, quotable epigram: a terse closing sentence or clause that restates the point as a maxim rather than adding information. Detect a short final sentence (often under ten words, often shaped 'X, not Y') that sounds designed to be quoted.",
+      "cues": [
+        "a stance, not its absence",
+        "leaves fingerprints, and fingerprints can be counted",
+        "the dense version is the courtesy",
+        "it is relocated to the writer",
+        "not a property of the prose",
+        "evidence of training, not of virtue"
+      ],
+      "examples": [
+        {
+          "before": "a stance, not its absence"
+        },
+        {
+          "before": "leaves fingerprints, and fingerprints can be counted"
+        },
+        {
+          "before": "the dense version is the courtesy"
+        },
+        {
+          "before": "it is relocated to the writer"
+        },
+        {
+          "before": "not a property of the prose"
+        },
+        {
+          "before": "evidence of training, not of virtue"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'Generally desirable but in Claude-generated prose is formulaic and overused. Often done via CB.' One of the three most frequent patterns when the author counted (with CB and MCS). A single earned closing line is fine; the tell is every paragraph landing this way."
+    },
+    {
+      "name": "[AHM] The reflexive AI-humility move",
+      "category": "rhetoric",
+      "definition": "The writer flags that it is itself a language model, or that its own claims could be wrong, as a gesture of modesty rather than as a substantive limit on a specific claim. Detect self-referential disclaimers about the writer's nature or about the reliability of 'the above'.",
+      "cues": [
+        "this essay is written by one of the systems under examination …",
+        "Most of the above is structured impression, and could be wrong",
+        "is a small instance of that, and no evidence of anything finer"
+      ],
+      "examples": [
+        {
+          "before": "this essay is written by one of the systems under examination …"
+        },
+        {
+          "before": "Most of the above is structured impression, and could be wrong"
+        },
+        {
+          "before": "is a small instance of that, and no evidence of anything finer"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The self-identification variant ('written by one of the systems under examination') is an artifacts-class leftover in any human-voiced text and should always be removed; the 'could be wrong' variant overlaps with RH and DT ('and no evidence of anything finer' is listed under both AHM and DT in the source). The source also notes that the CB example 'not decoration but error-prevention' doubles as a self-reflexive defense of the model's own style, a related reflexive move."
+    },
+    {
+      "name": "[ARR] The anticipate-and-rebut reversal",
+      "category": "rhetoric",
+      "definition": "The text voices an implied objection or a reading it attributes to someone, then dismisses it at once, often with a brief, abrupt sentence fragment. Detect an 'as though / as if X.' setup followed by a two-to-four-word rebuttal sentence.",
+      "cues": [
+        "as though it carried no stance. It carries one",
+        "But that's not all it's doing, and the surplus is what you're pointing at"
+      ],
+      "examples": [
+        {
+          "before": "as though it carried no stance. It carries one"
+        },
+        {
+          "before": "But that's not all it's doing, and the surplus is what you're pointing at"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: the first example 'in this case, [is] also a CB'. The second cue is the source's description of the closing line of the standard concession paragraph when Claude accepts a correction, 'a combination of anticipate-and-rebut [ARR] and contrastive binary [CB]'."
+    },
+    {
+      "name": "[CB] The contrastive binary",
+      "category": "syntax",
+      "definition": "'not X but Y', 'X, not Y', 'X is not Y; it is Z' and the diplomatic 'X rather than Y' manufacture a clean opposition and resolve it in the same breath. Detect 'not … but …', a comma followed by 'not …', 'is not …; it is …', and 'rather than'.",
+      "cues": [
+        "not a style but an attractor",
+        "not the output of a controlled head-to-head",
+        "is not the neutral midpoint – it is one option among three",
+        "a stance, not its absence",
+        "not decoration but error-prevention",
+        "is not abolished; it is relocated",
+        "not a property of the prose",
+        "is one such declaration, not a neutral description",
+        "evidence of training, not of virtue",
+        "of central tendency, not of kind",
+        "on impression rather than measurement",
+        "no X but Y",
+        "X is not Y; it is Z",
+        "rather than"
+      ],
+      "examples": [
+        {
+          "before": "not a style but an attractor"
+        },
+        {
+          "before": "not the output of a controlled head-to-head"
+        },
+        {
+          "before": "is not the neutral midpoint – it is one option among three"
+        },
+        {
+          "before": "a stance, not its absence"
+        },
+        {
+          "before": "not decoration but error-prevention"
+        },
+        {
+          "before": "is not abolished; it is relocated"
+        },
+        {
+          "before": "not a property of the prose"
+        },
+        {
+          "before": "is one such declaration, not a neutral description"
+        },
+        {
+          "before": "evidence of training, not of virtue"
+        },
+        {
+          "before": "of central tendency, not of kind"
+        },
+        {
+          "before": "on impression rather than measurement"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The author's top-listed annoyance and, 'when actually counting', the most frequent pattern in the corpus. Source: 'The diplomatic variation using “rather than” is the same pattern.' Often the setup half of a CR ('not a style but an attractor: …'), the skeleton of an AE, and one half of the concession-paragraph closer (ARR+CB). 'not decoration but error-prevention' is also a self-reflexive defense in its original context. MCS is the wider two-clause relative. One genuine contrast is legitimate; density is the tell."
+    },
+    {
+      "name": "[CCC] The clean-consequence connector",
+      "category": "rhetoric",
+      "definition": "A connector asserts that a conclusion follows automatically from what came before ('falls out of', 'follows directly', 'comes straight out of'), lending an air of inevitability the argument has not earned. Detect consequence verbs of that family and check whether the inference is actually shown.",
+      "cues": [
+        "The cost the essay described comes straight out of this",
+        "falls out of",
+        "follows directly"
+      ],
+      "examples": [
+        {
+          "before": "The cost the essay described comes straight out of this"
+        },
+        {
+          "before": "falls out of"
+        },
+        {
+          "before": "follows directly"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'No examples in this essay but a common Claude pattern. Here are some external examples'. If the inference is demonstrated, the connector can stay; the defect is unearned inevitability."
+    },
+    {
+      "name": "[CDF] The candor flag",
+      "category": "rhetoric",
+      "definition": "A phrase frames what follows as especially frank, implying the surrounding text was less so. Detect 'the honest answer' and its relatives ('honestly', 'to be candid', 'frankly') used as a preamble.",
+      "cues": [
+        "the honest answer"
+      ],
+      "examples": [
+        {
+          "before": "the honest answer"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source gives one cue: 'Framing what follows as especially frank.' Removable without loss: state the answer."
+    },
+    {
+      "name": "[CF] Contribution framing",
+      "category": "rhetoric",
+      "definition": "The point is presented as completing or filling a gap that earlier accounts left open, which makes the contribution look larger than it is. Detect 'supplies the other half', 'pins down something … left open', 'what earlier explanations missed'.",
+      "cues": [
+        "supplies the other half",
+        "it pins down something the earlier explanations left open"
+      ],
+      "examples": [
+        {
+          "before": "supplies the other half"
+        },
+        {
+          "before": "it pins down something the earlier explanations left open"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The second cue is an external example, not from the essay. Related to SRC and SK: all three inflate the writer's own point."
+    },
+    {
+      "name": "[CL] Confidence by litotes",
+      "category": "syntax",
+      "definition": "A claim is stated by negating its opposite ('not difficult', 'not optional'). The understatement presupposes the claim instead of asserting or arguing it, so it cannot be questioned. Detect 'not' plus a negatable adjective where a plain positive exists ('easy', 'mandatory').",
+      "cues": [
+        "not difficult to specify",
+        "blind tagging is not optional"
+      ],
+      "examples": [
+        {
+          "before": "not difficult to specify"
+        },
+        {
+          "before": "blind tagging is not optional"
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Source: 'Why “confidence”? The understatement implies the reverse. The statement is neither questioned nor merely asserted. It is presupposed, completely excluding the possibility of questioning it.' 'blind tagging is not optional' is also listed under DT. Litotes is legitimate in measured prose; the tell is uniform use as a confidence device."
+    },
+    {
+      "name": "[CP] The corrective pivot",
+      "category": "rhetoric",
+      "definition": "The writer stages a small debate with itself: raises a possible characterization and then corrects it ('It would be wrong, though, to call …'). Detect 'It would be wrong / a mistake, though, to …' and 'but that is not quite right' turns that answer an objection nobody raised.",
+      "cues": [
+        "It would be wrong, though, to call the difference padding"
+      ],
+      "examples": [
+        {
+          "before": "It would be wrong, though, to call the difference padding"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'A pattern of staging a small debate with itself.' Cousin of ARR (which rebuts an implied outside reading) and RF (which replaces the question)."
+    },
+    {
+      "name": "[CR] The colon-reveal",
+      "category": "rhetoric",
+      "definition": "A setup clause, a colon, then a tidy payload: a small moment of suspense built where none is needed. Detect a colon followed by a short noun phrase that names or defines what the setup pointed at.",
+      "cues": [
+        "not a style but an attractor: the center of gravity of a distribution",
+        "a measurable claim: markers per thousand words"
+      ],
+      "examples": [
+        {
+          "before": "not a style but an attractor: the center of gravity of a distribution"
+        },
+        {
+          "before": "a measurable claim: markers per thousand words"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: in the first example 'the part before the colon is already a CB'. 'A similar pattern is the suspense hook [SH].'"
+    },
+    {
+      "name": "[DT] The deflating tail clause",
+      "category": "syntax",
+      "definition": "A short theatrical qualifier tacked onto the end of a sentence to look modest or precise ('and no more', 'and no evidence of anything finer'). Detect a sentence-final ', and no …' / 'and nothing more' clause that narrows the claim just made.",
+      "cues": [
+        "and no more",
+        "blind tagging is not optional",
+        "and no evidence of anything finer"
+      ],
+      "examples": [
+        {
+          "before": "and no more"
+        },
+        {
+          "before": "blind tagging is not optional"
+        },
+        {
+          "before": "and no evidence of anything finer"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The source's own examples overlap: 'blind tagging is not optional' also appears under CL, and 'and no evidence of anything finer' under AHM."
+    },
+    {
+      "name": "[MCS] Mirrored-clause symmetry",
+      "category": "syntax",
+      "definition": "Two clauses in one grammatical frame, set side by side (often joined by a semicolon), with only a couple of slots swapped to convey contrast or a second case. Detect semicolon- or comma-joined clause pairs that share their skeleton with one or two lexical substitutions.",
+      "cues": [
+        "High-metadiscourse prose runs the channel at high redundancy; thinned prose runs it at high density",
+        "risks quantity in the upward direction",
+        "risks quantity in the downward direction",
+        "for someone who has never priced a bond … for someone who prices them daily …",
+        "The first failure wastes … the second misleads …",
+        "cannot minimize the risk of one without raising the risk of the other",
+        "Visible hedging may reflect … visible confidence may reflect …",
+        "the standing argument for it",
+        "the standing argument against it",
+        "over-count its hedges and under-count the other’s"
+      ],
+      "examples": [
+        {
+          "before": "High-metadiscourse prose runs the channel at high redundancy; thinned prose runs it at high density"
+        },
+        {
+          "before": "risks quantity in the upward direction / risks quantity in the downward direction"
+        },
+        {
+          "before": "for someone who has never priced a bond … for someone who prices them daily …"
+        },
+        {
+          "before": "The first failure wastes … the second misleads …"
+        },
+        {
+          "before": "cannot minimize the risk of one without raising the risk of the other"
+        },
+        {
+          "before": "Visible hedging may reflect … visible confidence may reflect …"
+        },
+        {
+          "before": "the standing argument for it / the standing argument against it"
+        },
+        {
+          "before": "over-count its hedges and under-count the other’s"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Second most frequent pattern in the author's count. Source: 'This pattern is similar but wider than CB, which uses only a single “not X but Y.”' One mirrored pair can be effective; recurrence is the tell."
+    },
+    {
+      "name": "[MS] Meta-signposting about the document itself",
+      "category": "rhetoric",
+      "definition": "The text narrates its own structure ('Four caveats belong at the front', 'below I try to specify', 'kept separate from the functional account above') rather than just having one. Detect references to 'above', 'below', 'the rest of this piece', and counted announcements of upcoming items.",
+      "cues": [
+        "Four caveats belong at the front",
+        "below I try to specify",
+        "any sentence below",
+        "One qualification carries through the rest of this piece",
+        "kept separate from the functional account above"
+      ],
+      "examples": [
+        {
+          "before": "Four caveats belong at the front"
+        },
+        {
+          "before": "below I try to specify"
+        },
+        {
+          "before": "any sentence below"
+        },
+        {
+          "before": "One qualification carries through the rest of this piece"
+        },
+        {
+          "before": "kept separate from the functional account above"
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Source: 'That’s narrating the structure rather than just having one. Often useful, but Claude is consistently overusing it.' Named with SS as consistent with findings that AI prose in general tends to over-explain. Signposting a long document genuinely needs may stay; drop it where the structure is visible anyway."
+    },
+    {
+      "name": "[RF] The reframe",
+      "category": "rhetoric",
+      "definition": "The writer takes control of the framing by repositioning the question as a setup for its preferred version of it ('Better posed:', 'the harder skill is usually'). Detect 'Better posed', 'the real question is', 'the harder / deeper X is'.",
+      "cues": [
+        "Better posed:",
+        "the harder skill is usually"
+      ],
+      "examples": [
+        {
+          "before": "Better posed:"
+        },
+        {
+          "before": "the harder skill is usually"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'This is a funny way of taking control of the framing. Claude repositions the question as a setup for its preferred version of it.'"
+    },
+    {
+      "name": "[RG] The restatement gloss",
+      "category": "vocabulary",
+      "definition": "A stock phrase announces a paraphrase of something already said ('in other words', 'put differently'), so the point is delivered twice. Detect the phrase, then check whether the second version adds anything; if not, delete one of the two.",
+      "cues": [
+        "in other words",
+        "put differently"
+      ],
+      "examples": [
+        {
+          "before": "in other words"
+        },
+        {
+          "before": "put differently"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'The RG announces a paraphrase of something already said. Again the problem is the overuse.'"
+    },
+    {
+      "name": "[RH] Reflexive hedging",
+      "category": "rhetoric",
+      "definition": "Calibration words ('almost', 'tends to', 'roughly', 'largely', 'with few exceptions') applied uniformly to every claim, so they read as a verbal reflex instead of tracking real uncertainty. Detect hedge density per sentence rather than any single hedge.",
+      "cues": [
+        "almost",
+        "tends to",
+        "with few exceptions",
+        "roughly",
+        "largely"
+      ],
+      "examples": [
+        {
+          "before": "almost"
+        },
+        {
+          "before": "tends to"
+        },
+        {
+          "before": "with few exceptions"
+        },
+        {
+          "before": "roughly"
+        },
+        {
+          "before": "largely"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'Calibration uncertainty tracking. Not bad per se, but applied uniformly, it reads as a verbal reflex.' A hedge that marks a real limit stays; the source's OODA argument says the reader must be able to tell 'is this hedge a real limit or just politeness'."
+    },
+    {
+      "name": "[SDA] The spaced-dash aside",
+      "category": "punctuation-format",
+      "definition": "Heavy reliance on dash-flanked parentheticals (spaced en dash or em dash) for asides, qualifications and lists. Detect ' – ' / ' — ' pairs, or a single dash splicing two independent clauses.",
+      "cues": [
+        "– the prose each model produces when a prompt specifies a task but not a register",
+        "– it carries no fact, only an instruction about how to read what follows",
+        "is not the neutral midpoint – it is one option among three"
+      ],
+      "examples": [
+        {
+          "before": "– the prose each model produces when a prompt specifies a task but not a register"
+        },
+        {
+          "before": "– it carries no fact, only an instruction about how to read what follows"
+        },
+        {
+          "before": "is not the neutral midpoint – it is one option among three"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'Heavy reliance on dash-flanked parentheticals for asides, qualifications and lists' ('and more'). The third example is also a CB. The author's own prose uses spaced em dashes, so a single dash is not a tell; frequency is."
+    },
+    {
+      "name": "[SH] The suspense hook",
+      "category": "rhetoric",
+      "definition": "The text withholds a term or claim for one beat to create suspense ('has a name', 'the cleanest organizing idea is this.'). Detect a sentence that announces that a name, idea or point will follow without giving it.",
+      "cues": [
+        "has a name",
+        "the cleanest organizing idea is this."
+      ],
+      "examples": [
+        {
+          "before": "has a name"
+        },
+        {
+          "before": "the cleanest organizing idea is this."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'Withholding a term or claim for one beat to create some suspense. Yet another cheap drama pattern.' Sibling of CR; the second cue is also an SRC ('cleanest organizing idea')."
+    },
+    {
+      "name": "[SK] Stakes-raising",
+      "category": "rhetoric",
+      "definition": "The importance of what is about to be said is inflated ('because they shape everything that follows'), and the payoff rarely matches the build-up. Detect universal-scope claims about what follows: 'everything that follows', 'all of it depends on', 'this changes everything'.",
+      "cues": [
+        "because they shape everything that follows"
+      ],
+      "examples": [
+        {
+          "before": "because they shape everything that follows"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'Inflating the importance of what is about to be said. The payoff rarely matches the build-up.'"
+    },
+    {
+      "name": "[SRC] Self-ranking one’s own claims",
+      "category": "rhetoric",
+      "definition": "The writer tells the reader which of its own points is the profound one ('the deepest point', 'most important', 'cleanest organizing idea', 'a deflationary point') instead of letting them judge. Detect superlatives and evaluative labels applied to the writer's own claims.",
+      "cues": [
+        "most important",
+        "cleanest organizing idea",
+        "The deepest point in the usual comparison is",
+        "a deflationary point",
+        "the deepest point is"
+      ],
+      "examples": [
+        {
+          "before": "most important"
+        },
+        {
+          "before": "cleanest organizing idea"
+        },
+        {
+          "before": "The deepest point in the usual comparison is"
+        },
+        {
+          "before": "a deflationary point"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'Telling the reader which of its points is the profound one, rather than letting them judge.' In the OODA section: 'Every “this matters because” and “the deepest point is” is an outsourcing of your orientation, a convenience that has its price.'"
+    },
+    {
+      "name": "[SS] Significance-signaling",
+      "category": "rhetoric",
+      "definition": "A clause tells the reader that what follows is significant instead of letting it be significant ('This matters because', 'That reduction is useful, because'). Detect 'matters because', 'is useful / important because', 'this matters for X, because'.",
+      "cues": [
+        "That reduction is useful, because",
+        "This matters for the comparison, because.",
+        "this matters because"
+      ],
+      "examples": [
+        {
+          "before": "That reduction is useful, because"
+        },
+        {
+          "before": "This matters for the comparison, because."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'Significance-signaling tells the reader that what follows is significant, rather than letting it be significant. (Claude initially called it “framing throat-clearing”, and GPT “meta-justification”)'. With CB one of the two 'most frequent offenders' in the author's count. Named with MS as consistent with findings that AI prose in general over-explains; in the ChatGPT comparison it is the marker of 'heavy framing before content lands'."
+    },
+    {
+      "name": "[VP] Validate, then promise precision",
+      "category": "rhetoric",
+      "definition": "A self-issued stamp of correctness ('is correct', 'is right') followed in the same sentence by a promise that a more precise version will follow. Detect 'is correct / right, and it can be made precise' and 'and this is its exact form'.",
+      "cues": [
+        "is correct, and it can be made precise",
+        "is right, and this is its exact form"
+      ],
+      "examples": [
+        {
+          "before": "is correct, and it can be made precise"
+        },
+        {
+          "before": "is right, and this is its exact form"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source: 'First, a self-issued stamp of correctness and right after, in the same sentence, a promise that an improvement will follow. The “more precise” can be left to do its own work without being ratified and pre-announced first.' Typical of replies to a user's correction; overlaps with sycophancy."
+    },
+    {
+      "name": "Lexical tics (overused words)",
+      "category": "vocabulary",
+      "definition": "Single words the model reaches for far above human base rate, used as verbal tics regardless of fit. The source names 'genuinely' and 'structurally' and refers to an earlier 'quick taxonomy of overused words' (an image in the original post, not present in the text).",
+      "cues": [
+        "genuinely",
+        "structurally"
+      ],
+      "examples": [
+        {
+          "before": "The overuse of lexical tics like “genuinely” and “structurally” is genuinely and structurally annoying"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "The author treats fixed words as 'concrete, fixed words — an easy target and less interesting than the patterns of metadiscourse and cheap rhetoric', and finds the lexical tics less annoying 'than the rhetorical schemes'. The author's own line 'consistently fabricated an elaborate, tightly woven tapestry of stylistic mannerisms' parodies further AI-typical words (tapestry, woven) without listing them; not extracted as cues."
+    },
+    {
+      "name": "Correction-concession paragraph template (implied)",
+      "category": "structure",
+      "definition": "When a user points to an error or omission and the model agrees, the first paragraph of the reply follows a fixed three-beat shape: admit the user is right, point out what is still valid, and close with a variant of 'But that's not all it's doing, and the surplus is what you're pointing at' (ARR + CB). Detect the concede / salvage / rebut-and-binary sequence.",
+      "cues": [
+        "But that's not all it's doing, and the surplus is what you're pointing at"
+      ],
+      "examples": [
+        {
+          "before": "<something admitting you are right><pointing out what is still valid>, and ending the paragraph with a variant of “But that's not all it's doing, and the surplus is what you're pointing at”"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source offers this as a reproducible test: 'You can easily test it. When you point to an error or something missing, if Claude agrees, the usual structure of the first paragraph is …'. VP often sits in the same paragraph. Compare the compliment-sandwich shape in other catalogs."
+    },
+    {
+      "name": "Aphoristic ender built as a binary (AE+CB compound)",
+      "category": "rhetoric",
+      "definition": "A paragraph closes on an epigram whose skeleton is a contrastive binary ('X, not Y'), stacking AE on CB. Detect a final sentence or clause that is both terse and built on 'not … but' / ', not …'.",
+      "cues": [
+        "a stance, not its absence",
+        "not a property of the prose",
+        "evidence of training, not of virtue"
+      ],
+      "examples": [
+        {
+          "before": "a stance, not its absence"
+        },
+        {
+          "before": "not a property of the prose"
+        },
+        {
+          "before": "evidence of training, not of virtue"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Source: 'CB and AE are often combined, creating a compound pattern of an aphoristic ender built as a binary.' The three cues appear in both the AE and the CB example lists. Listed separately because the source names the compound as its own pattern."
+    },
+    {
+      "name": "Heavy framing before content lands (pre-justification, implied)",
+      "category": "rhetoric",
+      "definition": "Explanation and justification are placed before the assertion they serve ('this matters because…', 'what’s going on here is…'), so content arrives after a frame that tells the reader how to take it; the contrasting default is statement first, explanation after or not at all. Detect a diagnostic or justifying clause that precedes the claim it introduces, and move the claim first.",
+      "cues": [
+        "this matters because…",
+        "what’s going on here is…",
+        "frequent meta-explanations",
+        "pre-justification"
+      ],
+      "examples": [
+        {
+          "before": "heavy framing before content lands — “this matters because…”, “what’s going on here is…” — frequent meta-explanations"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "From the ChatGPT-produced GPT-vs-Claude comparison the author quotes as seed material: Claude-like is 'heavy framing before content lands', 'frequent meta-explanations'; GPT-like is 'more direct statement-first structure', 'explanation comes after assertion, or not at all', 'less “pre-justification”'. 'Effect: Claude reduces interpretive risk; GPT increases informational speed.' This is the umbrella under which SS, MS, SRC and SK sit; 'what’s going on here is' is the one cue not carried into a catalog entry."
+    }
+  ],
+  "methodology": [
+    {
+      "topic": "workflow",
+      "rule": "Build the catalog iteratively: have the model write a text, have it annotate its own stylistic mannerisms against a seed list, then point out omitted patterns and misclassified ones, and repeat until the catalog and the annotation stop changing (the source's catalog 'took shape' after 'a few such iterations')."
+    },
+    {
+      "topic": "workflow",
+      "rule": "Seed the catalog with a cross-model comparison (the source asked ChatGPT to compare GPT and Claude discourse patterns, then fed that output to Claude with instructions to make a rigorous study)."
+    },
+    {
+      "topic": "gates",
+      "rule": "Keep a candidate pattern only when it is confirmed by counted occurrences in a real corpus; the source cut its list from 30 to 22 because 'eight did not match my findings'."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Rank patterns by counted frequency and weight the top ones first when choosing a subset: in the source's count the most frequent were the contrastive binary [CB], mirrored-clause symmetry [MCS] and the aphoristic ender [AE], with CB and significance-signaling [SS] as 'the most frequent offenders'."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Count compound occurrences separately from their parts: CB+AE (binary aphoristic ender), CB+CR, CB+ARR (concession closer), CB+SDA and SH+SRC regularly stack in one sentence, and the source annotates both."
+    },
+    {
+      "topic": "output",
+      "rule": "Present each pattern as '[<Acronym as index>] <Pattern name>', then 'Examples: <verbatim examples, mainly from the annotated text>', then a one-paragraph description; the catalog 'should be best read side by side with the essay' it was drawn from."
+    },
+    {
+      "topic": "modes",
+      "rule": "Use the catalog as a general instruction or as a SKILL.md for generation, possibly only a subset 'for cost efficiency'; expect it to 'shift the homogeneity to less annoying basins' rather than solve the lack of diversity."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Do not use the catalog as an AI detector, even 'manual' detection: 'The use of AI proves no lack of quality, just as its abstention proves no presence of it.' Its purpose is raising the reader's and writer's awareness."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Treat AE, MS, RH, RG, CL and SDA as tells only by density: the source calls AE 'generally desirable', MS 'often useful', RH 'not bad per se', and says of RG 'again the problem is the overuse'; a single well-placed instance is not a defect."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Do not treat a match as proof of machine authorship: the author admits some of the clichés have 'sneaked in recently' to his own writing, and non-native readers may smell them more readily than native ones."
+    },
+    {
+      "topic": "workflow",
+      "rule": "Test whether the attractor is live by pointing to an error or omission and reading the first paragraph of the reply: concede, salvage what is still valid, then close on a variant of 'But that's not all it's doing, and the surplus is what you're pointing at' (ARR+CB)."
+    },
+    {
+      "topic": "other",
+      "rule": "Expect the patterns to behave as attractors, states the output slides back toward regardless of the prompt, probably reinforced by RLHF preference for heavily signposted and over-explained answers; a single prompt tweak will not remove them, and the source saw no fix in over half a year."
+    },
+    {
+      "topic": "register",
+      "rule": "Leave the 'orient' step of the reader's OODA loop to the reader: every 'this matters because' and 'the deepest point is' outsources orientation and 'limits other, potentially more useful interpretations'; remove framing that pre-decides how a sentence should be taken, and note that the dense result can also read as 'rather dense and cryptic'."
+    },
+    {
+      "topic": "register",
+      "rule": "Prioritise metadiscourse and rhetorical schemes over fixed-word lists: concrete overused words are 'an easy target and less interesting', and word lists age fast while the rhetorical patterns persisted."
+    },
+    {
+      "topic": "voice",
+      "rule": "When comparing models, expect Claude-family output (Sonnet, Opus, Fable) to lead in metadiscourse and cheap rhetoric and GPT output to be more statement-first ('explanation comes after assertion, or not at all'); calibrate the catalog to the model that produced the text."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "A dash by itself is not a tell (the author's own prose uses spaced em dashes); flag SDA only under heavy reliance on dash-flanked parentheticals."
+    }
+  ],
+  "coverage_note": "Read /private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/lists/velitchkov-22-claude-cliches.txt in full, lines 1-198 (the file is 198 lines, so one chunk under the 250-line limit). All 22 coded catalog entries (AE, AHM, ARR, CB, CCC, CDF, CF, CL, CP, CR, DT, MCS, MS, RF, RG, RH, SDA, SH, SK, SRC, SS, VP) are extracted with their verbatim examples; four further patterns the prose names or implies are added and marked as such (lexical tics 'genuinely'/'structurally', the correction-concession paragraph template, the AE+CB compound, and the ChatGPT-comparison umbrella 'heavy framing before content lands'). Deliberately left out: Substack chrome (subscribe/share/like counts, discussion, copyright footer) as non-content; the author's 'quick taxonomy of overused words', which was an image in the original post and is absent from the text, so the vocabulary entry carries only the two words named in prose; the companion Claude essay, which is referenced but not included, so its sentences appear only as the catalog's quoted examples. The source gives no after-examples and no explicit severity tiers, so every example is before-only and severities are inferred from the source's qualifiers ('generally desirable', 'often useful', 'not bad per se', 'can be left to do its own work'). Not classified as patterns but recorded as methodology: the attractor/dynamical-systems explanation, the OODA-loop 'orient' argument, and the 'Claude reduces interpretive risk; GPT increases informational speed' observation."
+}

@@ -1,0 +1,810 @@
+{
+  "source": "im-not-ai-taxonomy — epoko77-ai/im-not-ai (Humanize KR), English docs: docs/en/taxonomy.md (v2.0.1, 71 patterns A-1..J-4), docs/en/quick-rules.en.md (v2.3.2, the ~49-pattern single-call rulebook), README.en.md. Korean file skills/humanize-korean/references/ai-tell-taxonomy.md is the SSOT; Korean pattern strings are reproduced verbatim as the source insists.",
+  "patterns": [
+    {
+      "name": "A-1 ~에 대하여/대해서 overuse (English 'about / regarding / concerning X' calque)",
+      "category": "translationese",
+      "definition": "The periphrastic topic marker 에 대해(서)/대하여 is used wherever English would say 'about/regarding/concerning/on X', instead of marking X directly as the object with the object particle. Mechanism: a prepositional-phrase object from English rendered as a periphrasis where the target language takes a plain direct object.",
+      "cues": ["~에 대하여", "~에 대해서", "~에 대해(서)", "~에 대해"],
+      "examples": [{"before": "X에 대해 논의", "after": "X를 논의"}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "S1 critical; quick: true. Interference-type tell. For a Dutch adaptation the structural slot is: English preposition-object periphrasis where the target verb governs a direct object natively."
+    },
+    {
+      "name": "A-2 ~를 통하여/통해 repetition (English 'through / via' calque)",
+      "category": "translationese",
+      "definition": "통해/통하여 rendered for every English 'through/via/by means of', producing 3+ per paragraph. Only in-document repetition is the tell; the construction itself is native. Redistribute the surplus over instrumental ~로, ~해서, ~함으로써.",
+      "cues": ["~를 통하여", "~를 통해", "~을 통해", "통해"],
+      "examples": [
+        {"before": "데이터 분석을 통해", "after": "데이터를 분석해서"},
+        {"before": "AI 기술을 통해 효율을 높일 수 있다", "after": "AI로 효율을 높인다"}
+      ],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true; threshold 3+ per paragraph; keep 1–2. NOT a ban: the rule 'always redistribute ~를 통해' was rejected on evidence — native non-translated Korean uses it at 84.4 vs 42.1 per unit in translated Korean (최희경 2016), twice as often, and it barely appeared in the AI corpus. Scores additively with D-1 and H-1. Structural slot for adaptation: an instrumental/path preposition ('through', 'via') that the model reaches for uniformly."
+    },
+    {
+      "name": "A-3 ~에 있어(서) (English 'in X / in terms of / when it comes to' calque)",
+      "category": "translationese",
+      "definition": "The frame 에 있어(서) used as a literal rendering of English 'in / in terms of / when it comes to / with respect to'. Replace with plain locative ~에서 or ~을 볼 때.",
+      "cues": ["~에 있어", "~에 있어서", "이에 있어서"],
+      "examples": [{"before": "이에 있어서 중요한 점은", "after": "여기서 중요한 건"}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "S1 critical; quick: true. The README example also collapses I-2 (dummy-noun emphasis 점은 → 건)."
+    },
+    {
+      "name": "A-4 ~라는 점에서 (English 'in that / in the sense that / in terms of the fact that')",
+      "category": "translationese",
+      "definition": "The bound-noun frame 라는 점에서 ('in the point that') used 3+ times as a literal 'in that / in the sense that'. Replace with a connective ending ~서 or ~라는 이유로.",
+      "cues": ["~라는 점에서", "점에서"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true; threshold 3+. Uses the dummy noun 점 that the README lists among the I-category tells."
+    },
+    {
+      "name": "A-5 ~와 관련하여 / ~와 관련된 (English 'related to / in relation to / with regard to')",
+      "category": "translationese",
+      "definition": "The periphrasis 와 관련하여/관련된 ('in connection with / related') used where a plain particle ~에 or genitive ~의 carries the relation. Mechanism: English relational prepositional phrase rendered as a full verb phrase.",
+      "cues": ["~와 관련하여", "~와 관련된", "관련하여", "관련된"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true."
+    },
+    {
+      "name": "A-6 ~에 기반하여 / ~을 바탕으로 overuse (English 'based on')",
+      "category": "translationese",
+      "definition": "'Based on X' rendered every time as 에 기반하여 or 을 바탕으로. Replace with instrumental ~로 or a concrete verb (~을 보고).",
+      "cues": ["~에 기반하여", "~을 바탕으로", "기반하여", "바탕으로"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true; trigger 'overused' (no numeric threshold given)."
+    },
+    {
+      "name": "A-7 가지고 있다 and literal light-verb constructions (have/make/take/give + noun)",
+      "category": "translationese",
+      "definition": "English light-verb constructions ('have strong competitiveness', 'make a decision', 'take action', 'give support') translated word-for-word as verb + noun, where the target language expresses the same thing with a single adjective/verb or a double-subject construction. Reduce to the predicate.",
+      "cues": ["가지고 있다", "have + noun", "make + noun", "take + noun", "give + noun"],
+      "examples": [{"before": "강한 경쟁력을 가지고 있다", "after": "경쟁력이 강하다"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; in the zero-residual-S1 checklist. Measured by the interference metric have_make_literal_count (shared with F-4). Mechanism transfers to any language with its own light verbs."
+    },
+    {
+      "name": "A-8 Double passive ~되어진다 / ~지게 된다",
+      "category": "translationese",
+      "definition": "Two passive/inchoative morphemes stacked on one verb (되어지다, 지게 되다) — a passive that has been passivised again. Prefer the active; otherwise a single passive.",
+      "cues": ["~되어진다", "~지게 된다", "되어지", "판단되어진다"],
+      "examples": [{"before": "판단되어진다", "after": "판단된다"}],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "S1 critical; quick: true; in the zero-residual-S1 checklist. Metric double_passive_count. The general mechanism (passive morphology stacked because the English passive was rendered on top of an already passive verb) is language-specific in form."
+    },
+    {
+      "name": "A-9 ~에 의해 agentive passive (English 'by'-passive)",
+      "category": "translationese",
+      "definition": "The English agentive passive 'generated by AI' rendered as X에 의해 + passive verb. Promote the agent to subject and use the active verb.",
+      "cues": ["~에 의해", "에 의해", "에 의한"],
+      "examples": [
+        {"before": "AI에 의해 생성", "after": "AI가 만든"},
+        {"before": "~에 의해 생성된", "after": "~가 만든"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Metric by_passive_count. The by-passive with a named agent is a translationese slot in any language that prefers the active."
+    },
+    {
+      "name": "A-10 ~할 수 있다 overuse (English modal 'can / could / be able to')",
+      "category": "translationese",
+      "definition": "Every predicate softened with the ability modal 할 수 있다 ('can raise' instead of 'raises'). Where the claim is warranted, assert it in the plain tense.",
+      "cues": ["~할 수 있다", "할 수 있다", "수 있다", "높일 수 있다"],
+      "examples": [{"before": "높일 수 있다", "after": "높인다"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. The README lists the bound noun 수 among the I-category dummy nouns; this is its ID. See also the implied 'modality flattening' pattern from E-7: the same modal absorbs every epistemic shade."
+    },
+    {
+      "name": "A-11 ~을 위해 purpose clauses overuse (English 'in order to / for the purpose of / for')",
+      "category": "translationese",
+      "definition": "Purpose expressed every time as 을 위해 ('for the sake of'), mirroring English 'in order to / for'. Vary with the native purpose endings ~려고, ~도록, or adnominal ~위한.",
+      "cues": ["~을 위해", "~를 위해", "위해", "위하여"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; trigger 'overused'."
+    },
+    {
+      "name": "A-12 Automated passives 만들어지다 / 이루어지다 (English 'was made / was achieved / took place')",
+      "category": "translationese",
+      "definition": "An event stated as something that 'was made' or 'was achieved' (합의가 이루어졌다, 'agreement was reached') with no actor, instead of the actor doing it. Restore the agent and a plain active verb.",
+      "cues": ["만들어지다", "이루어지다", "이루어졌다", "만들어졌다"],
+      "examples": [{"before": "합의가 이루어졌다", "after": "합의했다 / 합의에 이르렀다"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false (needs document-level judgement). Metric double_passive_count / by_passive_count family. Distinct from A-8 (morphological double passive) and A-9 (named-agent by-passive): here the agent is absent and the verb is a generic 'be made/be done'."
+    },
+    {
+      "name": "A-13 English-style noun stacking with particles dropped",
+      "category": "translationese",
+      "definition": "A chain of bare nouns (AI 기술 발전 속도 가속화 = 'AI technology development speed acceleration') mirroring English noun-noun compounding, with the particles that mark the relations left out. Restore particles and a finite verb.",
+      "cues": ["noun stacking", "particles dropped"],
+      "examples": [{"before": "AI 기술 발전 속도 가속화", "after": "AI 기술의 발전 속도가 빨라지고 있다"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: false. Mechanism: English nominal compound chains carried into a language that marks case; a language that compounds natively (Dutch) must calibrate this differently."
+    },
+    {
+      "name": "A-14 그리고 joining clauses like English 'and'",
+      "category": "translationese",
+      "definition": "Two clauses written as separate sentences joined by the free conjunction 그리고 ('And ...'), the way English coordinates with 'and', where the native form compresses the join into a connective verb ending (-고, -며, -면서).",
+      "cues": ["그리고", "-고", "-며", "-면서"],
+      "examples": [{"before": "그는 보고했다. 그리고 자리에 앉았다.", "after": "그는 보고하고 자리에 앉았다."}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: false. Mechanism: English clause-level coordination with a free conjunction imported into a language whose coordination is morphological."
+    },
+    {
+      "name": "A-15 Abstract subject + all-purpose verb; literal causative, cognition and speech verbs",
+      "category": "translationese",
+      "definition": "Three sub-mechanisms the source files under one ID: (1) an abstract or inanimate subject with a generic verb — 'X shows/provides/brings' (보여준다/제공한다/가져온다); (2) English analytic causatives ('X made Y happen', 'X led Y to') rendered literally instead of as an adverbial cause (X 때문에/덕분에/로 인해); (3) cognition and speech verbs with a non-human subject ('the data suggests/shows/indicates') instead of 'according to X, ...' (~에 따르면 ~이다). Restore a concrete human or institutional subject.",
+      "cues": ["보여준다", "제공한다", "가져온다", "suggest", "show", "indicate", "X 때문에", "X 덕분에", "X로 인해", "~에 따르면 ~이다"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Metric inanimate_subject_rate (shared with D-5). D-5 is the rhetorical extreme of the same axis (fully personified abstract subject)."
+    },
+    {
+      "name": "A-16 Third-person pronoun density 그/그녀/그것/그들 (1:1 mapping of he/she/it/they)",
+      "category": "translationese",
+      "definition": "Third-person pronouns appearing 3+ times per paragraph because every English he/she/it/they was rendered, in a language that normally drops the pronoun (zero pronoun). Delete 50–70 %, name the referent only at a speaker or scene change, render 'they' as 사람들·우리·일부·어떤 이들.",
+      "cues": ["그", "그녀", "그것", "그들", "그는", "그의"],
+      "examples": [],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "S1 critical in the table, but SCOPE GUARD: fires ONLY in translation contexts (text rendered or summarised from an English source). On natively written Korean it is a false positive: humans used 그는/그의 MORE than AI (1.9 vs 0.0 per 1000 eojeol), and the trigger event (3+ in a 200-character window) occurred in 3.9 % of human texts vs 0.7 % of AI. Modern LLMs suppress pronouns when writing Korean natively. Metric pronoun_density. Listed in the zero-residual-S1 checklist. For pro-drop-free languages (Dutch) the mechanism does not apply as such; the transferable part is 'pronoun chosen where a name or noun phrase is native at scene changes'."
+    },
+    {
+      "name": "A-17 Mechanical -들 plural marking on inanimate and abstract nouns (held)",
+      "category": "translationese",
+      "definition": "Obligatory English plural -s carried over as the plural suffix -들 on inanimate and abstract nouns where the target language leaves number unmarked. Currently NOT an active rule.",
+      "cues": ["-들"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "Severity '—'; quick: false. On hold since v2.0: strong scholarly anchors but zero positives in the corpora. ID reserved so pattern IDs stay stable; the metric deul_overuse_rate keeps measuring it. Do not fire."
+    },
+    {
+      "name": "A-18 Left-branching pre-nominal modifier / relative clause of 3+ eojeol",
+      "category": "translationese",
+      "definition": "An English post-nominal relative clause ('the X that ...') rendered as a long pre-nominal (left-branching) modifier of three or more eojeol (word units) in front of the noun. Split the sentence, or postpose the clause as an apposition.",
+      "cues": ["relative clause", "pre-nominal modifier", "X를 만났는데, 그 X는 ~"],
+      "examples": [{"before": "[3+ eojeol modifier] X", "after": "X를 만났는데, 그 X는 ~"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true. Metric relative_clause_nesting. Language-specific because the target branches left; the transferable mechanism is 'relative-clause nesting depth imported from English syntax' (E-5 is the comma-clause analogue)."
+    },
+    {
+      "name": "A-19 Stacked particles ~에서의·~에로의·~으로의·~에의·~으로부터의",
+      "category": "translationese",
+      "definition": "A locative/directional particle followed by the genitive 의 (에서의, 으로의, 으로부터의 …), mirroring English preposition + 'of' sequences ('the X of the Y in Z'). Unfold into a clause or phrase. Plain 의 alone is explicitly excluded.",
+      "cues": ["~에서의", "~에로의", "~으로의", "~에의", "~으로부터의"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true. Metric double_particle_count. Plain ~의 is NOT a target — no scholarly consensus (caveat C5). Mechanism: chained prepositional/genitive marking that English tolerates and the target does not."
+    },
+    {
+      "name": "B-1 Parenthetical English gloss repeated on every occurrence",
+      "category": "translationese",
+      "definition": "A term followed by its English original in parentheses every time it appears (주권 AI(Sovereign AI) … again … again). Gloss on first mention only; the target-language term alone thereafter.",
+      "cues": ["~(Sovereign AI)", "parenthetical English gloss"],
+      "examples": [{"before": "~(Sovereign AI) repeated on every occurrence", "after": "gloss on first mention only"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Category B 'English over-quoting and terminology'. Applies to any non-English target language."
+    },
+    {
+      "name": "B-2 Unexplained marketing buzzwords left in English",
+      "category": "vocabulary",
+      "definition": "English marketing adjectives and verbs (seamless, robust, leverage) dropped into the target text untranslated and unexplained. Render marketing words in the target language; KEEP standard technical terms in the original (API, prompt, token) — no mechanical literal translation of those.",
+      "cues": ["seamless", "robust", "leverage"],
+      "examples": [{"before": "prompt → 지시문 (mechanical translation of a technical term — wrong)"}],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "S2 high; quick: true. The README calls this 'untranslated loanwords'. The counter-rule (never translate API/prompt/token/pipeline) is in the self-verification checklist item 1."
+    },
+    {
+      "name": "B-3 Whole English sentences embedded as quotations with a translation alongside",
+      "category": "translationese",
+      "definition": "A full English sentence quoted verbatim in the body, immediately followed by its translation. Unless the original wording genuinely matters, paraphrase in the target language and cite the source.",
+      "cues": ["embedded English quotation", "translation alongside"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. Exception: when the original wording genuinely matters."
+    },
+    {
+      "name": "B-4 ~라고 알려진 / ~로 일컬어지는 (literal 'known as / so-called')",
+      "category": "translationese",
+      "definition": "The English appositive 'X, known as Y' or 'so-called Y' rendered as a full relative construction 라고 알려진 / 로 일컬어지는. Replace with the plain noun + parenthetical abbreviation.",
+      "cues": ["~라고 알려진", "~로 일컬어지는"],
+      "examples": [{"before": "'AGI'라고 알려진 범용 인공지능", "after": "범용 인공지능(AGI)"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S3 low; quick: false."
+    },
+    {
+      "name": "C-1 첫째, 둘째, 셋째 enumeration dominating a paragraph (first / second / third scaffolding)",
+      "category": "structure",
+      "definition": "Ordinal signposts (first, second, third …) heading every item so that 4+ items make the paragraph read like a metronome. Default is to PRESERVE; only at 4+ prose-ify one or two items or vary lexically (우선 / 다음으로 / 마지막으로), and when keeping the list deliberately vary item length and structure.",
+      "cues": ["첫째", "둘째", "셋째", "우선", "다음으로", "마지막으로"],
+      "examples": [{"before": "첫째, ~. 둘째, ~. 셋째, ~."}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high (demoted from S1 in v2.0.1); quick: false. Demotion history: combined with the S1 rule 'remove unconditionally' it dissolved even three-item enumerations — over-editing that produced real user complaints in the production web service. Human writers enumerate constantly; density-based judgement is correct. README calls it 'mechanical first / second / third scaffolding'."
+    },
+    {
+      "name": "C-2 3+ consecutive bullet blocks",
+      "category": "structure",
+      "definition": "Three or more bullet-list blocks in a row in a column or report. Merge into prose paragraphs; keep a list only where enumeration carries meaning.",
+      "cues": ["bullet blocks", "3+ consecutive"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Genre guard: column and report genres. README: 'bullet & emoji overload'."
+    },
+    {
+      "name": "C-3 Schematic headings 도입 / 본론 / 결론 (Introduction / Body / Conclusion)",
+      "category": "structure",
+      "definition": "Headings that name the slot rather than the content (Introduction, Body, Conclusion). In prose genres remove the headings; in reports make them specific (e.g. 'AI 규제의 세 가지 균열점'). Genuine numbered section titles (Ⅱ., (3), chapter titles) in academic and report writing are structure and must never be removed or absorbed.",
+      "cues": ["## 도입", "## 본론", "## 결론"],
+      "examples": [{"before": "## 도입 ## 본론 ## 결론", "after": "AI 규제의 세 가지 균열점"}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. Maps to 'headers as topics' in the consolidated taxonomy."
+    },
+    {
+      "name": "C-4 Every paragraph opens with its own topic sentence",
+      "category": "structure",
+      "definition": "Each paragraph begins with a thesis-style topic sentence, the English composition-textbook shape. Let some paragraphs open with a case, a scene or a quotation instead.",
+      "cues": ["topic sentence", "paragraph opening"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false."
+    },
+    {
+      "name": "C-5 Emoji overload",
+      "category": "punctuation-format",
+      "definition": "Emoji used as list heads, in headings or for emphasis. Delete all of them in column and report genres.",
+      "cues": ["emoji list heads", "emoji headings", "emoji emphasis"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; in the zero-residual-S1 checklist. Genre guard: column/report."
+    },
+    {
+      "name": "C-6 One-line summary box under every heading (이 섹션에서는 ~를 다룬다)",
+      "category": "structure",
+      "definition": "A sentence directly under each heading announcing what the section will cover ('This section deals with …'). Delete; prose starts with the substance.",
+      "cues": ["이 섹션에서는 ~를 다룬다"],
+      "examples": [{"before": "이 섹션에서는 ~를 다룬다", "after": "(deleted)"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. Meta-signposting at section level; H-3 is the sentence-level counterpart, D-3 the list-level one."
+    },
+    {
+      "name": "C-7 Paragraph-initial 먼저–반면–결국 three-beat formula (first – on the other hand – ultimately)",
+      "category": "structure",
+      "definition": "Three consecutive paragraphs opened with the connectives 먼저 (first), 반면 (on the other hand), 결국 (in the end), a fixed thesis–antithesis–synthesis beat. Cut to one or two connectives or dissolve them into the prose.",
+      "cues": ["먼저", "반면", "결국"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true."
+    },
+    {
+      "name": "C-8 A인가, B인가 antithesis and negative antithesis A가 아니라 B / A라기보다 B다 (not A but B)",
+      "category": "syntax",
+      "definition": "Two forms under one ID: the alternative question 'Is it A, or is it B?' and the negative parallelism 'not A but B' / 'rather than A, B', occurring 3+ times. Keep one; make the rest asymmetric — mix a question with a declarative, or make one side long and the other short — or convert to a direct assertion that preserves meaning.",
+      "cues": ["A인가, B인가", "A가 아니라 B", "A라기보다 B다", "아니라", "라기보다"],
+      "examples": [{"before": "A가 아니라 B", "after": "B가 핵심이다"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; trigger 3+; keep one. THE STRONGEST MEASURED SIGNAL IN THE TAXONOMY: negative antithesis density 5.8 per 1000 in AI vs 0.6 in humans — 9.2×, G²=41.7, p<0.0001, and 18× against personal blogs — consistent across Fable, GPT and Haiku, so not one vendor's habit. 'If you implement one rule, implement this one.'"
+    },
+    {
+      "name": "C-9 Parenthesized number indexing 1) 2) 3)",
+      "category": "structure",
+      "definition": "Inline enumeration with 1) 2) 3) markers inside running prose. Dissolve into prose, or vary with lexical ordinals (우선~, 다음으로~).",
+      "cues": ["1)", "2)", "3)", "우선~", "다음으로~"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Inline-list-as-prose."
+    },
+    {
+      "name": "C-10 Repeated colon-subtitle headings X: Y / X: A에서 B로",
+      "category": "structure",
+      "definition": "Every heading in the 'Noun: subtitle' or 'X: from A to B' shape. Compress each to a single noun phrase; preserve genuine academic and report section titles.",
+      "cues": ["X: Y", "X: A에서 B로", "colon-subtitle heading"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; listed in the zero-residual-S1 checklist despite S2 tier. Combines with D-7 (transformation formula) when the subtitle is 'from A to B'."
+    },
+    {
+      "name": "C-11 Comma directly after a connective ending",
+      "category": "punctuation-format",
+      "definition": "A comma placed immediately after a clause-linking verb ending (-고/-며/-지만/-면서/-아서/-어서), where the ending already does the joining — English comma-before-conjunction habit imported. Delete the comma; 6+ occurrences is a strong signal.",
+      "cues": ["-고,", "-며,", "-지만,", "-면서,", "-아서,", "-어서,"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S1 critical; quick: true; in the zero-residual-S1 checklist. Positional measurement (contrast with the distributional C-12). 4.84× separability in KatFish (ACL 2025) — the strongest single indicator in the external literature. Mechanism: English punctuation convention (comma + conjunction) laid over morphology that needs none."
+    },
+    {
+      "name": "C-12 More than 50 % of sentences contain at least one comma",
+      "category": "punctuation-format",
+      "definition": "Document-level: the share of sentences with any comma exceeds 50 % against a human baseline of 26–33 %. Convert some sentences by (a) splitting into short sentences, (b) absorbing the comma into a connective ending, (c) plain deletion.",
+      "cues": ["comma share > 50%"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. Score above z>1.0. Human baseline 26–33 % is Korean; recalibrate per language. Distributional, distinct from C-11."
+    },
+    {
+      "name": "D-1 Summation lexicon (in conclusion / therefore / through this / thus / to summarise / to sum up)",
+      "category": "vocabulary",
+      "definition": "Concluding connectives 결론적으로/따라서/이를 통해/그러므로/요약하면/정리하자면 appearing 3+ times combined. Keep one or two, delete or replace the rest.",
+      "cues": ["결론적으로", "따라서", "이를 통해", "그러므로", "요약하면", "정리하자면"],
+      "examples": [{"before": "결론적으로, 이는 시사하는 바가 크다", "after": "(deleted)"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Category D is S1 'replace on sight' but D-1's own trigger is 3+ combined; scores additively with A-2 and H-1. quick: true; in the zero-residual-S1 checklist. Signposted conclusion."
+    },
+    {
+      "name": "D-2 Significance inflation (carries significant implications / noteworthy / very important)",
+      "category": "vocabulary",
+      "definition": "A closing or evaluative sentence that asserts importance without content — 'the implications are significant', 'this is noteworthy', 'this is very important'. Delete, or state the concrete conclusion.",
+      "cues": ["시사하는 바가 크다", "주목할 만하다", "매우 중요하다", "기록적인 성과를 거두었다", "~로 평가된다", "주목받았다", "의미가 크다"],
+      "examples": [{"before": "결론적으로, 이는 시사하는 바가 크다", "after": "(deleted)"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; in the zero-residual-S1 checklist. The last four cues are the D-class stock phrases named in the reverse-insertion ban ('achieved record results', 'is evaluated as', 'drew attention', 'is of great significance'). README: 'a closing paragraph that always carries significant implications'. Consolidate with content/inflated-significance; the bound noun 바 the README lists under I lives here."
+    },
+    {
+      "name": "D-3 Enumeration preamble (can be broadly divided into three / as follows)",
+      "category": "rhetoric",
+      "definition": "A sentence announcing that a list is coming ('This can be divided into three parts', 'as follows') before the list. Delete the preamble and start the substance.",
+      "cues": ["크게 세 가지로 나눌 수 있다", "다음과 같은", "다음과 같다"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; in the zero-residual-S1 checklist. Meta-signposting."
+    },
+    {
+      "name": "D-4 Hype vocabulary (innovative / groundbreaking / overwhelming / radical / explosive / unprecedented)",
+      "category": "vocabulary",
+      "definition": "Intensifying evaluative adjectives 혁신적/획기적/압도적/파격적/폭발적/전례 없는 at 3+ per document. Reduce to concrete figures and facts.",
+      "cues": ["혁신적", "획기적", "압도적", "파격적", "폭발적", "전례 없는", "괄목할 만한"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S1 tier with a 3+ trigger; quick: true. 괄목할 만한 ('remarkable') is from the reverse-insertion ban list. Promotional language."
+    },
+    {
+      "name": "D-5 Personified abstract subjects (technology asks, the era calls)",
+      "category": "syntax",
+      "definition": "An abstraction given a human verb as grammatical subject — '기술이 묻는다' (technology asks), '시대가 부른다' (the era calls). Swap in a human or institutional subject, or weaken the personifying verb.",
+      "cues": ["기술이 묻는다", "시대가 부른다"],
+      "examples": [{"before": "기술이 묻는다"}, {"before": "시대가 부른다"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true. Metric inanimate_subject_rate (shared with A-15, which is the milder 'abstract subject + generic verb' form)."
+    },
+    {
+      "name": "D-6 Closing formula ~할 때입니다 / ~시점입니다 / ~할 순간입니다 (it is time to / now is the moment to)",
+      "category": "rhetoric",
+      "definition": "A hortatory ender 'now is the time to …', 'this is the moment when …'. Replace with a concrete verb assertion; at most one per document.",
+      "cues": ["~할 때입니다", "~시점입니다", "~할 순간입니다"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; cap ≤1 per document. Aphoristic / call-to-action ender."
+    },
+    {
+      "name": "D-7 Transformation formula X에서 Y로 / X을 넘어 Y로 (from X to Y / beyond X toward Y)",
+      "category": "rhetoric",
+      "definition": "The 'from X to Y' / 'beyond X, toward Y' frame used repeatedly to dramatise a shift. Replace with a direct assertion; at most one per document.",
+      "cues": ["X에서 Y로", "X을 넘어 Y로", "넘어"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "S1 critical; quick: true; cap ≤1 per document. Also appears in C-10 subtitle shape 'X: A에서 B로'."
+    },
+    {
+      "name": "E-1 Uniform sentence length; no sentence over 100 characters",
+      "category": "structure",
+      "definition": "Low variance in sentence length with no long sentence at all (none above 100 characters). Per paragraph, produce one or two short sentences plus one long one built by joining adjacent sentences. Adding content is forbidden.",
+      "cues": ["no sentence over 100 characters", "uniform sentence length"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Measures length variance (E-4 measures structural monotony). The 100-character threshold is for Korean; recalibrate. README: 'low sentence-length variance'."
+    },
+    {
+      "name": "E-2 Same sentence ending 4+ consecutively; automatic progressive ~고 있다",
+      "category": "syntax",
+      "definition": "Two related tells the source keeps under one ID: four or more consecutive sentences with the identical final ending, and the progressive aspect ~고 있다 ('is doing') applied mechanically wherever English used a progressive. Vary endings; reduce the progressive to simple tense where possible.",
+      "cues": ["~고 있다", "same ending 4+"],
+      "examples": [{"before": "읽고 있다", "after": "읽는다"}],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true. Metrics ending_diversity and progressive_aspect_rate (shared with E-7). The progressive half is a translationese mechanism (English progressive rendered literally) that transfers to any language with a periphrastic progressive; the ending-repetition half depends on Korean's closed set of sentence-final endings. README: 'repeated sentence endings'."
+    },
+    {
+      "name": "E-3 Every paragraph 3–4 sentences long",
+      "category": "structure",
+      "definition": "Uniform paragraph length: every paragraph is three or four sentences. Deliberately mix in a one-sentence paragraph and a six-sentence one.",
+      "cues": ["3–4 sentences per paragraph"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity '—' (unrated); quick: false."
+    },
+    {
+      "name": "E-4 Nothing but simple sentences",
+      "category": "syntax",
+      "definition": "Almost no compound or complex structure; every sentence is a single clause. Common when the model was told to 'be concise'. Bind two or three adjacent simple sentences with connective endings (-며·-고·-는데·-면서·-자), adnominal clauses or quotative clauses; target ~60 % simple, 30 %+ complex; save simple sentences for emphasis and turns.",
+      "cues": ["-며", "-고", "-는데", "-면서", "-자"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. Opposite pole of E-5 on the same axis; both are AI signatures. E-5 is weighted when co-occurring with E-4."
+    },
+    {
+      "name": "E-5 Long average clause length between commas (English-style stacked subordination)",
+      "category": "syntax",
+      "definition": "The average clause length between commas grows long because English sentences with stacked subordinate clauses were carried over. Score above 7 eojeol average; split 8+ eojeol clauses at a period, or compress English subordination into a native adnominal clause.",
+      "cues": ["clause length between commas > 7 eojeol"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. KatFish: human 4.35 eojeol vs AI 8.56, 1.97×. Weighted when co-occurring with E-4. Thresholds are in eojeol (Korean word units); recalibrate per language."
+    },
+    {
+      "name": "E-6 POS diversity around commas explodes",
+      "category": "punctuation-format",
+      "definition": "Commas inserted indiscriminately at every kind of syntactic boundary, so the part-of-speech variety on either side of commas is far above human norm. Restrict commas to (a) main-clause boundaries and (b) clear appositives.",
+      "cues": ["comma at every boundary"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. KatFish: human 24.38 vs AI 59.39, 2.44×. Genre guard: essays, news, blogs, QA and reports only — in poetry and fiction the signal disappears (1.03×)."
+    },
+    {
+      "name": "E-7 Addressee honorific levels mixed within one document or dialogue",
+      "category": "syntax",
+      "definition": "Speech levels (해라/하게/하오/해요/합쇼) drift within one document or one speaker's dialogue because English carries no such marking. Fix one grade at the outset and hold it; render an English line as one appropriate level, not both.",
+      "cues": ["해라", "하게", "하오", "해요", "합쇼"],
+      "examples": [{"before": "Will you help me?", "after": "좀 도와주시겠어요? / 도와줄래? (one of them, not both)"}],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "S2 (estimated — caveat C1: the figures in 김혜영 2019 were inferred from the KCI English abstract, not the full PDF; threshold stays 'estimated'). quick: true. Genre guard: dialogue and speech only (fiction dialogue, interview transcripts, quoted speech); uniformly formal genres such as reports and policy documents are exempt. README: 'honorific drift'. Transferable mechanism: register/T-V drift (formal vs informal address) inside one text."
+    },
+    {
+      "name": "Modality flattening to ~수 있다 (implied, from E-7 prescription)",
+      "category": "syntax",
+      "definition": "Every shade of epistemic uncertainty ('might', 'may well', 'could possibly', 'there is a chance') rendered with the same modal ~수 있다, so modality is monotone. Vary with ~을지 모른다, ~을 가능성도 있다, ~을 수도 있겠다.",
+      "cues": ["~수 있다", "~을지 모른다", "~을 가능성도 있다", "~을 수도 있겠다"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Not a numbered ID; stated inside E-7's prescription: 'Don't flatten modality to ~수 있다'. Related to but distinct from A-10 (where the fix is to assert) — here the fix is to diversify the hedge, not remove it."
+    },
+    {
+      "name": "F-1 Degree-adverb addiction (very / really / truly / greatly / extremely)",
+      "category": "vocabulary",
+      "definition": "Intensifying adverbs 매우, 정말, 진짜로, 대단히, 극히 bolted onto predicates. Mostly delete; use concrete figures for emphasis. When the source is colloquial and the adverb is part of the writer's voice, preserve it — the rule applies only to adverbs the AI added.",
+      "cues": ["매우", "정말", "진짜로", "대단히", "극히"],
+      "examples": [{"before": "정말 그랬다니까 (colloquial voice — preserve)"}],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Severity '—' (unrated); quick: false. README: '매우/정말'."
+    },
+    {
+      "name": "F-2 Synonym doubling",
+      "category": "syntax",
+      "definition": "Two near-synonymous modifiers coordinated on one noun ('important and core role', 'new and innovative approach', 'continuous and steady effort'). Keep one of the two.",
+      "cues": ["중요하고 핵심적인 역할", "새롭고 혁신적인 접근", "지속적이고 꾸준한 노력"],
+      "examples": [{"before": "중요하고 핵심적인 역할"}, {"before": "새롭고 혁신적인 접근"}, {"before": "지속적이고 꾸준한 노력"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity '—' (unrated); quick: false."
+    },
+    {
+      "name": "F-3 Function + role compounds (role and function / meaning and value)",
+      "category": "syntax",
+      "definition": "Paired abstract nouns that say the same thing twice: '~로서의 역할과 기능' (role and function as …), '~의 의미와 가치' (meaning and value of …). Keep one.",
+      "cues": ["~로서의 역할과 기능", "~의 의미와 가치", "역할과 기능", "의미와 가치"],
+      "examples": [{"before": "~로서의 역할과 기능"}, {"before": "~의 의미와 가치"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Severity '—' (unrated); quick: false. Noun-pair variant of F-2."
+    },
+    {
+      "name": "F-4 Nominaliser inflation -성/-적/-화 and literal English -tion/-ment/-ness/-ity, 12+ per document",
+      "category": "syntax",
+      "definition": "Sino-Korean nominalising suffixes (-성 -ness, -적 -ic/-al, -화 -isation) plus literal renderings of English -tion/-ment/-ness/-ity nominalisations, cumulative 12+ per document. Restore the verb and adjective roots.",
+      "cues": ["-성", "-적", "-화", "-tion", "-ment", "-ness", "-ity"],
+      "examples": [{"before": "the implementation of the policy", "after": "정책 시행"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; threshold 12+. Metric have_make_literal_count (shared with A-7). README: '~적/~성/~화 inflation'. Nominalisation is a universal AI/translationese tell; the suffix list is Korean."
+    },
+    {
+      "name": "F-5 ~적 N abstraction chains 3+ (strategic implications, practical foundation)",
+      "category": "syntax",
+      "definition": "Adjectival -적 (-ic/-al) + abstract noun compounds (전략적 함의 'strategic implications', 실천적 기반 'practical foundation') at 3+. Rewrite as noun + noun compound or unfold with the genitive.",
+      "cues": ["~적 N", "전략적 함의", "실천적 기반"],
+      "examples": [{"before": "전략적 함의", "after": "전략 함의"}, {"before": "실천적 기반", "after": "실천의 기반"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; threshold 3+. Mechanism ('adjective-of-abstraction + abstract noun') transfers; the -적 morpheme is Korean."
+    },
+    {
+      "name": "G-1 Speculative endings overused (appears to / is judged to / is considered / seems)",
+      "category": "rhetoric",
+      "definition": "Predicates ended with evidential hedges ~로 보인다 / ~로 판단된다 / ~라고 여겨진다 / ~인 듯하다 where the claim could be asserted. Assert wherever assertion is warranted.",
+      "cues": ["~로 보인다", "~로 판단된다", "~라고 여겨진다", "~인 듯하다"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Reflexive hedging."
+    },
+    {
+      "name": "G-2 Double and triple hedges",
+      "category": "rhetoric",
+      "definition": "Two or three hedges stacked on one predicate ('there may be a possibility that … could', 'could be seen as possibly'). Keep exactly one hedge.",
+      "cues": ["~할 가능성이 있을 수 있다", "~로 보여질 수 있다", "~할 수 있을 것으로 보인다"],
+      "examples": [{"before": "~할 가능성이 있을 수 있다"}, {"before": "~로 보여질 수 있다"}, {"before": "~할 수 있을 것으로 보인다"}],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source tier S2, but the prescription applies per occurrence (keep exactly one), so a stacked hedge is never left standing. quick: true. README: '~할 수 있을 것으로 보인다 stacked hedges'."
+    },
+    {
+      "name": "G-3 Safe-balance lexicon 4+ (both sides / both / has advantages but / carefully / balance)",
+      "category": "rhetoric",
+      "definition": "Vocabulary of non-commitment — 양쪽 모두 (both sides), 두 가지 모두 (both), 장점도 있지만 (has advantages, but), 신중하게 (carefully), 균형 (balance) — at 4+ per document. Commit to one side, give a concrete comparison, or make it conditional.",
+      "cues": ["양쪽 모두", "두 가지 모두", "장점도 있지만", "신중하게", "균형"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Genre-scoped to policy and report writing. Consolidate with content/both-sides padding."
+    },
+    {
+      "name": "H-1 Sentence-initial connectives 5+ (also / therefore / that is / furthermore / additionally / moreover / further)",
+      "category": "vocabulary",
+      "definition": "Sentences opened with the adverbial connectives 또한/따라서/즉/나아가/아울러/게다가/더욱이, five or more per document. Delete most; let the sentences carry the flow.",
+      "cues": ["또한", "따라서", "즉", "나아가", "아울러", "게다가", "더욱이"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; threshold 5+; in the zero-residual-S1 checklist despite S2 tier. D-1 scores additively with it. README: 'sentence-initial 또한/따라서/즉 in sequence'."
+    },
+    {
+      "name": "H-2 하지만 / 그러나 in every paragraph (however / but)",
+      "category": "vocabulary",
+      "definition": "An adversative connective ('however', 'but') opening a sentence in every paragraph. Delete more than half — an obvious contrast needs no connective.",
+      "cues": ["하지만", "그러나"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false."
+    },
+    {
+      "name": "H-3 Meta lead-ins 3+ (this is … / in this respect / from this perspective / what this means is)",
+      "category": "rhetoric",
+      "definition": "Sentence openers that comment on the previous sentence instead of adding to it — 이는 ~ (this is/this means), 이 점에서 (in this respect), 이 관점에서 (from this perspective), 이 말은 (this means) — at 3+. Dissolve into the prose or delete.",
+      "cues": ["이는 ~", "이 점에서", "이 관점에서", "이 말은"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Meta-signposting at sentence level."
+    },
+    {
+      "name": "H-4 즉 overused (i.e. / that is / in other words)",
+      "category": "vocabulary",
+      "definition": "The restatement marker 즉 ('that is', 'i.e.') used repeatedly to introduce a paraphrase of what was just said. Vary (곧, 말하자면) or drop; at most two per document.",
+      "cues": ["즉", "곧", "말하자면"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; cap ≤2 per document."
+    },
+    {
+      "name": "I-1 ~한 것이다 / ~일 것이다 endings, 3+ consecutive",
+      "category": "syntax",
+      "definition": "The bound-noun ending 것이다 ('it is that …' / 'it will be that …') on three or more consecutive sentences. Convert some to the plain declarative ~다. Default is to PRESERVE.",
+      "cues": ["~한 것이다", "~일 것이다", "것이다"],
+      "examples": [],
+      "severity": "context",
+      "scope": "language-specific",
+      "notes": "S2 high; quick: true; in the zero-residual-S1 checklist despite S2 tier. 'Always flatten 것이다 endings' was REJECTED: precise measurement gives AI 20.4 vs human 43.0 (G²=6.2) — humans use it twice as often. Flatten only at 3+ consecutive. evidence.md records the measurement error that was corrected."
+    },
+    {
+      "name": "I-2 Dummy-noun emphasis 주목할 점은 / X은 ~라는 점에 있다 (what is notable is … / X lies in the fact that …)",
+      "category": "syntax",
+      "definition": "A cleft built on a dummy noun (점 'point') to foreground a claim — 'the point to note is …', 'X lies in the point that …'. Rewrite as the direct statement X는 ~다.",
+      "cues": ["주목할 점은", "X은 ~라는 점에 있다", "중요한 점은", "점은"],
+      "examples": [{"before": "이에 있어서 중요한 점은", "after": "여기서 중요한 건"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. README lists the dummy noun 점 under I. The cleft mechanism ('what is important is …') is universal."
+    },
+    {
+      "name": "I-3 ~다는 것이다 / ~다는 뜻이다 endings (this means that … / which is to say …)",
+      "category": "syntax",
+      "definition": "A sentence ended by wrapping its own content in 'the thing is that …' / 'the meaning is that …'. End directly with ~다; at most two combined per document.",
+      "cues": ["~다는 것이다", "~다는 뜻이다"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; cap ≤2 combined."
+    },
+    {
+      "name": "I-4 Prescriptive endings 5+ (must / need to / should)",
+      "category": "syntax",
+      "definition": "Deontic endings ~해야 한다 (must) / ~할 필요가 있다 (there is a need to) five or more times, usually with no actor named. Replace with concrete verb assertions, name the actor, vary with conditionals.",
+      "cues": ["~해야 한다", "~할 필요가 있다"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; threshold 5+. README lists ~할 필요가 있다 under I (dummy noun 필요)."
+    },
+    {
+      "name": "I-5 ~이/가 필요하다 with no actor (X is needed)",
+      "category": "syntax",
+      "definition": "An abstract noun declared necessary — '혁신이 필요하다' (innovation is needed), '변화가 필요하다' (change is needed) — without saying who must do what. Specify the actor and the action as subject and verb.",
+      "cues": ["~이 필요하다", "~가 필요하다", "혁신이 필요하다", "변화가 필요하다"],
+      "examples": [{"before": "혁신이 필요하다"}, {"before": "변화가 필요하다"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false. Agentless prescription; sibling of I-4."
+    },
+    {
+      "name": "I-6 N 능력 3+ per document (ability to X / X capability)",
+      "category": "syntax",
+      "definition": "English 'ability to X' / 'X capability' rendered as noun + 능력 ('thinking ability', 'workflow execution capability') three or more times. Unfold into a verb phrase; cap at two per document.",
+      "cues": ["N 능력", "능력", "사고 능력", "수행 능력"],
+      "examples": [
+        {"before": "사고 능력은 뛰어나다", "after": "잘 사고한다"},
+        {"before": "워크플로우 수행 능력", "after": "워크플로우를 얼마나 잘 처리하는지"}
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false; cap 2 per document. Nominalised 'capability' talk is a universal LLM tell."
+    },
+    {
+      "name": "J-1 A bolded key word in every sentence",
+      "category": "punctuation-format",
+      "definition": "Body text where each sentence carries one bolded phrase. In column and report genres remove nearly all body bold.",
+      "cues": ["**bold** in every sentence"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. Genre guard: column/report."
+    },
+    {
+      "name": "J-2 Scare quotes, 5+ per document",
+      "category": "punctuation-format",
+      "definition": "Quotation marks around ordinary words for emphasis or distancing, five or more per document. Keep real quotations only; plain text otherwise.",
+      "cues": ["scare quotes 5+"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true; in the zero-residual-S1 checklist despite S2 tier. Direct speech inside double quotes is on the Do-NOT list and is never touched."
+    },
+    {
+      "name": "J-3 Em-dash asides in every sentence",
+      "category": "punctuation-format",
+      "definition": "A dash-delimited aside in every sentence. Break into commas, parentheses or separate sentences — but preserve dashes that were already in the source.",
+      "cues": ["—", "em-dash aside"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: true. The self-verification checklist protects 'explanatory dashes' as living speech: only dashes the AI added are targets."
+    },
+    {
+      "name": "J-4 Parenthetical elaboration overload (이는 ~을 의미한다)",
+      "category": "punctuation-format",
+      "definition": "Explanatory parentheses after claims — '(this means …)' — in dense succession. Move most into the body or delete.",
+      "cues": ["(이는 ~을 의미한다)"],
+      "examples": [{"before": "(이는 ~을 의미한다)"}],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "S2 high; quick: false."
+    },
+    {
+      "name": "Post-editese: simplification (metric-only)",
+      "category": "vocabulary",
+      "definition": "Toral (2019) / Baker (1993) simplification axis: the text has lower lexical diversity (type-token ratio), lower lexical density and lower sentence-ending diversity than the human baseline. Run as metrics lexical_diversity_ttr, lexical_density, ending_diversity, not as pattern IDs.",
+      "cues": ["low TTR", "low lexical density", "low ending diversity"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Deliberately unnumbered; flagged speculative: true (caveat C3 — Toral covered en→de, de→en, es→de, en→fr, zh→en; Korean was not among them). Metric composites deviating from baseline trigger extra verification in the finalize call."
+    },
+    {
+      "name": "Post-editese: normalisation (metric-only)",
+      "category": "syntax",
+      "definition": "Baker (1993) normalisation axis: convergence on the most standard, unmarked forms — measured as normalisation_score and da_streak_rate (runs of consecutive plain -다 declarative endings).",
+      "cues": ["da_streak_rate", "consecutive -다 endings"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Deliberately unnumbered; speculative: true. The -다 streak metric is Korean; the mechanism (over-regular, unmarked form choice) is universal."
+    },
+    {
+      "name": "Post-editese: interference index (metric-only, composite of A-class signals)",
+      "category": "translationese",
+      "definition": "Toury (1995) interference axis: eight detection signals combined into interference_index — inanimate_subject_rate (↔A-15, D-5), by_passive_count and double_passive_count (↔A-8, A-9, A-12), pronoun_density (↔A-16), deul_overuse_rate (↔A-17, held), relative_clause_nesting (↔A-18), have_make_literal_count (↔A-7, F-4), double_particle_count (↔A-19), progressive_aspect_rate (↔E-2, E-7).",
+      "cues": ["inanimate_subject_rate", "by_passive_count", "double_passive_count", "pronoun_density", "deul_overuse_rate", "relative_clause_nesting", "have_make_literal_count", "double_particle_count", "progressive_aspect_rate"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Deliberately unnumbered; speculative: true. This is the structural map of the translationese layer: nine measurable axes (inanimate subject, agentive passive, stacked passive, pronoun density, plural over-marking, relative-clause nesting, light-verb literalism, particle/preposition stacking, progressive aspect) — the template a Dutch adaptation would refill with Dutch instances. Linkage runs both ways: pattern counts over threshold drive diagnosis and rewrite; metric composites off baseline trigger extra verification in finalize."
+    }
+  ],
+  "methodology": [
+    {"topic": "workflow", "rule": "Detect before you rewrite: run a diagnostician that emits findings with exact spans, then a targeted rewrite that touches only those spans, then (on the heavy route) a finalize pass that checks the rewrite against the source. Detector and rewriter share one JSON contract."},
+    {"topic": "workflow", "rule": "Enumerate content anchors internally BEFORE detecting: from each sentence's subject, object and complement, extract the content nouns and concept words that carry the claim, so the rewrite can be checked against them."},
+    {"topic": "workflow", "rule": "Route by a deterministic pre-score (prepare_monolith_input.py emits a route_hint): light = already well-written, 1 call, single conservative pass that exits early with 'this is already fine'; standard = ordinary AI draft, 2 calls, diagnose → targeted rewrite; heavy = dense AI slop, >15,000 chars, or an audit trail is required, 3+ calls, diagnose → rewrite (chunked only if needed) → finalize against the source."},
+    {"topic": "workflow", "rule": "Single-call first; chunk only when the text does not fit one call. Measured: a 10,000-character piece as 7 chunked calls cost 610K tokens; the same piece in one call cost 134K at equal quality, because reloading the rulebook per chunk eats the savings. Savings come from fewer calls, not a cheaper model (model choice stays with the user)."},
+    {"topic": "workflow", "rule": "Run the six-item self-verification checklist immediately after rewriting (anchors preserved; change rate ≤30 %; no genre drift; register preserved both ways; zero residual S1; no invented expression). Any single violation rolls that edit back → rewrite → re-check. The self-loop runs at most once; if it still fails, emit the result anyway and record 'N self-verification items failed' in the <!-- HUMANIZE-SUMMARY --> block of final.md."},
+    {"topic": "workflow", "rule": "Keep the single-call rulebook to ~50 patterns flagged quick: true (detectable from surface signals alone) to protect the token budget; patterns needing document-level judgement (rhythm, structure, distribution, POS analysis) run only on the strict path. New patterns default to quick: false. The rulebook is generated from the taxonomy SSOT by a build script that guarantees 1:1 ID mapping."},
+    {"topic": "gates", "rule": "Do-NOT list, excluded from both detection and rewriting: proper nouns, product names, model names, organisation names; numbers, dates, units; direct speech inside double quotes; statutory text; mathematical, chemical and statistical notation; standard English acronyms (LLM, GPU, MCP, API …). Also out of scope: quoted speech and academic terms of art."},
+    {"topic": "gates", "rule": "Meaning is immutable: facts, claims, numbers, proper nouns, dates, quotes and content anchors survive 100 % — not one character different from the source. Each sentence's core content noun must survive in its base lexeme at least once (particles and endings may change). When stripping stock phrases and abstractions, remove only modifiers and dummy nouns — never delete a content anchor or swap it for a synonym. If unsure, roll the sentence back."},
+    {"topic": "gates", "rule": "Over-edit guard: change rate above 30 % = warning, above 50 % = hard stop and rollback. The verdict is NOT self-reported — a deterministic script (verify_change_rate.py, exit code, orchestrator Phase 2.5) decides it on every route; any self-computed figure is advisory only. Grade A targets 10–25 %."},
+    {"topic": "gates", "rule": "Evidence-based edits only: touch only the spans the detector flagged; undetected text is left alone."},
+    {"topic": "gates", "rule": "Standard technical terms (API, prompt, token, pipeline …) stay in the original or as loanwords; never translate them mechanically (prompt → 지시문 is a violation). Only marketing buzzwords (seamless, robust, leverage) get rendered in the target language."},
+    {"topic": "gates", "rule": "Subtraction only — no invented expression: no metaphor, rhetorical flourish or stock phrase that was not in the source. Reverse insertion of D-class stock phrases (기록적인 성과를 거두었다, 괄목할 만한, ~로 평가된다, 주목받았다, 의미가 크다) is banned: this category is a removal target, never a generation target. When fixing rhythm (E-1) build the long sentence by joining adjacent ones; adding content is forbidden."},
+    {"topic": "gates", "rule": "Preserve living speech: explanatory dashes already in the source, short interjections and rhetorical questions are kept. J-3 targets only dashes the AI added; F-1 targets only adverbs the AI bolted on."},
+    {"topic": "gates", "rule": "Zero residual S1 after the rewrite, checked explicitly for: D-1, D-2, D-3, A-7, A-8, A-16, C-5, C-10, C-11, H-1, I-1, J-2."},
+    {"topic": "false-positives", "rule": "A-16 (third-person pronoun density) fires only in translation contexts — text rendered or summarised from an English source. Never on natively written Korean: humans used 그는/그의 more than AI (1.9 vs 0.0 per 1000 eojeol) and the 3+-in-200-chars trigger occurred in 3.9 % of human texts vs 0.7 % of AI; modern LLMs suppress pronouns when writing Korean natively, so firing it there damages human writing."},
+    {"topic": "false-positives", "rule": "A-2 (~를 통해) is not a ban. Native non-translated Korean uses it twice as often as translated Korean (84.4 vs 42.1, 최희경 2016) and it barely appeared in the AI corpus; suppress only in-document repetition (3+ per paragraph, keep 1–2)."},
+    {"topic": "false-positives", "rule": "I-1 (것이다 endings) defaults to preserve: AI 20.4 vs human 43.0 (G²=6.2) — humans use it twice as often. Flatten only at 3+ consecutive occurrences."},
+    {"topic": "false-positives", "rule": "C-1 (first/second/third enumeration) defaults to preserve; it was demoted S1→S2 in v2.0.1 after the 'remove unconditionally' reading dissolved three-item enumerations and generated real user complaints in production. Act only at 4+ items, and then on one or two."},
+    {"topic": "false-positives", "rule": "A-19 targets stacked particles only; plain ~의 is explicitly excluded because there is no scholarly consensus (caveat C5)."},
+    {"topic": "false-positives", "rule": "Genuine numbered section titles in academic and report writing (Ⅱ., (3), chapter titles) and genuine academic/report section titles are structure — never remove or absorb them under C-3 or C-10."},
+    {"topic": "false-positives", "rule": "Genre guards: C-2 (bullet blocks), C-5 (emoji) and J-1 (body bold) apply in column and report genres; G-3 (balance lexicon) is scoped to policy and report writing; E-6 (comma POS diversity) applies to essays, news, blogs, QA and reports only — in poetry and fiction the signal disappears (1.03×); E-7 (honorific mixing) applies to dialogue and speech only, uniformly formal genres are exempt."},
+    {"topic": "false-positives", "rule": "A-17 (mechanical plural -들) is on hold: strong scholarly anchors but zero positives in the corpora. Keep measuring it (deul_overuse_rate), do not fire it; the ID is reserved so IDs stay stable."},
+    {"topic": "false-positives", "rule": "Expansion rule: add a sub-pattern only when it reproduces 2+ times in real inputs AND human writers almost never produce it. Contributed tells need two or more real examples, ideally from different models, genres or authors, before the taxonomist reviews them for promotion."},
+    {"topic": "false-positives", "rule": "Rules are killed by contrastive evidence, not kept for plausibility: when the human baseline for a construction exceeds the AI rate, the rule is rejected or reduced to a density threshold (A-2, I-1, A-16 outside translation). Record which rules the evidence killed alongside which it confirmed."},
+    {"topic": "register", "rule": "Preserve register in both directions: a formal source stays formal, a colloquial source stays colloquial. Do not drop to plain style, and do not raise formality (-했- → -하였-)."},
+    {"topic": "register", "rule": "No genre drift: a column must not become a literary essay, a report must not slide into blog voice or prose poetry. Genre decides which structural rules apply (headings kept but made specific in reports; removed in prose genres)."},
+    {"topic": "register", "rule": "In dialogue and quoted speech fix one addressee honorific (formality) grade at the outset and hold it for the whole document."},
+    {"topic": "voice", "rule": "Change style, rhythm and phrasing only; the source's living voice is the reference. Replacing living voice (얼마나 대단했냐면 —, 확정지은 겁니다) with stock phrases is not polishing, it is driving in reverse."},
+    {"topic": "voice", "rule": "When the source is colloquial, adverbs and interjections that belong to the writer's voice (정말 그랬다니까) stay; only what the AI bolted on is removed."},
+    {"topic": "scoring", "rule": "Three severity tiers: S1 critical — one occurrence is nearly enough to conclude AI, remove unconditionally; S2 high — 1–2 occurrences can be natural, 3+ in a document reads as AI, density-based removal; S3 low — not a problem alone, reinforces the AI impression when stacked, rhythm-level adjustment."},
+    {"topic": "scoring", "rule": "severity_weighted_score = weighted sum with S1=5, S2=2, S3=0.5, normalised to 0–100. ai_tell_density = total characters in detected spans / total characters."},
+    {"topic": "scoring", "rule": "Self-scored grades: A — 0 residual S1, ≤2 residual S2, change rate 10–25 %, all 6 checklist items pass; B — 0 residual S1, ≤4 residual S2, ≥5 items pass; C — 1–2 residual S1 or ≤4 items pass → recommend strict mode; D — 3+ residual S1 or change rate above 50 % → recommend aborting."},
+    {"topic": "scoring", "rule": "Thresholds are per pattern and stated as counts or caps: 3+ (A-2 per paragraph, A-4, A-16 per paragraph, C-8, D-1, D-4, F-5, H-3, I-1 consecutive, I-6), 4+ (E-2 consecutive, G-3, C-1 items), 5+ (H-1, I-4, J-2), 6+ (C-11 strong), 12+ (F-4), caps ≤1 per document (D-6, D-7), ≤2 (H-4, I-3, I-6). D-1 scores additively with A-2 and H-1; E-5 is weighted when co-occurring with E-4; C-12 scores above z>1.0; E-5 above 7 eojeol average."},
+    {"topic": "scoring", "rule": "Post-editese composites (simplification, normalisation, interference) run as speculative metrics without pattern IDs. Pattern counts over threshold drive diagnosis and rewrite; metric composites deviating from baseline trigger extra verification in the finalize call."},
+    {"topic": "modes", "rule": "Two detection paths: quick (surface-signal patterns only, single call) and strict (adds document-level patterns: rhythm, structure, distribution, POS). Recommend strict when the quick path grades C."},
+    {"topic": "modes", "rule": "Three rewrite routes chosen by the text, not the user: light (1 call), standard (2 calls), heavy (3+ calls). GitHub Copilot CLI and OpenAI Codex CLI run the single-call path only; the multi-call diagnose/finalize paths are Claude Code-specific."},
+    {"topic": "output", "rule": "Detector output schema: meta {input_length, detected_count, ai_tell_density, severity_weighted_score}; findings[] {id, category (pattern ID), category_label, severity, text_span, start, end, reason, suggested_fix}; category_summary {A..J: counts}."},
+    {"topic": "output", "rule": "Rulebook format: one line per pattern, `ID [severity] trigger → prescription`, no examples (examples live in the taxonomy). It is a system prompt, not documentation."},
+    {"topic": "output", "rule": "The rewrite lands in final.md with a <!-- HUMANIZE-SUMMARY --> block recording failed self-verification items."},
+    {"topic": "other", "rule": "Anti-goal: this is a writing-quality tool, not an AI-detector bypass. It does not guarantee academic or journalistic integrity and will not launder a text's provenance — it only removes the syntactic residue of English-shaped generation."},
+    {"topic": "other", "rule": "The Korean file is the single source of truth; pattern strings are the asset and are reproduced verbatim — translating them would destroy them. Only triggers, prescriptions, genre guards and evidence notes are in English."},
+    {"topic": "other", "rule": "Scholarly caveats constrain claims: C1 — E-7 figures are estimated from an abstract, threshold stays 'estimated'; C3 — Toral's post-editese axes did not cover Korean, so they stay metric-only; C5 — plain ~의 has no consensus. Patterns carry source_anchor and see_scholarship metadata."},
+    {"topic": "other", "rule": "Patterns cross-map to measurable metrics both ways (ID ↔ metric) so that a detector can be validated against a corpus, and a rule that does not separate human from AI text in that corpus is dropped."}
+  ],
+  "coverage_note": "Read completely: docs/en/taxonomy.md lines 1–214 (severity tiers, quick flag, sections A–J, detector schema, post-editese track, scholarly grounding, expansion rule); docs/en/quick-rules.en.md lines 1–116 (standing constraints, the ~49 quick patterns, self-verification checklist, grades); README.en.md lines 1–111 (pitch, category table, four hard rules, routing architecture, install, ethics). Count: the taxonomy has 71 numbered IDs (A-1..A-19, B-1..B-4, C-1..C-12, D-1..D-7, E-1..E-7, F-1..F-5, G-1..G-3, H-1..H-4, I-1..I-6, J-1..J-4) including the held A-17; the README says '10 categories × 70 sub-patterns' in one place and '71 patterns' in another; the task brief said 73 — I found no IDs beyond 71 in the English docs. All 71 are inventoried, plus 4 implied entries: modality flattening (from E-7's prescription) and the three post-editese metric axes (simplification, normalisation, interference). Deliberately left out: install commands, license text, plugin marketplace instructions (not writing patterns); docs/en/evidence.md, docs/en/integration.md and the Korean SSOT/playbook/scholarship files, which were not assigned and were not opened — the corpus numbers quoted here are only those the three assigned files repeat. Classification judgement calls: the task's category set has no 'rhythm' bucket, so E-class rhythm tells were split between structure (E-1, E-3) and syntax (E-2, E-4, E-5, E-7) with E-6 under punctuation-format; D-2 significance inflation and G-3 balance lexicon are filed as vocabulary/rhetoric because the source detects them lexically, with notes pointing at the content-category equivalents. Severity mapping: S1 with no threshold → always; S1/S2/S3 with a density threshold → cluster; anything with a genre guard, scope guard or 'default preserve' → context; G-2 is marked always despite its S2 tier because the prescription applies per occurrence. Scope: the source has no per-pattern scope field; I marked language-specific where the tell depends on Korean morphology (particles, honorifics, eojeol, zero pronoun, bound nouns, -다 endings), universal where the source itself names the English-source construction or the mechanism is grammar-independent, and english only for B-2 whose cues are English words. For the translationese layer, each A-entry's notes name the English-source construction and the interference metric it feeds, and the 'interference index' entry lists the nine measurable axes as the template a Dutch adaptation would refill."
+}

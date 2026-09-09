@@ -1,0 +1,1313 @@
+{
+ "category": "structure",
+ "entries": [
+  {
+   "id": "despite-challenges-outlook",
+   "name": "Despite-its-challenges outlook formula",
+   "definition": "A stock closing block, often under a heading like 'Challenges and Future Directions' or 'Future Outlook', shaped as two beats: 'Despite its [positive words], [subject] faces challenges...' followed by 'Despite these challenges, [it] continues to thrive' or speculation about initiatives that could benefit the subject. It acknowledges problems only to dismiss them and adds no fact. Keep the concrete facts and cut the pitch; add dates or actions only when the source or the user supplies them.",
+   "cues": [
+    "Despite its... faces several challenges...",
+    "Despite these challenges",
+    "Despite its",
+    "faces challenges",
+    "faces several challenges",
+    "faces several challenges, including",
+    "faces new challenges and opportunities",
+    "presents numerous challenges, including",
+    "must be addressed for broader adoption",
+    "continues to thrive",
+    "continue to provide a vital service",
+    "continues to evolve in response to these challenges",
+    "strategic location and ongoing initiatives",
+    "positions them as critical components",
+    "adapt to these emerging trends",
+    "potential developments",
+    "Future investments in technology ... could enhance",
+    "can be challenging",
+    "future challenges",
+    "main contemporary challenge",
+    "for the coming decades",
+    "Challenges and Legacy",
+    "Challenges and Future Directions",
+    "Future Outlook",
+    "Future Prospects",
+    "Despite its industrial and residential prosperity, Korattur faces challenges",
+    "Despite their promising applications, pyroelectric materials face several challenges",
+    "Despite its success, the Panama Canal faces challenges"
+   ],
+   "regex": [
+    "\\bdespite (?:its|their|his|her|the|this|these) [^.\\n]{0,80}?\\bfaces? (?:several |numerous |many |new |significant |some |a number of )?challenges\\b",
+    "\\bdespite these challenges\\b",
+    "\\bcontinues? to thrive\\b",
+    "\\bfaces? (?:several|numerous|many) challenges,? including\\b",
+    "\\bmust be addressed for broader adoption\\b",
+    "(?:#{1,6}|={2,4})\\s*(?:challenges and (?:legacy|future directions|opportunities)|future (?:outlook|prospects))\\b"
+   ],
+   "examples": [
+    {
+     "before": "Despite its industrial prosperity, Korattur faces challenges typical of urban areas, including traffic congestion and water scarcity. Despite these challenges, with its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of Chennai's growth.",
+     "after": "Korattur has recurring traffic congestion and water shortages."
+    },
+    {
+     "before": "Despite their promising applications, pyroelectric materials face several challenges that must be addressed for broader adoption. Despite these challenges, the versatility of pyroelectric materials positions them as critical components for sustainable energy solutions.",
+     "after": "Pyroelectric materials lose sensitivity above their Curie temperature, which limits them to low-temperature sensors."
+    },
+    {
+     "before": "== Challenges and Future Directions == As the global economy continues to evolve, international economic law faces new challenges and opportunities. [...] The future of international economic law lies in its ability to adapt to these emerging trends and continue to facilitate a stable and equitable global economic order.",
+     "after": "(Section cut; nothing in it names a treaty or a date.)"
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "wikipedia-a",
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "§6 Formulaic challenges and outlook sections",
+    "Outline-like conclusions about challenges and future prospects (WP:FACESCHALLENGES)",
+    "\"Despite Its Challenges...\""
+   ],
+   "false_positives": "The formula, not the word: this is about the rigid two-beat shape, not any mention of challenges or challenging. A sentence naming a specific problem with a number, date or named actor is content. A 'Challenges' heading over a section of concrete, sourced problems is fine. Quoted text and reported speech are exempt.",
+   "in_baseline": false
+  },
+  {
+   "id": "generic-positive-ending",
+   "name": "Generic positive ending (inspirational send-off)",
+   "definition": "The text closes on vague optimism or an inspirational wrap-up ('The future looks bright', 'exciting times lie ahead', 'a major step in the right direction', 'memories to last a lifetime') instead of on the last useful fact. It is the paragraph-ending form of the challenges-and-outlook formula. Cut the send-off; end on the last concrete fact, or on real plans if the source states them.",
+   "cues": [
+    "The future looks bright",
+    "Exciting times lie ahead",
+    "continue their journey toward excellence",
+    "a major step in the right direction",
+    "promises memories to last a lifetime"
+   ],
+   "regex": [
+    "\\bthe future (?:looks|is) bright\\b",
+    "\\bexciting times (?:lie|are) ahead\\b",
+    "\\bjourney towards? excellence\\b",
+    "\\ba (?:major|significant|big|huge) step in the right direction\\b",
+    "\\bmemories (?:to|that) last a lifetime\\b"
+   ],
+   "examples": [
+    {
+     "before": "The future looks bright for the company. Exciting times lie ahead as they continue their journey toward excellence. This represents a major step in the right direction.",
+     "after": "(Paragraph deleted; the piece ends on the previous fact.)"
+    },
+    {
+     "before": "If you're dreaming of your next getaway, this is one destination that promises memories to last a lifetime.",
+     "after": "The last tram back from Belem leaves before midnight; check the timetable before dinner."
+    }
+   ],
+   "severity": "always",
+   "scope": "english",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b",
+    "willfrancis"
+   ],
+   "merged_from": [
+    "§25 Generic positive endings",
+    "Generic conclusions"
+   ],
+   "false_positives": "A closing that states a dated, sourced plan ('the council votes on the extension in November') is not the tell. LinkedIn and casual registers tolerate a warm closer and skill-b skips it there; flag it in reports, articles, encyclopaedic and investor prose. Quoted marketing copy under discussion is exempt. Severity: humanizer says always and skill-b context, but willfrancis bans the inspirational wrap-up outright, so two sources back the stricter reading.",
+   "in_baseline": false
+  },
+  {
+   "id": "signposted-conclusion",
+   "name": "Signposted conclusion (summary-recap ending)",
+   "definition": "A closing paragraph announced by a stock summarising marker ('In conclusion', 'In summary', 'To sum up', 'In short', 'Kortom', 'Overall', 'Ultimately', 'At the end of the day') or a section literally titled 'Conclusion' that restates what the body already said, sometimes with an inspirational wrap-up bolted on. The reader was just there. Delete the recap and end on the last substantive point, takeaway or next action.",
+   "cues": [
+    "In conclusion",
+    "In summary",
+    "To summarize",
+    "To sum up",
+    "In short",
+    "In short…",
+    "Kortom",
+    "Overall",
+    "Ultimately",
+    "At the end of the day",
+    "At the end of the day…",
+    "Conclusion",
+    "Conclusion:"
+   ],
+   "regex": [
+    "\\bin conclusion\\b",
+    "\\bin summary\\b",
+    "\\bto (?:summarize|summarise|sum up)\\b",
+    "\\bin short[,…]",
+    "\\bkortom\\b",
+    "\\bat the end of the day\\b",
+    "(?:^|[.!?]\\s+|\\n\\s*)(?:overall|ultimately),",
+    "(?:^|\\n)[ \\t]*(?:\\*\\*|''')?conclusion(?:\\*\\*|''')?:[ \\t]"
+   ],
+   "examples": [
+    {
+     "before": "In summary, the educational and training trajectory for nurse scientists typically involves a progression from a master's degree in nursing to a Doctor of Philosophy in Nursing, followed by postdoctoral training in nursing research. This structured pathway ensures that nurse scientists acquire the necessary knowledge and skills to engage in rigorous research.",
+     "after": "(Deleted. The section already walked the reader from the master's to the postdoc; it ends there.)"
+    },
+    {
+     "before": "Conclusion: I'm committed to ensuring that all content in the article meets Wikipedia's standards for reliability and neutrality. However, this requires a collaborative effort.",
+     "after": "I'll re-source the two paragraphs you flagged by Friday."
+    },
+    {
+     "before": "Ultimately, what all of this shows is that the migration was worth it. In short, we saved money and time.",
+     "after": "The migration cut the bill by 30% and the deploy from forty minutes to six."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "wikipedia-c",
+    "tropes-fyi",
+    "hassid",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "Summary-recap endings",
+    "Signposted conclusions (\"In conclusion\" / \"In summary\" / \"To summarize\")",
+    "Section summaries / In conclusion (WP:CONCLUSION)",
+    "The Signposted Conclusion",
+    "The ending that repeats the whole post (redundant conclusion)",
+    "Summary or inspirational wrap-up closer",
+    "Signposted summary 'In short'"
+   ],
+   "false_positives": "Academic papers, theses and formal reports where a marked Conclusion section is required by the genre; keep the section but make it add implications, limits or next steps rather than restate. 'In short' or 'kortom' once, introducing a compressed restatement mid-argument, is ordinary prose; the tell is the ending. 'Overall' and 'ultimately' inside a sentence ('the overall cost') are not the marker. A 'Conclusion' section heading itself is carried by formulaic-section-headers; this entry owns the inline 'Conclusion:' lead and the summarising markers.",
+   "in_baseline": true
+  },
+  {
+   "id": "circular-return-ending",
+   "name": "Circular return ending",
+   "definition": "A closing sentence that loops back to the opening image or question ('And so we return to where we began') as a substitute for an ending that lands on something new. It is the bookend cousin of the signposted conclusion: symmetry standing in for a point.",
+   "cues": [
+    "And so we return to where we began",
+    "return to where we began"
+   ],
+   "regex": [
+    "\\b(?:return|come back|circle back) to where we (?:began|started)\\b"
+   ],
+   "examples": [
+    {
+     "before": "And so we return to where we began: is the tool worth it?",
+     "after": "The tool pays off for teams over ten people; below that, the setup cost eats the gain."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Circular Return Ending"
+   ],
+   "false_positives": "A deliberate frame in a personal essay or story where the return pays off the setup with new meaning. A single instance in a long piece whose final paragraph is substantive.",
+   "in_baseline": false
+  },
+  {
+   "id": "fractal-summaries",
+   "name": "Fractal summaries (section preview and recap)",
+   "definition": "'Tell them what you will tell them, tell them, tell them what you told them' applied at every level: a preview sentence under each heading ('In this section, we'll explore...', '이 섹션에서는 ~를 다룬다'), a mini-summary closing every section ('In summary', 'as we've seen in this section'), and sections that open by recapping the previous one. Delete the previews and recaps; start each section with its substance and let the heading do the announcing.",
+   "cues": [
+    "In this section, we'll explore",
+    "as we've seen in this section",
+    "as we've seen",
+    "In summary,",
+    "Overall",
+    "이 섹션에서는 ~를 다룬다"
+   ],
+   "regex": [
+    "\\bin this (?:section|chapter|post|article),? (?:we|i|you)(?:'|’)?(?:ll| will) (?:explore|look at|cover|discuss|examine|walk through|dive into)\\b",
+    "\\bthis section (?:covers|deals with|explores|discusses|examines|will cover|will explore)\\b",
+    "\\bas we(?:'|’)?ve seen (?:in (?:this|the previous|the last) section|above|so far)\\b",
+    "\\bin the previous section,? we\\b",
+    "이 섹션에서는"
+   ],
+   "examples": [
+    {
+     "before": "In this section, we'll explore how caching works. [...] As we've seen in this section, caching cuts latency.",
+     "after": "Caching cuts p95 latency because the token is fetched once per hour instead of once per request. [...]"
+    },
+    {
+     "before": "## Failure modes\n\nThis section covers the three ways the build can fail.\n\nThe first is a stale lockfile.",
+     "after": "## Failure modes\n\nA stale lockfile is the usual cause."
+    },
+    {
+     "before": "In the previous section, we saw that caching cuts latency. In this section, we turn to cost.",
+     "after": "Caching cuts latency; the bill is the next question."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "tropes-fyi",
+    "vollmer",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "Fractal Summaries",
+    "Section-level recap (summary closes every subsection)",
+    "C-6 One-line summary box under every heading (이 섹션에서는 ~를 다룬다)",
+    "C-6 헤딩 아래 한 줄 요약 박스 (guide sentence under heading)",
+    "Section-opening recap"
+   ],
+   "false_positives": "Long reference manuals, textbooks and formal reports whose genre requires section abstracts; there the tell is the recursion at every level, not one abstract. A one-sentence orientation at the top of a long section that tells the reader what to skip is navigation, not a preview.",
+   "in_baseline": false
+  },
+  {
+   "id": "heading-restated-below",
+   "name": "Heading restated in the first line",
+   "definition": "A heading is followed by a one-line paragraph that only restates it ('## Performance' then 'Speed matters.') before the real content begins. The warm-up line does the heading's job a second time; the loudest sub-form repeats the heading's own word as the line's first word ('## Performance' then 'Performance is important...'). Delete the line and start with the first sentence that says something.",
+   "cues": [
+    "## Performance\n\nSpeed matters.",
+    "## Performance\n\nPerformance is important"
+   ],
+   "regex": [
+    "(?:^|\\n)#{2,6}[ \\t]+([a-z][\\w-]{3,20})\\b[^\\n]{0,40}\\n\\s*\\n[ \\t]*[^\\n]{0,15}\\b\\1\\b[^\\n]{0,60}(?:\\n|$)"
+   ],
+   "examples": [
+    {
+     "before": "## Performance\n\nSpeed matters.\n\nWhen users hit a slow page, they leave.",
+     "after": "## Performance\n\nWhen users hit a slow page, they leave."
+    },
+    {
+     "before": "## Performance\n\nPerformance is important for the user experience.\n\nA page over 400 ms loses a fifth of its readers.",
+     "after": "## Performance\n\nA page over 400 ms loses a fifth of its readers."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "§29 A heading repeated in the first sentence",
+    "Fragmented headers"
+   ],
+   "false_positives": "A one-line paragraph under a heading that states the section's claim or bottom line ('Cache hits fell 40% after the migration.') is a lede, not a restatement. Glossary, reference and API documents where a heading is the term and the line under it is its definition; the regex cannot tell those apart, so treat a hit as a candidate.",
+   "in_baseline": false
+  },
+  {
+   "id": "inline-header-lists",
+   "name": "Inline-header lists (bold-first bullets)",
+   "definition": "A vertical list where every item opens with a short bold (or wiki-bold) label, a colon, then a sentence that often restates the label ('**Performance:** Performance improved by...'). Sub-forms: the same shape without separating punctuation (a bold run followed directly by a capitalised sentence), numbered variants ('1. Header: text'), and a colon lead-in line before the list ('Key highlights:', 'consists of three key layers:'). The detector treats this, headers on every topic and padded numbered lists as one skill-only over-scaffolding judgment. Fold into prose, or keep a plain list of full sentences when the items are parallel and short.",
+   "cues": [
+    "- **User Experience:**",
+    "- **Performance:**",
+    "- **Security:**",
+    "**Performance:** Performance improved by...",
+    "**Word**:",
+    "**Security**:",
+    "**Performance**:",
+    "**Stem:** elaboration",
+    "**Term:** explanation",
+    "**Term:** fragment",
+    "Bold term: explanation sentence",
+    "bold keyword",
+    "* '''Header:''' text",
+    "1. Header: text",
+    "'''SEO (Search Engine Optimization):'''",
+    "'''Route Details''':",
+    "'''Bypasses and Improvements''':",
+    "'''Timeline and Impact''':",
+    "Key highlights:",
+    "consists of three key layers:",
+    "Conflict of Interest (COI)/Autobiography:",
+    "Notability (GNG and NPOLITICIAN):",
+    "Mass Content Removal:",
+    "Disruptive Tagging:",
+    "Context:",
+    "'''Header''' Text begins",
+    "Durability Unlike roasted meats",
+    "The Fire Hazard Cooking with large quantities",
+    "The Solution Ships would stock up",
+    "The Transition After those first 48 hours",
+    "inline-header list",
+    "numbered list inflation"
+   ],
+   "regex": [
+    "(?:^|\\n)[ \\t]*(?:[-*•+]|\\d+[.)])[ \\t]+(?:\\*\\*|__)[^*_\\n]{1,80}?(?::(?:\\*\\*|__)|(?:\\*\\*|__)[ \\t]*:)",
+    "(?:^|\\n)[ \\t]*[*#]+[ \\t]*'''[^'\\n]{1,80}?(?::'''|'''[ \\t]*:)",
+    "\\bkey highlights:[ \\t]*(?:\\n|$)"
+   ],
+   "examples": [
+    {
+     "before": "- **User Experience:** The user experience has been significantly improved with a new interface.\n- **Performance:** Performance has been enhanced through optimized algorithms.\n- **Security:** Security has been strengthened with end-to-end encryption.",
+     "after": "The update ships a new interface and end-to-end encryption, and pages load faster because the sort was rewritten."
+    },
+    {
+     "before": "**Performance:** Performance improved by 40%.",
+     "after": "Performance improved by 40%."
+    },
+    {
+     "before": "AVO consists of three key layers:\n* '''SEO (Search Engine Optimization):''' Traditional methods for improving visibility in search engine results.\n* '''AEO (Answer Engine Optimization):''' Techniques focused on optimizing content for voice assistants and answer boxes.\n* '''GEO (Generative Engine Optimization):''' Strategies for ensuring businesses are cited in responses generated by large language models.",
+     "after": "AVO is search engine optimization extended to voice assistants and answer boxes, and then to the answers large language models generate."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-detector",
+    "wikipedia-b",
+    "tropes-fyi",
+    "vollmer",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "§16 Lists with bold mini-headings",
+    "Inline-header lists",
+    "structural issues / excessive structure / inline-header lists / numbered list inflation",
+    "Inline-header vertical lists",
+    "Inline-header list without separating punctuation",
+    "Bold-First Bullets",
+    "Bold-stemmed bullets with reworded elaboration",
+    "Bold term: explanation list"
+   ],
+   "false_positives": "XfD-style votes where a single bolded 'Keep' or 'Delete' sets the verdict apart from the argument. Glossaries, definition lists, API parameter and CLI flag references, changelogs keyed by component, and any list whose bold term is the item's actual name (a product, a person, a field). One or two bold-labelled items in an otherwise prose document; the tell is three or more in a row and the restatement of the label in the item text.",
+   "in_baseline": true
+  },
+  {
+   "id": "bare-noun-phrase-bullets",
+   "name": "Bullet lists of bare noun phrases",
+   "definition": "Five or more consecutive bullet items that are each a short (six words or fewer) adjective-plus-noun phrase with no finite verb, all the same grammatical shape and length, none asserting anything checkable ('Stable mining efficiency', 'Reliable pool connectivity'). The symmetry is the tell: a genuine list of observations varies in length, has occasional verbs, and has at least one item that breaks the pattern. Detector gate: run of 5+, item word count at most 6, no auxiliary or modal token, 75% or more of the run bare. Convert to prose or rewrite each item as a full claim with a number.",
+   "cues": [
+    "Stable mining efficiency",
+    "Reliable pool connectivity",
+    "Optimized RandomX performance",
+    "Low failed share rates",
+    "Effective hardware utilization",
+    "Consistent thermal stability",
+    "bullet line: ^\\s*(?:\\*|-|•|\\+)\\s+(.+)$",
+    "verb gate: \\b(?:is|are|was|were|has|have|had|will|would|should|must|do|does|did|can|could|may|might|am|been|being)\\b",
+    "run >= 5, item wc <= 6, bareNP/run >= 0.75"
+   ],
+   "regex": [
+    "(?:(?:^|\\n)[ \\t]*[-*•+][ \\t]+(?!(?:[^\\n]*)\\b(?:is|are|was|were|has|have|had|will|would|should|must|do|does|did|can|could|may|might|am|been|being)\\b)(?:[\\w'’/()-]+[ \\t]+){0,5}[\\w'’/()-]+[ \\t]*){5,}"
+   ],
+   "examples": [
+    {
+     "before": "- Stable mining efficiency\n- Reliable pool connectivity\n- Optimized RandomX performance\n- Low failed share rates\n- Effective hardware utilization\n- Consistent thermal stability",
+     "after": "Over a 12-hour run the hashrate held within 2% of nominal and failed shares stayed under 1%; the hottest core sat at 71 C."
+    },
+    {
+     "before": "Low failed share rates",
+     "after": "Failed shares stayed under 1% across a 12-hour run"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Bullet lists of bare noun phrases",
+    "Bullet lists of bare noun phrases (Bullet-NP lists)",
+    "bullet list of bare noun phrases"
+   ],
+   "false_positives": "List content that is a list: changelog entries, todo lists, parameter and option docs, ingredient lists, tag lists, tables of contents. Numbered lists are excluded (they belong to numbered-list inflation). Short two-word action items ('fixed bug') pass the gate, an accepted trade-off. Bullets inside code fences are skipped; two blank lines break a run. Technical blogs and docs relax this rule for option and parameter lists. The three sources split one apiece on severity (detector always, skill-b cluster, skill-a context) with no majority; cluster is the median and matches the detector's own run-of-five gate, which is already a cluster test.",
+   "in_baseline": false
+  },
+  {
+   "id": "numbered-list-inflation",
+   "name": "Numbered list inflation",
+   "definition": "A count-headlined list ('Three key takeaways', 'Five things to know', 'Here are the top seven') chosen because numbered lists are structurally safe, then padded to reach the number rather than reflecting that many discrete parallel items. Use a numbered list only when the content has that many independent, parallel items; otherwise cut to the real items or write prose.",
+   "cues": [
+    "Three key takeaways",
+    "Five things to know",
+    "Here are the top seven",
+    "key takeaways",
+    "things to know",
+    "the top"
+   ],
+   "regex": [
+    "\\b(?:three|four|five|six|seven|eight|nine|ten|\\d{1,2}) (?:key )?(?:takeaways|things (?:to know|you (?:need|should) know)|lessons learned)\\b",
+    "\\bhere are (?:the )?(?:top )?(?:three|four|five|six|seven|eight|nine|ten|\\d{1,2})\\b"
+   ],
+   "examples": [
+    {
+     "before": "Here are the top seven reasons to switch: 1. Faster builds. 2. Per-seat licence. 3. Faster builds on CI. 4. Cheaper. 5. Better docs. 6. Faster incremental builds. 7. Lower cost per seat.",
+     "after": "We switched because the build is 40% faster and the licence is per seat instead of per core."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "Numbered list inflation"
+   ],
+   "false_positives": "Step-by-step instructions, ranked results, and lists whose count is a fact ('the three EU directives that apply'). Tolerance by register: docs and casual skip, LinkedIn and technical blogs relaxed, blog and investor email strict.",
+   "in_baseline": false
+  },
+  {
+   "id": "formulaic-section-headers",
+   "name": "Formulaic section headers (slot names and study-guide titles)",
+   "definition": "Headings that name a template slot rather than the content: 'Introduction', 'Overview', 'Body', 'Summary', 'Conclusion' (Korean 도입 / 본론 / 결론), slide-deck and study-guide titles ('Key Takeaways', 'Key Points', 'Key highlights', 'Key Statistics', 'Key Figures', 'Questions to Consider'), and the default 'X and Y' encyclopaedic headers, of which 'Awards and recognition' is nearly ubiquitous in generated articles. In prose genres remove the heading; in reports make it say something specific about what follows.",
+   "cues": [
+    "Overview",
+    "Key Points",
+    "Summary",
+    "Conclusion",
+    "Introduction",
+    "## 도입",
+    "## 본론",
+    "## 결론",
+    "Key Takeaways",
+    "Questions to Consider",
+    "Key highlights:",
+    "Key Statistics",
+    "Key Figures",
+    "three key layers",
+    "Key management personnel",
+    "Awards and recognition",
+    "Recognition",
+    "Challenges and Legacy",
+    "Challenges and Future Directions",
+    "Legacy & Interpretation",
+    "Sociology, sustainability, and future challenges"
+   ],
+   "regex": [
+    "(?:#{1,6}|={2,4})[ \\t]*[^\\n]{0,4}?(?:key takeaways|key points|key highlights|key statistics|key figures|questions to consider|awards and recognition)\\b",
+    "(?:#{1,6}|={2,4})[ \\t]*(?:overview|introduction|summary|conclusion|body)[ \\t]*(?:#*|=*)[ \\t]*(?:\\n|$)",
+    "(?:#{1,6}|={2,4})[ \\t]*(?:도입|본론|결론)[ \\t]*(?:#*|=*)[ \\t]*(?:\\n|$)"
+   ],
+   "examples": [
+    {
+     "before": "## Key Points",
+     "after": "## What the migration cost"
+    },
+    {
+     "before": "## Introduction\n\nThis document describes the build pipeline.",
+     "after": "## Why the build took forty minutes"
+    },
+    {
+     "before": "== Awards and recognition ==\nThe company has received several awards for its work.",
+     "after": "(Section removed unless a named award with a year and a source can be listed.)"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "wikipedia-b",
+    "wikipedia-a"
+   ],
+   "merged_from": [
+    "Formulaic section headers",
+    "C-3 Schematic headings 도입 / 본론 / 결론 (Introduction / Body / Conclusion)",
+    "C-3 반복적 섹션 헤딩 (schematic section headings)",
+    "Key-takeaways and study-guide sections",
+    "'Awards and recognition' section and 'X and Y' headers"
+   ],
+   "false_positives": "Genuine numbered section titles in academic and report writing (II., (3), chapter titles) are structure and must never be removed or absorbed. README conventions ('Overview', 'Installation') and journal-mandated 'Introduction' / 'Conclusion' headings. Human editors also write legacy and impact sections; the 'X and Y' shape alone is weak, the exact wording 'Awards and recognition' and the study-guide titles are the tell. 'Conclusion' as a heading is flagged here; the inline 'Conclusion:' lead and 'In conclusion' belong to signposted-conclusion.",
+   "in_baseline": false
+  },
+  {
+   "id": "colon-subtitle-headings",
+   "name": "Colon-subtitle headings (X: Y)",
+   "definition": "Every heading takes the 'Noun: subtitle' shape, or its transformation variant 'X: from A to B' ('X: A에서 B로'). The colon subtitle is the model's default heading generator. Compress each to a single noun phrase that names the content; preserve genuine academic and report section titles.",
+   "cues": [
+    "X: Y",
+    "X: A에서 B로",
+    "colon-subtitle heading"
+   ],
+   "regex": [
+    "(?:^|\\n)#{1,6}[ \\t]+[^:\\n]{2,60}:[ \\t]+[^\\n]{3,80}(?:\\n|$)",
+    "(?:^|\\n)#{1,6}[ \\t]+[^:\\n]{2,60}:[ \\t]+from [^\\n]{1,40}\\bto\\b"
+   ],
+   "examples": [
+    {
+     "before": "## Observability: From Logs to Traces",
+     "after": "## Traces replace logs"
+    },
+    {
+     "before": "## 규제: 통제에서 협력으로",
+     "after": "## 규제의 방향 전환"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "C-10 Repeated colon-subtitle headings X: Y / X: A에서 B로",
+    "C-10 콜론 부제 헤딩 공식 'X: Y' (colon subtitle heading)"
+   ],
+   "false_positives": "One colon heading in a document is ordinary; the tell is the shape on every heading. Academic titles, 'Step 1: ...' procedure headings, and headings whose colon introduces a proper name or a code identifier. Severity tie between the two Korean sources was broken toward cluster because the taxonomy runs it as a quick, density-based check.",
+   "in_baseline": false
+  },
+  {
+   "id": "title-heading-duplicate",
+   "name": "Title heading repeated above the content",
+   "definition": "The output opens with a level-1 heading (often bold or linked) that repeats the document or article title before any body text, because the model does not assume the surface already renders the title. On a wiki page, a CMS, a blog with a title field, an issue or a PR description this is a duplicate H1; delete it.",
+   "cues": [
+    "a top-level heading equal to the article name before any content",
+    "= '''Title''' =",
+    "# <article name> as the first line",
+    "level-1 heading equal to the page name"
+   ],
+   "regex": [
+    "\\A\\s{0,20}=[ \\t]*'''[^\\n]{1,150}?'''[ \\t]*="
+   ],
+   "examples": [
+    {
+     "before": "= '''[https://www.youtube.com/@Pixaroo-kid Pixaroo]''' =\nPixaroo is an animated series [...]",
+     "after": "Pixaroo is an animated series [...]"
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-a",
+    "wikipedia-b"
+   ],
+   "merged_from": [
+    "Title heading repeated above the content",
+    "Title heading"
+   ],
+   "false_positives": "A standalone Markdown file whose only title is that heading (a README, a note, a doc page rendered from the file) is correct. Flag only where the surface renders the title itself. The regex covers just the wikitext bold-title form at the top of a document; a plain '# Title' first line is left alone because it is right in most Markdown files. Severity tie (wikipedia-a always, wikipedia-b context) broken toward context because the later treatment adds the surface dependence.",
+   "in_baseline": false
+  },
+  {
+   "id": "empty-parent-headings",
+   "name": "Headings that only contain other headings",
+   "definition": "A heading whose entire content is lower-level headings, with no prose of its own: an outline node rendered as a section ('= Main Characters =' followed directly by '== Pixy =='). Either give the parent a sentence that earns it or promote the children.",
+   "cues": [
+    "heading directly followed by a sub-heading",
+    "= Section =\n== Subsection =="
+   ],
+   "regex": [
+    "(?:^|\\n)(#{2,5})[ \\t]+[^\\n]+\\n[ \\t]*\\n*[ \\t]*\\1#[ \\t]+",
+    "(?:^|\\n)(={1,4})[ \\t]*[^=\\n]+?[ \\t]*\\1[ \\t]*\\n[ \\t]*\\n*[ \\t]*\\1=[ \\t]*[^=\\n]+?[ \\t]*\\1="
+   ],
+   "examples": [
+    {
+     "before": "= Programming =\n== Pixy's Adventure Club ==\n[...]\n= Main Characters =\n== Pixy ==\n[...]",
+     "after": "== Pixy's Adventure Club ==\n[...]\n== Pixy ==\n[...]"
+    },
+    {
+     "before": "## Main characters\n\n### Pixy\n\nPixy is the narrator.",
+     "after": "## Pixy\n\nPixy is the narrator."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "wikipedia-b"
+   ],
+   "merged_from": [
+    "Headings only containing other headings"
+   ],
+   "false_positives": "Long reference documents with a deliberate table-of-contents hierarchy; a document title (H1) directly followed by its first section (H2).",
+   "in_baseline": false
+  },
+  {
+   "id": "headers-over-short-text",
+   "name": "Headers over short text",
+   "definition": "Section headings imposed on text too short to need navigation: a heading over a section of two sentences or fewer, more than three headings in under 300 words, H2/H3s in a short piece, or a discussion reply or comment split into titled sections (Markdown, plain-text titles or wiki subheadings, sometimes emoji-decorated). Remove the headings, merge the text and use prose transitions.",
+   "cues": [
+    "headers over two-sentence sections",
+    "headers over tiny sections",
+    "## ",
+    "### ",
+    "== ",
+    "=== ",
+    "Conclusion",
+    "#### 📌 Key facts needing addition or correction:"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "## Context\n\nWe saw a spike.\n\n## Analysis\n\nIt came from the cron job.\n\n## Conclusion\n\nWe'll move it.",
+     "after": "We saw a spike; it came from the cron job, so we're moving it to 03:00."
+    },
+    {
+     "before": "#### 📌 Key facts needing addition or correction:\n1. **Group launch & meetings**",
+     "after": "The group launched in 2019 and meets monthly; the draft has both wrong."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-b",
+    "vollmer",
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Formatting slop: headers over tiny sections",
+    "Excessive structure: too many headers in short text",
+    "Unnecessary H2/H3 headings in short pieces",
+    "Lengthy comments divided into titled sections (WP:AISECTION, WP:AISUBHEADING)"
+   ],
+   "false_positives": "Reference docs, API references and runbooks where every subsection is meant to be linkable; READMEs with conventional short sections ('License'). Flag on the ratio of headings to body, not on any single short section.",
+   "in_baseline": false
+  },
+  {
+   "id": "bullets-instead-of-prose",
+   "name": "Bullets where prose belongs",
+   "definition": "Bulleted, especially nested, lists imposed on ideas that are connected or need context and would read better as a paragraph: eight or more bullets in under 200 words, three or more bullet blocks in a row in an essay, column or report, or any bullet list where two sentences of prose would do. Lists help when items are parallel and independent; convert the rest to prose and keep a list only where enumeration carries meaning.",
+   "cues": [
+    "bullet lists where two sentences of prose would read better",
+    "bullet blocks",
+    "3+ consecutive",
+    "3개 이상 연속 불릿 블록"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "- Latency dropped\n  - Because we cached the token\n    - Which also fixed the 401s",
+     "after": "Latency dropped once we cached the token, which also fixed the 401s."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "vollmer"
+   ],
+   "merged_from": [
+    "Formatting slop: bullet lists that should be prose",
+    "Excessive bullet lists",
+    "Excessive structure: too many list items",
+    "C-2 3+ consecutive bullet blocks",
+    "C-2 과도한 불릿 리스트 (excessive bullet lists)",
+    "Nested lists for non-list ideas"
+   ],
+   "false_positives": "List-like content: feature comparisons, step-by-step instructions, API parameters, checklists, changelogs. Docs and LinkedIn skip this rule; technical blogs tolerate technical lists. Genre guard from im-not-ai: essay, column and report only.",
+   "in_baseline": false
+  },
+  {
+   "id": "listicle-in-prose",
+   "name": "Listicle in prose (ordinal scaffolding)",
+   "definition": "Numbered points disguised as running prose: consecutive paragraphs or sentences each opened with an ordinal ('The first wall is... The second wall is...', 'First, ... Second, ... Third, ... Fourth, ...', Korean 첫째, 둘째, 셋째), or inline 1) 2) 3) markers inside a paragraph. Often the result of telling the model to stop generating lists. Default is to preserve up to three items; at four or more, prose-ify one or two items or vary the signposts (우선 / 다음으로 / 마지막으로), and vary item length and structure when the list stays.",
+   "cues": [
+    "The first ... The second ... The third ...",
+    "The first wall is",
+    "The second takeaway is that",
+    "The third takeaway is that",
+    "The fourth takeaway is that",
+    "첫째",
+    "둘째",
+    "셋째",
+    "우선",
+    "다음으로",
+    "마지막으로",
+    "1)",
+    "2)",
+    "3)",
+    "우선~",
+    "다음으로~"
+   ],
+   "regex": [
+    "\\bthe (?:first|second) ([a-z]+) is\\b[\\s\\S]{10,800}?\\bthe (?:second|third) \\1 is\\b[\\s\\S]{10,800}?\\bthe (?:third|fourth) \\1 is\\b",
+    "(?:^|[.!?]\\s+)first(?:ly)?,[\\s\\S]{5,600}?[.!?]\\s+second(?:ly)?,[\\s\\S]{5,600}?[.!?]\\s+third(?:ly)?,[\\s\\S]{5,600}?[.!?]\\s+fourth(?:ly)?,",
+    "첫째[\\s\\S]{1,400}?둘째[\\s\\S]{1,400}?셋째[\\s\\S]{1,400}?넷째",
+    "\\b1\\)\\s[^\\n]{3,200}?\\b2\\)\\s[^\\n]{3,200}?\\b3\\)\\s"
+   ],
+   "examples": [
+    {
+     "before": "The first wall is the absence of a free, scoped API. The second wall is the lack of delegated access. The third wall is the absence of scoped permissions.",
+     "after": "The missing scoped permissions are the real wall; a free API and delegated access would be useless without them."
+    },
+    {
+     "before": "First, the build is slow. Second, the tests are flaky. Third, the docs are stale. Fourth, nobody owns the pipeline. The plan has three parts: 1) freeze the schema, 2) migrate the readers, 3) migrate the writers.",
+     "after": "Nobody owns the pipeline, which is why the build is still slow and the tests still flaky. Freeze the schema, then move the readers over before the writers."
+    },
+    {
+     "before": "첫째, 비용이 든다. 둘째, 시간이 걸린다. 셋째, 인력이 부족하다. 넷째, 규제가 불확실하다.",
+     "after": "비용과 시간이 들고 인력도 부족한데, 규제까지 불확실하다."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "tropes-fyi",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Listicle in a Trench Coat",
+    "C-1 첫째, 둘째, 셋째 enumeration dominating a paragraph (first / second / third scaffolding)",
+    "C-1 기계적 병렬 열거 (mechanical parallel enumeration)",
+    "C-9 Parenthesized number indexing 1) 2) 3)"
+   ],
+   "false_positives": "Three-item enumerations are ordinary human prose and must be kept: removing them unconditionally drew real user complaints and the rule was demoted for it. Act at four or more. Academic, manual and expository genres enumerate constantly. Legal clauses and procedure steps that use 1) 2) 3) by convention. The inline 1) 2) 3) form is flagged from three items because its source rule carries no threshold; the ordinal-sentence form waits for four.",
+   "in_baseline": false
+  },
+  {
+   "id": "five-paragraph-essay",
+   "name": "Five-paragraph essay and rule-of-three scaffolding",
+   "definition": "Intro plus three body sections plus closing recap, imposed at any length, even on a 100-word answer. Sub-forms: a three-item list in every section whatever the real count; three consecutive paragraphs opened with the fixed thesis-antithesis-synthesis connectives 먼저 / 반면 / 결국 (first / on the other hand / in the end). Let the count of things to say decide the count of sections, and cut the connectives to one or none.",
+   "cues": [
+    "먼저",
+    "반면",
+    "결국"
+   ],
+   "regex": [
+    "(?:^|\\n)[ \\t]*먼저[,，\\s][\\s\\S]{5,1500}?\\n[ \\t]*반면[,，\\s][\\s\\S]{5,1500}?\\n[ \\t]*결국[,，\\s]"
+   ],
+   "examples": [
+    {
+     "before": "There are three reasons this matters. First, cost. Second, speed. Third, trust. Taken together, these three reasons show why this matters.",
+     "after": "It matters because it is cheaper, and the speed gain is what convinced the team; trust followed."
+    },
+    {
+     "before": "먼저, 비용이 줄었다. 서버 수가 절반이 되었기 때문이다.\n반면, 속도는 느려졌다. 캐시가 사라졌기 때문이다.\n결국, 절충이 필요하다.",
+     "after": "비용은 줄었지만 속도가 느려져서 절충이 필요하다."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer",
+    "baseline",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "Five-paragraph-essay shape at any length",
+    "Symmetric everything: rule-of-three lists in every section",
+    "C-7 Paragraph-initial 먼저–반면–결국 three-beat formula (first – on the other hand – ultimately)",
+    "C-7 문단 간 '먼저·반면·결국' 3단 공식 (first / on the other hand / ultimately)"
+   ],
+   "false_positives": "A single rule-of-three is fine; the tell is the triplet in every section or the same shape on every answer. School essays and exam answers where the form is the assignment.",
+   "in_baseline": true
+  },
+  {
+   "id": "uniform-sentence-length",
+   "name": "Uniform sentence length (flat rhythm)",
+   "definition": "Sentences cluster in one narrow band (15-25 words in English, 30-50 characters in Korean) with no short or long outliers, so the text reads metronomic; the Korean evidence shows the real signal is the absence of long sentences (100+ characters: AI 8 vs human 91 per thousand). Detector gate: coefficient of variation below 0.25 with an average above 10 words over at least 5 sentences; house check: most sentences within three words of the mean across three consecutive paragraphs. Mix short punchy sentences (3-8 words) with long flowing ones (20+) by joining adjacent sentences and splitting others; add no content.",
+   "cues": [
+    "no sentence over 100 characters",
+    "uniform sentence length",
+    "문장 길이 균일",
+    "100자+ 장문 부재",
+    "cv < 0.25 && avg > 10 && sentences >= 5"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Sentence lengths cluster around 18 words (low variation)",
+     "after": "Mix short punchy sentences with longer flowing ones"
+    },
+    {
+     "before": "We deployed the fix on Monday morning. The error rate dropped within the first hour. Users reported faster page loads afterwards. The team then closed the incident ticket.",
+     "after": "We deployed the fix on Monday morning and the error rate dropped within the hour, which is when users started reporting faster page loads. Ticket closed."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "humanizer",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "baseline"
+   ],
+   "merged_from": [
+    "Implied: even, mid-length sentence cadence",
+    "Sentence length uniformity",
+    "sentence-length uniformity",
+    "E-1 Uniform sentence length; no sentence over 100 characters",
+    "E-1 문장 길이 표준편차 낮음 — 장문 부재 (missing long sentences)",
+    "Flat sentence-length rhythm"
+   ],
+   "false_positives": "Texts under five sentences. Genres that mandate uniform sentences (legal boilerplate, safety instructions, controlled language). Personal blogs narrow the gap (the Korean ratio drops from 11x to 4x); treat as a corroborator, not proof. The 100-character threshold is Korean; recalibrate per language.",
+   "in_baseline": true
+  },
+  {
+   "id": "uniform-paragraph-length",
+   "name": "Uniform paragraph length",
+   "definition": "Every paragraph is roughly the same size, typically three to five sentences or 30-50 words, so the document has no rhythm at paragraph level. Detector gate: every paragraph within one sentence of the average, average at least 3 sentences, over at least 4 paragraphs. Vary deliberately: some one-sentence paragraphs, some six-sentence ones.",
+   "cues": [
+    "3–4 sentences per paragraph",
+    "문단 길이 균일",
+    "allSimilar (|len - avg| <= 1 for every paragraph) && avg >= 3 && paragraphs >= 4"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "All paragraphs are ~4 sentences",
+     "after": "Vary paragraph length deliberately"
+    },
+    {
+     "before": "AI produces paragraphs of nearly identical length, sentences of nearly identical rhythm",
+     "after": "Vary paragraph and sentence length."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector",
+    "im-not-ai-taxonomy",
+    "im-not-ai-method",
+    "vollmer",
+    "willfrancis",
+    "baseline"
+   ],
+   "merged_from": [
+    "Uniform paragraph length",
+    "Paragraph length uniformity",
+    "paragraph-length uniformity",
+    "E-3 Every paragraph 3–4 sentences long",
+    "E-3 모든 문단 3~4문장 공식 (uniform paragraph length)",
+    "Uniform paragraph length (three-sentence, 30–50-word paragraphs)",
+    "Uniform paragraph and sentence length",
+    "Symmetric everything: uniform paragraph lengths"
+   ],
+   "false_positives": "Texts under four paragraphs. Short-form registers (LinkedIn, chat, casual) skip; docs relaxed. Distinct from the wall-of-text reply, which is zero breaks in a short text.",
+   "in_baseline": true
+  },
+  {
+   "id": "repeated-sentence-shapes",
+   "name": "Repeated sentence and paragraph shapes (robotic symmetry)",
+   "definition": "Mechanical symmetry beyond length: the same sentence construction recurring, identical paragraph templates (same order of moves, same closing sentence) within a piece or across unrelated pieces, every paragraph carrying the same internal cadence, punctuation density flat from paragraph to paragraph, and every sentence complete, balanced and tidy with no roughness or aside. Detector gates: function-word trigram entropy below 0.82 on 150+ words, per-paragraph sentence-length CV with standard deviation below 0.08 and mean below 0.45, punctuation-density CV below 0.25. Vary the shape only where it helps the point; forced variation is the same failure from the other side.",
+   "cues": [
+    "repeated sentence shapes",
+    "identical paragraph structures",
+    "stacked punchy fragments",
+    "robotic symmetry",
+    "perfectly structured sentences",
+    "cvStd < 0.08 && cvMean < 0.45",
+    "[,;:—()] per \\S+",
+    "cv < 0.25 && mean >= 0.04",
+    "normalized < 0.82 && total >= 50; degenerate distinctCount === 1 flagged high",
+    "FUNC_WORDS: the a an and or but of to in on at by for with from as is was are were be been being have has had do does did will would should could may might must can this that these those it its they them their there here we our us i you your he she his her him not no so if then than when where which who what how why because"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Function-word trigram entropy 0.76 (low)",
+     "after": "Grammatical structure is unusually repetitive."
+    },
+    {
+     "before": "Sentence-rhythm uniform across paragraphs (σCV=0.05)",
+     "after": "Humans vary cadence between terse and discursive paragraphs."
+    },
+    {
+     "before": "Now you can get accused of using AI if you write in perfectly structured sentences.",
+     "after": "Leave one aside in, and one sentence that runs on a bit."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-detector",
+    "hassid",
+    "vollmer"
+   ],
+   "merged_from": [
+    "Robotic rhythm",
+    "function-word trigram entropy (grammar repetition)",
+    "cross-paragraph burstiness",
+    "punctuation-distribution uniformity",
+    "Perfectly structured sentences",
+    "Identical paragraph structures across unrelated articles"
+   ],
+   "false_positives": "Stylometric corroborators only; none is proof alone and human prose swings 0.15-0.40 in per-paragraph CV. Controlled-language docs, legal text, liturgical or deliberately incantatory prose. Do not over-tidy in the other direction: making every paragraph equally rough is the same symmetry.",
+   "in_baseline": false
+  },
+  {
+   "id": "topic-sentence-every-paragraph",
+   "name": "Topic sentence opening every paragraph",
+   "definition": "Every paragraph opens with a thesis-style topic sentence that summarises the paragraph, the English composition-textbook shape imported wholesale. Let some paragraphs open with a case, a scene, a number or a quotation and let the point arrive second.",
+   "cues": [
+    "topic sentence",
+    "paragraph opening",
+    "매 문단 첫 문장이 그 문단의 요약"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Caching reduces latency. When we added the token cache, p95 fell from 800 ms to 120 ms.",
+     "after": "When we added the token cache, p95 fell from 800 ms to 120 ms."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "im-not-ai-taxonomy",
+    "im-not-ai-method"
+   ],
+   "merged_from": [
+    "C-4 Every paragraph opens with its own topic sentence",
+    "C-4 문단 첫 문장 요약 공식 (topic-sentence-first formula)"
+   ],
+   "false_positives": "Technical documentation, abstracts and executive summaries where a leading summary sentence per paragraph is the convention; single paragraphs.",
+   "in_baseline": false
+  },
+  {
+   "id": "short-fragment-runs",
+   "name": "Runs of short punchy fragments",
+   "definition": "Sentences or fragments of four words or fewer set as standalone sentences or paragraphs for manufactured emphasis ('He published this. Openly. In a book. As a priest.'; 'Platforms do.'): one thought per sentence, no state-keeping asked of the reader, stacked in runs. Merge the run into one sentence whose content carries the emphasis. The syntax category owns the two-fragment pair ('Fast. Simple.'); this entry is the run of three or more.",
+   "cues": [
+    "Openly.",
+    "Platforms do.",
+    "single-word sentences",
+    "runs of sentences under five words"
+   ],
+   "regex": [
+    "(?:(?<=[.!?]\\s)(?:[\\w'’-]+\\s){0,3}[\\w'’-]+[.!?](?:\\s|$)){3}"
+   ],
+   "examples": [
+    {
+     "before": "He published this. Openly. In a book. As a priest.",
+     "after": "He published this openly, in a book, while still a priest."
+    },
+    {
+     "before": "These weren't just products. And the software side matched. Then it professionalised. But I adapted.",
+     "after": "The software side matched the products, and when the field professionalised I adapted with it."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "tropes-fyi"
+   ],
+   "merged_from": [
+    "Short Punchy Fragments"
+   ],
+   "false_positives": "Dialogue, a single deliberate one-beat emphasis in a piece, headlines, and quoted text. Abbreviations ('e.g. the') can fool the regex; treat a hit as a candidate. Exclamatory roll-calls of names or places in travel writing hit the regex once per book; treat as a candidate.",
+   "in_baseline": false
+  },
+  {
+   "id": "preamble-before-the-point",
+   "name": "Preamble before the point (sweeping opener)",
+   "definition": "The piece opens with broad context before it says anything specific: a sweeping scene-setting sentence ('In today's fast-paced world...', 'In the rapidly evolving world of...'), background paragraphs that add nothing, or support placed ahead of the point it supports. Delete the sweeping sentence and start with the second; lead with the news or the insight and let context come second. Keep an opening aside, story or admission only when it creates context, tension or character.",
+   "cues": [
+    "In the rapidly evolving world of...",
+    "In today's [fast-paced/rapidly evolving/digital] world...",
+    "In today's rapidly evolving digital landscape…",
+    "In today’s fast-paced world",
+    "generic throat-clearing",
+    "setup adds nothing"
+   ],
+   "regex": [
+    "\\bin today(?:'|’)?s (?:fast-paced|rapidly[- ]evolving|ever[- ]evolving|ever[- ]changing|digital|modern|competitive|dynamic|hyper-connected)[\\w ,-]{0,30}(?:world|landscape|era|age|economy|environment|market|society)\\b",
+    "\\bin the (?:rapidly |ever-)?(?:evolving|changing) (?:world|landscape|field) of\\b"
+   ],
+   "examples": [
+    {
+     "before": "In today's fast-paced digital world, teams need faster builds. We cut ours from forty minutes to six.",
+     "after": "We cut our build from forty minutes to six."
+    },
+    {
+     "before": "In the rapidly evolving world of front-end tooling, choosing a bundler is hard.",
+     "after": "We picked esbuild over webpack because its cold builds are faster."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "no-ai-slop",
+    "avoid-ai-writing-skill-a",
+    "willfrancis"
+   ],
+   "merged_from": [
+    "Generic preamble before the point",
+    "Formulaic openings",
+    "Sweeping contextual opener",
+    "Point-last ordering"
+   ],
+   "false_positives": "Narrative and argumentative forms that earn a delayed point (a story whose setup pays off, a mystery structure). Do not force every section into the same point-detail-background shape; the instruction is to cut setup that adds nothing, not all setup. The stock phrases are always cut; the structural form is a judgment.",
+   "in_baseline": true
+  },
+  {
+   "id": "paragraph-reshuffle-immunity",
+   "name": "Paragraph-reshuffle immunity (missing bridges)",
+   "definition": "Body paragraphs that can be swapped without the reader noticing: each is a self-contained module with no load-bearing link to its neighbours, so the piece is a list of points rather than an argument that builds. Fix structurally: establish a through-line where each paragraph depends on the one before, add connective tissue, or, if the paragraphs are independent, make the piece an explicit list or find its missing thesis.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Paragraph on cost. Paragraph on speed. Paragraph on trust. (any order reads the same)",
+     "after": "We looked because of cost and found speed; the speed gain only holds if the cache is trusted, which is what the next paragraph takes up."
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-a",
+    "avoid-ai-writing-skill-b"
+   ],
+   "merged_from": [
+    "Missing bridge sentences",
+    "Paragraph-reshuffle immunity"
+   ],
+   "false_positives": "Reference material, FAQs, glossaries and any form meant to be dipped into rather than read through.",
+   "in_baseline": false
+  },
+  {
+   "id": "wall-of-text-replies",
+   "name": "Wall-of-text replies",
+   "definition": "In conversational registers (issue and PR comments, chat, DMs, casual email), a reply-length text of roughly under 150 words with four or more sentences delivered as one unbroken paragraph. Humans break replies at thought boundaries; the model defaults to a single dense block. Break at the thought boundaries.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "(one 140-word block answering three separate review questions in a PR comment)",
+     "after": "(three short paragraphs, one per question)"
+    }
+   ],
+   "severity": "context",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-skill-b",
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "Wall-of-text replies (missing line breaks)",
+    "wall-of-text replies"
+   ],
+   "false_positives": "Formal long-form registers (a blog intro, a docs paragraph, a tight one-paragraph email) where a single dense paragraph is the correct shape; never flag continuous long-form prose for lacking internal breaks. Requires knowing the register: the structural detector for this was reverted because it fired on any ordinary short paragraph, and a plain issue comment auto-detects to the blog profile.",
+   "in_baseline": false
+  },
+  {
+   "id": "hashtag-stuffing",
+   "name": "Hashtag stuffing",
+   "definition": "Six or more social hashtags in one text ('#AI #Innovation #Tech #Future #Growth #Leadership #Success'), counted after masking code and subtracting issue references, hex colours and preprocessor directives. Cut to two or three specific tags or none.",
+   "cues": [
+    "(?:^|\\W)#(\\w[\\w-]*)",
+    "exclusions: ^\\d+$, HEX_COLOUR ^(?=[0-9a-f]*\\d)(?:[0-9a-f]{6}|[0-9a-f]{8})$, CPP_DIRECTIVE ^(?:include|define|undef|if|ifdef|ifndef|elif|else|endif|pragma|error|warning|line)$"
+   ],
+   "regex": [
+    "(?:(?:^|\\s)#[a-z][\\w-]*\\b){6,}"
+   ],
+   "examples": [
+    {
+     "before": "#AI #Innovation #Tech #Future #Growth #Leadership #Success",
+     "after": "#twentedev #meetup"
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "hashtag stuffing"
+   ],
+   "false_positives": "Issue and PR references (#123), hex colours, C preprocessor directives and code are excluded; a channel name ('#general') stays counted. Three- and four-character hex-like tags (#dad, #cafe, #b2b) are real tags and stay counted.",
+   "in_baseline": false
+  },
+  {
+   "id": "restating-without-new-information",
+   "name": "Restating without new information (treadmill)",
+   "definition": "The same claim made twice or more in different words: a paragraph that changes nothing the reader knows, believes or can do; a single thesis restated with a new metaphor in every section until an 800-word argument fills 4,000; or the model repeating itself in a long session. Say it once and delete the rest, especially the paragraph the author is proudest of.",
+   "cues": [
+    "restated",
+    "rephrases the thesis",
+    "repeats itself"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "The same point, restated eight ways across 4000 words.",
+     "after": "The point once, with the one example that proves it."
+    },
+    {
+     "before": "Each section rephrases the thesis with a different metaphor but adds nothing new.",
+     "after": "Each section has to add a consequence or a counter-example the reader did not have; otherwise it goes."
+    }
+   ],
+   "severity": "always",
+   "scope": "universal",
+   "sources": [
+    "tropes-fyi",
+    "willfrancis",
+    "baseline",
+    "hassid"
+   ],
+   "merged_from": [
+    "One-Point Dilution",
+    "Repeating the same point in different words",
+    "Treadmill (restating without new information)",
+    "Self-repetition in long sessions"
+   ],
+   "false_positives": "Deliberate refrain in rhetoric or verse; a restatement that adds a new consequence, condition or example is not a treadmill. The remedy for session repetition is procedural (a fresh context), not a rewrite rule.",
+   "in_baseline": true
+  },
+  {
+   "id": "low-type-token-ratio",
+   "name": "Low type-token ratio (vocabulary diversity)",
+   "definition": "Distinct word types divided by tokens below 0.40 on a text of 200 or more tokens; human English at that length sits around 0.50-0.65. A weak stylometric corroborator of vocabulary that circles the same nouns and verbs. Vary nouns and verbs deliberately, or check whether the topic requires the repetition.",
+   "cues": [
+    "tokens >= 200 && ttr < 0.4"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "Vocabulary diversity 36.5% (73 unique / 200 tokens)",
+     "after": "Vary nouns and verbs, or confirm the topic requires the repetition."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "avoid-ai-writing-detector"
+   ],
+   "merged_from": [
+    "low type-token ratio (vocabulary diversity)"
+   ],
+   "false_positives": "Short or topic-narrow texts trigger easily; technical prose that must repeat an identifier; languages with less inflection than English shift the baseline. Detector weight is deliberately low.",
+   "in_baseline": false
+  },
+  {
+   "id": "concede-salvage-rebut-template",
+   "name": "Concede-salvage-rebut reply template",
+   "definition": "When a user points to an error and the model agrees, the first paragraph of the reply follows a fixed three-beat shape: admit the user is right, point out what is still valid, then close with a variant of 'But that's not all it's doing, and the surplus is what you're pointing at'. Detect the concede / salvage / rebut-and-binary sequence; answer the correction directly instead.",
+   "cues": [
+    "But that's not all it's doing, and the surplus is what you're pointing at"
+   ],
+   "regex": [
+    "\\bthat(?:'|’)?s not all it(?:'|’)?s doing\\b",
+    "\\bthe surplus is what you(?:'|’)?re pointing at\\b"
+   ],
+   "examples": [
+    {
+     "before": "You're right that the cache helps. It still cuts p95 in half. But that's not all it's doing, and the surplus is what you're pointing at.",
+     "after": "You're right, the cache also masks the retry bug. I'll fix the retry first."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "velitchkov"
+   ],
+   "merged_from": [
+    "Correction-concession paragraph template (implied)"
+   ],
+   "false_positives": "A genuine concession followed by a substantive correction is not the template; the tell is the fixed beat order and the binary close. The compliment sandwich in the rhetoric category is the neighbouring shape.",
+   "in_baseline": false
+  },
+  {
+   "id": "canned-profile-page",
+   "name": "Canned profile page",
+   "definition": "A profile or bio page following a fixed template: headings like 'Welcome To My User Page!', 'About Me', 'My Interests', 'My Contributions', 'Let's Connect!', inline-header bullets with an emoji per item, bold or Markdown-bold counts ('20+ articles'), and a cheerful sign-off ('Happy Editing! 🚀'). The same shape appears on GitHub and LinkedIn bios. Rewrite as two or three plain sentences about what the person actually does.",
+   "cues": [
+    "Welcome To My User Page!",
+    "About Me",
+    "My Interests",
+    "Let's Connect!",
+    "Let's Collaborate",
+    "My Contributions",
+    "Feel free to leave a message on my",
+    "if you have any suggestions, questions, or would like to collaborate",
+    "Happy Editing! 🚀",
+    "✨",
+    "🖊️",
+    "📚",
+    "🔧",
+    "🏆",
+    "💬"
+   ],
+   "regex": [
+    "\\bwelcome to my (?:user )?page!",
+    "\\blet(?:'|’)?s (?:connect|collaborate)!",
+    "\\bhappy editing!",
+    "\\bfeel free to leave a message on my\\b",
+    "\\bif you have any suggestions, questions, or would like to collaborate\\b"
+   ],
+   "examples": [
+    {
+     "before": "== ✨ About Me ==\n* 🖊️ I enjoy writing about Indian cinema, culture, and history.\n* 📚 I ensure accuracy by citing reliable sources.\n\n== 🏆 My Contributions ==\n* Created and improved '''20+ Wikipedia articles'''\n\n== 💬 Let's Connect! ==\nFeel free to leave a message on my **[[User talk:Example|Talk Page]]** if you have any suggestions, questions, or would like to collaborate.\n\n'''Happy Editing! 🚀'''",
+     "after": "I write about Indian cinema and its history, mostly the Telugu industry of the 1980s. Twenty-odd articles so far; the talk page is open."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "english",
+   "sources": [
+    "wikipedia-c"
+   ],
+   "merged_from": [
+    "Canned user page (WP:AIUSERPAGE)"
+   ],
+   "false_positives": "A single 'About me' heading on a personal site; the tell is the full template with emoji bullets and the sign-off. Markdown bold inside wikitext is the strongest single giveaway.",
+   "in_baseline": false
+  },
+  {
+   "id": "verse-form-defaults",
+   "name": "Verse form defaults (poetry)",
+   "definition": "Poetry that falls into the model's defaults regardless of the request: rhyme where none was asked for, four-line stanzas across forms, iambic meter by default, and superficial fidelity to a form (a 14-line 'sonnet', a 19-line 'villanelle', a 39-line 'sestina' that honours the line count but not the internal rule). Formal gestures without formal follow-through; generated poetry is far more constrained and uniform than human poetry.",
+   "cues": [
+    "sonnet",
+    "villanelle",
+    "sestina"
+   ],
+   "regex": [],
+   "examples": [
+    {
+     "before": "A 39-line 'sestina' whose six end-words never rotate, in rhymed iambic quatrains.",
+     "after": "Either rotate the end-words through all six stanzas and the envoi, or do not call it a sestina; drop the rhyme unless it was asked for."
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "Unrequested rhyme (poetry)",
+    "Quatrain default (poetry)",
+    "Iambic meter default (poetry)",
+    "Superficial fidelity to form"
+   ],
+   "false_positives": "Poems that were asked to rhyme, scan or use quatrains; traditional forms where those are the rule. The evidence base is English (Walsh, arxiv 2410.15299); recalibrate per language.",
+   "in_baseline": false
+  },
+  {
+   "id": "narrative-flatness",
+   "name": "Narrative defaults (POV lock, flat pacing, tidy resolution)",
+   "definition": "Fiction that picks one narrative lane and stays in it with unnatural consistency (no drift between free indirect style, interior monologue and exterior scene), unfolds every scene at the same rate (no elision, selective summary or acceleration), and ties every ending up because the model does not trust the reader with ambiguity unless told to. Let the point of view drift, summarise the dull stretch, and leave one thread open.",
+   "cues": [],
+   "regex": [],
+   "examples": [
+    {
+     "before": "(every scene rendered at the same pace from the same fixed distance, ending with every question answered)",
+     "after": "(the journey summarised in a sentence, the arrival in a page, one question left with the reader)"
+    }
+   ],
+   "severity": "cluster",
+   "scope": "universal",
+   "sources": [
+    "vollmer"
+   ],
+   "merged_from": [
+    "POV lock",
+    "Pacing flatness",
+    "Resolution bias"
+   ],
+   "false_positives": "Genres that require a fixed point of view or a closed ending (procedurals, children's fiction, some romance); a short story that is a single scene.",
+   "in_baseline": false
+  }
+ ],
+ "report": "Nothing crossed the 2-per-10,000-word line on Strunk and Twain: the peak was 0.05, one Twain hit each for 'here are the top ...' and for the three-fragment run, and every other pattern scored zero, because the shape regexes are anchored to Markdown or wikitext markers that continuous prose does not contain — an unanchored 'X: Y' heading or bare-noun-phrase bullet regex would have been the over-matcher here. Two regexes were dropped as duplicates rather than as noise (the Markdown '__' bold variant folded into the '**' inline-header pattern, and a '## Conclusion' heading regex left signposted-conclusion because formulaic-section-headers already owns heading-shaped slot names), and two were added and verified: a heading-word-repetition pattern for heading-restated-below and the wikitext bold-title form for title-heading-duplicate. The 107 raws from 16 sources fold into 32 entries — the three ending shapes stay apart (challenges-then-optimism, bare send-off, announced recap), the bold-label bullet family from eight sources is one entry carrying the no-punctuation and numbered sub-forms in its cues, the detector's three stylometric uniformity measures join 'robotic rhythm' while low type-token ratio keeps its own entry, and Korean C-1/C-9 sit with listicle-in-prose while C-7's fixed 먼저/반면/결국 arc sits with the five-paragraph essay; preamble-before-the-point is marked in_baseline for the house's 'Generic scene-setting' and 'Throat-clearing', baseline entries that were extracted under another category and so cannot appear in its merged_from.",
+ "added": 25,
+ "regex_dropped": 2
+}

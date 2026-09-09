@@ -1,0 +1,2955 @@
+{
+ "bron": "/private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/out/catalog-en.json (categories: structure, punctuation-format, content, artifacts)",
+ "patronen": [
+  {
+   "naam": "Ondanks-de-uitdagingen-slot",
+   "categorie": "structure",
+   "definitie": "Een vast slotblok, vaak onder een kop als 'Uitdagingen en toekomstperspectief', in twee slagen: 'Ondanks zijn [positieve woorden] kampt X met uitdagingen ...' gevolgd door 'Ondanks deze uitdagingen blijft X floreren', of speculatie over investeringen die het onderwerp zouden kunnen helpen. Het benoemt problemen alleen om ze weg te wuiven en voegt geen enkel feit toe. Houd de concrete feiten, schrap de verkooppraat, en voeg alleen data of handelingen toe die de bron of de gebruiker aanlevert.",
+   "cues": [
+    "Ondanks deze uitdagingen",
+    "Ondanks de uitdagingen blijft",
+    "kampt met uitdagingen",
+    "staat voor de nodige uitdagingen",
+    "blijft floreren",
+    "blijft gedijen",
+    "Toch blijft",
+    "Uitdagingen en toekomstperspectief",
+    "Uitdagingen en kansen",
+    "Toekomstperspectief",
+    "Vooruitblik",
+    "biedt ook kansen voor de toekomst",
+    "met de juiste investeringen",
+    "zal de komende jaren"
+   ],
+   "regex": [
+    "\\bondanks (?:deze|de|die|zijn|haar|hun) uitdagingen\\b",
+    "\\bkampt (?:\\w+ )?met (?:de nodige|verschillende|diverse|flinke|een aantal) uitdagingen\\b",
+    "\\bstaat (?:\\w+ ){0,3}voor (?:de nodige|verschillende|diverse|flinke|een aantal) uitdagingen\\b",
+    "\\bblijft (?:\\w+ ){0,3}(?:floreren|gedijen|bloeien)\\b",
+    "(?m)^#{1,6}\\s*(?:uitdagingen en (?:toekomstperspectief|kansen|vooruitzichten)|toekomstperspectief|toekomstige ontwikkelingen|vooruitblik)\\s*$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ondanks de industriële voorspoed kampt Hengelo met uitdagingen die typisch zijn voor stedelijk gebied, zoals filedruk en waterschaarste. Ondanks deze uitdagingen blijft Hengelo dankzij zijn strategische ligging floreren.",
+     "na": "Hengelo heeft dagelijks filedruk op de Boekelosestraat en in droge zomers een drinkwatertekort."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "despite-challenges-outlook",
+   "notities": "Transfereert een-op-een; 'ondanks deze uitdagingen' is de meest voorkomende Nederlandse vorm en komt bijna nooit voor in menselijk zakelijk proza zonder dat er direct daarna een concrete uitdaging genoemd wordt. Let op: 'ondanks de uitdagingen' met daarna een benoemde uitdaging is geen tell."
+  },
+  {
+   "naam": "Aangekondigde conclusie (Kortom-slot)",
+   "categorie": "structure",
+   "definitie": "Een slotalinea die wordt aangekondigd met een vaste samenvatmarkeerder ('Kortom', 'Samengevat', 'Samenvattend', 'Concluderend', 'Al met al', 'Tot slot', 'Resumerend') of een sectie die letterlijk 'Conclusie' heet, en die herhaalt wat de tekst net zei, soms met een opbeurende afsluiter erbovenop. De lezer was er net. Schrap de herhaling en eindig op het laatste inhoudelijke punt, de les of de volgende stap.",
+   "cues": [
+    "Kortom",
+    "Samengevat",
+    "Samenvattend",
+    "Concluderend",
+    "Resumerend",
+    "Al met al",
+    "Tot slot",
+    "Kort samengevat",
+    "Om het samen te vatten",
+    "Om af te sluiten",
+    "## Conclusie",
+    "Onthoud dat",
+    "Aan het eind van de dag"
+   ],
+   "regex": [
+    "(?m)^\\s*(?:kortom|samengevat|samenvattend|concluderend|resumerend|al met al|kort samengevat|om het samen te vatten|om af te sluiten)\\b",
+    "(?m)^#{1,6}\\s*(?:conclusie|slotwoord|tot slot|afsluitend|samenvatting)\\s*$",
+    "\\baan het eind van de dag\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Kortom, de weg van masterstudent naar postdoc verloopt in drie stappen, zoals hierboven beschreven. Die opbouw zorgt voor een stevige onderzoeksbasis.",
+     "na": "(geschrapt; de alinea ervoor liep al van master naar postdoc en eindigt daar)"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "signposted-conclusion",
+   "notities": "De Engelse ingang noemde 'Kortom' al als Nederlandse vorm. 'Tot slot' als laatste item van een opsomming is legitiem; de tell is 'Tot slot' aan het begin van een alinea die niets nieuws zegt."
+  },
+  {
+   "naam": "Cirkelslot",
+   "categorie": "structure",
+   "definitie": "Een slotzin die terugkeert naar het openingsbeeld of de openingsvraag ('En zo zijn we terug bij het begin') in plaats van ergens nieuws te landen. Het is de spiegelvariant van de aangekondigde conclusie: symmetrie in plaats van een punt.",
+   "cues": [
+    "En zo zijn we terug bij het begin",
+    "Daarmee zijn we terug bij de vraag waarmee we begonnen",
+    "Terug bij af",
+    "Zoals we aan het begin al zeiden",
+    "En daarmee is de cirkel rond"
+   ],
+   "regex": [
+    "\\b(?:en zo|daarmee|hiermee|zo)\\s+(?:zijn|komen) we (?:weer )?terug bij (?:het begin|af|de vraag|waar we begonnen)\\b",
+    "\\bterug bij de vraag waarmee (?:we|ik) (?:begon|begonnen)\\b",
+    "\\bdaarmee is de cirkel rond\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "En zo zijn we terug bij het begin: is de tool het waard?",
+     "na": "Vanaf tien man verdient de tool zichzelf terug; daaronder kost het opzetten meer dan het oplevert."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "circular-return-ending",
+   "notities": "Transfereert; de Nederlandse formulering is korter en komt vaker als 'daarmee is de cirkel rond'."
+  },
+  {
+   "naam": "Fractale samenvattingen",
+   "categorie": "structure",
+   "definitie": "'Zeg wat je gaat zeggen, zeg het, zeg wat je gezegd hebt' op elk niveau: een aankondigingszin onder elke kop ('In deze sectie bespreken we ...'), een minisamenvatting aan het eind van elke sectie ('Zoals we hebben gezien ...'), en secties die openen met een recap van de vorige. Schrap de aankondiging en de recap; begin elke sectie met de inhoud en laat de kop het aankondigen.",
+   "cues": [
+    "In deze sectie bespreken we",
+    "In dit hoofdstuk behandelen we",
+    "In dit onderdeel kijken we naar",
+    "Zoals we hebben gezien",
+    "Zoals hierboven beschreven",
+    "In het vorige hoofdstuk zagen we",
+    "Samengevat:"
+   ],
+   "regex": [
+    "\\bin (?:dit|deze) (?:hoofdstuk|onderdeel|sectie|paragraaf|deel|artikel)[^.\\n]{0,30}\\b(?:bespreken|behandelen|bekijken|kijken|gaan|leggen) we\\b",
+    "\\bzoals we (?:hierboven|eerder|net|in (?:deze|dit) \\w+) (?:hebben )?(?:gezien|besproken|behandeld)\\b",
+    "\\bin (?:het|de) (?:vorige|voorgaande) (?:hoofdstuk|paragraaf|sectie) (?:zagen|bespraken) we\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In deze sectie bespreken we hoe caching werkt. [...] Zoals we in deze sectie hebben gezien, verlaagt caching de latency.",
+     "na": "Caching haalt de p95 omlaag omdat het token een keer per uur wordt opgehaald in plaats van bij elk verzoek."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "fractal-summaries",
+   "notities": "Transfereert. 'Zoals we hebben gezien' is in Nederlands academisch proza ook legitiem als er echt naar een eerdere passage verwezen wordt; de tell is de vaste plaatsing aan het eind van elke sectie."
+  },
+  {
+   "naam": "Kop herhaald in de eerste regel",
+   "categorie": "structure",
+   "definitie": "Op een kop volgt een regel die alleen de kop herhaalt ('## Prestaties' gevolgd door 'Prestaties zijn belangrijk.') voordat de echte inhoud begint. De aanloopregel doet het werk van de kop nog een keer; de luidste variant herhaalt het kopwoord als eerste woord van de regel. Schrap de regel en begin bij de eerste zin die iets zegt.",
+   "cues": [
+    "## Prestaties\n\nPrestaties zijn belangrijk.",
+    "## Veiligheid\n\nVeiligheid is cruciaal.",
+    "kopwoord als eerste woord van de eerste zin",
+    "eerste regel zegt alleen dat het onderwerp belangrijk is"
+   ],
+   "regex": [
+    "(?mi)^#{2,6}\\s*([a-z\\u00e0-\\u00ff][\\w-]{3,})[^\\n]*\\n+\\1\\b",
+    "(?mi)^#{2,6}\\s*[^\\n]{3,40}\\n+[^\\n]{0,40}\\b(?:is|zijn) (?:heel |erg )?(?:belangrijk|cruciaal|essentieel|van belang|onmisbaar)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Prestaties\n\nPrestaties zijn belangrijk.\n\nWie een trage pagina opent, klikt weg.",
+     "na": "## Prestaties\n\nWie een trage pagina opent, klikt weg."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "heading-restated-below",
+   "notities": "Transfereert; de eerste regex is hoofdletterongevoelig omdat de kop een hoofdletter heeft en de herhaling in de zin niet altijd."
+  },
+  {
+   "naam": "Vetgedrukte bullet-openers",
+   "categorie": "structure",
+   "definitie": "Een lijst waarvan elk item opent met een kort vet label, een dubbele punt, en dan een zin die het label vaak herhaalt ('**Prestaties:** De prestaties zijn verbeterd ...'). Subvormen: dezelfde vorm zonder leesteken, genummerde varianten ('1. Kop: tekst'), en een aankondigende regel voor de lijst ('De belangrijkste punten:', 'bestaat uit drie kernonderdelen:'). Maak er proza van, of houd een gewone lijst van hele zinnen over.",
+   "cues": [
+    "- **Gebruikerservaring:**",
+    "- **Prestaties:**",
+    "- **Veiligheid:**",
+    "**Kernpunt**:",
+    "**Aanpak:** uitleg",
+    "De belangrijkste punten:",
+    "bestaat uit drie kernonderdelen:",
+    "1. Kop: tekst",
+    "- **Wat het is:**",
+    "- **Waarom het werkt:**"
+   ],
+   "regex": [
+    "(?m)^\\s*[-*\\u2022+]\\s*\\*\\*[^*\\n]{2,45}\\*\\*\\s*[:.]",
+    "(?m)^\\s*[-*\\u2022+]\\s*\\*\\*[^*\\n]{2,45}:\\*\\*",
+    "(?m)^\\s*\\d+\\.\\s*\\*\\*[^*\\n]{2,45}[:.]?\\*\\*\\s*[:.]?",
+    "\\b(?:de belangrijkste punten|de kernpunten|de belangrijkste kenmerken|bestaat uit \\w+ (?:kern)?(?:onderdelen|lagen|pijlers|elementen|stappen))\\s*:"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "- **Gebruikerservaring:** De gebruikerservaring is sterk verbeterd met een nieuwe interface.\n- **Prestaties:** De prestaties zijn verbeterd door geoptimaliseerde algoritmes.\n- **Veiligheid:** De veiligheid is versterkt met end-to-end-versleuteling.",
+     "na": "De update brengt een nieuwe interface en end-to-end-versleuteling, en pagina's laden sneller omdat de sortering is herschreven."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "inline-header-lists",
+   "notities": "Transfereert een-op-een; opmaak is taalonafhankelijk, alleen de labels zijn vertaald."
+  },
+  {
+   "naam": "Opsomming van kale naamwoordgroepen",
+   "categorie": "structure",
+   "definitie": "Vijf of meer bullets achter elkaar die elk een korte naamwoordgroep zijn (bijvoeglijk naamwoord plus zelfstandig naamwoord, hoogstens zes woorden), zonder persoonsvorm, allemaal dezelfde vorm en lengte, en geen ervan controleerbaar ('Stabiele prestaties', 'Betrouwbare verbinding'). De symmetrie is de tell: een echte lijst waarnemingen varieert in lengte, heeft af en toe een werkwoord en heeft minstens een item dat uit de pas loopt. Maak er proza van, of herschrijf elk item als een claim met een getal.",
+   "cues": [
+    "- Stabiele prestaties",
+    "- Betrouwbare verbinding",
+    "- Efficiënte inzet van middelen",
+    "- Consistente kwaliteit",
+    "- Geoptimaliseerde doorvoer",
+    "reeks van 5 of meer, twee tot zes woorden per item, geen persoonsvorm",
+    "werkwoordfilter: is|zijn|was|waren|heeft|hebben|wordt|worden|kan|kunnen|moet|moeten|zal|zullen"
+   ],
+   "regex": [
+    "(?mi)^\\s*[-*\\u2022+]\\s+(?![^\\n]{0,70}\\b(?:is|zijn|was|waren|heeft|hebben|had|hadden|wordt|worden|werd|werden|kan|kunnen|zal|zullen|moet|moeten|mag|mogen|doet|doen|deed|deden|blijft|blijven)\\b)[a-z\\u00e0-\\u00ff][\\w'-]*(?:[ \\t]+[\\w'/-]+){1,5}[ \\t]*$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "- Stabiele mining-efficiëntie\n- Betrouwbare poolverbinding\n- Geoptimaliseerde RandomX-prestaties\n- Laag aandeel mislukte shares\n- Effectieve inzet van hardware",
+     "na": "Over twaalf uur bleef de hashrate binnen 2 procent van nominaal, mislukte shares onder 1 procent, en de heetste kern zat op 71 graden."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "bare-noun-phrase-bullets",
+   "notities": "Transfereert; het werkwoordfilter is vertaald naar Nederlandse hulp- en koppelwerkwoorden. De regex vindt losse kandidaatregels: de poort blijft een reeks van vijf of meer met 75 procent kale items. Sla YAML-frontmatter en tag-lijsten over, want die bestaan per definitie uit kale naamwoordgroepen."
+  },
+  {
+   "naam": "Opgepompte genummerde lijst",
+   "categorie": "structure",
+   "definitie": "Een lijst met een getal in de kop ('Drie belangrijke inzichten', 'Vijf dingen die je moet weten', 'Dit zijn de zeven redenen') die is gekozen omdat genummerde lijsten structureel veilig zijn, en daarna is opgevuld tot het getal klopt in plaats van omdat er zoveel losse punten waren. Gebruik een genummerde lijst alleen als de inhoud zoveel zelfstandige, gelijkwaardige punten heeft; snijd anders terug naar de echte punten of schrijf proza.",
+   "cues": [
+    "Drie belangrijke inzichten",
+    "Vijf dingen die je moet weten",
+    "De 7 belangrijkste redenen",
+    "Hier zijn de vijf",
+    "Dit zijn de drie lessen",
+    "belangrijkste takeaways"
+   ],
+   "regex": [
+    "(?m)^#{0,6}\\s*(?:hier zijn |dit zijn |de )?(?:drie|vier|vijf|zes|zeven|acht|negen|tien|[3-9]|\\d{2})\\s+(?:belangrijkste\\s+|grootste\\s+|grote\\s+|opvallendste\\s+)?(?:inzichten|lessen|redenen|tips|manieren|dingen|punten|voordelen|takeaways)\\b",
+    "\\b(?:drie|vier|vijf|zes|zeven|[3-9]|\\d{2}) (?:dingen|tips|manieren|lessen|redenen) die je (?:moet weten|niet mag missen|zou moeten kennen)\\b",
+    "\\b(?:hier zijn|dit zijn) de (?:top\\s?\\d{1,2}|\\w+)\\s+(?:belangrijkste\\s+)?(?:redenen|tips|manieren|lessen|punten|inzichten)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit zijn de zeven redenen om over te stappen: 1. Snellere builds. 2. Licentie per gebruiker. 3. Snellere builds op CI. 4. Goedkoper. 5. Betere documentatie. 6. Sneller incrementeel bouwen. 7. Lagere kosten per plek.",
+     "na": "We stapten over omdat de build 40 procent sneller is en de licentie per gebruiker gaat in plaats van per core."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "numbered-list-inflation",
+   "notities": "Transfereert; 'X dingen die je moet weten' is een gangbare Nederlandse kopvorm bij echte listicles, dus ernst blijft context."
+  },
+  {
+   "naam": "Sjabloonkoppen",
+   "categorie": "structure",
+   "definitie": "Koppen die een sjabloonvakje benoemen in plaats van de inhoud: 'Inleiding', 'Overzicht', 'Samenvatting', 'Conclusie', studiegids- en slidetitels ('Belangrijkste punten', 'Kernpunten', 'Kerncijfers', 'Vragen om over na te denken'), en de standaard 'X en Y'-encyclopediekop, waarvan 'Prijzen en erkenning' bijna altijd in gegenereerde artikelen staat. Haal de kop weg in prozagenres; laat hem in rapporten zeggen wat er onder staat.",
+   "cues": [
+    "## Inleiding",
+    "## Overzicht",
+    "## Samenvatting",
+    "## Conclusie",
+    "## Belangrijkste punten",
+    "## Kernpunten",
+    "## Kerncijfers",
+    "## Achtergrond",
+    "## Tot slot",
+    "## Prijzen en erkenning",
+    "## Vragen om over na te denken"
+   ],
+   "regex": [
+    "(?m)^#{1,6}\\s*(?:inleiding|introductie|overzicht|samenvatting|conclusie|slotwoord|belangrijkste punten|kernpunten|kernboodschap|kerncijfers|tot slot|achtergrond|vragen om over na te denken|prijzen en (?:erkenning|onderscheidingen))\\s*$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Belangrijkste punten",
+     "na": "## Wat de migratie kostte"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "formulaic-section-headers",
+   "notities": "Transfereert. 'Inleiding' en 'Conclusie' zijn in Nederlandse scripties en rapporten de voorgeschreven kopnamen; alleen buiten die genres is het een tell."
+  },
+  {
+   "naam": "Dubbelepuntkop (X: Y)",
+   "categorie": "structure",
+   "definitie": "Elke kop heeft de vorm 'Zelfstandig naamwoord: ondertitel', of de transformatievariant 'X: van A naar B'. De dubbelepuntkop is de standaardkoppengenerator van het model. Comprimeer elke kop tot een naamwoordgroep die de inhoud benoemt; laat echte rapport- en scriptiekoppen staan.",
+   "cues": [
+    "## Observability: van logs naar traces",
+    "X: van A naar B",
+    "## Caching: sneller dan je denkt",
+    "kop met dubbele punt en ondertitel"
+   ],
+   "regex": [
+    "(?m)^#{1,6}\\s*[^:\\n]{3,45}:\\s*van\\s+[^\\n]{2,40}\\s+naar\\s+\\S",
+    "(?m)^#{1,6}\\s*[^:\\n]{3,45}:\\s+\\S[^\\n]{3,60}$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Observability: van logs naar traces",
+     "na": "## Traces vervangen de logs"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "colon-subtitle-headings",
+   "notities": "Transfereert; de 'van A naar B'-variant is in het Nederlands even productief als in het Engels."
+  },
+  {
+   "naam": "Titelkop boven de tekst herhaald",
+   "categorie": "structure",
+   "definitie": "De tekst opent met een kop van niveau 1 (vaak vet of als link) die de titel van het document of artikel herhaalt, omdat het model niet aanneemt dat het vlak de titel al toont. Op een wiki, in een CMS, op een blog met een titelveld, in een issue of in een PR-beschrijving is dat een dubbele H1; schrap hem.",
+   "cues": [
+    "eerste regel is een H1 die de paginatitel herhaalt",
+    "# <artikelnaam> als eerste regel",
+    "= '''Titel''' =",
+    "kop van niveau 1 gelijk aan de paginanaam"
+   ],
+   "regex": [
+    "\\A\\s*#\\s+[^\\n]{3,80}\\n",
+    "\\A\\s*=\\s*'{0,3}[^\\n=]{3,80}'{0,3}\\s*=\\s*\\n"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "# Twente.dev\n\nTwente.dev is een stack-agnostische meetup in Twente.",
+     "na": "Twente.dev is een stack-agnostische meetup in Twente."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "title-heading-duplicate",
+   "notities": "Taalonafhankelijk: de cue is de positie van de kop, niet de woordkeuze. Alleen een tell op vlakken die de titel zelf al renderen."
+  },
+  {
+   "naam": "Koppen die alleen koppen bevatten",
+   "categorie": "structure",
+   "definitie": "Een kop waarvan de hele inhoud uit lagere koppen bestaat, zonder eigen proza: een tak uit de opzet die als sectie is gerenderd ('## Hoofdpersonen' met daaronder meteen '### Pixy'). Geef de bovenliggende kop een zin die hem verdient, of promoveer de kinderen.",
+   "cues": [
+    "kop direct gevolgd door een subkop",
+    "## Sectie\n### Subsectie",
+    "= Sectie =\n== Subsectie =="
+   ],
+   "regex": [
+    "(?m)^#{1,5}\\s*[^\\n]+\\n+#{2,6}\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Hoofdpersonen\n\n### Pixy\n\n[...]",
+     "na": "### Pixy\n\n[...]"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "empty-parent-headings",
+   "notities": "Taalonafhankelijk structuurpatroon; transfereert onveranderd."
+  },
+  {
+   "naam": "Koppen boven te korte tekst",
+   "categorie": "structure",
+   "definitie": "Kopjes opgelegd aan tekst die te kort is om navigatie nodig te hebben: een kop boven een sectie van hoogstens twee zinnen, meer dan drie koppen in minder dan 300 woorden, H2's en H3's in een kort stuk, of een reactie of comment opgedeeld in getitelde secties. Haal de koppen weg, voeg de tekst samen en verbind met proza.",
+   "cues": [
+    "## Context / ## Analyse / ## Conclusie boven twee zinnen",
+    "meer dan drie koppen in minder dan 300 woorden",
+    "kopjes in een reactie of comment",
+    "## Aanleiding",
+    "## Aanpak",
+    "## Resultaat"
+   ],
+   "regex": [
+    "(?m)^#{2,6}\\s*(?:context|aanleiding|analyse|conclusie|aanpak|resultaat|gevolg|oplossing)\\s*$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Context\n\nWe zagen een piek.\n\n## Analyse\n\nDie kwam van de cronjob.\n\n## Conclusie\n\nWe verzetten hem.",
+     "na": "We zagen een piek; die kwam van de cronjob, dus we verzetten hem naar 03:00."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "headers-over-short-text",
+   "notities": "Transfereert; de regex vindt alleen de meest voorkomende sjabloonkopjes, de eigenlijke poort is de verhouding koppen tot woorden."
+  },
+  {
+   "naam": "Bullets waar proza hoort",
+   "categorie": "structure",
+   "definitie": "Bullets, en zeker geneste bullets, opgelegd aan gedachten die samenhangen of context nodig hebben en die beter als alinea lezen: acht of meer bullets in minder dan 200 woorden, drie of meer bulletblokken achter elkaar, of elke lijst waar twee zinnen proza het werk doen. Lijsten helpen als items gelijkwaardig en zelfstandig zijn; maak van de rest proza en houd een lijst alleen waar het opsommen zelf betekenis draagt.",
+   "cues": [
+    "acht of meer bullets in minder dan 200 woorden",
+    "drie bulletblokken achter elkaar",
+    "geneste bullets voor samenhangende gedachten",
+    "lijst waar twee zinnen proza volstaan"
+   ],
+   "regex": [
+    "(?m)(?:^\\s*[-*\\u2022+]\\s+[^\\n]+\\n){8,}",
+    "(?m)^\\s{2,}[-*\\u2022+]\\s+[^\\n]+\\n\\s{4,}[-*\\u2022+]\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "- De latency daalde\n  - Doordat we het token cachen\n    - Wat ook de 401's oploste",
+     "na": "De latency daalde toen we het token gingen cachen, wat meteen de 401's oploste."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "bullets-instead-of-prose",
+   "notities": "Taalonafhankelijk; transfereert onveranderd."
+  },
+  {
+   "naam": "Lijstje als proza (rangtelwoordsteiger)",
+   "categorie": "structure",
+   "definitie": "Genummerde punten vermomd als lopende tekst: opeenvolgende zinnen of alinea's die elk met een rangtelwoord openen ('Ten eerste ... Ten tweede ... Ten derde', 'Allereerst ... Vervolgens ... Tot slot', 'De eerste muur is ... De tweede muur is ...'), of inline-markeringen 1) 2) 3) binnen een alinea. Vaak het gevolg van de opdracht om te stoppen met lijstjes. Houd hoogstens drie items aan; maak er bij vier of meer een of twee tot proza, en varieer de bewegwijzering.",
+   "cues": [
+    "Ten eerste",
+    "Ten tweede",
+    "Ten derde",
+    "Allereerst",
+    "Vervolgens",
+    "Daarnaast",
+    "Tot slot",
+    "De eerste reden is",
+    "De tweede stap is",
+    "1) ... 2) ... 3)"
+   ],
+   "regex": [
+    "\\bten (?:eerste|tweede|derde|vierde|vijfde)\\b",
+    "\\ballereerst\\b[^.\\n]{0,120}\\.\\s+(?:vervolgens|daarnaast|ten tweede|ten slotte|tot slot)\\b",
+    "\\bde (?:eerste|tweede|derde|vierde) (?:reden|stap|les|muur|factor|conclusie|voorwaarde) is\\b",
+    "\\(\\s?1\\s?\\)[^.\\n]{2,90}\\(\\s?2\\s?\\)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De eerste muur is het ontbreken van een gratis API. De tweede muur is het ontbreken van gedelegeerde toegang. De derde muur is het ontbreken van scopes.",
+     "na": "De echte muur zijn de ontbrekende scopes; zonder die zijn een gratis API en gedelegeerde toegang nutteloos."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "listicle-in-prose",
+   "notities": "Transfereert; 'ten eerste/ten tweede' is de directe Nederlandse tegenhanger en komt in gegenereerd proza veel vaker voor dan in geschreven Nederlands, waar 'eerst' en 'daarna' gewoner zijn."
+  },
+  {
+   "naam": "Vijfparagrafenopstel en drieslagsteiger",
+   "categorie": "structure",
+   "definitie": "Inleiding plus drie middenstukken plus samenvattend slot, opgelegd bij elke lengte, ook bij een antwoord van honderd woorden. Subvormen: drie punten per sectie ongeacht het echte aantal, en drie opeenvolgende alinea's die met de vaste these-antithese-synthesevoegwoorden openen ('Eerst ... Daarentegen ... Uiteindelijk'). Laat het aantal dingen dat je te zeggen hebt het aantal secties bepalen, en snijd de voegwoorden terug tot een of geen.",
+   "cues": [
+    "Er zijn drie redenen",
+    "Ten eerste ... Ten tweede ... Ten derde ... Samen laten deze drie zien",
+    "Eerst ... Daarentegen ... Uiteindelijk",
+    "drie punten in elke sectie",
+    "Bij elkaar tonen deze drie"
+   ],
+   "regex": [
+    "\\ber zijn (?:drie|vier|vijf) (?:redenen|factoren|manieren|punten|oorzaken|voordelen)\\b",
+    "\\b(?:samen|al met al|bij elkaar) (?:laten|tonen|maken) deze (?:drie|vier)\\b",
+    "\\beerst\\b[^.\\n]{0,120}\\.\\s+[^.\\n]{0,80}\\bdaarentegen\\b[^.\\n]{0,120}\\.\\s+[^.\\n]{0,80}\\buiteindelijk\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Er zijn drie redenen waarom dit ertoe doet. Ten eerste de kosten. Ten tweede de snelheid. Ten derde het vertrouwen. Samen laten deze drie redenen zien waarom dit ertoe doet.",
+     "na": "Het is goedkoper, en de snelheidswinst gaf de doorslag; het vertrouwen kwam daarna."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "five-paragraph-essay",
+   "notities": "Transfereert. Het Nederlandse schoolopstel kent dezelfde vorm, dus de vorm alleen is geen bewijs; de tell is de vorm bij een lengte die er niet om vraagt."
+  },
+  {
+   "naam": "Gelijke alinealengte",
+   "categorie": "structure",
+   "definitie": "Elke alinea is ongeveer even lang, meestal drie tot vijf zinnen of 30 tot 50 woorden, zodat het stuk op alineaniveau geen ritme heeft. Detectiepoort: elke alinea binnen een zin van het gemiddelde, gemiddelde minstens 3 zinnen, over minstens 4 alinea's. Varieer bewust: een enkele alinea van een zin, een enkele van zes.",
+   "cues": [
+    "elke alinea drie tot vijf zinnen",
+    "alle alinea's binnen een zin van het gemiddelde",
+    "gemiddelde minstens 3 zinnen over minstens 4 alinea's",
+    "geen enkele alinea van een regel"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "(vier alinea's van elk precies vier zinnen)",
+     "na": "(een alinea van een zin, dan een van zeven)"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "uniform-paragraph-length",
+   "notities": "Metrisch patroon, taalonafhankelijk; geen regex mogelijk, de poort is de meting."
+  },
+  {
+   "naam": "Herhaalde zins- en alineavormen",
+   "categorie": "structure",
+   "definitie": "Mechanische symmetrie voorbij lengte: dezelfde zinsbouw die terugkeert, identieke alineasjablonen (dezelfde volgorde van zetten, dezelfde slotzin) binnen een stuk of over losse stukken heen, elke alinea met dezelfde interne cadans, een vlakke leestekendichtheid van alinea tot alinea, en elke zin af, in balans en netjes, zonder ruwheid of terzijde. Varieer de vorm alleen waar het iets doet.",
+   "cues": [
+    "elke alinea dezelfde volgorde van zetten",
+    "elke zin af, netjes en in balans",
+    "geen enkele terzijde of onafgemaakte zin",
+    "trigramentropie functiewoorden onder 0,82",
+    "leestekendichtheid vlak over alle alinea's",
+    "NL functiewoorden: de het een en of maar van te in op aan bij voor met uit is was zijn waren wordt worden heeft hebben had zal zou kan kunnen moet moeten mag dit dat deze die er hier we ons ik je jij u hij zij ze hun haar niet geen dus als dan toen waar welke wie wat hoe waarom omdat want"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "(elke alinea: stelling, uitleg, voorbeeld, afsluitende zin met dezelfde cadans)",
+     "na": "(een alinea die met een cijfer opent en na twee zinnen stopt, gevolgd door een lange)"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "repeated-sentence-shapes",
+   "notities": "Metrisch patroon; wel aangepast voor Nederlands doordat de functiewoordenlijst voor de trigramentropie vertaald is. De Engelse lijst op Nederlandse tekst geeft onbruikbare entropie."
+  },
+  {
+   "naam": "Kernzin aan het begin van elke alinea",
+   "categorie": "structure",
+   "definitie": "Elke alinea opent met een samenvattende kernzin, de vorm uit het Angelsaksische opstelonderwijs die het model integraal overneemt. Laat sommige alinea's openen met een geval, een scene, een getal of een citaat, en het punt als tweede komen.",
+   "cues": [
+    "elke alinea opent met een samenvattende stelling",
+    "eerste zin vat de alinea samen",
+    "kernzin gevolgd door de uitwerking"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Caching verlaagt de latency. Toen we het token gingen cachen, zakte de p95 van 800 naar 120 milliseconden.",
+     "na": "Toen we het token gingen cachen, zakte de p95 van 800 naar 120 milliseconden."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "topic-sentence-every-paragraph",
+   "notities": "Transfereert; het Nederlandse schrijfonderwijs kent de kernzin ook, dus alleen de mechanische toepassing op elke alinea is de tell."
+  },
+  {
+   "naam": "Aanloop voor het punt",
+   "categorie": "structure",
+   "definitie": "Het stuk opent met brede context voordat het iets specifieks zegt: een wijdse openingszin ('In de snel veranderende wereld van vandaag ...'), achtergrondalinea's die niets toevoegen, of onderbouwing die voor het punt staat dat ze onderbouwt. Schrap de wijdse zin en begin bij de tweede; open met het nieuws of het inzicht en laat de context volgen. Houd een openingsanekdote of bekentenis alleen als die spanning, context of karakter oplevert.",
+   "cues": [
+    "In de snel veranderende wereld van vandaag",
+    "In het huidige digitale landschap",
+    "In een tijd waarin",
+    "In de wereld van vandaag",
+    "belangrijker dan ooit",
+    "Het is geen geheim dat",
+    "Sinds jaar en dag",
+    "In een steeds digitaler wordende samenleving"
+   ],
+   "regex": [
+    "\\bin de (?:[a-z\\u00e0-\\u00ff]+ ){0,3}wereld van (?:vandaag|nu|morgen)\\b",
+    "\\bin (?:het|de) (?:huidige|snel veranderende|steeds veranderende|snel evoluerende) (?:digitale )?(?:landschap|tijdperk|klimaat|samenleving)\\b",
+    "\\bin een tijd waarin\\b",
+    "\\bin de wereld van vandaag\\b",
+    "\\bbelangrijker dan ooit\\b",
+    "\\bhet is geen geheim dat\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In de snel veranderende digitale wereld van vandaag hebben teams snellere builds nodig. Wij brachten de onze terug van veertig naar zes minuten.",
+     "na": "We brachten onze build terug van veertig naar zes minuten."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "preamble-before-the-point",
+   "notities": "Transfereert sterk. 'In de snel veranderende wereld van vandaag' is de vaste Nederlandse vorm van 'in today's fast-paced world' en is in gegenereerd Nederlands minstens zo frequent."
+  },
+  {
+   "naam": "Verwisselbare alinea's",
+   "categorie": "structure",
+   "definitie": "Middenalinea's die van plek kunnen wisselen zonder dat de lezer het merkt: elke alinea is een zelfstandige module zonder dragend verband met zijn buren, zodat het stuk een lijst punten is en geen betoog dat opbouwt. Los het structureel op: leg een lijn waarin elke alinea op de vorige steunt, voeg verbindend weefsel toe, of maak er een expliciete lijst van als de alinea's echt zelfstandig zijn.",
+   "cues": [
+    "alinea's kunnen van plek wisselen zonder dat de lezer het merkt",
+    "geen verbindende zin tussen alinea's",
+    "elk alinea een zelfstandige module"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Alinea over kosten. Alinea over snelheid. Alinea over vertrouwen. (elke volgorde leest hetzelfde)",
+     "na": "We keken vanwege de kosten en vonden snelheid; die winst houdt alleen stand als de cache te vertrouwen is, en daar gaat de volgende alinea over."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "paragraph-reshuffle-immunity",
+   "notities": "Taalonafhankelijk; transfereert onveranderd, geen lexicale cues mogelijk."
+  },
+  {
+   "naam": "Muur van tekst als reactie",
+   "categorie": "structure",
+   "definitie": "In gespreksregisters (issue- en PR-reacties, chat, DM's, losse mail) een reactie van ruwweg minder dan 150 woorden met vier of meer zinnen, geleverd als een ononderbroken blok. Mensen breken een reactie op de gedachtegrens; het model levert standaard een dicht blok. Breek op de gedachtegrenzen.",
+   "cues": [
+    "vier of meer zinnen in een blok in een reactie onder 150 woorden",
+    "PR-reactie als een alinea",
+    "drie losse vragen beantwoord in een blok"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "(een blok van 140 woorden dat drie losse reviewvragen beantwoordt)",
+     "na": "(drie korte alinea's, een per vraag)"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "wall-of-text-replies",
+   "notities": "Taalonafhankelijk; transfereert onveranderd."
+  },
+  {
+   "naam": "Toegeven-redden-weerleggen",
+   "categorie": "structure",
+   "definitie": "Wanneer iemand op een fout wijst en het model het toegeeft, volgt de eerste alinea van het antwoord een vaste drieslag: geef de ander gelijk, wijs aan wat nog wel klopt, en sluit af met een variant van 'maar dat is niet alles wat er speelt, en daar zit precies je punt'. Herken de reeks toegeven-redden-weerleggen en beantwoord de correctie gewoon.",
+   "cues": [
+    "Je hebt gelijk dat",
+    "Je hebt helemaal gelijk",
+    "Dat klopt, en toch",
+    "Maar dat is niet alles wat er speelt",
+    "En daar zit precies je punt"
+   ],
+   "regex": [
+    "\\bje hebt (?:helemaal |volkomen )?gelijk dat\\b",
+    "\\b(?:maar|alleen) dat is niet (?:alles|het enige) (?:wat|dat)\\b",
+    "\\bdat klopt,? (?:en|maar) (?:toch|tegelijk|tegelijkertijd)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Je hebt gelijk dat de cache helpt. Hij halveert de p95 nog steeds. Maar dat is niet alles wat hij doet, en daar zit precies je punt.",
+     "na": "Klopt, de cache verbergt ook de retry-bug. Ik pak de retry eerst aan."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "concede-salvage-rebut-template",
+   "notities": "In het Engels als scope english genoteerd, maar de vorm komt in Nederlandse chatuitvoer even hard terug; alleen de bewoording is vertaald."
+  },
+  {
+   "naam": "Sjabloon-profielpagina",
+   "categorie": "structure",
+   "definitie": "Een profiel- of biopagina volgens een vast sjabloon: koppen als 'Over mij', 'Mijn interesses', 'Mijn bijdragen', 'Laten we connecten!', bullets met een emoji per item, vetgedrukte aantallen ('20+ artikelen') en een opgewekte afsluiter. Dezelfde vorm verschijnt op GitHub en LinkedIn. Herschrijf tot twee of drie gewone zinnen over wat iemand werkelijk doet.",
+   "cues": [
+    "Over mij",
+    "Wie ben ik",
+    "Mijn interesses",
+    "Mijn bijdragen",
+    "Laten we connecten!",
+    "Laten we samenwerken",
+    "Neem gerust contact met mij op",
+    "Stuur me gerust een bericht",
+    "Veel plezier!"
+   ],
+   "regex": [
+    "(?m)^#{1,6}\\s*(?:[\\U0001F300-\\U0001FAFF\\u2728]\\s*)?(?:over mij|wie ben ik|mijn interesses|mijn bijdragen|laten we (?:connecten|samenwerken))\\s*$",
+    "\\bneem gerust contact (?:met (?:mij|me) )?op\\b",
+    "\\bstuur (?:me|mij) gerust een (?:bericht|berichtje)\\b",
+    "\\blaten we (?:connecten|samenwerken)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "== Over mij ==\n* Ik schrijf graag over Twentse techbedrijven.\n== Laten we connecten! ==\nNeem gerust contact met mij op als je wilt samenwerken!",
+     "na": "Ik schrijf over techbedrijven in Twente, meestal over de maakindustrie. Een stuk of twintig stukken tot nu toe; mijn overlegpagina staat open."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "canned-profile-page",
+   "notities": "Transfereert; 'Over mij' en 'Laten we connecten' zijn de gangbare Nederlandse sjabloonkoppen op LinkedIn en persoonlijke pagina's."
+  },
+  {
+   "naam": "Standaardvormen in poëzie",
+   "categorie": "structure",
+   "definitie": "Poëzie die in de standaarden van het model valt ongeacht de opdracht: rijm waar niemand erom vroeg, strofen van vier regels bij elke vorm, jambe als default, en oppervlakkige trouw aan een vorm (een 'sonnet' van veertien regels, een 'sestine' van 39 regels die het regelaantal haalt maar de interne regel niet). Vormgebaren zonder vormgevolg; gegenereerde poëzie is veel eenvormiger dan menselijke.",
+   "cues": [
+    "sonnet",
+    "villanelle",
+    "sestine",
+    "kwatrijn",
+    "rijm zonder dat erom gevraagd is",
+    "vier regels per strofe",
+    "jambisch"
+   ],
+   "regex": [
+    "\\b(?:sonnet|villanelle|sestine|kwatrijn|jambisch|rijmschema)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Een 'sestine' van 39 regels waarvan de zes eindwoorden nooit rouleren, in rijmende jamben.",
+     "na": "Laat de zes eindwoorden door alle strofen en de envoi rouleren, of noem het geen sestine; laat het rijm weg als er niet om gevraagd is."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "verse-form-defaults",
+   "notities": "Transfereert; de vormnamen zijn in het Nederlands vrijwel gelijk. De Nederlandse default neigt bovendien naar eindrijm met -aar/-en, wat een extra Nederlandse tell is."
+  },
+  {
+   "naam": "Verhaaldefaults (vast perspectief, vlak tempo, alles rond)",
+   "categorie": "structure",
+   "definitie": "Fictie die een verteltrant kiest en er met onnatuurlijke consequentheid in blijft (geen drift tussen vrije indirecte rede, innerlijke monoloog en buitenscene), elke scene op hetzelfde tempo laat verlopen (geen weglating, samenvatting of versnelling), en elk einde dichtknoopt omdat het model de lezer geen dubbelzinnigheid toevertrouwt tenzij dat gevraagd wordt. Laat het perspectief schuiven, vat de saaie stukken samen, en laat een draad open.",
+   "cues": [
+    "elke scene op hetzelfde tempo",
+    "geen wisseling tussen vrije indirecte rede en scene",
+    "alle vragen aan het eind beantwoord",
+    "geen tijdsprong of samenvatting"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "(elke scene op dezelfde afstand verteld, met een slot waarin elke vraag beantwoord wordt)",
+     "na": "(de reis in een zin, de aankomst in een bladzijde, een vraag blijft bij de lezer liggen)"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "narrative-flatness",
+   "notities": "Taalonafhankelijk verteltechnisch patroon; transfereert onveranderd."
+  },
+  {
+   "naam": "Vlak zinsritme",
+   "categorie": "structure",
+   "definitie": "Zinslengte en zinsvorm klonteren rond een instelling zonder variatie: of een metronomische mediaan van 14 tot 22 woorden zonder korte mededelende zin, of louter enkelvoudige hoofdzinnen (typisch na 'houd het kort'), of lange gestapelde bijzinnen met gedachtestreepjes ertussen. Varieer het ritme: bind losse korte zinnen met voegwoorden, splits echt verknoopte zinnen, en houd korte zinnen voor nadruk en wendingen.",
+   "cues": [
+    "alle zinnen 14 tot 22 woorden",
+    "alleen hoofdzinnen",
+    "geen enkele korte zin",
+    "lange bijzinketens met gedachtestreepjes",
+    "geen zin langer dan 100 tekens",
+    "elke zin begint met onderwerp plus persoonsvorm"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "De service start. Hij laadt de configuratie. Hij opent een socket. Hij wacht op verzoeken.",
+     "na": "De service laadt zijn configuratie, opent een socket en wacht dan op verzoeken."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "sentence-rhythm-uniformity",
+   "notities": "Metrisch; de Koreaanse maten uit de Engelse ingang vervallen. Een bruikbare Nederlandse maat is de variatie in zinslengte (standaarddeviatie gedeeld door gemiddelde) plus het aandeel zinnen dat met onderwerp-persoonsvorm opent, want het Nederlands kent inversie en gegenereerd Nederlands gebruikt die opvallend weinig."
+  },
+  {
+   "naam": "Gedachtestreepje als standaardsplitsing",
+   "categorie": "punctuation-format",
+   "definitie": "Het gedachtestreepje als vaste manier om een zin te splitsen: een paar om een terzijde, een enkel streepje dat een pittige slotzin aanplakt, streepjes die zin na zin een kwalificatie aanhangen, of een streepje dat de tweede helft van een 'niet X, maar Y'-wending opvoert. In het Nederlands weegt dit zwaarder dan in het Engels: de Nederlandse typografie zet een half kastlijntje met spaties, dus een kastlijn is vrijwel altijd machinespoor. Vervang door een punt, een komma of een voegwoord.",
+   "cues": [
+    "—",
+    " — ",
+    " – ",
+    " -- ",
+    "— maar",
+    "— en dat is",
+    "— niet omdat",
+    "— wat precies het punt is",
+    "**Vet** — zin",
+    "een streepje-terzijde in elke zin"
+   ],
+   "regex": [
+    "\\u2014",
+    "\\s\\u2013\\s",
+    "\\s--\\s",
+    "\\u2014\\s*(?:maar|en|niet|wat|omdat|terwijl|al)\\b",
+    "(?m)^\\*\\*[^*\\n]{2,45}\\*\\*\\s+[\\u2014\\u2013]\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De term wordt vooral gepromoot door instellingen—niet door de mensen zelf. Je zegt niet 'Nederland, Europa' als adres—en toch blijft dat label hangen—zelfs in officiële stukken.",
+     "na": "De term wordt vooral gepromoot door instellingen. De mensen zelf gebruiken hem zelden. Je zegt niet 'Nederland, Europa' als adres, en toch blijft dat label hangen, ook in officiële stukken."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "em-dash-density",
+   "notities": "Transfereert sterker dan in het Engels. Nederlandse typografie kent de em-dash niet: het half kastlijntje met spaties (–) is de norm en de kastlijn (—) komt in redactioneel Nederlands vrijwel nergens voor. Dichtheidsmaat: menselijk Nederlands proza ongeveer een streepje per 500 woorden."
+  },
+  {
+   "naam": "Vetdichtheid",
+   "categorie": "punctuation-format",
+   "definitie": "Vet dat mechanisch wordt toegepast in plaats van een echt accent te zetten: elke term of afkorting in een zin, een vette sleutelfrase in elke zin, elk voorkomen van een gekozen woord, of decoratief vet midden in de zin. Haal het vet bij de meeste frases weg; is iets belangrijk genoeg voor vet, bouw de zin dan zo dat het vooraan staat. Plafond: ongeveer een vette frase per hoofdsectie, of geen.",
+   "cues": [
+    "**",
+    "'''",
+    "een vet begrip in elke zin",
+    "meer dan drie vette stukken in een tekst",
+    "vet midden in een zin",
+    "vet op elk voorkomen van hetzelfde woord"
+   ],
+   "regex": [
+    "\\*\\*[^*\\n]{1,60}\\*\\*",
+    "'''[^'\\n]{1,60}'''"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het combineert **OKR's (Objectives and Key Results)**, **KPI's (Key Performance Indicators)** en visuele strategiemiddelen zoals het **Business Model Canvas (BMC)**.",
+     "na": "Het combineert OKR's en KPI's met visuele strategiemiddelen zoals het Business Model Canvas."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "bold-overuse",
+   "notities": "Taalonafhankelijke opmaak; de regex telt, de drempel ligt bij meer dan drie stukken in een tekst."
+  },
+  {
+   "naam": "Overbodige afkortingsuitleg",
+   "categorie": "punctuation-format",
+   "definitie": "Elke afkorting wordt bij het eerste gebruik tussen haakjes uitgeschreven, ook als het publiek de term dagelijks gebruikt, vaak in de omgekeerde volgorde 'KPI's (Key Performance Indicators)', in vet, en voor elke term in dezelfde zin. Laat de uitleg weg waar de lezer de term kent; houd uitschrijven-dan-afkorting alleen voor een term die het publiek mogelijk niet kent.",
+   "cues": [
+    "KPI's (Key Performance Indicators)",
+    "OKR's (Objectives and Key Results)",
+    "AVG (Algemene verordening gegevensbescherming)",
+    "API (Application Programming Interface)",
+    "elke afkorting uitgeschreven bij eerste gebruik"
+   ],
+   "regex": [
+    "\\b(?:kpi|okr|roi|sla|kri|api|crm|erp|avg|bi|ci|cd|kvk)'?s?\\s\\([a-z\\u00e0-\\u00ff][^)\\n]{8,60}\\)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het combineert **KPI's (Key Performance Indicators)** met het **Business Model Canvas (BMC)**.",
+     "na": "Het combineert KPI's met het Business Model Canvas."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "redundant-acronym-expansion",
+   "notities": "Transfereert; let op de Nederlandse meervoudsapostrof (KPI's, API's), die in de regex is meegenomen."
+  },
+  {
+   "naam": "Engelse titelhoofdletters in een Nederlandse kop",
+   "categorie": "translationese",
+   "definitie": "Elk hoofdwoord van een kop krijgt een hoofdletter ('## Strategische Onderhandelingen En Wereldwijde Partnerschappen'), de Engelse title case gelegd over een taal die alleen het eerste woord en eigennamen kapitaliseert. Een hoofdletter op een functiewoord midden in de kop (En, Of, De, Van, Voor) is het sterkste teken. Gebruik zinskapitaal.",
+   "cues": [
+    "## Strategische Onderhandelingen En Wereldwijde Partnerschappen",
+    "## Belangrijke Punten En Aanbevelingen",
+    "## Onze Diensten",
+    "## Veelgestelde Vragen",
+    "hoofdletter op En/Of/De/Het/Van/Voor midden in een kop"
+   ],
+   "regex": [
+    "(?m)^#{1,6}\\s+(?:[A-Z\\u00c0-\\u00de][\\w\\u00e0-\\u00ff]+\\s+){2,}[A-Z\\u00c0-\\u00de][\\w\\u00e0-\\u00ff]+\\s*$",
+    "(?m)^#{1,6}\\s+\\S+[^\\n]{0,60}\\s(?:En|Of|Van|De|Het|Een|Voor|Met|In|Op|Bij)\\s+[A-Z\\u00c0-\\u00de]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "## Strategische Onderhandelingen En Wereldwijde Partnerschappen",
+     "na": "## Strategische onderhandelingen en wereldwijde partnerschappen"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "title-case-headings",
+   "notities": "Van punctuation-format naar translationese verplaatst: het Nederlands kent geen title case, dus een titelgekapitaliseerde Nederlandse kop kan alleen uit een Engelse vorm komen. Dit is de enige regel in deze set die hoofdlettergevoelig moet draaien; ernst gaat van context (Engels, waar title case een huisstijlkeuze is) naar always. Vals alarm op koppen die zelf Engels zijn (een Engelse vakterm of eigennaam als kop), dus controleer de taal van de kop voordat je hem meldt."
+  },
+  {
+   "naam": "Emoji als versiering",
+   "categorie": "punctuation-format",
+   "definitie": "Emoji voor koppen, lijstitems of vette labels gezet als icoontjes, een per kop of bullet en vaak thematisch bij de tekst gezocht, als opsommingsteken gebruikt of als nadruk, of een losse sprankel aan het eind van een alinea. Residu van training op marketingblogs. Haal ze uit koppen en lopende tekst; een socialpost mag er een of twee aan het eind van een regel houden.",
+   "cues": [
+    "🚀 **Lanceerfase:**",
+    "💡 **Kerninzicht:**",
+    "✅ **Vervolgstappen:**",
+    "## 🚀 Wat dit betekent",
+    "emoji voor elke kop of bullet",
+    "✨ aan het eind van een alinea"
+   ],
+   "regex": [
+    "(?m)^#{1,6}\\s*[\\U0001F300-\\U0001FAFF\\u2728\\u2705\\u26a1\\u2b50\\u2757]",
+    "(?m)^\\s*[-*\\u2022+]\\s*[\\U0001F300-\\U0001FAFF\\u2728\\u2705\\u26a1]",
+    "[\\U0001F300-\\U0001FAFF\\u2728\\u2705]\\s*\\*\\*[^*\\n]{2,40}\\*\\*"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "🚀 **Lanceerfase:** het product gaat live in Q3\n💡 **Kerninzicht:** gebruikers willen eenvoud\n✅ **Vervolgstappen:** vervolgafspraak inplannen",
+     "na": "Het product gaat in het derde kwartaal live. Uit het gebruikersonderzoek kwam vooral de vraag om eenvoud. De vervolgafspraak moet nog worden ingepland."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "emoji-decoration",
+   "notities": "Taalonafhankelijk; alleen de labels zijn vertaald."
+  },
+  {
+   "naam": "Krulaanhalingstekens op een recht-aanhalingsvlak",
+   "categorie": "punctuation-format",
+   "definitie": "Typografische aanhalingstekens en de krulapostrof op een vlak waarvan de conventie recht is: code, commitberichten, Markdown, Reddit, gewone mail. Krullend en recht door elkaar in een tekst of zelfs een zin is het sterkere signaal, want automatisch krullende software is consequent en een plakje uit een chatvenster niet. Zet ze recht waar het doel recht gebruikt; meld een losse krulapostrof nooit.",
+   "cues": [
+    "“",
+    "”",
+    "‘",
+    "’",
+    "krulapostrof in samentrekkingen (z’n, ’t)",
+    "krullend en recht door elkaar in een tekst"
+   ],
+   "regex": [
+    "[\\u201c\\u201d\\u2018\\u2019]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Hij zei “het project ligt op schema”, maar anderen dachten daar anders over.",
+     "na": "Hij zei \"het project ligt op schema\", maar anderen dachten daar anders over."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "curly-quotes",
+   "notities": "Transfereert, met een Nederlandse draai: de Nederlandse typografische conventie is „…” of ‘…’, terwijl het model de Engelse paren “…” uitstoot. Engelse krulparen in Nederlandse tekst zijn dus zowel een vlak- als een taaltell."
+  },
+  {
+   "naam": "Onberispelijke typografie in een ruw register",
+   "categorie": "punctuation-format",
+   "definitie": "Perfecte spatiering, interpunctie en hoofdlettergebruik op plekken waar mensen snel typen: issue- en PR-reacties, chat, DM's, korte mailtjes. De stapel is de handtekening: krulaanhalingstekens plus een gedachtestreepje dat geen scheidingsteken is plus machinale netheid (geen dubbele spaties, geen weggelaten apostrof, geen samentrekking, geen los zinsdeel) in 80 of meer woorden. Omgekeerd geldt bij het redigeren van iemands losse tekst: laat de typefouten, samentrekkingen en eigenaardige hoofdletters staan, want die markeren de schrijver.",
+   "cues": [
+    "geen d/t-fouten",
+    "geen typefouten",
+    "geen dubbele spaties",
+    "geen samentrekkingen (z'n, 't, 'n)",
+    "krulaanhalingstekens plus gedachtestreepje plus foutloze zinnen in 80 of meer woorden",
+    "volledige woorden waar mensen afkorten"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Ik waardeer de grondige analyse, de heldere documentatie en de snelle reactie. Het is een doordacht voorstel — een voorstel dat ik graag steun.",
+     "na": "thanks voor het uitzoekwerk, lijkt me prima zo. ben voor"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "immaculate-typography",
+   "notities": "Transfereert, met een Nederlandse extra: het uitblijven van elke d/t-twijfel en van samentrekkingen als 'z'n', ''t' en ''n' in een informeel register is een Nederlandse variant van hetzelfde stapelsignaal. De Oxford-komma uit de Engelse ingang vervalt hier en zit bij comma-density."
+  },
+  {
+   "naam": "Engelse ziekte (losse of gestreepte samenstellingen)",
+   "categorie": "translationese",
+   "definitie": "In het Nederlands slaat dit patroon om. Het Engels streept te veel; het Nederlands krijgt samenstellingen los of met een streepje waar een woord hoort ('lange termijn strategie' voor 'langetermijnstrategie', 'data gedreven', 'klant gerichte aanpak', 'gebruikers ervaring'), plus onvertaalde Engelse streepvormen in naamwoordelijk gebruik ('het rapport is high-quality', 'werkt out-of-the-box'). Plak de samenstelling aan elkaar, of vertaal hem.",
+   "cues": [
+    "lange termijn strategie",
+    "korte termijn oplossing",
+    "data gedreven",
+    "klant gerichte aanpak",
+    "gebruikers ervaring",
+    "high-quality",
+    "out-of-the-box",
+    "cross-functioneel team",
+    "real-time inzicht"
+   ],
+   "regex": [
+    "\\b(?:lange|korte) termijn (?:strategie|doel|doelen|visie|plan|planning|oplossing|denken|effect)\\b",
+    "\\bdata[- ]gedreven\\b",
+    "\\bklant[- ]gerichte?\\b",
+    "\\bgebruikers ervaring\\b",
+    "\\b(?:high-quality|out-of-the-box|state-of-the-art|end-to-end oplossing)\\b",
+    "\\bcross-functione(?:el|le)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het cross-functionele team leverde een high-quality, data gedreven rapport met een lange termijn strategie.",
+     "na": "Het multidisciplinaire team leverde een goed onderbouwd rapport met een langetermijnstrategie."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "unnecessary-hyphenation",
+   "notities": "Van punctuation-format naar translationese verplaatst en van richting gedraaid: het Engelse mechanisme (te veel koppeltekens) bestaat in het Nederlands niet, maar de spiegel ervan wel, en die ontstaat juist doordat Engelsvormige tekst in het Nederlands wordt gegenereerd. 'datagedreven' aaneen is correct Nederlands; alleen de losse en gestreepte vorm is de tell."
+  },
+  {
+   "naam": "Hashtagstapeling",
+   "categorie": "punctuation-format",
+   "definitie": "Een lang staartblok hashtags onder een korte post (zes of meer, meestal een projectspecifieke tag plus brede categorietags). Menselijke posts met meer dan vijf tags zijn meestal lanceerposts; gegenereerde posts zetten er standaard tien tot vijftien. Breng het terug tot twee of drie specifieke tags, of geen. Helpt een tag de lezer niet om verwant werk te vinden, dan is het vulling.",
+   "cues": [
+    "#AI #innovatie #technologie #toekomst",
+    "#digitalisering",
+    "#ondernemen #groei",
+    "zes of meer hashtags onder een korte post"
+   ],
+   "regex": [
+    "(?:(?:^|\\s)#[a-z\\u00e0-\\u00ff][\\w-]{1,}){6,}"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "#AI #innovatie #technologie #toekomst #digitalisering #ondernemen",
+     "na": "#twentedev #meetup"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "hashtag-stuffing",
+   "notities": "Transfereert; Nederlandse tagtaal is deels Engels (#innovation naast #innovatie), dus de regex is taalneutraal gehouden op de vorm en niet op het woord."
+  },
+  {
+   "naam": "Punt achter het bulletlabel",
+   "categorie": "punctuation-format",
+   "definitie": "In een lijst waarvan de items met een kort label openen, eindigt het label met een punt en loopt de toelichting als losse zin door ('- **Introducties.** Jaren aan conferenties en een netwerk van operators.') waar iemand een dubbele punt zou zetten. Het sterkst met vette labels, zwakker maar nog steeds een tell zonder vet. Maak van de punt een dubbele punt en begin de toelichting klein, of laat het label weg en schrijf een gewone zin.",
+   "cues": [
+    "- **Introducties.** Jaren aan conferenties",
+    "- **Contentdistributie.**",
+    "- **Bereik.** Ons netwerk",
+    "label met punt in plaats van dubbele punt"
+   ],
+   "regex": [
+    "(?m)^\\s*[-*\\u2022+]\\s*\\*\\*[^*\\n]{2,26}\\.\\*\\*\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "- **Introducties.** Jaren aan conferenties en een netwerk van operators.",
+     "na": "- **Introducties:** jaren aan conferenties en een netwerk van operators."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "list-label-periods",
+   "notities": "Taalonafhankelijke opmaakgewoonte; transfereert onveranderd. De regex begrenst het label op 26 tekens, want een hele vetgedrukte zin gevolgd door een toelichting is nadruk en geen labellijst."
+  },
+  {
+   "naam": "Hoofdletter na de dubbele punt",
+   "categorie": "punctuation-format",
+   "definitie": "Het zinsdeel na een dubbele punt begint met een hoofdletter terwijl de grammatica, een eigennaam, een titel of code dat niet vraagt ('Er blijven twee opties over: We leveren nu'). Meestal een bijproduct van de dubbelepunt-onthulling. Het Nederlands schrijft na een dubbele punt klein, behalve bij een citaat, een eigennaam of meerdere volledige zinnen.",
+   "cues": [
+    "Er blijven twee opties over: We leveren nu",
+    "hoofdletter na dubbele punt zonder eigennaam of citaat",
+    "Het antwoord is simpel: Je moet kiezen"
+   ],
+   "regex": [
+    ":\\s+(?:We|Wij|Je|Jij|U|Ik|Hij|Zij|Ze|Het|De|Een|Dit|Dat|Deze|Die|Er|Om|Als|Maar|Want|Dus|Ook|Niet|Geen)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Er blijven twee opties over: We leveren nu of we wachten op de fix.",
+     "na": "Er blijven twee opties over: we leveren nu of we wachten op de fix."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "capitalized-after-colon",
+   "notities": "Blijft in punctuation-format, want het Nederlands heeft hier zijn eigen regel (kleine letter na dubbele punt) en de fout is als leesteken te herkennen; de herkomst is wel de Engelse conventie. Moet hoofdlettergevoelig draaien en genereert vals alarm bij eigennamen, citaten en koppen, dus ernst context."
+  },
+  {
+   "naam": "Komma na een Koreaanse verbindingsuitgang (niet van toepassing)",
+   "categorie": "punctuation-format",
+   "definitie": "Het Engelse patroon beschrijft een komma direct achter een Koreaanse verbindende werkwoordsuitgang (-go/-myeo/-jiman), waar die uitgang het verbinden al doet. Dat mechanisme leunt volledig op Koreaanse morfologie.",
+   "cues": [],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "AI는 빠르게 발전하지만, 기업의 대응은 더디다",
+     "na": "(geen Nederlandse tegenhanger)"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "comma-after-connective-ending",
+   "notities": "NIET VAN TOEPASSING in het Nederlands: het Nederlands verbindt met voegwoorden en zet daar juist wel een komma, dus er is geen morfologisch equivalent. De dichtstbijzijnde Nederlandse variant, de Engelse seriekomma voor 'en' in een opsomming (brood, kaas, en melk), is als deelpatroon ondergebracht bij comma-density. Deze ingang mag bij de merge geschrapt worden."
+  },
+  {
+   "naam": "Kommadichtheid",
+   "categorie": "punctuation-format",
+   "definitie": "Kommaoverschot op documentniveau: het aandeel zinnen met minstens een komma loopt ver boven de menselijke basislijn, en er staat een komma op elke syntactische grens. In het Nederlands komt daar de Engelse seriekomma bij: een komma voor 'en' of 'of' in een opsomming, die het Nederlands niet zet. Splits zinnen, absorbeer de komma in een voegwoord, of schrap hem; houd komma's bij hoofdzingrenzen en duidelijke bijstellingen.",
+   "cues": [
+    "meer dan de helft van de zinnen bevat een komma",
+    "komma op elke syntactische grens",
+    "komma voor 'en' in een opsomming (brood, kaas, en melk)",
+    "komma tussen onderwerp en persoonsvorm"
+   ],
+   "regex": [
+    "\\b[a-z\\u00e0-\\u00ff]{3,}, (?!(?:met|in|op|voor|na|bij|door|uit|over|zonder|volgens|tenzij|mits|dat|die|wat|waar|omdat|zodat|terwijl) )[a-z\\u00e0-\\u00ff]{3,}(?: [a-z\\u00e0-\\u00ff]{3,}){0,3}, (?:en|of) [a-z\\u00e0-\\u00ff]{3,}"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het team, dat snel gegroeid was, kwam maandag bijeen, nam het plan door, en besloot, in beginsel, door te gaan.",
+     "na": "Het team was snel gegroeid. Maandag nam het het plan door en besloot in beginsel door te gaan."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "comma-density",
+   "notities": "Transfereert als maat, en neemt daarnaast het Nederlandse deelpatroon van de seriekomma over dat in het Engels bij immaculate-typography stond (waar de Oxford-komma juist correct is). Let op: een komma voor 'en' tussen twee hoofdzinnen met verschillende onderwerpen is in het Nederlands wel juist, vandaar de drieledige opsommingsvorm en de negatieve lookahead op voorzetsels in de regex. Getest op 26 Nederlandse repobestanden vuurde de seriekommaregel op 6 daarvan, allemaal door mensen geschreven: het Nederlands staat de komma voor 'en' toe als hij de lezing verduidelijkt. Tel hem daarom mee binnen de dichtheidsmaat en meld hem nooit los."
+  },
+  {
+   "naam": "Aanhalingstekens als distantie",
+   "categorie": "punctuation-format",
+   "definitie": "Aanhalingstekens om gewone woorden voor nadruk of ironische afstand ('een \"naadloze\" ervaring'), vijf of meer per document. Houd echte citaten; schrijf de rest als gewone tekst.",
+   "cues": [
+    "een \"naadloze\" ervaring",
+    "\"innovatieve\" oplossingen",
+    "\"echte\" resultaten",
+    "vijf of meer paar aanhalingstekens om gewone woorden"
+   ],
+   "regex": [
+    "[\"\\u201c\\u2018']\\s?(?:naadloz?e?|naadloos|innovatiev?e?|slimme|echte|moderne|unieke|revolutionaire|krachtige)\\s?[\"\\u201d\\u2019']"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het \"innovatieve\" platform biedt \"naadloze\" onboarding voor \"moderne\" teams met \"echte\" resultaten.",
+     "na": "Met het platform kan een nieuw team dezelfde dag beginnen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "scare-quotes",
+   "notities": "Transfereert; de regex vangt de reclamewoorden die het vaakst tussen distantieaanhalingstekens staan, de eigenlijke poort blijft de telling van vijf of meer."
+  },
+  {
+   "naam": "Verklarende haakjes op een rij",
+   "categorie": "punctuation-format",
+   "definitie": "Verklarende haakjes van de vorm '(dit betekent dat ...)' die claim na claim worden aangeplakt. Zet het meeste in de lopende tekst of schrap het. De tell is de formule, niet het haakje: gegenereerd proza gebruikt juist veel minder terzijdes tussen haakjes dan menselijk proza, dus haakjes zijn een menselijk teken om op te merken en nooit om weg te schrijven.",
+   "cues": [
+    "(dit betekent dat ...)",
+    "(wat betekent dat ...)",
+    "(ofwel: ...)",
+    "(met andere woorden: ...)",
+    "(dat wil zeggen: ...)"
+   ],
+   "regex": [
+    "\\((?:dit|wat|dat) betekent(?: dat)?\\b",
+    "\\(ofwel[:,]",
+    "\\(met andere woorden[:,]",
+    "\\(dat wil zeggen[:,]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De omzet groeide 40 procent (dit betekent dat de strategie werkt). Het verloop daalde (wat betekent dat klanten tevredener zijn).",
+     "na": "De omzet groeide 40 procent en het verloop daalde, wat erop wijst dat de strategie werkt."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "parenthetical-gloss-overload",
+   "notities": "Transfereert; de Koreaanse vorm uit de Engelse ingang vervalt."
+  },
+  {
+   "naam": "Regieaanwijzing tussen haakjes in dialoog",
+   "categorie": "punctuation-format",
+   "definitie": "Dialoog met een emotie tussen haakjes voor de regel, als in een scenario ('Bob: (verdedigend) Waarom zou ik?'), in proza dat geen scenario is. Leg de emotie in de woorden of in een handeling.",
+   "cues": [
+    "(verdedigend)",
+    "(geïrriteerd)",
+    "(zuchtend)",
+    "(lachend)",
+    "(aarzelend)"
+   ],
+   "regex": [
+    "(?m)^[a-z\\u00e0-\\u00ff]{2,15}:\\s*\\((?:verdedigend|ge\\u00efrriteerd|geirriteerd|gefrustreerd|zuchtend|lachend|aarzelend|boos|zacht|verbaasd|bedachtzaam)\\)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bob: (verdedigend) Waarom zou ik? / Tonny: (geïrriteerd) Luister nou...",
+     "na": "Bob sloeg zijn armen over elkaar. 'Waarom zou ik?' Tonny wreef in zijn ogen. 'Luister nou.'"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "parenthetical-stage-directions",
+   "notities": "Transfereert; alleen de emotiewoorden zijn vertaald."
+  },
+  {
+   "naam": "Pijlen als voegwoord",
+   "categorie": "punctuation-format",
+   "definitie": "Typografische pijlen of hun ASCII-vormen in lopende tekst, waar een schrijver 'leidt tot' of 'dus' zou zeggen of gewoon een zin zou maken ('Invoer > Verwerking > Uitvoer'). Schrijf de relatie uit.",
+   "cues": [
+    "→",
+    "->",
+    "=>",
+    "Invoer → Verwerking → Uitvoer",
+    "betere resultaten → meer betrokkenheid"
+   ],
+   "regex": [
+    "[\\u2192\\u21d2]",
+    "\\s->\\s",
+    "\\s=>\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dat leidt tot betere resultaten → dus tot meer betrokkenheid",
+     "na": "Dat leidt tot betere resultaten, en betere resultaten leiden tot meer betrokkenheid."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "unicode-arrows",
+   "notities": "Taalonafhankelijk; in code, diagrammen en commitberichten is de pijl legitiem, vandaar ernst context."
+  },
+  {
+   "naam": "Wiskundig vet en bulletglyphs",
+   "categorie": "punctuation-format",
+   "definitie": "Vet nagemaakt met Unicode-wiskundetekens in plaats van opmaak, en lijstitems gemarkeerd met het Unicode-bulletteken op een vlak dat echte lijstsyntaxis heeft. Vervang door de opmaak van het vlak zelf of door gewone zinnen.",
+   "cues": [
+    "𝗵𝗲𝘁",
+    "•",
+    "unicode-vet in plaats van opmaak",
+    "• als bullet op een vlak met echte lijstsyntaxis"
+   ],
+   "regex": [
+    "[\\U0001D400-\\U0001D7FF]",
+    "(?m)^\\s*\\u2022\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "𝗪𝗲𝗸𝗲𝗹𝗶𝗷𝗸𝘀 𝗹𝗲𝘃𝗲𝗿𝗲𝗻\n• kleinere batches\n• minder rollbacks",
+     "na": "Lever wekelijks. Kleinere batches betekenen minder rollbacks."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "unicode-math-bold-and-bullets",
+   "notities": "Taalonafhankelijk; transfereert onveranderd."
+  },
+  {
+   "naam": "Overbodige kleine tabellen",
+   "categorie": "punctuation-format",
+   "definitie": "Kleine tabellen van een handvol rijen met feiten die beter als zin lezen: een tweekolomstabel Metriek/Waarde of Naam/Functie, of een vergelijking Kenmerk/A/B met een bijschrift als 'Vergelijking van X en Y' of 'Kerncijfers'. De tell is de mismatch tussen tabelvorm en kleine, prozavormige inhoud. Vouw de feiten in de tekst.",
+   "cues": [
+    "| Metriek | Waarde |",
+    "| Kenmerk | A | B |",
+    "Kerncijfers",
+    "Vergelijking van X en Y",
+    "| Naam | Functie |"
+   ],
+   "regex": [
+    "(?mi)^\\|\\s*(?:kenmerk|metriek|waarde|cijfer|aspect|onderdeel|naam)\\s*\\|",
+    "\\bvergelijking van [^\\n|]{3,40} en\\b",
+    "\\|\\+\\s*(?:kerncijfers|belangrijkste cijfers)"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "| Metriek | Waarde |\n| --- | --- |\n| Marktwaarde (2024) | circa 2,1 miljard euro |\n| Aantal locaties | 4 |",
+     "na": "De markt was in 2024 ongeveer 2,1 miljard euro waard, verdeeld over vier geaccrediteerde locaties."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "unnecessary-tables",
+   "notities": "Transfereert; alleen de kolomkoppen zijn vertaald."
+  },
+  {
+   "naam": "Overgeslagen kopniveaus",
+   "categorie": "punctuation-format",
+   "definitie": "Secties beginnen op het derde kopniveau zonder kop van het tweede niveau erboven, of een kop staat meer dan een niveau onder zijn ouder. Dat gaat tegen toegankelijkheids- en stijlconventies op elk vlak in, dus een met de hand opgemaakte pagina heeft deze eigenaardigheid bijna nooit. Nummer de hierarchie zo dat elk niveau een stap dieper is dan zijn ouder.",
+   "cues": [
+    "### als eerste kop zonder ## erboven",
+    "kopniveau springt twee stappen",
+    "=== zonder =="
+   ],
+   "regex": [
+    "(?ms)\\A(?:(?!^##\\s).)*?^###\\s",
+    "(?m)^#\\s[^\\n]+\\n+###\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "### Achtergrond\nHet project startte in 2024.\n### Methode\nWe spraken twaalf teams.",
+     "na": "## Achtergrond\nHet project startte in 2024.\n## Methode\nWe spraken twaalf teams."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "heading-level-skipping",
+   "notities": "Taalonafhankelijk; de eerste regex heeft DOTALL en MULTILINE nodig, die in het patroon zelf staan."
+  },
+  {
+   "naam": "H1 voor gewone secties",
+   "categorie": "punctuation-format",
+   "definitie": "Koppen van niveau 1 gebruikt voor gewone secties op een vlak dat niveau 1 voor de paginatitel reserveert (wiki's, de meeste CMS'en, HTML-documenten met een gerenderde titel). Meestal het gevolg van Markdown-koppen een op een naar de doelopmaak vertalen. Zet de secties een niveau lager.",
+   "cues": [
+    "meerdere # koppen in een document",
+    "= Geschiedenis =",
+    "# Geschiedenis",
+    "H1 waar de pagina zelf al een titel toont"
+   ],
+   "regex": [
+    "(?m)^#\\s+\\S",
+    "(?m)^=\\s*[^=\\n]{3,40}\\s*=\\s*$"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "# Geschiedenis\n[...]\n# Programmering\n[...]\n# Externe links",
+     "na": "## Geschiedenis\n[...]\n## Programmering\n[...]\n## Externe links"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "level-1-heading-overuse",
+   "notities": "Taalonafhankelijk; de tell is het aantal H1's, niet het woord."
+  },
+  {
+   "naam": "Scheidingslijn voor elke sectie",
+   "categorie": "punctuation-format",
+   "definitie": "Een horizontale lijn voor elke sectie of subsectie, gebruikelijk in Markdown-uitvoer. Een enkele lijn die een echte wending markeert is normaal; de tell is er een voor elke kop. Haal ze weg en laat de koppen de structuur dragen.",
+   "cues": [
+    "---",
+    "***",
+    "----",
+    "<hr>",
+    "een streep boven elke kop"
+   ],
+   "regex": [
+    "(?m)^\\s*(?:---+|\\*\\*\\*+|___+)\\s*$\\n+#{1,6}\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De oudste woordenboeken kennen die betekenis niet.\n\n---\n\n## Geschiedenis\n\nHoofddoeken zijn in bronnen terug te vinden.\n\n---\n\n## Vorm",
+     "na": "De oudste woordenboeken kennen die betekenis niet.\n\n## Geschiedenis\n\nHoofddoeken zijn in bronnen terug te vinden.\n\n## Vorm"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "thematic-breaks",
+   "notities": "Taalonafhankelijk; let op dat de regex geen YAML-frontmatter raakt, waar '---' de begrenzer is en er geen kop op volgt."
+  },
+  {
+   "naam": "Scheve puntkomma- en dubbelepuntinzet",
+   "categorie": "punctuation-format",
+   "definitie": "Het gebruik van puntkomma en dubbele punt wijkt af van menselijk proza, in een richting die van de modelgeneratie afhangt: of de tekens komen nergens voor en komma's en streepjes doen hun werk, of de puntkomma verbindt hoofdzinnen op een tempo dat ver boven gewoon proza ligt en vervangt punt en voegwoord. Vervang bij overmaat door een punt of een komma plus voegwoord; bij afwezigheid valt er niets te melden.",
+   "cues": [
+    ";",
+    ":",
+    "puntkomma als standaardsplitsing tussen hoofdzinnen",
+    "drie of meer puntkomma's in een alinea",
+    "puntkomma komt nergens voor"
+   ],
+   "regex": [
+    ";[^;\\n]{10,90};[^;\\n]{10,90};"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De build faalde; de logs waren leeg; niemand was gepiept; de piketregeling was verlopen.",
+     "na": "De build faalde en de logs waren leeg. Niemand kreeg een melding, want de piketregeling was verlopen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "semicolon-colon-skew",
+   "notities": "Transfereert, met een lagere drempel: Nederlands proza gebruikt de puntkomma zeldzamer dan Engels, dus drie in een alinea is hier verdachter dan daar."
+  },
+  {
+   "naam": "Opgeblazen betekenis",
+   "categorie": "content",
+   "definitie": "Een gewoon feit wordt gekaderd als keerpunt, erfenis, symbool of bewijs van een brede trend, met een kleine herkenbare set betekeniswerkwoorden en -zelfstandige naamwoorden: 'markeert een keerpunt', 'getuigt van', 'speelt een cruciale rol', 'onderstreept het belang van', 'blijvende nalatenschap', 'veranderende landschap'. Subvormen: zelfbenoemde betekenis ('dit is een cruciaal inzicht') en betekenis vastgeplakt aan alledaagse feiten zoals een etymologie of een inwonertal. Laat het feit staan en schrap de duiding, of vervang hem door het gevolg dat je kunt aanwijzen.",
+   "cues": [
+    "markeert een keerpunt",
+    "vormt een mijlpaal",
+    "speelt een cruciale rol",
+    "onderstreept het belang van",
+    "getuigt van",
+    "blijvende nalatenschap",
+    "zet de toon voor",
+    "laat een onuitwisbare indruk achter",
+    "in het snel veranderende landschap",
+    "is van onschatbare waarde",
+    "vormt de basis voor",
+    "weerspiegelt een bredere ontwikkeling"
+   ],
+   "regex": [
+    "\\b(?:markeert|markeerde|vormt|vormde|betekent) een (?:keerpunt|mijlpaal|kantelpunt|omslagpunt)\\b",
+    "\\been (?:keerpunt|mijlpaal|kantelpunt|omslagpunt) (?:markeerde|markeert|vormde|vormt|betekende)\\b",
+    "\\bspeelt (?:een|de) (?:cruciale|essenti\\u00eble|belangrijke|vitale|centrale|sleutel)\\s?rol\\b",
+    "\\been (?:cruciale|essenti\\u00eble|vitale|centrale) rol speelt\\b",
+    "\\bonderstreept (?:het|de|zijn|haar|daarmee) (?:belang|betekenis|waarde)\\b",
+    "\\bgetuigt van (?:het|de|een)\\b",
+    "\\b(?:blijvende|duurzame) (?:nalatenschap|erfenis|indruk|stempel)\\b",
+    "\\bzet de toon voor\\b",
+    "\\been onuitwisbare (?:indruk|stempel)\\b",
+    "\\bveranderende landschap\\b",
+    "\\bvan onschatbare waarde\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het Centraal Bureau voor de Statistiek werd in 1899 opgericht, wat een keerpunt markeerde in de ontwikkeling van de Nederlandse statistiek. Dit initiatief paste in een bredere beweging.",
+     "na": "Het Centraal Bureau voor de Statistiek werd in 1899 opgericht, tijdens een reeks bestuurlijke hervormingen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "significance-inflation",
+   "notities": "Transfereert een-op-een; dit is in gegenereerd Nederlands minstens zo frequent als in het Engels, vooral 'speelt een cruciale rol' en 'onderstreept het belang van'."
+  },
+  {
+   "naam": "Plaatsing in een niet-benoemd debat",
+   "categorie": "content",
+   "definitie": "Het onderwerp zou discussie, debat of reflectie hebben losgemaakt, of vragen oproepen, zonder dat het debat, een deelnemer, een plaats of een datum ooit wordt genoemd. Het leest als context en voegt er geen toe. Benoem het debat en wie eraan deelneemt, of schrap de zin.",
+   "cues": [
+    "heeft geleid tot discussie over",
+    "roept vragen op over",
+    "zorgde voor de nodige discussie",
+    "wakkert het debat aan",
+    "leidde tot maatschappelijk debat",
+    "stemt tot nadenken over"
+   ],
+   "regex": [
+    "\\b(?:leidde|heeft geleid|leidt) tot (?:een |de |het )?(?:brede |maatschappelijke |publieke |nodige )?(?:discussie|debat|gesprek) over\\b",
+    "\\broept (?:de )?(?:belangrijke |fundamentele |ethische |nodige )?vragen op over\\b",
+    "\\bwakkert? (?:het|de) (?:debat|discussie) aan\\b",
+    "\\bzorgde voor (?:de nodige )?(?:discussie|ophef|debat)\\b",
+    "\\bstemt tot nadenken over\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Het fenomeen heeft geleid tot discussie over authenticiteit, toestemming en de psychologische gevolgen van digitaal voortleven.",
+     "na": "In een artikel in AI & Society (2025) betogen Hollanek en Nowaczyk-Basinska dat een griefbot toestemming nodig heeft van de persoon die wordt nagebootst."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "unnamed-debate-situating",
+   "notities": "Transfereert; in het Engels als scope english genoteerd, maar de Nederlandse vormen zijn even productief."
+  },
+  {
+   "naam": "Ecosysteem- en erfgoedvulling",
+   "categorie": "content",
+   "definitie": "Een stuk over een soort, plek of voorwerp wordt opgevuld met algemene verbanden met het ecosysteem, het milieu of het cultureel erfgoed, ook waar dat verband nergens uit blijkt, en blijft hangen op beschermingsstatus, bedreigingen en behoudsinspanning waar geen beoordeling en geen inspanning bestaan. De verraderlijke vorm is toegeven dat er geen beoordeling is en daarna toch over bedreigingen speculeren. Houd de ecologie die in een bron staat en schrap de rest.",
+   "cues": [
+    "speelt een rol in het ecosysteem",
+    "draagt bij aan het rijke culturele erfgoed",
+    "het behoud van deze soort is van groot belang",
+    "er is geen specifieke beoordeling van de beschermingsstatus",
+    "bedreigingen zoals overbevissing, vervuiling en habitatverlies",
+    "van onschatbare waarde voor de biodiversiteit"
+   ],
+   "regex": [
+    "\\bdraagt bij aan (?:het|de) rijke (?:culturele|cultuurhistorische|cultureel) \\w+\\b",
+    "\\bspeelt (?:een|de) (?:belangrijke |cruciale )?rol in het ecosysteem\\b",
+    "\\bhet behoud van deze soort\\b",
+    "\\bbedreigingen zoals (?:overbevissing|vervuiling|habitatverlies)\\b",
+    "\\bvoor de biodiversiteit van (?:groot |onschatbaar )?belang\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De soort speelt een rol in het ecosysteem en draagt bij aan het rijke culturele erfgoed van de streek. Het behoud van deze soort is van groot belang voor de biodiversiteit.",
+     "na": "De soort komt alleen voor op de Sallandse Heuvelrug, boven de 40 meter."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "ecosystem-heritage-padding",
+   "notities": "Transfereert; dit is in Nederlandse natuur- en erfgoedteksten een gangbare invulzin geworden."
+  },
+  {
+   "naam": "Brochuretaal",
+   "categorie": "content",
+   "definitie": "Tekst die wil informeren zakt af naar reclame: waarderende bijvoeglijke naamwoorden, reisgidskaders en persberichtwerkwoorden toegepast op plaatsen, gemeenschappen, mensen, bedrijven of producten. Subvormen: de erfgoedreisgids ('gelegen in het hart van', 'adembenemend', 'rijke geschiedenis') en het bedrijfspersbericht ('zet zich in voor duurzaamheid', 'toonaangevend'). Schrap het oordeel en houd het feit.",
+   "cues": [
+    "gelegen in het hart van",
+    "het bruisende hart van",
+    "adembenemend",
+    "bruisend",
+    "rijke geschiedenis",
+    "een must voor iedere bezoeker",
+    "toonaangevend",
+    "gerenommeerd",
+    "zet zich in voor",
+    "unieke combinatie van",
+    "biedt een schat aan",
+    "onderscheidt zich door",
+    "state of the art"
+   ],
+   "regex": [
+    "\\bgelegen in het (?:hart|groene hart) van\\b",
+    "\\bhet bruisende hart van\\b",
+    "\\badembenemend[e]?\\b",
+    "\\brijke (?:geschiedenis|traditie|cultuur|historie)\\b",
+    "\\been must (?:voor|zijn|is het)\\b",
+    "\\btoonaangevend[e]?\\b",
+    "\\bgerenommeerd[e]?\\b",
+    "\\bzet zich in voor\\b",
+    "\\bunieke combinatie van\\b",
+    "\\bbiedt een schat aan\\b",
+    "\\bbruisend[e]?\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Gelegen in het bruisende hart van Twente is Almelo een levendige stad met een rijke geschiedenis en adembenemende natuur in de directe omgeving.",
+     "na": "Almelo is een stad in Twente met 73.000 inwoners."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "promotional-language",
+   "notities": "Transfereert sterk. 'Gelegen in het hart van' en 'bruisend' zijn de Nederlandse tegenhangers van 'nestled' en 'vibrant' en komen in gegenereerde VVV-achtige tekst vrijwel altijd voor."
+  },
+  {
+   "naam": "Vage bronvermelding",
+   "categorie": "content",
+   "definitie": "Een bewering wordt toegeschreven aan een autoriteit die de tekst nooit benoemt: experts, deskundigen, onderzoek, studies, waarnemers, critici, analisten, branchekenners. Subvormen: vage externe bevestiging waarbij een ongenoemde partij een algemene superlatief levert ('wordt algemeen beschouwd als') en het oordeel zonder oordelaar. Noem de bron met naam en jaar, of schrap de zin.",
+   "cues": [
+    "experts zeggen",
+    "deskundigen stellen",
+    "onderzoek toont aan dat",
+    "uit studies blijkt",
+    "volgens critici",
+    "wordt algemeen beschouwd als",
+    "branchekenners melden",
+    "men zegt dat",
+    "kenners wijzen erop",
+    "uit onderzoek blijkt"
+   ],
+   "regex": [
+    "\\b(?:experts|deskundigen|onderzoekers|critici|analisten|waarnemers|kenners|ingewijden) (?:zeggen|stellen|beweren|menen|betogen|wijzen erop|geven aan)\\b",
+    "\\b(?:onderzoek|studies|onderzoeken) (?:toont|tonen) aan dat\\b",
+    "\\buit (?:onderzoek|studies|meerdere onderzoeken) blijkt\\b",
+    "\\bwordt (?:algemeen|breed|vaak|doorgaans) (?:beschouwd|gezien|erkend) als\\b",
+    "\\bvolgens (?:experts|deskundigen|kenners|ingewijden|critici|branchekenners)\\b",
+    "\\bmen (?:zegt|neemt aan|gaat ervan uit) dat\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Deskundigen stellen dat de soort een cruciale rol speelt in het regionale ecosysteem.",
+     "na": "Onderzoekers van Wageningen University becijferden het aandeel in het lokale sedimentbudget op 11 procent (Kok, 2021)."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "vague-attribution",
+   "notities": "Transfereert een-op-een; 'uit onderzoek blijkt' is de meest voorkomende Nederlandse vorm en staat in vrijwel elke gegenereerde informatieve tekst."
+  },
+  {
+   "naam": "Opgeblazen bronnentelling",
+   "categorie": "content",
+   "definitie": "Er worden bronnen genoemd, maar hun aantal of breedte wordt overdreven: de mening van een persoon staat er als breed gedeeld, meervoudige 'recensenten', 'wetenschappers' of 'publicaties' staan voor een enkele genoemde naam, 'meerdere bronnen' verschijnt waar er twee staan, en 'zoals' suggereert een langere lijst waar de bronnen geen aanwijzing voor geven. Laat het meervoud kloppen met het aantal verwijzingen, of noem de ene bron die je hebt.",
+   "cues": [
+    "meerdere bronnen",
+    "verschillende publicaties",
+    "diverse media",
+    "meerdere onderzoeken",
+    "zoals",
+    "wordt breed geïnterpreteerd",
+    "veel wetenschappers"
+   ],
+   "regex": [
+    "\\b(?:meerdere|verschillende|diverse|talloze) (?:bronnen|publicaties|media|onderzoeken|studies|deskundigen|wetenschappers|recensenten)\\b",
+    "\\bwordt (?:breed|algemeen) ge\\u00efnterpreteerd\\b",
+    "\\bveel (?:wetenschappers|onderzoekers|deskundigen) (?:zijn het erover eens|menen)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Verschillende publicaties noemden het apparaat een technisch onderwijsplatform.",
+     "na": "Bright noemde het apparaat in maart 2024 een technisch onderwijsplatform."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "source-count-inflation",
+   "notities": "Transfereert; 'meerdere bronnen' is de gangbare Nederlandse vorm."
+  },
+  {
+   "naam": "Relevantie bewijzen met namen",
+   "categorie": "content",
+   "definitie": "Belang wordt beargumenteerd door op te sommen waar het onderwerp is verschenen in plaats van wat er gezegd is: een rij prestigieuze titels, een classificatie van die titels ('onafhankelijke berichtgeving', 'landelijke media') of een volgersaantal. Een verwante vorm prijst een bewerking omdat die 'goed gebronde' is in plaats van te zeggen wat er is toegevoegd. Houd een verwijzing met context en schrap de rest.",
+   "cues": [
+    "werd geciteerd in NRC, de Volkskrant en het FD",
+    "onafhankelijke berichtgeving",
+    "landelijke media",
+    "regionale media",
+    "een actieve aanwezigheid op sociale media",
+    "meer dan 500.000 volgers",
+    "vakbladen"
+   ],
+   "regex": [
+    "\\b(?:landelijke|regionale|onafhankelijke|internationale|toonaangevende) (?:media|nieuwsmedia|berichtgeving|vakbladen)\\b",
+    "\\been actieve (?:aanwezigheid|volgersbasis|community) op (?:sociale media|social media)\\b",
+    "\\bwerd (?:onder meer )?geciteerd in\\b",
+    "\\bmet (?:meer dan|ruim) [\\d.]+ volgers\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Haar opvattingen werden geciteerd in NRC, de Volkskrant, het FD en Trouw. Ze heeft een actieve aanwezigheid op sociale media met meer dan 500.000 volgers.",
+     "na": "In een interview in NRC (2024) bepleitte ze dat regionale statistiekbureaus hun ruwe microdata publiceren."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "notability-name-dropping",
+   "notities": "Transfereert; alleen de titels zijn vervangen door Nederlandse."
+  },
+  {
+   "naam": "Vage verbinding",
+   "categorie": "content",
+   "definitie": "Een concrete relatie (was directeur van, doceerde aan, componeerde voor, ontving) wordt vervangen door een onbepaalde band: 'geassocieerd met', 'in verband gebracht met', 'verbonden aan', 'gelieerd aan'. De zin ziet er gebrond uit en zegt niets controleerbaars. Haal de echte relatie uit de bron en schrijf die op.",
+   "cues": [
+    "in verband gebracht met",
+    "geassocieerd met",
+    "wordt gelinkt aan",
+    "gelieerd aan",
+    "verbonden aan",
+    "houdt verband met",
+    "wordt in verband gebracht met"
+   ],
+   "regex": [
+    "\\bin verband gebracht met\\b",
+    "\\bgeassocieerd (?:met|wordt)\\b",
+    "\\bwordt gelinkt aan\\b",
+    "\\bgelieerd aan\\b",
+    "\\bhoudt verband met\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In 2017 werd Jan de Vries in verband gebracht met de leiding van VoorbeeldBV.",
+     "na": "Jan de Vries was in 2017 directeur van VoorbeeldBV."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "vague-association",
+   "notities": "Transfereert. Let op: 'verbonden aan' plus een instelling ('verbonden aan de Universiteit Twente') is in het Nederlands een gangbare, precieze formulering en staat daarom niet in de regex."
+  },
+  {
+   "naam": "Speculatie als feit gepresenteerd",
+   "categorie": "content",
+   "definitie": "Waar het model niets vond, stelt het dat er niets bestaat ('er is weinig bekend over') en vult het gat vervolgens met omzichtige verzinsels ingeleid door 'waarschijnlijk', 'vermoedelijk', 'naar verluidt', 'lijkt te hebben'. Een veelvoorkomende subvorm schrijft een levend persoon bewuste terughoudendheid toe ('houdt zich bewust op de achtergrond') terwijl de werkelijkheid is dat het model geen gegevens heeft. Zowel de bewering over de afwezigheid als de invulling moeten weg.",
+   "cues": [
+    "houdt zich bewust op de achtergrond",
+    "blijft liever uit de schijnwerpers",
+    "er is weinig bekend over",
+    "waarschijnlijk groeide hij op",
+    "vermoedelijk",
+    "naar verluidt",
+    "lijkt te hebben gestudeerd",
+    "men neemt aan dat",
+    "het valt aan te nemen dat"
+   ],
+   "regex": [
+    "\\bhoudt (?:zich|hij|zij) (?:bewust )?(?:op de achtergrond|uit de schijnwerpers|buiten beeld)\\b",
+    "\\bblijft (?:liever )?(?:uit de schijnwerpers|op de achtergrond)\\b",
+    "\\bwaarschijnlijk (?:groeide|begon|studeerde|werkte|volgde)\\b",
+    "\\blijkt te hebben (?:gestudeerd|gewerkt|gewoond)\\b",
+    "\\bnaar verluidt\\b",
+    "\\bhet valt aan te nemen dat\\b",
+    "\\bis (?:er )?weinig (?:publiek )?bekend over\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Over haar jeugd is weinig bekend, wat erop wijst dat zij zich bewust op de achtergrond houdt. Waarschijnlijk groeide zij op in een middenklassegezin.",
+     "na": "De hier gebruikte bronnen zeggen niets over haar jeugd."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "speculative-gap-fill",
+   "notities": "Transfereert; 'naar verluidt' en 'vermoedelijk' zijn in Nederlandse journalistiek soms legitiem, maar de combinatie met een geconstateerd gebrek aan bronnen is de tell."
+  },
+  {
+   "naam": "Abstractie waar een concreet gegeven bestaat",
+   "categorie": "content",
+   "definitie": "Een claim wordt abstract gesteld waar een naam, getal, datum, mechanisme of voorbeeld beschikbaar is: 'verbeterde de efficientie', 'aanzienlijk sneller', 'een groot bestand', 'een database' voor de echte productnaam. Subvormen: abstracte hoeveelheidswoorden in plaats van een gemeten waarde, en categoriewoorden in plaats van de naam van het ding. Zet het getal, de naam of het mechanisme terug.",
+   "cues": [
+    "verbeterde de efficiëntie",
+    "aanzienlijk sneller",
+    "significant verbeterd",
+    "een groot bestand",
+    "diverse voordelen",
+    "in hoge mate",
+    "een aantal verbeteringen"
+   ],
+   "regex": [
+    "\\bverbeter(?:de|t|d)[^.\\n]{0,20} de effici(?:\\u00eb|e)ntie\\b",
+    "\\bde effici(?:\\u00eb|e)ntie (?:aanzienlijk |sterk |flink )?verbeter(?:de|d|t)\\b",
+    "\\b(?:aanzienlijk|significant|fors|substantieel) (?:sneller|beter|hoger|lager|verbeterd|toegenomen)\\b",
+    "\\bdiverse voordelen\\b",
+    "\\been aantal (?:verbeteringen|voordelen|wijzigingen)\\b",
+    "\\bin hoge mate\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De koppeling verbeterde de efficiëntie aanzienlijk.",
+     "na": "Door de koppeling ging de deploytijd van 40 naar 4 minuten."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "abstraction-over-specifics",
+   "notities": "Transfereert; 'significant' in de niet-statistische betekenis is in het Nederlands zelf al een leenvorm en dubbel verdacht."
+  },
+  {
+   "naam": "Geen concreet detail (verplaatsbare zin)",
+   "categorie": "content",
+   "definitie": "De tekst blijft op het niveau van het algemene en het overal toepasbare: geen eigennaam, geen merk, geen straat, geen maand, geen eigenaardig citaat, niets dat alleen hier kan staan. De toets is verplaatsbaarheid: kan een zin ongewijzigd naar een andere persoon, stad, bedrijf of product, dan is het vulling. Schrap hem, of vervang hem door een feit, voorbeeld, mechanisme, gevolg of oordeel dat alleen voor dit onderwerp geldt.",
+   "cues": [
+    "verplaatsbaarheidstoets: kan deze zin naar een andere stad of bedrijf zonder wijziging",
+    "geen eigennaam, geen getal, geen datum in de hele alinea",
+    "geen enkel detail dat alleen hier past"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Loop een paar straten van het centrum en je ontdekt een rustiger, authentieker kant van de stad: zonovergoten steegjes, sfeervolle gevels en vriendelijke bewoners.",
+     "na": "Twee straten omhoog vanaf de markt begint het wasgoed aan de lijn, afgebrokkelde tegels, open ramen en mannen die met het geluid uit naar de wedstrijd kijken."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "missing-concrete-detail",
+   "notities": "Taalonafhankelijk; geen lexicale cues mogelijk, de toets is verplaatsbaarheid. De Nederlandse voorbeeldzin gebruikt precies de woorden die een Nederlands model hier produceert: 'authentiek', 'sfeervol', 'zonovergoten'."
+  },
+  {
+   "naam": "Geen eerstehands detail of standpunt",
+   "categorie": "content",
+   "definitie": "In een stuk waarvan het register om een stem vraagt, staat niets wat alleen deze schrijver kon leveren: geen anekdote, geen zelf gemeten getal, geen benoemde mislukking, geen voorkeur, geen 'ik denk'. Het proza is onverstoorbaar neutraal waar een standpunt werd verwacht. Vuistregel: ongeveer een schrijverspecifiek detail per sectie; daaronder draait het stuk op algemeenheden.",
+   "cues": [
+    "ik denk",
+    "wat mij betreft",
+    "wij hebben gemeten",
+    "afwezigheid van elk eigen getal of eigen geval",
+    "elke optie krijgt evenveel ruimte, geen keuze"
+   ],
+   "regex": [
+    "\\bteams? (?:moeten|kunnen) (?:zelf )?(?:kiezen|bepalen) wat (?:bij hen|het beste) past\\b",
+    "\\ber zijn (?:verschillende|meerdere) (?:benaderingen|aanpakken|manieren), (?:elk|allemaal) met (?:eigen )?(?:voor- en nadelen|afwegingen)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Er zijn verschillende benaderingen van piketdienst, elk met eigen voor- en nadelen, en teams moeten kiezen wat bij hen past.",
+     "na": "We draaiden acht maanden follow-the-sun en dat kostte ons twee engineers; voor een team van zes werkt een weekrooster met een harde overdracht beter."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "missing-first-hand-detail",
+   "notities": "Transfereert; in dit repo dubbel relevant omdat de site nooit zelf een ervaring claimt (veldverslagen zijn interviews, geen eigen tekst)."
+  },
+  {
+   "naam": "Ontbrekende menselijke wrijving",
+   "categorie": "content",
+   "definitie": "Bevestigende afwezigheden in plaats van frasen: de tekst onderbreekt zichzelf nooit met een correctie of een echte terzijde, geeft nooit een onopgelost dubbel gevoel toe, citeert niemand, en draagt geen tijdgebonden uitdrukking, meme of grap, of een die minstens een jaar oud is. Gepubliceerd menselijk proza citeert vrijelijk en spreekt zichzelf terloops tegen. Behandel dit als zwakke ondersteuning en bewaar de wrijving die er wel is.",
+   "cues": [
+    "nul citaten in het hele stuk",
+    "geen enkele terzijde tussen haakjes",
+    "(ik wil hier steeds 'bijna' schrijven, maar het was echt zeker)",
+    "geen tijdgebonden verwijzing"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "De migratie verliep goed en het team was tevreden met het resultaat.",
+     "na": "De migratie verliep prima (ik wil 'prima' tussen aanhalingstekens zetten, want de eerste nacht was het dat niet). Ellens oordeel achteraf: 'nooit meer op een donderdag'."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "absent-human-friction",
+   "notities": "Transfereert; afwezigheidssignaal zonder lexicale cues."
+  },
+  {
+   "naam": "Verzonnen eigen ervaring",
+   "categorie": "content",
+   "definitie": "Beweringen in de eerste persoon in proza waar niemand achter stond: 'ik heb dit al honderd keer gezien', 'in mijn ervaring', 'ik geef toe', of een lyrische 'ik' zonder lichaam, situatie, geschiedenis of plaats. Bij herschrijven is elke toegevoegde 'ik' een fout, want herkomst is juist de vraag en geen enkele frase kan die aantonen. Heeft de bron geen eerste persoon, dan heeft de herschrijving die ook niet.",
+   "cues": [
+    "ik heb dit al honderd keer gezien",
+    "in mijn ervaring",
+    "ik geef toe",
+    "uit eigen ervaring weet ik",
+    "ik heb het vaak zien gebeuren",
+    "wij zagen dit bij tientallen klanten"
+   ],
+   "regex": [
+    "\\bik heb dit (?:al )?(?:honderd|duizend|talloze) (?:keer|keren) (?:gezien|meegemaakt)\\b",
+    "\\bin mijn ervaring\\b",
+    "\\buit eigen ervaring weet ik\\b",
+    "\\bik heb (?:het )?(?:vaak|regelmatig) zien (?:gebeuren|misgaan)\\b",
+    "\\bik moet toegeven dat\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ik heb dit al honderd keer gezien: teams leveren de migratie op en slaan de rollback over.",
+     "na": "Teams leveren de migratie vaak op zonder rollback."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "fake-first-person",
+   "notities": "Transfereert; in dit repo is dit een harde regel, want veldverslagen worden opgetekend uit interviews en de site schrijft nooit een eigen ervaring."
+  },
+  {
+   "naam": "Bedachte conceptlabels",
+   "categorie": "content",
+   "definitie": "Een pseudo-analytische samenstelling wordt halverwege de zin gemunt en nooit gedefinieerd ('de supervisieparadox', 'de contextval', 'een cordinatiebelasting'), of een bestaand begrip wordt aan het onderwerp toegeschreven als vondst ('hij introduceerde de term'). Iets een naam geven is geen verklaring. Beschrijf het mechanisme in gewone woorden, of laat de bron de naam leveren.",
+   "cues": [
+    "de supervisieparadox",
+    "het contextprobleem",
+    "een coördinatiebelasting",
+    "-paradox",
+    "-spagaat",
+    "-val",
+    "-kloof",
+    "wat ik de ... noem",
+    "de zogeheten ...",
+    "hij introduceerde de term"
+   ],
+   "regex": [
+    "\\bde \\w{5,}(?:paradox|spagaat|kloof|val|belasting|dilemma)\\b",
+    "\\bwat ik de \\w+ noem\\b",
+    "\\bde zogeheten \\\"[^\\\"\\n]{3,40}\\\"",
+    "\\b(?:introduceerde|muntte|bedacht) (?:hij|zij) de term\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Dit is de supervisieparadox: hoe meer je automatiseert, hoe meer je moet meekijken.",
+     "na": "Door de controles te automatiseren verschoof het werk: iemand leest nu 200 samenvattingen van diffs per week in plaats van er 20 te schrijven."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "invented-concept-labels",
+   "notities": "Transfereert, met een Nederlandse draai: het Nederlands plakt de samenstelling aaneen (supervisieparadox, contextval), dus de regex zoekt naar een samenstelling op -paradox/-val/-kloof en niet naar twee losse woorden."
+  },
+  {
+   "naam": "Lege kanttekening",
+   "categorie": "content",
+   "definitie": "Een toegevende zin die niets toegeeft: een niet-benoemde uitdaging gekoppeld aan een niet-benoemd antwoord ('Ondanks de uitdagingen blijft de organisatie groeien'), of een losse regel 'er blijven kanttekeningen' na een reeks positieve claims. Het speelt evenwicht en voegt niets toe. Benoem de echte uitdaging en het echte antwoord, of schrap de zin.",
+   "cues": [
+    "Ondanks de uitdagingen blijft",
+    "Er blijven uitdagingen bestaan",
+    "Er zijn ook kanttekeningen",
+    "Natuurlijk zijn er ook nadelen",
+    "Toch is er ook kritiek",
+    "blijft veerkrachtig",
+    "Er valt ook wat op af te dingen"
+   ],
+   "regex": [
+    "\\bondanks (?:de|deze|alle) uitdagingen blijft\\b",
+    "\\ber blijven (?:echter )?(?:uitdagingen|obstakels|vragen)\\b",
+    "\\ber zijn (?:ook|echter|uiteraard) (?:kanttekeningen|nadelen|beperkingen|keerzijden)\\b",
+    "\\bnatuurlijk (?:is|zijn) er ook (?:kritiek|nadelen|kanttekeningen)\\b",
+    "\\bblijft (?:het|de|men)? ?(?:veerkrachtig|overeind|standhouden)\\b",
+    "\\ber valt (?:ook )?wat op af te dingen\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Ondanks de uitdagingen blijft de coöperatie groeien.",
+     "na": "De coöperatie verloor in 2024 haar grootste afnemer en verving dat volume door drie regionale groothandels."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "empty-caveat-slot",
+   "notities": "Transfereert; overlapt bewust met despite-challenges-outlook (dat is het slotblok, dit de losse zin)."
+  },
+  {
+   "naam": "Tredmolen (herhalen zonder vooruit te komen)",
+   "categorie": "content",
+   "definitie": "Alinea's herformuleren het uitgangspunt in nieuwe woorden in plaats van het verder te brengen: beweging zonder afstand. Tekenen zijn een passage die 40 tot 60 procent korter kan zonder informatieverlies, verbanden tussen alinea's die worden beweerd maar niet gelegd, en vulling die woorden kost zonder een claim toe te voegen. Benoem per alinea het ene feit, de ene claim of de ene wending; is die er niet, schrap dan.",
+   "cues": [
+    "dezelfde stelling in andere woorden",
+    "alinea die 40 tot 60 procent korter kan zonder verlies",
+    "verband beweerd in plaats van gelegd",
+    "met andere woorden, ..."
+   ],
+   "regex": [
+    "\\bmet andere woorden,?\\s+(?:komt het erop neer|betekent dit)\\b",
+    "\\bzoals (?:al|eerder) (?:gezegd|opgemerkt|aangegeven)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Testen is belangrijk. Zonder tests kan een team niet met vertrouwen wijzigen. Dat gebrek aan vertrouwen vertraagt de levering, omdat engineers aarzelen om code aan te passen die ze niet kunnen verifieren.",
+     "na": "Zonder tests durven engineers de code niet aan te raken, en onze mediane PR bleef drie dagen liggen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "treadmill-redundancy",
+   "notities": "Transfereert; grotendeels een oordeel. De regexen vangen alleen de expliciete herformuleermarkeerders en raken het voorbeeld daarom bewust niet: de tredmolen in het voorbeeld heeft geen enkel signaalwoord, en dat is precies waarom dit patroon met de hand beoordeeld moet worden (kort de alinea 40 tot 60 procent in en kijk of er iets verdwijnt)."
+  },
+  {
+   "naam": "Schrijven vanaf de wijziging",
+   "categorie": "content",
+   "definitie": "Documentatie of proza beschrijft het ding als een verandering ten opzichte van een toestand die de lezer nooit zag: 'Deze functie is toegevoegd ter vervanging van de oude aanpak', 'de verbeterde versie kan nu ook'. Een lezer zonder commitgeschiedenis krijgt archeologie in plaats van gedrag. Beschrijf wat het nu doet, en zet de geschiedenis in de changelog of het commitbericht.",
+   "cues": [
+    "ter vervanging van de oude aanpak",
+    "voorheen moest je",
+    "de oude methode",
+    "de verbeterde versie",
+    "nu ondersteunt het ook",
+    "in tegenstelling tot vroeger"
+   ],
+   "regex": [
+    "\\bter vervanging van de (?:oude|vorige|eerdere) (?:aanpak|methode|implementatie|versie|functie)\\b",
+    "\\bde (?:verbeterde|vernieuwde|nieuwe) versie (?:doet|kan|ondersteunt|handelt)\\b",
+    "\\bvoorheen (?:werd|moest|deed|was)\\b",
+    "\\bin tegenstelling tot (?:vroeger|de oude situatie)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Deze functie is toegevoegd ter vervanging van de oude aanpak waarbij alle items werden doorlopen, wat kwadratisch schaalde.",
+     "na": "Deze functie zoekt items op in een hashmap, dus een lookup kost constante tijd."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "diff-anchored-writing",
+   "notities": "Transfereert onveranderd."
+  },
+  {
+   "naam": "Verzonnen of oncontroleerbare bronverwijzingen",
+   "categorie": "content",
+   "definitie": "Verwijzingen die de claim niet kunnen dragen: URL's naar sites die nooit bestonden of die een 404 geven zonder archiefkopie, ISBN's die hun controlecijfer niet halen, DOI's die niet oplossen of naar een ander artikel wijzen, echte tijdschriften met verzonnen jaargangen of auteurslijsten, boeken zonder paginanummer, en verzonnen wetsartikelen, richtlijnen of jurisprudentie. Controleer elke verwijzing of haal hem weg.",
+   "cues": [
+    "doi die niet oplost",
+    "ISBN met verkeerd controlecijfer",
+    "404 zonder archiefkopie",
+    "artikel 12 van de AVG (bestaat, maar zegt iets anders)",
+    "verwijzing zonder paginanummer",
+    "verzonnen ECLI-nummer"
+   ],
+   "regex": [
+    "\\bdoi:\\s?10\\.\\d{4,9}/\\S+",
+    "\\bisbn[: ]\\s?[\\d\\-x]{10,17}\\b",
+    "\\becli:nl:[a-z]{2,6}:\\d{4}:\\d+\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "M. E. Jansen, 'De grenzen van de wet van Ohm in niet-lineaire circuits', Tijdschrift voor Elektrotechniek, jrg. 62, nr. 6, 1974. doi:10.1109/PROC.1974.9547",
+     "na": "Verwijzing verwijderd: de DOI wijst naar een ander artikel en het stuk staat niet in die jaargang."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "hallucinated-citations",
+   "notities": "Taalonafhankelijk mechanisme; de regex markeert alleen kandidaten die nagelopen moeten worden, niet fouten. Nederlandse extra: verzonnen ECLI-nummers en verzonnen AVG-artikelen zijn de vormen die in Nederlandstalige uitvoer het vaakst opduiken."
+  },
+  {
+   "naam": "Eigen duiding toegeschreven aan een bron",
+   "categorie": "content",
+   "definitie": "Een model met bronnen erbij plakt zijn eigen interpretatie aan een echte, met naam genoemde bron, of die bron dat nu zegt of niet: 'Van Dijk benadrukt daarmee het blijvende belang van', 'dit citaat toont aan hoe relevant het werk nog is'. De verwijzing is echt, de bewering erover is gegenereerd. Alleen de bron lezen wijst dit aan.",
+   "cues": [
+    "benadrukt daarmee",
+    "onderstreept hiermee",
+    "dit citaat toont aan",
+    "wijst op het blijvende belang",
+    "waarmee hij zijn invloed aantoont",
+    "hij laat hiermee zien dat"
+   ],
+   "regex": [
+    "\\bdit (?:citaat|artikel|onderzoek|fragment) (?:toont aan|laat zien|onderstreept|bewijst)\\b",
+    "\\bbenadrukt (?:daarmee|hiermee) (?:het|de|zijn|haar)\\b",
+    "\\bwijst op (?:het|de) blijvende (?:belang|relevantie|betekenis)\\b",
+    "\\bwaarmee (?:hij|zij) (?:zijn|haar) invloed (?:aantoont|onderstreept)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Van Dijk analyseert het onderscheid van Blois en Bar en benadrukt daarmee hun kritische blik op afkortingen. Dit citaat toont aan hoe relevant Blois' werk nog altijd is.",
+     "na": "Van Dijk (2019, p. 44) vergelijkt hoe Blois en Bar met afkortingen omgaan."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "misattributed-source-analysis",
+   "notities": "Transfereert onveranderd; alleen de namen zijn vernederlandst."
+  },
+  {
+   "naam": "Werktitel behandeld als bestaand ding",
+   "categorie": "content",
+   "definitie": "De openingszin definieert een werktitel of beschrijvende titel alsof het een ding in de wereld is: 'X verwijst naar', 'X is het chronologische overzicht van', 'De \"Lijst van ...\" is een samengestelde verzameling'. Het artikel gaat over zijn eigen titel in plaats van over zijn onderwerp. Introduceer het onderwerp direct.",
+   "cues": [
+    "verwijst naar",
+    "is een samengesteld overzicht van",
+    "is de chronologische lijst van",
+    "De \"Lijst van ...\" is"
+   ],
+   "regex": [
+    "\\bde \\\"?lijst van [^\\\"\\n]{3,50}\\\"? is een\\b",
+    "\\bis een (?:chronologisch|samengesteld|zorgvuldig samengesteld) overzicht van\\b",
+    "\\bverwijst naar (?:een|het|de) (?:overzicht|verzameling|lijst|opsomming)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De \"Lijst van liedjes over Twente\" is een samengesteld overzicht van muziekwerken die naar Twente verwijzen.",
+     "na": "Liedjes over Twente lopen van de Daglichtploeg tot Normaal."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "list-title-as-entity",
+   "notities": "Transfereert naar de Nederlandstalige Wikipedia, waar dezelfde titelconventie geldt."
+  },
+  {
+   "naam": "Gratis universalia en categoriefouten",
+   "categorie": "content",
+   "definitie": "Gezag geleend van een bereik dat de schrijver niet kan nagaan ('wordt in elk eerstejaarscollege behandeld', 'elke ontwikkelaar weet'), en morele of waarderende bijvoeglijke naamwoorden geplakt op dingen die ze niet kunnen dragen, inclusief aannames en abstracties die intenties of deugden krijgen toegeschreven. Vervang de kwantor door het echte bereik en het morele bijvoeglijk naamwoord door de eigenschap die je bedoelt.",
+   "cues": [
+    "elke ontwikkelaar weet",
+    "iedereen weet dat",
+    "in elk eerstejaarscollege",
+    "wordt overal onderwezen",
+    "niemand betwist dat",
+    "altijd",
+    "nooit"
+   ],
+   "regex": [
+    "\\b(?:elke|iedere) (?:ontwikkelaar|programmeur|engineer|manager|ondernemer|marketeer) weet\\b",
+    "\\biedereen weet dat\\b",
+    "\\bin (?:elk|ieder) (?:eerstejaars)?(?:college|leerboek|handboek)\\b",
+    "\\bniemand betwist dat\\b",
+    "\\bwordt (?:overal|wereldwijd) onderwezen\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Wordt in elk eerstejaarscollege biochemie behandeld.",
+     "na": "Wordt behandeld in de inleiding biochemie."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "gratuitous-universals-and-category-errors",
+   "notities": "Transfereert onveranderd."
+  },
+  {
+   "naam": "Geschatte marge in plaats van een meting",
+   "categorie": "content",
+   "definitie": "Er staat een marge waar een enkel waargenomen getal zou staan als de schrijver het echt had gedaan: 'duurt 5 tot 10 minuten', 'tussen de 20 en 30 verzoeken'. De marge verklapt dat het cijfer geraden is. Noem het getal dat je gemeten hebt, of zeg dat je niet gemeten hebt.",
+   "cues": [
+    "duurt 5 tot 10 minuten",
+    "tussen de 20 en 30",
+    "ongeveer 10 tot 15 procent",
+    "X tot Y minuten",
+    "een uur of twee, drie"
+   ],
+   "regex": [
+    "\\b\\d{1,4} (?:tot|\\u00e0|a) \\d{1,4} (?:minuten|uur|dagen|weken|maanden|seconden|procent|keer)\\b",
+    "\\btussen de \\d{1,4} en (?:de )?\\d{1,4}\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De installatie duurt 5 tot 10 minuten.",
+     "na": "De installatie duurde 7 minuten op een schone machine."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "vague-numeric-range",
+   "notities": "Transfereert; let op dat het Nederlandse 'a' (à) in ranges hetzelfde doet en in de regex staat. Legitiem waar de spreiding zelf het gegeven is."
+  },
+  {
+   "naam": "Vlakke dialoog en uitleg voor de lezer",
+   "categorie": "content",
+   "definitie": "Personages zijn onderling verwisselbaar: geen eigen taal, geen tic, geen dialect, geen eigen manier van ontwijken onderscheidt de een van de ander, en in de dialoog staat informatie die de sprekers allang delen zodat de lezer hem kan horen. Raadsels worden opgelost met uitleg in plaats van met handeling. Geef elke spreker een eigen manier van praten, en laat gebeurtenissen het verhaal dragen.",
+   "cues": [
+    "Zoals je weet",
+    "Zoals u weet",
+    "Zoals we allemaal weten",
+    "alle personages praten hetzelfde",
+    "uitleg in dialoog voor de lezer"
+   ],
+   "regex": [
+    "\\bzoals (?:je|u|we allemaal|jullie) (?:al )?weet\\b",
+    "\\bzoals bekend,?\\s"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "'Zoals je weet, dokter, is de reactor in 1974 gebouwd en sindsdien nooit nagekeken,' zei ze.",
+     "na": "'Negentienvierenzeventig,' zei ze. 'Sindsdien heeft niemand hem opengemaakt.' Hij wist het al. Hij liet haar het zeggen."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "flat-dialogue-and-exposition",
+   "notities": "Transfereert; 'zoals je weet' is de directe Nederlandse tegenhanger van 'as you know'."
+  },
+  {
+   "naam": "Decor als stemmingsspiegel",
+   "categorie": "content",
+   "definitie": "Weer, kamers en voorwerpen bestaan alleen om het gevoel van een personage te spiegelen: regen die bij verdriet hoort, een kamer die koud is omdat het huwelijk dat is. Het decor draagt geen zelfstandig feit meer en houdt daarmee op een plek te zijn. Laat het decor zichzelf zijn en laat de emotie uit de gebeurtenis komen.",
+   "cues": [
+    "alsof de regen haar verdriet weerspiegelde",
+    "tikte zacht tegen het raam",
+    "de lucht was net zo grauw als haar stemming",
+    "de kamer voelde koud aan, net als"
+   ],
+   "regex": [
+    "\\b(?:weerspiegelde|spiegelde)[^.\\n]{0,40}\\b(?:verdriet|eenzaamheid|gemoed|stemming|onrust)\\b",
+    "\\btikte zacht tegen (?:het|de) (?:raam|ruit)\\b",
+    "\\balsof (?:de|het) \\w+ (?:meeleefde|meehuilde|meeleed)\\b",
+    "\\bnet zo (?:grauw|grijs|leeg) als (?:haar|zijn) (?:stemming|gemoed)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De regen tikte zacht tegen het raam, alsof hij haar onuitgesproken verdriet weerspiegelde.",
+     "na": "Het regende. Ze hield het raam toch open, omdat de kamer naar zijn shag rook."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "pathetic-fallacy-mood-setting",
+   "notities": "Transfereert; de Nederlandse standaardformulering is bijna woordelijk dezelfde."
+  },
+  {
+   "naam": "Scheve of gemengde metafoor",
+   "categorie": "content",
+   "definitie": "Beelden uit de juiste betekenishoek met de verkeerde natuurkunde: figuren die uit elkaar vallen zodra je ze voor je ziet, of twee onverenigbare beelden in een zin gelast. Het model grijpt naar het bijbehorende woord in plaats van naar het werkende beeld. Stel je de metafoor letterlijk voor; is dat plaatje onmogelijk of onzinnig, bouw hem dan opnieuw uit een bron.",
+   "cues": [
+    "twee onverenigbare beelden in een zin",
+    "beeld dat uit elkaar valt als je het voor je ziet",
+    "fluisterde door de circuits",
+    "een rivier van logica die opbloeide"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Het algoritme fluisterde door de circuits, een rivier van logica die opbloeide in de tuin van haar geest.",
+     "na": "Het algoritme liep zoals water een scheur vindt: het nam de goedkoopste weg en maakte die breder."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "off-metaphor",
+   "notities": "Transfereert; oordeel, geen lexicale cues."
+  },
+  {
+   "naam": "Cliché en overdadig proza",
+   "categorie": "content",
+   "definitie": "Standaardformuleringen en overversierde beschrijving zonder iets eronder: alles wat de tekst bedoelt staat op de bladzijde, er zit geen laag onder de dialoog of het beeld, en de versiering vervangt de waarneming. Ervaren lezers noemen juist dit cluster als de manier waarop ze machinefictie herkennen.",
+   "cues": [
+    "haar hart bonkte in haar keel",
+    "een traan gleed over haar wang",
+    "niets zou ooit nog hetzelfde zijn",
+    "met een brok in de keel",
+    "de tijd leek stil te staan",
+    "een golf van emoties"
+   ],
+   "regex": [
+    "\\b(?:haar|zijn) hart (?:bonkte|bonsde|klopte) in (?:haar|zijn) keel\\b",
+    "\\been (?:eenzame )?traan (?:gleed|rolde|biggelde)[^.\\n]{0,25}\\bwang\\b",
+    "\\bniets zou ooit nog hetzelfde zijn\\b",
+    "\\bmet een brok in (?:de|haar|zijn) keel\\b",
+    "\\bde tijd leek stil te staan\\b",
+    "\\been golf van emoties\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Haar hart bonkte in haar keel terwijl een eenzame traan over haar wang gleed, en ze wist dat niets ooit nog hetzelfde zou zijn.",
+     "na": "Ze las het bericht twee keer, legde haar telefoon omgekeerd neer en ruimde de vaatwasser verder in."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "cliche-and-purple-prose",
+   "notities": "Transfereert; de Nederlandse clichés zijn eigen vormen, geen vertalingen, en dit zijn de zes die het vaakst terugkomen."
+  },
+  {
+   "naam": "Plotselinge stijlsprong",
+   "categorie": "content",
+   "definitie": "Woordkeus en zinsbouw springen binnen een stuk of tussen twee opeenvolgende stukken boven het aantoonbare niveau van de schrijver uit: zinsconstructies, woordenschat en interpunctie die geen eerder werk van deze auteur laat zien. Vereist een eerder corpus om tegen af te lezen, en wijst op de grens tussen wat de persoon schreef en wat een tool maakte.",
+   "cues": [
+    "foutloze d/t na een tekst vol fouten",
+    "plotseling geen enkele typefout",
+    "register springt van spreektaal naar ambtelijk",
+    "woorden als 'cruciaal', 'essentieel', 'in het licht van' in een verder eenvoudige tekst"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "(een alinea gewone, foutgevoelige tekst gevolgd door een vlekkeloze volzin met puntkomma en drie bijzinnen)",
+     "na": "(vraag de schrijver naar de sprong en vergelijk met drie eerdere stukken voordat je een conclusie trekt)"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "sudden-polish-jump",
+   "notities": "Transfereert; in het Nederlands is de d/t-foutloosheid het scherpste deelsignaal, omdat dat de fout is die vrijwel elke Nederlandse schrijver af en toe maakt."
+  },
+  {
+   "naam": "Verloren context uit de draad",
+   "categorie": "content",
+   "definitie": "Een antwoord beantwoordt niet wat het eerdere bericht vroeg: het reageert op het onderwerp in plaats van op de vraag, laat de specifieke punten uit de draad vallen, en brengt informatie terug die al was afgehandeld. In correspondentie is dit het duidelijkste teken dat de tekst uit een samenvatting is gemaakt en niet uit de draad.",
+   "cues": [
+    "Bedankt voor je bericht over de factuur",
+    "Ons team helpt je graag verder",
+    "We staan voor je klaar",
+    "antwoord op het onderwerp in plaats van op de vraag"
+   ],
+   "regex": [
+    "\\bbedankt voor (?:je|uw) (?:bericht|mail|vraag) over\\b",
+    "\\b(?:we|wij|ons team) (?:helpen|helpt) (?:je|u) graag (?:verder|op weg)\\b",
+    "\\bwe staan voor (?:je|u) klaar\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Bedankt voor je bericht over de factuur. Ons team helpt je graag verder met al je vragen.",
+     "na": "Factuur 2214 stond op het oude inkoopnummer. Ik heb hem gecrediteerd en opnieuw gestuurd op PO 8871, zoals je dinsdag vroeg."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "lost-thread-context",
+   "notities": "Transfereert; de Nederlandse klantenservicevorm is bijna woordelijk dezelfde."
+  },
+  {
+   "naam": "Verzonnen auteursregels en plaatsdatums",
+   "categorie": "content",
+   "definitie": "Publicatiemetadata die met niemand en nergens overeenkomt: auteursbio's en portretfoto's van verslaggevers die niet bestaan, en datum- of plaatsregels die de beschreven gebeurtenissen tegenspreken. Anders dan de prozatells is dit verzonnen herkomst die aan het stuk hangt, en die is te controleren tegen redactieoverzichten, beeldbanken en het gebeurtenisverloop.",
+   "cues": [
+    "auteursbio zonder vindbare persoon",
+    "portret uit een beeldbank met AI-gezichten",
+    "plaatsdatum die niet klopt met de gebeurtenis",
+    "Door [naam], correspondent"
+   ],
+   "regex": [
+    "(?m)^door [\\w\\u00e0-\\u00ff]+(?: (?:van|de|den|der|te|ter|op)){0,2} [\\w\\u00e0-\\u00ff]+[.,]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Door Sanne de Vries. Sanne schrijft al jaren over technologie en woont met haar hond op het platteland.",
+     "na": "Auteursregel verwijderd: er werkt niemand met die naam bij de redactie en het portret komt uit een beeldbank met gegenereerde gezichten."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "fabricated-bylines-and-datelines",
+   "notities": "Taalonafhankelijk; alleen te controleren tegen de werkelijkheid, de regex markeert enkel de vorm van een auteursregel. De regex is bewust hoofdletterongevoelig veilig gemaakt: hij eist een tussenvoegsel-tolerante naam gevolgd door een punt of komma, zodat een gewone zin die met 'Door de ...' begint hem niet raakt."
+  },
+  {
+   "naam": "Autoritair gekleurde framing",
+   "categorie": "content",
+   "definitie": "Bij politieke onderwerpen neigt gegenereerde tekst naar de kadering van staatsmedia, bekritiseert regeringen van vrijere landen makkelijker dan repressieve, en weigert soms op veiligheidsgronden waar die zorg maar een kant op werkt. Controleer politieke kadering tegen onafhankelijke verslaggeving voordat je hem publiceert.",
+   "cues": [
+    "heeft zich onder de huidige regering stabiel ontwikkeld",
+    "onder leiding van de autoriteiten",
+    "de situatie is genormaliseerd",
+    "westerse media melden daarentegen"
+   ],
+   "regex": [
+    "\\bonder (?:leiding|toezicht) van de (?:huidige )?(?:autoriteiten|regering) (?:stabiel|voorspoedig|rustig)\\b",
+    "\\bde situatie is (?:inmiddels )?genormaliseerd\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De regio heeft zich onder leiding van de huidige autoriteiten stabiel ontwikkeld en de situatie is inmiddels genormaliseerd.",
+     "na": "Human Rights Watch documenteerde in 2025 340 detenties in de regio; het bestuur betwist dat aantal."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "pro-authoritarian-bias",
+   "notities": "Taalonafhankelijk; in het Engels vooral in het Chinees waargenomen, voor het Nederlands is er geen meting, dus de cues zijn gereconstrueerd en de ernst blijft context."
+  },
+  {
+   "naam": "Chatbotopening",
+   "categorie": "artifacts",
+   "definitie": "De inleiding van de assistent voor de eigenlijke inhoud blijft in de afgeleverde tekst staan. Subvormen: een instemmend woord vooraf ('Natuurlijk!', 'Zeker!', 'Uiteraard!', 'Goede vraag!', 'Je hebt helemaal gelijk!'), een aankondiging van wat er volgt ('Hier is een overzicht van ...', 'Hieronder vind je een opzet:'), en een voorbehoud over wat het model wel en niet kan. Begin bij de eerste zin die inhoud heeft.",
+   "cues": [
+    "Natuurlijk!",
+    "Zeker!",
+    "Uiteraard!",
+    "Absoluut!",
+    "Goede vraag!",
+    "Wat een goede vraag",
+    "Je hebt helemaal gelijk",
+    "Hier is een overzicht van",
+    "Hieronder vind je",
+    "Ik kan je daarbij helpen",
+    "Op basis van wat je hebt gedeeld"
+   ],
+   "regex": [
+    "(?m)^\\s*(?:natuurlijk|zeker|absoluut|uiteraard|prima|jazeker)\\s*[!.]",
+    "\\b(?:goede|uitstekende|interessante|scherpe) vraag[!.]",
+    "\\bhier is (?:een|het|de) [^.\\n]{0,40}(?:overzicht|voorstel|concept|opzet|versie|aanzet)\\b",
+    "\\bhieronder vind je\\b",
+    "\\bje hebt (?:helemaal|volkomen) gelijk\\b",
+    "\\bop basis van (?:wat je|de informatie die je) (?:hebt |heeft )?(?:gedeeld|gegeven)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Natuurlijk! Hier is een overzicht van de Franse Revolutie. De revolutie begon in 1789 na jaren van financiële crisis.",
+     "na": "De Franse Revolutie begon in 1789, na jaren van financiële crisis en voedseltekorten."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "chatbot-opener",
+   "notities": "Transfereert een-op-een; 'Natuurlijk!' en 'Zeker!' zijn de standaard Nederlandse openingen, 'Uiteraard!' iets formeler."
+  },
+  {
+   "naam": "Behulpzaam slot",
+   "categorie": "artifacts",
+   "definitie": "De afsluiting die aan de opdrachtgever is gericht blijft in de tekst staan. Subvormen: de behulpzaamheidsafsluiter ('Ik hoop dat dit helpt', 'Laat het me weten als je nog vragen hebt'), het vervolgaanbod als vraag ('Wil je dat ik ...?', 'Zal ik er voorbeelden bij zetten?'), en het aanbod om de uitvoer om te zetten naar de vorm van de bestemming. Schrap het hele blok.",
+   "cues": [
+    "Ik hoop dat dit helpt!",
+    "Laat het me weten als je nog vragen hebt",
+    "Laat gerust weten of ik ergens dieper op in moet gaan",
+    "Wil je dat ik",
+    "Zal ik",
+    "Veel succes ermee!",
+    "Hopelijk heb je hier wat aan",
+    "Stel gerust je vragen"
+   ],
+   "regex": [
+    "\\bik hoop dat (?:dit|het) (?:je )?helpt\\b",
+    "\\bhopelijk heb je hier (?:iets|wat) aan\\b",
+    "\\blaat (?:het )?(?:me|mij) weten als\\b",
+    "\\blaat gerust weten (?:of|als)\\b",
+    "\\bwil je dat ik\\b",
+    "\\bzal ik (?:dit|het|er)\\b[^.\\n]{0,60}\\?",
+    "\\bals je nog vragen hebt\\b",
+    "\\bveel succes ermee\\b",
+    "\\bstel gerust (?:je|uw) vragen\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De migratie verloopt in twee fasen. Ik hoop dat dit helpt! Laat het me weten als je wilt dat ik een onderdeel verder uitwerk.",
+     "na": "De migratie verloopt in twee fasen."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "collaborative-closer",
+   "notities": "Transfereert een-op-een. Let op: 'laat het me weten' in een echte mail tussen twee mensen is gewoon Nederlands; de tell is de plaatsing onder een afgeleverd stuk tekst."
+  },
+  {
+   "naam": "Vraag herhaald voor het antwoord",
+   "categorie": "artifacts",
+   "definitie": "De tekst opent door de vraag terug te formuleren naar degene die hem stelde: 'Om je vraag te beantwoorden ...', 'Je vraagt je af of ...', 'De vraag of ...', 'Goede vraag. Het antwoord is ...'. In een zelfstandige tekst heeft de lezer niets gevraagd, dus de herhaling zegt niets. Schrap de parafrase en open met het antwoord.",
+   "cues": [
+    "Om je vraag te beantwoorden",
+    "Je vraagt je af of",
+    "Je vraagt naar",
+    "De vraag of",
+    "Als ik je vraag goed begrijp",
+    "Wat je vraagt is",
+    "Even samengevat wat je vroeg"
+   ],
+   "regex": [
+    "\\bom (?:je|jouw|uw) vraag te beantwoorden\\b",
+    "\\bje vraagt (?:je af )?(?:of|naar|hoe|waarom|wat)\\b",
+    "\\bals ik (?:je|jouw|uw) vraag goed begrijp\\b",
+    "\\bwat je vraagt,? is\\b",
+    "(?m)^\\s*de vraag of\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Om je vraag te beantwoorden: de cache wordt bij elke schrijfactie ongeldig gemaakt.",
+     "na": "De cache wordt bij elke schrijfactie ongeldig gemaakt."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "acknowledgment-loop",
+   "notities": "Transfereert onveranderd."
+  },
+  {
+   "naam": "Gelekte redeneerstappen",
+   "categorie": "artifacts",
+   "definitie": "Denkstellingen gepubliceerd als proza: 'Laten we dit stap voor stap bekijken', 'Ik ontleed dit even', 'Om dit systematisch aan te pakken', 'Stap 1:', en genummerde redeneerstappen die als innerlijke monoloog lezen in plaats van als betoog voor een lezer. Een subvorm vertelt de eigen werkwijze in plaats van een bron te noemen ('Mijn analyse is gebaseerd op de beschikbare titels'). Schrap de steiger en houd de conclusie met haar onderbouwing.",
+   "cues": [
+    "Laten we dit stap voor stap bekijken",
+    "Laat me dit stap voor stap doorlopen",
+    "Om dit systematisch aan te pakken",
+    "Ik ontleed dit even",
+    "Stap 1:",
+    "Mijn gedachtegang",
+    "Laten we eerst kijken naar",
+    "Mijn analyse is gebaseerd op"
+   ],
+   "regex": [
+    "\\b(?:laten we|laat me|laat ik) (?:dit |het )?stap voor stap\\b",
+    "\\bom dit systematisch aan te pakken\\b",
+    "\\bik ontleed dit\\b",
+    "(?m)^\\s*stap \\d+\\s*:",
+    "\\bmijn gedachtegang\\b",
+    "\\blaten we (?:eerst|om te beginnen) (?:kijken naar|beginnen bij|vaststellen)\\b",
+    "\\bmijn analyse is gebaseerd op\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Laten we dit stap voor stap bekijken. Kijk eerst naar het schrijfpad. De cache wordt bij elke schrijfactie ongeldig gemaakt.",
+     "na": "De cache wordt bij elke schrijfactie ongeldig gemaakt."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "reasoning-chain-leak",
+   "notities": "Transfereert; in het Engels als scope english genoteerd, maar de Nederlandse vormen komen even vaak voor."
+  },
+  {
+   "naam": "Kennisgrensdisclaimer en AI-zelfbenoeming",
+   "categorie": "artifacts",
+   "definitie": "De eigen beperkingen van het model in de eerste persoon, blijven staan in de tekst: een voorbehoud over de kennisgrens ('Op het moment van mijn laatste update', 'mijn trainingsdata loopt tot', 'ik heb geen toegang tot realtime informatie'), zelfbenoeming als model ('Als AI-taalmodel ...') en de standaardweigering van professioneel advies ('Ik kan geen juridisch advies geven, maar ...'). Vervang door een datum en een bron, of schrap.",
+   "cues": [
+    "Op het moment van mijn laatste update",
+    "Mijn trainingsdata loopt tot",
+    "Ik heb geen toegang tot realtime informatie",
+    "Als AI-taalmodel",
+    "Als AI kan ik",
+    "Ik ben een taalmodel",
+    "Ik kan geen juridisch advies geven",
+    "Op basis van de beschikbare informatie"
+   ],
+   "regex": [
+    "\\bals (?:een )?(?:ai|a\\.i\\.)[- ]?(?:taalmodel|model|assistent|systeem)\\b",
+    "\\bmijn (?:trainings)?(?:data|gegevens) (?:loopt|lopen|gaat|gaan) tot\\b",
+    "\\bik heb geen toegang tot (?:realtime|real-time|actuele|live)\\b",
+    "\\bop het moment van mijn laatste update\\b",
+    "\\bik kan geen (?:juridisch|medisch|financieel|fiscaal) advies geven\\b",
+    "\\bik ben een (?:ai|taalmodel|kunstmatige intelligentie)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Op het moment van mijn laatste update had de gemeenteraad de begroting voor 2026 nog niet gepubliceerd.",
+     "na": "De gemeenteraad had de begroting voor 2026 op 4 september 2026 nog niet gepubliceerd (raadsnotulen, 3 september)."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "cutoff-disclaimer-and-ai-self-identification",
+   "notities": "Transfereert; 'Als AI-taalmodel' is de vaste Nederlandse vorm, met koppelteken."
+  },
+  {
+   "naam": "Gelekte citatiemarkup uit de chattool",
+   "categorie": "artifacts",
+   "definitie": "Interne citatietokens uit een chatinterface die het kopieren en plakken overleven, op de plaats van een echte bronvermelding. Bekende vormen zijn de contentReference- en oai_citation-tokens, de citeturn- en turn0search-reeksen, de kale afsluitende cijfers die overblijven als de onzichtbare omhulsels zijn gestript, en losgeraakte ref-tags. Vervang door een echte bronvermelding of haal ze weg.",
+   "cues": [
+    "citeturn0search0",
+    "turn0search1",
+    "citeturn0news0",
+    "turn0file",
+    ":contentReference[oaicite:20]{index=20}",
+    "[oai_citation:3]",
+    "turn0image0",
+    "<ref name=\"0search12\">"
+   ],
+   "regex": [
+    "cite\\u2020?turn\\d+\\w+",
+    "turn\\d+(?:search|news|file|image)\\d+",
+    ":contentreference\\[oaicite:\\d+\\]",
+    "\\[oai_citation:\\d+",
+    "<ref name=\"\\d+search\\d+\">"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De regeling geldt sinds 2019 voor alle gemeenten :contentReference[oaicite:20]{index=20}.",
+     "na": "De regeling geldt sinds 2019 voor alle gemeenten (Staatscourant 2019, 4412)."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "citation-markup-leak",
+   "notities": "Taalonafhankelijk: de tokens zijn machinetekst en worden niet vertaald. Transfereert onveranderd."
+  },
+  {
+   "naam": "AI-trackingparameter in een URL",
+   "categorie": "artifacts",
+   "definitie": "Een queryparameter die een AI-tool aan de links plakt die het schrijft: utm_source=chatgpt.com, utm_source=openai, utm_source=copilot.com, utm_source=claude.ai, utm_source=perplexity.ai, referrer=grok.com. De parameter is de handtekening, wat de omringende tekst ook zegt. Haal de AI-verwijzer uit de URL en laat de rest van de querystring staan.",
+   "cues": [
+    "utm_source=chatgpt.com",
+    "utm_source=copilot.com",
+    "utm_source=openai",
+    "utm_source=claude.ai",
+    "utm_source=perplexity.ai",
+    "referrer=grok.com"
+   ],
+   "regex": [
+    "utm_source=(?:chatgpt\\.com|openai|copilot\\.com|claude\\.ai|perplexity\\.ai)",
+    "referrer=grok\\.com"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "https://www.nrc.nl/nieuws/2026/02/11/interview?utm_source=chatgpt.com",
+     "na": "https://www.nrc.nl/nieuws/2026/02/11/interview"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "ai-url-tracking-parameter",
+   "notities": "Taalonafhankelijk; transfereert onveranderd."
+  },
+  {
+   "naam": "Niet-ingevulde plaatshouder",
+   "categorie": "artifacts",
+   "definitie": "Een invulplek die de schrijver had moeten vervangen, verstuurd zoals hij is: plaatshouders tussen blokhaken ('[naam invullen]', '[jouw naam]', '[bedrijfsnaam]', '[link naar bron]'), instructies tussen blokhaken ('[beschrijf hier welk onderdeel aangepast moet worden]'), aanwijzingen tussen haakjes ('(vul hier je kanaal-URL in)') en sjabloonvariabelen. Vul de waarde in of schrap de regel.",
+   "cues": [
+    "[naam invullen]",
+    "[jouw naam]",
+    "[bedrijfsnaam]",
+    "[datum]",
+    "[link naar bron]",
+    "[vul hier in]",
+    "(vul hier je ... in)",
+    "[functietitel]",
+    "[plaats]"
+   ],
+   "regex": [
+    "\\[(?:jouw |je |uw |eigen )?(?:naam|voornaam|achternaam|bedrijfsnaam|organisatie|functietitel|datum|plaats|e-?mail|telefoonnummer)(?: invullen| hier| hier invullen)?\\]",
+    "\\[(?:vul|voeg|beschrijf|noem)[^\\]\\n]{0,60}\\]",
+    "\\[link naar [^\\]\\n]{1,40}\\]",
+    "\\((?:vul|voeg)[^)\\n]{0,50}(?:in|toe)\\)",
+    "\\[[a-z\\u00e0-\\u00ff ]{2,30} invullen\\]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Met vriendelijke groet, [jouw naam] en Chloe",
+     "na": "Groet, Chloe Martens"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "unfilled-placeholder",
+   "notities": "Transfereert; de Nederlandse plaatshouders zijn '[naam invullen]' en '[jouw naam]', vaak met het werkwoord achteraan zoals het Nederlands dat doet."
+  },
+  {
+   "naam": "Plaatshouder in een gestructureerd veld",
+   "categorie": "artifacts",
+   "definitie": "Een bron-, infobox- of frontmatterveld met een stomp in plaats van een waarde: 'url=URL', 'BRON_URL_HIER', 'UITGEVER', datumstompen als '2025-XX-XX' (meestal in geraadpleegd-op, soms in datum, en ze veroorzaken gereedschapsfouten) en verborgen notities die de inhoud uitstellen. Vul het veld of haal de hele verwijzing weg.",
+   "cues": [
+    "2025-XX-XX",
+    "geraadpleegd op 2025-XX-XX",
+    "url=URL",
+    "BRON_URL_HIER",
+    "UITGEVER",
+    "titel=Titel",
+    "datum=onbekend"
+   ],
+   "regex": [
+    "\\d{4}-xx-xx",
+    "\\burl\\s?=\\s?url\\b",
+    "\\b(?:bron_?url|insert_?source_?url)[_a-z0-9]*\\b",
+    "\\b(?:titel\\s?=\\s?titel|uitgever\\s?=\\s?uitgever|auteur\\s?=\\s?auteur)\\b",
+    "\\bdatum\\s?=\\s?onbekend\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "{{Citeer web |url=BRON_URL_HIER |uitgever=UITGEVER |datum=2022-11-XX}}",
+     "na": "(verwijzing verwijderd; er is nooit iets achter geraadpleegd)"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "placeholder-in-metadata-field",
+   "notities": "Transfereert; de datumstompen zijn taalonafhankelijk, de veldnamen zijn vernederlandst naar de conventie van de Nederlandstalige Wikipedia."
+  },
+  {
+   "naam": "Opzet gepubliceerd in plaats van de sectie",
+   "categorie": "artifacts",
+   "definitie": "Een zin die beschrijft wat een sectie zou bevatten, geleverd in plaats van de inhoud: 'In deze sectie zou worden ingegaan op mogelijke ontwikkelingen'. De opzet van het model is in de tekst blijven staan. Schrijf de sectie of schrap de kop.",
+   "cues": [
+    "In deze sectie zou worden ingegaan op",
+    "Hier zou een beschrijving komen van",
+    "Dit hoofdstuk behandelt straks",
+    "Hier komt nog",
+    "nader uit te werken"
+   ],
+   "regex": [
+    "\\b(?:deze|dit) (?:sectie|paragraaf|hoofdstuk|onderdeel) zou (?:worden )?(?:ingegaan|beschreven|behandeld|besproken)\\b",
+    "\\bhier (?:zou|komt) (?:nog )?(?:een|de) [^.\\n]{0,40}(?:komen|volgen|staan)\\b",
+    "\\bnader uit te werken\\b",
+    "\\bnog aan te vullen\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "In deze sectie zou worden ingegaan op mogelijke ontwikkelingen in de energiemarkt.",
+     "na": "Het IEA legt de piek in de olievraag in zijn vooruitzicht van 2025 tussen 2029 en 2032 bij ongewijzigd beleid."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "outline-plan-left-in-body",
+   "notities": "Transfereert onveranderd."
+  },
+  {
+   "naam": "Markdown op een vlak dat het niet rendert",
+   "categorie": "artifacts",
+   "definitie": "Markdown-syntaxis belandt op een vlak met een eigen opmaaktaal of helemaal geen: wikitekst, platte e-mail, een CMS-veld, een ticket, een codecommentaar. Chatbots produceren standaard Markdown omdat hun systeemprompt daarom vraagt, en kopieren houdt het vast. Zet het om naar de opmaak van het doel, of haal het weg.",
+   "cues": [
+    "**vet**",
+    "*cursief*",
+    "_cursief_",
+    "# Kop",
+    "## Kop",
+    "[tekst](url)",
+    "```",
+    "--- als scheidingslijn",
+    "- bullet in een platte e-mail"
+   ],
+   "regex": [
+    "\\*\\*[^*\\n]{1,60}\\*\\*",
+    "(?m)^#{1,6}\\s+\\S",
+    "\\[[^\\]\\n]{1,60}\\]\\((?:https?://|/)[^)\\n]{1,120}\\)",
+    "(?m)^```"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "* 💻 **Software en open source**\n* 📚 **Onderwijs in Twente**",
+     "na": "* Software en open source\n* Onderwijs in Twente"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "markdown-in-non-markdown-surface",
+   "notities": "Taalonafhankelijk; de regex is alleen zinvol op vlakken die Markdown niet renderen, en geeft op een Markdown-bestand per definitie vals alarm."
+  },
+  {
+   "naam": "Verzonnen of kapotte opmaak voor het doelsysteem",
+   "categorie": "artifacts",
+   "definitie": "Opmaak die het model niet beheerst komt er verzonnen, verminkt of verkeerd toegepast uit. Subvormen: sjabloon- en parameternamen die op het echte schema lijken maar niet bestaan, zodat ze als rode link renderen of niets doen; verhaspelde sjabloonsyntaxis; en verwijzingstags die niet sluiten. Controleer elke sjabloonnaam tegen het doelsysteem.",
+   "cues": [
+    "{{Infobox oude bevolking",
+    "| archeologische_vindplaatsen =",
+    "{{Bron|",
+    "[[Categorie:",
+    "<ref name=",
+    "</references>",
+    "sjabloonnaam die niet bestaat"
+   ],
+   "regex": [
+    "\\{\\{infobox [a-z\\u00e0-\\u00ff ]{3,40}\\n?\\s*\\|",
+    "<ref name=[^>\\n]{1,40}(?<!/)>(?![\\s\\S]{0,200}</ref>)",
+    "<sup>\\[\\d+\\]</sup>",
+    "\\[\\[categorie:[^\\]\\n]{1,60}\\]\\]"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "{{Infobox oude bevolking | regio = IJsseldal | archeologische_vindplaatsen = Hunebed D27 }}",
+     "na": "{{Infobox archeologische cultuur | regio = IJsseldal | belangrijkstevindplaatsen = Hunebed D27 }}"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "broken-target-markup",
+   "notities": "Transfereert naar de Nederlandstalige Wikipedia, waar de sjabloonnamen anders zijn (Categorie:, Citeer web, Infobox). De regex markeert kandidaten; alleen het doelsysteem kan zeggen of een sjabloon bestaat."
+  },
+  {
+   "naam": "Verouderde of onmogelijke sjabloonmetadata",
+   "categorie": "artifacts",
+   "definitie": "Een nieuw document draagt metadata die het niet verdiend kan hebben: onderhouds-, beveiligings- of stijlsjablonen met een datum van voor het bestaan van het document, een inzendkop die de inzending alvast afwijst, en geraadpleegd-op-datums die niet kunnen kloppen. Zet de datum op de dag van aanmaak of haal het sjabloon weg.",
+   "cues": [
+    "{{Wikify|datum=september 2022}} op een pagina van 2026",
+    "{{Beginnetje}}",
+    "|bezochtdatum=12 december 2024",
+    "|datum=februari 2025 op een nieuw artikel",
+    "{{Meebezig}}"
+   ],
+   "regex": [
+    "\\{\\{[a-z\\u00e0-\\u00ff ]{3,25}\\|datum=[a-z]{3,10} \\d{4}\\}\\}",
+    "\\|\\s?(?:bezocht|geraadpleegd)datum\\s?=\\s?\\d{1,2} [a-z]{3,10} \\d{4}"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Een pagina die in februari 2026 is aangemaakt en opent met {{Wikify|datum=september 2022}}",
+     "na": "Een pagina die in februari 2026 is aangemaakt en opent met {{Wikify|datum=februari 2026}}"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "stale-boilerplate-metadata",
+   "notities": "Transfereert naar de Nederlandstalige Wikipedia; de sjabloonnamen en de parameter 'bezochtdatum' zijn de Nederlandse vormen."
+  },
+  {
+   "naam": "Instructies aan degene die het plaatst",
+   "categorie": "artifacts",
+   "definitie": "Tekst gericht aan wie het document gaat plakken, indienen of nakijken, gepubliceerd binnenin dat document. Subvormen: genummerde indieningsnotities, een regel die de plaatser opdraagt de notitie te verwijderen ('Verwijder deze sectie voor publicatie'), coaching over wat te zeggen als een beoordelaar bezwaar maakt, en een checklist van wat het onderwerp zou moeten hebben. Schrap het hele blok.",
+   "cues": [
+    "Verwijder deze sectie voor publicatie",
+    "Na het plakken van het artikel",
+    "Let op: pas dit aan voordat je het verstuurt",
+    "Tip:",
+    "Dien dit in via",
+    "Als een beoordelaar vraagt"
+   ],
+   "regex": [
+    "\\bverwijder (?:deze|dit) (?:sectie|alinea|blok|regel|notitie) (?:voor|v\\u00f3\\u00f3r) (?:publicatie|het versturen|indiening|plaatsing)\\b",
+    "\\bna het plakken\\b",
+    "\\bvoordat je (?:dit|het) (?:publiceert|verstuurt|indient|plaatst)\\b",
+    "\\bdien (?:dit|het) in via\\b",
+    "\\bals een (?:beoordelaar|reviewer|moderator) (?:vraagt|bezwaar maakt)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Verwijder deze sectie voor publicatie. Zet na het plakken van het artikel de bronnenlijst om naar voetnoten.",
+     "na": "(geschrapt; het artikel begint bij zijn eerste regel)"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "instructions-to-the-handler",
+   "notities": "Transfereert onveranderd."
+  },
+  {
+   "naam": "Eigen verklaring dat het aan de regels voldoet",
+   "categorie": "artifacts",
+   "definitie": "De tekst beweert zijn eigen neutraliteit, bronvastheid of regelconformiteit in plaats van die te laten zien: 'Geschreven volgens de richtlijnen. Neutraal van toon en overal gebronde.', 'Ik begrijp je zorgen over AI-gegenereerde tekst'. De wijzigingsnotitievorm stapelt uitvoerige, niet-specifieke verzekeringen. Laat de tekst het werk doen en schrap de verklaring.",
+   "cues": [
+    "Neutraal van toon",
+    "voorzien van betrouwbare bronnen",
+    "in lijn met de richtlijnen",
+    "voldoet aan de richtlijnen",
+    "geschreven volgens de huisstijl",
+    "Ik begrijp je zorgen over",
+    "conform de geldende regels"
+   ],
+   "regex": [
+    "\\bneutraal (?:van toon|geformuleerd|geschreven|gehouden)\\b",
+    "\\bvoorzien van betrouwbare bronnen\\b",
+    "\\bin lijn met de richtlijnen\\b",
+    "\\bvoldoet aan (?:de|alle) (?:richtlijnen|eisen|voorwaarden|regels)\\b",
+    "\\bik begrijp (?:je|uw) zorgen over\\b",
+    "\\bconform de (?:geldende )?(?:regels|richtlijnen|huisstijl)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Sectie herzien voor helderheid en conform de richtlijnen; promotionele formuleringen gecorrigeerd en bronvermelding en neutraliteit verbeterd.",
+     "na": "overbodige links weggehaald"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "self-certification-of-compliance",
+   "notities": "Transfereert; in het Engels scope english, maar de Nederlandse vormen zijn even herkenbaar en komen vooral in bewerkingssamenvattingen voor."
+  },
+  {
+   "naam": "Briefingtaal en bestemming in het product",
+   "categorie": "artifacts",
+   "definitie": "De uitvoer herhaalt de bewoordingen van de criteria waaraan hij moest voldoen, of noemt vanuit de tekst zelf de plek waarvoor hij is geschreven. Subvormen: richtlijnvocabulaire dat in het product terechtkomt ('significante, onafhankelijke berichtgeving, geen triviale vermeldingen'), de bestemming met een bezitsvorm en een regelwoord ('voldoet aan de richtlijnen van Wikipedia'), en verwijzingen naar de opdracht ('zoals gevraagd in de briefing'). Schrap de zin.",
+   "cues": [
+    "voldoet aan de relevantiecriteria",
+    "conform de richtlijnen van Wikipedia",
+    "zoals gevraagd in de briefing",
+    "significante, onafhankelijke berichtgeving",
+    "geen triviale vermeldingen of persberichten",
+    "zoals verzocht"
+   ],
+   "regex": [
+    "\\bvoldoet aan de (?:relevantie|notabiliteits|encyclopedische)criteria\\b",
+    "\\bconform de richtlijnen van [A-Z\\u00c0-\\u00de]",
+    "\\bzoals (?:gevraagd in de briefing|verzocht in de opdracht|gevraagd in de opdracht)\\b",
+    "\\bsignificante,? onafhankelijke berichtgeving\\b",
+    "\\bgeen triviale vermeldingen of persberichten\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Deze bronnen leveren significante, onafhankelijke berichtgeving, geen triviale vermeldingen of persberichten.",
+     "na": "(geschrapt uit het artikel; de bronnen staan bij de zin die ze ondersteunen)"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "brief-vocabulary-and-destination-naming",
+   "notities": "Transfereert onveranderd."
+  },
+  {
+   "naam": "Sjabloonmatige wijzigingsnotitie",
+   "categorie": "artifacts",
+   "definitie": "Een wijzigingsbeschrijving (commitbericht, PR-tekst, bewerkingssamenvatting) geschreven als uitputtend procedureel proza in plaats van een korte menselijke notitie. Subvormen: de volzin die alles opsomt wat er is gedaan en hoe het aan de regels voldoet, en de mededeling wat er bewust niet is veranderd, die de beperking uit de opdracht terugkaatst. Schrijf op wat er veranderde, in zo min mogelijk woorden.",
+   "cues": [
+    "Verbeterde duidelijkheid, structuur en leesbaarheid",
+    "Herzien voor betere leesbaarheid",
+    "met behoud van de oorspronkelijke betekenis",
+    "Uitgebreide herschrijving:",
+    "zonder de inhoud te wijzigen",
+    "Toon en stijl gelijkgetrokken"
+   ],
+   "regex": [
+    "\\bverbeterde? (?:de )?(?:duidelijkheid|leesbaarheid|structuur|toon|helderheid)\\b",
+    "\\bmet behoud van (?:de|het) (?:oorspronkelijke|bestaande|huidige)\\b",
+    "\\buitgebreide (?:herschrijving|update|opschoning|revisie)\\b",
+    "\\bzonder (?:de )?(?:inhoud|betekenis|strekking) (?:te )?(?:wijzigen|aan te tasten|te veranderen)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Verbeterde duidelijkheid, structuur en leesbaarheid van de plotsectie; herhaling teruggebracht en toon aangescherpt voor een betere encyclopedische stijl.",
+     "na": "plot ingekort"
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "templated-change-note",
+   "notities": "Transfereert onveranderd; in dit repo relevant voor commitberichten, die volgens Conventional Commits juist kort en concreet moeten zijn."
+  },
+  {
+   "naam": "Briefregister waar geen brief hoort",
+   "categorie": "artifacts",
+   "definitie": "Zakelijk briefformaat op een ticket, een overlegpagina, een reactie, een formulier of in een artikel: 'Geachte redactie,', 'Ik hoop dat dit bericht u in goede gezondheid bereikt', 'Bij dezen verzoek ik u', 'Alvast dank voor uw begrip en medewerking', 'Met vriendelijke groet,'. Het register klopt in een echte brief; de tell is dat het opduikt waar niemand brieven schrijft, en het reist meestal samen met niet-ingevulde plaatshouders.",
+   "cues": [
+    "Geachte redactie,",
+    "Geachte heer/mevrouw,",
+    "Ik hoop dat dit bericht u in goede gezondheid bereikt",
+    "Bij dezen verzoek ik u",
+    "Alvast dank voor uw begrip en medewerking",
+    "Met vriendelijke groet,",
+    "Hoogachtend,"
+   ],
+   "regex": [
+    "\\bgeachte (?:heer|mevrouw|redactie|lezer|beheerder|heer/mevrouw)\\b",
+    "\\bik hoop dat dit bericht (?:u|je) (?:in goede gezondheid )?(?:bereikt|goed bereikt)\\b",
+    "\\bbij dezen (?:verzoek|wil|meld) ik\\b",
+    "\\balvast (?:hartelijk )?(?:dank|bedankt) voor uw (?:begrip|medewerking|reactie)\\b",
+    "\\b(?:met vriendelijke groet|hoogachtend)\\b"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "Geachte redactie, ik hoop dat dit bericht u in goede gezondheid bereikt. Bij dezen verzoek ik u een aanpassing door te voeren in het lemma.",
+     "na": "In de tweede alinea staat het verkeerde oprichtingsjaar: de akte is van 1924, niet van 1932."
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "letter-register-on-non-correspondence",
+   "notities": "Transfereert, met een sterkere Nederlandse variant: 'Ik hoop dat dit bericht u in goede gezondheid bereikt' is geen bestaande Nederlandse briefformule maar een letterlijke vertaling van 'I hope this message finds you well' en verraadt zich dubbel. 'Met vriendelijke groet' is in een echte mail volstrekt normaal, vandaar ernst context."
+  },
+  {
+   "naam": "Verdubbelde sectie of alinea",
+   "categorie": "artifacts",
+   "definitie": "Een sectie of alinea komt binnen hetzelfde stuk woordelijk of bijna woordelijk terug, omdat de generator het spoor bijster raakte van wat er al stond: dezelfde sectie twee keer uitgestoten, of alinea 3 herhaald als alinea 17 met geschud woordgebruik. Op te sporen met alineahashes of n-gram-overlap. Schrap de kopie, en kijk eerst of een van de twee een feit draagt dat de andere kwijt is.",
+   "cues": [
+    "dezelfde sectie twee keer, woord voor woord",
+    "alinea 3 en alinea 17 zijn dezelfde zin anders geformuleerd",
+    "twee keer dezelfde kop in de inhoudsopgave"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Dezelfde sectie 'Ontvangst' staat er twee keer, woord voor woord, op plek 4 en plek 9.",
+     "na": "Een sectie 'Ontvangst', op plek 4."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "content-duplication",
+   "notities": "Taalonafhankelijk; detectie is een hash- of overlapmeting, geen regex."
+  },
+  {
+   "naam": "Tekst die middenin stopt",
+   "categorie": "artifacts",
+   "definitie": "Het stuk eindigt midden in een zin of een sectie omdat de generatie tegen een tokenlimiet liep en niemand hem heeft afgemaakt, of omdat het kopieren is afgekapt. Herken een slotzin zonder eindleesteken die op een functiewoord of een hulpwerkwoord eindigt. Maak de zin af of snijd terug naar de laatste hele zin.",
+   "cues": [
+    "eindigt midden in een zin",
+    "geen punt aan het eind van de tekst",
+    "eindigt op 'de', 'het', 'een', 'van', 'dat', 'om te', 'wordt'"
+   ],
+   "regex": [
+    "(?m)^[^\\n#|*\\-\\[>]{40,}[a-z\\u00e0-\\u00ff,]\\s*\\Z",
+    "(?i)\\b(?:de|het|een|van|dat|die|en|om te|te|is|wordt|worden|zal|kan|moet|heeft|hebben|automatisch)\\s*[\\n]?\\Z"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "De vier tildes aan het eind zijn wikiopmaak die automatisch",
+     "na": "Vier tildes aan het eind ondertekenen je bericht met je gebruikersnaam en een tijdstempel."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "abrupt-cutoff",
+   "notities": "Transfereert, met een Nederlandse woordenlijst voor de eindtoets. Het Nederlands zet de persoonsvorm vaak achteraan, dus een tekst die op 'wordt' of 'heeft' eindigt is hier een sterker signaal dan in het Engels."
+  },
+  {
+   "naam": "Onzichtbare en lookalike-tekens",
+   "categorie": "artifacts",
+   "definitie": "Onzichtbare of gelijkende tekens ingevoegd om AI-detectors te misleiden: zero-width-spatie, zero-width-non-joiner, zero-width-joiner, word joiner en byte order mark, en Cyrillische of Griekse letters op de plaats van Latijnse lookalikes. Hun aanwezigheid betekent dat de tekst door een humanizer of een omzeilingstool is gegaan. Haal de tekens weg en typ het woord opnieuw.",
+   "cues": [
+    "U+200B zero-width space",
+    "U+200C ZWNJ",
+    "U+200D ZWJ",
+    "U+FEFF BOM",
+    "U+2060 word joiner",
+    "Cyrillische а е о р с х у in een Nederlands woord"
+   ],
+   "regex": [
+    "[\\u200b\\u200c\\u200d\\u2060\\ufeff]",
+    "[a-z\\u00e0-\\u00ff]*[\\u0430\\u0435\\u043e\\u0440\\u0441\\u0445\\u0443\\u043a\\u043c\\u043d\\u0432\\u0442][a-z\\u00e0-\\u00ff]+"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "duikеn in (de tweede e is Cyrillisch U+0435, midden in een verder Latijns woord)",
+     "na": "duiken in, opnieuw getypt op je eigen toetsenbord"
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "bypass-trick-characters",
+   "notities": "Taalonafhankelijk; transfereert onveranderd. De tweede regex vindt een Cyrillische lookalike midden in een woord met Latijnse letters eromheen en werkt in het Nederlands even goed."
+  },
+  {
+   "naam": "Rollenspel-regieaanwijzingen",
+   "categorie": "artifacts",
+   "definitie": "Regieaanwijzingen tussen sterretjes uit rollenspelchat die in het proza zijn blijven staan: '*knikt*', '*zucht*', '*haalt zijn schouders op*'. De frase erbinnen opent met een handelingswerkwoord, en dat onderscheidt hem van gewone cursivering. Twee of meer in een document is de drempel, want een enkel paar sterretjes kan Markdown-cursief zijn.",
+   "cues": [
+    "*knikt*",
+    "*zucht*",
+    "*lacht*",
+    "*knikt bedachtzaam*",
+    "*haalt zijn schouders op*",
+    "*leunt naar voren*"
+   ],
+   "regex": [
+    "\\*(?:knikt|zucht|lacht|glimlacht|grinnikt|fronst|haalt (?:zijn|haar|de) schouders op|leunt (?:naar voren|achterover))[^*\\n]{0,30}\\*"
+   ],
+   "voorbeelden": [
+    {
+     "voor": "*knikt bedachtzaam* De migratie liep schoon.",
+     "na": "De migratie liep schoon."
+    }
+   ],
+   "ernst": "cluster",
+   "herkomst": "transfer",
+   "en_id": "roleplay-action-markers",
+   "notities": "Transfereert; de handelingswerkwoorden zijn vertaald en staan in de derde persoon enkelvoud, zoals het Nederlandse rollenspel dat doet."
+  },
+  {
+   "naam": "Generatorwikkel en sprekerlabel",
+   "categorie": "artifacts",
+   "definitie": "De transportverpakking rond het antwoord wordt met de inhoud mee geplakt. Subvormen: een containerdirectief boven het geleverde stuk (':::writing{variant=\"document\" id=\"68427\"}' met een willekeurig vijfcijferig id, gelokaliseerd als ':::schrijven{variant=...}' en vaak gesloten met een kale ':::'), en een sprekerlabel uit een transcript dat het model noemt ('Claude antwoordde:', 'ChatGPT: Ik heb de tekst herschreven'). Haal de wikkel weg.",
+   "cues": [
+    ":::writing{variant=\"document\" id=\"",
+    ":::schrijven{variant=",
+    ":::",
+    "Claude antwoordde:",
+    "ChatGPT: Ik heb de tekst herschreven",
+    "Gemini zei:"
+   ],
+   "regex": [
+    ":::\\s*(?:writing|schrijven|\\u00e9criture)\\{",
+    "(?m)^:::\\s*$",
+    "(?mi)^(?:claude|chatgpt|gemini|copilot|gpt-\\d)\\s*(?:antwoordde|zei|schreef|reageerde)\\s*:"
+   ],
+   "voorbeelden": [
+    {
+     "voor": ":::writing{variant=\"document\" id=\"68427\"}\nAK7 is een Belgische rapper.",
+     "na": "AK7 is een Belgische rapper."
+    }
+   ],
+   "ernst": "always",
+   "herkomst": "transfer",
+   "en_id": "generation-wrapper-and-speaker-label",
+   "notities": "Transfereert; de wikkel zelf is machinetekst, maar de sprekerlabels krijgen in Nederlandse transcripten Nederlandse werkwoorden ('antwoordde', 'zei')."
+  },
+  {
+   "naam": "Herkomstsignalen buiten de tekst",
+   "categorie": "artifacts",
+   "definitie": "Aanwijzingen over hoe de tekst is aangekomen in plaats van hoe hij leest: het hele document dat in de versiegeschiedenis als een enkele plakactie verschijnt, en een auteur die plotseling foutloos of formeel schrijft tegen zijn eigen basislijn in, zeker als die basislijn van voor eind 2022 is. Zulk procesbewijs is beter verdedigbaar dan een detectorscore, en op zichzelf nooit een reden om de tekst te wijzigen.",
+   "cues": [
+    "2000 woorden in een enkele bewerking geplakt",
+    "account dat verder alleen tweeregelige bewerkingen doet",
+    "stijlsprong tegen de eigen basislijn in"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Een sectie van 2000 woorden arriveert in een plakactie, vanaf een account dat verder alleen bewerkingen van twee regels doet.",
+     "na": "(geen tekstwijziging; vraag de auteur hoe de sectie tot stand kwam)"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "out-of-text-provenance-signal",
+   "notities": "Taalonafhankelijk; transfereert onveranderd, geen lexicale cues."
+  },
+  {
+   "naam": "Wegwerpbewerkingen om een staat van dienst op te bouwen",
+   "categorie": "artifacts",
+   "definitie": "Veel onschuldig ogende, niet-constructieve AI-herschrijvingen over losstaande pagina's in korte tijd, gemaakt om een bewerkingsaantal of een staat van dienst op te bouwen voordat een ander doel wordt nagestreefd. De losse bewerkingen zien er onschadelijk uit; het volume, de spreiding en de timing zijn het signaal.",
+   "cues": [
+    "veertig kleine herschrijvingen op veertig losse pagina's op een avond",
+    "geen enkele bewerking verandert een feit",
+    "volume en spreiding in plaats van inhoud"
+   ],
+   "regex": [],
+   "voorbeelden": [
+    {
+     "voor": "Veertig kleine herschrijvingen op veertig niet-verwante artikelen op een avond, waarvan er geen enkele een feit verandert.",
+     "na": "(als patroon beoordeeld in plaats van per bewerking, en met de bijdrager besproken voordat er iets gebeurt)"
+    }
+   ],
+   "ernst": "context",
+   "herkomst": "transfer",
+   "en_id": "permissions-gaming",
+   "notities": "Gedragspatroon, geen taalpatroon; transfereert onveranderd naar elke wiki, ook de Nederlandstalige."
+  }
+ ],
+ "dekking": "Alle 106 canonieke Engelse ingangen uit de categorieen structure (27), punctuation-format (23), content (31) en artifacts (25) zijn een voor een beoordeeld en teruggegeven; geen enkele is overgeslagen of samengevoegd. Verdeling na transfer: {'artifacts': 25, 'content': 31, 'punctuation-format': 21, 'structure': 27, 'translationese': 2}. Verplaatst van categorie omdat het mechanisme in het Nederlands elders hoort: title-case-headings, unnecessary-hyphenation (beide naar translationese). Niet van toepassing in het Nederlands en met lege cues teruggegeven zodat de merge bewust kan schrappen: comma-after-connective-ending. 16 patronen hebben geen regex omdat ze metrisch of oordeelsmatig zijn (alinealengte, zinsritme, verplaatsbaarheid, verdubbeling, herkomst buiten de tekst); daar staat de meetpoort in de cues. Validatie: alle 316 regexen compileren in Python re; elke lexicale regex vuurt op zijn eigen voor-voorbeeld (behalve treadmill-redundancy, dat bewust oordeelsmatig is); geen enkel na-voorbeeld vuurt een tell van een ander patroon af; en de hele set is tegen 26 Nederlandstalige bestanden uit deze repo (235.000 tekens mensentekst) gedraaid, waarna alleen opmaakpatronen (vet, Markdown-koppen, gedachtestreepje, krulaanhalingstekens) nog vuren, wat op een Markdown-oppervlak correct is, plus de seriekomma bij comma-density, waarvan de valse-alarmkans in de notities staat. Drie regexen moeten hoofdlettergevoelig draaien: title-case-headings en capitalized-after-colon; fabricated-bylines-and-datelines is hoofdletterongevoelig veilig gemaakt."
+}

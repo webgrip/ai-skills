@@ -1,0 +1,1042 @@
+{
+  "source": "wikipedia-b: Wikipedia:Signs of AI writing, lines 496-1120 of scratchpad/deai/lists/wikipedia-signs-of-ai-writing.wikitext — sections 'Style' (Title heading through Thematic breaks between sections) and 'Communication intended for the user' (Collaborative communication, Knowledge-cutoff disclaimers and speculation about gaps in sources, Phrasal templates and placeholder text), plus the first two heading lines of 'Markup'.",
+  "patterns": [
+    {
+      "name": "Title heading",
+      "category": "structure",
+      "definition": "The output opens with a heading that repeats the document or article title before any body text, because the model does not assume the surface already renders the title. On surfaces that show the title themselves (a wiki page, a CMS, a blog with a title field) this is a duplicate H1.",
+      "cues": [
+        "= '''Title''' =",
+        "# <article name> as the first line",
+        "level-1 heading equal to the page name"
+      ],
+      "examples": [
+        {
+          "before": "= '''[https://www.youtube.com/@Pixaroo-kid Pixaroo]''' ="
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source: 'AI chatbots tend to put a heading with the article name before all the content, since they don't usually imagine the title header ... as being already there.' Example from Draft:Pixaroo, August 2026. Fine in a standalone Markdown file whose only title is that heading; a tell wherever the title is rendered by the surface. Often also boldfaced and/or linked."
+    },
+    {
+      "name": "Title case in section headings",
+      "category": "punctuation-format",
+      "definition": "Every main word in a section heading is capitalized (Title Case) where the surface's house style is sentence case. Detect: headings whose second and later non-function words start with a capital.",
+      "cues": [
+        "Impact of Technology and Digitalization",
+        "Sustainable Development and Environmental Law",
+        "Human Rights and Economic Law",
+        "Educational Goals",
+        "Target Audience",
+        "Main Characters",
+        "External Links",
+        "Market and Statistics"
+      ],
+      "examples": [
+        {
+          "before": "== Impact of Technology and Digitalization ==\nThe advent of digital technology and the internet has revolutionized international economic law. [...]\n== Sustainable Development and Environmental Law ==\nThe integration of sustainable development goals into international economic law is increasingly important. [...]\n== Human Rights and Economic Law ==\nThe relationship between human rights and international economic law is a growing area of focus. [...]"
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Shortcut WP:AITITLECASE. Source: 'In section headings, AI chatbots strongly tend to capitalize all main words' (cited to Russell). 'Strongly tend' is the source's strongest frequency wording in this section. Not a tell in publications whose house style is title case (many US newspapers, some journals); the mechanism (ignoring the target style guide) transfers to any language with a sentence-case heading norm, but the specific capitalization rule is English."
+    },
+    {
+      "name": "Headings only containing other headings",
+      "category": "structure",
+      "definition": "A heading whose entire content is lower-level headings, with no prose of its own: an outline node rendered as a section. Detect: heading immediately followed by a lower-level heading with no text between.",
+      "cues": [
+        "heading directly followed by a sub-heading",
+        "= Section =\n== Subsection =="
+      ],
+      "examples": [
+        {
+          "before": "= Programming =\n== Pixy's Adventure Club ==\n[...]\n= Main Characters =\n== Pixy ==\n[...]"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'AI chatbots may generate a heading that only stores other headings, without text of their own.' Example Draft:Pixaroo, August 2026. Legitimate in long reference documents with a deliberate table-of-contents hierarchy; a tell in short articles."
+    },
+    {
+      "name": "Overuse of boldface",
+      "category": "punctuation-format",
+      "definition": "Phrases bolded for emphasis in an excessive, mechanical way: every instance of a chosen term, or a set of 'key' phrases, is bolded in running prose, as in readmes, fan wikis, how-tos, sales pitches, slide decks and listicles. Detect: several bold spans per sentence or paragraph, bold on ordinary noun phrases rather than on a defined term at first mention.",
+      "cues": [
+        "multiple '''bold''' spans in one sentence",
+        "bold on every instance of a chosen word or phrase",
+        "key-takeaways style bold",
+        "'''leveraged buyout (LBO)'''",
+        "'''debt financing'''",
+        "'''private equity firms'''",
+        "'''financial sponsors'''",
+        "'''assets and future cash flows'''",
+        "'''Productive Years'''",
+        "'''P(doom)'''"
+      ],
+      "examples": [
+        {
+          "before": "A '''leveraged buyout (LBO)''' is characterized by the extensive use of '''debt financing''' to acquire a company. This financing structure enables '''private equity firms''' and '''financial sponsors''' to control businesses while investing a relatively small portion of their own equity. The acquired company's '''assets and future cash flows''' serve as collateral for the debt, making lenders more willing to provide financing."
+        },
+        {
+          "before": "'''50 Scientists and Thinkers in AI Safety with significant''' influence on the field of alignment, containment, and risk mitigation. The list includes their '''Productive Years''', their estimated '''P(doom)''' (probability of existential catastrophe), a '''one-sentence summary of their contribution to AI Safety''', and their Wikipedia link."
+        },
+        {
+          "before": "Pixaroo was created as an educational animation project designed for children between the ages of '''3 and 6 years'''."
+        },
+        {
+          "before": "In practice, many Dutch organizations and businesses use it for '''their own convenience''', even placing it in addresses [...] but this only '''adds confusion''' internationally and '''erases national identity'''. You don't say '''\"Netherlands, Europe\"''' as an address"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Shortcut WP:AIBOLD. Source: 'may display various phrases in boldface for emphasis in an excessive, mechanical manner ... often in a \"key takeaways\" fashion. Some newer large language models or apps have instructions to avoid overuse of boldface.' A single bold on the article subject at first mention is normal and not a tell. The second example shows bold spans that break mid-phrase ('with significant''' influence'), a mechanical-emphasis fingerprint."
+    },
+    {
+      "name": "Inline-header vertical lists",
+      "category": "structure",
+      "definition": "An ordered or unordered list in which each item begins with a short boldfaced header, then a colon, then descriptive text. Detect: list marker + bold run + ':' + prose, repeated across three or more items; frequently preceded by a colon lead-in line such as 'Key highlights:' or 'consists of three key layers:'.",
+      "cues": [
+        "* '''Header:''' text",
+        "1. Header: text",
+        "'''SEO (Search Engine Optimization):'''",
+        "'''Route Details''':",
+        "'''Bypasses and Improvements''':",
+        "'''Timeline and Impact''':",
+        "Key highlights:",
+        "consists of three key layers:",
+        "Conflict of Interest (COI)/Autobiography:",
+        "Notability (GNG and NPOLITICIAN):",
+        "Mass Content Removal:",
+        "Disruptive Tagging:",
+        "Context:"
+      ],
+      "examples": [
+        {
+          "before": "Conflict of Interest (COI)/Autobiography: While I understand the concern regarding my username [...]\nNotability (GNG and NPOLITICIAN): I have revised the article to focus on factual details [...]\nOriginal Research (WP) and Promotional Tone: I have worked on removing original research [...]\nArticle Move to Main Namespace: Moving the draft to the main namespace after the AFC review [...]"
+        },
+        {
+          "before": "1. Historical Context Post-WWII Era: The world was rapidly changing after WWII, [...]\n2. Nuclear Arms Race: Following the U.S. atomic bombings, the Soviet Union detonated its first bomb in 1949, [...]\n3. Key Figures Edward Teller: A Hungarian physicist who advocated for the development of more powerful nuclear weapons, [...]\n[...]\n9. Key Takeaways Understanding the Madness: The concept of Project Sundial highlights the extremes of human ingenuity [...]\n10. Questions to Consider What were the motivations behind the development of Project Sundial? [...]"
+        },
+        {
+          "before": "AVO consists of three key layers:\n* '''SEO (Search Engine Optimization):''' Traditional methods for improving visibility in search engine results through content, technical, and on-page optimization.\n* '''AEO (Answer Engine Optimization):''' Techniques focused on optimizing content for voice assistants and answer boxes, such as featured snippets and structured data.\n* '''GEO (Generative Engine Optimization):''' Strategies for ensuring businesses are cited as credible sources in responses generated by large language models (LLMs)."
+        },
+        {
+          "before": "Key highlights:\n* '''Route Details''': Starts at Medak, passes through Yellareddy, Banswada, [...]\n* '''Bypasses and Improvements''': Bypasses are planned at high-density spots [...]\n* '''Timeline and Impact''': Phase 3 (Rudrur–Bhainsa) construction is 40% complete as of December 2025, [...]"
+        },
+        {
+          "before": "Mass Content Removal: The user removed over 20,000 characters of reliably sourced content in a single edit, [...]Disruptive Tagging: Despite the article being supported by 34 high-quality international secondary sources [...]Refusal to engage (WP:BRD): The user was notified of WP:V and WP:DE policies [...]Context: Given the high-profile nature of the subject in global finance and mining [...]"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Shortcut WP:AILIST; Wikipedia MoS counterpart: 'Use prose where understood easily'. Source: 'vertical lists formatted in a specific way: an ordered or unordered list where the list marker ... is followed by an inline boldfaced header, separated with a colon from the remaining descriptive text.' False positive named by the source: XfD !votes where 'Keep' or 'Delete' is bolded to set it apart from the argument. The Navipet example also carries promotional content inside the list ('lifeline', 'seamless', 'boosting trade'). Rewrite: fold into prose, or keep a plain list when the items are genuinely parallel and short."
+    },
+    {
+      "name": "Inline-header list without separating punctuation",
+      "category": "structure",
+      "definition": "Variant of the inline-header list where the bold header is followed directly by the descriptive text with no colon, dash, or period between them. Detect: bold run at line start immediately followed by a capitalized sentence.",
+      "cues": [
+        "'''Header''' Text begins",
+        "Durability Unlike roasted meats",
+        "The Fire Hazard Cooking with large quantities",
+        "The Solution Ships would stock up",
+        "The Transition After those first 48 hours"
+      ],
+      "examples": [
+        {
+          "before": "Durability Unlike roasted meats, which become tough and dry, or boiled foods, which rot quickly, battered fish was stable. [...]\n\nPortability and the \"Pocket Meal\" The structural integrity of the polme made the fish physically durable. [...]\n\nRuggedness It could be wrapped in a simple cloth or paper and stuffed into a satchel. [...]\n\nThe Fire Hazard Cooking with large quantities of boiling oil on a wooden ship was an invitation to disaster. Open flames were strictly regulated at sea.\n\nThe Solution Ships would stock up on large quantities of pre-fried battered fish just before departure. [...]"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'In some cases, there is no punctuation separating the title of each entry from its corresponding text. This is not to be confused with the way that users sometimes format their !votes in XfD discussions.' Example: Talk:Fish and chips, December 2025, a very long run (twenty-plus headers) that also shows 'The X' header naming ('The Fire Hazard', 'The Solution', 'The Transition')."
+    },
+    {
+      "name": "Non-native list markers pasted from chat output",
+      "category": "artifacts",
+      "definition": "List items marked with a literal bullet character (•), hyphen (-), en dash (–), hash (#), emoji, or explicit numerals ('1.') instead of the surface's own list markup, because plain text was copied off a chat screen. Line breaks may be lost on copy so items run together in one paragraph.",
+      "cues": [
+        "•",
+        "- ",
+        "– ",
+        "# ",
+        "1. ",
+        "2. ",
+        "emoji before a list item",
+        "items run together with no line breaks"
+      ],
+      "examples": [
+        {
+          "before": "1. Historical Context Post-WWII Era: The world was rapidly changing after WWII, [...]\n2. Nuclear Arms Race: [...]"
+        },
+        {
+          "before": "Mass Content Removal: The user removed over 20,000 characters [...]Disruptive Tagging: Despite the article [...]Refusal to engage (WP:BRD): [...]Context: Given the high-profile nature [...]"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source: 'Instead of proper wikitext, a bullet point in an unordered list may appear as a bullet character (•), hyphen (-), en dash (–), hash (#), emoji, or similar character. Ordered lists ... may use explicit numbers (such as 1.) instead of standard wikitext. When copied as bare text appearing on the screen, some of the formatting information is lost, and line breaks may be lost as well.' Platform-specific in its details (wikitext) but the mechanism, markup of one surface pasted into another, is universal. The run-together RfPP example (March 2026) is the lost-line-break case."
+    },
+    {
+      "name": "Overuse of em dashes",
+      "category": "punctuation-format",
+      "definition": "Em dashes (—) used more often than a human writer in the same genre, and in slots where humans would use a comma, parentheses, a colon, or a (misused) hyphen or en dash. Typically formulaic and 'punched up': the dash sets off an emphatic clause, a contrast, or the second half of a parallelism. Detect: em-dash count per sentence or per 100 words well above genre baseline; dash used to introduce 'not X — but Y' or 'X — it's Y' turns.",
+      "cues": [
+        "—",
+        " — ",
+        "— not because",
+        "— but because",
+        "— and",
+        "— it's",
+        "— something that",
+        "This isn't X — it's Y",
+        "doesn't grow from silence — it grows from"
+      ],
+      "examples": [
+        {
+          "before": "I referred to Wikipedia's policies in a discussion with another user, using AI to help me organize my thoughts and better explain the policies I was referencing — something that was reported by the user. [...] If there were any errors in interpretation, they were my own — not mistakes caused by the AI. [...]\n[...] Ultimately, one of the admins blocked me — not because of the AI usage itself, which had already been addressed — but because I didn't respond to their continued questioning."
+        },
+        {
+          "before": "In practice, many Dutch organizations and businesses use it for their own convenience, even placing it in addresses — e.g., \"Curaçao, Dutch Caribbean\" — but this only adds confusion internationally and erases national identity. You don't say \"Netherlands, Europe\" as an address — yet this kind of mislabeling continues."
+        },
+        {
+          "before": "When WP:BLP1E says \"one event,\" it's shorthand — and the supporting essays, past AfD precedents, and practical enforcement show that \"two incidents of fleeting attention\" still often fall under the protective scope of BLP1E. This isn't \"imagining\" what policy should be — it's recognizing how community consensus has shaped its application.\n\n[...] And consensus doesn't grow from silence — it grows from critique, correction, and clarity.\n\nIf we disagree on that, then yes — we're speaking different languages."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Shortcut WP:AIDASH. Source: 'This sign is most useful when taken in combination with other indicators, not by itself. It is much more common on discussion pages than in article text.' Model priors: OpenAI's GPT-5.1 was tuned to suppress em dashes (Ars Technica, Nov 2025); a July 2026 Economist study found that of contemporary models only Claude used em dashes more than professional writers, and ChatGPT used them less. A September 2026 maintenance box says the sign may be moved to 'Historical indicators' if recent examples cannot be found. Cited to Merrill (Washington Post) and Kriss. The examples pair the dash with negative parallelism ('not because ... — but because', 'This isn't ... — it's'), so a rewrite should remove both the dash and the template, not only swap the dash for a comma."
+    },
+    {
+      "name": "Spaced em dashes",
+      "category": "punctuation-format",
+      "definition": "Em dashes with a space on each side (' — ') rather than closed up (word—word). Detect: regex ' — ' (space, U+2014, space).",
+      "cues": [
+        " — "
+      ],
+      "examples": [
+        {
+          "before": "they were my own — not mistakes caused by the AI"
+        },
+        {
+          "before": "yes — we're speaking different languages"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'AI-generated em dashes are usually surrounded by spaces, contrary to common typographic guidelines (which most human users of em dashes will be familiar with).' Sub-signal of 'Overuse of em dashes'; spaced em dashes are house style in some publications (e.g. AP style uses spaced em dashes), so weight only alongside frequency."
+    },
+    {
+      "name": "Emoji as formatting",
+      "category": "punctuation-format",
+      "definition": "Emoji placed in front of section headings or list items as decorative icons, one per heading or bullet, often thematically matched to the heading text. Detect: line starts with an emoji followed by a heading or bullet text.",
+      "cues": [
+        "👋",
+        "🧑‍💻",
+        "🌏",
+        "💻",
+        "📚",
+        "🌄",
+        "🔍",
+        "🌐",
+        "🎯",
+        "📬",
+        "👉",
+        "🙏",
+        "🧠",
+        "🧱",
+        "🚨",
+        "🧭",
+        "🪷",
+        "🕰️",
+        "🔭",
+        "🌕",
+        "🌀",
+        "🌠",
+        "📤",
+        "emoji before a heading",
+        "emoji before a bullet"
+      ],
+      "examples": [
+        {
+          "before": "👋 Welcome to the User Page of Bhaskar Sunsari\n[...]\n🧑‍💻 About Me\n[...]\n🌏 My Interests\nHere are some topics I love exploring and contributing to:\n* 💻 **Computing & Open Source Technology**\n* 📚 **Education Systems in South Asia**\n* 🌄 **Nepalese Culture, History, and Local Stories**\n* 🔍 **Underrepresented Communities & Forgotten Facts**\n* 🌐 **Digital Literacy & Tech for Social Good**\n🎯 What I'm Working On\n[...]\n📬 Let's Connect!\nHave a suggestion, correction, or just want to say hi?\n👉 Drop me a message [...] I'm always happy to hear from fellow Wikimedians!\n🙏 Gratitude"
+        },
+        {
+          "before": "Let's decode exactly what's happening here:\n🧠 Cognitive Dissonance Pattern:\nYou've proven authorship, demonstrated originality, and introduced new frameworks, yet they're defending a system that explicitly disallows recognition of originators unless a third party writes about them first.\n[...]\n🧱 Structural Gatekeeping:\nWikipedia policy favors:\n[...]\n🚨 Underlying Motivation:\nWhy would a human fight you on this?\n[...]\n🧭 What You're Actually Dealing With:\nThis is not a debate about rules."
+        },
+        {
+          "before": "🪷 Traditional Sanskrit Name: Trikoṇamiti\nTri = Three\nKoṇa = Angle\nMiti = Measurement 🧭 \"Measurement of three angles\" — the ancient Indian art of triangle and angle mathematics.\n🕰️ 1. Vedic Era (c. 1200 BCE – 500 BCE)\n[...]\n🔭 2. Sine of the Bow: Sanskrit Terminology\n[...]\n🌕 3. Āryabhaṭa (476 CE)\n[...]\n🌀 4. Varāhamihira (6th Century CE)\n[...]\n🌠 5. Bhāskarācārya II (12th Century CE)\n[...]\n📤 Indian Legacy Spreads"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Shortcut WP:AIEMOJI. Source: 'AI chatbots have used emoji in the past ... they sometimes decorated section headings or bullet points by placing emoji in front of them. These almost always appeared in talk page comments and edit summaries; while they are more rare now, they may still be seen.' Cited to Merrill et al. (Washington Post, Nov 2025) and Geng & Trotta (ACL Findings 2025). Never acceptable in encyclopedic or formal prose; ordinary in social posts, so severity is register-dependent. The Bhaskar example also carries Markdown bold (**...**) leaking into wikitext, which the Markup section (outside this range) covers."
+    },
+    {
+      "name": "Unusual use of tables",
+      "category": "punctuation-format",
+      "definition": "Small, unnecessary tables (a handful of rows) holding facts that read better as a sentence or an infobox: a two-column Metric/Figure or Name/Designation table, or a Feature/A/B comparison table with a 'Comparison of X and Y' caption. Detect: table with fewer than ~6 rows, generic header words (Metric, Figure, Feature, Name, Designation), or caption beginning 'Comparison of' / 'Key Statistics'.",
+      "cues": [
+        "Key Statistics",
+        "Metric",
+        "Figure",
+        "Feature",
+        "Name !! Designation",
+        "Comparison of",
+        "Key management personnel ... include:",
+        "The structural similarity between ... is striking:"
+      ],
+      "examples": [
+        {
+          "before": "The Indian biobanking market was valued at approximately USD 2,101 million in 2024. [...]\n{| class=\"wikitable\"\n|+Key Statistics of Indian Biobanking (2024-2025)\n!Metric\n!Figure\n|-\n|Market Valuation (2024)\n|~USD 2.1 billion\n|-\n|Major Accredited Facilities\n|NLDB, CBR Biobank, THSTI, Karkinos\n|-\n|GenomeIndia Diversity\n|99 ethnic groups (32 tribal, 53 non-tribal)\n|}"
+        },
+        {
+          "before": "The mall employs approximately 3,167 staff members across all operations. Key management personnel of Pacific Development Corporation Private Limited include:\n{| class=\"wikitable\"\n! Name !! Designation\n|-\n| S. K. Bansal || Chairman\n|-\n| Abhishek Bansal || Managing Director\n|-\n| Saket Bansal || Managing Director\n|-\n| Mehak Khanna || VP Marketing\n|}"
+        },
+        {
+          "before": "The structural similarity between the Shan hsun-ok and the Assamese xorai is striking:\n{| class=\"wikitable\"\n|+ Comparison of Shan Hsun-Ok and Assamese Xorai\n|-\n! Feature !! Shan Hsun-Ok !! Assamese Xorai\n|-\n| Basic Structure || Bowl on pedestal with tray and cover || Tray on pedestal with domed cover\n|-\n| Primary Material || Lacquered bamboo || Bell metal (kah) or brass\n|-\n| Ceremonial Use || Buddhist offerings to monks || Hindu/Vaishnava offerings; hospitality\n|-\n| Cover || Stupa-shaped spire || Domed cover\n|}"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Shortcut WP:AITABLE. Source: 'In rare cases, some AIs may create unnecessary small tables that could be better represented as prose or an infobox.' 'Rare' is the source's own frequency label. Tables are legitimate for genuinely tabular data; the tell is the mismatch between table form and the small, prose-shaped content. The Xorai example also shows a thematic break (----) between the two tables."
+    },
+    {
+      "name": "Curly quotation marks and apostrophes",
+      "category": "punctuation-format",
+      "definition": "Typographic quotes (“ ” ‘ ’) and the right-single-quote apostrophe (’) on a surface whose convention is straight quotes (\" '), often inconsistently mixed with straight quotes within the same text. Detect: U+201C/U+201D/U+2018/U+2019 in body text; stronger when both curly and straight forms appear in one document or one sentence.",
+      "cues": [
+        "“",
+        "”",
+        "‘",
+        "’",
+        "curly apostrophe in contractions (don’t, it’s)",
+        "curly apostrophe in possessives",
+        "mixed curly and straight quotes in one response"
+      ],
+      "examples": [
+        {
+          "before": "Some claims have suggested that ''Ichafu'' derives from the French word chiffon (“rag” or \"light cloth”)."
+        },
+        {
+          "before": "you're right about one thing — we do seem to have different interpretations [...] it’s shorthand — and [...] I’ve cited or echoed each of them"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Shortcut WP:AICURLY. Model priors from source: ChatGPT (appears to have risen mid-2025) and DeepSeek typically use curly quotes; Gemini and Claude typically do not. Source: 'Curly quotes alone do not prove LLM use.' Listed false-positive sources: Chicago Manual of Style typesetting, Microsoft Word smart quotes, macOS/iOS system-wide smart quotes, grammar tools such as LanguageTool, professionally typeset works such as major newspapers, citation tools like Citer copying a page title (example: \"When ‘Not Guilty’ Is a Life Sentence\"). Some fonts render curly apostrophes as straight so the distinction can be invisible to the reader. Inconsistency between curly and straight in one text is the stronger signal. Quote glyphs differ per language („ “ « »), so the mechanism is universal but the trigger characters are locale-specific."
+    },
+    {
+      "name": "Skipping heading levels",
+      "category": "punctuation-format",
+      "definition": "Sections begin at the third heading level (=== / ###) with no second-level heading above them, skipping a level of the hierarchy. Detect: first body heading is level 3 or deeper; any heading whose level exceeds its parent's by more than one.",
+      "cues": [
+        "=== as the first section heading with no ==",
+        "### with no ## above",
+        "heading level jumps by two"
+      ],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'AI chatbots tend to skip level 2 headings (==) and start sections from the third level (===). Because doing so is against Wikipedia's accessibility and style conventions, it is therefore very unlikely for a manually-formatted page to have this quirk.' No worked example given (the examples block is commented out in the source). The source treats it as a high-precision signal; it is also an accessibility defect in any HTML output, so never acceptable in the target."
+    },
+    {
+      "name": "Overuse of level 1 headings",
+      "category": "punctuation-format",
+      "definition": "Level-1 headings (= H1 = / # H1) used for ordinary body sections on a surface that reserves level 1 for the page title (Wikipedia, most CMSs, HTML documents with a rendered title). Likely produced by translating Markdown '#' headings to the target markup one-to-one.",
+      "cues": [
+        "= Heading =",
+        "multiple # H1 headings in one document",
+        "= History =",
+        "= External Links ="
+      ],
+      "examples": [
+        {
+          "before": "= '''[https://www.youtube.com/@Pixaroo-kid Pixaroo]''' =\n[...]\n= History =\n[...]\n= Programming =\n[...]\n= Main Characters =\n[...]\n= Educational Goals =\n[...]\n= Style =\n[...]\n= Target Audience =\n[...]\n= External Links =\n[...]"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source: 'Level 1 headings are very rare and are typically not used ... it's typically only used by the MediaWiki system for the article lead. This might be caused because of the AI translating Markdown to wikitext.' Example Draft:Pixaroo, August 2026, which combines this with 'Title heading', 'Headings only containing other headings' and 'Thematic breaks'. Acceptable in a standalone Markdown file with one H1; a tell where the surface renders the title itself."
+    },
+    {
+      "name": "Thematic breaks between sections",
+      "category": "punctuation-format",
+      "definition": "A horizontal rule (---- in wikitext, --- or *** in Markdown, <hr>) inserted between every section or sub-section of a text. Detect: rule immediately before a heading, repeated throughout.",
+      "cues": [
+        "----",
+        "---",
+        "***",
+        "<hr>",
+        "horizontal rule before each heading"
+      ],
+      "examples": [
+        {
+          "before": "=== Distinction from French \"''chiffon''\" ===\nSome claims have suggested that ''Ichafu'' derives from the French word chiffon (\"rag\" or \"light cloth\"). However, early lexicographic records do not support this interpretation and later sources differ in their explanations.\n\n[...]\n----\n\n== History ==\nHeadwrapping practices among Igbo women are documented in historical and ethnographic sources and are generally understood to predate the colonial period.\n\n[...]\n----\n\n== Form and construction =="
+        },
+        {
+          "before": "= History =\nPixaroo was created as an educational animation project [...]\n----\n\n= Programming =\n\n== Pixy's Adventure Club ==\n[...]\n----\n\n= Main Characters =\n\n[...]\n\n----\n\n== Roo ==\nA playful kangaroo who loves jumping, games, and outdoor adventures.\n----\n\n== Pandy ==\nA gentle panda who enjoys reading, nature, and learning new things.\n----\n\n== Ellie ==\nA caring elephant known for her excellent memory and thoughtful advice.\n----"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source: 'AI chatbots sometimes include a thematic break (----) between each section in a text (this is common in Markdown output).' 'Sometimes' is the source's frequency label. A single rule marking a genuine shift (e.g. before an appendix) is normal; the tell is one before every heading. The Ichafu example also shows curly/straight quote mixing and a sub-heading (===) placed before a == heading, i.e. skipped levels."
+    },
+    {
+      "name": "Collaborative communication",
+      "category": "artifacts",
+      "definition": "Chatbot-to-user correspondence, prewriting, or advice left in the published text: greetings, agreement, offers of further help, sign-offs, 'here is a ...' framing, and instructions on how to use the text. May sit in the body or inside hidden comments (<!-- -->). Detect: second-person address to 'you' the requester, first-person offers, or any sentence about the text rather than the subject.",
+      "cues": [
+        "I hope this helps",
+        "Of course!",
+        "Certainly!",
+        "You're absolutely right!",
+        "Would you like...",
+        "is there anything else",
+        "let me know",
+        "more detailed breakdown",
+        "here is a",
+        "Here's a template for your",
+        "You can copy and paste this",
+        "customize it further",
+        "If you plan to add this information to",
+        "ensure that the content is presented in a neutral tone",
+        "I'm always happy to hear from"
+      ],
+      "examples": [
+        {
+          "before": "Here's a template for your wiki user page. You can copy and paste this onto your user page and customize it further."
+        },
+        {
+          "before": "If you plan to add this information to the \"Animal Cruelty Controversy\" section of Foshan's Wikipedia page, ensure that the content is presented in a neutral tone, supported by reliable sources, and adheres to Wikipedia's guidelines on verifiability and neutrality."
+        },
+        {
+          "before": "List the areas you want to contribute to. Example: \"I enjoy creating and improving articles about Indian culture, sports history, technology tools, and biographies of notable personalities."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Shortcuts WP:CERTAINLY, WP:COLLABCOMM. The source's words-to-watch box lists exactly: 'I hope this helps', 'Of course!', 'Certainly!', 'You're absolutely right!', 'Would you like...', 'is there anything else', 'let me know', 'more detailed breakdown', 'here is a'. Source: 'Editors sometimes paste text from an AI chatbot that was meant as correspondence, prewriting or advice, rather than article content. This may appear in article text or within comments.' Also: 'Often the advice given by an AI chatbot is incorrect, misleading, or in contravention with policies or guidelines.' The words are English but every language has its chatbot-register equivalents. Example dates 2023–2026."
+    },
+    {
+      "name": "Explicit destination self-reference and policy name-dropping",
+      "category": "artifacts",
+      "definition": "The text says out loud that it is intended for the destination surface ('for Wikipedia', 'your Wikipedia page') and names the destination's policies or guidelines explicitly as belonging to that destination ('Wikipedia's guidelines on verifiability and neutrality'), which an insider writing in place would not spell out. Detect: destination name + possessive + policy noun; policy shortcodes explained to the reader.",
+      "cues": [
+        "Wikipedia's guidelines on verifiability and neutrality",
+        "adheres to Wikipedia's",
+        "Foshan's Wikipedia page",
+        "is Wikipedia markup that",
+        "Submit via WP:AFC (Articles for Creation)",
+        "Post to WP:COIN (Conflict of Interest Noticeboard)",
+        "Before creating a real Wikipedia page"
+      ],
+      "examples": [
+        {
+          "before": "If you plan to add this information to the \"Animal Cruelty Controversy\" section of Foshan's Wikipedia page, ensure that the content is presented in a neutral tone, supported by reliable sources, and adheres to Wikipedia's guidelines on verifiability and neutrality."
+        },
+        {
+          "before": "Final important tip: The ~~~~ at the very end is Wikipedia markup that automatically"
+        },
+        {
+          "before": "<!-- 3. Submit via WP:AFC (Articles for Creation), not directly to mainspace. -->\n<!-- 5. Post to WP:COIN (Conflict of Interest Noticeboard) after submission. -->"
+        }
+      ],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "Source: 'Chatbots prompted to produce a Wikipedia article or comment may also explicitly state that the text is meant for Wikipedia, and may mention various policies and guidelines in the output—often explicitly specifying that they're Wikipedia's conventions.' Platform instance is Wikipedia; the mechanism (naming the venue and its rules to the venue) transfers to any surface: a blog post that says 'for this blog', a PR description that says 'per this repository's contributing guidelines'. The Triple Entry example shows the advice was also wrong (self-report to COI/N 'after submission')."
+    },
+    {
+      "name": "Self-certification of compliance",
+      "category": "artifacts",
+      "definition": "The text asserts its own neutrality, sourcing, or style-guide conformance instead of demonstrating it ('Written to Wikipedia Manual of Style. Neutral tone, sourced throughout.'). Detect: sentences whose subject is the document and whose predicate is a quality claim.",
+      "cues": [
+        "Written to Wikipedia Manual of Style",
+        "Neutral tone, sourced throughout",
+        "We remain committed to creating content that aligns with Wikipedia's mission",
+        "presented in a neutral tone, supported by reliable sources"
+      ],
+      "examples": [
+        {
+          "before": "<!-- WIKIPEDIA DRAFT — Triple Entry Accounting, version 2 -->\n<!-- Written to Wikipedia Manual of Style. Neutral tone, sourced throughout. -->\n<!-- Author has declared a conflict of interest. Submit via WP:AFC. -->\n<!-- Disclose COI on Talk page and in edit summary before saving. -->"
+        },
+        {
+          "before": "We remain committed to creating content that aligns with Wikipedia's mission and are open to further guidance."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Grouped by the source under Collaborative communication; split out because it is a distinct move (canned assurance of policy adherence) that also occurs without any user-directed instruction. The example from Draft:Triple Entry Accounting (May 2026) lives entirely in HTML comments, so detection must scan hidden comment blocks."
+    },
+    {
+      "name": "Submission notes and instructions to the paster",
+      "category": "artifacts",
+      "definition": "Numbered or prose instructions addressed to the person who will paste or submit the text, telling them what to do before, during, or after publishing; sometimes marked 'delete before submission' and sometimes hidden in HTML comments. Detect: imperative sentences about the document's lifecycle (submit, paste, convert, declare, delete this section).",
+      "cues": [
+        "Delete this section before submission",
+        "After pasting the article",
+        "SUBMISSION NOTES",
+        "Final important tip:",
+        "Before creating a real Wikipedia page",
+        "To have a good chance of acceptance, your",
+        "This article should be created at",
+        "If a reviewer questions",
+        "convert as many items as possible in the citation list into inline references"
+      ],
+      "examples": [
+        {
+          "before": "Delete this section before submission. After pasting the article, convert as many items as possible in the citation list into inline references attached to the exact sentences they support. If a reviewer questions print-era sources, explain that the article relies on identifiable published books, journals and newspapers from the pre-internet period, several of which survive only as scans from original printed copies."
+        },
+        {
+          "before": "<!-- SUBMISSION NOTES -->\n<!-- 1. This article should be created at \"Triple Entry Accounting\" (not \"Triple-entry accounting\" — follow Grigg's own capitalisation in the JRFM title). -->\n<!-- 2. The existing article [[Momentum accounting and triple-entry bookkeeping]] needs a hatnote added pointing here. -->\n<!-- 3. Submit via WP:AFC (Articles for Creation), not directly to mainspace. -->\n<!-- 4. Declare COI explicitly: in the AFC submission notes, on the article Talk page, and in the edit summary. -->\n<!-- 5. Post to WP:COIN (Conflict of Interest Noticeboard) after submission. -->\n<!-- 6. The Finanstilsynet citation currently relies on Sunde's paper as intermediary. If a direct sandbox report URL exists on finanstilsynet.no, substitute it. -->\n<!-- 7. The diagram uploaded by the user (showing REA/TEA/Blockchain streams) would be excellent as a figure, but requires CC-BY-SA release by its creator before it can be uploaded to Wikimedia Commons. -->"
+        },
+        {
+          "before": "== Before creating a real Wikipedia page ==\nTo have a good chance of acceptance, your channel should ideally have:\n* Over '''100,000 subscribers''' (not required, but often helps)\n* Coverage in '''reliable independent news sources'''\n* Awards or industry recognition\n* Significant cultural or educational impact\n* Independent references that verify the information"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Grouped by the source under Collaborative communication. The Pixaroo (August 2026) example is a whole section 'telling the user what to have before creating a Wikipedia page'; the Gurmukh Singh Jeet example (April 2026) even coaches the user on what to tell a reviewer. Remove entirely; nothing in these is article content."
+    },
+    {
+      "name": "Meta prewriting section plan",
+      "category": "rhetoric",
+      "definition": "A paragraph that announces what the section will do instead of doing it: 'In this section, we will discuss ... This will include ... The purpose is to provide a comprehensive understanding'. Detect: first-person plural + future tense about the text itself; 'the purpose of this section'.",
+      "cues": [
+        "In this section, we will discuss",
+        "This will include a discussion of",
+        "The purpose is to provide a comprehensive understanding of",
+        "to inform the reader about",
+        "existing knowledge and gaps in the field"
+      ],
+      "examples": [
+        {
+          "before": "In this section, we will discuss the background information related to the topic of the report. This will include a discussion of relevant literature, previous research, and any theoretical frameworks or concepts that underpin the study. The purpose is to provide a comprehensive understanding of the subject matter and to inform the reader about the existing knowledge and gaps in the field."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "From the Collaborative communication examples (Metaphysics, August 2023): outline text produced as prewriting and pasted as content. Also carries 'report'/'study' register mismatch (an encyclopedia article calling itself a report). Academic theses sometimes open chapters this way, so tolerate in that register only."
+    },
+    {
+      "name": "Editorial advice about the article, inside the article",
+      "category": "artifacts",
+      "definition": "Suggestions for how the text could be improved (add photos, add a map, an image 'could be illustrated', 'would enrich the section') written as if to an editor but published as body text. Detect: modal + 'the article'/'the section'/'readers' as object: 'would enrich the article', 'could be added to orient readers', 'could further engage readers'.",
+      "cues": [
+        "would enrich the article's section",
+        "could be added to orient readers",
+        "could be illustrated with an image",
+        "Several such photographs are available (e.g., on Wikimedia Commons)",
+        "would also add depth to the article",
+        "could further engage readers",
+        "By leveraging these visual aids",
+        "the expanded article can provide a richer, more immersive picture"
+      ],
+      "examples": [
+        {
+          "before": "Including photos of the forge (as above) and its tools would enrich the article's section on culture or economy, [...] Visual resources can also highlight Ronco Canavese's landscape and landmarks. For instance, a map [...] could be added to orient readers geographically. The village's scenery [...] could be illustrated with an image. Several such photographs are available (e.g., on Wikimedia Commons) that show Ronco's panoramic view, [...] Historical images, if any exist [...] would also add depth to the article. Additionally, the town's notable buildings and sites can be visually presented: [...] Including an image of the Santuario di San Besso [...] could further engage readers. By leveraging these visual aids – maps, photographs of natural and cultural sites – the expanded article can provide a richer, more immersive picture of Ronco Canavese."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "From the Collaborative communication examples (Ronco Canavese, May 2025). Distinct from submission notes: it is advice about content rather than process, and it is written in the same register as the article so it slips past a skim. Also shows 'leveraging' and 'richer, more immersive' promotional vocabulary and a spaced en dash used as an em dash."
+    },
+    {
+      "name": "Letter and email register on non-correspondence surfaces",
+      "category": "artifacts",
+      "definition": "Formal-letter openers and closers ('I hope this message finds you well', 'I am writing to ...', 'Thank you for your understanding and assistance in this matter', 'Best regards,') in a talk-page post, ticket, or article where nobody writes letters. Detect: letter opener in first sentence, valediction at end.",
+      "cues": [
+        "I hope this message finds you well",
+        "I am writing to request",
+        "I am writing to express my deep concern",
+        "Thank you for your understanding and assistance in this matter",
+        "Best regards,",
+        "We hope to resubmit our work once these changes have been made"
+      ],
+      "examples": [
+        {
+          "before": "I hope this message finds you well. I am writing to request an edit for the Wikipedia entry\n\nI have identified an area within the article that requires updating/improvement."
+        },
+        {
+          "before": "We remain committed to creating content that aligns with Wikipedia's mission and are open to further guidance. Please find our revised article [link to the revised article] and a detailed list of sources [link to source list]. We hope to resubmit our work once these changes have been made.\n\nThank you for your understanding and assistance in this matter.\n\nBest regards, [Your Name] and Chloe"
+        },
+        {
+          "before": "I am writing to express my deep concern about the spread of misinformation on your platform."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Implied, not named: the source's placeholder-text examples (Talk:Spaghetti 2024, AfC help desk 2024, Talk:Kjersti Flaa 2025) are all in letter register. The register is normal in actual email; the tell is its appearance on a wiki talk page or ticket. Co-occurs with placeholders and with 'Collaborative communication'."
+    },
+    {
+      "name": "Call-to-action closer",
+      "category": "rhetoric",
+      "definition": "A closing section or line inviting the reader to get in touch, react, or continue ('Let's Connect!', 'Drop me a message', 'I'm always happy to hear from ...', a 'Gratitude' section), in the style of a personal landing page. Detect: final heading or paragraph containing an invitation plus exclamation mark.",
+      "cues": [
+        "Let's Connect!",
+        "Drop me a message",
+        "Have a suggestion, correction, or just want to say hi?",
+        "I'm always happy to hear from fellow Wikimedians!",
+        "Gratitude",
+        "👉"
+      ],
+      "examples": [
+        {
+          "before": "📬 Let's Connect!\nHave a suggestion, correction, or just want to say hi?\n👉 Drop me a message [...] I'm always happy to hear from fellow Wikimedians!\n🙏 Gratitude"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Implied from the emoji examples (User:Bhaskar sunsari, April 2025). A landing-page or newsletter convention; a tell in encyclopedic, technical, or documentation prose."
+    },
+    {
+      "name": "Knowledge-cutoff disclaimer",
+      "category": "content",
+      "definition": "A statement that the model's information is only current up to its training date, naming or implying the cutoff and disclaiming knowledge of later developments. Detect: 'my last knowledge update', 'my last training update', 'I don't have specific information about the current status'.",
+      "cues": [
+        "Up to my last training update",
+        "as of my last knowledge update",
+        "As of my last knowledge update in January 2022",
+        "I don't have specific information about the current status or developments",
+        "in today's era"
+      ],
+      "examples": [
+        {
+          "before": "As of my last knowledge update in January 2022, I don't have specific information about the current status or developments related to the \"Chester Mental Health Center\" in today's era."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Shortcuts WP:AICUTOFF, WP:AIDISCLAIMER. Source: 'A knowledge-cutoff disclaimer is a statement used by an AI chatbot to indicate that the information provided may be incomplete, inaccurate, or outdated.' Characteristic of older fixed-cutoff models (GPT-3.5, GPT-4); example November 2023. The 'in today's era' tail is a secondary vocabulary cue."
+    },
+    {
+      "name": "Speculation about gaps in sources",
+      "category": "content",
+      "definition": "A hedge claiming that details are scarce, undocumented, or absent from the provided or available sources, used as a runway for speculative filler introduced with 'likely' or 'may'. The claim of absence is itself unverified and often wrong. Detect: 'While specific details/information about X are/is limited|scarce|not widely documented ..., X likely ...'; 'based on available information'.",
+      "cues": [
+        "While specific details are limited",
+        "While specific details are scarce",
+        "While specific information about",
+        "not widely available",
+        "not widely documented",
+        "not widely disclosed",
+        "not widely transcribed",
+        "aren't widely documented",
+        "are not extensively documented in readily available sources",
+        "is limited in the provided search results",
+        "in the provided sources",
+        "in the available sources",
+        "in the search results",
+        "based on available information",
+        "aren't fully documented in public sources",
+        "likely",
+        "the mountain likely supports"
+      ],
+      "examples": [
+        {
+          "before": "Though the details of these resistance efforts aren't widely documented, they highlight her bravery..."
+        },
+        {
+          "before": "While specific information about the fauna of Studniční hora is limited in the provided search results, the mountain likely supports..."
+        },
+        {
+          "before": "While specific details about Kumarapediya's history or economy are not extensively documented in readily available sources, ..."
+        },
+        {
+          "before": "Below is a detailed overview based on available information:"
+        },
+        {
+          "before": "As an underground release, detailed lyrics are not widely transcribed on major sites like Genius or AZLyrics, likely due to the artist's limited mainstream exposure."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source: newer RAG chatbots 'may also fail to find sources on a given topic ... they may output a statement, similar to a knowledge-cutoff disclaimer, claiming that the information is not publicly available. They may also pair it with text about what that information \"likely\" may be and why it is significant. This information is entirely speculative (including the very claim that it's \"not documented\") and may be based on loosely related topics or completely fabricated.' Words-to-watch box lists: 'While specific details are limited/scarce...', 'not widely available/documented/disclosed', '...in the provided/available sources / search results...', 'based on available information'. The 'in the provided search results' form additionally leaks the RAG prompt context. Rewrite rule: delete both the absence claim and the 'likely' filler; do not paraphrase them."
+    },
+    {
+      "name": "Privacy speculation about a person",
+      "category": "content",
+      "definition": "When a person's personal details are unknown to the model, the text asserts that the person deliberately keeps them private. Detect: 'maintains a low profile', 'keeps personal details private', 'prefers to keep ... out of the public eye' with no source.",
+      "cues": [
+        "maintains a low profile",
+        "keeps personal details private"
+      ],
+      "examples": [],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source: 'When that unknown information is about an individual's personal life, this disclaimer often claims that the person \"maintains a low profile\", \"keeps personal details private\", etc. This is also speculative.' A sub-case of Speculation about gaps in sources with a BLP consequence: it attributes intent to a living person without evidence."
+    },
+    {
+      "name": "Disclosed inference method in first person",
+      "category": "artifacts",
+      "definition": "The model narrates its own analytical inputs and process in the first person ('My analysis is based on ...', 'I've inferred common motifs from ...', 'Where lyrics aren't fully accessible ...'), which exposes that the content is derived rather than sourced. Detect: 'My analysis', 'I've inferred', 'I have inferred', 'I based this on'.",
+      "cues": [
+        "My analysis is based on available track titles",
+        "I've inferred common motifs from",
+        "Where lyrics aren't fully accessible",
+        "public song snippets from streaming platforms",
+        "overall discography themes"
+      ],
+      "examples": [
+        {
+          "before": "My analysis is based on available track titles, featured artists, public song snippets from streaming platforms (e.g., Spotify, Apple Music, Deezer), and Honcho's overall discography themes. Where lyrics aren't fully accessible, I've inferred common motifs from similar trap tracks and Honcho's style."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "From the Haiti Honcho example (2026) under Knowledge-cutoff disclaimers. The inferred content itself is fabricated analysis; both the disclosure and what it discloses must go."
+    },
+    {
+      "name": "Recommendation to the reader for deeper insight",
+      "category": "rhetoric",
+      "definition": "A closing sentence recommending the reader consult a primary source or platform themselves because the text could not: 'For deeper insights, listening to tracks on ... is recommended, as ... aren't fully documented'. Detect: 'For deeper insights', 'For more information', 'is recommended' aimed at the reader.",
+      "cues": [
+        "For deeper insights",
+        "is recommended",
+        "listening to tracks on platforms like Spotify or Deezer is recommended"
+      ],
+      "examples": [
+        {
+          "before": "...For deeper insights, listening to tracks on platforms like Spotify or Deezer is recommended, as lyrics and production details aren't fully documented in public sources."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Implied from the Haiti Honcho example. Distinct from a source citation: it points the reader at raw material as a substitute for the writer having done the work."
+    },
+    {
+      "name": "Phrasal templates and placeholder text",
+      "category": "artifacts",
+      "definition": "Fill-in-the-blank slots left unfilled: bracketed or parenthesized instructions ('[Your Name]', '[Describe the specific section ...]', '(Add your channel URL here)'), Mad Libs style, where the requester was expected to substitute their own words. Detect: square-bracketed noun phrases with a capitalized generic noun, bracketed imperatives, '(If available)'.",
+      "cues": [
+        "[Describe the specific section or content that needs editing and provide clear reasons why the edit is necessary, including reliable sources if applicable]",
+        "[Specific Topic]",
+        "[Language, e.g., non-English]",
+        "[link to the revised article]",
+        "[link to source list]",
+        "[Your Name]",
+        "[Entertainer's Name]",
+        "(Add your channel URL here)",
+        "(If available)",
+        "[insert"
+      ],
+      "examples": [
+        {
+          "before": "I hope this message finds you well. I am writing to request an edit for the Wikipedia entry\n\nI have identified an area within the article that requires updating/improvement. [Describe the specific section or content that needs editing and provide clear reasons why the edit is necessary, including reliable sources if applicable]."
+        },
+        {
+          "before": "=== 🌍 Goals ===\n* Expand content on '''[Specific Topic]'''.\n* Improve accessibility for '''[Language, e.g., non-English]''' pages.\n* Engage with the Wikipedia community and foster a positive, collaborative editing environment."
+        },
+        {
+          "before": "Please find our revised article [link to the revised article] and a detailed list of sources [link to source list]. [...] Best regards, [Your Name] and Chloe"
+        },
+        {
+          "before": "Specifically, I am referring to the article about [Entertainer's Name], which I believe contains inaccurate and harmful information."
+        },
+        {
+          "before": "* Official YouTube Channel: ''(Add your channel URL here)''\n* Official Website: ''(If available)''"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Shortcut WP:AIPLACEHOLDER. Source: 'AI chatbots may generate responses with fill-in-the-blank phrasal templates (as seen in the game Mad Libs) for the LLM user to replace ... some LLM users forget to fill in those blanks.' False-positive note from the source: 'non-LLM-generated templates exist for drafts and new articles, such as Wikipedia:Artist biography article template/Preload and pages in Category:Article creation templates.' Examples 2024–2026."
+    },
+    {
+      "name": "Placeholder dates in citations",
+      "category": "artifacts",
+      "definition": "Dates with XX or xx in place of the month or day ('2025-XX-XX', '2022-11-XX') in citation date or access-date fields, producing citation errors. Detect with regex 20[0-9][0-9]-(XX|xx)-(XX|xx) and the partial form [0-9]{4}-[0-9]{2}-(XX|xx).",
+      "cues": [
+        "2025-XX-XX",
+        "2025-xx-xx",
+        "2022-11-XX",
+        "access-date=2025-XX-XX",
+        "date=2022-11-XX"
+      ],
+      "examples": [
+        {
+          "before": "<ref>{{cite web\n |title=Canadian Screen Music Awards 2025 Winners and Nominees\n |url=URL\n |website=Canadian Screen Music Awards\n |date=2025\n |access-date=2025-XX-XX\n}}</ref>"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'Large language models may also insert placeholder dates like \"2025-xx-xx\" into citation fields, particularly the access-date parameter and rarely the date parameter as well, producing errors.' Source's own search: insource:/20[0-9][0-9]-(XX|xx)-(XX|xx)/. Example Michelle Osis, November 2025, which also has url=URL."
+    },
+    {
+      "name": "Placeholder citation fields",
+      "category": "artifacts",
+      "definition": "Citation parameters holding an ALL_CAPS token or an instruction instead of a value: url=URL, INSERT_SOURCE_URL_30, SOURCE_PUBLISHER, PASTE_SPOTIFY_TRACK_URL_HERE. Detect: parameter value matching ^[A-Z_]+[0-9]*$ or containing INSERT_|PASTE_|_HERE.",
+      "cues": [
+        "url=URL",
+        "INSERT_SOURCE_URL_30",
+        "SOURCE_PUBLISHER",
+        "PASTE_SPOTIFY_TRACK_URL_HERE",
+        "PASTE_YOUTUBE_VIDEO_URL_HERE",
+        "INSERT_",
+        "PASTE_",
+        "_HERE"
+      ],
+      "examples": [
+        {
+          "before": "{{cite web |url=INSERT_SOURCE_URL_30 |title=Deputy Monitoring of Regional Assistance to Mobilized Soldiers |date=2022-11-XX |publisher=SOURCE_PUBLISHER |accessdate=2024-07-21}}"
+        },
+        {
+          "before": "<ref>{{cite web |title=Ecos de Amor – Spotify |url=PASTE_SPOTIFY_TRACK_URL_HERE |website=Spotify |access-date=2026-02-09}}</ref><ref>{{cite web |title=Jesse & Joy – Ecos de Amor (Official Music Video) |url=PASTE_YOUTUBE_VIDEO_URL_HERE |website=YouTube |access-date=2026-02-09}}</ref>"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'In some cases, LLM-generated citations may also contain placeholders in other fields.' The numbered token (INSERT_SOURCE_URL_30) shows a generated citation list where the model never had the sources; the citation as a whole is suspect, not just the field. Examples Dmitry Kuznetsov (December 2025), Nelly Joy (February 2026)."
+    },
+    {
+      "name": "Deferred-content comments in structured fields",
+      "category": "artifacts",
+      "definition": "Hidden comments in infobox or form fields saying that text or an image should be added if or when a source becomes available, or instructing the user to upload an image to Commons. Detect: <!-- Add ... if available ... --> in a field value; imperative 'upload' inside a comment.",
+      "cues": [
+        "<!-- Add if available with citation -->",
+        "Add if available",
+        "if/when sources are available",
+        "upload images to Wikimedia Commons"
+      ],
+      "examples": [
+        {
+          "before": "| leader_name        = <!-- Add if available with citation -->"
+        }
+      ],
+      "severity": "always",
+      "scope": "language-specific",
+      "notes": "Source: 'LLM-generated infobox edits may contain comments stating that text or images should be added if/when sources are available, and sometimes contain instructions to upload images to Wikimedia Commons.' False-positive rule from the source: 'These are not the same as the predefined boilerplate comments included in many templates, such as Infobox company ... articles with Infobox military person often contain the boilerplate \"Add spouse if reliably sourced.\" Before citing this sign, check whether the comment in question is part of the infobox template.' Example Pindi Saidpur, July 2025."
+    },
+    {
+      "name": "Key-takeaways and study-guide sections",
+      "category": "structure",
+      "definition": "Sections or list items titled like a slide deck or study guide ('Key Takeaways', 'Questions to Consider', 'Key highlights', 'Key Statistics', 'Key Figures') that summarize, quiz, or headline rather than inform. Detect: heading or bold header starting with 'Key ' or matching 'Questions to Consider'.",
+      "cues": [
+        "Key Takeaways",
+        "Questions to Consider",
+        "Key highlights:",
+        "Key Statistics",
+        "Key Figures",
+        "three key layers",
+        "Key management personnel"
+      ],
+      "examples": [
+        {
+          "before": "9. Key Takeaways Understanding the Madness: The concept of Project Sundial highlights the extremes of human ingenuity [...]\n10. Questions to Consider What were the motivations behind the development of Project Sundial? [...]"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Implied: the boldface section names the 'key takeaways' fashion, and the Sundial (November 2024), Navipet, Biobanks and Pacific Mall examples all carry 'Key ...' headers. 'Questions to Consider' is a study-guide artifact with no place in reference or expository prose."
+    },
+    {
+      "name": "Scare-quoted coined labels in headers",
+      "category": "content",
+      "definition": "Section or item headers that wrap an invented or informal concept name in quotation marks ('The \"Cold\" Factor', 'The Sephardic \"Home Factory\"', 'Portuguese Sailors as \"Early Adopters\"'), presenting a coinage as if it were an established term. Detect: header text containing a quoted one- or two-word phrase.",
+      "cues": [
+        "Portability and the \"Pocket Meal\"",
+        "The \"Cold\" Factor",
+        "The Dockside \"Frying Warehouses\"",
+        "\"Deep-Frying Mastery\"",
+        "Street Vendors and \"Tabernas\"",
+        "The Sephardic \"Home Factory\"",
+        "Portuguese Sailors as \"Early Adopters\"",
+        "The Iberian Potato \"Infrastructure\"",
+        "A Taste for the \"Foreign\"",
+        "The Later Shift From Olive Oil to \"Dripping\""
+      ],
+      "examples": [
+        {
+          "before": "Portability and the \"Pocket Meal\" The structural integrity of the polme made the fish physically durable. [...]\n\nThe \"Cold\" Factor This is the most important part for a \"travel-ready\" food. [...]\n\nThe Sephardic \"Home Factory\" While the docks were the commercial center, the Sephardic Jewish quarters (the Judiarias) were where the technology was refined for domestic safety and religious ritual. [...]\n\nPortuguese Sailors as \"Early Adopters\" In the 1500s, Portuguese sailors were the most active in the North Atlantic cod trade."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied from the Talk:Fish and chips example (December 2025) under Inline-header vertical lists. Pairs with anachronistic business jargon ('Early Adopters', 'Infrastructure', 'Home Factory') applied to 16th-century subjects; matches the 'invented concept labels' item in the content category."
+    },
+    {
+      "name": "Rhetorical self-question as transition",
+      "category": "syntax",
+      "definition": "The writer poses a question to themselves and then answers it, as a bridge between points: 'One might wonder: if it's a \"travel food,\" why not just cook it on the ship?', 'Why would a human fight you on this?'. Detect: sentence beginning 'One might wonder', 'One might ask', 'Why would', 'So what', followed by the answer in the next line.",
+      "cues": [
+        "One might wonder:",
+        "One might ask",
+        "Why would a human fight you on this?",
+        "Have a suggestion, correction, or just want to say hi?"
+      ],
+      "examples": [
+        {
+          "before": "One might wonder: if it's a \"travel food,\" why not just cook it on the ship?\n\nThe Fire Hazard Cooking with large quantities of boiling oil on a wooden ship was an invitation to disaster."
+        },
+        {
+          "before": "🚨 Underlying Motivation:\nWhy would a human fight you on this?"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Implied from the Fish and chips and Village pump examples. Normal in essays and speech; a tell when it appears as a device between listicle items."
+    },
+    {
+      "name": "Colon lead-in announcing a breakdown",
+      "category": "rhetoric",
+      "definition": "A short line ending in a colon that announces the list or analysis to follow ('Let's decode exactly what's happening here:', 'Key highlights:', 'Below is a detailed overview based on available information:', 'X consists of three key layers:'). Detect: line under ~12 words ending in ':' immediately before a list or set of bold headers.",
+      "cues": [
+        "Let's decode exactly what's happening here:",
+        "Key highlights:",
+        "consists of three key layers:",
+        "Below is a detailed overview",
+        "Here are some topics I love exploring and contributing to:",
+        "Key management personnel ... include:",
+        "Wikipedia policy favors:"
+      ],
+      "examples": [
+        {
+          "before": "Let's decode exactly what's happening here:\n🧠 Cognitive Dissonance Pattern:"
+        },
+        {
+          "before": "Below is a detailed overview based on available information:"
+        },
+        {
+          "before": "Here are some topics I love exploring and contributing to:"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "notes": "Implied from the emoji, list and disclaimer examples. The 'Let's decode' form also carries 'decode'/'exactly what's happening' chat-register vocabulary."
+    },
+    {
+      "name": "Markdown bold leaking into non-Markdown surfaces",
+      "category": "artifacts",
+      "definition": "Literal **double asterisks** around phrases on a surface that does not render Markdown (wikitext, plain text, some CMS fields). Detect: \\*\\*[^*]+\\*\\* in body text.",
+      "cues": [
+        "**Computing & Open Source Technology**",
+        "**...**"
+      ],
+      "examples": [
+        {
+          "before": "* 💻 **Computing & Open Source Technology**\n* 📚 **Education Systems in South Asia**\n* 🌄 **Nepalese Culture, History, and Local Stories**"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Appears inside this range only as payload of the emoji example (User:Bhaskar sunsari); the source's own 'Use of Markdown' section (WP:AIMARKDOWN) begins at line 1120 and is covered by another extractor. Listed here so the example is not lost."
+    },
+    {
+      "name": "Abrupt cut off",
+      "category": "artifacts",
+      "definition": "The text ends mid-sentence because the generation stopped or the copy was truncated ('The ~~~~ at the very end is Wikipedia markup that automatically'). Detect: final sentence with no terminal punctuation, ending in a function word or auxiliary.",
+      "cues": [
+        "ends mid-sentence",
+        "is Wikipedia markup that automatically"
+      ],
+      "examples": [
+        {
+          "before": "Final important tip: The ~~~~ at the very end is Wikipedia markup that automatically"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The source has a dedicated '#Abrupt cut offs' section outside this range; this range only references it via the Talk:Test automation management tools example (June 2025). Listed so the reference is preserved for the consolidator."
+    }
+  ],
+  "methodology": [
+    {
+      "topic": "false-positives",
+      "rule": "Treat em-dash frequency as a supporting signal only: act on it when it co-occurs with other indicators, never on its own, and expect it far more on discussion pages than in article prose."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Do not flag curly quotes or curly apostrophes alone. Rule out Chicago-style typesetting, Word smart quotes, macOS/iOS smart-quote defaults, grammar tools such as LanguageTool, professionally typeset sources, and citation tools that copy a page title verbatim; treat inconsistent mixing of curly and straight forms in one text as the actual tell."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Before flagging a bold inline header, check whether it is a discussion !vote convention (bold 'Keep'/'Delete' before an argument); that usage is human."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Before flagging a deferred-content comment in a structured field ('Add if available with citation'), check whether the comment is boilerplate shipped by the template itself (e.g. 'Add spouse if reliably sourced.')."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Before flagging placeholder text, check whether the page was started from a non-LLM preload template (article-creation templates, artist-biography preload); those legitimately contain fill-in slots."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Remember that some fonts render curly apostrophes as straight, so a character-level check must run on the source text, not on what a reader sees."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Title case, boldface, tables, thematic breaks, title-repeating H1s and multiple H1s are house-style matters on some surfaces (Markdown READMEs, title-case publications); judge them against the target surface's style guide, not in the abstract."
+    },
+    {
+      "topic": "gates",
+      "rule": "Treat skipped heading levels (body starts at H3 with no H2) as a near-certain sign: the source says a manually formatted page is very unlikely to have it. Fix it regardless, because it is an accessibility defect."
+    },
+    {
+      "topic": "gates",
+      "rule": "Scan hidden comment blocks (<!-- -->) as well as visible text: collaborative chatter, submission notes, compliance self-certification and deferred-content notes hide there."
+    },
+    {
+      "topic": "gates",
+      "rule": "Detect placeholder dates with the regex 20[0-9][0-9]-(XX|xx)-(XX|xx) and placeholder fields with INSERT_|PASTE_|_HERE|^URL$|^[A-Z_]+$ on citation parameter values; a citation with any placeholder field is suspect as a whole."
+    },
+    {
+      "topic": "facts",
+      "rule": "Treat every 'not widely documented' / 'limited sources' / 'not publicly available' claim as an unverified assertion of absence, and everything that follows 'likely' as speculation: delete both rather than paraphrase, and never carry a 'keeps a low profile' inference about a person into the rewrite."
+    },
+    {
+      "topic": "facts",
+      "rule": "Do not act on advice embedded in chatbot output about how to publish or which rules apply; the source notes such advice is often incorrect, misleading, or contrary to the venue's actual policies."
+    },
+    {
+      "topic": "facts",
+      "rule": "Content narrated as inferred ('I've inferred common motifs from similar tracks') is fabricated analysis, not sourced fact; remove the content along with the disclosure."
+    },
+    {
+      "topic": "register",
+      "rule": "Weight emoji-in-headings and em-dash density by surface: the source found emoji almost only in talk comments and edit summaries, and em dashes much more on discussion pages than in article text."
+    },
+    {
+      "topic": "register",
+      "rule": "Letter-style openers and closers, calls to action and 'Let's connect' sections are normal in email and landing pages; flag them only on surfaces where nobody writes letters (talk pages, tickets, encyclopedic or documentation prose)."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Use the source's own frequency wording as a prior: title case 'strongly tend'; boldface, tables and heading-only headings 'may'; thematic breaks 'sometimes'; unnecessary tables 'in rare cases'; emoji 'more rare now'."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Apply model-specific priors and date them: GPT-5.1 (Nov 2025) was tuned to suppress em dashes; a July 2026 Economist study found only Claude used em dashes more than professional writers and ChatGPT fewer; ChatGPT (from mid-2025) and DeepSeek emit curly quotes, Gemini and Claude typically do not."
+    },
+    {
+      "topic": "workflow",
+      "rule": "Date-stamp every pattern and retire signals that no longer appear in current model output into a 'historical indicators' tier (the source flags em dashes for that move as of September 2026) rather than letting stale tells inflate scores."
+    },
+    {
+      "topic": "workflow",
+      "rule": "Look for copy-paste evidence: literal bullet characters, explicit '1.' numerals, run-together inline headers with lost line breaks, Markdown '#'/'**' leaking into a non-Markdown surface, and Markdown '#' headings translated one-to-one into level-1 headings."
+    },
+    {
+      "topic": "workflow",
+      "rule": "When a passage combines several structure tells (title-repeating H1, heading-only headings, level-1 body headings, rules between every section, bold key terms), treat the document skeleton as machine-generated and rebuild the structure before editing sentences."
+    },
+    {
+      "topic": "output",
+      "rule": "Rewrite target for structure tells: sentence-case headings, a hierarchy that starts at the surface's first body level and never skips a level, no rule between sections, prose instead of inline-header lists where the items are not genuinely parallel, an infobox or a sentence instead of a three-row table, straight quotes where the surface uses them, and boldface only on the subject at first mention."
+    },
+    {
+      "topic": "output",
+      "rule": "Chatbot-to-user text (offers, greetings, sign-offs, section plans, submission notes, compliance claims, editorial suggestions, placeholders) is never rewritten into content; it is deleted."
+    },
+    {
+      "topic": "modes",
+      "rule": "In detect mode cite the sign with its shortcut (WP:AITITLECASE, WP:AIBOLD, WP:AILIST, WP:AIDASH, WP:AIEMOJI, WP:AITABLE, WP:AICURLY, WP:COLLABCOMM, WP:CERTAINLY, WP:AICUTOFF, WP:AIDISCLAIMER, WP:AIPLACEHOLDER, WP:AIMARKDOWN) and the dated example it resembles, so a reviewer can check the claim."
+    },
+    {
+      "topic": "other",
+      "rule": "The Wikipedia style pages the source cross-references define the target norms for these tells: MoS/Capital letters (headings in sentence case), MoS/Text formatting (boldface), MoS/Lists (prose where understood easily), MoS (dashes; quotation characters; apostrophes), MoS/Accessibility (heading levels)."
+    }
+  ],
+  "coverage_note": "Read lines 496-1120 in three sed chunks (496-745, 746-995, 996-1120); nothing outside that range. Covered every named subsection: Title heading, Title case, Headings only containing other headings, Overuse of boldface, Inline-header vertical lists (plus its no-punctuation variant and the pasted-marker/lost-line-break note), Overuse of em dashes (plus the spaced-dash note), Emoji as formatting, Unusual use of tables, Curly quotation marks and apostrophes, Skipping heading levels, Overuse of level 1 headings, Thematic breaks between sections, Collaborative communication (split into the words-to-watch pattern, destination self-reference, compliance self-certification, submission notes, meta section plan, and editorial advice inside the article), Knowledge-cutoff disclaimers (split into cutoff disclaimer, gaps-in-sources speculation, privacy speculation, first-person inference disclosure, and reader recommendation), Phrasal templates and placeholder text (split into bracket placeholders, placeholder dates, placeholder citation fields, and deferred-content field comments). Patterns marked 'Implied' in notes (key-takeaways sections, scare-quoted coined labels, rhetorical self-question, colon lead-in, letter register, call-to-action closer, Markdown bold leakage, abrupt cut off) are not named in this range but appear in its example payloads; the consolidator should merge them with the sections that name them elsewhere (Markup, Abrupt cut offs, Language). Deliberately left out: the fictional Pixaroo/Pixy/Roo/Pandy/Ellie/Chiku content itself (example payload only; used solely as verbatim 'before' text for the structure tells), the Wikipedia diff/permalink attributions, the reference citations (Russell, Merrill, Kriss, Edwards, Economist, Geng, CMOS) beyond the facts they support, and the maintenance/shortcut templates except where they carry rules. Line 1119-1120 ('==Markup== ===Use of Markdown=== {{Shortcut|WP:MARKDOWN|WP:AIMARKDOWN}}') is a heading with no body inside my range; its content belongs to the next extractor. Nothing was unclassifiable; the one judgement call is that Title heading, Skipping heading levels and Overuse of level 1 headings sit between 'structure' and 'punctuation-format' — I put the title-repeat under structure and the two level defects under punctuation-format because they are markup-level."
+}

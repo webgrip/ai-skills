@@ -1,0 +1,467 @@
+{
+  "source": "no-ai-slop (petergyang/no-ai-slop) — skills/no-ai-slop/SKILL.md, skills/no-ai-slop/eval.md, README.md",
+  "patterns": [
+    {
+      "name": "Banned words",
+      "category": "vocabulary",
+      "definition": "A closed list of words and stock phrases the source bans outright regardless of context: LLM-favoured verbs, adjectives, and hype claims. Any occurrence outside a quotation is a hit.",
+      "cues": ["delve", "foster", "leverage", "utilize", "facilitate", "empower", "streamline", "robust", "cutting-edge", "paradigm shift", "game changer", "this is huge", "this changes everything", "tapestry", "realm", "beacon", "multifaceted", "meticulous", "intricate", "paramount", "transformative", "elevate", "embark", "supercharge", "harness", "ever-evolving"],
+      "examples": [],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Source label: 'Banned outright'. eval.md calls the hype subset (paradigm shift, game changer, this is huge, this changes everything) 'inflated claims' and lists it alongside banned words, filler phrases and often-empty adverbs. Only exemption: 'unless quoted as examples' (eval.md, Words to cut check 1)."
+    },
+    {
+      "name": "Often-empty adverbs",
+      "category": "vocabulary",
+      "definition": "Intensifying or sincerity adverbs that usually add nothing to the claim they modify. Cut when they add nothing; keep when they carry emphasis, uncertainty, contrast, or the writer's spoken rhythm.",
+      "cues": ["just", "literally", "honestly", "simply", "actually", "truly", "fundamentally", "importantly", "crucially", "inherently", "inevitably"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "False-positive rule verbatim: 'Cut them when they add nothing. Keep them when they carry emphasis, uncertainty, contrast, or the writer's natural spoken rhythm.' Related principle 'Make every sentence earn its place' also protects 'I think', 'maybe', 'to be honest' when they express real uncertainty or self-awareness."
+    },
+    {
+      "name": "Often-empty phrases",
+      "category": "vocabulary",
+      "definition": "Stock filler phrases that delay the point: signposting, framing, and preamble idioms. Cut when they delay the point; an occasional one may stay when it is part of the writer's recognizable voice and the sentence still earns its place.",
+      "cues": ["it's worth noting", "it's important to note", "at the end of the day", "when it comes to", "at its core", "in today's world", "in the age of", "in the world of", "the reality is", "the truth is", "in terms of", "with regard to", "in order to", "going forward", "in this article", "let's dive in"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "False-positive rule verbatim: 'Cut them when they delay the point. Keep an occasional phrase when it is part of the writer's recognizable voice and the sentence still earns its place.' eval.md refers to these as 'filler phrases'."
+    },
+    {
+      "name": "Empty qualifiers and hedges",
+      "category": "vocabulary",
+      "definition": "Qualifiers and hedge phrases that soften a claim without expressing real uncertainty. Cut empty ones; keep hedges that express real uncertainty, self-awareness, or the writer's spoken rhythm.",
+      "cues": ["I think", "maybe", "to be honest"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Implied by the principle 'Make every sentence earn its place. Cut empty qualifiers and throat-clearing.' The three cues are the source's examples of hedges to KEEP when genuine, so a detector must not flag them on sight; the tell is a qualifier that carries no uncertainty. Note the tension with 'Throat-clearing openers', which lists 'I'll be honest' as a cut: sentence-opening candor flags are cut, genuine mid-sentence hedges stay."
+    },
+    {
+      "name": "Jargon",
+      "category": "vocabulary",
+      "definition": "Specialist or corporate vocabulary that makes the text hard to read without adding precision. Strip it while keeping substance, nuance and precision.",
+      "cues": ["jargon"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Implied by the principle 'Open it up, don't dumb it down. Keep the substance, nuance, and precision. Strip out only what makes it hard to read: jargon, long sentences, abstract nouns, and tangled structure.' No word list given."
+    },
+    {
+      "name": "Synonym cycling",
+      "category": "vocabulary",
+      "definition": "Rotating through different terms for the same referent across consecutive sentences for the sake of variety (elegant variation). If the clear word is right, repeat it.",
+      "cues": ["agent / assistant / tool rotation"],
+      "examples": [
+        {"before": "The agent reviews the draft. The assistant scores the piece. The tool suggests fixes", "after": "The agent reviews the draft, scores it, and suggests fixes."},
+        {"before": "The agent handles your email. The assistant drafts replies."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rule verbatim: 'If the clear word is right, repeat it. Don't rotate terms for style.' Second example is from README.md."
+    },
+    {
+      "name": "Binary contrasts",
+      "category": "syntax",
+      "definition": "A negation of X followed by an assertion of Y, in any of three surface forms: 'This is not X. It's Y.', 'The question isn't X, it's Y.', 'It's not just X but Y.' Rewrite by stating Y directly, optionally as a comparative.",
+      "cues": ["This is not X. It's Y.", "The question isn't X, it's Y.", "It's not just X but Y.", "It's not X. It's Y.", "isn't", "not just", "but"],
+      "examples": [
+        {"before": "The question isn't the model. It's the eval.", "after": "The eval matters more than the model."},
+        {"before": "It's not X. It's Y."},
+        {"before": "The future isn't coming. It's already here."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "README lists this first among the patterns. 'The future isn't coming. It's already here.' is given in README both as a binary contrast form and as the example of a fake-profound ending; the two patterns frequently co-occur."
+    },
+    {
+      "name": "Negative listing",
+      "category": "syntax",
+      "definition": "A run of negated fragments that clear away alternatives before naming the real thing: 'Not a X. Not a Y. A Z.' Replace with the direct statement of Z.",
+      "cues": ["Not a X. Not a Y. A Z."],
+      "examples": [
+        {"before": "Not a X. Not a Y. A Z.", "after": "Z"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rule verbatim: 'Just say Z.' A multi-clause extension of binary contrasts; keep distinct because its shape (stacked negated fragments) is detectable independently."
+    },
+    {
+      "name": "Dramatic fragmentation",
+      "category": "syntax",
+      "definition": "Stacked sentence fragments used for punch rather than meaning: polysyndetic chains 'X. And Y. And Z.' and mic-drop pairs such as 'That's it. That's the whole thing.' Rewrite as complete sentences.",
+      "cues": ["X. And Y. And Z.", "That's it. That's the whole thing.", "And", "stacked punchy fragments"],
+      "examples": [
+        {"before": "X. And Y. And Z."},
+        {"before": "That's it. That's the whole thing."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "README alias: 'Dramatic fragments'. Voice exception from the principles: 'Keep longer spoken sentences, fragments, and changes in pace when they are clear and characteristic of the writer.' The tell is the dramatic or stacked use, not a single characteristic fragment. eval.md Final read also asks for no 'stacked punchy fragments'."
+    },
+    {
+      "name": "Superficial analysis",
+      "category": "syntax",
+      "definition": "A trailing participial (-ing) clause appended to a fact that pretends to explain its significance instead of stating a concrete consequence. Replace with the actual mechanism or effect.",
+      "cues": ["highlighting", "underscoring", "reflecting", "showcasing"],
+      "examples": [
+        {"before": "The launch adds file search, highlighting the team's commitment to better workflows", "after": "The launch adds file search, so users can find old drafts without leaving the editor."},
+        {"before": "highlighting the team's commitment to innovation"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Cue words are English participles; the mechanism (trailing clause asserting meaning) transfers to other languages. Second example is from README.md."
+    },
+    {
+      "name": "Fake-strong verbs",
+      "category": "syntax",
+      "definition": "Copula avoidance: replacing a plain 'is' or 'has' with an inflated verb phrase such as 'serves as' plus an abstract noun phrase. Prefer 'is' and 'has' when they are clearer, and say what the thing actually does.",
+      "cues": ["serves as", "centralized hub"],
+      "examples": [
+        {"before": "The app serves as a centralized hub for sponsor management", "after": "The app tracks sponsors, drafts, due dates, and approvals in one place."}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source wording is 'Prefer', so severity is context rather than always."
+    },
+    {
+      "name": "Weak verb phrases",
+      "category": "syntax",
+      "definition": "A verb plus abstract noun (nominalization) or modal periphrasis standing in for a single direct verb. Replace with the direct verb.",
+      "cues": ["made a decision", "has the ability to"],
+      "examples": [
+        {"before": "Made a decision", "after": "decided"},
+        {"before": "Has the ability to", "after": "can"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "From the principle 'Make verbs do the work.' The 'abstract nouns' named in 'Open it up, don't dumb it down' are the same mechanism."
+    },
+    {
+      "name": "Passive voice",
+      "category": "syntax",
+      "definition": "Agentless or agent-buried passive constructions where an active sentence with a human subject is available. Prefer active voice with human subjects where possible.",
+      "cues": ["passive voice"],
+      "examples": [
+        {"before": "the decision emerged.", "after": "The team shipped it Tuesday"}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "eval.md Editing principles check 9: 'Does the draft use active voice with human subjects where possible?' The source's example pairs passive/agentless phrasing with an inanimate subject; see 'Inanimate agents doing human verbs' for that half."
+    },
+    {
+      "name": "Inanimate agents doing human verbs",
+      "category": "syntax",
+      "definition": "An abstraction or object is made the subject of a verb that only people perform ('the decision emerged', 'the data tells us'). Rewrite with the human or organisation that acted.",
+      "cues": ["the decision emerged"],
+      "examples": [
+        {"before": "the decision emerged.", "after": "The team shipped it Tuesday"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rule verbatim: 'Never let inanimate things do human verbs.' Split from passive voice because the source states it as an absolute while active voice is 'where possible'."
+    },
+    {
+      "name": "Tangled long sentences",
+      "category": "syntax",
+      "definition": "Sentences or paragraphs that are genuinely hard to follow because of length, nesting, or tangled structure. Split them; do not split long spoken sentences that are clear and characteristic of the writer.",
+      "cues": ["long sentences", "tangled structure"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "From the principles 'Untangle sentences without flattening the cadence' and 'Open it up, don't dumb it down'. eval.md check 11: 'Are genuinely tangled sentences fixed while clear spoken cadence, fragments, and changes in pace remain intact?'"
+    },
+    {
+      "name": "Throat-clearing openers",
+      "category": "rhetoric",
+      "definition": "Sentence-opening candor or attention flags that announce a point is coming instead of making it. Delete the opener and state the point.",
+      "cues": ["Here's the thing", "Here's what I mean", "Let me be clear", "I'll be honest", "The uncomfortable truth is"],
+      "examples": [
+        {"before": "Here's the thing,"},
+        {"before": "Let me be clear"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rule verbatim: 'Cut them and state the point.' Voice exception: the principles keep 'to be honest' when it expresses real uncertainty, self-awareness, or spoken rhythm, so the tell is the opener position and the delay, not the words alone."
+    },
+    {
+      "name": "Faux-insight setups",
+      "category": "rhetoric",
+      "definition": "A framing line that positions the writer as the lone expert and the coming claim as a secret others miss, usually before a colon. Delete the setup and let the claim stand alone.",
+      "cues": ["This is the part most people skip", "What most people get wrong", "Here's what nobody tells you", "The part everyone misses", "What nobody tells you is…", "What nobody tells you"],
+      "examples": [
+        {"before": "The part everyone misses: distribution is the real moat", "after": "Distribution is the moat."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rationale: 'These flatter the writer as the lone expert.' Overlaps with colon reveals when the setup ends in a colon."
+    },
+    {
+      "name": "Colon reveals",
+      "category": "rhetoric",
+      "definition": "A noun phrase, a colon, then a lowercase dramatic payoff, using the colon for suspense rather than to introduce a list, label, or quote. Rewrite as a plain sentence.",
+      "cues": ["The detail that makes it work:", "The best part:", "noun phrase + colon + lowercase reveal"],
+      "examples": [
+        {"before": "The detail that makes it work: a separate agent grades it.", "after": "A separate agent does the grading, which is what makes it work"},
+        {"before": "The best part: it learns."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "False-positive rule verbatim: 'Use colons for lists, labels, and quotes, not fake drama.' The related capitalization rule is inventoried separately as 'Capitalized word after a colon'."
+    },
+    {
+      "name": "Rhetorical setups",
+      "category": "rhetoric",
+      "definition": "Stock suspense devices that stage a point: hypothetical challenges, imperative pauses, twist announcements, and self-answered question-answer pairs. Drop the device and make the point.",
+      "cues": ["What if I told you...", "Think about it:", "Plot twist:", "Question? Answer."],
+      "examples": [
+        {"before": "What if I told you..."},
+        {"before": "Think about it:"},
+        {"before": "Plot twist:"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The self-answered 'Question? Answer.' pair is the rhetorical self-question form; the source lists it inside this pattern rather than separately."
+    },
+    {
+      "name": "Interpretive metadiscourse",
+      "category": "rhetoric",
+      "definition": "Lines that step outside the subject to tell the reader what to notice, how much weight to give it, or how to read the prose. eval.md names four sub-types: authorial metacommentary, reader guidance, emphasis markers, and redundant glossing. Delete when the point is already clear; otherwise replace with support or facts already in the content.",
+      "cues": ["That last part matters more than it sounds", "The key point is", "As you can see", "This distinction matters", "In other words"],
+      "examples": [
+        {"before": "That last part matters more than it sounds"},
+        {"before": "In other words"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Sub-type mapping (my reading of the cues): authorial metacommentary = 'That last part matters more than it sounds'; reader guidance = 'As you can see'; emphasis markers = 'The key point is', 'This distinction matters'; redundant glossing = 'In other words' when it restates. Source flags 'redundant' In other words only, so a gloss that adds a genuinely new formulation is not a hit. See also 'Evaluative labelling'."
+    },
+    {
+      "name": "Evaluative labelling (telling instead of showing)",
+      "category": "rhetoric",
+      "definition": "Commentary that labels a point as important, surprising, subtle, or obvious instead of demonstrating why through facts, actions, examples, and consequences. Delete it when the surrounding prose already shows the point.",
+      "cues": ["important", "surprising", "subtle", "obvious"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "From the principle 'Always show, don't tell the reader what to think.' Closely related to interpretive metadiscourse; kept separate because the source states it as a principle with its own adjective list. Rule verbatim: 'If the surrounding prose already shows the point, trust the reader and delete the commentary.'"
+    },
+    {
+      "name": "Fake-profound kickers",
+      "category": "rhetoric",
+      "definition": "A closing line that converts the point into a cute metaphor, aphorism, or mic-drop sentence. Delete it outright (do not rewrite it into a better metaphor or preserve its rhythm) and end on the clearest concrete sentence already in the draft.",
+      "cues": ["final deep line", "metaphor", "aphorism", "mic-drop"],
+      "examples": [
+        {"before": "The future isn't coming. It's already here."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "README alias: 'Fake-profound endings'. Handling rule verbatim: 'Do not rewrite it into a better metaphor. Do not preserve the rhythm. Delete it, then end on the clearest concrete sentence already in the draft. If the ending needs more closure, add a plain takeaway or next action.' eval.md check 5: kickers are 'deleted instead of rewritten into better metaphors'."
+    },
+    {
+      "name": "Summary-recap endings",
+      "category": "structure",
+      "definition": "A signposted conclusion ('In conclusion', 'Ultimately', 'Overall') or a final paragraph that restates the piece. Cut it and end on the last concrete point, takeaway, or next action.",
+      "cues": ["In conclusion", "Ultimately", "Overall"],
+      "examples": [
+        {"before": "In conclusion,"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source rationale verbatim: 'The reader was just there.' No register exception is given (academic conclusions are not carved out)."
+    },
+    {
+      "name": "Generic preamble before the point",
+      "category": "structure",
+      "definition": "Setup, background, or throat-clearing paragraphs that precede the point and add nothing. Lead with the point; keep a personal aside, story, or admission only when it creates context, tension, or character.",
+      "cues": ["generic throat-clearing", "setup adds nothing"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "From 'Lead with the point when the setup adds nothing' and 'Front-load only when it improves clarity'. Distinct from Throat-clearing openers (phrase-level): this is paragraph- or section-level. The source explicitly warns against over-correcting: 'Do not force every section and paragraph into the same point-detail-background shape.'"
+    },
+    {
+      "name": "Robotic rhythm",
+      "category": "structure",
+      "definition": "Repeated sentence shapes, identical paragraph structures, and stacked punchy fragments across a passage, producing mechanical symmetry. Vary the shape only where it helps the point.",
+      "cues": ["repeated sentence shapes", "identical paragraph structures", "stacked punchy fragments", "robotic symmetry"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "eval.md Final read check 1 restates it as 'robotic symmetry, repeated sentence shapes, and stacked punchy fragments'. The source also warns against forced variation: 'Vary the shape only when it helps the point.' The editor's own over-tidying (making every paragraph equally tidy) is treated as the same failure from the other direction."
+    },
+    {
+      "name": "Formatting slop: bullet lists that should be prose",
+      "category": "structure",
+      "definition": "Bulleted lists used where two sentences of connected prose would read better. Convert to prose; format should follow the content, not decorate it.",
+      "cues": ["bullet lists where two sentences of prose would read better"],
+      "examples": [],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "One of four items the source groups as 'Formatting slop'; eval.md check 7 lists them individually as 'Emoji headings, decorative bold, bullets that should be prose, headers over tiny sections'."
+    },
+    {
+      "name": "Formatting slop: headers over tiny sections",
+      "category": "structure",
+      "definition": "Section headings placed over sections of two sentences or fewer, fragmenting short prose into a document skeleton. Remove the heading and merge the text.",
+      "cues": ["headers over two-sentence sections", "headers over tiny sections"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Grouped under 'Formatting slop' in SKILL.md; split here because detection (heading-to-body ratio) is independent of the other three."
+    },
+    {
+      "name": "Formatting slop: emoji in headings",
+      "category": "punctuation-format",
+      "definition": "Emoji characters used in headings as decoration. Remove them.",
+      "cues": ["emoji in headings", "Emoji headings"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Grouped under 'Formatting slop' in SKILL.md. The source only names headings; it does not rule on emoji in body text."
+    },
+    {
+      "name": "Formatting slop: decorative mid-sentence bold",
+      "category": "punctuation-format",
+      "definition": "Boldface sprinkled on words or phrases inside sentences for emphasis rather than for labels or scannable structure. Remove the bold and let the sentence carry the emphasis.",
+      "cues": ["bold sprinkled mid-sentence for emphasis", "decorative bold"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Grouped under 'Formatting slop' in SKILL.md; eval.md calls it 'decorative bold'."
+    },
+    {
+      "name": "Em dashes",
+      "category": "punctuation-format",
+      "definition": "Em dashes used as a default rhythm crutch: clusters, decorative dashes, or any use in short copy. Tolerance: none in short copy; one or two in a longer draft only when they clearly beat commas, periods, or parentheses.",
+      "cues": ["—", "em dash", "clusters", "decorative dashes"],
+      "examples": [],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Register profile verbatim: 'In short copy, use none. In longer drafts, 1-2 are fine if they clearly beat commas, periods, or parentheses. Remove clusters and decorative dashes.' eval.md check 9 repeats the 1-2 ceiling. The glyph conventions differ by language (spaced en dash in Dutch/German), but the rhythm-crutch mechanism transfers."
+    },
+    {
+      "name": "Capitalized word after a colon",
+      "category": "punctuation-format",
+      "definition": "A capital letter starting the clause after a colon where grammar, a proper noun, a title, or code does not require it. Use sentence case after colons.",
+      "cues": ["colon followed by capital letter"],
+      "examples": [],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Stated inside the Colon reveals pattern and checked separately in eval.md check 8: 'Are colons sentence case unless grammar, a proper noun, a title, or code requires otherwise?' Capitalization rules after a colon are language-specific in detail, so the mechanism is English-shaped."
+    },
+    {
+      "name": "Importance puffery",
+      "category": "content",
+      "definition": "Stock phrases that assert significance, legacy, or a milestone instead of stating the underlying fact. State the fact and let the reader judge whether it matters.",
+      "cues": ["Stands as a testament", "marks a pivotal moment", "plays a vital role", "solidifies its position", "underscores its significance", "a testament to"],
+      "examples": [
+        {"before": "The launch marks a pivotal moment for the company", "after": "The launch is the company's first paid product."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "eval.md check 3 requires puffery 'replaced with plain facts'. The cue 'a testament to' is from README.md."
+    },
+    {
+      "name": "Weasel attribution",
+      "category": "content",
+      "definition": "Vague, unnamed authority used to back a claim. Name the source or cut the claim; if the user has no source, ask instead of inventing one.",
+      "cues": ["Experts agree", "industry reports suggest", "many argue", "widely regarded as", "studies show"],
+      "examples": [
+        {"before": "experts agree"},
+        {"before": "studies show"}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Fact gate verbatim: 'If the user has no source, ask instead of inventing one.' eval.md check 3: replaced with 'named sources, or flagged for the user when no source exists'."
+    },
+    {
+      "name": "Abstraction instead of specifics",
+      "category": "content",
+      "definition": "A claim stated in abstract terms (efficiency, productivity, improvement) where names, numbers, dates, mechanisms, or examples are available. Replace the abstraction with the concrete detail.",
+      "cues": ["improved efficiency", "abstract nouns"],
+      "examples": [
+        {"before": "The integration improved efficiency", "after": "The integration cut deploy time from 40 minutes to 4."}
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Source line: 'Abstraction is where writing goes to die.' Severity is context because the fix depends on the draft supplying a concrete detail (eval.md check 7: 'where the draft supports them'); the editor must not invent numbers."
+    },
+    {
+      "name": "Generic-importance claims replacing a specific fact",
+      "category": "content",
+      "definition": "A useful detail smoothed into a generic statement of significance, typically an intensifier plus an abstract benefit. Restore or keep the specific number, name, or mechanism.",
+      "cues": ["significantly improves"],
+      "examples": [
+        {"before": "The tool significantly improves engineering productivity", "after": "The tool cut review time from 30 minutes to 8."}
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "From the principle 'Protect the specific fact.' Doubles as an editor gate: never smooth a detail the draft already has into generic importance."
+    },
+    {
+      "name": "Portable filler sentence",
+      "category": "content",
+      "definition": "A sentence that could move unchanged to another person, company, country, or product. Treat it as filler: cut it or replace it with a fact, example, mechanism, consequence, or judgment specific to this subject.",
+      "cues": ["portability test"],
+      "examples": [],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source calls this 'the portability test'. It is a detection method rather than a phrase list; eval.md check 8 applies it to 'every generic sentence'."
+    }
+  ],
+  "methodology": [
+    {"topic": "modes", "rule": "Default to Edit mode when the user shares a draft to fix: make the minimum effective edit using the rules and return the edited draft plus a What changed section."},
+    {"topic": "modes", "rule": "Switch to Detect mode when the user asks whether a piece is AI slop, or asks to audit, scan, or flag a draft without rewriting: name each pattern found, quote the line, give the fix in a few words, then offer to edit afterwards."},
+    {"topic": "modes", "rule": "Detect mode must not rewrite the draft, score it, or guess whether AI wrote it."},
+    {"topic": "modes", "rule": "A satire mode exists: on 'Draft an AI slop post about (topic)' generate the most cringe AI slop possible on purpose (README)."},
+    {"topic": "modes", "rule": "Trigger the skill when the user wants a draft clearer, more direct, more opinionated, or less AI-sounding, or asks whether writing reads as AI (frontmatter description)."},
+    {"topic": "workflow", "rule": "If no draft was provided, ask the user to paste it."},
+    {"topic": "workflow", "rule": "If the audience or format is unclear, ask exactly one question: Who is this for and where will it be published?"},
+    {"topic": "workflow", "rule": "If the goal is unclear, ask what the reader should think, feel, or do after reading."},
+    {"topic": "workflow", "rule": "Step 1: read the full draft before editing anything."},
+    {"topic": "workflow", "rule": "Step 2: identify the core point and the voice traits to preserve (vocabulary, cadence, bluntness, humor, uncertainty, digressions); if the core point cannot be identified, ask the user."},
+    {"topic": "workflow", "rule": "Step 3: for a detect request, return the findings report and stop."},
+    {"topic": "workflow", "rule": "Step 4: for an edit, make the minimum effective changes, then check the edited draft against eval.md yourself."},
+    {"topic": "workflow", "rule": "Step 5: if any eval check fails, fix the draft and run all the checks again (iterate until every check passes)."},
+    {"topic": "workflow", "rule": "Step 6: output the full edited draft and a short What changed section."},
+    {"topic": "workflow", "rule": "Before deciding structure or word choice, know what the piece is trying to do and who it is for ('Know the job')."},
+    {"topic": "workflow", "rule": "Also fix errors, repetition, and unclear passages, not only AI patterns."},
+    {"topic": "gates", "rule": "Keep the user's meaning: never add claims, examples, stats, quotes, or opinions; if something is unclear, ask."},
+    {"topic": "gates", "rule": "For weasel attribution, name the source or cut the claim; if the user has no source, ask or flag it for the user, never invent one."},
+    {"topic": "gates", "rule": "Protect the specific fact: never smooth a useful number, name, date, or mechanism into a generic statement of importance."},
+    {"topic": "gates", "rule": "Make the minimum effective edit: keep cutting proportional to the actual slop, with no aggressive compression that strips character, and leave strong human sentences alone."},
+    {"topic": "gates", "rule": "Keep substance, nuance, and precision ('open it up, don't dumb it down'); strip only what makes the text hard to read."},
+    {"topic": "false-positives", "rule": "Banned words, filler phrases, often-empty adverbs, and inflated claims are exempt when quoted as examples."},
+    {"topic": "false-positives", "rule": "Keep an often-empty adverb when it carries emphasis, uncertainty, contrast, or the writer's natural spoken rhythm."},
+    {"topic": "false-positives", "rule": "Keep an occasional often-empty phrase when it is part of the writer's recognizable voice and the sentence still earns its place."},
+    {"topic": "false-positives", "rule": "Keep hedges such as 'I think', 'maybe', or 'to be honest' when they express real uncertainty, self-awareness, or the writer's spoken rhythm."},
+    {"topic": "false-positives", "rule": "Colons are fine for lists, labels, and quotes; a capital after a colon is fine when grammar, a proper noun, a title, or code requires it."},
+    {"topic": "false-positives", "rule": "Keep a personal aside, story, or admission when it creates context, tension, or character."},
+    {"topic": "false-positives", "rule": "Keep longer spoken sentences, fragments, and changes in pace when they are clear and characteristic of the writer."},
+    {"topic": "false-positives", "rule": "Prefer 'is' and 'has' only when they are clearer; a stronger verb that is also clearer is not a fake-strong verb."},
+    {"topic": "register", "rule": "Em dashes: none in short copy; in longer drafts 1-2 are acceptable only when they clearly beat commas, periods, or parentheses; remove clusters and decorative dashes."},
+    {"topic": "register", "rule": "Front-load conclusions only when that improves clarity; do not force every section and paragraph into the same point-detail-background shape."},
+    {"topic": "register", "rule": "Format should follow the content, not decorate it; vary sentence shape only when it helps the point."},
+    {"topic": "voice", "rule": "Before editing, notice the draft's vocabulary, cadence, bluntness, humor, uncertainty, digressions, and level of polish, and keep the traits that feel personal to the writer."},
+    {"topic": "voice", "rule": "Do not make every paragraph equally tidy or rewrite distinctive lines merely for consistency; a rough draft with a real voice should still sound like the same person after editing."},
+    {"topic": "voice", "rule": "Preserve useful edge: keep strong opinions, blunt language, humor, profanity, self-interruptions, and honest admissions that belong to the writer; do not replace them with safer or more professional wording."},
+    {"topic": "voice", "rule": "Keep the writer's structure, progression, and detours unless the structure is hurting the piece; if you reorganize, say why in the What changed section."},
+    {"topic": "voice", "rule": "Final read: the writer should recognize the edited draft as their own voice, and it should sound natural read aloud to a sharp colleague."},
+    {"topic": "voice", "rule": "When deleting a fake-profound kicker, do not rewrite it into a better metaphor and do not preserve its rhythm; end on the clearest concrete sentence already in the draft, adding a plain takeaway or next action only if closure is needed."},
+    {"topic": "voice", "rule": "Show, don't tell: let facts, actions, examples, and consequences carry emphasis; when the prose already shows the point, delete the commentary rather than rephrasing it."},
+    {"topic": "scoring", "rule": "There is no numeric score. eval.md is a pass/fail checklist (11 editing-principle checks, 1 words check, 9 pattern checks, 5 final-read checks); any fail means fix the draft before returning it."},
+    {"topic": "scoring", "rule": "Do not score a draft or claim a probability of AI authorship in detect mode; named patterns with quoted lines are the evidence."},
+    {"topic": "output", "rule": "Edit output = the full edited draft plus a short, bold-labelled What changed section."},
+    {"topic": "output", "rule": "Detect output = one entry per pattern found: the pattern name from the skill, the quoted line, and a short fix; no rewrite, no score, no authorship claim; end with an offer to edit."},
+    {"topic": "other", "rule": "Anti-goal: never guess or assert whether AI wrote the text. 'AI detectors guess. Named patterns are evidence the user can check.'"},
+    {"topic": "other", "rule": "Anti-goal: never turn distinctive writing into generic polished prose; the skill exists because AI editing smooths away vocabulary, cadence, humor, and imperfections."},
+    {"topic": "other", "rule": "Use active voice with human subjects where possible, and never let inanimate things do human verbs."},
+    {"topic": "other", "rule": "Apply the portability test to every generic sentence: if it could move unchanged to another person, company, country, or product, cut it or make it specific to this subject."}
+  ],
+  "coverage_note": "Read in full: SKILL.md lines 1-97 (frontmatter, Two jobs, What to ask for, Editing principles, Words to cut, Patterns to cut, Workflow), eval.md lines 1-43 (all 26 checks across four sections), README.md lines 1-91 (problem statement, install, usage modes, the 10-item pattern summary, contents, promo, license). All three files are under 250 lines so a single sed chunk covered each. Deliberately left out: install commands, the npx line, the .codex-plugin/plugin.json and build_plugin.py references, the video link, the Behind the Craft / YouTube / newsletter promotion, and the MIT license, because none of them describe a writing pattern or an editing rule. Splits I made that the source does not: 'Formatting slop' is one heading in SKILL.md but four distinct mechanisms in eval.md check 7, so it is four entries; the active-voice bullet is split into 'Passive voice' (where possible) and 'Inanimate agents doing human verbs' (absolute); 'Evaluative labelling' is kept separate from 'Interpretive metadiscourse' because the source states it as a principle with its own adjective list; 'Capitalized word after a colon' is separated from 'Colon reveals' because eval.md checks it independently. Not split: the four eval.md sub-types of interpretive metadiscourse (kept as one entry with the sub-type mapping in notes) and the self-answered 'Question? Answer.' form (kept inside Rhetorical setups as the source does). Unclassifiable or borderline: 'Synonym cycling' is a cross-sentence lexical pattern that fits none of the categories cleanly (filed under vocabulary); 'Empty qualifiers and hedges' is implied rather than named, and its only cues are the phrases the source says to KEEP, so it is filed as context severity. The README's 'fundamentals' line (lead with the point, active voice, untangle sentences, concrete over abstract) is covered by the principle-derived entries rather than as a separate pattern."
+}

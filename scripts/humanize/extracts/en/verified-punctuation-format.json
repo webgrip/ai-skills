@@ -1,0 +1,1061 @@
+{
+  "category": "punctuation-format",
+  "entries": [
+    {
+      "id": "em-dash-density",
+      "name": "Em and en dashes as clause splice",
+      "definition": "The em dash, a spaced en dash or a spaced double hyphen used as the default clause splice: a pair bracketing an aside, a single dash tacking on a punchy final clause or afterthought, additive dashes attaching qualifiers sentence after sentence, or a dash staging the second half of a 'not X, but Y' turn. Sub-forms: the spaced em dash (' — '), an en dash doing em-dash work, the ' -- ' substitute, a line-initial '**Bold lead** — sentence' outside a list, and a dash-aside in every sentence. Most sources measure density (human prose runs about one per 500 words, generated drafts one per 50 to 80, detectors cap at one per 1,000 and count headings too), but the twente.dev house rule bans the mark outright in copy and in the agent's own replies. Rewrite with a full stop, comma, colon or parentheses, spell out the connective the dash was hiding, and use the house separators '//' or '·' in fact lines.",
+      "cues": [
+        "—",
+        "–",
+        " — ",
+        " – ",
+        " -- ",
+        "--",
+        "— not because",
+        "— but because",
+        "— and",
+        "— it's",
+        "— but",
+        "— like",
+        "— which",
+        "— something that",
+        "This isn't X — it's Y",
+        "doesn't grow from silence — it grows from",
+        "**Bold lead** — full sentence",
+        "— … —",
+        "em dash",
+        "em-dash",
+        "em dashes",
+        "em-dashes",
+        "emdashes",
+        "em-dash aside",
+        "clusters",
+        "decorative dashes",
+        "emDashRate > 1 per 1000 words",
+        "– the prose each model produces when a prompt specifies a task but not a register",
+        "– it carries no fact, only an instruction about how to read what follows",
+        "is not the neutral midpoint – it is one option among three"
+      ],
+      "regex": [
+        "—",
+        "(?<=\\s)–(?=\\s)",
+        "(?<=\\s)--(?=\\s)",
+        "(?:^|\\n)[ \\t]*\\*\\*[^*\\n]{2,60}\\*\\*[ \\t]*(?:—|--)[ \\t]*[a-z]"
+      ],
+      "examples": [
+        {
+          "before": "The term is primarily promoted by Dutch institutions—not by the people themselves. You don't say \"Netherlands, Europe\" as an address—yet this mislabeling continues—even in official documents.",
+          "after": "The term is promoted mainly by Dutch institutions. The people themselves rarely use it. You don't say \"Netherlands, Europe\" as an address, yet this mislabeling continues in official documents."
+        },
+        {
+          "before": "The new policy — announced without warning — affects thousands of workers. The changes -- long overdue according to critics -- will take effect immediately.",
+          "after": "The new policy, announced without warning, affects thousands of workers. The changes, long overdue according to critics, will take effect immediately."
+        },
+        {
+          "before": "I do think I'm probably right that digitizing late-1800s works is the cause — but it would be really nice if someone who was at OpenAI at the time could confirm that this is what happened.",
+          "after": "I do think I'm probably right that digitizing late-1800s works is the cause. It would help if someone who was at OpenAI at the time could confirm that this is what happened."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "im-not-ai-taxonomy",
+        "im-not-ai-method",
+        "wikipedia-b",
+        "tropes-fyi",
+        "hassid",
+        "velitchkov",
+        "vollmer",
+        "willfrancis",
+        "goedecke",
+        "baseline"
+      ],
+      "merged_from": [
+        "§14 Em and en dashes",
+        "Em dashes",
+        "Em dashes (— and --)",
+        "Line-initial bold lead with em dash outside a list",
+        "Em dash frequency",
+        "em dash overuse",
+        "J-3 Em-dash asides in every sentence",
+        "J-3 대시(—) 남용 (em-dash overuse)",
+        "Overuse of em dashes",
+        "Spaced em dashes",
+        "Em-Dash Addiction",
+        "Em dash (the old tell)",
+        "[SDA] The spaced-dash aside",
+        "The em dash (additive distribution)",
+        "Em dash overuse",
+        "Em-dash overuse",
+        "Em dash as parenthetical bracket",
+        "Em dash as punchy final comma",
+        "Em dashes (house copy rule)",
+        "Em-dash saturation"
+      ],
+      "false_positives": "A writer's sample that uses dashes keeps them at the sample's rate (humanizer: do not apply as a ban when the sample has them); a house style guide that keeps deliberate em dashes (CMOS, or AP with spaced dashes) is flagged only for stacking. An en dash in a numeric or date range (2019–2024, pp. 12–15) is a range, not a dash; the regex only counts a spaced en dash. An unspaced 'word--word' is typewriter and 19th-century print convention and is not counted; ' -- ' as a CLI flag, SQL comment or code token is code. The detector carves out the separator in a list item that opens with a bolded term or a link ('- **Term** — description') and changelog version headings ('## v1.2.0 — 2026-01-01') as typography, but the twente.dev house rule still replaces those with '//' or '·'. The approved twente.dev banners that carry an em dash in data form ('/001 — 7 OKT', 'twente.dev/001 — reconnect', \"KOM D'R IN — EVERYONE'S WELCOME\") were visually ratified and change only when Ryan asks. Quoted text and dashes already present in a human source are preserved during a rewrite: only dashes the model added are targets. On the density reading a single dash in a long draft is noise, though not under the house ban. Models since GPT-5.1 are tuned away from the mark, so its absence proves nothing. Never add a dash during a rewrite.",
+      "in_baseline": true
+    },
+    {
+      "id": "bold-overuse",
+      "name": "Boldface density",
+      "definition": "Boldface applied mechanically instead of marking one real emphasis point: every term or acronym in a sentence, a bolded key phrase in every sentence, every instance of a chosen word, 'key takeaways' bold on ordinary noun phrases, or decorative bold sprinkled mid-sentence. Sub-forms include bold spans that break mid-phrase and bold fused to an emoji or a dash-led label. Strip bold from most phrases; if a thing is important enough to bold, restructure the sentence to lead with it. Ceiling: about one bolded phrase per major section, or none; the detector flags more than three spans in a text.",
+      "cues": [
+        "**",
+        "'''",
+        "**OKRs (Objectives and Key Results)**",
+        "**KPIs (Key Performance Indicators)**",
+        "**Business Model Canvas (BMC)**",
+        "multiple '''bold''' spans in one sentence",
+        "bold on every instance of a chosen word or phrase",
+        "key-takeaways style bold",
+        "decorative bold",
+        "bold sprinkled mid-sentence for emphasis",
+        "**bold** in every sentence",
+        "count > 3",
+        "'''leveraged buyout (LBO)'''",
+        "'''debt financing'''",
+        "'''private equity firms'''",
+        "'''financial sponsors'''",
+        "'''assets and future cash flows'''",
+        "'''Productive Years'''",
+        "'''P(doom)'''"
+      ],
+      "regex": [
+        "\\*\\*[^*\\n]+\\*\\*[^*\\n]{1,80}\\*\\*[^*\\n]+\\*\\*",
+        "'''[^'\\n]+'''[^'\\n]{1,80}'''[^'\\n]+'''",
+        "(?:\\*\\*[^*\\n]+\\*\\*[^*\\n]*){4}"
+      ],
+      "examples": [
+        {
+          "before": "It blends **OKRs (Objectives and Key Results)**, **KPIs (Key Performance Indicators)**, and visual strategy tools such as the **Business Model Canvas (BMC)** and **Balanced Scorecard (BSC)**.",
+          "after": "It blends OKRs and KPIs with visual strategy tools such as the Business Model Canvas."
+        },
+        {
+          "before": "A '''leveraged buyout (LBO)''' is characterized by the extensive use of '''debt financing''' to acquire a company. This financing structure enables '''private equity firms''' and '''financial sponsors''' to control businesses while investing a relatively small portion of their own equity.",
+          "after": "A leveraged buyout (LBO) is characterized by the extensive use of debt financing to acquire a company. This structure lets private equity firms and financial sponsors control businesses while investing a small portion of their own equity."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "im-not-ai-taxonomy",
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "§15 Too much bold text",
+        "Formatting slop: decorative mid-sentence bold",
+        "Bold overuse",
+        "bold overuse",
+        "J-1 A bolded key word in every sentence",
+        "Overuse of boldface"
+      ],
+      "false_positives": "A single bold on the article subject or on a defined term at first mention is normal. Bold labels opening list items in scannable reference docs (docs profile relaxed) and one bold hook in a LinkedIn post (linkedin relaxed) are tolerated; casual registers skip the check. UI element names in how-tos are conventionally bold. im-not-ai applies the rule to column and report genres only. Markdown bold leaking into wikitext or plain text belongs to the artifacts category, not here; a bold-first bullet list is a structure pattern.",
+      "in_baseline": false
+    },
+    {
+      "id": "redundant-acronym-expansion",
+      "name": "Redundant acronym expansion",
+      "definition": "Every acronym is spelled out in parentheses at first use even when the audience owns the term, often in the reversed 'KPIs (Key Performance Indicators)' order, wrapped in bold, and done for every term in the sentence. Drop the expansion where the reader plainly knows the term; keep expansion-then-acronym only for a term the audience may not know.",
+      "cues": [
+        "OKRs (Objectives and Key Results)",
+        "KPIs (Key Performance Indicators)",
+        "Business Model Canvas (BMC)",
+        "Balanced Scorecard (BSC)"
+      ],
+      "regex": [
+        "\\*\\*[^*\\n]*\\([a-z]{2,6}\\)\\*\\*",
+        "(?-i:\\b[A-Z]{2,6}s? \\([A-Z][a-z]+(?: (?:[A-Z][a-z]+|and|of|for|the|in|on|to)){1,5}\\))"
+      ],
+      "examples": [
+        {
+          "before": "It blends **OKRs (Objectives and Key Results)**, **KPIs (Key Performance Indicators)**, and visual strategy tools such as the **Business Model Canvas (BMC)**.",
+          "after": "It blends OKRs and KPIs with visual strategy tools such as the Business Model Canvas."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "humanizer"
+      ],
+      "merged_from": [
+        "Implied: redundant acronym expansion"
+      ],
+      "false_positives": "Legitimate in reference, onboarding and regulatory text, at a genuine first mention of a term the audience does not know, and under house styles that require expansion at first use. The tell is expanding terms the reader plainly owns, and doing it for every term in a sentence; a single expansion is never a finding. Implied only by the humanizer §15 after-example.",
+      "in_baseline": false
+    },
+    {
+      "id": "title-case-headings",
+      "name": "Title case headings",
+      "definition": "Every main word of a section heading is capitalized ('Strategic Negotiations And Global Partnerships'), sometimes conjunctions included, where the surface's house style, medium or language uses sentence case. A capitalized function word mid-title (And, Or, Of) and a length of four or more tokens are the stronger signs. Use sentence case for subheadings; title case only for the piece's main title, if at all.",
+      "cues": [
+        "## Strategic Negotiations And Global Partnerships",
+        "Strategic Negotiations And Key Partnerships",
+        "## Benefits And Strategic Considerations",
+        "Impact of Technology and Digitalization",
+        "Sustainable Development and Environmental Law",
+        "Human Rights and Economic Law",
+        "Educational Goals",
+        "Target Audience",
+        "Main Characters",
+        "External Links",
+        "Market and Statistics",
+        "Title Case",
+        "capitalized And/Or/Of/The/In/For/To/A/An mid-title"
+      ],
+      "regex": [
+        "(?-i:(?:^|\\n)#{1,6}[ \\t]+(?:[A-Z][a-z]+[ \\t]+)+(?:And|Or|Of|The|In|For|To|A|An)[ \\t]+(?:[A-Z][a-z]+[ \\t]*)+)(?=\\n|$)",
+        "(?-i:(?:^|\\n)#{1,6}[ \\t]+(?!(?:The|A|An)\\b)[A-Z][a-z]+(?:[ \\t]+(?:[A-Z][a-z]+|and|or|of|the|in|for|to|a|an)){2,}[ \\t]+[A-Z][a-z]+[ \\t]*)(?=\\n|$)",
+        "(?-i:(?:^|\\n)={2,6}[ \\t]*(?!(?:The|A|An)\\b)[A-Z][a-z]+(?:[ \\t]+(?:[A-Z][a-z]+|and|or|of|the|in|for|to|a|an)){2,}[ \\t]+[A-Z][a-z]+[ \\t]*={2,6})"
+      ],
+      "examples": [
+        {
+          "before": "## Strategic Negotiations And Global Partnerships",
+          "after": "## Strategic negotiations and global partnerships"
+        },
+        {
+          "before": "== Impact of Technology and Digitalization ==\n== Sustainable Development and Environmental Law ==\n== Human Rights and Economic Law ==",
+          "after": "== Impact of technology and digitalization ==\n== Sustainable development and environmental law ==\n== Human rights and economic law =="
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector",
+        "wikipedia-b",
+        "vollmer"
+      ],
+      "merged_from": [
+        "§17 Title case in headings",
+        "Title case headings",
+        "Title Case headings",
+        "Title Case section header",
+        "Title case in section headings",
+        "Title Case Headings In Surprising Places"
+      ],
+      "false_positives": "Publications whose house style is title case (many US newspapers, some journals), API docs, ML papers and headlines; the piece's main title; headings of three or fewer tokens ('Terms Of Service'); headings opening with 'The', 'A' or 'An' (a bare 'The' check gave 13 false positives across 81 pre-LLM files, so the regexes exclude a leading article); proper nouns and product names; code fences; technical mode skips it. The regexes carry a scoped case-sensitive group because the scanner runs case-insensitive, and they only look at marked-up headings ('#', '=='), so a plain-text heading is judgment. In Dutch, German and most non-English languages title case does not exist, so there it is a stronger tell and belongs with translationese.",
+      "in_baseline": false
+    },
+    {
+      "id": "emoji-decoration",
+      "name": "Emoji as decoration",
+      "definition": "Emoji placed in front of headings, list items or bold labels as visual icons, one per heading or bullet and often thematically matched to the text ('🚀 **Launch Phase:**'), used as bullet markers or for emphasis, or a lone sparkle closing a paragraph. Residue of training on marketing blogs. Remove them from headings and body text; a social post may keep one or two at the end of a line.",
+      "cues": [
+        "🚀 **Launch Phase:**",
+        "💡 **Key Insight:**",
+        "✅ **Next Steps:**",
+        "✨",
+        "## 🚀 What This Means",
+        "emoji in headings",
+        "Emoji headings",
+        "emoji list heads",
+        "emoji emphasis",
+        "emoji before a heading",
+        "emoji before a bullet",
+        "emojis",
+        "✅",
+        "🚀",
+        "💡",
+        "⚠️",
+        "📊",
+        "🔑",
+        "👋",
+        "🧑‍💻",
+        "🌏",
+        "💻",
+        "📚",
+        "🌄",
+        "🔍",
+        "🌐",
+        "🎯",
+        "📬",
+        "👉",
+        "🙏",
+        "🧠",
+        "🧱",
+        "🚨",
+        "🧭",
+        "🪷",
+        "🕰️",
+        "🔭",
+        "🌕",
+        "🌀",
+        "🌠",
+        "📤"
+      ],
+      "regex": [
+        "(?:^|\\n)[ \\t]*(?:#{1,6}[ \\t]+|[-*+][ \\t]+|\\d+[.)][ \\t]+)?[\\U0001F300-\\U0001FAFF\\u2600-\\u260f\\u2614-\\u2615\\u2648-\\u2653\\u26a0-\\u26ff\\u2702-\\u2712\\u2716-\\u27bf\\u2b50\\u2b06]",
+        "(?:^|\\n)#{1,6}[ \\t]+[^\\n]*[\\U0001F300-\\U0001FAFF\\u2600-\\u260f\\u2614-\\u2615\\u2648-\\u2653\\u26a0-\\u26ff\\u2702-\\u2712\\u2716-\\u27bf\\u2b50\\u2b06]",
+        "[\\U0001F300-\\U0001FAFF\\u2600-\\u260f\\u2614-\\u2615\\u2648-\\u2653\\u26a0-\\u26ff\\u2702-\\u2712\\u2716-\\u27bf\\u2b50\\u2b06]\\uFE0F?[ \\t]*\\*\\*[^*\\n]+\\*\\*",
+        "✨[ \\t]*(?:\\n|$)"
+      ],
+      "examples": [
+        {
+          "before": "🚀 **Launch Phase:** The product launches in Q3\n💡 **Key Insight:** Users prefer simplicity\n✅ **Next Steps:** Schedule follow-up meeting",
+          "after": "The product launches in Q3. User research showed a preference for simplicity. We still need to schedule a follow-up meeting."
+        },
+        {
+          "before": "## 🚀 What This Means",
+          "after": "## What this means"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "no-ai-slop",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "im-not-ai-taxonomy",
+        "im-not-ai-method",
+        "wikipedia-b",
+        "tropes-fyi",
+        "vollmer"
+      ],
+      "merged_from": [
+        "§18 Emojis as decoration",
+        "Formatting slop: emoji in headings",
+        "Emoji in headers",
+        "C-5 Emoji overload",
+        "C-5 이모지 남발 (emoji overuse)",
+        "Emoji as formatting",
+        "Emoji Decoration",
+        "Emojis in section headings or as list bullets"
+      ],
+      "false_positives": "Social posts may carry one or two emoji at the end of a line, never mid-sentence (LinkedIn relaxed); chat and casual registers and the docs profile skip the check; im-not-ai guards it to column and report genres. A check mark or status glyph in a status table, emoji that is the content (an emoji-picker doc, a Unicode reference) and the plain ✓/✔ checklist ticks are outside the regex ranges on purpose. Never acceptable in encyclopedic or formal prose.",
+      "in_baseline": false
+    },
+    {
+      "id": "curly-quotes",
+      "name": "Curly quotation marks on a straight-quote surface",
+      "definition": "Typographic quotes (U+201C, U+201D, U+2018) and the right-single-quote apostrophe (U+2019) on a surface whose convention is straight quotes: code, commit messages, Markdown, Reddit, plain email. Curly and straight forms mixed inside one text or one sentence is the stronger signal, because auto-curling software is consistent and a paste from a chat window is not. Convert to straight quotes only where the target uses them; never flag a curly apostrophe on its own.",
+      "cues": [
+        "“",
+        "”",
+        "‘",
+        "’",
+        "U+201C",
+        "U+201D",
+        "U+2018",
+        "U+2019",
+        "smart quotes",
+        "curly quotes",
+        "curly apostrophe in contractions (don’t, it’s)",
+        "curly apostrophe in possessives",
+        "mixed curly and straight quotes in one response"
+      ],
+      "regex": [
+        "[“”][^\\n]{0,300}\\\"|\\\"[^\\n]{0,300}[“”]"
+      ],
+      "examples": [
+        {
+          "before": "He said “the project is on track” but others disagreed.",
+          "after": "He said \"the project is on track\" but others disagreed."
+        },
+        {
+          "before": "Some claims have suggested that Ichafu derives from the French word chiffon (“rag” or \"light cloth”).",
+          "after": "Some claims have suggested that Ichafu derives from the French word chiffon (\"rag\" or \"light cloth\")."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "wikipedia-b",
+        "tropes-fyi",
+        "vollmer"
+      ],
+      "merged_from": [
+        "§19 Curly quotation marks",
+        "Curly quotation marks and apostrophes",
+        "Unicode Decoration: Smart Quotes",
+        "Curly quotes and apostrophes in straight-quote contexts"
+      ],
+      "false_positives": "Word, Google Docs, macOS and iOS, most CMSes, LanguageTool and Chicago-style typesetting auto-curl, so finished publications, professionally typeset work and any Word-edited prose are exempt, as is a citation tool copying a page title. Only a tell on plain-text, Markdown, code and commit-message surfaces, and only when stacked with other tells. Never flag a curly apostrophe (U+2019) on its own. Locale-correct glyphs (French « », German „ “, Dutch „ ”) are not this pattern. Some fonts render curly as straight, so the distinction can be invisible to the reader. Gemini and Claude typically emit straight quotes; ChatGPT and DeepSeek curly. A bare curly-quote regex fired 13 to 100 times per 10,000 words on typeset human prose, so only the mixed form is scanned; the plain glyphs stay as cues for judgment.",
+      "in_baseline": false
+    },
+    {
+      "id": "immaculate-typography",
+      "name": "Immaculate typography in a rough register",
+      "definition": "Perfect spacing, punctuation and capitalization where humans type fast: issue and PR comments, chat, DMs, Reddit, quick email replies. The composite signature is curly quotes plus a non-separator em dash plus a serial (Oxford) comma plus machine cleanliness (no double spaces, no dropped apostrophes, no contractions, no odd fragment) in 80 or more words; any one alone means nothing and the stack is a weak corroborator only. The inverse rule when editing a human's casual text: preserve their typos, contractions and idiosyncratic capitalization, because smoothing them away erases what marks the text as theirs.",
+      "cues": [
+        "Oxford comma",
+        "no contractions",
+        "zero typos",
+        "no double spaces",
+        "curly-quotes + em-dash + Oxford comma + zero typos",
+        "signals >= 4 && wordCount >= 80"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "I appreciate the thorough analysis, the clear documentation, and the prompt response. It is a well-considered proposal — one that I am glad to support.",
+          "after": "thanks for the writeup, makes sense to me. happy to support it"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-detector",
+        "vollmer"
+      ],
+      "merged_from": [
+        "Immaculate typography in casual registers",
+        "smart-punctuation signature",
+        "immaculate typography in casual registers",
+        "Oxford commas, zero contractions, near-perfect grammar"
+      ],
+      "false_positives": "Formal academic and published prose legitimately has all of these; a careful human can type a flawless comment and a rushed one a sloppy one; Word-edited human prose matches the whole signature. Register-scoped: only weigh it on casual surfaces, and never as a conclusion on its own. The Oxford-comma and contraction sub-cues are English-specific. No regex: an Oxford-comma pattern fired 7 to 10 times per 10,000 words on human prose.",
+      "in_baseline": false
+    },
+    {
+      "id": "unnecessary-hyphenation",
+      "name": "Unnecessary hyphenation",
+      "definition": "Hyphens where English does not want them: stock corporate compounds ('data-driven', 'cross-functional', 'high-quality') kept hyphenated in predicate position ('the report is high-quality'); attributive-only forms used adverbially or as nouns ('in real-time', 'over the long-term', 'works out-of-the-box'); compounds whose standard form is one word ('code-base', 'data-set', 'time-frame', 'road-map'); open noun phrases welded with a hyphen ('research-impact aggregator', 'data-source strategy'); and several hyphenated modifiers stacked before one noun. Keep the hyphen before a noun and in established technical compounds; drop it elsewhere. The density of these particular corporate compounds is itself a vocabulary tell.",
+      "cues": [
+        "third-party",
+        "cross-functional",
+        "client-facing",
+        "data-driven",
+        "decision-making",
+        "well-known",
+        "high-quality",
+        "real-time",
+        "long-term",
+        "end-to-end",
+        "research-impact aggregator",
+        "data-source strategy",
+        "Python-package usage",
+        "Rust-crate usage",
+        "single-Project Manifest",
+        "total-downloads figures",
+        "life-sciences-native citation count",
+        "code-base",
+        "data-set",
+        "time-frame",
+        "road-map",
+        "in real-time",
+        "over the long-term",
+        "for the long-term",
+        "works out-of-the-box"
+      ],
+      "regex": [
+        "\\b(?:code-base|data-set|time-frame|road-map)\\b",
+        "\\bin\\s+real-time(?=[ \\t]*(?:[,.!?;:]|\\n|$)|\\s+(?:across|as|automatically|because|but|continuously|during|dynamically|every|for|from|immediately|instantly|on|simultaneously|through|throughout|until|via|when|while|with|without)\\b)",
+        "\\b(?:for|over)\\s+the\\s+long-term(?=[ \\t]*(?:[,.!?;:]|\\n|$)|\\s+(?:across|because|but|by|during|for|from|on|through|throughout|until|via|when|while|with|without)\\b)",
+        "\\b(?:functions?|functioned|functioning|operates?|operated|operating|runs?|ran|running|works?|worked|working)\\s+out-of-the-box\\b",
+        "\\bresearch-impact\\s+aggregat(?:or|ion)s?\\b",
+        "\\bdata-source\\s+strateg(?:y|ies)\\b",
+        "\\b(?:python-package|rust-crate)\\s+usage\\b",
+        "\\btotal-downloads\\s+figures?\\b",
+        "\\b(?:single-project\\s+manifest|life-sciences-native\\s+citation\\s+count)\\b",
+        "\\b(?:is|are|was|were|remains?|stays?|seems?|becomes?)\\s+(?:high-quality|data-driven|cross-functional|client-facing|end-to-end|real-time|long-term)\\b(?!\\s+[a-z]+)",
+        "(?:\\b[a-z]+(?:-[a-z]+)+,?\\s+){3}\\b[a-z]+"
+      ],
+      "examples": [
+        {
+          "before": "The cross-functional team delivered a high-quality, data-driven report. The team is cross-functional and the report is high-quality.",
+          "after": "The cross-functional team delivered a high-quality, data-driven report. The team is cross functional and the report is high quality."
+        },
+        {
+          "before": "The code-base updates in real-time and works out-of-the-box with our data-source strategy.",
+          "after": "The codebase updates in real time and works out of the box with our data source strategy."
+        },
+        {
+          "before": "We built a cloud-native, end-to-end, real-time, data-driven pipeline.",
+          "after": "We built a cloud pipeline that processes data as it arrives."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "english",
+      "sources": [
+        "humanizer",
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b",
+        "avoid-ai-writing-detector"
+      ],
+      "merged_from": [
+        "§26 Too many hyphenated word pairs",
+        "Unnecessary hyphenation",
+        "unnecessary hyphenation: welded open noun phrases",
+        "unnecessary hyphenation: closed compounds",
+        "unnecessary hyphenation: attributive-only forms used adverbially or as nouns",
+        "hyphenated modifier stacking",
+        "unnecessary hyphenation outside curated subclasses"
+      ],
+      "false_positives": "Keep the same compounds before a noun ('real-time analytics', 'long-term plan', 'out-of-the-box support') and preserve established and technical compounds ('high-quality', 'open-access', 'third-party', 'machine-readable', 'server-side', 'field-normalized', 'family-owned'). Spelling varies by dialect and house style, so ambiguous pairs are judgment calls; older prose hyphenates 'to-day' and 'to-morrow' by convention. Code, quoted material, URLs, paths, filenames, command flags, tables, YAML and blockquotes are masked first. A clear hit is P2 copyediting (detector weight 0), never evidence of machine authorship; the general attributive-versus-predicate question stays editorial judgment.",
+      "in_baseline": false
+    },
+    {
+      "id": "hashtag-stuffing",
+      "name": "Hashtag stuffing",
+      "definition": "A long trailing block of hashtags on a short post (six or more, typically one project-specific tag plus broad category tags such as #AI #Innovation #Technology). Human posts past five tags are usually launch posts; LLM posts default to 10 to 15. Reduce to two or three specific tags or none; if a tag would not help a reader find related work, it is filler.",
+      "cues": [
+        "#AI",
+        "#Crypto",
+        "#Web3",
+        "#Innovation",
+        "#FutureTech",
+        "#Technology"
+      ],
+      "regex": [
+        "(?:#[a-z][a-z0-9_]*[ \\t]+){5}#[a-z][a-z0-9_]*"
+      ],
+      "examples": [
+        {
+          "before": "#AI #Crypto #Web3 #Innovation #FutureTech #Technology",
+          "after": "#twentedev #meetup"
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a",
+        "avoid-ai-writing-skill-b"
+      ],
+      "merged_from": [
+        "Hashtag stuffing"
+      ],
+      "false_positives": "Not counted: issue and PR references (#88, owner/repo#88), CSS hex colours with a digit (#1a2b3c), C preprocessor directives, URL fragments, Markdown headings, anything inside a code span or fence. Still counted: short hex-shaped words (#fff, #dad) and channel names (#general). Severity is profile-bound: P0 on LinkedIn and investor email, P2 on a blog where a launch post may stack tags, skipped on docs and casual surfaces. Five tags is a soft tell on social profiles; six is the hard flag.",
+      "in_baseline": false
+    },
+    {
+      "id": "list-label-periods",
+      "name": "List-label periods",
+      "definition": "In a bulleted list whose items lead with a short label, the label ends with a period and the gloss runs on as a separate sentence ('- **Intros.** Years of conferences and operator network.') where a person would use a colon. Strongest with bold labels, weaker but still a tell without bold. Change the period to a colon and lowercase the gloss, or drop the label and write a plain sentence.",
+      "cues": [
+        "**Intros.**",
+        "**Content distribution.**",
+        "**Developer GTM.**",
+        "- Intros. Years of conferences and operator network."
+      ],
+      "regex": [
+        "(?:^|\\n)[ \\t]*(?:[-*+]|\\d+[.)])[ \\t]+\\*\\*(?:[a-z0-9&/'-]+[ \\t]+){0,3}[a-z0-9&/'-]+\\.\\*\\*[ \\t]+[a-z]"
+      ],
+      "examples": [
+        {
+          "before": "- **Intros.** Years of conferences and operator network.",
+          "after": "- **Intros:** years of conferences and operator network."
+        },
+        {
+          "before": "- Intros. Years of conferences and operator network.",
+          "after": "- Intros: years of conferences and operator network."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "avoid-ai-writing-skill-a"
+      ],
+      "merged_from": [
+        "List-label periods"
+      ],
+      "false_positives": "When the label span is a full sentence on its own the period is correct. For the unbolded form flag only when the leading fragment is clearly a label (a one-to-four-word noun phrase with no verb); a short complete sentence opening a bullet is fine, which is why the regex covers the bold form only.",
+      "in_baseline": false
+    },
+    {
+      "id": "capitalized-after-colon",
+      "name": "Capital letter after a colon",
+      "definition": "The clause after a colon starts with a capital letter where grammar, a proper noun, a title or code does not require it ('Two options remain: We ship now'). Usually a by-product of the colon-reveal habit. Use sentence case after colons.",
+      "cues": [
+        "colon followed by capital letter"
+      ],
+      "regex": [
+        "(?-i:\\b[a-z]{3,}: [A-Z][a-z]+ [a-z]+)"
+      ],
+      "examples": [
+        {
+          "before": "Two options remain: We ship now or we wait for the fix.",
+          "after": "Two options remain: we ship now or we wait for the fix."
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "sources": [
+        "no-ai-slop"
+      ],
+      "merged_from": [
+        "Capitalized word after a colon"
+      ],
+      "false_positives": "Proper nouns, titles and code after the colon; AP and Chicago style capitalize a complete sentence after a colon, so a house style can make it legitimate; a colon that introduces quoted speech; a label line ('Note: The ...') in documentation. The rule is a sub-tell of the colon reveal (rhetoric) and only worth raising when that pattern is present. Capitalization rules after a colon are language-specific in detail, so the regex is English-shaped and carries a scoped case-sensitive group.",
+      "in_baseline": false
+    },
+    {
+      "id": "comma-after-connective-ending",
+      "name": "Comma after a Korean connective ending",
+      "definition": "A comma placed immediately after a clause-linking verb ending (-고/-며/-지만/-면서/-아서/-어서/-자/-는데) where the ending already does the joining: the English comma-before-conjunction convention laid over morphology that needs none. Positional, not distributional (contrast comma density). Delete the comma; six or more occurrences is a strong signal (4.84x separability in KatFish, ACL 2025, the strongest single indicator in the external literature).",
+      "cues": [
+        "-고,",
+        "-며,",
+        "-지만,",
+        "-면서,",
+        "-아서,",
+        "-어서,",
+        "-자,",
+        "-는데,"
+      ],
+      "regex": [
+        "(?:고|며|지만|면서|아서|어서|자|는데),"
+      ],
+      "examples": [
+        {
+          "before": "AI는 빠르게 발전하지만, 기업의 대응은 더디다",
+          "after": "AI는 빠르게 발전하지만 기업의 대응은 더디다"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "language-specific",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "C-11 Comma directly after a connective ending",
+        "C-11 연결어미 뒤 쉼표 (comma after connective ending)"
+      ],
+      "false_positives": "In 532 human pieces the median is 15% of sentences, so density alone cannot separate human from injected commas; commas in an author's original sentences are inviolable and only sentences a rewrite created get stripped; commas inside quotes are left alone. Rewriters themselves inject this pattern (16 of 28 light-route documents had more after rewriting). The analogous English 'comma before conjunction' is grammatical and not this tell; the mechanism transfers to other agglutinative languages only after recalibration. Korean text only: the regex cannot fire on Latin-script prose.",
+      "in_baseline": false
+    },
+    {
+      "id": "comma-density",
+      "name": "Comma density",
+      "definition": "Document-level comma excess: the share of sentences containing at least one comma exceeds 50% against a human baseline of about 26 to 33%, and commas are inserted at every kind of syntactic boundary so the part-of-speech variety on either side of commas is far above the human norm (KatFish: human 24.4 vs AI 59.4). Convert some sentences by splitting them, absorbing the comma into a connective, or plain deletion; restrict commas to main-clause boundaries and clear appositives.",
+      "cues": [
+        "comma share > 50%",
+        "comma at every boundary",
+        "쉼표 포함 문장 비율 50% 초과"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "The team, which had grown quickly, met on Monday, reviewed the plan, and, after some discussion, agreed, in principle, to proceed.",
+          "after": "The team had grown quickly. On Monday it reviewed the plan and agreed in principle to proceed."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "C-12 More than 50 % of sentences contain at least one comma",
+        "E-6 POS diversity around commas explodes",
+        "C-12 쉼표 포함률 (document-level comma inclusion rate)"
+      ],
+      "false_positives": "The 26 to 33% baseline is Korean; recalibrate per language (English literary and legal prose runs far higher). In poetry and fiction the signal disappears (1.03x); the guard covers essays, news, blogs, QA and reports only. A single comma-heavy sentence is not a document-level signal. Measured by script, never by regex.",
+      "in_baseline": false
+    },
+    {
+      "id": "scare-quotes",
+      "name": "Scare-quote excess",
+      "definition": "Quotation marks around ordinary words for emphasis or ironic distance ('a \"seamless\" experience'), five or more per document. Keep real quotations; write everything else as plain text.",
+      "cues": [
+        "scare quotes 5+",
+        "\"\" 강조",
+        "따옴표 강조 5회+"
+      ],
+      "regex": [
+        "[\\\"“][a-z]+[\\\"”][^\\\"“”\\n]{1,120}[\\\"“][a-z]+[\\\"”][^\\\"“”\\n]{1,120}[\\\"“][a-z]+[\\\"”]"
+      ],
+      "examples": [
+        {
+          "before": "The \"innovative\" platform offers \"seamless\" onboarding for \"modern\" teams with \"real\" results.",
+          "after": "The platform lets a new team start the same day."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "J-2 Scare quotes, 5+ per document",
+        "J-2 따옴표 과다 (scare-quote excess)"
+      ],
+      "false_positives": "Direct speech inside double quotes is never touched; titles of works; a word mentioned as a word ('the term \"cloud\"'), which is why usage guides and grammar books light up; code identifiers; fewer than five in a document. The regex needs three single-word quoted spans on one line, so it catches the cluster, not the single case.",
+      "in_baseline": false
+    },
+    {
+      "id": "parenthetical-gloss-overload",
+      "name": "Parenthetical gloss overload",
+      "definition": "Explanatory parentheses of the form '(this means ...)' or '(이는 ~을 의미한다)' tacked onto claim after claim in dense succession. Move most into the body or delete. The tell is the formulaic gloss, not parentheses as such: AI prose overall uses far fewer parenthetical asides than human prose, so parentheses are a human sign to observe and never to prescribe away.",
+      "cues": [
+        "(이는 ~을 의미한다)",
+        "(this means ...)",
+        "괄호 부재"
+      ],
+      "regex": [
+        "\\((?:this|which|that|it) (?:means|implies|indicates|suggests)\\b[^)\\n]{0,120}\\)",
+        "\\(이는[^)\\n]{0,80}의미한다\\)"
+      ],
+      "examples": [
+        {
+          "before": "Revenue grew 40% (this means the strategy is working). Churn fell (this means customers are happier).",
+          "after": "Revenue grew 40% and churn fell, which points to the strategy working."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-taxonomy",
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "J-4 Parenthetical elaboration overload (이는 ~을 의미한다)",
+        "J-4 괄호 부연 과다 (parenthetical elaboration excess)",
+        "괄호 부재 (missing parentheses)"
+      ],
+      "false_positives": "A single parenthetical aside is normal and human (AI 1.2 vs human 10.6 per 1k in the Korean corpus, a magnitude possibly inflated by the human corpus being edited professional prose); definitions in reference text; the missing-parentheses observation is observe-only and never a rewrite instruction.",
+      "in_baseline": false
+    },
+    {
+      "id": "parenthetical-stage-directions",
+      "name": "Parenthetical stage directions in dialogue",
+      "definition": "Dialogue tagged with a bracketed emotion before the line, script-style ('Bob: (defensive) Why should I?'), in prose that is not a screenplay. Especially GPT-3.5. Carry the emotion in the words or a beat of action instead.",
+      "cues": [
+        "(defensive)",
+        "(frustrated)"
+      ],
+      "regex": [
+        "(?:^|\\n)[ \\t]*[a-z][a-z .'-]{0,30}:[ \\t]*\\((?:defensive(?:ly)?|frustrated|angr(?:y|ily)|sigh(?:s|ing)?|laugh(?:s|ing)?|paus(?:es|ing)|nervous(?:ly)?|smil(?:es|ing)|sarcastic(?:ally)?|calm(?:ly)?|quiet(?:ly)?|excited(?:ly)?|confused|annoyed|hesitant(?:ly)?|thoughtful(?:ly)?|firmly|softly|shrugs?|nods?)\\)"
+      ],
+      "examples": [
+        {
+          "before": "Bob: (defensive) Why should I? / Tony: (frustrated) Look…",
+          "after": "Bob crossed his arms. \"Why should I?\" Tony rubbed his eyes. \"Look...\""
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "vollmer"
+      ],
+      "merged_from": [
+        "Parenthetical stage-direction tics"
+      ],
+      "false_positives": "Actual screenplays and stage scripts; interview transcripts that mark (laughs); role-play or table-read formats the user asked for.",
+      "in_baseline": false
+    },
+    {
+      "id": "numbered-paren-indexing",
+      "name": "Inline '1) 2) 3)' indexing",
+      "definition": "Items indexed '1) ... 2) ... 3)' (or '(1) ... (2) ... (3)') inside one paragraph or across adjacent sentences instead of a plain enumeration or a real list. Write the items as a sentence, or as list items if there are genuinely parallel entries.",
+      "cues": [
+        "1)",
+        "2)",
+        "3)"
+      ],
+      "regex": [
+        "\\b1\\)[^\\n]{3,200}\\b2\\)[^\\n]{3,200}\\b3\\)",
+        "\\(1\\)[^\\n]{3,200}\\(2\\)[^\\n]{3,200}\\(3\\)"
+      ],
+      "examples": [
+        {
+          "before": "We need 1) a plan, 2) a budget, 3) a deadline and 4) an owner.",
+          "after": "We need a plan, a budget, a deadline and an owner."
+        },
+        {
+          "before": "The rule has three parts: (1) the year, (2) the abbreviation, (3) the clause.",
+          "after": "The rule covers the year, the abbreviation and the clause it sits in, and a fourth case for dates."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "im-not-ai-method"
+      ],
+      "merged_from": [
+        "C-9 숫자 괄호 인덱싱 '1) 2) 3)' (numbered-paren indexing)"
+      ],
+      "false_positives": "Legal, mathematical and academic text that enumerates conditions inline by convention; a real list rendered as list items (one item per line does not match); two items only. The parenthesized '(1) (2) (3)' form is the weaker sub-form and common in human style guides.",
+      "in_baseline": false
+    },
+    {
+      "id": "unicode-arrows",
+      "name": "Arrows as prose connectives",
+      "definition": "Typographic arrows (→, ⇒) or their ASCII forms (->, =>) used in running prose where a writer would say 'leads to', 'then' or write a sentence ('Input → Processing → Output', 'better outcomes → higher engagement'). Claude in particular favors ->. Spell the relation out.",
+      "cues": [
+        "→",
+        "->",
+        "=>",
+        "Input → Processing → Output"
+      ],
+      "regex": [
+        "[a-z)]\\s*(?:→|⇒|➜|➡)\\s*[a-z(]",
+        "[a-z]\\s+(?:->|=>)\\s+[a-z]"
+      ],
+      "examples": [
+        {
+          "before": "This leads to better outcomes → which means higher engagement",
+          "after": "This leads to better outcomes, and better outcomes mean higher engagement."
+        },
+        {
+          "before": "cache miss -> fetch from origin -> store",
+          "after": "On a cache miss we fetch from the origin and store the result."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "tropes-fyi",
+        "vollmer"
+      ],
+      "merged_from": [
+        "Unicode Decoration: Arrows",
+        "Unicode flair in the wrong places"
+      ],
+      "false_positives": "Diagrams, code, CLI output, type signatures, commit messages and migration notes describing a rename (a -> b), mathematics, and technical docs where the arrow is notation; the tell is the arrow doing the job of a verb in prose.",
+      "in_baseline": false
+    },
+    {
+      "id": "unicode-math-bold-and-bullets",
+      "name": "Math-bold letters and bullet glyphs",
+      "definition": "Bold faked with Unicode Mathematical Alphanumeric Symbols (𝗯𝗼𝗹𝗱) instead of markup, and list items marked with the Unicode bullet character (•) on a surface that has real list syntax. Wikipedia's cleanup project flags both as strong tells. Replace with the surface's own markup or plain sentences.",
+      "cues": [
+        "𝗯𝗼𝗹𝗱",
+        "•"
+      ],
+      "regex": [
+        "[\\U0001D400-\\U0001D7FF]",
+        "(?:^|\\n)[ \\t]*•[ \\t][^\\n]+\\n[ \\t]*•[ \\t]"
+      ],
+      "examples": [
+        {
+          "before": "𝗦𝗵𝗶𝗽 𝘄𝗲𝗲𝗸𝗹𝘆\n• smaller batches\n• fewer rollbacks",
+          "after": "Ship weekly. Smaller batches mean fewer rollbacks."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "vollmer"
+      ],
+      "merged_from": [
+        "Unicode flair in the wrong places"
+      ],
+      "false_positives": "Text pasted from Word or a PDF where the bullet glyph is the export's doing (a Gutenberg licence block carries them, which is why the regex needs two bullet lines in a row); LinkedIn posts, where math-bold is the only way to fake bold (still a provenance tell, but the surface explains it); mathematical notation that genuinely uses the block.",
+      "in_baseline": false
+    },
+    {
+      "id": "unnecessary-tables",
+      "name": "Unnecessary small tables",
+      "definition": "Small tables (a handful of rows) holding facts that read better as a sentence or an infobox: a two-column Metric/Figure or Name/Designation table, or a Feature/A/B comparison with a 'Comparison of X and Y' or 'Key Statistics' caption. The tell is the mismatch between table form and small, prose-shaped content. Fold the facts into prose.",
+      "cues": [
+        "Key Statistics",
+        "Metric",
+        "Figure",
+        "Feature",
+        "Name !! Designation",
+        "Comparison of",
+        "Key management personnel ... include:",
+        "The structural similarity between ... is striking:"
+      ],
+      "regex": [
+        "\\|\\+[ \\t]*(?:comparison of|key statistics)",
+        "\\|[ \\t]*(?:metric|aspect|criterion)[ \\t]*\\|[ \\t]*(?:figure|value|details?|description)[ \\t]*\\|"
+      ],
+      "examples": [
+        {
+          "before": "{| class=\"wikitable\"\n|+Key Statistics of Indian Biobanking (2024-2025)\n!Metric\n!Figure\n|-\n|Market Valuation (2024)\n|~USD 2.1 billion\n|-\n|Major Accredited Facilities\n|NLDB, CBR Biobank, THSTI, Karkinos\n|}",
+          "after": "The Indian biobanking market was valued at about USD 2.1 billion in 2024; the major accredited facilities are NLDB, CBR Biobank, THSTI and Karkinos."
+        },
+        {
+          "before": "| Metric | Figure |\n|---|---|\n| Staff | 3,167 |\n| Chairman | S. K. Bansal |",
+          "after": "The mall employs about 3,167 staff and S. K. Bansal chairs the company."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Unusual use of tables"
+      ],
+      "false_positives": "Genuinely tabular data (many rows, numeric columns, comparison matrices with more than a few cells); infobox-style data on a surface that has no infobox; API reference and configuration tables. The source labels this 'rare'.",
+      "in_baseline": false
+    },
+    {
+      "id": "heading-level-skipping",
+      "name": "Skipped heading levels",
+      "definition": "Sections begin at the third heading level (### or ===) with no second-level heading above them, or any heading sits more than one level below its parent. Against accessibility and style conventions on every surface, so a manually formatted page very rarely has this quirk. Renumber the hierarchy so each level is one deeper than its parent.",
+      "cues": [
+        "=== as the first section heading with no ==",
+        "### with no ## above",
+        "heading level jumps by two"
+      ],
+      "regex": [
+        "\\A(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
+        "(?:^|\\n)#[ \\t][^\\n]*\\n(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
+        "(?:^|\\n)#{2}[ \\t][^\\n]*\\n(?:(?!#{1,3}[ \\t])[^\\n]*\\n)*#{4}[ \\t]",
+        "\\A(?:(?!={1,2}[^=\\n])[^\\n]*\\n)*===[^=\\n]"
+      ],
+      "examples": [
+        {
+          "before": "### Background\nThe project started in 2024.\n### Method\nWe interviewed twelve teams.",
+          "after": "## Background\nThe project started in 2024.\n## Method\nWe interviewed twelve teams."
+        },
+        {
+          "before": "# Report\nIntro text.\n### Background\nThe project started in 2024.",
+          "after": "# Report\nIntro text.\n## Background\nThe project started in 2024."
+        },
+        {
+          "before": "## Method\nWe interviewed twelve teams.\n#### Sampling\nTwelve of forty replied.",
+          "after": "## Method\nWe interviewed twelve teams.\n### Sampling\nTwelve of forty replied."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Skipping heading levels"
+      ],
+      "false_positives": "A fragment excerpted from a longer document; comment lines in shell or Python code fences ('# comment') the scanner has not masked; a surface that renders the page title as H1 so body sections correctly start at ##; a deliberate H1 title followed by ## sections.",
+      "in_baseline": false
+    },
+    {
+      "id": "level-1-heading-overuse",
+      "name": "Level-1 headings for body sections",
+      "definition": "Level-1 headings (# or = H1 =) used for ordinary body sections on a surface that reserves level 1 for the page title (Wikipedia, most CMSs, HTML documents with a rendered title). Usually produced by translating Markdown '#' headings one-to-one into the target markup. Demote body headings by one level.",
+      "cues": [
+        "= Heading =",
+        "multiple # H1 headings in one document",
+        "= History =",
+        "= External Links ="
+      ],
+      "regex": [
+        "(?:^|\\n)#[ \\t][^\\n]+\\n(?:[^\\n]*\\n)*?#[ \\t]",
+        "(?:^|\\n)=[^=\\n][^\\n]*=[ \\t]*(?=\\n|$)"
+      ],
+      "examples": [
+        {
+          "before": "= History =\n[...]\n= Programming =\n[...]\n= Main Characters =\n[...]\n= External Links =",
+          "after": "== History ==\n[...]\n== Programming ==\n[...]\n== Main characters ==\n[...]\n== External links =="
+        },
+        {
+          "before": "# History\nPixaroo was created in 2024.\n# Programming\nThe first series aired in 2025.",
+          "after": "## History\nPixaroo was created in 2024.\n## Programming\nThe first series aired in 2025."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Overuse of level 1 headings"
+      ],
+      "false_positives": "A standalone Markdown file or README with one H1; shell comments in code fences; a surface where the H1 is the document's own title. A tell only where the surface renders the title itself and the body carries several H1s.",
+      "in_baseline": false
+    },
+    {
+      "id": "thematic-breaks",
+      "name": "Thematic breaks between every section",
+      "definition": "A horizontal rule (---- in wikitext, --- or *** in Markdown, <hr>) inserted before every section or sub-section, common in Markdown output. A single rule marking a genuine shift is normal; the tell is one before each heading. Remove them and let the headings carry the structure.",
+      "cues": [
+        "----",
+        "---",
+        "***",
+        "<hr>",
+        "horizontal rule before each heading"
+      ],
+      "regex": [
+        "[.!?)\\]][ \\t]*\\n[ \\t]*\\n[ \\t]*(?:-{3,}|\\*{3,}|_{3,})[ \\t]*\\n[ \\t]*\\n?[ \\t]*#{1,6}[ \\t]",
+        "-{4}[ \\t]*\\n[ \\t]*\\n?[ \\t]*={2,}[^=\\n]"
+      ],
+      "examples": [
+        {
+          "before": "Early lexicographic records do not support this interpretation.\n\n----\n\n== History ==\nHeadwrapping practices are documented in historical sources.\n\n----\n\n== Form and construction ==",
+          "after": "Early lexicographic records do not support this interpretation.\n\n== History ==\nHeadwrapping practices are documented in historical sources.\n\n== Form and construction =="
+        },
+        {
+          "before": "Roo loves jumping and outdoor adventures.\n\n---\n\n## Pandy\nPandy enjoys reading.\n\n---\n\n## Ellie",
+          "after": "Roo loves jumping and outdoor adventures.\n\n## Pandy\nPandy enjoys reading.\n\n## Ellie"
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "wikipedia-b"
+      ],
+      "merged_from": [
+        "Thematic breaks between sections"
+      ],
+      "false_positives": "A single rule marking a genuine shift (before an appendix, a footer, a change of voice); YAML front matter delimiters at document start; a rule separating a table of contents; Markdown setext underlines (a text line directly followed by --- is a heading, not a rule, which is why the regex demands a blank line first); slide separators in Marp or reveal.js decks.",
+      "in_baseline": false
+    },
+    {
+      "id": "over-formatting",
+      "name": "Over-formatting prose",
+      "definition": "Headers and bullet points imposed on content that reads better as plain prose: a short answer broken into sections, a paragraph's worth of reasoning rendered as three bullets. Default to prose; add structure only when it makes the text clearer.",
+      "cues": [],
+      "regex": [],
+      "examples": [
+        {
+          "before": "## Why it matters\n- Speed\n- Cost\n## Next steps\n- Try it",
+          "after": "It matters because it is faster and cheaper. Try it this week."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "sources": [
+        "willfrancis"
+      ],
+      "merged_from": [
+        "Over-formatting"
+      ],
+      "false_positives": "Reference docs, runbooks, API docs and checklists where scannability is the point; genuinely parallel items; the source's own prompt uses headers and bullets, so the rule is about fit to content, not a ban. Sibling structure patterns (listicle-as-prose, headers as topics) carry the detection; this entry is the formatting-level rule.",
+      "in_baseline": false
+    },
+    {
+      "id": "semicolon-colon-skew",
+      "name": "Semicolon and colon rate skew",
+      "definition": "The semicolon and colon repertoire deviates from human prose in a direction that depends on the model generation: either the marks never appear and their work is done by commas and dashes, or (GPT-5, a brevity bias) semicolons splice independent clauses at a rate well above ordinary prose, replacing full stops and conjunctions. For overuse, substitute a full stop or a comma plus conjunction; for absence, there is nothing to flag, only something for the rewriter to know.",
+      "cues": [
+        ";",
+        ":"
+      ],
+      "regex": [],
+      "examples": [
+        {
+          "before": "The build failed; the logs were empty; nobody had been paged; the on-call rotation had lapsed.",
+          "after": "The build failed and the logs were empty. Nobody had been paged because the on-call rotation had lapsed."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "sources": [
+        "vollmer",
+        "goedecke"
+      ],
+      "merged_from": [
+        "Absence of colons and semicolons",
+        "Semicolon overuse"
+      ],
+      "false_positives": "Lists whose items contain commas legitimately use semicolons; formal, legal and literary registers (the two controls run 72 and 75 semicolons per 10,000 words, and a two-semicolons-in-one-sentence pattern still fired 5.9 and 8.9 per 10,000, so both were dropped); absence of a mark cannot be flagged by a scanner and is an observation for the rewriter; which direction the skew runs depends on the model generation, so measure against the genre baseline, never a fixed ceiling.",
+      "in_baseline": false
+    }
+  ],
+  "report": "Bare glyph regexes were the over-matchers on the two Gutenberg controls, so six were dropped after measurement: curly double quotes fire 13.1 per 10,000 words in Strunk and 100.7 in Twain, curly single quotes and the curly apostrophe 4.2 and 3.6, the unspaced 'word--word' dash 2.4 and 106.7, a bare colon 36.9, a two-semicolons-in-one-sentence pattern 8.9, and the Oxford-comma serial pattern 10.1, so curly-quotes now scans only the mixed curly-plus-straight form, em-dash-density counts '--' only when spaced, and immaculate-typography, comma-density, over-formatting and semicolon-colon-skew keep their cues as prose with no regex; the bare bullet glyph (2.4 on Strunk, from a Gutenberg licence block) was tightened to two bullet lines in a row rather than dropped. Twenty raw em-dash names from all fifteen sources fold into em-dash-density (paired bracket, punchy final comma, additive distribution, spaced dash, en dash, ' -- ', line-initial bold lead, dash-aside per sentence, the hassid 'old tell', the house ban and the density gate), the detector's smart-punctuation signature plus both 'immaculate typography' names and vollmer's Oxford-comma cleanliness fold into immaculate-typography, vollmer's 'Unicode flair' splits across unicode-arrows and unicode-math-bold-and-bullets, and the two Korean comma rules stay separate because one is positional and the other distributional. All 85 raw entries have a home across 25 canonical entries, every one of the 52 regexes compiles under IGNORECASE, hits a cue or its own before example, and stays at or under 1.2 per 10,000 words on both controls (peak: the bare em dash at 1.19 in Strunk).",
+  "added": 24,
+  "regex_dropped": 6
+}

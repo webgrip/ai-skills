@@ -1,0 +1,680 @@
+{
+  "source": "willfrancis — Will Francis, \"How to Stop Claude Writing Like an AI\" (willfrancis.com, 13 March 2026): a Custom Instructions prompt for Claude (Voice / Banned words / Banned phrases / Banned structures / Structure / Style / Before-finishing check) plus the surrounding article that explains the categories and cites Wikipedia's \"Signs of AI Writing\", GPTZero, Grammarly and Max Planck Institute research.",
+  "patterns": [
+    {
+      "name": "Banned words: figurative verbs",
+      "category": "vocabulary",
+      "definition": "Abstract, figurative action verbs that stand in for a concrete verb (examine, show, support, use, explain, enable). Replace each with the specific action the sentence describes, or cut the clause if it carried none.",
+      "cues": [
+        "delve",
+        "dive into",
+        "navigate (figurative)",
+        "underscore",
+        "bolster",
+        "foster",
+        "harness",
+        "leverage",
+        "unpack",
+        "shed light on",
+        "pave the way"
+      ],
+      "examples": [
+        {
+          "before": "“Delve,” “underscore,” “pivotal,” “robust,” “seamless.”"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "The source presents all 28 banned words as one list under 'Never use these — they are the most flagged AI-writing markers'; this entry is the verb slice. The qualifier '(figurative)' on navigate exempts literal navigation. Article claim: Max Planck Institute research found words like these have spiked in usage by over 50% in published writing since ChatGPT launched, and humans have started copying the AI's vocabulary because it feels safe and professional, so a hit is a style flaw to fix, not proof of machine authorship. Article also describes the mechanism as 'a small rotation of words that sound impressive but add nothing'."
+    },
+    {
+      "name": "Banned words: empty-praise adjectives",
+      "category": "vocabulary",
+      "definition": "Evaluative adjectives that assert quality, novelty or importance without evidence. Delete, or replace with the measurable property (what it does, how much, compared with what).",
+      "cues": [
+        "pivotal",
+        "groundbreaking",
+        "cutting-edge",
+        "transformative",
+        "game-changing",
+        "innovative",
+        "robust",
+        "comprehensive",
+        "seamless",
+        "intricate",
+        "nuanced (as empty praise)",
+        "vibrant",
+        "multifaceted",
+        "holistic"
+      ],
+      "examples": [
+        {
+          "before": "a flood of “pivotal moments,” “broader landscapes,” and sentences that sound profound but say absolutely nothing"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Adjective slice of the source's single 'Banned words' list. The qualifier '(as empty praise)' on nuanced means a literal, argued nuance is fine. The Voice rule reinforces this from the other side: trust the reader to recognise what matters without labelling it."
+    },
+    {
+      "name": "Banned words: figurative nouns",
+      "category": "vocabulary",
+      "definition": "Abstract metaphor nouns used in place of a plain noun (proof, field, market, area, sector). Replace with the literal thing being referred to.",
+      "cues": [
+        "testament",
+        "landscape (figurative)",
+        "realm"
+      ],
+      "examples": [
+        {
+          "before": "In today's rapidly evolving digital landscape…"
+        },
+        {
+          "before": "“broader landscapes”"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Noun slice of the source's single 'Banned words' list. '(figurative)' on landscape exempts the literal geographic sense."
+    },
+    {
+      "name": "Sweeping contextual opener",
+      "category": "structure",
+      "definition": "An opening sentence that sets the scene with a grand statement about the state of the world, the era or the industry before the text says anything specific. Delete it and start with the second sentence.",
+      "cues": [
+        "In today's [fast-paced/rapidly evolving/digital] world...",
+        "In today's rapidly evolving digital landscape…",
+        "In today’s fast-paced world"
+      ],
+      "examples": [
+        {
+          "before": "In today's [fast-paced/rapidly evolving/digital] world...",
+          "after": "Delete it, start with the second sentence."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The source calls this 'throat-clearing': filler that exists to pad out the text and make it sound authoritative but makes it sound less human, because real people don't talk like that. Appears three times in the source: as a banned phrase, as the Structure rule 'Don't open with a sweeping contextual statement', and as check #3 of the before-finishing list. The phrase cues are English; the mechanism transfers."
+    },
+    {
+      "name": "It's important/worth noting that",
+      "category": "vocabulary",
+      "definition": "A clause that announces that the next statement matters instead of making the statement. Delete the frame and keep the content.",
+      "cues": [
+        "It's important/worth noting that...",
+        "It's worth noting that…",
+        "It's important to note that"
+      ],
+      "examples": [
+        {
+          "before": "It's important/worth noting that..."
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Second member of the source's 'throat-clearing' category alongside the sweeping opener. The article's 'Does it actually work?' section names 'it's worth noting' with 'pivotal' and 'foster' as the three examples of what the ban removes."
+    },
+    {
+      "name": "One of the most [important/significant/crucial]...",
+      "category": "rhetoric",
+      "definition": "A hedged superlative that ranks the subject against an unnamed field without saying who ranks it or against what. State the specific fact that makes it matter, or drop the ranking.",
+      "cues": [
+        "One of the most [important/significant/crucial]...",
+        "One of the most important",
+        "One of the most significant",
+        "One of the most crucial"
+      ],
+      "examples": [
+        {
+          "before": "One of the most [important/significant/crucial]..."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Listed verbatim as a banned phrase. Sibling of 'Importance labelling' (Voice rule) but a distinct construction: a ranking claim rather than an adjective label."
+    },
+    {
+      "name": "Empty framing phrases",
+      "category": "vocabulary",
+      "definition": "Topic-introducing idioms that delay the point and carry no information. Cut the phrase and begin the sentence at its subject.",
+      "cues": [
+        "When it comes to...",
+        "At its core...",
+        "At the end of the day..."
+      ],
+      "examples": [
+        {
+          "before": "\"When it comes to...\" / \"At its core...\" / \"At the end of the day...\""
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "One line of the source's banned-phrases list. The three are grouped by the source on a single bullet; each is a separate regex target."
+    },
+    {
+      "name": "This is where X comes in",
+      "category": "rhetoric",
+      "definition": "A set-up sentence that promises the solution or the subject before naming it, manufacturing suspense. Name the thing directly in the sentence that would have followed.",
+      "cues": [
+        "This is where X comes in",
+        "This is where ... comes in"
+      ],
+      "examples": [
+        {
+          "before": "This is where X comes in"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The source pairs it on one bullet with 'Let's break it down'; they are split here because one is a reveal set-up and the other a signpost."
+    },
+    {
+      "name": "Signposting",
+      "category": "rhetoric",
+      "definition": "Meta-sentences that announce what the text is about to do instead of doing it. Remove the announcement and make the point.",
+      "cues": [
+        "Let's explore",
+        "Now let's turn to",
+        "Let's break it down"
+      ],
+      "examples": [
+        {
+          "before": "Don't signpost (\"Let's explore,\" \"Now let's turn to\"). Just make your point."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Structure rule in the prompt; 'Let's break it down' comes from the banned-phrases list."
+    },
+    {
+      "name": "Importance labelling",
+      "category": "rhetoric",
+      "definition": "Telling the reader that something is significant, important, crucial or impossible to overstate, in place of showing why. Delete the label; keep the fact and, if needed, the consequence that makes it matter.",
+      "cues": [
+        "significant",
+        "important",
+        "Plays a crucial role in...",
+        "It cannot be overstated...",
+        "crucial"
+      ],
+      "examples": [
+        {
+          "before": "\"Plays a crucial role in...\" / \"It cannot be overstated...\""
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Voice rule: 'Trust the reader to recognise what matters without labelling it as \"significant\" or \"important.\"' The two phrase cues are one bullet of the banned-phrases list. The bare words significant/important are only tells when used as labels; a literal statistical 'significant' is not what the source targets."
+    },
+    {
+      "name": "Trailing significance participle",
+      "category": "syntax",
+      "definition": "A present-participle clause appended to the end of a sentence that tells the reader the preceding fact matters (...underscoring/highlighting...). Cut the clause, or turn its claim into a separate sentence with evidence.",
+      "cues": [
+        "...underscoring the importance of...",
+        "...highlighting the need for...",
+        "underscoring",
+        "highlighting the need"
+      ],
+      "examples": [
+        {
+          "before": "\"...underscoring the importance of...\" / \"...highlighting the need for...\""
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "One bullet of the banned-phrases list. Same syntactic shell as 'Trailing trend participle'; kept separate because the appended claim differs (importance vs trend)."
+    },
+    {
+      "name": "Trailing trend participle",
+      "category": "syntax",
+      "definition": "A present-participle clause appended to a sentence that generalises the specific fact into an unnamed broader trend or shift (...reflecting/marking...). Cut it, or name the trend with a source and a number.",
+      "cues": [
+        "...reflecting a broader trend toward...",
+        "...marking a significant shift in...",
+        "reflecting a broader trend",
+        "marking a significant shift"
+      ],
+      "examples": [
+        {
+          "before": "\"...reflecting a broader trend toward...\" / \"...marking a significant shift in...\""
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "One bullet of the banned-phrases list; 'broader' also echoes the article's '“broader landscapes”' example."
+    },
+    {
+      "name": "It's not just X — it's Y",
+      "category": "syntax",
+      "definition": "False contrast: the sentence negates a lesser reading nobody proposed in order to elevate the second half. Delete the negated half and state Y directly.",
+      "cues": [
+        "It's not just X — it's Y",
+        "It's not just",
+        "it's not just X, it's Y"
+      ],
+      "examples": [
+        {
+          "before": "It's not just X — it's Y"
+        },
+        {
+          "before": "“It’s not just X, it’s Y.”"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source label: 'false contrast'. Article: 'These constructions mimic the shape of insight without actually containing any. Wikipedia editors flag them constantly.' Prompt: 'These mimic insight without providing any.' Note the banned form itself contains an em dash, doubling as an em-dash tell."
+    },
+    {
+      "name": "Not only X, but Y",
+      "category": "syntax",
+      "definition": "Correlative-conjunction form of the false contrast. Replace with a plain 'X and Y' or two sentences.",
+      "cues": [
+        "Not only X, but Y",
+        "Not only",
+        "not only ... but"
+      ],
+      "examples": [
+        {
+          "before": "Not only X, but Y"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "A standard English correlative; the source bans it without exception as one of the four structures that 'mimic insight without providing any'."
+    },
+    {
+      "name": "This isn't about X. It's about Y.",
+      "category": "syntax",
+      "definition": "Two-sentence false contrast: a sentence that denies one framing followed by a sentence asserting the other. Keep only the assertion.",
+      "cues": [
+        "This isn't about X. It's about Y.",
+        "This isn't about",
+        "It's about"
+      ],
+      "examples": [
+        {
+          "before": "This isn't about X. It's about Y."
+        },
+        {
+          "before": "“This isn’t about X. It’s about Y.”"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Listed both in the article's 'sentence structures' paragraph and in the prompt's banned structures."
+    },
+    {
+      "name": "No X. No Y. Just Z.",
+      "category": "syntax",
+      "definition": "A run of negated sentence fragments closed by a 'Just Z' fragment. Rewrite as one full sentence that says what Z is.",
+      "cues": [
+        "No X. No Y. Just Z.",
+        "No ... No ... Just"
+      ],
+      "examples": [
+        {
+          "before": "No X. No Y. Just Z."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Fourth of the banned structures; the article's own 'Not code to paste somewhere, not a mockup. An actual...' teaser on the same page is the shape in the wild."
+    },
+    {
+      "name": "Uniform paragraph and sentence length",
+      "category": "structure",
+      "definition": "Paragraphs of nearly identical length and sentences of nearly identical rhythm across a whole text. Vary both: mix one-line paragraphs with long ones, short sentences with long.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "AI produces paragraphs of nearly identical length, sentences of nearly identical rhythm",
+          "after": "Vary paragraph and sentence length. Don't write uniform blocks."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Source category 'The uniform structure': 'text that feels like it was extruded from a machine, because it was.' No lexical cue; a detector measures variance of paragraph and sentence length."
+    },
+    {
+      "name": "Bold term: explanation list",
+      "category": "structure",
+      "definition": "A list in which every item opens with a bolded term followed by a colon and an explanatory sentence. Rewrite as prose, or as a list whose items are plain sentences without the bold-label head.",
+      "cues": [
+        "**Term:** explanation",
+        "Bold term: explanation sentence"
+      ],
+      "examples": [
+        {
+          "before": "lists where every item follows a “Bold term: explanation” format"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Source: 'Never use the \"Bold term: explanation sentence\" list format. It's the single most recognisable AI pattern.' The strongest single-pattern claim in the source."
+    },
+    {
+      "name": "Summary or inspirational wrap-up closer",
+      "category": "structure",
+      "definition": "A final paragraph that restates what was said or ends on an uplifting generality. End on the last substantive point instead.",
+      "cues": [
+        "In conclusion",
+        "In summary",
+        "To sum up"
+      ],
+      "examples": [
+        {
+          "before": "Don't close with a summary or inspirational wrap-up. Start and end on substance."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The cue phrases are inferred from the rule, not listed by the source; the source states only the structural rule."
+    },
+    {
+      "name": "Restating the question before answering",
+      "category": "artifacts",
+      "definition": "An answer that opens by paraphrasing the question back to the asker. Delete the paraphrase and answer.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Don't restate the question back before answering it."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "A chatbot-conversation habit that leaks into written content."
+    },
+    {
+      "name": "Uncontracted forms",
+      "category": "vocabulary",
+      "definition": "Writing 'it is', 'do not', 'will not' where speech would contract. Use contractions.",
+      "cues": [
+        "it is",
+        "do not",
+        "will not",
+        "cannot"
+      ],
+      "examples": [
+        {
+          "before": "it is / do not / will not",
+          "after": "\"It's,\" \"don't,\" \"won't.\""
+        }
+      ],
+      "severity": "context",
+      "scope": "english",
+      "notes": "Style rule 'Use contractions.' Formal and academic registers legitimately avoid them; the source's context is marketing, social and newsletter copy. Contractions have no direct equivalent in many languages, so the mechanism (drop the over-formal register marker) transfers but the cues do not."
+    },
+    {
+      "name": "Em dash overuse",
+      "category": "punctuation-format",
+      "definition": "Em dashes used several times per paragraph where a comma or parenthesis would be natural. Allow at most one per response; replace the rest with commas or parentheses.",
+      "cues": [
+        "—"
+      ],
+      "examples": [
+        {
+          "before": "AI massively overuses em dashes, often multiple times per paragraph, in places where a comma or parenthesis would be more natural.",
+          "after": "Maximum one em dash per response. Use commas or parentheses instead."
+        }
+      ],
+      "severity": "cluster",
+      "scope": "universal",
+      "notes": "Threshold: one per response. Article: 'This one surprised me... It's become so notorious that some AI companies have started suppressing them in newer models.' The prompt's own banned-structure line 'It's not just X — it's Y' carries one."
+    },
+    {
+      "name": "Over-formatting",
+      "category": "punctuation-format",
+      "definition": "Headers and bullet points imposed on content that reads better as plain prose. Default to prose; add structure only when it makes the text clearer.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Don't over-format. Plain prose is often clearer than headers and bullet points."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "The source's own prompt uses headers and bullets, so the rule is about fit to content, not a ban."
+    },
+    {
+      "name": "Preamble",
+      "category": "rhetoric",
+      "definition": "A sycophantic or throat-clearing opener that praises the question or warms up before the answer. Delete it.",
+      "cues": [
+        "Great question!"
+      ],
+      "examples": [
+        {
+          "before": "Great question!"
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "From the Style rule 'Drop preamble (\"Great question!\"), performative enthusiasm..., and unsolicited caveats.' Also a chatbot artifact."
+    },
+    {
+      "name": "Performative enthusiasm",
+      "category": "vocabulary",
+      "definition": "Excitement words that perform emotion about the subject rather than describe it. Delete them.",
+      "cues": [
+        "exciting",
+        "incredible",
+        "powerful"
+      ],
+      "examples": [
+        {
+          "before": "performative enthusiasm (\"exciting,\" \"incredible,\" \"powerful\")"
+        }
+      ],
+      "severity": "always",
+      "scope": "english",
+      "notes": "Overlaps with promotional language; the source gives only these three words."
+    },
+    {
+      "name": "Unsolicited caveats",
+      "category": "rhetoric",
+      "definition": "Hedges, disclaimers and qualifications the reader did not ask for and the claim does not need. Remove them; keep a caveat only when it changes what the reader should do.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Drop ... unsolicited caveats."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Caveats that were requested, or that are material, stay."
+    },
+    {
+      "name": "Vague claims instead of specifics",
+      "category": "content",
+      "definition": "General assertions without a named example, person, product, number or source. Replace each with a specific example and a name.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Use specific examples and names, not vague claims."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Voice rule. No lexical cues given; the fix is additive (supply the specific), not subtractive."
+    },
+    {
+      "name": "Point-last ordering",
+      "category": "structure",
+      "definition": "Build-up, context or support placed before the point it supports. Move the point to the first sentence and let the support follow.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "State your point first, then support it."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Voice rule. Narrative and argumentative forms sometimes earn a delayed point; the source's default is point-first."
+    },
+    {
+      "name": "Opinionless prose",
+      "category": "content",
+      "definition": "Text that presents a topic without taking a position on it. State a view and defend it.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Be direct. Have opinions."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Voice rule. Registers that require neutrality (encyclopaedic, legal) are outside the source's marketing-content frame."
+    },
+    {
+      "name": "Press-release sentence",
+      "category": "rhetoric",
+      "definition": "A sentence that, read aloud, sounds like corporate communications rather than a person talking. Rewrite it in the words you would say.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Read it out loud. Does any sentence sound like a press release? Rewrite it."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Check #1 of the before-finishing list. The read-aloud test is the detection method; no lexical cue."
+    },
+    {
+      "name": "Repeating the same point in different words",
+      "category": "structure",
+      "definition": "The same claim made twice or more with varied wording. Keep one instance and delete the rest.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Are you repeating the same point in different words? Say it once."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "Check #2 of the before-finishing list."
+    },
+    {
+      "name": "Pseudo-profundity",
+      "category": "rhetoric",
+      "definition": "A sentence shaped like an insight (a contrast, a reversal, an aphorism) that contains no claim a reader could act on or disagree with. Replace with the concrete claim, or delete.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "sentences that sound profound but say absolutely nothing"
+        },
+        {
+          "before": "These constructions mimic the shape of insight without actually containing any."
+        }
+      ],
+      "severity": "always",
+      "scope": "universal",
+      "notes": "The umbrella mechanism the source gives for its four banned structures. Listed separately because it also covers aphoristic sentences that do not match any of the four templates."
+    },
+    {
+      "name": "Register mismatch",
+      "category": "rhetoric",
+      "definition": "A polished, formal answer to a casual question, or the reverse. Match the tone of the reply to the tone and stakes of the prompt.",
+      "cues": [],
+      "examples": [
+        {
+          "before": "Match tone to context. Casual question, casual answer."
+        }
+      ],
+      "severity": "context",
+      "scope": "universal",
+      "notes": "Style rule. The article's description of the default output: 'that polished, lifeless, AI-sounding prose that everyone's learned to recognise.'"
+    }
+  ],
+  "methodology": [
+    {
+      "topic": "workflow",
+      "rule": "Prevent at generation time rather than clean up afterwards: paste the rules into Claude's Custom Instructions (Settings > Profile > Save changes) so every conversation inherits them; set once, applied everywhere."
+    },
+    {
+      "topic": "voice",
+      "rule": "Prepend two or three sentences describing your own voice above the general rules; the model adapts well to a described style but needs something to adapt to, and without it you get the default polished, lifeless prose. Source example: \"I write in a warm but direct tone. I’m knowledgeable without being showy. I use British English. I prefer short sentences and plain language over jargon.\""
+    },
+    {
+      "topic": "modes",
+      "rule": "Layer the controls: Custom Instructions set the baseline for everything; a Custom Style per recurring content format (social media posts, emails, blog articles) dials it in for that context."
+    },
+    {
+      "topic": "modes",
+      "rule": "This is a write-mode prompt (constraints applied while generating), not a detector and not a post-hoc rewriter; the only editing step it prescribes is the three-item self-check before finishing."
+    },
+    {
+      "topic": "voice",
+      "rule": "Be direct, have opinions, use specific examples and names instead of vague claims, state the point first and support it after, and trust the reader to see what matters without labelling it significant or important."
+    },
+    {
+      "topic": "gates",
+      "rule": "Before finishing, read the text aloud; rewrite any sentence that sounds like a press release."
+    },
+    {
+      "topic": "gates",
+      "rule": "Before finishing, find any point repeated in different words and say it once."
+    },
+    {
+      "topic": "gates",
+      "rule": "Before finishing, if the opening sentence sets the scene with a grand statement about the state of the world, delete it and start with the second sentence."
+    },
+    {
+      "topic": "gates",
+      "rule": "Allow at most one em dash per response; use commas or parentheses for the rest."
+    },
+    {
+      "topic": "register",
+      "rule": "Match tone to context: a casual question gets a casual answer."
+    },
+    {
+      "topic": "output",
+      "rule": "Prefer plain prose; use headers and bullet points only where they are clearer than prose."
+    },
+    {
+      "topic": "output",
+      "rule": "Use contractions (it's, don't, won't)."
+    },
+    {
+      "topic": "output",
+      "rule": "Start and end on substance: no sweeping contextual opener, no summary or inspirational wrap-up, no restating the question, no preamble."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Literal senses are exempt: the bans on navigate and landscape apply to figurative use only, and nuanced is banned only when used as empty praise."
+    },
+    {
+      "topic": "false-positives",
+      "rule": "Human writing has absorbed the same vocabulary (Max Planck Institute: usage of these words up over 50% in published writing since ChatGPT launched, humans copying the AI because it feels safe and professional), so treat a banned word as a style flaw to fix, not as proof of machine authorship."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Weight vocabulary heavily: the source claims the banned-words list alone makes a significant difference because so much of what makes AI text feel off comes down to word choice, and that removing the option to reach for pivotal, foster or it's worth noting forces more natural, specific phrasing."
+    },
+    {
+      "topic": "scoring",
+      "rule": "Weight the two named structural patterns next: the source says the structural rules 'matter too' and singles out the Bold term: explanation list as 'the single most recognisable AI pattern' and the 'In today's fast-paced world' opener as its companion."
+    },
+    {
+      "topic": "scoring",
+      "rule": "The source's own tell taxonomy has five bins, in this order: vocabulary, sentence structures (false contrast), throat-clearing (filler openers), uniform structure, em dashes."
+    },
+    {
+      "topic": "other",
+      "rule": "Expect the rules to be imperfect: you will still edit, but for substance and accuracy rather than for stripping AI clichés. The prompt does not check facts; that stays with the human editor."
+    },
+    {
+      "topic": "other",
+      "rule": "The goal is readable, human-sounding output for content production (social posts, newsletters, training materials); GPTZero is cited only as a source of pattern analysis, never as a target to evade."
+    },
+    {
+      "topic": "facts",
+      "rule": "Provenance: the rules are built on Wikipedia's 'Signs of AI Writing' guide (based on thousands of real examples rather than speculation), supplemented by analysis from GPTZero and Grammarly and the author's experience producing hundreds of pieces of content with Claude over the past year."
+    },
+    {
+      "topic": "facts",
+      "rule": "Em-dash density is a signal vendors are actively removing: the source reports that some AI companies have started suppressing em dashes in newer models, so do not rely on it alone."
+    }
+  ],
+  "coverage_note": "Read the whole file, /private/tmp/claude-501/-Users-ryangrippeling-projects-webgrip-twente-dev/f4fbfffd-c338-4a42-8df7-99e8c28b0f52/scratchpad/deai/lists/willfrancis-prompt.txt, 284 lines, in two chunks (1-250, 251-284). Content lines are 57-171: the article intro and 'Why AI writing sounds like AI writing' (57-79, five tell categories), 'How to fix it in Claude' setup steps (81-99), the custom-instructions prompt verbatim (101-153: Voice 103, Banned words 107, Structure 133, Style 141, Before finishing 149), 'A few things worth adding on top' voice-description and Custom Style advice (155-163) and the 'Does it actually work?' assessment (165-171). Deliberately left out as non-content: site navigation, social links, related-article lists, footer, contact details and newsletter promotion (lines 1-55 and 173-284). The 'Download my Humanizer skill' link on line 55 points to a separate document that is not in this file (it appears to be a separate source in this fan-out). The 28 banned words (source line 111) are split into three entries (verbs, adjectives, nouns) so every word is kept and each slice has a distinct rewrite action; the source itself presents them as one list. The banned-phrase bullets that pair unrelated phrases ('This is where X comes in' / 'Let's break it down') were split by mechanism. Cue phrases for the summary closer are inferred from the rule and marked as such. One caution on the framing I was given: the source does not argue that structural rules outperform word lists; it says the word list 'alone makes a significant difference' and that structural rules 'matter too', while naming a structural pattern (Bold term: explanation) as the single most recognisable tell. I recorded what the source says. Nothing in the source was unclassifiable."
+}
