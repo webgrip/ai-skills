@@ -44,7 +44,7 @@ adds facts, never bends meaning, and does nothing to fool a detector.
 | [patterns-nl.md](patterns-nl.md) | De Nederlandse catalogus, in het Nederlands, met de translationese-laag |
 | [patterns-en-domains.md](patterns-en-domains.md), [patterns-nl-domains.md](patterns-nl-domains.md) | Entries that only make sense on Wikipedia or in fiction; the scanner loads them with `--domain wikipedia`, `--domain fiction` or `--domain all` |
 | [method.md](method.md) | Modes, workflow, gates, the register tolerance table, voice matching, false positives, scoring, the substitution table, contested rules |
-| [scripts/scan.py](scripts/scan.py) | Dependency-free scanner over its pattern file: matches per line, em-dash density, sentence-length variance; exit 1 on an `always` finding |
+| [scripts/scan.py](scripts/scan.py) | Dependency-free scanner: regex findings per line, eleven structure gates that read the skeleton (slot headings, a bold label above a list, parallel triples, uniform paragraphs, a one-line closer, em-dash density), and `--compare ORIGINAL OUTPUT` for change rate, injected or dropped numbers and flattened rhythm; exit 1 on an `always` finding, `--fail-on-structure` for the gates |
 | [whats-new.md](whats-new.md) | The entries the consolidation added beyond what the house rule and the blog-writer pass already had |
 | [evals/evals.json](evals/evals.json) | Trigger and output evals |
 
@@ -52,12 +52,17 @@ adds facts, never bends meaning, and does nothing to fool a detector.
 
 ```bash
 python3 skills/humanize/scripts/scan.py --lang auto docs/*.md
-python3 skills/humanize/scripts/scan.py --json --fail-on cluster draft.md
+python3 skills/humanize/scripts/scan.py --json --fail-on cluster --fail-on-structure cluster draft.md
+python3 skills/humanize/scripts/scan.py --compare draft.md rewrite.md
 ```
 
-Fenced code and blockquotes are skipped. The scanner finds what a regex can find; the catalogs
-carry the structural patterns (uniform paragraphs, listicle prose, the aphoristic ender) that need
-a reader. Wire it into a repo's check target to catch the next slogan before a person sees it.
+Fenced code and blockquotes are skipped. Regex findings carry a line and a span; structure findings
+carry the evidence (which headings, how many bold spans, the sentence counts per paragraph). A flat
+sentence rhythm only counts alongside another structure finding, because absolute variation does not
+separate generated text from human prose. Every regex and every gate is measured against 145,000
+words of human writing before it ships; the measure and the corpus live in `scripts/humanize/` in
+the source repository. Wire the scanner into a repo's check target to catch the next slogan before a
+person sees it.
 
 ## Example prompts
 

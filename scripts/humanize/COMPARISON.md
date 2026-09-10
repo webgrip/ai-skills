@@ -88,27 +88,69 @@ build. No source repo tests its own prose this way.
 
 ## Does it actually write better?
 
-Measured, and the answer is qualified. Three realistic slop texts were rewritten twice — once by an
-agent following this skill, once by an agent told only "make it sound human" — and graded blind by
-a reader who did not know which was which, weighting fact fidelity above polish.
+The earlier runs compared the skill's `edit` mode, which by its own rule touches only flagged spans,
+against an agent given a free rewrite, and graded rhythm with an undefined "flattened" flag at a
+fixed A/B position. Those numbers measured the comparison's design as much as the skill, so they are
+withdrawn. What survived them and is still true: the skill invented no fact in any run where the
+baseline did. Whether it loses on rhythm is measured below, like for like.
 
-| | First run | After the fixes |
-| --- | ---: | ---: |
-| Cases the skill won | 0 of 3 | 2 of 3 |
-| Facts invented | 3 | 0 |
-| Naturalness (1-5) | 3, 3, 3 | 4, 4, 3 |
-| Voice flattened | 3 of 3 | 2 of 3 |
+The measurement now (`workflows/quality-retest.js`): six slop texts, three English and three Dutch,
+each carrying protected facts. Two comparisons, each giving both arms the identical user request:
+*rewrite* ("Rewrite this so it reads like a person wrote it. Keep every fact.") and *edit* ("Fix only
+what reads as AI-written and leave everything else exactly as I wrote it."). The skill arm reads
+SKILL.md and routes its own mode; a routing miss is counted. A native-reader grader per language,
+blind to which arm is which, grades each pair twice with the positions swapped; a win needs both
+orders to agree. Rhythm loss is not a grader opinion: `flattened` is true when the scanner's
+sentence-length variation on the output falls under 0.6 of the original's or under 0.30, or the
+grader reports the first person or an author's stance gone. Any register label, pattern count or
+scan output inside the returned text is counted as leakage and reported regardless of grade.
 
-The skill is reliably better on fidelity: it keeps every protected number and invents nothing, where
-the naive baseline twice invented product behaviour to make a sentence read well. It is still worse
-at rhythm. The remaining loss has one shape, and the graders name it the same way each time: the
-skill removes a tell by deletion and leaves a stump where the content was, then returns uniformly
-clipped declaratives. Three rounds of fixes moved that (return the text not the notes; rewrite
-rather than delete; check the skeleton, not only the surface) without closing it.
+Seeds 1. Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
 
-The first run is what made the rest of this file honest. It found the skill shipping its own process
-notes as the deliverable and quoting scanner counts it had never run — chatbot residue and
-fabricated specifics, the two things the catalog exists to catch.
+**Rewrite against a free rewrite**
+
+| Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
+| --- | --- | ---: | ---: | ---: | --- | ---: |
+| `en-linkedin-post` | lost | 3/3 | 2 | 3,3 | True | 0 |
+| `en-technical-readme` | won | 4/4 | 0 | 4,4 | True | 0 |
+| `en-incident-writeup` | won | 3/3 | 0 | 3,4 | False | 0 |
+| `nl-linkedin-post` | tie | 6/6 | 0 | 3,3 | False | 0 |
+| `nl-meetup-description` | tie | 8/8 | 0 | 4,4 | True | 0 |
+| `nl-readme-intro` | lost | 4/4 | 0 | 3,3 | True | 0 |
+
+Skill won 2, lost 2, tied 2 across 1 seed(s).
+
+**Edit against a minimal edit**
+
+| Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
+| --- | --- | ---: | ---: | ---: | --- | ---: |
+| `en-linkedin-post` | lost | 3/3 | 0 | 3,3 | True | 0 |
+| `en-technical-readme` | tie | 4/4 | 0 | 4,4 | False | 0 |
+| `en-incident-writeup` | lost | 3/3 | 2 | 4,4 | False | 0 |
+| `nl-linkedin-post` | won | 6/6 | 0 | 3,3 | True | 0 |
+| `nl-meetup-description` | lost | 8/8 | 0 | 3,3 | True | 0 |
+| `nl-readme-intro` | tie | 4/4 | 0 | 4,4 | True | 0 |
+
+Skill won 1, lost 3, tied 2 across 1 seed(s).
+
+**What seed 1 says.** Facts survived in every one of the twelve skill outputs, 68 of 68. Two skill outputs
+invented something, both the same kind: a mechanism inferred to fill a gap ("Let's build it together"
+became a literal invitation to contribute; "made things worse" became "piled load onto an already-failing
+API"). The baseline invented in four, including a causal claim about Git history and "three quarters of
+an hour" for a 43-minute outage.
+
+The flattening column overturns the earlier diagnosis. In eight of the nine flagged outputs the scanner's
+sentence-length variation went **up**, by factors of 1.05 to 1.53; the flag came from the grader
+reporting the author's stance gone. The graders name it the same way in both languages: *"drops the
+original's only stance (the future looks incredibly bright)"*, *"laat de wij-vorm helemaal vallen"*,
+*"schrapt de hele conclusie"*. The cause is precise. A closing sentiment, an engagement line, a "despite
+the challenges" aside and the collective "we" are catalogued tells, and in a short post each is usually
+the author's only opinion; the skill removed the tell and its cargo together. Rhythm was never the
+problem. Stance was. SKILL.md step 5 and the gotcha block now say to keep the opinion and change only
+the form; seed 1 measured the skill before that change, and the seeds after it are the test of it.
+
+The one rhythm-driven flag (`edit/nl-linkedin-post`, variation 0.59 to 0) is edit mode collapsing a
+post to a single fact line, in the mode meant to touch only flagged spans.
 
 ## What we did not take
 
