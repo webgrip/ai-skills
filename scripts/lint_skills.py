@@ -52,21 +52,48 @@ def err(msg):
     errors.append(msg)
 
 
+def unquote(value):
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in "'\"":
+        return value[1:-1]
+    return value
+
+
 def frontmatter(text):
     m = re.match(r"---\n(.*?)\n---", text, re.S)
     if not m:
         return None
     return {
-        km.group(1): km.group(2).strip()
+        km.group(1): unquote(km.group(2).strip())
         for line in m.group(1).splitlines()
         if (km := re.match(r"([A-Za-z_-]+):\s*(.*)", line))
     }
+
+
+def check_yaml_scalars(text, rel):
+    m = re.match(r"---\n(.*?)\n---", text, re.S)
+    if not m:
+        return
+    for line in m.group(1).splitlines():
+        km = re.match(r"([A-Za-z_-]+):\s*(.*)", line)
+        if not km:
+            continue
+        key, raw = km.group(1), km.group(2).strip()
+        if not raw or raw[0] in "'\"|>&*!":
+            continue
+        if ": " in raw or raw.endswith(":"):
+            err(
+                f"{rel}: {key} is an unquoted YAML scalar containing ': ' - a strict YAML "
+                f"parser rejects it and installers skip the whole skill. Wrap the value in "
+                f"single quotes."
+            )
 
 
 def check_skill(skill_dir: Path):
     md = skill_dir / "SKILL.md"
     rel = md.relative_to(ROOT)
     text = md.read_text()
+
+    check_yaml_scalars(text, rel)
 
     fm = frontmatter(text)
     if fm is None:
