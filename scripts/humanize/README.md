@@ -58,3 +58,17 @@ the tells the catalog names.
 `workflows/extract-consolidate-en.js` and `workflows/extract-transfer-nl.js` read fetched sources,
 so run `sources/fetch.sh` first. `workflows/merge-consolidate-nl.js` reads only committed files and
 runs as is. All three are Workflow-tool scripts, not standalone node programs.
+
+## Output-quality gate (on demand, costs tokens)
+
+`workflows/quality-retest.js` is the with/without head-to-head: English and Dutch slop texts, each
+rewritten by an agent with the skill and by an agent given only the user's request, graded blind by a
+native-reader persona per language, with rhythm loss measured by the scanner rather than judged.
+Run it after any change to `SKILL.md`, `method.md`, a severity in the catalog, or the scanner
+metrics, from the Workflow tool with `args: { seed: N }` (the seed sets A/B order; use a new one per
+run, and run three seeds before believing a number). It is not in CI: one run is roughly 24 agent
+calls.
+
+A regression is any of: the skill loses a fidelity case it won before, a protected fact is lost or
+invented, `leakage` is non-zero for any skill-arm output, or Dutch naturalness drops below the last
+recorded run. Record the run's summary table and seed in `COMPARISON.md`.

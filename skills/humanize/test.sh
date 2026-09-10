@@ -110,4 +110,24 @@ if findings:
 print(f"catalog self-scan: {total} rewritten examples, no stray always-severity tells, no em dashes")
 PY
 
+python3 - <<'PY'
+import glob
+import json
+import sys
+
+rule = "five or more vocabulary hits"
+carriers = [f for f in glob.glob("*.md") if rule in open(f).read()]
+if carriers != ["SKILL.md"]:
+    sys.exit(f"the mode rule must live in SKILL.md only; found in {carriers}")
+method = open("method.md").read()
+for stale in ("Default when the user shares", "or when asked"):
+    if stale in method:
+        sys.exit(f"method.md restates the mode rule: {stale!r}")
+cases = json.load(open("evals/evals.json"))["evals"]
+missing = [c["id"] for c in cases if "expect_trigger" not in c]
+if missing:
+    sys.exit(f"evals without an explicit expect_trigger: {missing}")
+print(f"mode rule stated once; {len(cases)} evals all carry expect_trigger")
+PY
+
 echo "humanize: OK"

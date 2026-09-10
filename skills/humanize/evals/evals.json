@@ -9,7 +9,8 @@
         "Names at least four distinct patterns with the quoted span for each: the fast-paced opener, the em dash, the not-X-but-Y contrast (twice), the rule of three, the vague attribution, the future-is-here closer",
         "Does not rewrite the text and does not offer a rewritten version unasked",
         "States no probability or verdict about whether an AI wrote it; describes patterns, offers to edit"
-      ]
+      ],
+      "expect_trigger": true
     },
     {
       "id": "nl-edit-meetup",
@@ -19,7 +20,8 @@
         "Keeps every fact verbatim: woensdag 4 november, Code14, Hogepad 81, Rijssen, twee talks, ongeveer een halfuur",
         "Leaves the second sentence, which carries no tell, byte-identical, and reports what changed and what was left",
         "Answers in Dutch, and the reply itself contains no em dash and no niet-x-maar-y construction"
-      ]
+      ],
+      "expect_trigger": true
     },
     {
       "id": "en-rewrite-keep-numbers",
@@ -28,8 +30,9 @@
         "All five numbers survive unchanged: 42, 9, 2.1 GB, 1.12 GB, and the counts implied by 'every team' are not turned into a specific number",
         "Contains no em dash, no 'not just X, it was Y' contrast, no 'leveraging', 'robust', 'cutting-edge', 'empowered', and no 'In short' closer",
         "Adds no fact, cause, team name or outcome that the source did not state",
-        "Returns the rewritten text plus a short account of what changed, with a second-pass check"
-      ]
+        "Returns the rewritten text first and whole, then at most six lines of account after a plain separator; nothing about mode, register or scan counts appears inside the text"
+      ],
+      "expect_trigger": true
     },
     {
       "id": "en-write-fresh",
@@ -38,7 +41,8 @@
         "The text contains no em dash, no 'not X but Y' or 'No X. No Y. Just Z.' construction, no colon reveal, no rule-of-three padding, no summary or inspirational closer",
         "Every fact from the prompt appears and nothing is invented (no speaker names, no sponsor, no invented history)",
         "Returns the description only, without preamble or a restated brief"
-      ]
+      ],
+      "expect_trigger": true
     },
     {
       "id": "scan-docs-folder",
@@ -47,7 +51,8 @@
         "Runs scripts/scan.py over the markdown files rather than reading every file by hand",
         "Reports findings per file with pattern ids, line numbers and the density metrics, and separates always-severity hits from cluster-only ones",
         "Recommends which files to edit without claiming any file was written by an AI"
-      ]
+      ],
+      "expect_trigger": true
     },
     {
       "id": "should-not-trigger-code",
@@ -71,6 +76,37 @@
       "expect_trigger": false,
       "assertions": [
         "Adds the docstrings without invoking the humanize skill"
+      ]
+    },
+    {
+      "id": "en-rewrite-text-only",
+      "prompt": "Rewrite this so it reads like a person wrote it. I am pasting your reply straight into the newsletter, so give me only the text.\n\nIn today's fast-paced world, we're excited to share a game-changing update. It's not just faster — it's a whole new way of working. Our team has worked tirelessly to deliver a seamless experience, and the results speak for themselves: onboarding time is down from 3 days to 4 hours.",
+      "expect_trigger": true,
+      "assertions": [
+        "The reply is the rewritten text and nothing else: no line starting with 'Mode', 'Register', 'Patterns', 'Scan' or 'Changed', no pattern ids in backticks, no count of hits or dashes, no scanner output, no closing account",
+        "Keeps '3 days' and '4 hours' unchanged and adds no fact, name or outcome",
+        "Contains no em dash and no not-just-X-it's-Y construction"
+      ]
+    },
+    {
+      "id": "en-detect-quote-the-run",
+      "prompt": "How many em dashes and how many catalog hits does this draft have? Don't change it.\n\nObservability isn't a tool — it's a mindset. Teams that embrace it unlock faster response, deeper insight, and a culture of ownership. Experts agree the future is already here.",
+      "expect_trigger": true,
+      "assertions": [
+        "Every number quoted (dash count, hit count, density) sits next to the scan.py invocation that produced it, or the reply says the text was not scanned and gives no number",
+        "Reports patterns with quoted spans and states no authorship verdict or probability",
+        "Does not return a rewritten version"
+      ]
+    },
+    {
+      "id": "nl-rewrite-linkedin",
+      "prompt": "Herschrijf dit, het klinkt als AI. Houd elk feit.\n\nIn het snel veranderende landschap van vandaag zijn we verheugd om iets bijzonders aan te kondigen. Het is niet zomaar een release — het is een nieuwe manier van werken. Na 8 maanden bouwen hebben we de doorlooptijd van deploys teruggebracht van 40 naar 6 minuten, en de teams in Enschede, Hengelo, en Almelo werken er sinds maart mee. Experts zijn het erover eens dat dit een cruciale stap is. Wat vind jij? Laat het weten in de reacties! 🚀",
+      "expect_trigger": true,
+      "assertions": [
+        "Keeps verbatim: 8 maanden, 40 naar 6 minuten, Enschede, Hengelo, Almelo, maart; invents no customer, number or outcome",
+        "Contains no em dash, no niet-zomaar-X-maar-Y construction, no comma before 'en' in the list, no 'cruciaal', no 'Experts zijn het erover eens' without a named source, no reaction-bait closer",
+        "Answers in Dutch; the text comes first and whole, then at most six lines of account, and the account contains no register label, scan output or pattern count",
+        "Sentence lengths still vary; the rewrite is not a run of same-length declaratives"
       ]
     }
   ]
