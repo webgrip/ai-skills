@@ -43,20 +43,23 @@ def table(title, runs, comparison):
     return "\n".join(lines)
 
 
-def render_run(run, label):
+def render_run(runs, label):
+    seeds = ", ".join(str(r["seed"]) for r in runs)
+    c = runs[0]["constants"]
     return "\n".join([
-        f"**{label}** (seed {run['seed']}). Routing misses {len(run['routing_misses'])}; leakage findings "
-        f"{sum(run['leakage'].values())}. Flattening constants: ratio {run['constants']['FLATTEN_RATIO']} to the "
-        f"original's variation, floor {run['constants']['FLATTEN_FLOOR']}.",
+        f"**{label}** (seed{'s' if len(runs) > 1 else ''} {seeds}). Routing misses "
+        f"{sum(len(r['routing_misses']) for r in runs)}; leakage findings "
+        f"{sum(sum(r['leakage'].values()) for r in runs)}. Flattening constants: ratio {c['FLATTEN_RATIO']} to the "
+        f"original's variation, floor {c['FLATTEN_FLOOR']}. Cells read one value per seed, in seed order.",
         "",
-        table("Rewrite against a free rewrite", [run], "rewrite"),
-        table("Edit against a minimal edit", [run], "edit"),
+        table("Rewrite against a free rewrite", runs, "rewrite"),
+        table("Edit against a minimal edit", runs, "edit"),
     ])
 
 
 def main():
     pairs = [arg.split("=", 1) for arg in sys.argv[1:]]
-    blocks = [render_run(load(path), label) for label, path in pairs]
+    blocks = [render_run([load(p) for p in paths.split(",")], label) for label, paths in pairs]
     block = "\n\n".join(blocks)
     text = COMPARISON.read_text()
     if BLOCK_START in text:

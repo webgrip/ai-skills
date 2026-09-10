@@ -23,26 +23,39 @@ the open ends.
 | `evals/evals.json` — 11 cases, three should-not-trigger | Passing |
 | `test.sh` | Passes |
 | `npm run check && npm test`, `claude plugin validate` | Green |
-| Blind head-to-head, three seeds (`quality/seed{1,2,3}.json`) | Measured; see below |
+| Blind head-to-head, six seeds (`quality/seed{1..6}.json`) | Measured; 1-3 before the recast rule, 4-6 after |
 
 Rebuild either half with `bash scripts/humanize/pipeline/build.sh <en|nl>`; the pipeline reproduces
 the shipped files byte for byte from `catalog/`.
 
 ## If you pick this up
 
-**Start with Dutch rewrite.** Three seeds of the blind head-to-head say it is the skill's one
-measured defect: Dutch rewrite lost every one of nine case-runs, English rewrite won seven of nine,
-and the difference is Fisher exact *p* = 0.007.
+**Dutch rewrite is fixed as far as six seeds can show; the open item is now invented framing in
+English.** Seeds 1 to 3 measured Dutch rewrite at 0 wins in 9 case-runs (*p* = 0.031). SKILL.md then
+gained a recast rule — a construction carried over from another language is a tell, not a voice — and
+seeds 4 to 6 put the same arm at 3 W / 2 L / 4 T, indistinguishable from parity, at Fisher *p* = 0.061
+for the change. English rewrite did not pay for it (*p* = 0.60). The mechanism is confirmed in the
+outputs, not just the verdicts.
 
-Do not go looking in the catalog. Two catalog explanations were measured and both are false: the
-Dutch examples recast more than the English ones (13% pure deletions against 19%, new-word share 0.62
-against 0.55), and finding density is comparable across the two languages. The live hypothesis is a
-conflict in the always-on body instead. Every Dutch case fires the translationese layer, so the
-source's clause order is English-shaped, and the conservation rules — *"Sentence lengths vary as the
-original's did"*, *"The author's sentence length … stay. Split or join only at a real new action"* —
-protect the very thing that needs rebuilding. SKILL.md now carries a carve-out saying a construction
-that came out of another language is a tell and recasting it is the fix; **whether that works is
-unmeasured.** Re-run three seeds and check Dutch rewrite against 0 for 9.
+What moved instead is added framing in English: claim spans the source never made went from 8 to 25
+across the two groups, while every protected fact survived in all six seeds (336 of 336). Measure
+that first on the next change. Three follow-ups, in the order I would take them:
+
+1. **Gap-filling is the most reproducible defect in the dataset.** On `nl-meetup-description` the
+   skill invented *"Daarna is er tijd om bij te praten"* in three separate seeds: it deletes the vague
+   tricolon *"inspiratie, kennis, en verbinding"* and supplies a concrete programme item in the hole.
+   The "flag the gap instead" gotcha is meant to stop exactly this and does not. A rule saying a
+   deleted vagueness is deleted, never replaced by a concrete guess, is the obvious candidate.
+2. **The recast rule and the stance rule pull against each other.** Recasting a construction tends to
+   shed the opinion it carried; seed 4's `nl-linkedin-post` recast well, dropped *"Wij vinden dit een
+   belangrijke stap"*, and tied for that reason.
+3. **The English invention rise**, above — plausibly the same gap-filling reflex reaching English.
+
+Do not go looking in the catalog for any of this. Two catalog explanations were measured and are
+false: the Dutch examples recast more than the English ones (13% pure deletions against 19%,
+new-word share 0.62 against 0.55), and finding density is comparable across the two languages
+(nl 12.3 to 16.9 per 100 words, en 6.2 to 18.6). Every defect found so far has been in the always-on
+body, not the data.
 
 Also open and blocking nothing: a native-speaker read of the Dutch catalog, and the missing Dutch
 `official` register in the control corpus. Both are under "Known gaps".
@@ -93,25 +106,28 @@ is the unit that carries signal, not the overall tally.
   undefined "flattened" flag at a fixed A/B position. The rewritten `workflows/quality-retest.js`
   gives both arms the same request, lets the skill route its own mode, grades each pair in both
   positions, and measures rhythm with the scanner against the original.
-- **Measured, three seeds, 36 paired case-runs: the skill does not write better prose than a
-  competent agent given the same request.** 13 won, 15 lost, 8 tied; sign test *p* = 0.85 on the 28
-  decided runs. What it does hold in every seed: facts 168/168, routing 0 misses in 36, leakage 0 in
-  36, and not one fabricated number, date or name. Fidelity and contract discipline are what the
-  measurement supports claiming; prose quality is not. Tables and per-language splits in
-  [`COMPARISON.md`](COMPARISON.md).
-- **Dutch rewrite is the one statistically real defect** — 0 wins in 9 case-runs, *p* = 0.031, and
-  *p* = 0.007 against the English rewrite arm. See "If you pick this up".
-- **Edit mode is parity in both languages** (en 2/2/2, nl 3/4/2, both *p* = 1.0). That answers the
-  question the withdrawn runs could not: like for like, edit mode shows neither rhythm loss nor
-  advantage.
+- **Measured, six seeds, 72 paired case-runs: the skill does not write better prose than a competent
+  agent given the same request.** 25 won, 30 lost, 17 tied overall — parity. What it holds in every
+  seed: 336 of 336 protected facts, 0 routing misses in 72, 0 leakage in 72, and never a fabricated
+  number, date or name. Fidelity and contract discipline are what the measurement supports claiming;
+  prose quality is not. Tables and per-language splits in [`COMPARISON.md`](COMPARISON.md).
+- **Dutch rewrite was the one statistically real defect and is now at parity.** 0 wins in 9 before the
+  recast rule (*p* = 0.031); 3 W / 2 L / 4 T after (Fisher *p* = 0.061 for the change). See "If you
+  pick this up".
+- **Edit mode is parity in both languages and both groups** (before en 3/3/3, nl 3/4/2; after en
+  2/5/2, nl 3/5/1). Like for like, edit mode shows neither rhythm loss nor advantage — which for a
+  mode whose rule is to touch only flagged spans is the expected result.
+- **Never trust two thirds of a seed group.** After seeds 4 and 5, English rewrite read 1 W / 3 L / 2 T
+  with tripled inventions and looked like a clear regression caused by the new rule. Seed 6 came back
+  3 W / 0 L / 0 T and the effect vanished. Ten of twelve case verdicts flip with the seed.
 - **The stance rule is unverified, not verified.** SKILL.md step 5 was rewritten after seed 1 to keep
   the author's opinion and change only its form. Stance-driven flattening flags then went 7 of 12,
-  3 of 12, 6 of 12 across the three seeds — seed 3 sits inside seed 1's range, so the fix cannot be
+  3 of 12, 6 of 12 across seeds 1 to 3 — seed 3 sits inside seed 1's range, so the fix cannot be
   credited with the improvement seed 2 appeared to show. It stays because the rule is right on its
   face and stance loss is the quieter failure, but do not cite it as a fixed bug.
-- **Flattening was never rhythm.** Of 20 flattened verdicts across three seeds, only 4 are explicable
-  by the sentence-length clause; the rest came from stance or first-person loss, and in several the
-  scanner's variation rose. Three independent confirmations; treat the rhythm hypothesis as closed.
+- **Flattening was never rhythm.** Of 20 flattened verdicts in seeds 1 to 3, only 4 are explicable by
+  the sentence-length clause; the rest came from stance or first-person loss, and in several the
+  scanner's variation rose. Treat the rhythm hypothesis as closed.
 - **The Dutch `official` register is still missing from the control corpus.** rijksoverheid.nl
   renders with JavaScript. A CC0 or CC BY-SA source of Dutch business or government prose fetchable
   with curl would close it.

@@ -106,171 +106,133 @@ grader reports the first person or an author's stance gone. Any register label, 
 scan output inside the returned text is counted as leakage and reported regardless of grade.
 
 <!-- quality-retest results -->
-**Before the stance rule** (seed 1). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
+**Before the recast rule** (seeds 1, 2, 3). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3. Cells read one value per seed, in seed order.
 
 **Rewrite against a free rewrite**
 
 | Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
 | --- | --- | ---: | ---: | ---: | --- | ---: |
-| `en-linkedin-post` | lost | 3/3 | 2 | 3,3 | True | 0 |
-| `en-technical-readme` | won | 4/4 | 0 | 4,4 | True | 0 |
-| `en-incident-writeup` | won | 3/3 | 0 | 3,4 | False | 0 |
-| `nl-linkedin-post` | tie | 6/6 | 0 | 3,3 | False | 0 |
-| `nl-meetup-description` | tie | 8/8 | 0 | 4,4 | True | 0 |
-| `nl-readme-intro` | lost | 4/4 | 0 | 3,3 | True | 0 |
+| `en-linkedin-post` | lost / won / won | 3/3 / 3/3 / 3/3 | 2 / 5 / 0 | 3,3 / 3,3 / 3,3 | True / False / True | 0 / 0 / 0 |
+| `en-technical-readme` | won / won / lost | 4/4 / 4/4 / 4/4 | 0 / 0 / 0 | 4,4 / 4,3 / 4,4 | True / True / False | 0 / 0 / 0 |
+| `en-incident-writeup` | won / won / won | 3/3 / 3/3 / 3/3 | 0 / 1 / 0 | 3,4 / 4,4 / 4,4 | False / False / False | 0 / 0 / 0 |
+| `nl-linkedin-post` | tie / lost / lost | 6/6 / 6/6 / 6/6 | 0 / 0 / 0 | 3,3 / 3,3 / 4,4 | False / False / True | 0 / 0 / 0 |
+| `nl-meetup-description` | tie / lost / lost | 8/8 / 8/8 / 8/8 | 0 / 2 / 2 | 4,4 / 3,4 / 4,4 | True / False / True | 0 / 0 / 0 |
+| `nl-readme-intro` | lost / lost / tie | 4/4 / 4/4 / 4/4 | 0 / 0 / 0 | 3,3 / 3,3 / 3,3 | True / True / True | 0 / 0 / 0 |
 
-Skill won 2, lost 2, tied 2 across 1 seed(s).
+Skill won 7, lost 8, tied 3 across 3 seed(s).
 
 **Edit against a minimal edit**
 
 | Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
 | --- | --- | ---: | ---: | ---: | --- | ---: |
-| `en-linkedin-post` | lost | 3/3 | 0 | 3,3 | True | 0 |
-| `en-technical-readme` | tie | 4/4 | 0 | 4,4 | False | 0 |
-| `en-incident-writeup` | lost | 3/3 | 2 | 4,4 | False | 0 |
-| `nl-linkedin-post` | won | 6/6 | 0 | 3,3 | True | 0 |
-| `nl-meetup-description` | lost | 8/8 | 0 | 3,3 | True | 0 |
-| `nl-readme-intro` | tie | 4/4 | 0 | 4,4 | True | 0 |
+| `en-linkedin-post` | lost / won / tie | 3/3 / 3/3 / 3/3 | 0 / 1 / 0 | 3,3 / 3,3 / 3,3 | True / False / True | 0 / 0 / 0 |
+| `en-technical-readme` | tie / won / won | 4/4 / 4/4 / 4/4 | 0 / 1 / 0 | 4,4 / 4,4 / 3,4 | False / False / False | 0 / 0 / 0 |
+| `en-incident-writeup` | lost / tie / lost | 3/3 / 3/3 / 3/3 | 2 / 0 / 0 | 4,4 / 4,3 / 4,3 | False / False / True | 0 / 0 / 0 |
+| `nl-linkedin-post` | won / won / lost | 6/6 / 6/6 / 6/6 | 0 / 0 / 0 | 3,3 / 4,3 / 3,3 | True / False / False | 0 / 0 / 0 |
+| `nl-meetup-description` | lost / lost / lost | 8/8 / 8/8 / 8/8 | 0 / 0 / 0 | 3,3 / 4,4 / 4,4 | True / True / True | 0 / 0 / 0 |
+| `nl-readme-intro` | tie / won / tie | 4/4 / 4/4 / 4/4 | 0 / 0 / 0 | 4,4 / 3,4 / 4,3 | True / True / True | 0 / 0 / 0 |
 
-Skill won 1, lost 3, tied 2 across 1 seed(s).
+Skill won 6, lost 7, tied 5 across 3 seed(s).
 
 
-**After the stance rule** (seed 2). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
+**After the recast rule** (seeds 4, 5, 6). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3. Cells read one value per seed, in seed order.
 
 **Rewrite against a free rewrite**
 
 | Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
 | --- | --- | ---: | ---: | ---: | --- | ---: |
-| `en-linkedin-post` | won | 3/3 | 5 | 3,3 | False | 0 |
-| `en-technical-readme` | won | 4/4 | 0 | 4,3 | True | 0 |
-| `en-incident-writeup` | won | 3/3 | 1 | 4,4 | False | 0 |
-| `nl-linkedin-post` | lost | 6/6 | 0 | 3,3 | False | 0 |
-| `nl-meetup-description` | lost | 8/8 | 2 | 3,4 | False | 0 |
-| `nl-readme-intro` | lost | 4/4 | 0 | 3,3 | True | 0 |
+| `en-linkedin-post` | lost / tie / won | 3/3 / 3/3 / 3/3 | 5 / 4 / 4 | 3,3 / 4,4 / 4,4 | False / True / True | 0 / 0 / 0 |
+| `en-technical-readme` | tie / lost / won | 4/4 / 4/4 / 4/4 | 3 / 5 / 0 | 4,4 / 4,4 / 4,4 | True / False / True | 0 / 0 / 0 |
+| `en-incident-writeup` | won / lost / won | 3/3 / 3/3 / 3/3 | 4 / 0 / 0 | 4,4 / 3,3 / 4,3 | False / False / False | 0 / 0 / 0 |
+| `nl-linkedin-post` | tie / won / lost | 6/6 / 6/6 / 6/6 | 0 / 0 / 0 | 4,4 / 4,4 / 4,4 | True / False / True | 0 / 0 / 0 |
+| `nl-meetup-description` | lost / won / tie | 8/8 / 8/8 / 8/8 | 2 / 0 / 0 | 4,4 / 4,4 / 4,3 | True / False / False | 0 / 0 / 0 |
+| `nl-readme-intro` | tie / won / tie | 4/4 / 4/4 / 4/4 | 0 / 0 / 2 | 4,4 / 4,4 / 4,4 | True / True / True | 0 / 0 / 0 |
 
-Skill won 3, lost 3, tied 0 across 1 seed(s).
-
-**Edit against a minimal edit**
-
-| Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
-| --- | --- | ---: | ---: | ---: | --- | ---: |
-| `en-linkedin-post` | won | 3/3 | 1 | 3,3 | False | 0 |
-| `en-technical-readme` | won | 4/4 | 1 | 4,4 | False | 0 |
-| `en-incident-writeup` | tie | 3/3 | 0 | 4,3 | False | 0 |
-| `nl-linkedin-post` | won | 6/6 | 0 | 4,3 | False | 0 |
-| `nl-meetup-description` | lost | 8/8 | 0 | 4,4 | True | 0 |
-| `nl-readme-intro` | won | 4/4 | 0 | 3,4 | True | 0 |
-
-Skill won 4, lost 1, tied 1 across 1 seed(s).
-
-
-**After the stance rule, second measurement** (seed 3). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
-
-**Rewrite against a free rewrite**
-
-| Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
-| --- | --- | ---: | ---: | ---: | --- | ---: |
-| `en-linkedin-post` | won | 3/3 | 0 | 3,3 | True | 0 |
-| `en-technical-readme` | lost | 4/4 | 0 | 4,4 | False | 0 |
-| `en-incident-writeup` | won | 3/3 | 0 | 4,4 | False | 0 |
-| `nl-linkedin-post` | lost | 6/6 | 0 | 4,4 | True | 0 |
-| `nl-meetup-description` | lost | 8/8 | 2 | 4,4 | True | 0 |
-| `nl-readme-intro` | tie | 4/4 | 0 | 3,3 | True | 0 |
-
-Skill won 2, lost 3, tied 1 across 1 seed(s).
+Skill won 7, lost 5, tied 6 across 3 seed(s).
 
 **Edit against a minimal edit**
 
 | Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
 | --- | --- | ---: | ---: | ---: | --- | ---: |
-| `en-linkedin-post` | tie | 3/3 | 0 | 3,3 | True | 0 |
-| `en-technical-readme` | won | 4/4 | 0 | 3,4 | False | 0 |
-| `en-incident-writeup` | lost | 3/3 | 0 | 4,3 | True | 0 |
-| `nl-linkedin-post` | lost | 6/6 | 0 | 3,3 | False | 0 |
-| `nl-meetup-description` | lost | 8/8 | 0 | 4,4 | True | 0 |
-| `nl-readme-intro` | tie | 4/4 | 0 | 4,3 | True | 0 |
+| `en-linkedin-post` | lost / lost / tie | 3/3 / 3/3 / 3/3 | 0 / 0 / 0 | 3,2 / 3,2 / 3,3 | True / True / True | 0 / 0 / 0 |
+| `en-technical-readme` | tie / won / won | 4/4 / 4/4 / 4/4 | 1 / 0 / 0 | 4,3 / 4,4 / 4,4 | False / False / False | 0 / 0 / 0 |
+| `en-incident-writeup` | lost / lost / lost | 3/3 / 3/3 / 3/3 | 0 / 0 / 0 | 3,3 / 3,4 / 3,3 | False / False / False | 0 / 0 / 0 |
+| `nl-linkedin-post` | won / lost / lost | 6/6 / 6/6 / 6/6 | 0 / 0 / 0 | 4,4 / 3,3 / 3,3 | True / False / True | 0 / 0 / 0 |
+| `nl-meetup-description` | lost / won / lost | 8/8 / 8/8 / 8/8 | 0 / 0 / 0 | 4,4 / 4,4 / 3,3 | True / True / False | 0 / 0 / 0 |
+| `nl-readme-intro` | won / tie / lost | 4/4 / 4/4 / 4/4 | 0 / 0 / 3 | 4,3 / 4,4 / 3,4 | True / True / True | 0 / 0 / 0 |
 
-Skill won 1, lost 3, tied 2 across 1 seed(s).
+Skill won 5, lost 10, tied 3 across 3 seed(s).
 
 <!-- /quality-retest results -->
 
-**What the seeds say.** Three seeds, twelve outputs each: 36 paired case-runs, every pair graded in
-both positions. The skill won 13, lost 15, tied 8. On the 28 decided runs that is a sign-test
-*p* = 0.85 — **against a competent agent given the same request, the skill does not write measurably
-better prose.** Anyone reaching for it for polish alone should know that before they install it.
+**What the seeds say.** Six seeds, twelve outputs each: 72 paired case-runs, every pair graded in
+both positions. Seeds 1 to 3 measure the skill before the recast rule, seeds 4 to 6 after it. Across
+all six the skill won 25, lost 30 and tied 17, and **336 of 336 protected facts survived, with 0
+routing misses and 0 leakage in 72 runs.** Fidelity and contract discipline are what this harness
+supports claiming. Prose quality against a competent agent given the same request is, overall,
+parity — anyone reaching for the skill for polish alone should know that before installing it.
 
-What it does do, in every run: **facts 168 of 168 kept, 0 routing misses in 36, 0 leakage in 36.**
-Not one fabricated number, date or name in three seeds. Fidelity and contract discipline are the
-skill's measured properties; better prose is not.
+**The one measured defect was Dutch rewrite, and the recast rule moved it.**
 
-**One real defect, and it is Dutch rewrite.** Split the rewrite comparison by language and the
-verdicts stop being noise:
+| Comparison | Before (seeds 1-3) | After (seeds 4-6) |
+| --- | --- | --- |
+| Rewrite, Dutch | 0 W / 6 L / 3 T — *p* = 0.031 | 3 W / 2 L / 4 T — *p* = 1.0 |
+| Rewrite, English | 7 W / 2 L / 0 T | 4 W / 3 L / 2 T |
+| Edit, English | 3 W / 3 L / 3 T | 2 W / 5 L / 2 T |
+| Edit, Dutch | 3 W / 4 L / 2 T | 3 W / 5 L / 1 T |
 
-| Comparison | Won | Lost | Tied | Sign test |
-| --- | ---: | ---: | ---: | ---: |
-| Rewrite, English | 7 | 2 | 0 | *p* = 0.18 |
-| Rewrite, Dutch | 0 | 6 | 3 | *p* = 0.031 |
-| Edit, English | 2 | 2 | 2 | *p* = 1.0 |
-| Edit, Dutch | 3 | 4 | 2 | *p* = 1.0 |
+The rule exists because every Dutch case fires the translationese layer, so the source's clause order
+came out of English, and two rules in the always-on body protected exactly that — *"Sentence lengths
+vary as the original's did"* and *"Split or join only at a real new action"*. The skill stripped the
+calqued vocabulary and left the English skeleton standing while the unconstrained baseline rebuilt
+the sentence the way a Dutch writer builds it. SKILL.md now says a construction carried over from
+another language is a tell rather than a voice, and recasting it is the fix.
 
-Dutch rewrite never won a single case-run in three seeds. English rewrite won seven of nine. The
-difference between the two is Fisher exact *p* = 0.007, so the language split is the one finding here
-that survives contact with statistics; the English advantage taken alone does not (*p* = 0.18), and
-neither edit comparison differs from chance. Both edit rows answer the question the withdrawn runs
-could not: measured like for like, **edit mode shows no rhythm loss and no advantage** — it is
-parity, which for a mode whose own rule is to touch only flagged spans is the expected result.
+Dutch rewrite had never won a case-run in nine tries; after the rule it wins three and the arm is
+statistically indistinguishable from parity. The change itself is Fisher exact *p* = 0.061 on decided
+outcomes, so it is a strong direction on a pre-registered target rather than a settled result. The
+mechanism is confirmed directly, not inferred: on `nl-linkedin-post` the skill arm now returns *"Een
+deploy duurde 40 minuten en is nu in 6 minuten klaar"* where the baseline keeps the calqued *"de
+doorlooptijd van deploys teruggebracht van 40 naar 6 minuten"*, and the grader names it — *"echt
+Nederlands geschreven in plaats van vertaald"*. English rewrite did not pay for it: 7-2-0 to 4-3-2 is
+Fisher *p* = 0.60.
 
-The Dutch graders' reasons repeat across seeds: the skill removes the tell and leaves the sentence
-that carried it standing empty (*"de zin bestaat alleen nog omdat het origineel een contrast had"*),
-or keeps the source's construction where a Dutch writer would recast it — *"de doorlooptijd van
-deploys teruggebracht van 40 naar 6 minuten"* against the free rewrite's *"duurt een deploy 6 minuten
-in plaats van 40"*. Both complaints are about clause order, not vocabulary.
+**A warning about reading these tables mid-flight.** After seeds 4 and 5 the English rewrite arm sat
+at 1 W / 3 L / 2 T with tripled invention counts, and the obvious conclusion was that the new rule
+had leaked into English and broken it. Seed 6 returned 3 W / 0 L / 0 T and dissolved the effect. Ten
+of twelve case verdicts flip with the seed; two thirds of a group is still not a result.
 
-**Two obvious explanations were measured and both are wrong.** The first draft of this section blamed
-the Dutch catalog for teaching deletion without recasting; the catalog's own examples refute it, and
-the Dutch half is the better of the two on exactly that axis — 13% of Dutch examples are pure
-deletions against 19% of English ones, the median Dutch example introduces a 0.62 share of new words
-against 0.55, and its median length ratio is 1.00 against 0.90. The second guess, that the Dutch arm
-drowns in findings and over-edits, dies the same way: the scanner fires 12.3 to 16.9 times per 100
-words on the three Dutch cases and 6.2 to 18.6 on the English ones.
+**What did move is invented framing in English, and it is the open cost.** Added-claim spans in the
+English rewrite arm went from 8 before to 25 after. No fact was ever lost or altered — every cell of
+the table reads 30/30 and 54/54 — so these are claims the source did not make rather than corrupted
+data: *"given engineers back the time they were spending on alerts"*, *"the workflow is the same at
+any scale"* where the original said startup or enterprise. The trend across the after-seeds is 12, 9,
+4 and the before-range reached 6, so this is a signal worth watching and not yet a finding. It is the
+first thing to measure on the next change.
 
-**What is left is a conflict inside the procedure.** All three Dutch cases fire the translationese
-layer (`calque-dive-in-nl`, `calque-landscape-journey-nl`, `calqued-imagery-nl`), so the source's
-clause order is itself English-shaped. Two rules in the always-on body then protect precisely that:
-*"Sentence lengths vary as the original's did"* and *"The author's sentence length, hedges and
-vocabulary level stay. Split or join only at a real new action."* Nothing in SKILL.md licenses
-recasting a construction, so the skill strips the calqued vocabulary and leaves the English skeleton
-standing, while the unconstrained baseline rebuilds the sentence the way a Dutch writer builds it and
-the *eindredacteur* rewards it. English never pays this cost: its sources are natively English, so
-conserving their constructions costs nothing. That is a hypothesis with a mechanism, not a measured
-cause — the test is whether licensing the recast moves Dutch rewrite off 0 for 9.
+**Two structural findings the seeds surfaced, both worth fixing next.** First, the recast rule and
+the stance rule pull against each other: recasting a construction tends to shed the opinion the
+construction carried. On seed 4's `nl-linkedin-post` the skill recast the sentence well and dropped
+*"Wij vinden dit een belangrijke stap"*, the author's only opinion, which the baseline kept; the case
+graded a tie for exactly that reason. Second, the most reproducible defect in the whole dataset is
+neither rhythm nor stance but gap-filling: on `nl-meetup-description` the skill invented *"Daarna is
+er tijd om bij te praten"* in three separate seeds. The mechanism is visible in the source — it
+deletes the vague tricolon *"inspiratie, kennis, en verbinding"* and supplies a plausible concrete
+programme item in its place, which is precisely what the "flag the gap instead" gotcha exists to
+prevent and does not achieve.
 
-**Flattening is stance, confirmed a third time.** Of the 20 outputs flagged as flattened, only 4 are
-explicable by the sentence-length clause at all; the other 16 came from the grader reporting the
-first person or the author's stance gone, and in several the scanner's variation *rose* (0.65 → 0.84,
-0.38 → 0.49). The rhythm hypothesis is dead three times over.
+**Three explanations were measured and killed along the way.** Flattening is not rhythm: of the 20
+flattened verdicts in seeds 1 to 3, only 4 are explicable by the sentence-length clause, and in
+several the scanner's variation rose. The Dutch catalog does not teach deletion over recasting; its
+own examples are the better half on that axis (13% pure deletions against English's 19%, new-word
+share 0.62 against 0.55). And the Dutch arm is not drowning in findings: the scanner fires 12.3 to
+16.9 times per 100 words on the Dutch cases against 6.2 to 18.6 on the English ones. Each of these
+was a confident diagnosis before it was measured.
 
-**The stance rule shows no measurable effect.** SKILL.md step 5 was rewritten after seed 1 to keep
-the opinion and change only the form. Stance-driven flags went 7 of 12 (before), then 3 of 12, then
-6 of 12. Seed 3 sits inside seed 1's range, so the middle seed was the outlier and the fix cannot be
-credited with anything. It stays because losing the writer's only opinion is the quieter and worse
-failure and the rule is right on its face, but **it is unverified, not verified.**
-
-**The seed-2 invention spike was noise.** Distinct invented claims per seed: 2, 8, 1. Every one is an
-inferred mechanism or a filled gap — *"en daarna tijd om bij te praten"*, *"those two numbers are
-where it starts"* — and several were marked borderline by the grader that raised them, one noting
-both arms did it. Facts stayed 56 of 56 in all three seeds. The seed-2 reading that the stance rule
-had bought invention with fidelity does not hold.
-
-**Only two case verdicts are stable across all three seeds**: `rewrite/en-incident-writeup` won 3/3
-and `edit/nl-meetup-description` lost 3/3. Every other case flips with the seed, which is why single
-runs of this harness should not be quoted — the earlier four rounds flipped 3/3, 0/3, 1/3, 2/3 for
-the same reason, on top of their design faults.
-
-**What to do next, in order.** Fix Dutch rewrite: the catalog says what to delete and never what to
-write in its place, so the Dutch half needs recast examples (tell → the sentence a Dutch writer
-actually writes), not more tells. Then re-measure with three fresh seeds; a Dutch rewrite that reaches
-parity would be the first evidence the skill improves prose in either language.
+**The stance rule from seed 1 remains unverified.** Stance-driven flattening flags went 7 of 12, then
+3 of 12, then 6 of 12 across seeds 1 to 3. Seed 3 sits inside seed 1's range, so the middle seed was
+the outlier and the rule cannot be credited with the improvement it appeared to buy. It stays because
+losing the writer's only opinion is the quieter failure, not because it is proven.
 
 ## What we did not take
 
