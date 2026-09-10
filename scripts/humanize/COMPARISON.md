@@ -168,9 +168,16 @@ Skill won 5, lost 10, tied 3 across 3 seed(s).
 **What the seeds say.** Six seeds, twelve outputs each: 72 paired case-runs, every pair graded in
 both positions. Seeds 1 to 3 measure the skill before the recast rule, seeds 4 to 6 after it. Across
 all six the skill won 25, lost 30 and tied 17, and **336 of 336 protected facts survived, with 0
-routing misses and 0 leakage in 72 runs.** Fidelity and contract discipline are what this harness
-supports claiming. Prose quality against a competent agent given the same request is, overall,
-parity — anyone reaching for the skill for polish alone should know that before installing it.
+routing misses and 0 leakage in 72 runs.** Prose quality against a competent agent given the same
+request is, overall, parity — anyone reaching for the skill for polish alone should know that before
+installing it.
+
+**Read the fidelity numbers as absolutes, not as an advantage.** The grader scores only the skill arm
+(`Grade the rewrite labelled "${gradeLabel}"`), so `facts_kept`, `facts_invented` and `naturalness`
+describe the skill and nothing else; the baseline is compared on `better_arm` alone. The skill keeping
+every fact in 72 runs is therefore a property of the skill, not evidence it beats a plain agent at
+fidelity — the plain agent may do as well, and this harness cannot say. Scoring both arms on those
+axes is the single highest-value change to make to it.
 
 **The one measured defect was Dutch rewrite, and the recast rule moved it.**
 

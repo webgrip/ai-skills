@@ -109,8 +109,9 @@ is the unit that carries signal, not the overall tally.
 - **Measured, six seeds, 72 paired case-runs: the skill does not write better prose than a competent
   agent given the same request.** 25 won, 30 lost, 17 tied overall — parity. What it holds in every
   seed: 336 of 336 protected facts, 0 routing misses in 72, 0 leakage in 72, and never a fabricated
-  number, date or name. Fidelity and contract discipline are what the measurement supports claiming;
-  prose quality is not. Tables and per-language splits in [`COMPARISON.md`](COMPARISON.md).
+  number, date or name. **Those are absolutes, not advantages** — the grader scores only the skill arm,
+  so the harness cannot say whether a plain agent keeps facts just as well. Scoring both arms is the
+  highest-value fix to the harness. Tables and per-language splits in [`COMPARISON.md`](COMPARISON.md).
 - **Dutch rewrite was the one statistically real defect and is now at parity.** 0 wins in 9 before the
   recast rule (*p* = 0.031); 3 W / 2 L / 4 T after (Fisher *p* = 0.061 for the change). See "If you
   pick this up".
