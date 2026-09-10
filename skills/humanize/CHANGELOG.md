@@ -1,5 +1,12 @@
 # humanize
 
+## 0.2.2 (2026-09-10)
+
+### 🐛 Bug Fixes
+
+- **humanize:** de description is geldige YAML, anders slaat de installer de skill over (c1aec5b9)
+
+
 ## 0.2.1 (2026-09-10)
 
 ### 🐛 Bug Fixes
