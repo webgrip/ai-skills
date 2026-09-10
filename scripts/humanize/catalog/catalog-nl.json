@@ -5637,13 +5637,7 @@
      "streepje zonder tweede streepje",
      "streepje in de laatste vier woorden van de zin"
     ],
-    "regex": [
-     "\\u2014",
-     "[a-zà-ÿ]\\u2014[a-zà-ÿ]",
-     "\\s--\\s",
-     "[a-zà-ÿ0-9]—",
-     "—[a-zà-ÿ0-9]"
-    ],
+    "regex": [],
     "voorbeelden": [
      {
       "voor": "De meetup groeit—en dat betekent een nieuwe zaal.",
@@ -5666,7 +5660,7 @@
       "na": "AI kan veel, maar er zit geen ziel in. Dat merk je."
      }
     ],
-    "ernst": "always",
+    "ernst": "cluster",
     "herkomst": "nl-bron",
     "en_id": "em-dash-density",
     "bronnen": [
@@ -6267,9 +6261,7 @@
      "kopniveau springt twee stappen",
      "=== zonder =="
     ],
-    "regex": [
-     "(?ms)\\A(?:(?!^##\\s)[\\s\\S])*?^###\\s"
-    ],
+    "regex": [],
     "voorbeelden": [
      {
       "voor": "### Achtergrond\nHet project startte in 2024.\n### Methode\nWe spraken twaalf teams.",
@@ -9331,7 +9323,7 @@
     ],
     "regex": [
      "[a-zà-ÿ] +[,.;!?](?:\\s|$)",
-     "[a-zà-ÿ0-9]\\u00a0[a-zà-ÿ0-9]"
+     "[a-zà-ÿ]\\u00a0[a-zà-ÿ]"
     ],
     "voorbeelden": [
      {

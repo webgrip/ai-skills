@@ -595,7 +595,7 @@
    "severity": "cluster",
    "regex": [
     "[a-zà-ÿ] +[,.;!?](?:\\s|$)",
-    "[a-zà-ÿ0-9]\\u00a0[a-zà-ÿ0-9]"
+    "[a-zà-ÿ]\\u00a0[a-zà-ÿ]"
    ],
    "hint": "Witruimte die niet uit een toetsenbord komt maar uit het kopieren: dubbele spaties midden in een zin, een of meer spaties aan het begin van "
   },
@@ -1804,37 +1804,6 @@
    "hint": "Typografische aanhalingstekens op een vlak waarvan de conventie recht is: code, commitberichten, Markdown, mail, chat"
   },
   {
-   "id": "em-dash-density",
-   "lang": [
-    "en"
-   ],
-   "category": "punctuation-format",
-   "severity": "always",
-   "regex": [
-    "—",
-    "(?<=\\s)–(?=\\s)",
-    "(?<=\\s)--(?=\\s)",
-    "(?:^|\\n)[ \\t]*\\*\\*[^*\\n]{2,60}\\*\\*[ \\t]*(?:—|--)[ \\t]*[a-z]"
-   ],
-   "hint": "The em dash, a spaced en dash or a spaced double hyphen used as the default clause splice: a pair bracketing an aside, a single dash tacking"
-  },
-  {
-   "id": "em-dash-density",
-   "lang": [
-    "nl"
-   ],
-   "category": "punctuation-format",
-   "severity": "always",
-   "regex": [
-    "\\u2014",
-    "[a-zà-ÿ]\\u2014[a-zà-ÿ]",
-    "\\s--\\s",
-    "[a-zà-ÿ0-9]—",
-    "—[a-zà-ÿ0-9]"
-   ],
-   "hint": "Het lange streepje wordt de vaste manier om een zin te splitsen: een enkel streepje dat een pointe aanplakt, een gepaarde tussenzin, of een "
-  },
-  {
    "id": "emoji-decoration",
    "lang": [
     "en"
@@ -1888,33 +1857,6 @@
     "#\\w*(?:digitaltransformation|futureofwork|innovation|leadership|motivation|growthmindset|success)\\w*"
    ],
    "hint": "Een staartblok van zes of meer hashtags onder een korte post, meestal een specifieke tag plus brede categorietags"
-  },
-  {
-   "id": "heading-level-skipping",
-   "lang": [
-    "en"
-   ],
-   "category": "punctuation-format",
-   "severity": "context",
-   "regex": [
-    "\\A(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
-    "(?:^|\\n)#[ \\t][^\\n]*\\n(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
-    "(?:^|\\n)#{2}[ \\t][^\\n]*\\n(?:(?!#{1,3}[ \\t])[^\\n]*\\n)*#{4}[ \\t]",
-    "\\A(?:(?!={1,2}[^=\\n])[^\\n]*\\n)*===[^=\\n]"
-   ],
-   "hint": "Sections begin at the third heading level (### or ===) with no second-level heading above them, or any heading sits more than one level belo"
-  },
-  {
-   "id": "heading-level-skipping",
-   "lang": [
-    "nl"
-   ],
-   "category": "punctuation-format",
-   "severity": "context",
-   "regex": [
-    "(?ms)\\A(?:(?!^##\\s)[\\s\\S])*?^###\\s"
-   ],
-   "hint": "Secties beginnen op het derde kopniveau zonder kop van het tweede niveau erboven, of een kop staat meer dan één stap onder zijn ouder"
   },
   {
    "id": "level-1-heading-overuse",
@@ -5344,7 +5286,7 @@
    "category": "vocabulary",
    "severity": "cluster",
    "regex": [
-    "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|underscor(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|comprehensive|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
+    "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
     "\\b(?:best\\s+practices|thought\\s+leader(?:ship|s)?|deep\\s+dive|dives?\\s+deep\\s+into|at\\s+its\\s+core|testament\\s+to|in\\s+the\\s+realms?\\s+of|watershed\\s+moment|marking\\s+a\\s+pivotal\\s+moment|only\\s+time\\s+will\\s+tell|the\\s+future\\s+looks\\s+bright|shed(?:s|ding)?\\s+light\\s+on|paves?\\s+the\\s+way|unpack(?:s|ing)?)\\b",
     "\\b(?:ever[- ]evolving|evolving|changing|shifting|competitive|digital|technological|business|marketing|political|regulatory|current|modern|broader|complex|cultural|culinary|startup|crypto)\\s+landscape\\b",
     "\\bdespite\\s+(?:the\\s+)?challenges[^.]{0,80}?continues?\\s+to\\s+thrive\\b"
@@ -6085,9 +6027,8 @@
     "en"
    ],
    "category": "vocabulary",
-   "severity": "always",
+   "severity": "context",
    "regex": [
-    "\\bin\\s+order\\s+to\\b",
     "\\bdue\\s+to\\s+the\\s+fact\\s+that\\b",
     "\\b(?:at\\s+this\\s+point\\s+in\\s+time|in\\s+the\\s+event\\s+that|ha(?:s|ve|d)\\s+the\\s+ability\\s+to|with\\s+regard\\s+to|in\\s+terms\\s+of)\\b"
    ],

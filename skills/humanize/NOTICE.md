@@ -30,6 +30,20 @@ The MIT license text of each is preserved in its repository; this skill is itsel
 The catalog entries adapted from those pages are licensed under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
+## Control corpus (human-written prose the scanner is measured against)
+
+Held under `scripts/humanize/control/`, never shipped in the skill. Provenance is the ground truth:
+every flag on these texts is a false positive.
+
+- Strunk, *The Elements of Style* (1918) and Twain, *The Innocents Abroad*, Project Gutenberg, public domain.
+- English Wikipedia: *Village pump (miscellaneous)* archives 58–62 (2018) and the 2021 revisions of
+  *Transmission Control Protocol*, *Public-key cryptography* and *Version control*; Dutch Wikipedia:
+  *Rijssen*, *Enschede*, and *De kroeg* daily archives from January 2019; Dutch Wikibooks:
+  *Programmeren in Python* chapters. All CC BY-SA 4.0; revision ids are pinned in
+  `control/manifest.json`.
+- *The Rust Programming Language*, six chapters at commit `0889e73d627e` (December 2019),
+  <https://github.com/rust-lang/book>, MIT OR Apache-2.0.
+
 ## Published lists and articles (quoted or paraphrased with attribution)
 
 - Ossama Badr, AI Writing Tropes to Avoid, <https://tropes.fyi>.

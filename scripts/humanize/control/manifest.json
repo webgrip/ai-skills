@@ -1,0 +1,389 @@
+[
+ {
+  "file": "en-strunk-elements-of-style.txt",
+  "lang": "en",
+  "register": "literary",
+  "format": "gutenberg",
+  "license": "public domain",
+  "url": "https://www.gutenberg.org/cache/epub/37134/pg37134.txt",
+  "committed": true
+ },
+ {
+  "file": "fetched/en-twain-innocents-abroad.txt",
+  "lang": "en",
+  "register": "literary",
+  "format": "gutenberg",
+  "license": "public domain",
+  "url": "https://www.gutenberg.org/cache/epub/3176/pg3176.txt",
+  "committed": false
+ },
+ {
+  "file": "nl-wikipedia-rijssen.wikitext",
+  "lang": "nl",
+  "register": "encyclopedic",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Rijssen&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikipedia-enschede.wikitext",
+  "lang": "nl",
+  "register": "encyclopedic",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Enschede&action=raw",
+  "committed": true
+ },
+ {
+  "file": "en-village-pump-archive-60.wikitext",
+  "lang": "en",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Wikipedia:Village_pump_(miscellaneous)/Archive_60&action=raw",
+  "committed": true
+ },
+ {
+  "file": "en-village-pump-archive-61.wikitext",
+  "lang": "en",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Wikipedia:Village_pump_(miscellaneous)/Archive_61&action=raw",
+  "committed": true
+ },
+ {
+  "file": "fetched/en-village-pump-archive-58.wikitext",
+  "lang": "en",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Wikipedia:Village_pump_(miscellaneous)/Archive_58&action=raw",
+  "committed": false
+ },
+ {
+  "file": "fetched/en-village-pump-archive-59.wikitext",
+  "lang": "en",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Wikipedia:Village_pump_(miscellaneous)/Archive_59&action=raw",
+  "committed": false
+ },
+ {
+  "file": "fetched/en-village-pump-archive-62.wikitext",
+  "lang": "en",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Wikipedia:Village_pump_(miscellaneous)/Archive_62&action=raw",
+  "committed": false
+ },
+ {
+  "file": "en-rust-book-ch03-01-variables-and-mutability.md",
+  "lang": "en",
+  "register": "technical",
+  "format": "markdown",
+  "license": "MIT OR Apache-2.0",
+  "url": "https://raw.githubusercontent.com/rust-lang/book/0889e73d627e/src/ch03-01-variables-and-mutability.md",
+  "committed": true,
+  "oldid": "0889e73d627e"
+ },
+ {
+  "file": "en-rust-book-ch03-02-data-types.md",
+  "lang": "en",
+  "register": "technical",
+  "format": "markdown",
+  "license": "MIT OR Apache-2.0",
+  "url": "https://raw.githubusercontent.com/rust-lang/book/0889e73d627e/src/ch03-02-data-types.md",
+  "committed": true,
+  "oldid": "0889e73d627e"
+ },
+ {
+  "file": "en-rust-book-ch03-03-how-functions-work.md",
+  "lang": "en",
+  "register": "technical",
+  "format": "markdown",
+  "license": "MIT OR Apache-2.0",
+  "url": "https://raw.githubusercontent.com/rust-lang/book/0889e73d627e/src/ch03-03-how-functions-work.md",
+  "committed": true,
+  "oldid": "0889e73d627e"
+ },
+ {
+  "file": "en-rust-book-ch04-01-what-is-ownership.md",
+  "lang": "en",
+  "register": "technical",
+  "format": "markdown",
+  "license": "MIT OR Apache-2.0",
+  "url": "https://raw.githubusercontent.com/rust-lang/book/0889e73d627e/src/ch04-01-what-is-ownership.md",
+  "committed": true,
+  "oldid": "0889e73d627e"
+ },
+ {
+  "file": "en-rust-book-ch09-02-recoverable-errors-with-result.md",
+  "lang": "en",
+  "register": "technical",
+  "format": "markdown",
+  "license": "MIT OR Apache-2.0",
+  "url": "https://raw.githubusercontent.com/rust-lang/book/0889e73d627e/src/ch09-02-recoverable-errors-with-result.md",
+  "committed": true,
+  "oldid": "0889e73d627e"
+ },
+ {
+  "file": "en-rust-book-ch10-01-syntax.md",
+  "lang": "en",
+  "register": "technical",
+  "format": "markdown",
+  "license": "MIT OR Apache-2.0",
+  "url": "https://raw.githubusercontent.com/rust-lang/book/0889e73d627e/src/ch10-01-syntax.md",
+  "committed": true,
+  "oldid": "0889e73d627e"
+ },
+ {
+  "file": "en-wikipedia-transmission-control-protocol.wikitext",
+  "lang": "en",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Transmission_Control_Protocol&oldid=1060994683&action=raw",
+  "committed": true,
+  "oldid": 1060994683
+ },
+ {
+  "file": "en-wikipedia-public-key-cryptography.wikitext",
+  "lang": "en",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Public-key_cryptography&oldid=1059388010&action=raw",
+  "committed": true,
+  "oldid": 1059388010
+ },
+ {
+  "file": "en-wikipedia-version-control.wikitext",
+  "lang": "en",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://en.wikipedia.org/w/index.php?title=Version_control&oldid=1049575282&action=raw",
+  "committed": true,
+  "oldid": 1049575282
+ },
+ {
+  "file": "nl-kroeg-20190101.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190101&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190103.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190103&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190104.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190104&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190105.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190105&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190106.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190106&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190107.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190107&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190110.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190110&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190111.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190111&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190112.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190112&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190113.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190113&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190114.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190114&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190115.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190115&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190116.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190116&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190118.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190118&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-kroeg-20190120.wikitext",
+  "lang": "nl",
+  "register": "informal-discussion",
+  "format": "talk-wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikipedia.org/w/index.php?title=Wikipedia:De_kroeg/Archief/20190120&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-arrays.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Arrays&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-berekeningen-en-bewerkingen.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Berekeningen_en_bewerkingen&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-beslissingscontrole.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Beslissingscontrole&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-bestanden.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Bestanden&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-conditionele-statements.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Conditionele_statements&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-dictionaries.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Dictionaries&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-documentatie-en-commentaar.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Documentatie_en_commentaar&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-functies.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Functies&action=raw",
+  "committed": true
+ },
+ {
+  "file": "nl-wikibooks-python-fouten.wikitext",
+  "lang": "nl",
+  "register": "technical",
+  "format": "wikitext",
+  "license": "CC BY-SA 4.0",
+  "url": "https://nl.wikibooks.org/w/index.php?title=Programmeren_in_Python/Fouten&action=raw",
+  "committed": true
+ }
+]

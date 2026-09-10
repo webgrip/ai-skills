@@ -1,0 +1,514 @@
+{{Index Programmeren in Python}}
+Arrays staan het gebruik van meerdere variabelen op een georganiseerde manier toe. Er zijn vier types arrays in Python: Lists (lijsten), Tuples (tupels), Dictionaries (woordenboeken) en Sets (verzamelingen). Eigenlijk zijn er meerdere, maar dit zijn de meest gebruikte types. Ook maken we in het vervolg afwisselend gebruik van de Engelse en Nederlandstalige benamingen (typisch de Engelse wanneer het om het datatype gaat, en de Nederlandse wanneer het om het concept gaat).
+
+==Lists==
+{{Zie ook|[[Programmeren in Python/Lijsten|Lijsten]]}}
+=== Een list aanmaken ===
+Een ''list'' is net wat het woord zegt: een lijst van variabelen, met een bepaalde volgorde. Een ''list'' wordt aangemaakt door middel van vierkante haakjes en de individuele waarden zijn gescheiden door komma's. Bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=Lijst met strings
+| Code=
+<syntaxhighlight lang="python">
+#  lijst van namen
+names = ['Piet', 'Jan', 'Klaas']
+</syntaxhighlight>
+}}
+
+Lijsten kunnen objecten van verschillende types bevatten. In het vorige voorbeeld bevat het alleen stringobjecten, maar het kan ook andere bevatten zoals getallen.
+
+{{Code
+| Taal=Python
+| Titel=Lijst met nummers
+| Code=
+<syntaxhighlight lang="python">
+numbers = [42, 4.2]
+</syntaxhighlight>
+}}
+
+Maar ook andere types, alle mogelijke combinaties van types of zelfs andere lijsten.
+
+{{Code
+| Taal=Python
+| Titel= Andere types, combinaties, lijsten in een lijst
+| Code=
+<syntaxhighlight lang="python">
+#  lijst met verschillende datatypes
+names_and_numbers_and_others = ['Piet', 42, 'Jan', 4.2, 'Klaas', False]
+
+#  lijsten in een lijst
+lists_in_a_list = [['Piet', 'Jan', 'Klaas'], [42, 4.2]]
+</syntaxhighlight>
+}}
+
+=== Elementen oproepen ===
+Individuele elementen van een lijst kunnen worden opgeroepen door hun index in vierkante haken achter de variabelenaam te zetten. De index begint bij 0. Bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=Index
+| Code=
+<syntaxhighlight lang="python">
+#  lijst met verschillende datatypes
+names_and_numbers_and_others = ['Piet', 42, 'Jan', 4.2, 'Klaas', False]
+
+
+print(names_and_numbers_and_others[0])
+print(names_and_numbers_and_others[1])
+print(names_and_numbers_and_others[2])
+print(names_and_numbers_and_others[3])
+print(names_and_numbers_and_others[4])
+print(names_and_numbers_and_others[5])
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Piet
+42
+Jan
+4.2
+Klaas
+False
+</pre>
+
+Een negatieve index kan ook, dan begint de lijst achteraan:
+
+{{Code
+| Taal=Python
+| Titel=Index
+| Code=
+<syntaxhighlight lang="python">
+#  lijst met verschillende datatypes
+names_and_numbers_and_others = ['Piet', 42, 'Jan', 4.2, 'Klaas', False]
+
+
+print(names_and_numbers_and_others[-1])
+print(names_and_numbers_and_others[-2])
+print(names_and_numbers_and_others[-3])
+print(names_and_numbers_and_others[-4])
+print(names_and_numbers_and_others[-5])
+print(names_and_numbers_and_others[-6])
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+False
+Klaas
+4.2
+Jan
+42
+Piet
+</pre>
+
+De functie <code>len()</code> werkt eveneens bij arrays, dit geeft het aantal items in de array terug:
+
+{{Code
+| Taal=Python
+| Titel=len()
+| Code=
+<syntaxhighlight lang="python">
+#  lijst van namen.
+names = ['Piet', 'Jan', 'Klaas']
+
+print(len(names))
+</syntaxhighlight>
+}}
+
+'''Output:'''
+<pre>
+3
+</pre>
+
+Merk op dat de <code>len()</code> functie het aantal elementen telt, dus in deze lijst kan men het laatste element (de string 'Klaas') vinden op index (len(names) -1).
+
+Net zoals een variabele kunnen de items in een lijst ook veranderd worden:
+
+{{Code
+| Taal=Python
+| Titel=
+| Code=
+<syntaxhighlight lang="python">
+#  Lijst van namen.
+names = ['Piet', 'Jan', 'Klaas']
+
+#  De naam op index 1 veranderen naar Geert.
+names[1] = "Geert"
+
+#  Printen van het resultaat.
+print(names)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+['Piet', 'Geert', 'Klaas']
+</pre>
+
+=== Elementen toevoegen ===
+Het is ook mogelijk om objecten toe te voegen aan een lijst. Er zijn een aantal mogelijkheden maar de eenvoudigste is met behulp van de <code>append()</code> methode:
+
+{{Code
+| Taal=Python
+| Titel=append()
+| Code=
+<syntaxhighlight lang="python">
+#  Lijst van namen.
+names = ['Piet', 'Jan', 'Klaas']
+
+#  De naam "Geert" toevoegen met de methode append()
+names.append("Geert")
+
+#  Printen van het resultaat.
+print(names)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+['Piet', 'Jan', 'Klaas', 'Geert']
+</pre>
+
+<code>append()</code> voegt elementen aan het einde van de lijst toe. Om elementen binnen in een lijst ergens tussen te schuiven ter hoogte van een bepaalde index kan men gebruik maken van <code>insert()</code>. Bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=insert()
+| Code=
+<syntaxhighlight lang="python">
+#  Een lijst met namen.
+names = ['Piet', 'Jan', 'Klaas'] 
+
+#  Voorbeeld van het gebruik van insert().
+names.insert(2, "Geert")
+
+#  Uitprinten van de namen.
+print(names)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+['Piet', 'Jan', 'Geert', 'Klaas']
+</pre>
+
+Het eerste argument dat wordt meegegeven is de index positie waar het element in moet komen. Het tweede argument is het in te voegen element. Het spreekt voor zich dat de element die voordien op die positie stond een plaats opschuift, net zoals al de elementen die daarop volgen.
+
+=== Elementen verwijderen ===
+Door middel van het sleutelwoord <code>del</code> kan men elementen verwijderen:
+
+{{Code
+| Taal=Python
+| Titel=del
+| Code=
+<syntaxhighlight lang="python">
+#  Een lijst met namen.
+names = ['Piet', 'Jan', 'Klaas'] 
+
+#  Voorbeeld van het gebruik van del.
+del names[1]
+
+#  Uitprinten van de namen.
+print(names)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+['Piet', 'Klaas']
+</pre>
+
+<code>del</code> moet gevolgd worden door de lijst met de index van het element die je uit de lijst wilt verwijderen. Als je vergeet een index te vermelden en enkel de lijst vermeld verdwijnt de hele lijst en kunnen er fouten ontstaan. Bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=del
+| Code=
+<syntaxhighlight lang="python">
+#  Een lijst met namen.
+names = ['Piet', 'Jan', 'Klaas'] 
+
+#  Voorbeeld van het gebruik van del.
+del names
+
+#  Uitprinten van de namen.
+print(names)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Traceback (most recent call last):
+  File "k.py", line 8, in <module>
+    print(names)
+NameError: name 'names' is not defined
+</pre>
+
+==Tuples==
+{{Zie ook|[[Programmeren in Python/Tuples|Tuples]]}}
+
+=== Een tuple aanmaken===
+''Tuples'' zijn bijna hetzelfde als lijsten, het grote verschil is dat tupels onveranderlijk zijn. Zodra een ''tuple'' aangemaakt is, is er geen mogelijkheid om een wijziging aan te brengen: het is onmogelijk om iets toe te voegen of te verwijderen. Los hiervan werken tupels op dezelfde manier als lijsten, tupels kunnen, net als lijsten, een zelfde object meerdere malen bevatten.
+
+Om een tupel te declareren maakt men gebruik van komma's:
+{{Code
+| Taal=Python
+| Titel=Tuple met strings
+| Code=
+<syntaxhighlight lang="python">
+#  Een tuple met namen.
+names = 'Piet', 'Jan', 'Klaas'
+</syntaxhighlight>
+}}
+
+Je kunt eventueel ook haakjes gebruiken rond de elementen om ze af te bakenen.
+
+{{Code
+| Taal=Python
+| Titel=Tuple met strings
+| Code=
+<syntaxhighlight lang="python">
+#  Een tuple met namen.
+names = ('Piet', 'Jan', 'Klaas')
+</syntaxhighlight>
+}}
+
+Beiden zullen hetzelfde resultaat geven, als je de tuple zou printen:
+
+<pre>
+('Piet', 'Jan', 'Klaas')
+</pre>
+
+''Tuples'' kunnen, zoals ''lists'', natuurlijk naast strings ook alle andere datatypes bevatten zoals getallen, maar ook andere tuples.
+{{Code
+| Taal=Python
+| Titel= Andere types, combinaties, tuples in een tuple
+| Code=
+<syntaxhighlight lang="python">
+#  Tuple met verschillende datatypes.
+names_and_numbers_and_others = ('Piet', 42, 'Jan', 4.2, 'Klaas', False)
+
+#  Tuples in een tuple.
+tuples_in_a_tuple = (('Piet', 'Jan', 'Klaas'), (42, 4.2))
+</syntaxhighlight>
+}}
+
+=== Elementen oproepen ===
+
+== Dictionaries ==
+{{Zie ook|[[Programmeren in Python/Dictionaries|Dictionaries]]}}
+
+===Een dictionary aanmaken ===
+''Dictionaries'' zijn ook gelijkwaardig aan lijsten, en ze zijn tevens veranderlijk. Dit wil zeggen dat je net zoals bij een lijst elementen uit een dictionary kan toevoegen, wijzigen en verwijderen. Het grote verschil is dat elementen niet gekoppeld zijn aan een index zoals het geval is bij een lijst. Elk element in een woordenboek heeft twee delen: een sleutel (key), en een waarde. Een bepaalde sleutel opzoeken in een woordenboek geeft de waarde gekoppeld aan deze sleutel terug. Eigenlijk kan men een lijst beschouwen als een special geval van een woordenboek, d.w.z. een woordenboek waarbij de sleutels uit oplopende natuurlijke getallen bestaan.
+
+Woordenboeken worden gedeclareerd met accolades, elk element is het eerste gedeclareerd door zijn sleutel, vervolgens een dubbelpunt en tenslotte de waarde. Bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=Dictionary met landen
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+</syntaxhighlight>
+}}
+
+In dit voorbeeld, hebben we een ''dictionary'' aangemaakt met landcodes als de sleutels en de landnamen als de bijhorende waardes. Het is mogelijk om dezelfde sleutel te gebruiken tijdens het declareren van een ''dictionary'', als je dit doet zal echter de vorige waarde dat die sleutel had, worden overschreven met de nieuwe waarde.
+
+{{Code
+| Taal=Python
+| Titel=Dictionary met landen
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland", "BE": "Belgium"}
+
+print(country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'NL': 'Nederland', 'BE': 'Belgium', 'LU': 'Luxemburg'}
+</pre>
+
+Zoals je in dit voorbeeld ziet, hebben we voor de sleutel "BE" de waarde "België" gegeven en daarna aan dezelfde sleutel de waarde "Belgium" gegeven. Als je de dictionary uitprint zie je dat "België" overschreven werd door "Belgium".
+
+===Elementen oproepen===
+Individuele elementen van een ''dictionary'' kunnen worden opgeroepen door hun sleutel in vierkante haken achter de variabelenaam te zetten. Bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=Index
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+print(country_codes["LU"])
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Luxemburg
+</pre>
+
+Let wel, als er een sleutel wordt opgegeven die niet bestaat in de ''dictionary'' krijgt u een foutmelding, namelijk een ''KeyError''. In het volgende voorbeeld hebben we als sleutel "DE" opgegeven.
+
+<pre>
+Traceback (most recent call last):
+  File "k.py", line 4, in <module>
+    print(country_codes["DE"])
+KeyError: 'DE'
+</pre>
+
+Als je niet wil dat jouw programma stopt, kan je gebruik maken van de functie .get
+
+{{Code
+| Taal=Python
+| Titel=Index
+| Code=
+<syntaxhighlight lang="python">
+#  Opzoeking onbestaande sleutel in dictionary
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+print(country_codes.get('DE'))
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+None
+</pre>
+
+Zo kan jouw programma gewoon verder lopen, en kan je eventueel deze fout met een if-statement afhandelen.
+
+===Elementen toevoegen===
+Een waarde toevoegen is eveneens simpel, het is bijna hetzelfde als het declararen van een variabele:
+
+{{Code
+| Taal=Python
+| Titel=Element toevoegen in een dictionary
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Een element toevoegen in een dictionary
+country_codes["DE"] = "Duitsland"
+
+print(country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:''':
+
+<pre>
+{'DE': 'Duitsland', 'LU': 'Luxemburg', 'BE': 'België', 'NL': 'Nederland'}
+</pre>
+
+Als je een element toevoegd met een sleutel die al bestond in de lijst, wordt het oorspronkelijke element simpelweg vervangen. Je zult dus geen foutmeldingen krijgen. bijvoorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=Element vervangen in een dictionary
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Een element vervangen in een dictionary
+country_codes["BE"] = "Belgium"
+
+print(country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'NL': 'Nederland', 'BE': 'Belgium', 'LU': 'Luxemburg'}
+</pre>
+
+===Elementen verwijderen===
+Net zoals bij een ''list'' kan door middel van het sleutelwoord <code>del</code> men elementen verwijderen:
+
+{{Code
+| Taal=Python
+| Titel=del
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden.
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van del.
+del country_codes["BE"]
+
+#  Uitprinten van de dictionary.
+print(country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'LU': 'Luxemburg', 'NL': 'Nederland'}
+</pre>
+
+<code>del</code> moet gevolgd worden door de ''dictionary'' met de sleutel van het element die je wilt verwijderen.
+
+==Sets==
+===Een set aanmaken===
+Een set is ook vergelijkbaar met een lijst. Het verschil is dat een set geen volgorde kent en dat dubbele objecten niet toegestaan zijn.  Objecten zijn niet gekoppeld aan een nummer (zoals bij een lijst of een tupel), maar evenmin aan een sleutel (zoals bij een woordenboek). De reden om een set te gebruiken is omdat een set veel sneller is (O(lg n)) dan een lijst of tupel (O(n)), zeker voor een groot aantal elementen. Sets zijn ook efficiënter voor het toevoegen en verwijderen van data en testen of een waarde tot de set behoort.
+
+{{Code
+| Taal=Python
+| Titel=Sets
+| Code=
+<syntaxhighlight lang="python">
+#Set met verschillende soorten waardes.
+names_and_numbers_and_others = {'Piet', 42, 'Jan', 4.2, 'Klaas', False}
+
+print(names_and_numbers_and_others)
+</syntaxhighlight>
+}}
+
+<pre>
+{False, 4.2, 'Piet', 'Jan', 42, 'Klaas'}
+</pre>
+
+Sets hebben geen volgorde. Toegevoegde waarden worden in een niet gedefinieerde positie geplaatst en de positie kan wijzigen.
+
+<syntaxhighlight lang="python">
+>>> mind.add('duplicate value')
+>>> mind.add('duplicate value')
+>>> mind
+set([0, 'a string', 40, 42, 'hello', 'duplicate value'])
+</syntaxhighlight>
+
+Een set kan een waarde slechts eenmaal bevatten, dit in tegenstelling tot lijsten, tupels en woordenboeken. Ook kan een set niet alle soorten objecten bevatten. Een set kan enkel onveranderlijke maar hashbare (d.w.z. kan er een hash waarde van berekend worden) objecten bevatten. Zo zijn integers, strings en tupels hashbaar; lijsten, woordenboeken en andere sets (behalve frozensets) zijn dat niet en kunnen dus niet in een set opgenomen worden.
+Voorbeeld van een hashwaarde; er zijn 2 kippen, 3 koeien en 2 paarden. Samen geven ze een hashwaarde van 7 (dieren).
+
+=== Frozenset ===
+Een frozenset is een 'bevroren' versie van een set (zoals een tupel een 'bevroren' lijst is).
+
+<syntaxhighlight lang="Python">
+>>> frozen=frozenset(['life','universe','everything'])
+>>> frozen
+frozenset(['universe', 'life', 'everything'])
+</syntaxhighlight>
+
+{{Sub}}

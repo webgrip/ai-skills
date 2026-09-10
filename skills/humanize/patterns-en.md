@@ -1034,20 +1034,6 @@ After: That changelog named the exact bug I spent Tuesday on.
 
 Do not flag: Literal use is exempt ('the second dose hit differently than the first'). Inside quoted speech, or in writing whose register genuinely is that of the phrase's community, it can be the writer's own voice; the tell is a formal piece reaching for it once.
 
-### Circumlocution for a single word (in order to, due to the fact that) `wordy-circumlocution`
-
-Severity: **always** · Scope: english
-
-Multi-word constructions standing in for one word: in order to (to), due to the fact that (because), at this point in time (now), in the event that (if), has the ability to (can), in terms of and with regard to (rewrite). The fix is mechanical substitution; a hit is a wordiness defect, not evidence of machine authorship.
-
-Cues: `In order to` · `Due to the fact that` · `At this point in time` · `In the event that` · `has the ability to` · `It is important to note that` · `in terms of` · `with regard to` · `going forward`
-
-Before: In order to achieve this goal
-
-After: To achieve this
-
-Do not flag: 'In order to' is sometimes needed to prevent a misreading where a bare 'to' would attach to the wrong verb, and legal or contractual drafting uses 'in the event that' as settled language. The edit is good writing regardless of who wrote the sentence, so never present a hit here as authorship evidence.
-
 ### Additive-transition pile-up (Moreover, Furthermore, Additionally) `additive-transition-pileup`
 
 Severity: **cluster** · Scope: universal
@@ -1401,6 +1387,20 @@ Before: Their changelog is worth a look.
 After: Their changelog lists the exact flags that changed defaults in v3.
 
 Do not flag: Legitimate where the reason is given in the same breath ('worth reading for the appendix on retry budgets'), and in a link roundup whose whole purpose is a short recommendation. 'Not worth reading' as a judgment with a stated reason is fine, and Strunk's own 'his books are not worth reading' is ordinary English.
+
+### Circumlocution for a single word (in order to, due to the fact that) `wordy-circumlocution`
+
+Severity: **context** · Scope: english
+
+Multi-word constructions standing in for one word: in order to (to), due to the fact that (because), at this point in time (now), in the event that (if), has the ability to (can), in terms of and with regard to (rewrite). The fix is mechanical substitution; a hit is a wordiness defect, not evidence of machine authorship.
+
+Cues: `In order to` · `Due to the fact that` · `At this point in time` · `In the event that` · `has the ability to` · `It is important to note that` · `in terms of` · `with regard to` · `going forward`
+
+Before: In order to achieve this goal
+
+After: To achieve this
+
+Do not flag: 'In order to' is sometimes needed to prevent a misreading where a bare 'to' would attach to the wrong verb, and legal or contractual drafting uses 'in the event that' as settled language. The edit is good writing regardless of who wrote the sentence, so never present a hit here as authorship evidence.
 
 ## Paragraph and document structure
 
@@ -1805,20 +1805,6 @@ Do not flag: Formal long-form registers (a blog intro, a docs paragraph, a tight
 
 ## Punctuation and formatting
 
-### Em and en dashes as clause splice `em-dash-density`
-
-Severity: **always** · Scope: universal
-
-The em dash, a spaced en dash or a spaced double hyphen used as the default clause splice: a pair bracketing an aside, a single dash tacking on a punchy final clause or afterthought, additive dashes attaching qualifiers sentence after sentence, or a dash staging the second half of a 'not X, but Y' turn. Sub-forms: the spaced em dash (' — '), an en dash doing em-dash work, the ' -- ' substitute, a line-initial '**Bold lead** — sentence' outside a list, and a dash-aside in every sentence. Most sources measure density (human prose runs about one per 500 words, generated drafts one per 50 to 80, detectors cap at one per 1,000 and count headings too), but the the consuming repo house rule bans the mark outright in copy and in the agent's own replies. Rewrite with a full stop, comma, colon or parentheses, spell out the connective the dash was hiding, and use the house separators '//' or '·' in fact lines.
-
-Cues: `— not because` · `— but because` · `— and` · `— like` · `— which` · `— something that` · `This isn't X — it's Y` · `doesn't grow from silence — it grows from` · `**Bold lead** — full sentence` · `— … —` · `is not the neutral midpoint – it is one option among three`
-
-Before: The term is primarily promoted by Dutch institutions—not by the people themselves. You don't say "Netherlands, Europe" as an address—yet this mislabeling continues—even in official documents.
-
-After: The term is promoted mainly by Dutch institutions. The people themselves rarely use it. You don't say "Netherlands, Europe" as an address, yet this mislabeling continues in official documents.
-
-Do not flag: A writer's sample that uses dashes keeps them at the sample's rate (humanizer: do not apply as a ban when the sample has them); a house style guide that keeps deliberate em dashes (CMOS, or AP with spaced dashes) is flagged only for stacking. An en dash in a numeric or date range (2019–2024, pp. 12–15) is a range, not a dash; the regex only counts a spaced en dash. An unspaced 'word--word' is typewriter and 19th-century print convention and is not counted; ' -- ' as a CLI flag, SQL comment or code token is code. The detector carves out the separator in a list item that opens with a bolded term or a link ('- **Term** — description') and changelog version headings ('## v1.2.0 — 2026-01-01') as typography, but the the consuming repo house rule still replaces those with '//' or '·'. The approved the consuming repo banners that carry an em dash in data form ('/001 — 7 OKT', 'the consuming repo/001 — reconnect', "KOM D'R IN — EVERYONE'S WELCOME") were visually ratified and change only when the owner asks. Quoted text and dashes already present in a human source are preserved during a rewrite: only dashes the model added are targets. On the density reading a single dash in a long draft is noise, though not under the house ban. Models since GPT-5.1 are tuned away from the mark, so its absence proves nothing. Never add a dash during a rewrite. A spaced en dash is the ordinary clause splice in British and Commonwealth house style (Oxford, Guardian, Cambridge), so there it is judged on density the way the em dash is and never read as machine residue on sight. The metavocabulary of dashes ('em dash', 'em-dash aside') was dropped from the cues because it fires on every text that discusses punctuation, this catalog included.
-
 ### Emoji as decoration `emoji-decoration`
 
 Severity: **always** · Scope: universal
@@ -1892,6 +1878,20 @@ Before: He said “the project is on track” but others disagreed.
 After: He said "the project is on track" but others disagreed.
 
 Do not flag: Word, Google Docs, macOS and iOS, most CMSes, LanguageTool and Chicago-style typesetting auto-curl, so finished publications, professionally typeset work and any Word-edited prose are exempt, as is a citation tool copying a page title. Only a tell on plain-text, Markdown, code and commit-message surfaces, and only when stacked with other tells. Never flag a curly apostrophe (U+2019) on its own. Locale-correct glyphs (French « », German „ “, Dutch „ ”) are not this pattern. Some fonts render curly as straight, so the distinction can be invisible to the reader. Gemini and Claude typically emit straight quotes; ChatGPT and DeepSeek curly. A bare curly-quote regex fired 13 to 100 times per 10,000 words on typeset human prose, so only the mixed form is scanned; the plain glyphs stay as cues for judgment.
+
+### Em and en dashes as clause splice `em-dash-density`
+
+Severity: **cluster** · Scope: universal
+
+The em dash, a spaced en dash or a spaced double hyphen used as the default clause splice: a pair bracketing an aside, a single dash tacking on a punchy final clause or afterthought, additive dashes attaching qualifiers sentence after sentence, or a dash staging the second half of a 'not X, but Y' turn. Sub-forms: the spaced em dash (' — '), an en dash doing em-dash work, the ' -- ' substitute, a line-initial '**Bold lead** — sentence' outside a list, and a dash-aside in every sentence. Most sources measure density (human prose runs about one per 500 words, generated drafts one per 50 to 80, detectors cap at one per 1,000 and count headings too), but the the consuming repo house rule bans the mark outright in copy and in the agent's own replies. Rewrite with a full stop, comma, colon or parentheses, spell out the connective the dash was hiding, and use the house separators '//' or '·' in fact lines.
+
+Cues: `— not because` · `— but because` · `— and` · `— like` · `— which` · `— something that` · `This isn't X — it's Y` · `doesn't grow from silence — it grows from` · `**Bold lead** — full sentence` · `— … —` · `is not the neutral midpoint – it is one option among three`
+
+Before: The term is primarily promoted by Dutch institutions—not by the people themselves. You don't say "Netherlands, Europe" as an address—yet this mislabeling continues—even in official documents.
+
+After: The term is promoted mainly by Dutch institutions. The people themselves rarely use it. You don't say "Netherlands, Europe" as an address, yet this mislabeling continues in official documents.
+
+Do not flag: A writer's sample that uses dashes keeps them at the sample's rate (humanizer: do not apply as a ban when the sample has them); a house style guide that keeps deliberate em dashes (CMOS, or AP with spaced dashes) is flagged only for stacking. An en dash in a numeric or date range (2019–2024, pp. 12–15) is a range, not a dash; the regex only counts a spaced en dash. An unspaced 'word--word' is typewriter and 19th-century print convention and is not counted; ' -- ' as a CLI flag, SQL comment or code token is code. The detector carves out the separator in a list item that opens with a bolded term or a link ('- **Term** — description') and changelog version headings ('## v1.2.0 — 2026-01-01') as typography, but the the consuming repo house rule still replaces those with '//' or '·'. The approved the consuming repo banners that carry an em dash in data form ('/001 — 7 OKT', 'the consuming repo/001 — reconnect', "KOM D'R IN — EVERYONE'S WELCOME") were visually ratified and change only when the owner asks. Quoted text and dashes already present in a human source are preserved during a rewrite: only dashes the model added are targets. On the density reading a single dash in a long draft is noise, though not under the house ban. Models since GPT-5.1 are tuned away from the mark, so its absence proves nothing. Never add a dash during a rewrite. A spaced en dash is the ordinary clause splice in British and Commonwealth house style (Oxford, Guardian, Cambridge), so there it is judged on density the way the em dash is and never read as machine residue on sight. The metavocabulary of dashes ('em dash', 'em-dash aside') was dropped from the cues because it fires on every text that discusses punctuation, this catalog included.
 
 ### Immaculate typography in a rough register `immaculate-typography`
 

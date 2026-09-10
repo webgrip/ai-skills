@@ -96,7 +96,8 @@ def scanner_patterns(catalog, lang, skip_language_specific=False):
             if not regex:
                 continue
             for r in regex:
-                re.compile(r, re.IGNORECASE)
+                if any(m.end() == m.start() for m in re.finditer(r, "a b. c", re.IGNORECASE)):
+                    raise SystemExit(f"{e['id']}: regex matches a zero-length span and would fire everywhere: {r}")
             row = {"id": e["id"], "lang": [lang], "category": c, "severity": e[L["sevkey"]], "regex": regex,
                    "hint": e[L["definition"]].split(". ")[0][:140]}
             if e.get("domain"):

@@ -13,6 +13,8 @@ if missing:
 for p in patterns:
     for expression in p["regex"]:
         re.compile(expression, re.IGNORECASE)
+        if any(m.end() == m.start() for m in re.finditer(expression, "a b. c", re.IGNORECASE)):
+            sys.exit(f"{p['id']}: regex matches a zero-length span: {expression}")
 ids = [p["id"] + "/" + ",".join(p["lang"]) for p in patterns]
 if len(ids) != len(set(ids)):
     sys.exit("duplicate scanner ids")
@@ -42,6 +44,44 @@ if missed:
 print(f"{lang}: clean fixture quiet, slop fixture hit all {len(expected)} expected ids")
 PY
 done
+
+for fixture in en-clean nl-clean; do
+  lang=${fixture%%-*}
+  $SCAN --json --lang "$lang" --fail-on never "fixtures/$fixture.md" | python3 -c "
+import json, sys
+structure = [f['id'] for f in json.load(sys.stdin)[0]['structure']]
+sys.exit(f'$fixture: structure gates fired on human prose: {structure}' if structure else 0)"
+done
+for fixture in en-slop nl-slop en-skeleton; do
+  lang=${fixture%%-*}
+  $SCAN --json --lang "$lang" --fail-on never "fixtures/$fixture.md" | python3 -c "
+import json, sys
+found = {f['id'] for f in json.load(sys.stdin)[0]['structure']}
+expected = [l.strip() for l in open('fixtures/$fixture.structure.expect') if l.strip()]
+missed = [e for e in expected if e not in found]
+sys.exit(f'$fixture: structure gates expected but silent: {missed}; fired {sorted(found)}' if missed else 0)"
+done
+echo "structure gates: quiet on human prose, every expected gate fires on the slop and skeleton fixtures"
+
+$SCAN --json --fail-on never --compare fixtures/en-slop.md fixtures/en-slop.md | python3 -c "
+import json, sys
+c = json.load(sys.stdin)[0]['compare']
+sys.exit(f'identical texts should compare ok, got {c[\"verdict\"]}' if c['verdict'] != 'ok' or c['change_rate'] != 0 else 0)"
+if $SCAN --json --fail-on never --compare fixtures/en-slop.md fixtures/en-clean.md > /tmp/humanize-compare.json; then
+  echo "a rewrite that injects numbers must abort" >&2; exit 1
+fi
+python3 -c "
+import json, sys
+c = json.load(open('/tmp/humanize-compare.json'))[0]['compare']
+sys.exit(0 if c['verdict'] == 'abort' and c['numbers_injected'] else f'expected abort with injected numbers, got {c}')"
+echo "compare: identical is ok, injected numbers abort"
+
+FP="$(dirname "$0")/../../scripts/humanize/pipeline/fp_measure.py"
+if [ -f "$FP" ]; then
+  python3 "$FP" --committed --fail > /tmp/humanize-fp.txt || { cat /tmp/humanize-fp.txt | tail -12 >&2; exit 1; }
+  grep -E "overall" /tmp/humanize-fp.txt
+fi
+
 python3 - <<'PY'
 import collections
 import json
@@ -75,7 +115,7 @@ for lang, catalog in (("en", "patterns-en.md"), ("nl", "patterns-nl.md"), ("en",
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
         f.write("\n\n".join(text for _, text in examples))
         path = f.name
-    out = subprocess.run(["python3", "scripts/scan.py", "--json", "--lang", lang, "--fail-on", "never", path],
+    out = subprocess.run(["python3", "scripts/scan.py", "--json", "--lang", lang, "--fail-on", "never", "--no-structure", path],
                          capture_output=True, text=True)
     os.unlink(path)
     if out.returncode:

@@ -1,7 +1,7 @@
 sources/repos/
 sources/lists/
 sources/nl/
-control/en-twain-innocents-abroad.txt
+control/fetched/
 catalog/.staged-*.json
 catalog/en-reviewed-*.json
 catalog/nl-verified-*.json

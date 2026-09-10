@@ -1,0 +1,522 @@
+{{Index Programmeren in Python}}
+== Wat zijn functies? ==
+Bij het schrijven van code, zul je merken dat je vaak dezelfde code schrijft om taken uit te voeren. Functies laten je toe stukjes code die je regelmatig gebruikt te hergebruiken zodat je ze maar één keer hoeft te schrijven. Daarnaast kun je functies ook gebruiken om lange code op te splitsen in functies die elk hun eigen probleem oplossen. Dit heeft verschillende voordelen, het kan bijvoorbeeld de leesbaarheid van de code vergroten, aangezien iedere functie één probleem oplost en duidelijk is wat iedere functie doet en als er een fout in de code is kun je makkelijker opzoeken waar de fout ligt en hoef je enkel de functie te verbeteren die de fout bevat.
+
+Python heeft al veel ingebouwde functies zoals b.v. <code>input()</code> en <code>output()</code>, maar het is dus ook mogelijk om zelf functies te definiëren. Als je een functie hebt gedefinieerd kun je die bewaren herhaaldelijk oproepen om te gebruiken.
+
+== Functies definiëren, bewaren en oproepen ==
+=== Eenvoudig voorbeeld ===
+Om een functie te definiëren moet je het sleutelwoord <code>def</code> gebruiken. Def staat in dit geval voor "definiëren".
+
+Voorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=mijn eerste functie
+| Code=
+<syntaxhighlight lang="python">
+def my_first_function():
+    print("Dit is de code van mijn eerste functie.")
+
+
+my_first_function()
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Dit is de code van mijn eerste functie.
+</pre>
+
+Zoals eerder gezegd moet je een functie definiëren met het sleutelwoord <code>def</code>, dit moet gevolgd worden met een zelf te kiezen naam gevolgd door haakjes () en een dubbele punt :. De code voor de functie komt in een geïndenteerde blok.
+
+Om een functie op te roepen moet je simpelweg de naam van de functie schrijven met de haakjes, dus <code>my_first_function()</code>. De haakjes <code>()</code> zorgt ervoor dat de functie wordt uitgevoerd.
+
+=== Functie oproepen vanuit een andere functie ===
+Het is prima mogelijk om een functie op te roepen vanuit een andere functie.
+
+{{Code
+| Taal=Python
+| Titel=Functie oproepen vanuit een andere functie
+| Code=
+<syntaxhighlight lang="python">
+def my_first_function():
+    print("Dit is de code van mijn eerste functie.")
+    my_second_function()
+
+
+def my_second_function():
+    print("Dit is de code van mijn tweede functie, die ik heb opgroepen vanuit mijn eerste functie.")
+
+
+my_first_function()
+</syntaxhighlight>
+}}
+
+'''output:'''
+<pre>
+Dit is de code van mijn eerste functie.
+Dit is de code van mijn tweede functie, die ik heb opgroepen vanuit mijn eerste functie.
+</pre>
+
+=== Referenties naar een functie doorgeven ===
+Net zoals een variabele, is de naam van een functie een verwijzing naar data in het geheugen. In dit geval is dat de data code die moet worden uitgevoerd. Je kunt de referentie kopiëren naar een andere variabele en vanuit die variabele de functie oproepen en laten uitvoeren.
+
+{{Code
+| Taal=Python
+| Titel=Referentie van een functie
+| Code=
+<syntaxhighlight lang="python">
+def my_first_function():
+    print("Dit is de code van mijn eerste functie.")
+
+
+function_in_variable = my_first_function
+
+function_in_variable()
+</syntaxhighlight>
+}}
+
+In dit voorbeeld, werd de referentie van de functie <code>my_first_function</code> overgeplaatst naar de variabele <code>function_in_variable</code>. Omdat de haakjes niet worden gebruikt wordt de functie niet uitgevoerd. Vervolgens wordt de functie wel uitgevoerd met <code>function_in_variable()</code> vanwege het vermelden van de haakjes.
+
+Naast de referenties in variabele te plaatsen, kun je referenties ook bijvoorbeeld in lijsten plaatsen.
+
+{{Code
+| Taal=Python
+| Titel=Referentie van een functie
+| Code=
+<syntaxhighlight lang="python">
+def my_first_function():
+    print("Dit is de code van mijn eerste functie.")
+
+
+def my_second_function():
+    print("Dit is de code van mijn tweede functie.")
+
+
+def my_third_function():
+    print("Dit is de code van mijn derde functie.")
+
+
+list_of_functions = [my_first_function, my_second_function, my_third_function]
+
+for function in list_of_functions:
+    function()
+</syntaxhighlight>
+}}
+
+'''Output:'''
+<pre>
+Dit is de code van mijn eerste functie.
+Dit is de code van mijn tweede functie.
+Dit is de code van mijn derde functie.
+</pre>
+
+=== Het gebruiken van pass ===
+Soms kan het zijn dat je een functie wilt definiëren, maar dat je de code later wilt schrijven. Een functie moet echter code hebben in zijn geïndenteerde blok, het mag dus niet leeg zijn. Als je het volgende zou uitvoeren krijg je een foutmelding.
+
+{{Code
+| Taal=Python
+| Titel=pass
+| Code=
+<syntaxhighlight lang="python">
+def my_function():
+
+
+my_function()
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+  File "test.py", line 4
+    my_function()
+              ^
+IndentationError: expected an indented block
+</pre>
+
+Om dit te verhelpen kun je het statement <code>pass</code> gebruiken als tijdelijke oplossing. <code>pass</code> is een statement dat niets doet, enkel het verhelpen van de ''IndentationError'' en gebruik je als volgt.
+
+{{Code
+| Taal=Python
+| Titel=pass
+| Code=
+<syntaxhighlight lang="python">
+def my_function():
+    pass
+
+
+my_function()
+</syntaxhighlight>
+}}
+
+== Parameters en argumenten ==
+=== Eenvoudig voorbeeld ===
+Het is mogelijk om parameters in te stellen wanneer je een functie definieert. Met parameters kun je argumenten (bijvoorbeeld variabelen) meegeven wanneer je een functie oproept. De functie kan dan met die argumenten aan de slag.
+
+{{Code
+| Taal=Python
+| Titel=argumenten
+| Code=
+<syntaxhighlight lang="Python">
+#  Voorbeeld van een functie met een parameter.
+def hello_message(name):
+    print("Hallo " + name + "!")
+
+
+hello_message("Geert")
+hello_message("Jan")
+hello_message("Klaas")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Hallo Geert!
+Hallo Jan!
+Hallo Klaas!
+</pre>
+
+=== Eenvoudig voorbeeld met meerdere parameters ===
+Het is mogelijk om een functie te definiëren met meerdere parameters. Je kunt daardoor dus meerdere argumenten doorgeven aan je functie.
+
+{{Code
+| Taal=Python
+| Titel=argumenten
+| Code=
+<syntaxhighlight lang="Python">
+# Voorbeeld van een functie met twee parameters.
+def hello_message(first_name, last_name):
+    print("Hallo " + first_name + " " + last_name + "!")
+
+
+hello_message("Geert", "Jansen")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Hallo Geert Janssen!
+</pre>
+
+In dit voorbeeld zijn er dus twee parameters. Net zoals variabelen geef je een naam aan je functie wanneer je je functie definieert en net zoals bij variabelen kun je een naam slechts één keer gebruiken om een functie te definiëren. Als je toch een nieuwe functie definieert met dezelfde naam, zal de vorige functie worden overschreven. Als voorbeeld zullen we twee vorige voorbeelden combineren.
+
+{{Code
+| Taal=Python
+| Titel=argumenten
+| Code=
+<syntaxhighlight lang="Python">
+#  Voorbeeld van een functie met een parameter.
+def hello_message(name):
+    print("Hallo " + name + "!")
+
+
+# Voorbeeld van een functie met twee parameters.
+def hello_message(first_name, last_name):
+    print("Hallo " + first_name + " " + last_name + "!")
+
+
+hello_message("Geert", "Janssen")
+hello_message("Klaas")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Hallo Geert Janssen!
+Traceback (most recent call last):
+  File "test.py", line 12 in <module>
+    hello_message("Klaas")
+TypeError: hello_message() missing 1 required positional argument: 'last_name'
+</pre>
+
+De eerste keer dat de functie <code>hello_message()</code> werd opgeroepen waarbij we een voornaam en een achternaam als argumenten gaven was er geen probleem, de versie van de functie met twee parameters werd opgeroepen en correct uitgevoerd. De tweede keer toen we enkel de voornaam gaven kregen we een foutmelding. Dit komt dus omdat hij opnieuw de versie met twee parameters probeert uit te voeren. De versie met één parameter kan niet worden gebruikt omdat die werd overschreven door de tweede versie met slechts één parameter.
+
+Een mogelijke oplossing is twee verschillende functies te definiëren, bijvoorbeeld <code>hello_message_with_only_first_name()</code> en <code>hello_message_with_first_and_last_name()</code>, maar dan definiëer je twee functies die eigenlijk hetzelfde doen. In de volgende voorbeelden zullen we zien hoe je op andere manieren parameters en argumenten kunt gebruiken om flexibeler met functies te kunnen werken.
+
+=== Standaard waarden ===
+U kunt voor de parameters ''standaard waarden'' bepalen, die u kunt gebruiken in de functie als er geen argument is meegegeven toen de functie werd opgeroepen en uitgevoerd. Dit doet u door naast de naam van de parameter een <code>=</code> te schrijven gevolgd door een waarde. Dit kan een string zijn, een getal, etc...
+
+{{Code
+| Taal=Python
+| Titel=Standaardwaarden
+| Code=
+<syntaxhighlight lang="Python">
+#  Voorbeeld van een functie met een parameter met een standaardwaarde.
+def hello_message(name = "Gebruiker"):
+    print("Hallo " + name + "!")
+
+
+hello_message("Geert")
+hello_message()
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Hallo Geert!
+Hallo Gebruiker!
+</pre>
+
+In dit voorbeeld, hebben we eerst de functie opgeroepen met een argument die de waarde "Geert" heeft. De functie toonde dan het "Hallo bericht" met de naam "Geert". De tweede keer, toen we de functie opnieuw opriepen hebben we geen argument gegeven, dan wordt er aan de parameter de standaardwaarde gegeven en wordt die dan gebruikt. "Hallo Gebruiker".
+
+U kunt een eenzelfde standaardwaarde instellen voor meerdere argumenten.
+
+=== Willekeurig aantal argumenten ===
+Soms kan het zijn dat je niet weet hoeveel argumenten je gaat meegeven wanneer je een functie oproept. Als je dit niet weet kun je een <code>*</code> plaatsten voor de naam van de parameter.
+
+{{Code
+| Taal=Python
+| Titel= Willekeurig aantal argumenten
+| Code=
+<syntaxhighlight lang="Python">
+def hello_message(*names):
+    for name in names:
+        print("Hallo " + name + "!")
+
+
+hello_message("Piet", "Jan", "Klaas", "Geert")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Hallo Piet!
+Hallo Jan!
+Hallo Klaas!
+Hallo Geert!
+</pre>
+
+De argumenten die je doorgeeft komen in de functie terecht als een tuple, je zult die dan ook moeten verwerken als een tuple.
+
+=== Argumenten met sleutelwoorden ===
+{{Code
+| Taal=Python
+| Titel=argumenten
+| Code=
+<syntaxhighlight lang="Python">
+def hello_message(name1, name2, name3):
+    print("Hallo {0}, {1} en {2}!".format(name1, name2, name3))
+
+
+hello_message(name3="Piet", name1="Jan",  name2="Klaas")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Hallo Jan, Klaas en Piet!
+</pre>
+
+=== Combineren ===
+Het is mogelijk om gewone parameters, standaardwaarden, willekeurig aantal argumenten en argumenten via sleutelwoorden te combineren.
+
+== Return ==
+Tot nu toe hebben we met functies enkel simpele taken laten uitvoeren. Het handige aan functies is dat je het taken kan laten uitvoeren èn een resultaat kan laten terug geven. Dit kan met het sleutelwoord <code>return</code>.
+
+=== Eenvoudig voorbeeld ===
+De volgende functie berekent de oppervlakte van een vierhoek en geeft het resultaat via het sleutelwoord <code>return</code> terug.
+
+{{Code
+| Taal=Python
+| Titel=return
+| Code=
+<syntaxhighlight lang="Python">
+#  functie om de oppervlakte van een vierhoek te berekenen
+def surface(width, length):
+    result = width * length
+    return result
+
+
+print("De oppervlakte van de vierhoek is: " + str(surface(10, 30)))
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+De oppervlakte van de vierhoek is: 300
+</pre>
+
+Het is mogelijk om de expressie met de berekening rechtstreeks achter de <code>return</code> te plaatsen. De functie zal dan de berekening uitvoeren en het resultaat rechtstreeks terug sturen. Hierdoor bespaar je een regel code, maar heeft als nadeel dat het de leesbaarheid van de code kan verminderen bij complexere expressies.
+
+{{Code
+| Taal=Python
+| Titel=return
+| Code=
+<syntaxhighlight lang="Python">
+#  functie om de oppervlakte van een vierhoek te berekenen
+def surface(width, length):
+    return width * length
+
+
+print("De oppervlakte van de vierhoek is: " + str(surface(10, 30)))
+</syntaxhighlight>
+}}
+
+=== Meerdere returns ===
+Het is ook mogelijk om meerdere <code>return</code> statements te gebruiken in één functie. Maar slechts één zal worden gebruikt, namelijk de eerste die de functie tegenkomt als het wordt gebruikt.
+
+{{Code
+| Taal=Python
+| Titel=return
+| Code=
+<syntaxhighlight lang="Python">
+#  functie om de oppervlakte van verschillende vormen te berekenen
+def surface(shape, *args):
+    if shape == "circle":
+        return args[0] ** 2 * 3.14
+    elif shape == "square":
+        return args[0] ** 2
+    elif shape == "rectangle":
+        return args[0] * args[1]
+    else:
+        return 0
+
+
+print("De oppervlakte van de cirkel is: " + str(surface("circle", 10)))
+print("De oppervlakte van de vierkant is: " + str(surface("square", 10)))
+print("De oppervlakte van de vierhoek is: " + str(surface("rectangle", 10, 30)))
+print("De oppervlakte van ... is: " + str(surface("...", 50, 50)))
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+De oppervlakte van de cirkel is: 314.0
+De oppervlakte van de vierkant is: 100
+De oppervlakte van de vierhoek is: 300
+De oppervlakte van ... is: 0
+</pre>
+
+== Lambda expressies ==
+Een lambda expressie is een naamloze of anonieme functie. Een lambda functie moet je niet definiëren met het sleutelwoord <code>def</code>, je moet ze geen naam geven en kun je in één regel  opschrijven.
+Een lambda functie kan slechts één enkele regel code bevatten, en de structuur is de volgende:
+<functienaam>=lambda <argument(en)>:<return value>
+
+
+=== Eenvoudig voorbeeld ===
+In onderstaand voorbeeld maken we een naamloze functie (lambda) aan die één optelt aan het argument x.
+
+{{Code
+| Taal=Python
+| Titel=lambda
+| Code=
+<syntaxhighlight lang="Python">
+add_one = lambda x: x + 1
+
+
+print(add_one(5))
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+6
+</pre>
+
+Het sleutelwoord lambda wordt gebruikt om aan te geven dat we een lambda expressie gebruiken om een naamloze functie te definiëren.
+
+=== Lambda expressie als argument van een functie ===
+Een lambda expressie kan als argument worden meegegeven wanneer een functie wordt opgeroepen. Hierdoor hoef je geen aparte functie nog definiëren. Dit is vooral handig als je het maar éénmalig nodig hebt. In onderstaand voorbeeld hebben we een lijst met verschillende namen, die we sorteren met de ingebouwde methode <code>sort()</code>. In normale omstandigheden zal <code>sort</code>, de namen alfabetisch sorteren. De <code>sort()</code> methode heeft een optionele parameter genaamd ''key'', die we kunnen gebruiken om een alternatieve manier van sorteren te bepalen. We gebruiken deze parameter om een lambda als argument mee te geven. Als lambda expressie geven we het volgende mee, <code>lambda x: len(x)</code>. Hier staat x voor een naam in de lijst. Met de ingebouwde functie <code>len()</code> geven we het aantal tekens dat de naam heeft terug. De <code>sort()</code> methode zal dan dit gebruiken als sleutel om te weten hoe hij de namen moet sorteren.
+
+{{Code
+| Taal=Python
+| Titel=Lambda expressie
+| Code=
+<syntaxhighlight lang="Python">
+#  Een lijst met namen.
+names = ['Piet', 'Jan', 'Klaas'] 
+
+#  Voorbeeld van het gebruik van sort().
+names.sort(key = lambda x: len(x))
+
+#  Uitprinten van de namen. Zoals je zult zien zijn de namen nu gesorteerd op het aantal tekens in de naam
+print(names)
+
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+['Jan', 'Piet', 'Klaas']
+</pre>
+
+== Recursieve functies ==
+''Recursieve functies'' zijn functies die zichzelf telkens weer opnieuw oproepen om een bepaalde bewerking te doen tot er aan een bepaalde voorwaarde is voldaan. Onderstaand voorbeeld is een recursieve functie die aftelt van een bepaald getal tot nul.
+
+{{Code
+| Taal=Python
+| Titel=Recursieve functies
+| Code=
+<syntaxhighlight lang=Python>
+def count_down_from_number(number):
+    print(number)
+    if number > 0:
+        count_down_from_number(number-1)
+
+count_down_from_number(10)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+</pre>
+
+In bovenstaand voorbeeld hebben we een functie gedefiniëerd genaamd <code>count_down_from_number()</code> met als parameter een getal waarmee we starten met aftellen. Het print eerst het getal en zolang het getal groter is dan nul, roept de functie zichzelf op met als argument het getal min één. De functie zal dan blijven worden opgeroepen tot het getal nul geworden is en stopt dan ook de recursie.
+
+In theorie kan een functie zich in het oneindige zichzelf oproepen, maar in Python gaat dit niet. Python zal na verloop van tijd zelf een recursie afbreken als het te vaak gebeurt.
+
+Recursie kan ook gebruikt worden om de rij van Fibonacci te berekenen.
+
+{{Code
+| Taal=Python
+| Titel=Recursieve Fibonacci functie
+| Code=
+<syntaxhighlight lang=Python>
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+
+print(fibonacci(10))
+
+</syntaxhighlight>
+}}
+
+'''Output:'''
+Dit programma drukt dus het 11e (10 +1) getal van de reeks van Fibonacci (=55) af.
+
+<pre>
+55
+</pre>
+
+== Typehinting ==
+..
+{{Sub}}

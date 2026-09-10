@@ -2021,20 +2021,6 @@ Niet markeren: Een formele brief, een klachtafhandeling en een juridisch antwoor
 
 ## Interpunctie en opmaak
 
-### Gedachtestreepje als standaardsplitsing `em-dash-density`
-
-Ernst: **always** · Herkomst: nl-bron · en: `em-dash-density`
-
-Het lange streepje wordt de vaste manier om een zin te splitsen: een enkel streepje dat een pointe aanplakt, een gepaarde tussenzin, of een streepje waar een komma of een punt hoort. In het Nederlands weegt dit zwaarder dan in het Engels, want de Nederlandse typografie zet een half kastlijntje met spaties eromheen en de kastlijn zonder spaties is een Engelse gewoonte. De ASCII-vorm met twee koppeltekens hoort er ook bij. Vervang door een punt, een komma of een voegwoord, en gebruik in feitregels de huisseparator // of het middelpunt. De Amerikaanse zetting hoort bij het patroon: het lange streepje zonder spaties tegen de woorden aan, waar het Nederlands een gespatieerd half streepje, een komma, haakjes of een dubbele punt zet.
-
-Signalen: `—maar` · `— en dat is` · `— niet omdat` · `em-dash` · `het eenzame gedachtestreepje` · `lang koppelteken` · `streepje voor een slotpointe` · `gepaarde tussenzin tussen twee streepjes` · `streepje waar een komma of punt hoort` · `meerdere streepjes per alinea` · `**Vet** — zin` · `woord—woord` · `zin—en dan` · `lang streepje zonder spaties eromheen` · `streepje zonder tweede streepje` · `streepje in de laatste vier woorden van de zin`
-
-Voor: De meetup groeit—en dat betekent een nieuwe zaal.
-
-Na: De meetup groeit. Daarom zoeken we een grotere zaal.
-
-Niet markeren: Het halve kastlijntje met spaties eromheen (–) is gewoon Nederlands en telt niet mee, net als een streepjespaar rond een echte tussenzin. Eén los accentstreepje is een normaal stijlmiddel; het patroon zit in de herhaling van het lange streepje. Ook niet markeren: koppeltekens in samenstellingen en getalbereiken, citaten uit een Engelse bron, code en commandoregels, overgenomen uitgeverstypografie, en schrijvers die het streepje aantoonbaar al voor 2023 zo gebruikten. De separator in feitregels is per project vastgelegd: de eigen organisatie gebruikt //, elders is het middelpunt of de komma net zo goed.
-
 ### Punt achter het bulletlabel `list-label-periods`
 
 Ernst: **always** · Herkomst: transfer · en: `list-label-periods`
@@ -2133,6 +2119,20 @@ Voor: Hij zei “het project ligt op schema”, maar zijn collega zei "dat halen
 Na: Hij zei "het project ligt op schema", maar zijn collega zei "dat halen we niet".
 
 Niet markeren: In gezette tekst, in Word, in een tijdschrift of op een site met een typografische pipeline zijn krullende tekens de norm en zegt dit niets. De krulapostrof in ’t, ’n en z’n is gewoon Nederlands en wordt nooit gemeld. Een losse krulapostrof of een enkel krulpaar is geen patroon. Word, Google Docs, Outlook en de tekstinvoer van macOS en iOS zetten rechte aanhalingstekens automatisch om naar krullende, zonder dat de schrijver het merkt. In tekst die daarvandaan komt is het teken bewijs van de editor en niet van de schrijver.
+
+### Gedachtestreepje als standaardsplitsing `em-dash-density`
+
+Ernst: **cluster** · Herkomst: nl-bron · en: `em-dash-density`
+
+Het lange streepje wordt de vaste manier om een zin te splitsen: een enkel streepje dat een pointe aanplakt, een gepaarde tussenzin, of een streepje waar een komma of een punt hoort. In het Nederlands weegt dit zwaarder dan in het Engels, want de Nederlandse typografie zet een half kastlijntje met spaties eromheen en de kastlijn zonder spaties is een Engelse gewoonte. De ASCII-vorm met twee koppeltekens hoort er ook bij. Vervang door een punt, een komma of een voegwoord, en gebruik in feitregels de huisseparator // of het middelpunt. De Amerikaanse zetting hoort bij het patroon: het lange streepje zonder spaties tegen de woorden aan, waar het Nederlands een gespatieerd half streepje, een komma, haakjes of een dubbele punt zet.
+
+Signalen: `—maar` · `— en dat is` · `— niet omdat` · `em-dash` · `het eenzame gedachtestreepje` · `lang koppelteken` · `streepje voor een slotpointe` · `gepaarde tussenzin tussen twee streepjes` · `streepje waar een komma of punt hoort` · `meerdere streepjes per alinea` · `**Vet** — zin` · `woord—woord` · `zin—en dan` · `lang streepje zonder spaties eromheen` · `streepje zonder tweede streepje` · `streepje in de laatste vier woorden van de zin`
+
+Voor: De meetup groeit—en dat betekent een nieuwe zaal.
+
+Na: De meetup groeit. Daarom zoeken we een grotere zaal.
+
+Niet markeren: Het halve kastlijntje met spaties eromheen (–) is gewoon Nederlands en telt niet mee, net als een streepjespaar rond een echte tussenzin. Eén los accentstreepje is een normaal stijlmiddel; het patroon zit in de herhaling van het lange streepje. Ook niet markeren: koppeltekens in samenstellingen en getalbereiken, citaten uit een Engelse bron, code en commandoregels, overgenomen uitgeverstypografie, en schrijvers die het streepje aantoonbaar al voor 2023 zo gebruikten. De separator in feitregels is per project vastgelegd: de eigen organisatie gebruikt //, elders is het middelpunt of de komma net zo goed.
 
 ### Emoji als versiering `emoji-decoration`
 

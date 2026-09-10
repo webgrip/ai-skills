@@ -1,0 +1,78 @@
+{{Index Programmeren in Python}}
+Documentatie is het proces om te documenteren hoe code werkt. Er zijn twee mechanismes om dit in Python te doen namelijk door middel van commentaar en documentatie strings.
+
+== Commentaar ==
+Er zal altijd een moment in de toekomst zijn dat men terug moet kijken naar code die in het verleden geschreven is. Of dit nu code is die men zelf of die een ander geschreven heeft. In beide gevallen kan wat extra toelichting iemand heel veel tijd helpen te besparen bij het schrijven van een programma.
+
+Omwille van o.a. deze reden is het mogelijk om commentaar toe te voegen aan code. Commentaar is gewoon tekst die zich tussen de programmacode bevindt, maar die door de interpreter volledig genegeerd wordt. Het lijkt voor de interpreter dus alsof dergelijke commentaar er helemaal niet staat. Daarom wordt commentaar ook gebruikt om tijdelijk een stuk code over te slaan, zonder deze ''echt'' te verwijderen. Commentaar begint na een ''#'' en loopt door tot het einde van de regel. Een voorbeeld:
+
+<syntaxhighlight lang="Python">
+# Display the knights that come after scene 24
+print("The Knights Who Say Ni!")   # This is also a comment
+# print("This will not be printed")
+</syntaxhighlight>
+
+In dit geval zal enkel de 2de regel van het script uitgevoerd worden. En zal de uitvoer ''The Knights Who Say Ni!'' zijn.
+
+== Richtlijnen ==
+De volgende richtlijnen zijn afkomstig van [https://www.python.org/dev/peps/pep-0008/ PEP 8], en geschreven door {{Wp|Guido van Rossum|Guido van Rossum}}.
+
+* Algemeen
+** Commentaar die de code tegenspreekt is slechter dan geen commentaar. Maak er een prioriteit van dat commentaar up to date is ook wanneer de code wijzigt, of gewijzigd is.
+** Commentaar dient uit volledige zinnen te bestaan. Indien een commentaar een zin is, begint deze met een hoofdletter, tenzij dit een identifier is die zelf niet met een hoofdletter begint.
+** Gebruik twee spaties na een punt dat een zin stopt.
+** Wanneer men Engels schrijft dan geldt {{Wp|Strunk and White|Strunk and White}}.
+** Mensen die Python code schrijven maar die zelf in een niet Engels sprekend land wonen: schrijf a.u.b. commentaar in het Engels, tenzij men er 120% zeker van kan zijn dat de code nooit gelezen zal worden door iemand die uw taal niet eigen is.
+* Inline commentaar
+** Een inline commentaar is commentaar op dezelfde regel als een statement. Inline commentaar moet gescheiden worden van het statement door minstens twee spaties, gevolgd door een # en een enkele spatie.
+** Inline commentaar is onnodig en werkt vaak afleidend indien ze overduidelijke zaken vermelden. Doe dit bijvoorbeeld niet: <syntaxhighlight lang="python">x = x + 1  # Increment x</syntaxhighlight> maar soms is dit wel nuttig: <syntaxhighlight lang="python">x = x + 1  # Compensate for border</syntaxhighlight>
+
+== Documentatie Strings ==
+Maar wat, indien men gewoon wil weten hoe een functie, een klasse of een methode te gebruiken is? Python heeft hiervoor een functionaliteit: documentatie strings. Documentatie strings (of docstrings) worden gebruikt om makkelijk toegankelijke documentatie te maken. Men kan een docstring toevoegen aan een functie, klasse of module door een string toe te voegen als het eerste geïndenteerde statement. Bijvoorbeeld:
+
+<syntaxhighlight lang="Python">
+#!/usr/bin/env python
+# docstringexample.py
+
+"""Example of using documentation strings."""
+
+class Knight:
+    """
+    An example class.
+    
+    Call spam to get bacon.
+    """
+    
+    def spam(self, eggs="bacon"):
+        """Prints the argument given."""
+        print(eggs)
+</syntaxhighlight>
+
+De conventie is om driedubbele aangehaalde strings te gebruiken, omdat het makkelijker is om documentatie die over meerdere lijnen gespreid is te gebruiken.
+
+Om documentatie te raadplegen kan men gebruik maken van de <code>help</code> functie binnen een Python shell met het object waarover men hulp wil als parameter, of men kan het <code>pydoc</code> in de shell gebruiken om de documentatie van die module te krijgen.  Bijvoorbeeld:
+
+<pre>
+edb@lapedb:~$ pydoc ./docstringexample.py
+Help on module docstringexample:
+
+NAME
+    docstringexample - Example of using documentation strings.
+
+FILE
+    /tmp/docstringexample.py
+
+CLASSES
+    Knight
+    
+    class Knight
+     |  An example class.
+     |  
+     |  Call spam to get bacon.
+     |  
+     |  Methods defined here:
+     |  
+     |  spam(eggs='bacon')
+     |      Prints the argument given.
+</pre>
+{{Sub}}

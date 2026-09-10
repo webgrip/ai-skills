@@ -1,0 +1,174 @@
+{{Index Programmeren in Python}}
+== Beslissingen ==
+Een beslissing treedt op wanneer de logica ('''flow''') een aantal verschillende paden kan volgen en de keuze van het pad afhangt van de waarde van een variabele. Hetzelfde gebeurt bij een verkeerslicht, wanneer het groen is mag men doorrijden. Bij rood en oranje moet men stoppen. Dit zijn mogelijke paden die afhangen van de waarde (kleur) van het verkeerslicht. Hetzelfde gebeurt in een Python programma en Python kent natuurlijke statements (in dit geval het <code>if</code> statement) die programmeurs toelaten om dergelijke beslissingen te programmeren. 
+
+== If en else statement ==
+Bij wijze van demonstratie een kort programma welke de absolute waarde van een getal teruggeeft:
+
+{{Code
+|
+| Taal=Python
+| Titel=if statement
+| Code=
+<syntaxhighlight lang="python">
+n = input("Integer? ")
+n = int(n)
+if n < 0:
+    print("The absolute value of",n,"is",-n)
+else:
+    print("The absolute value of",n,"is",n)
+</syntaxhighlight>
+}}
+
+Dit programma kan bijvoorbeeld tot de volgende uitvoer leiden:
+
+<pre>
+Integer? -34
+The absolute value of -34 is 34
+
+Integer? 1
+The absolute value of 1 is 1
+</pre>
+
+Hoe werkt dit nu ? Om te beginnen wordt de gebruiker om input gevraagd, met een prompt '''Integer?'''; vervolgens wordt de invoer gelezen en opgeslagen in de variabele <code>n</code>. Dan wordt er een beslissing genomen op basis van de waarde van <code>n</code>, indien de waarde kleiner is dan nul, dan wordt n vermenigvuldigd met -1 en wordt dit als absolute waarde getoond, indien <code>n</code> reeds positief is, wordt deze waarde rechtstreeks gebruikt.
+
+Iets formeler, Python verifieert of de Booleaanse uitdrukking <code>n < 0</code> <code>True</code> of <code>False</code> is. Indien het <code>if</code> statement gevolgd is door een geïndenteerd blok statements, dan worden deze statements uitgevoerd indien de uitdrukking <code>True</code> is. Het <code>if</code> statement heeft een optioneel <code>else</code> statement gevolgd door een volgend blok geïndenteerde statements. Dit tweede block wordt uitgevoerd indien het de expressie gekoppeld aan het <code>if</code> statement <code>False</code> blijkt te zijn.
+
+Er zijn een aantal manieren om vergelijkingen uit te drukking in een expressie. De volgende tabel geeft deze weer:
+
+{| class="wikitable"
+!operator 
+!function
+|-
+|<
+|kleiner dan
+|-
+|<=
+|kleiner dan of gelijk aan
+|-
+|>
+|groter dan
+|-
+|>= 
+|groter dan of gelijk aan
+|-
+|==
+|gelijk aan
+|-
+|!= 
+|verschillend van
+|-
+|<>
+|een alternatief voor verschillend van
+|}
+
+Los hiervan kan elke Booleaanse expressie gebruikt worden in combinatie met een <code>if</code> statement.
+
+==elif==
+Naast <code>else</code> kan een <code>if</code> statement eveneens gevolgd worden door een <code>elif</code> statement. Dit is de verkorte notatie voor '''else if'''. Wanneer het <code>if</code> statement <code>False</code> is, wordt de expressie meegegeven aan het <code>elif</code> statement geëvalueerd. Indien dit geldig is, wordt het blok geïndenteerde statements uitgevoerd. Indien het <code>False</code> is wordt, indien aanwezig het volgende <code>elif</code> statement bekeken of wordt het <code>else</code> blok uitgevoerd, indien aanwezig. Een <code>if</code> statement kan optioneel gevolgd worden door nul of meerdere <code>elif</code> blokken welke gevolgd kunnen worden door één of geen else blok. Hiernaast kan een blok statements natuurlijk ook andere <code>if</code> blokken bevatten, dit zijn dan '''geneste''' <code>if</code>'s. Bijvoorbeeld:
+{{Code
+|
+| Taal=Python
+| Titel=if statement
+| Code=
+<syntaxhighlight lang="python">
+a = 0
+while a < 10:
+    a = a + 1
+    if a > 5:
+        print(a," > ",5)
+    elif a <= 7:
+        print(a," <= ",7)
+    else:
+        print("Neither test was true")
+</syntaxhighlight>
+}}
+
+en de uitvoer:
+
+<pre>
+1  <=  7
+2  <=  7
+3  <=  7
+4  <=  7
+5  <=  7
+6  >  5
+7  >  5
+8  >  5
+9  >  5
+10  >  5
+</pre>
+
+Merk op dat <code>elif a <= 7</code> alleen getest wordt indien de <code>if</code> expressie <code>False</code> bleek te zijn.
+
+Het volgende voorbeeld maakt gebruik van geneste <code>if</code>'s:
+{{Code
+|
+| Taal=Python
+| Titel=if statement
+| Code=
+<syntaxhighlight lang="python">
+a=0
+while a < 10:
+    a = a + 1
+    print(a), 
+    if a%2==0:
+        if a==2:
+            print("Prime")
+        else:
+            print("Not prime")
+    elif a==1:
+        print("Not prime")
+    else:
+        if a != 9:
+            print("Prime")
+        else:
+            print("Not prime")
+</syntaxhighlight>
+}}
+Hier itereren we over alle getallen tussen 1 en 10 (inclusief). De uiterste <code>if</code> maakt het onderscheid tussen even getallen, het getal 1 en oneven getallen. Bij de even getallen vangen we 2 op als enige priemgetal. Bij de oneven getallen kleiner dan tien wordt 9 opgevangen als zijnde geen priemgetal. Merk op dat er heel wat zinnigere methoden zijn om priemgetallen te bepalen en het gaat hier om een louter didactisch voorbeeld om het nesten van lussen te illustreren.
+
+== Switch ==
+Een <code>switch</code> is een controle statement dat in de meeste programmeertalen aanwezig is en dit wordt gebruikt om een groot aantal <code>if-elif</code> combinaties compacter te maken. Python heeft echter geen standaard ondersteuning voor dit type structuur, maar door intelligent gebruik te maken van een array of een woordenboek kunnen we een switch simuleren. 
+
+<syntaxhighlight lang="python">
+x = 1
+
+def hello():
+  print("Hello")
+
+def bye():
+  print("Bye")
+
+def hola():
+  print("Hola is Spanish for Hello")
+
+def adios():
+  print("Adios is Spanish for Bye")
+
+# Notice that our switch statement is a regular variable, only that we added the function's name inside
+# and there are no quotes
+menu = [hello,bye,hola,adios]
+
+# To call our switch statement, we simply make reference to the array with a pair of parentheses
+# at the end to call the function
+menu[3]()   # calls the adios function since is number 3 in our array.
+
+menu[0]()   # Calls the hello function being our first element in our array.
+
+menu[x]()   # Calls the bye function as is the second element on the array x = 1
+</syntaxhighlight>
+
+Dit werkt omdat Python een referentie naar de functie opslaat in de array op de index in kwestie, door haakjes toe te voegen wordt eigenlijk een functie aanroep gemaakt. Bemerk dat een <code>menu[x]()</code> waarbij <code>x</code> een integer is, eigenlijk equivalent is aan volgende structuur:
+
+<syntaxhighlight lang="python">
+if x==0:
+    hello()
+elif x==1:
+    bye()
+elif x==2:
+    hola()
+else:
+    adios()
+</syntaxhighlight>   
+{{Sub}}

@@ -1,0 +1,41 @@
+__EXPECTED_UNCONNECTED_PAGE__
+
+
+== Economie van Turkije ==
+
+[[Economie van Turkije]] staat vandaag op de voorpagina. Wat je verwacht van de opsomming is een (korte) uiteenzetting van... de economie van Turkije. GDP, levensstandaard, belangrijkste sectoren en exportproducten, iets over de economische vooruitzichten die in deze toenemend neo-autoritaire staat in een instabiele regio steeds slechter lijken.
+
+In plaats daarvan is de opsomming een verzameling optimistische kwalificaties van het land zelf. De geschiedenis van het artikel bekijkend is dat deels logisch, want sinds 2015 is er geen echte uitbreiding meer geweest, en sinds 2010 geen grote redactie/toevoeging. In die tijd zag het er voor Turkije nog veel beter uit. Maar zelfs als je de verouderde informatie niet meerekent is de huidige samenvatting een schandalig promotieverhaal. Dit hoort zeker niet op de voorpagina op deze manier. {{Gebruiker:Woudloper/Handtekening}} 7 jan 2019 09:41 (CET)
+:Werkt de rubriek "Uitgelicht" volgens een draaiboek? Dan krijgen we volgend jaar weer dezelfde artikelen op de voorpagina als dit jaar. In dat geval kan de verantwoordelijke voor die rubriek dit artikel beter nu direct vervangen door een ander, zodat jij volgend jaar niet dezelfde opmerking hoeft te maken. [[Gebruiker:Sijtze Reurich|Sijtze Reurich]] ([[Overleg gebruiker:Sijtze Reurich|overleg]]) 7 jan 2019 11:49 (CET)
+::{{ping|The Banner}} is hier toch actief mee bezig? Wellicht kan hij een ander artikel uitlichten? Wellicht is [[Oosters-orthodoxe kerken]] een beter idee, omdat vandaag Orthodoxe kerstmis is? [[Gebruiker:Edoderoo|Edoderoo]] ([[Overleg gebruiker:Edoderoo|overleg]]) 7 jan 2019 12:03 (CET)
+:::Nou nee, artikelen van de dag is echt iets anders dan Uitgelicht. Zie [[Wikipedia:Wikiproject/Uitgelicht|hier]] de betrokkenen. De suggestie van Edoderoo lijkt me uitstekend en zal ik uitvoeren. [[Gebruiker:Encycloon|''E''nc''y''cl''oo''n]] <small> ([[Overleg gebruiker:Encycloon|overleg]])</small> 7 jan 2019 12:15 (CET)
+:::Ik ben geheel onschuldig in deze zaak! {{Gebruiker:The Banner/handtekening}} 7 jan 2019 20:34 (CET)
+::::Overigens zou Economie van Turkije waarschijnlijk wel genoemd kunnen worden tussen de op te knappen Artikelen van de dag. [[Gebruiker:Encycloon|''E''nc''y''cl''oo''n]] <small> ([[Overleg gebruiker:Encycloon|overleg]])</small> 7 jan 2019 20:54 (CET)
+:::::Het staat je vrij dit artikel toe te voegen aan [[Wikipedia:Artikelen van de dag/Opknappen]]. {{Gebruiker:The Banner/handtekening}} 7 jan 2019 20:57 (CET)
+:Dank allen voor de deskundige hulp en opmerkingen. {{Gebruiker:Woudloper/Handtekening}} 8 jan 2019 05:06 (CET)
+
+== [[m:Special:MyLanguage/Tech/News/2019/02|Tech News: 2019-02]] ==
+
+<section begin="technews-2019-W02"/><div class="plainlinks mw-content-ltr" lang="en" dir="ltr"><div class="plainlinks">
+Latest '''[[m:Special:MyLanguage/Tech/News|tech news]]''' from the Wikimedia technical community. Please tell other users about these changes. Not all changes will affect you. [[m:Special:MyLanguage/Tech/News/2019/02|Translations]] are available.
+
+''Tech News writers, editors and translators wish you a pleasant 2019 year.''
+
+'''Recent changes'''
+* RelatedSites extension has been undeployed. It was used to create interwiki links on Wikivoyage, now handled by Wikidata. [https://phabricator.wikimedia.org/T128326]
+* [[File:Octicons-tools.svg|15px|link=|Advanced item]] MediaWiki logstash logging is moving to a new infrastructure. This is an ongoing deployment. [https://wikitech.wikimedia.org/wiki/File:Logging_infrastructure_design_document.pdf]
+* [[File:Octicons-tools.svg|15px|link=|Advanced item]] [https://codesearch.wmflabs.org codesearch.wmflabs.org] has been updated, with new and updated repositories and a new search options for code. [https://lists.wikimedia.org/pipermail/wikitech-ambassadors/2019-January/002045.html]
+* [[File:Octicons-tools.svg|15px|link=|Advanced item]] On several wikis, an account named "{{int:abusefilter-blocker}}" has been created on December 17 to perform some technical maintenance on AbuseFilter. This account has sysop rights but it's a system user and no human can use it. The account already existed on wikis where AbuseFilter can perform blocks, which are issued using this account. See [[:phabricator:T212268|T212268]] for more information and future plans.
+
+'''Problems'''
+* [[File:Octicons-tools.svg|15px|link=|Advanced item]] In [[:mw:Special:MyLanguage/Extension:AbuseFilter|AbuseFilter]], the "{{int:abusefilter-action-throttle}}" action takes three parameters: count, period and groups. They must now strictly respect the requirements listed [[:mw:Extension:AbuseFilter/Actions#Throttling|on mediawiki.org]]. A list of broken filters is [[:phabricator:P7956|on Phabricator]]. If you're familiar with AbuseFilter, please take a look and fix them. [https://phabricator.wikimedia.org/T209565]
+
+'''Changes later this week'''
+* [[File:Octicons-sync.svg|12px|link=|Recurrent item]] The [[mw:MediaWiki 1.33/wmf.12|new version]] of MediaWiki will be on test wikis and MediaWiki.org from January 8. It will be on non-Wikipedia wikis and some Wikipedias from January 9. It will be on all wikis from January 10 ([[mw:MediaWiki 1.33/Roadmap|calendar]]).
+
+'''Meetings'''
+* Search Platform Office Hours is rescheduled to January 9. [https://lists.wikimedia.org/pipermail/wikitech-l/2019-January/091280.html Check the details] for time and date.
+
+'''''[[m:Special:MyLanguage/Tech/News|Tech news]]''' prepared by [[m:Special:MyLanguage/Tech/News/Writers|Tech News writers]] and posted by [[m:Special:MyLanguage/User:MediaWiki message delivery|bot]] • [[m:Special:MyLanguage/Tech/News#contribute|Contribute]] • [[m:Special:MyLanguage/Tech/News/2019/02|Translate]] • [[m:Tech|Get help]] • [[m:Talk:Tech/News|Give feedback]] • [[m:Global message delivery/Targets/Tech ambassadors|Subscribe or unsubscribe]].''
+</div></div> <section end="technews-2019-W02"/> 7 jan 2019 19:29 (CET)
+<!-- Bericht verzonden door User:Trizek (WMF)@metawiki via de lijst op de pagina https://meta.wikimedia.org/w/index.php?title=Global_message_delivery/Targets/Tech_ambassadors&oldid=18759682 -->

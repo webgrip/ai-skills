@@ -36,5 +36,6 @@ print(f"patterns.json: {len(merged)} entries ({len(new)} for {lang})")
 PY
 
 python3 "$PIPELINE/whats_new.py"
+python3 "$PIPELINE/fp_measure.py" --all --fail > /dev/null || { echo "false-positive limit exceeded; run pipeline/fp_measure.py --all for the report" >&2; exit 1; }
 
 rm -f "$staged" "${staged%.json}.patterns.json"

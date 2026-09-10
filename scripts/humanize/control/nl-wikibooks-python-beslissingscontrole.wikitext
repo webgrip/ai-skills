@@ -1,0 +1,121 @@
+{{Index Programmeren in Python}}
+Python gebruikt zoals zovele programmeertalen Booleaanse logica voor beslissingscontrole. Dit wil zeggen dat de Python interpreter één of meerdere waarden om zo te beslissen of een stuk logica al dan niet uitgevoerd dient te worden.
+
+De beslissingscontrole is gesplitst in twee hoofdgroepen: conditie- en herhalingsgerelateerd. Conditionele logica maakt gebruik van het statement <code>if</code> en een Booleaanse expressie om te beslissen of een code blok al dan niet uitgevoerd dient te worden. Herhaling baseert zich op conditionele constructies door een bepaalde blok uit te voeren wanneer een bepaalde Booleaanse expressie zich herleidt tot <code>true</code>.
+
+==Booleaanse uitdrukkingen==
+Hier is een voorbeeld van enige Booleaanse uitdrukkingen en hun resultaat:
+
+<syntaxhighlight lang="python">
+>>> a = 6
+>>> b = 7
+>>> c = 42
+>>> print(1 , a == 6)
+1 True
+>>> print(2 , a == 7)
+2 False
+>>> print(3 , a == 6 and b == 7)
+3 True
+>>> print(4, a == 7 and b == 7)
+4 False
+>>> print(5, not a == 7 and b == 7)
+5 True
+>>> print(6, a == 7 or b == 7)
+6 True
+>>> print(7, a == 7 or b == 6)
+7 False
+>>> print(8, not (a == 7 and b == 6))
+8 True
+>>> print(9, not a == 7 and b == 6)
+9 False
+</syntaxhighlight>
+
+Wat gebeurt hier ? Het programma bestaat uit een aantal <code>print</code> statements. Elk <code>print</code> statement print een getal en de waarde van een Booleaanse expressie. Het nummer is louter ter referentie in de tekst. Merk op dat elke expressie uiteindelijk resulteert in zijnde <code>True</code> of <code>False</code>. In de eerste twee regels worden twee waarden vergeleken. In het geval dat de twee waarden gelijk zijn is het resultaat <code>True</code> en in het andere geval <code>False</code>.
+
+Vanaf regel drie wordt het iets complexer. De operator <code>and</code> zal enkel <code>True</code> teruggeven indien zowel het statement voor als na de operator beide <code>True</code> zijn. In het andere geval is het resultaat <code>False</code>. Dit kan als volgt samengevat worden:
+
+{| class="wikitable"
+!expressie 
+!resultaat 
+|-  
+|true and true 
+|true 
+|-
+|true and false 
+|false 
+|-
+|false and true 
+|false
+|-
+|false and false 
+|false
+|}
+
+Merk op dat indien de eerste expressie <code>False</code> is, het niet meer nodig is om het tweede deel te testen (het resultaat zal in elk geval <code>False</code> zijn) en Python zal dit dan ook niet doen (dit heet ook wel ''lazy evaluation''). 
+
+Regel vijf maakt gebruik van de <code>not</code> operator. Deze geeft het tegenovergestelde van de expressie weer. De expressie had ook geschreven kunnen worden als <code>print 5, a != 7 and b == 7</code>. Dit geeft de volgende waarheidstabel:
+{| class="wikitable"
+!expressie 
+!resultaat
+|-
+|not true 
+|false 
+|-
+|not false 
+|true
+|}
+
+Regels 6 en 7 maken gebruik van de <code>or</code> operator. Deze geeft <code>True</code> wanneer minstens één van de expressies <code>True</code> is. 
+
+{| class="wikitable"
+!expressie
+!resultaat
+|-  
+|true or true 
+| true
+|-
+|true or false 
+|true
+|-
+|false or true 
+| true  
+|-
+|false or false 
+| false 
+|}
+
+Bemerk dat hier indien de eerste expressie <code>True</code> is, de gehele expressie al <code>True</code> is, onafhankelijk van de andere expressies. Ook hier dient dus het tweede deel niet meer geëvalueerd te worden en Python zal dit dan ook niet doen. 
+
+De volgende twee regels 8 en 9 tonen dat haakjes gebruikt kunnen worden om expressies te groeperen om ervoor te zorgen dat een bepaald deel van de expressie eerst geëvalueerd dient te worden. Merk op dat het gebruik van de haakjes het resultaat van de uitdrukking veranderd heeft. Dit is doordat de <code>not</code> toepassing gekregen heeft op de gehele expressie in plaats van enkel op het gedeelte <code>a = 7</code>. 
+
+Nu volgt een voorbeeld waarin gebruik gemaakt wordt van een Booleaanse uitdrukking:
+
+<syntaxhighlight lang="python">
+## This programs asks a user for a name and a password.
+# It then checks them to make sure that the user is allowed in.
+
+name = input("What is your name? ")
+password = input("What is the password? ")
+if name == "Josh" and password == "Friday":
+    print("Welcome Josh")
+elif name == "Fred" and password == "Rock":
+    print("Welcome Fred")
+else:
+    print("I don't know you.")
+</syntaxhighlight>
+
+Let wel:het statement elif is een samentrekking van else en if.
+
+Voorbeeld output:
+<pre>
+What is your name? Josh
+What is the password? Friday
+Welcome Josh
+
+What is your name? Bill
+What is the password? Saturday
+I don't know you.
+</pre>
+
+Hier wordt eerst een naam en een wachtwoord ingelezen. Vervolgens wordt de input vergeleken met voorgedefinieerde waarden. De uitvoer hangt dus af van het al dan niet correct invoeren en een combinatie van naam en wachtwoord. 
+{{Sub}}

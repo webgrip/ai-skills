@@ -123,7 +123,7 @@
      "keen"
     ],
     "regex": [
-     "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|underscor(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|comprehensive|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
+     "\\b(?:delv(?:e|es|ing|ed)|tapestry|beacon|pivotal|meticulous(?:ly)?|seamless(?:ly)?|showcas(?:e|es|ing|ed)|embark(?:s|ing|ed)?|nestled|bustling|intricate|intricacies|complexities|ever[- ]evolving|enduring|daunting|holistic(?:ally)?|actionable|impactful|learnings|synerg(?:y|ies)|interplay|symphony|game[- ]chang(?:er|ing)|cutting[- ]edge|leverag(?:e|es|ing|ed)|garner(?:s|ing|ed)?|thriving|vibrant|robust|paradigms?|realm|mosaic|labyrinth|cacophony|kaleidoscope|odyssey|bedrock)\\b",
      "\\b(?:best\\s+practices|thought\\s+leader(?:ship|s)?|deep\\s+dive|dives?\\s+deep\\s+into|at\\s+its\\s+core|testament\\s+to|in\\s+the\\s+realms?\\s+of|watershed\\s+moment|marking\\s+a\\s+pivotal\\s+moment|only\\s+time\\s+will\\s+tell|the\\s+future\\s+looks\\s+bright|shed(?:s|ding)?\\s+light\\s+on|paves?\\s+the\\s+way|unpack(?:s|ing)?)\\b",
      "\\b(?:ever[- ]evolving|evolving|changing|shifting|competitive|digital|technological|business|marketing|political|regulatory|current|modern|broader|complex|cultural|culinary|startup|crypto)\\s+landscape\\b",
      "\\bdespite\\s+(?:the\\s+)?challenges[^.]{0,80}?continues?\\s+to\\s+thrive\\b"
@@ -518,7 +518,6 @@
      "going forward"
     ],
     "regex": [
-     "\\bin\\s+order\\s+to\\b",
      "\\bdue\\s+to\\s+the\\s+fact\\s+that\\b",
      "\\b(?:at\\s+this\\s+point\\s+in\\s+time|in\\s+the\\s+event\\s+that|ha(?:s|ve|d)\\s+the\\s+ability\\s+to|with\\s+regard\\s+to|in\\s+terms\\s+of)\\b"
     ],
@@ -536,7 +535,7 @@
       "after": "The system can process batches."
      }
     ],
-    "severity": "always",
+    "severity": "context",
     "scope": "english",
     "sources": [
      "humanizer",
@@ -6638,12 +6637,7 @@
      "– it carries no fact, only an instruction about how to read what follows",
      "is not the neutral midpoint – it is one option among three"
     ],
-    "regex": [
-     "—",
-     "(?<=\\s)–(?=\\s)",
-     "(?<=\\s)--(?=\\s)",
-     "(?:^|\\n)[ \\t]*\\*\\*[^*\\n]{2,60}\\*\\*[ \\t]*(?:—|--)[ \\t]*[a-z]"
-    ],
+    "regex": [],
     "examples": [
      {
       "before": "The term is primarily promoted by Dutch institutions—not by the people themselves. You don't say \"Netherlands, Europe\" as an address—yet this mislabeling continues—even in official documents.",
@@ -6658,7 +6652,7 @@
       "after": "I do think I'm probably right that digitizing late-1800s works is the cause. But it would be really nice if someone who was at OpenAI at the time could confirm that this is what happened."
      }
     ],
-    "severity": "always",
+    "severity": "cluster",
     "scope": "universal",
     "sources": [
      "humanizer",
@@ -7485,12 +7479,7 @@
      "### with no ## above",
      "heading level jumps by two"
     ],
-    "regex": [
-     "\\A(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
-     "(?:^|\\n)#[ \\t][^\\n]*\\n(?:(?!#{1,2}[ \\t])[^\\n]*\\n)*#{3}[ \\t]",
-     "(?:^|\\n)#{2}[ \\t][^\\n]*\\n(?:(?!#{1,3}[ \\t])[^\\n]*\\n)*#{4}[ \\t]",
-     "\\A(?:(?!={1,2}[^=\\n])[^\\n]*\\n)*===[^=\\n]"
-    ],
+    "regex": [],
     "examples": [
      {
       "before": "### Background\nThe project started in 2024.\n### Method\nWe interviewed twelve teams.",

@@ -1,0 +1,408 @@
+{{Index Programmeren in Python}}
+== Dictionary Methoden ==
+=== clear() ===
+'''Doel:'''
+
+Verwijderd alle elementen uit een ''dictionary''.
+
+'''Parameters:'''
+
+''geen''
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=clear()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Uitprinten van de landcodes.
+print(country_codes)
+
+#  Voorbeeld van het gebruik van clear().
+country_codes.clear()
+
+#  Nogmaals uitprinten van de landcodes, zoals je zult zien zijn er geen lanen meer in de dictionary.
+print(country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+<pre>
+{'BE': 'België', 'NL': 'Nederland', 'LU': 'Luxemburg'}
+{}
+</pre>
+
+=== copy() ===
+'''Doel:'''
+
+Deze methode geeft een kopie van de ''dictionary'' terug.
+
+'''Parameters:'''
+
+''geen''
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=copy()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+first_dictionary_of_country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van copy() om een tweede lijst te maken.
+second_dictionary_of_country_codes = first_dictionary_of_country_codes.copy()
+
+#  Uitprinten van de dictionaries, voorlopig bevatten ze nogsteeds dezelfde info.
+print(first_dictionary_of_country_codes)
+print(second_dictionary_of_country_codes)
+
+#  Toevoegen van een landcode aan de tweede dictionary.
+second_dictionary_of_country_codes["DE"] = "Duitsland"
+
+#  Nogmaals uitprinten van de dictionaries, zoals je ziet is er een land toegevoegd aan de tweede dictionary.
+print(first_dictionary_of_country_codes)
+print(second_dictionary_of_country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'BE': 'België', 'LU': 'Luxemburg', 'NL': 'Nederland'}
+{'BE': 'België', 'LU': 'Luxemburg', 'NL': 'Nederland'}
+{'BE': 'België', 'LU': 'Luxemburg', 'NL': 'Nederland'}
+{'BE': 'België', 'LU': 'Luxemburg', 'DE': 'Duitsland', 'NL': 'Nederland'}
+</pre>
+
+=== fromkeys() ===
+'''Doel:'''
+
+Maakt van een lijst, tuple of set een ''dictionary'', waarbij de waardes de sleutels van de ''dictionary'' worden.
+
+'''Parameters:'''
+
+{| class="wikitable"
+|-
+! Parameter !! Omschrijving
+|-
+| iterable || (verplicht) Een ''iterable'' waarvan de waardes worden gebruikt als sleutels in de ''dictionary''.
+|-
+| waarde || (optioneel) Deze waarde wordt aan alle sleutels gegeven als dit wordt gebruikt, standaardwaarde is ''None''.
+|}
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=fromkeys()
+| Code=
+<syntaxhighlight lang="python">
+#  List met landcodes
+country_codes = ["BE", "LU", "NL"]
+
+#  Voorbeeld van het gebruik van fromkeys() rechtstreeks op het datatype dict.
+country_codes_in_a_dictionary = dict.fromkeys(country_codes, "Nog in te vullen")
+
+#  Uitprinten van de dictionary.
+print(country_codes_in_a_dictionary)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+<pre>
+{'LU': 'Nog in te vullen', 'BE': 'Nog in te vullen', 'NL': 'Nog in te vullen'}
+</pre>
+
+=== get() ===
+'''Doel:'''
+
+Met <code>get()</code> kun je een waarde ophalen uit de ''dictionary''.
+
+'''Parameters:'''
+
+{| class="wikitable"
+|-
+! Parameter !! Omschrijving
+|-
+| sleutel || (verplicht) De sleutel van een waarde die je uit de ''dictionary'' wilt halen.
+|-
+| waarde || (optioneel) Deze waarde wordt gegeven als de sleutel niet bestaat in de ''dictionary'' , standaardwaarde is ''None''.
+|}
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=get()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeelden van het gebruik van get().
+print(country_codes.get("BE"))
+print(country_codes.get("DE"))
+print(country_codes.get("BE", "Land niet gevonden."))
+print(country_codes.get("DE", "Land niet gevonden."))
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+België
+None
+België
+Land niet gevonden.
+</pre>
+
+=== items() ===
+'''Doel:'''
+
+Met <code>items()</code> krijg je een ''dict_items'' object terug die de sleutel-waarde relaties bevat. Een ''dict_items'' object is een soort van lijst.
+
+'''Parameters:'''
+
+''geen''
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=get()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden.
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van items().
+items = country_codes.items()
+
+#  Uitprinten van items.
+print(items)
+
+#  Toevoegen van een waarde.
+country_codes["DE"] = "Duitsland"
+
+#  Nogmaals uitprinten van items. Waarden die achteraf worden toegevoegd komen er hier ook bij.
+print(items)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+dict_items([('BE', 'België'), ('LU', 'Luxemburg'), ('NL', 'Nederland')])
+dict_items([('BE', 'België'), ('LU', 'Luxemburg'), ('NL', 'Nederland'), ('DE', 'Duitsland')])
+</pre>
+
+=== keys() ===
+'''Doel:'''
+
+Met de methode <code>keys()</code> krijg je een ''dict_keys'' object terug die de sleutels van de ''dictionary'' bevat. Een ''dict_keys'' object is een soort van lijst.
+
+'''Parameters:'''
+
+''geen''
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=keys()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden.
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van keys().
+keys = country_codes.keys()
+
+#  Uitprinten van de sleutels
+print(keys)
+
+#  Toevoegen van een waarde.
+country_codes["DE"] = "Duisland"
+
+#  Nogmaals uitprinten van de sleutels. Sleutels met waardes die achteraf worden toegevoegd komen er hier ook bij.
+print(keys)
+
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+dict_keys(['BE', 'LU', 'NL'])
+dict_keys(['BE', 'LU', 'NL', 'DE'])
+</pre>
+
+=== pop() ===
+'''Doel:'''
+
+Met <code>pop()</code> kun je een waarde ophalen en verwijderen uit de ''dictionary''.
+
+'''Parameters:'''
+
+{| class="wikitable"
+|-
+! Parameter !! Omschrijving
+|-
+| sleutel || (verplicht) De sleutel van een waarde die je wilt ophalen en verwijderen uit de ''dictionary''.
+|-
+| waarde || (optioneel) Deze waarde wordt gegeven als alternatief als de sleutel niet bestaat in de ''dictionary''.
+|}
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=pop()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden.
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van pop().
+country = country_codes.pop("BE")
+
+#  Uitprinten van de dictionary. Belgie staat er niet meer in.
+print(country_codes)
+
+#  Uitprinten van de waarde die via pop() uit de dictionary is verwijderd.
+print(country)
+
+#  Voorbeeld van het gebruik van pop() met een alternatieve waarde.
+country = country_codes.pop("DE", "Land bestaat niet.")
+
+#  Uitprinten van een waarde die niet bestond in de dictionary.
+print(country)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'NL': 'Nederland', 'LU': 'Luxemburg'}
+België
+Land bestaat niet.
+</pre>
+
+'''Fouten:'''
+
+Als de sleutel niet bestond in de dictionary en je hebt geen alternatieve waarde opgegeven, krijg je een ''KeyError''.
+
+<pre>
+Traceback (most recent call last):
+  File "k.py", line 14, in <module>
+    country = country_codes.pop("DE")
+KeyError: 'DE'
+</pre>
+
+=== popitem() ===
+'''Doel:'''
+
+Met de methode <code>popitem()</code> kun je de laatste waarde ophalen en verwijderen uit de ''dictionary''.
+
+'''Parameters:'''
+
+''geen''
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=popitem()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden.
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van popitem().
+country = country_codes.popitem()
+
+#  Uitprinten van de dictionary. Het laatste element staat er niet meer in.
+print(country_codes)
+
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'BE': 'België', 'LU': 'Luxemburg'}
+</pre>
+
+'''Fouten:'''
+
+Als de ''dictionary'' leeg is, krijg je een ''KeyError''.
+
+<pre>
+Traceback (most recent call last):
+  File "k.py", line 5, in <module>
+    country = country_codes.popitem()
+KeyError: 'popitem(): dictionary is empty'
+</pre>
+
+=== setdefault() ===
+'''Doel:'''
+
+Met <code>setdefault()</code> kun je een waarde ophalen uit de ''dictionary'' met de sleutel. Als de sleutel niet bestaat, wordt die toegevoegd aan de ''dictionary''.
+
+'''Parameters:'''
+
+{| class="wikitable"
+|-
+! Parameter !! Omschrijving
+|-
+| sleutel || (verplicht) De sleutel van een waarde die je wilt ophalen uit de ''dictionary''. Als de sleutel niet bestaat in de ''dictionary'' dan wordt die toegevoegd.
+|-
+| waarde || (optioneel) Als de sleutel niet bestaat, kun je hier ook een waarde meegeven die aan de sleutel wordt gegeven als die wordt toegevoegd aan de dictionary
+|}
+
+'''Voorbeeld:'''
+
+{{Code
+|
+| Taal=Python
+| Titel=setdefault()
+| Code=
+<syntaxhighlight lang="python">
+#  Dictionary met landcodes als sleutels en landnamen als waarden.
+country_codes = {"BE": "België", "LU": "Luxemburg" ,"NL": "Nederland"}
+
+#  Voorbeeld van het gebruik van setdefault().
+country = country_codes.setdefault("DE", "Duitsland")
+
+#  Uitprinten van de dictionary.
+print(country_codes)
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+{'BE': 'België', 'LU': 'Luxemburg', 'NL': 'Nederland', 'DE': 'Duitsland'}
+</pre>
+
+=== update() ===
+..
+
+=== values() ===
+..
+
+{{Sub}}

@@ -1,0 +1,150 @@
+{{Index Programmeren in Python}}
+Dit hoofdstuk bestaat uit twee delen, namelijk berekeningen en bewerkingen. Bij berekeningen gaan we zien hoe we wiskundige berekeningen kunnen doen met Python. Bij bewerkingen gaan we verder in op ''strings'' van het vorige hoofdstuk.
+
+== Berekeningen ==
+
+=== Wiskundige operatoren ===
+Hier is een lijst van wiskundige commando's van Python.
+
+{| class="wikitable"
+|-
+! commando
+! actie
+! voorbeeld
+|-
+| +
+| optellen
+| 1 + 1 = 2
+|-
+| -
+| aftrekken
+| 4 - 3 = 1
+|-
+| *
+| vermenigvuldigen
+| 2 * 2 = 4
+|-
+| /
+| delen
+| 6 / 2 = 3
+|-
+| //
+| vloerdeling
+(naar beneden afronden)
+| 7 // 2 = 3 (2*'''3''' + 1)
+|-
+| %
+| modulo (rest)
+| 7 % 2 = 1 (2*3 + '''1''')
+|- 
+| **
+| exponent
+| 2 ** 3 = (2<sup>3</sup>) = 8
+|}
+
+=== Een praktisch voorbeeld ===
+In het volgende voorbeeld gaan we Python gebruiken als rekenmachine. En waarom proberen we meteen niet om eens iets nuttigs te maken? We gaan een programma schrijven om onze BMI uit te rekenen. (BMI = Body Mass Index. Voor een gezonde volwassene ligt de BMI tussen 18 en 25. Meer dan 25 betekent dat je aan overgewicht lijdt, minder dan 18 betekent dat je te weinig weegt.) BMI wordt berekend aan de hand van jouw lengte en massa.
+In formulevorm:
+
+<math>bmi = \frac{massa_{kg} }{lengte_{m} \times lengte_{m}}</math>
+
+=== Eenvoudige wiskunde ===
+{{Code
+|
+| Taal=Python
+| Titel=While-lus
+| Code=
+<syntaxhighlight lang=python>
+print("Geef uw massa in kilogram: ")
+massa_kg = int(input())
+print("Geef uw lengte in meter: ")
+lengte_m = float(input())
+bmi = massa_kg / (lengte_m * lengte_m)
+print("Uw BMI bedraagt: " + str(bmi) + ".")
+</syntaxhighlight>
+}}
+
+Nu kan je van iedereen de BMI berekenen, simpelweg door jouw zelfgeschreven programma uit te voeren!
+
+Dit programma bevat wel al een paar dingen die we nog niet uitgelegd hadden, en daarover gaan
+de volgende puntjes.
+
+*<span style="font-family:monospace;">int()</span> - deze handige functie zet een tekenreeks om naar een getal. Herinner je je nog dat Python sterk getypeerd is? Python laat niet toe dat we rekenen met tekenreeksen. We kunnen enkel rekenen met getallen. Zelfs als je enkel cijfers intikt, is dat voor Python nog steeds een tekenreeks. <span style="font-family:monospace;">int()</span> herkent echter een tekenreeks die enkel uit cijfers bestaat en maakt er een geheel getal van. Een geheel getal is een getal zonder cijfers na de komma.
+*<span style="font-family:monospace;">float()</span> - deze handige functie zet een tekenreeks om naar een kommagetal.
+*Het stukje <span style="font-family:monospace;">str(</span>lengte_m<span style="font-family:monospace;">)</span> in het print statement. Python laat niet zonder meer toe tekenreeksen aan getallen te plakken met het plus-teken. Probeer in het voorbeeldprogramma maar eens de <span style="font-family:monospace;">str()</span> 
+weg te laten. Je zal een foutmelding krijgen. In dit geval moeten we het getal  omzetten naar een tekenreeks. Dit is precies wat de <span style="font-family:monospace;">str()</span> functie ons biedt.
+
+== Bewerkingen ==
+
+=== Uitvoer in een mooi formaat ===
+In het vorige programma schreven we nog:
+<syntaxhighlight lang=python>
+print("Uw BMI bedraagt: " + str(bmi) + ".")
+</syntaxhighlight>
+
+Er zijn een paar mogelijkheden om dit leesbaarder te programmeren. Het eerste probleem is dat we plus-tekens mengen met str-operatoren wat het geheel wat verwarrend maakt. Bovendien wordt het resultaat, een kommagetal, niet zo mooi afgedrukt, zoals blijkt uit de volgende sessie met ons programma.
+ 
+ Geef uw massa in kg: 70
+ Geef uw lengte in meter: 1.75
+ Uw BMI bedraagt: 22.857142857142858.
+
+Zoveel cijfers na de komma zijn niet alleen belachelijk, het ziet er ook niet uit. Gelukkig heeft Python een % operator die ons kan helpen. Met de % operator kunnen we een tekenreeks formatteren:
+
+<syntaxhighlight lang=python>MijnTekenreeks % (arg1, arg2, ...)</syntaxhighlight>
+
+Afhankelijk van wat we willen formatteren (tekenreeksen, of getallen, of datums, of ...) moeten we een andere formaatcode hanteren. Formaatcodes worden in een ander deel van dit boek uitgebreid behandeld.
+Om ons programma te verbeteren hebben we de formaatcode nodig voor kommagetallen. Dit is de  <code>%f</code> formaatcode:
+<syntaxhighlight lang=python>
+print("Uw BMI bedraagt: %.1f." % (bmi))
+</syntaxhighlight>
+De <code>%.1f</code> formaatcode zorgt ervoor dat een kommagetal wordt afgedrukt met exact 1 cijfer na de komma. De uitvoer ziet er nu veel beter uit:
+
+<pre>
+Geef uw massa in kg: 70
+Geef uw lengte in meter: 1.75
+Uw BMI bedraagt: 22.9
+</pre>
+
+===Tabs===
+Tabs worden gebruikt om output (tekst, getallen of cominaties hiervan) op een nette manier op het scherm en/of printer te tonen. We noemen dit proces uitlijnen. Het gebruiken van een tab in Python geeft aan dat je een vast aantal posities in de output wil overslaan, voordat de volgende output wordt weergegeven, dit zodanig dat de output op een vaste positie per regel wordt weergegeven. Python maakt gebruik van vaste tab stops (afstanden). In het onderstaande voorbeeld worden 1 of meerdere tabs gebruikt.
+
+{{Code
+|
+| Taal=Python
+| Titel=Tabs
+| Code=
+<syntaxhighlight lang=python>
+print("Geen tabs.")
+print("\téén tab")
+print("\t\ttwee tabs")
+print("\t\t\tdrie tabs")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Geen tabs.
+        één tab
+                twee tabs
+                        drie tabs
+</pre>
+
+{{Code
+|
+| Taal=Python
+| Titel=Tabs
+| Code=
+<syntaxhighlight lang=python>
+first_name = input("Geef je voornaam\t:")
+last_name = input("Geef je achternaam\t:")
+</syntaxhighlight>
+}}
+
+'''Output:'''
+
+<pre>
+Geef je voornaam        :Geert
+Geef je achternaam      :Jansen
+</pre>
+{{Sub}}

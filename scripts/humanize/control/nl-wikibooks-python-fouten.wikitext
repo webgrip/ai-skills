@@ -1,0 +1,95 @@
+{{Index Programmeren in Python}}
+In Python zijn er twee types fouten: enerzijds syntaxfouten en anderzijds excepties.
+
+== Syntax fouten ==
+Een syntax fout treedt op wanneer de Python-interpreter concludeert dat de code geen geldige Python code is. Deze check gebeurt ''at runtime''. En een fout wordt pas gevonden wanneer de code geïnterpreteerd wordt. Neem de volgende code als voorbeeld:
+
+{{Code
+| Taal=Python
+| Titel=Fouten
+| Code=
+<syntaxhighlight lang="python">
+a=1
+if a==1:
+    print("correct")
+else:
+    print(not correct)
+</syntaxhighlight>
+}}
+
+In dit geval zou het duidelijk moeten zijn dat in de <code>else</code> een fout staat, print dient gevolgd te worden door een string die door quotes omringd moet zijn. Nu zal dit programma perfect werken zolang <code>a=1</code> bovenaan staat. Maar vervang <code>a=1</code> door <code>a=0</code> en men krijgt volgende uitvoer:
+
+<pre>
+Traceback (most recent call last):
+  File "k.py", line 5, in <module>
+    print(not correct)
+NameError: name 'correct' is not defined
+</pre>
+
+Dit heeft een belangrijke implicatie, in tegenstelling tot een programeertaal zoals bijvoorbeeld C waar een compiler de broncode volledig interpreteert tijdens de compilatie, is dit bij Python niet het geval, wat soms tot onaangename verrassingen kan leiden.
+
+== Excepties ==
+Excepties (uitzonderingen, Engels: exceptions) treden op wanneer de Python interpreter geldige Python code tegenkomt, maar wanneer een externe randvoorwaarde het uitvoeren niet mogelijke maakt. Een aantal voorbeelden zijn: een website openen terwijl geen internetconnectie beschikbaar is, een bestand openen in een directory waar de gebruiker geen rechten toe heeft, ... in tegenstelling tot syntaxfouten zijn excepties niet steeds fataal, het is mogelijk een exceptie op te vangen en in de code iets aan de randvoorwaarde te proberen doen, ook al is het maar een waarschuwing aan de gebruiker geven. 
+
+Het voorbeeld ziet er als volgt uit:
+
+{{Code
+| Taal=Python
+| Titel=Fouten
+| Code=
+<syntaxhighlight lang="python">
+try:
+    f = open("non-existing-file", "r")
+except IOError:
+    print("Sorry that file does not exist")
+</syntaxhighlight>
+}}
+
+Hierbij wordt de code die een exceptie kan v veroorzaken in een <code>try</code> blok geplaatst. Dit wordt gevolgd door <code>except IOError</code>, dit wil zeggen dat indien de code in het try blok een IOError veroorzaakt, deze gedetecteerd zal worden en het print statement zal worden uitgevoerd. Een try blok kan gevolgd worden door één of meerdere <code>except</code> blokken, zo kan op elk type exceptie die ontstaat anders gereageerd worden. Ook kan men except gebruiken zonder specificatie van welke exceptie men wenst te detecteren, op deze manier zal elke exceptie verwerkt worden. Een uitgebreider voorbeeld ziet er als volgt uit:
+
+{{Code
+| Taal=Python
+| Titel=Fouten
+| Code=
+<syntaxhighlight lang="python">
+f = None
+try:
+    f = open("non-existing-file", "r")
+    # Perform I/O
+except:
+    print("An exception occured.")
+else:
+    print("Everything went fine.")
+finally:
+    print("Closing file if needed.")
+    if f != None:
+        f.close()
+</syntaxhighlight>
+}}
+
+Wat gebeurt hier? Eerst zal in het try blok een file geopend worden en kan er I/O gebeuren, indien deze actie een exceptie (eender welke) geeft zal <code>print "An exception occured"</code> uitgevoerd worden. Indien er ''geen'' exceptie ontstond dan zal <code>print "Everything went fine"</code> uitgevoerd worden. Dus wat er ook gebeurt, er zal minimaal iets op het scherm getoond worden. Vervolgens zal geprobeerd worden om de file te sluiten. Dus om samen te vatten:
+
+* Het try blok bevat code die eventueel een exceptie kan veroorzaken.
+* Het except blok wordt opgeroepen indien het try blok een exceptie veroorzaakt die overeen komt met de naam van excepties na het <code>except</code> statement, indien er geen naam opgegeven is, zullen alle excepties verwerkt worden.
+* Indien geen excepties ontstaan worden in het try blok en er is een else blok aanwezig, dan zal dit else blok uitgevoerd worden.
+* In elk geval zal de code uit het <code>finally</code> blok uitgevoerd worden. Hier zal men typisch deïnitialisatie plaatsen. Ook dit blok is optioneel.
+
+Indien een exceptie veroorzaakt wordt in een functie en deze wordt nergens gedetecteerd, dan zal de excepties naar een bovenliggende functie worden doorgegeven en wordt de applicatie gestopt zodra de interpreter een niet afgehandelde exceptie tegenkomt.
+
+Een exceptie kan zelf veroorzaakt worden met behulp van <code>raise</code> gevolgd door de exceptie die men wenst te tonen. Het volgende voorbeeld illustreert een exceptie die veroorzaakt is vanaf de Python prompt:
+
+{{Code
+| Taal=Python
+| Titel=Fouten
+| Code=
+<syntaxhighlight lang="python">
+>>> raise Exception("uh oh")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+Exception: uh oh
+</syntaxhighlight>
+}}
+
+Wanneer men een exceptie verder wenst te beoordelen, bijvoorbeeld men vangt een exceptie op in een <code>except</code> blok en beslist om deze naar de bovenliggende functie door te geven, dan kan met <code>raise</code> zonder argumenten gebruiken, dan zal dat de huidige actieve uitzondering verder verwerkt worden. 
+
+{{Sub}}

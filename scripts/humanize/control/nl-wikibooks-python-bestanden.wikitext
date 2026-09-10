@@ -1,0 +1,157 @@
+{{Index Programmeren in Python}}
+Met Python kun je bestanden openen om code, data, uit te lezen of weg te schrijven. In dit hoofdstuk worden een aantal manieren besproken om dit te doen.
+
+== Bestand openen en uitlezen ==
+Voordat je begint, met een Python script voor bestanden, het bestand in te lezen, moet je eerst een bestand aanmaken om dit uit te kunnen lezen. Maak een bestand aan met naam ''test.txt'', en geef het de volgende inhoud:
+
+<pre>
+Dit is een text bestand met testinformatie.
+Dit is een text bestand met testinformatie.
+Dit is een text bestand met testinformatie.
+Dit is een text bestand met testinformatie.
+</pre>
+
+Een volledig bestand inlezen kan als volgt:
+
+{{Code
+| Taal=Python
+| Titel=open
+| Code=
+<syntaxhighlight lang="Python">
+# Bestand openen en bewaren in een variable
+input_file = open("test.txt", "r")
+
+# De tekst van het bestand uitlezen en bewaren in een variabele.
+input_file_text = input_file.read()
+
+# De tekst in de variabele uitprinten.
+print(input_file_text)
+
+# Bestand sluiten.
+input_file.close()
+</syntaxhighlight>
+}}
+
+Dit script zal eerst het bestand ''test.txt'' openen en bewaren in de variabele ''input_file''. Hiervoor wordt de ingebouwde functie <code>open()</code> gebruikt. Het eerste argument is om aan te geven welk bestand er geopend moet worden. Het tweede argument is hoe je het bestand wilt lezen. In dit voorbeeld hebben we <code>r</code> gebruikt, dit staat voor ''read-onlhy'' wat betekent dat we het bestand enkel kunnen lezen, maar niet aanpassen. Met de methode <code>read()</code> wordt het hele bestand uitgelezen en wordt de tekst in de variable ''input_file_text'' geschreven. Na het uitprinten van de tekst moet het bestand ook worden afgesloten en dit wordt gedaan met de methode <code>close()</code>.
+
+Om slechts een beperkt aantal bytes van een bestand in te lezen kan men het aantal bytes meegeven als parameter aan de <code>read()</code> functie:
+
+{{Code
+| Taal=Python
+| Titel=open
+| Code=
+<syntaxhighlight lang="Python">
+input_file_text = open("testit.txt", "r").read(123)
+print(input_file_text)
+</syntaxhighlight>
+}}
+
+Om een bestand regel per regel te verwerken kan men de functie <code>readlines()</code> gebruiken. Deze functie maakt een array aan, waarvan elke regel een apart element is. Dit voorbeeld zal de inhoud regel per regel tonen (merk op dat print een extra tab introduceert):
+
+{{Code
+| Taal=Python
+| Titel=open
+| Code=
+<syntaxhighlight lang="Python">
+for line in open("testit.txt", "r").readlines():
+    print line
+</syntaxhighlight>
+}}
+
+Een alternatief is om de functie <i>readline()</i> in plaats van een array te gebruiken en de volgende regel in een bestand teruggeeft. 
+
+Normaal gezien begint men bij het begin van een bestand te lezen. Wanneer men gebruik maakt van de functie <code>seek()</code> kan men de huidige lees (start) positie wijzigen. 
+
+<syntaxhighlight lang="Python">
+>>> f=open("/proc/cpuinfo","r")
+>>> f.tell()
+0L
+>>> f.read(10)
+'processor\t'
+>>> f.read(10)
+': 0\nvendor'
+>>> f.tell()
+20L
+>>> f.seek(10)
+>>> f.tell()
+10L
+>>> f.read(10)
+': 0\nvendor'
+>>> f.close()
+>>> f
+<closed file '/proc/cpuinfo', mode 'r' at 0xb7d79770>
+</syntaxhighlight>
+
+In dit voorbeeld wordt het bestand ''/proc/cpuinfo'' geopend, <code>f.tell()</code> vertelt ons dat we in het begin van het bestand beginnen te lezen. Vervolgens lezen we de eerste tien bytes, vervolgens lezen we nogmaals tien bytes. Nu weet <code>f.tell()</code> ons te zeggen dat we ons op positie 20 in het bestand bevinden. Pas nu kan deze positie aangepast worden, door middel van <code>f.seek(10)</code> wordt de positie terug op locatie tien geplaatst, en het is duidelijk dat wanneer van daar gelezen wordt, we hetzelfde resultaat krijgen als de tweede <code>read()</code>. Er wordt namelijk opnieuw een leesoperatie van 10 bytes vanaf byte 10 uitgevoerd). Na gebruik dient het geopende bestand nog gesloten te worden met de functie <code>close()</code>.
+
+Om naar een file te schrijven dient als tweede argument aan <code>open()</code> niet <code>"r"</code> maar <code>"w"</code> (van ''write'') meegegeven te worden:
+
+{{Code
+| Taal=Python
+| Titel=open
+| Code=
+<syntaxhighlight lang="Python">
+output_file_text = "Here's some text to save in a file"
+open("testit.txt", "w").write(output_file_text)
+</syntaxhighlight>
+}}
+
+Wanneer een bestaand bestand op deze manier geopend wordt dan zal de inhoud van dit bestand onherroepelijk overschreven worden, indien men echter zaken wenst toe te voegen aan een bestaand bestand, dan kan met aan <code>open()</code> de paramater <code>"a"</code> (van ''append'') meegeven:
+
+{{Code
+| Taal=Python
+| Titel=open
+| Code=
+<syntaxhighlight lang="Python">
+output_file_text = "Here's some text to add to the existing file."
+open("testit.txt", "a").write(output_file_text)
+</syntaxhighlight>
+}}
+
+== Bestanden testen ==
+Er zijn een aantal functies om een bestand (in de meest ruime zin van het woord dus ook directories, symbolische links, ...) te gaan testen. Op een standaard Linux systeem kan men bijvoorbeeld volgende uitvoer verkrijgen:
+
+<syntaxhighlight lang="python">
+>>> import os
+>>> os.path.exists("/proc/cpuinfo")
+True
+>>> os.path.exists("/")
+True
+>>> os.path.isfile("/")
+False
+>>> os.path.isfile("/proc/cpuinfo")
+True
+>>> os.path.isdir("/")
+True
+>>> os.path.isdir("/proc/cpuinfo")
+False
+>>> os.path.ismount("/")
+True
+>>> os.path.islink("/")
+False
+>>> os.path.islink("/vmlinuz")
+True
+>>> os.path.realpath("/vmlinuz")
+'/boot/vmlinuz-2.6.24-21-generic'
+</syntaxhighlight>
+
+Hierin wordt eerst de <code>os</code> module geïmporteerd. Vervolgens toont <code>os.path.exists()</code> of een bepaald path bestaat. Met <code>isfile()</code>, <code>isdir()</code>, <code>ismount()</code> en <code>islink()</code> kan men achterhalen of het meegegeven path respectievelijk een geldig bestand, directory, ''mount-point'' of een symbolische link is. Met <code>realpath()</code> kan de echte locatie van een symbolische link achterhaald worden.
+
+== Algemene bestandsoperaties ==
+De <code>shutil</code> bibliotheek biedt een aan high-level bestandsoperaties aan, zoals het kopiëren en hernoemen (al dan niet recursief) van bestanden en directories, bijvoorbeeld:
+
+<syntaxhighlight lang="python">
+import shutil
+shutil.move("originallocation.txt","newlocation.txt")
+shutil.copy("original.txt","copy.txt")
+shutil.copytree("dir1","dir2")
+shutil.rmtree("dir1")
+</syntaxhighlight>
+Hiermee wordt een bestand hernoemd, een bestand gekopieerd, een directorie recursief gekopieerd en een directory recursief verwijderd. 
+
+Om een individueel bestand te verwijderen kan men dan weer de <code>os.remove()</code> functie uit de os module gebruiken:
+<syntaxhighlight lang="python">
+import os
+os.remove("file.txt")
+</syntaxhighlight>
+{{Sub}}
