@@ -222,10 +222,28 @@ parity, which for a mode whose own rule is to touch only flagged spans is the ex
 
 The Dutch graders' reasons repeat across seeds: the skill removes the tell and leaves the sentence
 that carried it standing empty (*"de zin bestaat alleen nog omdat het origineel een contrast had"*),
-or keeps the source's phrasing where a Dutch writer would recast it — *"de doorlooptijd van deploys
-teruggebracht van 40 naar 6 minuten"* against the free rewrite's *"duurt een deploy 6 minuten in
-plaats van 40"*. Removing a Dutch tell correctly is not the same as writing the Dutch sentence a
-person would write, and the catalog only teaches the first.
+or keeps the source's construction where a Dutch writer would recast it — *"de doorlooptijd van
+deploys teruggebracht van 40 naar 6 minuten"* against the free rewrite's *"duurt een deploy 6 minuten
+in plaats van 40"*. Both complaints are about clause order, not vocabulary.
+
+**Two obvious explanations were measured and both are wrong.** The first draft of this section blamed
+the Dutch catalog for teaching deletion without recasting; the catalog's own examples refute it, and
+the Dutch half is the better of the two on exactly that axis — 13% of Dutch examples are pure
+deletions against 19% of English ones, the median Dutch example introduces a 0.62 share of new words
+against 0.55, and its median length ratio is 1.00 against 0.90. The second guess, that the Dutch arm
+drowns in findings and over-edits, dies the same way: the scanner fires 12.3 to 16.9 times per 100
+words on the three Dutch cases and 6.2 to 18.6 on the English ones.
+
+**What is left is a conflict inside the procedure.** All three Dutch cases fire the translationese
+layer (`calque-dive-in-nl`, `calque-landscape-journey-nl`, `calqued-imagery-nl`), so the source's
+clause order is itself English-shaped. Two rules in the always-on body then protect precisely that:
+*"Sentence lengths vary as the original's did"* and *"The author's sentence length, hedges and
+vocabulary level stay. Split or join only at a real new action."* Nothing in SKILL.md licenses
+recasting a construction, so the skill strips the calqued vocabulary and leaves the English skeleton
+standing, while the unconstrained baseline rebuilds the sentence the way a Dutch writer builds it and
+the *eindredacteur* rewards it. English never pays this cost: its sources are natively English, so
+conserving their constructions costs nothing. That is a hypothesis with a mechanism, not a measured
+cause — the test is whether licensing the recast moves Dutch rewrite off 0 for 9.
 
 **Flattening is stance, confirmed a third time.** Of the 20 outputs flagged as flattened, only 4 are
 explicable by the sentence-length clause at all; the other 16 came from the grader reporting the

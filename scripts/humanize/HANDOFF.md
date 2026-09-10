@@ -32,10 +32,17 @@ the shipped files byte for byte from `catalog/`.
 
 **Start with Dutch rewrite.** Three seeds of the blind head-to-head say it is the skill's one
 measured defect: Dutch rewrite lost every one of nine case-runs, English rewrite won seven of nine,
-and the difference is Fisher exact *p* = 0.007. The diagnosis in COMPARISON.md is that the catalog
-teaches what to delete and never what to write instead, so a Dutch tell gets removed correctly and
-leaves a hollow sentence standing. The fix is recast examples on the Dutch side — tell → the sentence
-a Dutch writer actually writes — not more tells. Re-measure with three fresh seeds after.
+and the difference is Fisher exact *p* = 0.007.
+
+Do not go looking in the catalog. Two catalog explanations were measured and both are false: the
+Dutch examples recast more than the English ones (13% pure deletions against 19%, new-word share 0.62
+against 0.55), and finding density is comparable across the two languages. The live hypothesis is a
+conflict in the always-on body instead. Every Dutch case fires the translationese layer, so the
+source's clause order is English-shaped, and the conservation rules — *"Sentence lengths vary as the
+original's did"*, *"The author's sentence length … stay. Split or join only at a real new action"* —
+protect the very thing that needs rebuilding. SKILL.md now carries a carve-out saying a construction
+that came out of another language is a tell and recasting it is the fix; **whether that works is
+unmeasured.** Re-run three seeds and check Dutch rewrite against 0 for 9.
 
 Also open and blocking nothing: a native-speaker read of the Dutch catalog, and the missing Dutch
 `official` register in the control corpus. Both are under "Known gaps".
