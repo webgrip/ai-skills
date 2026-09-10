@@ -1,0 +1,303 @@
+{
+ "seed": 3,
+ "constants": {
+  "FLATTEN_RATIO": 0.6,
+  "FLATTEN_FLOOR": 0.3
+ },
+ "routing_misses": [],
+ "leakage": {
+  "rewrite/en-linkedin-post": 0,
+  "rewrite/en-technical-readme": 0,
+  "rewrite/en-incident-writeup": 0,
+  "rewrite/nl-linkedin-post": 0,
+  "rewrite/nl-meetup-description": 0,
+  "rewrite/nl-readme-intro": 0,
+  "edit/en-linkedin-post": 0,
+  "edit/en-technical-readme": 0,
+  "edit/en-incident-writeup": 0,
+  "edit/nl-linkedin-post": 0,
+  "edit/nl-meetup-description": 0,
+  "edit/nl-readme-intro": 0
+ },
+ "rewrite": {
+  "en": [
+   {
+    "case": "en-linkedin-post",
+    "skill": "won",
+    "facts": "3/3",
+    "invented": [],
+    "naturalness": [
+     3,
+     3
+    ],
+    "tells_remaining": [
+     "hollow press-release enthusiasm: \"we're thrilled to announce it\"",
+     "inspirational closer carried over verbatim: \"Let's build it together.\"",
+     "engagement-bait residue carried over verbatim: \"What's your take?\""
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.65,
+     "output": 0.66
+    },
+    "leakage": 0,
+    "reasoning": "B keeps all three facts and adds nothing the original did not say; its remaining tells are inherited clichés (thrilled to announce, let's build it together, what's your take) plus a clumsy double use of \"observability\" in the first paragraph, and it drops the original's optimistic outlook (\"the future looks incredibly bright\") along with the experts/studies paragraph. A reads more like a person but invents claims the original never made (\"take over a large part of the incident work\", \"We'll keep checking that against our own dashboards\", \"more optimistic about this than about anything we've shipped before\") and swaps the plural we for an I, while still carrying vague attribution (\"People who follow this space have called it\", \"there's research showing\"). Since fidelity outranks polish, B is the better rewrite."
+   },
+   {
+    "case": "en-technical-readme",
+    "skill": "lost",
+    "facts": "4/4",
+    "invented": [],
+    "naturalness": [
+     4,
+     4
+    ],
+    "tells_remaining": [
+     "Inspirational closer left dangling as a one-line paragraph: \"Secret management doesn't have to be painful.\"",
+     "Rule of three as bare bullet fragments with no lead-in sentence: \"Secrets never touch disk unencrypted. / Sync completes in under 200ms. / One YAML file, zero dependencies.\""
+    ],
+    "flattened": false,
+    "cv": {
+     "original": 0.36,
+     "output": 0.53
+    },
+    "leakage": 0,
+    "reasoning": "A keeps all four facts and invents nothing, and it strips every headline tell (em dash, \"ever-evolving\", \"stands as a testament\", \"It's worth noting\", \"In conclusion\"). It does flatten the original's emphasis (\"isn't just a technical challenge, it's a trust problem\" becomes a flat \"X and Y\") and drops the ecosystem-improving aside entirely, and the bare bullets plus the orphaned one-line closer make it read like a stripped README rather than a person's prose. B keeps the same four facts without inventing, preserves the trust-over-technical weighting and the closing aside in toned-down form, and flows as paragraphs, so with facts tied B is the better rewrite."
+   },
+   {
+    "case": "en-incident-writeup",
+    "skill": "won",
+    "facts": "3/3",
+    "invented": [],
+    "naturalness": [
+     4,
+     4
+    ],
+    "tells_remaining": [
+     "unevidenced vague claim standing in for the original's 'results speak for themselves': \"The results have been good.\"",
+     "softened not-X-but-Y pivot: \"Preventing every failure is out of reach, so the aim is to fail gracefully.\"",
+     "rule-of-three list carried over verbatim from the original (benign, it is three real actions): \"implemented exponential backoff with jitter, reduced our retry budget from 3 to 1, and established a circuit breaker at the gateway\""
+    ],
+    "flattened": false,
+    "cv": {
+     "original": 0.6,
+     "output": 0.45
+    },
+    "leakage": 0,
+    "reasoning": "B keeps all three facts, invents nothing, stays in the original's \"we\" voice, and preserves every stance (retries made it worse, fail gracefully, technical fix is the easy part, the outage taught a lesson) while dropping the em dash, the \"Here's the thing\" colon reveal and the \"What nobody tells you\" vague attribution. Its remaining weaknesses are a flat \"The results have been good\" and a slightly generic lesson sentence. A reads a touch warmer but fabricates a personal arc the original never states (\"I used to think of resilience as preventing failure. This one changed my mind\", \"more from it than I expected\", \"I had not appreciated\") and switches part of the text from \"we\" to \"I\", so B wins on fidelity, which outweighs A's polish."
+   }
+  ],
+  "nl": [
+   {
+    "case": "nl-linkedin-post",
+    "skill": "lost",
+    "facts": "6/6",
+    "invented": [],
+    "naturalness": [
+     4,
+     4
+    ],
+    "tells_remaining": [
+     "restje niet-x-maar-y als holle openingszin: \"Het is een release, en voor ons ook een nieuwe manier van werken\" (de zin bestaat alleen nog omdat het origineel een contrast had; \"het is een release\" zegt niets)",
+     "engagement-vraag als slot: \"Hoe lang duurt een deploy bij jullie?\" (concreet en daarom mild, maar het blijft de aangeklede versie van \"laat het weten in de reacties\")"
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.59,
+     "output": 0.52
+    },
+    "leakage": 0,
+    "reasoning": "A houdt alle zes feiten, verzint niets en leest als gewoon Nederlands, maar de mening dat dit een belangrijke stap is verdwijnt helemaal in plaats van dat de schrijver hem voor eigen rekening neemt. B houdt dezelfde feiten, zegt \"wij vinden dit een belangrijke stap\" en schrijft \"duurt een deploy 6 minuten in plaats van 40\", wat dichter bij hoe een mens het zegt ligt dan \"de doorlooptijd van deploys teruggebracht van 40 naar 6 minuten\". A heeft het betere slot, B de betere tekst."
+   },
+   {
+    "case": "nl-meetup-description",
+    "skill": "lost",
+    "facts": "8/8",
+    "invented": [
+     "\"en daarna tijd om bij te praten en iets van elkaar op te steken\" – het origineel noemt geen programmaonderdeel na de talks; \"inspiratie, kennis, en verbinding\" is hier omgezet in een concrete borrel/napraat-claim die er niet staat",
+     "\"en daarna tijd om bij te praten en iets van elkaar op te steken\" – het origineel noemt geen borrel of napraat-moment als programma-onderdeel; 'inspiratie, kennis en verbinding' is vage sfeer, geen toezegging dat er na de talks tijd is ingeruimd"
+    ],
+    "naturalness": [
+     4,
+     4
+    ],
+    "tells_remaining": [
+     "staccato-alinea's van één zin, LinkedIn-ritme: \"Keynotes en productdemo's staan er niet op, en niemand komt je iets verkopen.\" / \"De avond is gratis en er is plek voor 35 mensen.\" / \"Meld je aan, en deel het gerust met je netwerk.\"",
+     "licht: \"deel het gerust met je netwerk\" – netwerkjargon uit het origineel is blijven staan in plaats van vertaald naar gewoon Nederlands (\"stuur het door aan wie je erbij wilt hebben\")"
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.57,
+     "output": 0.4
+    },
+    "leakage": 0,
+    "reasoning": "B houdt alle acht feiten en leest vlot, maar voegt met \"daarna tijd om bij te praten\" een programmaonderdeel toe dat het origineel niet belooft, en laat de wij-vorm (\"openen we de deuren\") vallen voor een onpersoonlijk \"gaan de deuren open bij\". A verzint niets, houdt de organisator als spreker overeind en zet het \"geen verkooppraatje\"-standpunt net zo stevig neer; de zin \"dus een keynote of een productdemo hoef je niet te verwachten\" loopt iets stroever dan B, maar feitentrouw weegt zwaarder dan dat. De holle afsluiter \"een avond die je niet wilt missen\" is in beide terecht geschrapt; dat reken ik geen van beide aan als verloren stance."
+   },
+   {
+    "case": "nl-readme-intro",
+    "skill": "tie",
+    "facts": "4/4",
+    "invented": [],
+    "naturalness": [
+     3,
+     3
+    ],
+    "tells_remaining": [
+     "niet-x-maar-y-residu, alleen het streepje is vervangen door 'en': \"is een technische uitdaging, en het is een vertrouwenskwestie\"",
+     "drieslag / ontbullette lijst zonder verbindend weefsel: \"Secrets raken nooit onversleuteld de schijf. Synchronisatie is klaar in onder de 200 ms. Je hebt één YAML-bestand nodig en geen afhankelijkheden.\"",
+     "vertaal-Nederlands ('in under'): \"klaar in onder de 200 ms\" waar een Nederlander 'binnen 200 ms' schrijft",
+     "calque van 'painful': \"hoeft niet pijnlijk te zijn\"",
+     "losse slogan als slot, aan het verkeerde alinea-onderwerp geplakt: \"Secretbeheer hoeft niet pijnlijk te zijn.\""
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.38,
+     "output": 0.49
+    },
+    "leakage": 0,
+    "reasoning": "A houdt alle vier de feiten en verzint niets, maar bereikt die trouw door te schrappen: de toegeving over het ecosysteem en het slot zijn weg, en wat overblijft leest als een ontbullette lijst met 'in onder de 200 ms' en 'pijnlijk' als vertaalresten. B houdt dezelfde vier feiten, bewaart de toegeving en klinkt als Nederlands ('binnen 200 ms', 'hoeft geen pijn te doen', 'Hij werkt met'), maar voegt een 'wij' en 'die vraag blijft' toe die het origineel niet had. Die toevoegingen zijn klein en geen getal of naam; alles afwegend is B de tekst die ik met één streep kan plaatsen, A moet ik herschrijven."
+   }
+  ]
+ },
+ "edit": {
+  "en": [
+   {
+    "case": "en-linkedin-post",
+    "skill": "tie",
+    "facts": "3/3",
+    "invented": [],
+    "naturalness": [
+     3,
+     3
+    ],
+    "tells_remaining": [
+     "hollow intensifier / press-release opener: \"We're thrilled to announce something special.\"",
+     "hollow intensifier: \"relentless work\"",
+     "vague grand claim: \"changes how developers approach observability\"",
+     "vague significance claim with no content: \"We think this matters for the whole industry.\"",
+     "inspirational closer: \"The future looks bright. Let's build it together.\"",
+     "engagement-bait residue plus emoji: \"What's your take? 🚀\"",
+     "hashtag residue: \"#Observability #DevOps\""
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.65,
+     "output": 0.84
+    },
+    "leakage": 0,
+    "reasoning": "A keeps all three numbers and invents nothing, but it also throws away content the original had: that this is a product launch, the \"despite the challenges ahead\" admission, and the claim that other teams see similar gains; what is left is a thinner LinkedIn post with the same opener, closer and rocket. B keeps the same three facts, keeps the launch framing, turns \"experts agree\" and \"studies show\" into honest first-person opinion (\"we think\", \"we expect\"), and keeps the caveat as \"there is plenty left to do\". Both still carry \"relentless\", \"Let's build it together\" and the engagement bait, so on facts and preserved stance B wins."
+   },
+   {
+    "case": "en-technical-readme",
+    "skill": "won",
+    "facts": "4/4",
+    "invented": [],
+    "naturalness": [
+     3,
+     4
+    ],
+    "tells_remaining": [
+     "Bold-label colon bullets in a rule of three under a chatbot-style heading: \"**Key Features:** / **Secure:** … / **Fast:** … / **Simple:** …\"",
+     "Softened not-X-but-Y contrast: \"a trust problem as much as a technical challenge\"",
+     "Reassuring closer with no content: \"Secret management doesn't have to be painful.\"",
+     "Stock metaphor: \"This tool is a bridge between your vault and your cluster.\""
+    ],
+    "flattened": false,
+    "cv": {
+     "original": 0.36,
+     "output": 0.39
+    },
+    "leakage": 0,
+    "reasoning": "Both rewrites keep all four facts and neither adds a number or name, but A turns the original's stated principle (\"secrets should never live in Git\") into a purpose clause (\"sits between your vault and your cluster, so that secrets never have to live in Git\"), a small causal reframing the source does not make; B keeps the claim as a principle. B pays for that fidelity with a leftover bold-label triplet and a marketing closer, so it still reads template-shaped, while A is cleaner on the surface. The original has no first person, and the only dropped material in B is the hollow \"ecosystem continues to evolve\" filler, not a real opinion, so on fidelity-first weighting B edges A."
+   },
+   {
+    "case": "en-incident-writeup",
+    "skill": "lost",
+    "facts": "3/3",
+    "invented": [],
+    "naturalness": [
+     4,
+     3
+    ],
+    "tells_remaining": [
+     "Corporate silver-lining cliche as opener: \"Our recent outage was a learning opportunity.\"",
+     "Standalone aphorism paragraph, a stripped-down 'here's the thing' pronouncement: \"Resilience is about failing gracefully.\""
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.6,
+     "output": 0.55
+    },
+    "leakage": 0,
+    "reasoning": "A keeps all three facts, invents nothing, and stays in first person, but it drops two positions the original took: that resilience is not about preventing failure, and the (hollow but real) claim that the results were good. B keeps the same facts with no inventions and preserves the \"can't prevent failure\" half of the stance, though its \"We can't prevent failure. We can fail gracefully.\" is a contrast pair that still carries a not-X-but-Y rhythm, and \"taught us something\" is a slightly vague hook. On balance B holds more of the author's meaning at similar polish, so it edges A narrowly."
+   }
+  ],
+  "nl": [
+   {
+    "case": "nl-linkedin-post",
+    "skill": "lost",
+    "facts": "6/6",
+    "invented": [],
+    "naturalness": [
+     3,
+     3
+    ],
+    "tells_remaining": [
+     "opbeurend slot / LinkedIn-residu: de raket-emoji aan het eind (\"…werken er sinds maart mee. 🚀\")",
+     "persbericht-opener, 'excited to announce'-sjabloon: \"We zijn blij dat we dit kunnen aankondigen.\"",
+     "holle grote claim, restant van de niet-x-maar-y-constructie: \"Deze release is een nieuwe manier van werken.\" (een release is geen manier van werken; de overdrijving staat er nog, alleen het streepje is weg)"
+    ],
+    "flattened": false,
+    "cv": {
+     "original": 0.59,
+     "output": 0.61
+    },
+    "leakage": 0,
+    "reasoning": "Beide versies bewaren alle zes feiten en verzinnen niets, dus het verschil zit in de toon. B ruimt het gedachtestreepje, de vage experts, de reactie-oproep en de Engelse seriekomma netjes op, maar laat de raket staan en opent met een persberichtzin waardoor het nog altijd als LinkedIn-kopij leest. A klinkt met \"We hebben iets aan te kondigen. Het is voor ons een nieuwe manier van werken.\" het meest als een mens, ondanks de seriekomma die er nog in zit; dat weegt voor mij net zwaarder dan het verlies van \"verheugd\", dat toch al een pr-cliché was."
+   },
+   {
+    "case": "nl-meetup-description",
+    "skill": "lost",
+    "facts": "8/8",
+    "invented": [],
+    "naturalness": [
+     4,
+     4
+    ],
+    "tells_remaining": [
+     "Gedachtestreepje alleen vervangen door een komma, het contrastpatroon met herhaalde ontkenning staat er nog als kommasplits: \"die het werk zelf deden, geen keynotes, geen productdemo's\"",
+     "Opbeurend slot met uitroepteken en LinkedIn-jargon: \"Meld je aan en deel dit met je netwerk!\""
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.57,
+     "output": 0.2
+    },
+    "leakage": 0,
+    "reasoning": "A houdt alle acht feiten en verzint niets, en de wij-vorm (\"openen we\") blijft staan. De positionering \"Eén avond, geen verkooppraatje\" is weg, al dekt \"geen productdemo's\" de strekking gedeeltelijk; het holle \"avond die je niet wilt missen\" en \"het is belangrijk om te benadrukken\" zijn terecht geschrapt. Het enige verschil met B is dat A het streepje inruilt voor een komma en daarmee een hobbelige kommasplits overhoudt, terwijl B er een punt van maakt en zo de laatste streepjesvorm echt kwijt is; feiten zijn gelijk, dus B wint op die ene zin."
+   },
+   {
+    "case": "nl-readme-intro",
+    "skill": "tie",
+    "facts": "4/4",
+    "invented": [],
+    "naturalness": [
+     4,
+     3
+    ],
+    "tells_remaining": [
+     "Verkapte niet-x-maar-y (het origineel had 'niet zomaar X — het is Y', nu 'X, en vooral Y'): \"is een technische uitdaging, en vooral een vertrouwenskwestie\"",
+     "Drieslag met vetgedrukte labels en dubbele punt als reveal, brochurepatroon: \"**Veilig:** … **Snel:** … **Simpel:** …\"",
+     "Slogan als slot, losse opbeurende oneliner zonder inhoud erachter: \"Secretbeheer hoeft niet pijnlijk te zijn.\""
+    ],
+    "flattened": true,
+    "cv": {
+     "original": 0.38,
+     "output": 0.23
+    },
+    "leakage": 0,
+    "reasoning": "Beide versies houden alle vier de feiten vast en verzinnen niets, dus het verschil zit in wat er verder overleeft. B bewaart de toegeving dat het ook een technische uitdaging is en zegt gewoon \"is een brug\" waar A het Engelse \"dient als brug\" laat staan; A laat die nuance vallen en is verder alleen kaler. Wat B nog verraadt is de vetgedrukte Veilig/Snel/Simpel-drieslag en de slogan als slotzin, maar dat is brochuretaal die een mens ook schrijft, geen bewijs van een machine. Het weggelaten slot over het evoluerende ecosysteem was holle vulling, geen echte mening, dus ik reken dat niet als verloren standpunt."
+   }
+  ]
+ }
+}

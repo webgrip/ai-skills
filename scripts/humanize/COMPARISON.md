@@ -91,8 +91,8 @@ build. No source repo tests its own prose this way.
 The earlier runs compared the skill's `edit` mode, which by its own rule touches only flagged spans,
 against an agent given a free rewrite, and graded rhythm with an undefined "flattened" flag at a
 fixed A/B position. Those numbers measured the comparison's design as much as the skill, so they are
-withdrawn. What survived them and is still true: the skill invented no fact in any run where the
-baseline did. Whether it loses on rhythm is measured below, like for like.
+withdrawn. What survived them and the three seeds since: the skill has never fabricated a number, a
+date or a name. Whether it loses on rhythm is measured below, like for like.
 
 The measurement now (`workflows/quality-retest.js`): six slop texts, three English and three Dutch,
 each carrying protected facts. Two comparisons, each giving both arms the identical user request:
@@ -106,7 +106,7 @@ grader reports the first person or an author's stance gone. Any register label, 
 scan output inside the returned text is counted as leakage and reported regardless of grade.
 
 <!-- quality-retest results -->
-**Before the stance fix** (seed 1). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
+**Before the stance rule** (seed 1). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
 
 **Rewrite against a free rewrite**
 
@@ -135,7 +135,7 @@ Skill won 2, lost 2, tied 2 across 1 seed(s).
 Skill won 1, lost 3, tied 2 across 1 seed(s).
 
 
-**After the stance fix** (seed 2). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
+**After the stance rule** (seed 2). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
 
 **Rewrite against a free rewrite**
 
@@ -163,35 +163,96 @@ Skill won 3, lost 3, tied 0 across 1 seed(s).
 
 Skill won 4, lost 1, tied 1 across 1 seed(s).
 
+
+**After the stance rule, second measurement** (seed 3). Routing misses 0; leakage findings 0. Flattening constants: ratio 0.6 to the original's variation, floor 0.3.
+
+**Rewrite against a free rewrite**
+
+| Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
+| --- | --- | ---: | ---: | ---: | --- | ---: |
+| `en-linkedin-post` | won | 3/3 | 0 | 3,3 | True | 0 |
+| `en-technical-readme` | lost | 4/4 | 0 | 4,4 | False | 0 |
+| `en-incident-writeup` | won | 3/3 | 0 | 4,4 | False | 0 |
+| `nl-linkedin-post` | lost | 6/6 | 0 | 4,4 | True | 0 |
+| `nl-meetup-description` | lost | 8/8 | 2 | 4,4 | True | 0 |
+| `nl-readme-intro` | tie | 4/4 | 0 | 3,3 | True | 0 |
+
+Skill won 2, lost 3, tied 1 across 1 seed(s).
+
+**Edit against a minimal edit**
+
+| Case | Skill | Facts kept | Invented | Naturalness | Flattened | Leakage |
+| --- | --- | ---: | ---: | ---: | --- | ---: |
+| `en-linkedin-post` | tie | 3/3 | 0 | 3,3 | True | 0 |
+| `en-technical-readme` | won | 4/4 | 0 | 3,4 | False | 0 |
+| `en-incident-writeup` | lost | 3/3 | 0 | 4,3 | True | 0 |
+| `nl-linkedin-post` | lost | 6/6 | 0 | 3,3 | False | 0 |
+| `nl-meetup-description` | lost | 8/8 | 0 | 4,4 | True | 0 |
+| `nl-readme-intro` | tie | 4/4 | 0 | 4,3 | True | 0 |
+
+Skill won 1, lost 3, tied 2 across 1 seed(s).
+
 <!-- /quality-retest results -->
 
-**What the seeds say.** Facts survived in every skill output of both seeds, 136 of 136; routing missed
-nothing; no process notes leaked into any returned text.
+**What the seeds say.** Three seeds, twelve outputs each: 36 paired case-runs, every pair graded in
+both positions. The skill won 13, lost 15, tied 8. On the 28 decided runs that is a sign-test
+*p* = 0.85 — **against a competent agent given the same request, the skill does not write measurably
+better prose.** Anyone reaching for it for polish alone should know that before they install it.
 
-Seed 1 measured the skill before the stance fix and overturned the earlier diagnosis. In eight of
-the nine outputs flagged as flattened the scanner's sentence-length variation went **up**, by factors
-of 1.05 to 1.53; the flag came from the grader reporting the author's stance gone: *"drops the
-original's only stance (the future looks incredibly bright)"*, *"laat de wij-vorm helemaal vallen"*,
-*"schrapt de hele conclusie"*. A closing sentiment, an engagement line, a "despite the challenges"
-aside and the collective "we" are catalogued tells, and in a short post each is usually the author's
-only opinion; the skill removed the tell and its cargo together. Rhythm was never the problem.
-Stance was.
+What it does do, in every run: **facts 168 of 168 kept, 0 routing misses in 36, 0 leakage in 36.**
+Not one fabricated number, date or name in three seeds. Fidelity and contract discipline are the
+skill's measured properties; better prose is not.
 
-Seed 2 measured the skill after SKILL.md step 5 and the stance gotcha were rewritten to keep the
-opinion and change only the form. Stance-driven flags fell from eight to three; the two rewrite ties
-resolved into wins; edit went from 1 won / 3 lost to 4 won / 1 lost. The cost is visible in the
-Invented column: two outputs carried an invention in seed 1, six in seed 2, most of them framing
-("We're launching today", "those two numbers are where it starts", "en daarna tijd om bij te
-praten"). Telling the model to keep an opinion and change its form invites it to supply form. The
-rule stays, because losing the writer's only opinion is the quieter and worse failure, and the
-inventions are the next thing to measure against.
+**One real defect, and it is Dutch rewrite.** Split the rewrite comparison by language and the
+verdicts stop being noise:
 
-A language split appeared in seed 2: English rewrite won 3 of 3, Dutch rewrite lost 3 of 3. The
-Dutch grader's reasons are consistent: the skill stayed too close to the source, copying a
-press-release opening word for word and softening the not-x-but-y instead of removing it, while the
-free rewrite said it the way a person would ("Een deploy duurde bij ons 40 minuten, nu 6"). That is
-the open problem for the Dutch half, and seed 3 (same skill as seed 2) is the check on whether it
-holds.
+| Comparison | Won | Lost | Tied | Sign test |
+| --- | ---: | ---: | ---: | ---: |
+| Rewrite, English | 7 | 2 | 0 | *p* = 0.18 |
+| Rewrite, Dutch | 0 | 6 | 3 | *p* = 0.031 |
+| Edit, English | 2 | 2 | 2 | *p* = 1.0 |
+| Edit, Dutch | 3 | 4 | 2 | *p* = 1.0 |
+
+Dutch rewrite never won a single case-run in three seeds. English rewrite won seven of nine. The
+difference between the two is Fisher exact *p* = 0.007, so the language split is the one finding here
+that survives contact with statistics; the English advantage taken alone does not (*p* = 0.18), and
+neither edit comparison differs from chance. Both edit rows answer the question the withdrawn runs
+could not: measured like for like, **edit mode shows no rhythm loss and no advantage** — it is
+parity, which for a mode whose own rule is to touch only flagged spans is the expected result.
+
+The Dutch graders' reasons repeat across seeds: the skill removes the tell and leaves the sentence
+that carried it standing empty (*"de zin bestaat alleen nog omdat het origineel een contrast had"*),
+or keeps the source's phrasing where a Dutch writer would recast it — *"de doorlooptijd van deploys
+teruggebracht van 40 naar 6 minuten"* against the free rewrite's *"duurt een deploy 6 minuten in
+plaats van 40"*. Removing a Dutch tell correctly is not the same as writing the Dutch sentence a
+person would write, and the catalog only teaches the first.
+
+**Flattening is stance, confirmed a third time.** Of the 20 outputs flagged as flattened, only 4 are
+explicable by the sentence-length clause at all; the other 16 came from the grader reporting the
+first person or the author's stance gone, and in several the scanner's variation *rose* (0.65 → 0.84,
+0.38 → 0.49). The rhythm hypothesis is dead three times over.
+
+**The stance rule shows no measurable effect.** SKILL.md step 5 was rewritten after seed 1 to keep
+the opinion and change only the form. Stance-driven flags went 7 of 12 (before), then 3 of 12, then
+6 of 12. Seed 3 sits inside seed 1's range, so the middle seed was the outlier and the fix cannot be
+credited with anything. It stays because losing the writer's only opinion is the quieter and worse
+failure and the rule is right on its face, but **it is unverified, not verified.**
+
+**The seed-2 invention spike was noise.** Distinct invented claims per seed: 2, 8, 1. Every one is an
+inferred mechanism or a filled gap — *"en daarna tijd om bij te praten"*, *"those two numbers are
+where it starts"* — and several were marked borderline by the grader that raised them, one noting
+both arms did it. Facts stayed 56 of 56 in all three seeds. The seed-2 reading that the stance rule
+had bought invention with fidelity does not hold.
+
+**Only two case verdicts are stable across all three seeds**: `rewrite/en-incident-writeup` won 3/3
+and `edit/nl-meetup-description` lost 3/3. Every other case flips with the seed, which is why single
+runs of this harness should not be quoted — the earlier four rounds flipped 3/3, 0/3, 1/3, 2/3 for
+the same reason, on top of their design faults.
+
+**What to do next, in order.** Fix Dutch rewrite: the catalog says what to delete and never what to
+write in its place, so the Dutch half needs recast examples (tell → the sentence a Dutch writer
+actually writes), not more tells. Then re-measure with three fresh seeds; a Dutch rewrite that reaches
+parity would be the first evidence the skill improves prose in either language.
 
 ## What we did not take
 
