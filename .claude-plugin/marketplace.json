@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.8.0",
+      "version": "1.8.1",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -105,7 +105,7 @@
       "name": "humanize",
       "source": "./skills/humanize",
       "description": "Detects and removes the tells of AI-generated writing in English and Dutch, or keeps them out while drafting: a consolidated catalog (negative parallelism, colon reveals, rule of three, em-dash density, hollow intensifiers, promotional and vague-attribution content, chatbot artifacts, and for Dutch the translationese layer of English-shaped Dutch), a register-aware procedure with fact and voice protection, and a dependency-free regex scanner for CI.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "keywords": [
         "writing",

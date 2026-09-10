@@ -1,5 +1,12 @@
 # humanize
 
+## 0.2.1 (2026-09-10)
+
+### 🐛 Bug Fixes
+
+- **humanize:** een constructie uit een andere taal is een tell, geen stem (a364f527)
+
+
 ## 0.2.0 (2026-09-10)
 
 ### 🚀 Features
