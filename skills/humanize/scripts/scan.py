@@ -3,14 +3,15 @@
 
 Usage:
     scan.py [--lang en|nl|auto] [--json] [--fail-on always|cluster|context|never]
-            [--patterns FILE] [FILE ...]
+            [--domain wikipedia|fiction|all] [--patterns FILE] [FILE ...]
 
 Reads the files (or stdin) and reports every match of the patterns in
 patterns.json next to this script, plus density metrics the regexes cannot
 express (em dashes per 500 words, sentence-length variance, paragraph-length
 uniformity). Fenced code blocks and blockquotes are skipped: quoted text and
 code are never the writer's own prose. Patterns about Markdown appearing on a
-surface that does not render it are skipped when the input is Markdown. Exit status 1 when a finding at or
+surface that does not render it are skipped when the input is Markdown.
+Patterns that only make sense on Wikipedia or in fiction load with --domain. Exit status 1 when a finding at or
 above --fail-on exists (default: always).
 """
 
@@ -43,13 +44,15 @@ def is_markdown(name, text):
     return bool(re.search(r"^(?:#{1,6} |[-*] |\d+\. |```)", text, re.M))
 
 
-def load_patterns(path, lang, markdown):
+def load_patterns(path, lang, markdown, domains=()):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     compiled = []
     for entry in data["patterns"]:
         if lang not in entry["lang"] and "*" not in entry["lang"]:
             continue
         if markdown and entry.get("skip_on_markdown"):
+            continue
+        if entry.get("domain") and entry["domain"] not in domains:
             continue
         for expression in entry["regex"]:
             compiled.append((entry, re.compile(expression, re.IGNORECASE)))
@@ -139,6 +142,7 @@ def main():
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--fail-on", choices=list(SEVERITY_RANK), default="always")
     parser.add_argument("--patterns", default=str(Path(__file__).with_name("patterns.json")))
+    parser.add_argument("--domain", action="append", choices=["wikipedia", "fiction", "all"], default=[])
     args = parser.parse_args()
 
     inputs = [(f, Path(f).read_text(encoding="utf-8")) for f in args.files] or [("stdin", sys.stdin.read())]
@@ -147,7 +151,8 @@ def main():
     for name, text in inputs:
         lang = detect_language(text) if args.lang == "auto" else args.lang
         markdown = is_markdown(name, text)
-        findings = find_matches(text, load_patterns(args.patterns, lang, markdown))
+        domains = ("wikipedia", "fiction") if "all" in args.domain else tuple(args.domain)
+        findings = find_matches(text, load_patterns(args.patterns, lang, markdown, domains))
         stats = metrics(text)
         worst = max([worst] + [SEVERITY_RANK[f["severity"]] for f in findings])
         results.append({"file": name, "lang": lang, "markdown": markdown, "metrics": stats, "findings": findings})

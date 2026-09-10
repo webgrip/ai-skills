@@ -68,10 +68,13 @@ def render_entry(entry, lang):
     return "\n".join(lines)
 
 
-def render_catalog(catalog, lang, title, order, note=""):
+def visible(entry, domains):
+    return entry.get("scope") != "language-specific" and (entry.get("domain") or "general") in domains
+
+
+def render_catalog(catalog, lang, title, order, note="", domains=frozenset({"general"})):
     L = LABELS[lang]
-    if lang == "en":
-        catalog = {"categories": {c: [e for e in v if e.get("scope") != "language-specific"] for c, v in catalog["categories"].items()}}
+    catalog = {"categories": {c: [e for e in v if visible(e, domains)] for c, v in catalog["categories"].items()}}
     cats = [c for c in order if catalog["categories"].get(c)]
     out = [f"# {title}", "", L["intro"], ""] + ([note, ""] if note else []) + [
            f"{L['contents']}: " + " · ".join(f"[{CATEGORY_TITLES[lang][c]}](#{anchor(CATEGORY_TITLES[lang][c])}) ({len(catalog['categories'][c])})" for c in cats), ""]
@@ -96,19 +99,23 @@ def scanner_patterns(catalog, lang, skip_language_specific=False):
                 re.compile(r, re.IGNORECASE)
             row = {"id": e["id"], "lang": [lang], "category": c, "severity": e[L["sevkey"]], "regex": regex,
                    "hint": e[L["definition"]].split(". ")[0][:140]}
+            if e.get("domain"):
+                row["domain"] = e["domain"]
             row.update(e.get("flags", {}))
             rows.append(row)
     return rows
 
 
 if __name__ == "__main__":
-    lang, src, md_out, title = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    lang, src, md_out, title, domains_out = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5]
     order = ["syntax", "rhetoric", "vocabulary", "structure", "punctuation-format", "content", "artifacts", "translationese"]
     catalog = json.load(open(src))
-    note = ("The translationese layer is per language: it is the shape a model produces when it generates "
-            "English-formed text in another language. The Dutch instance is in [patterns-nl.md](patterns-nl.md); "
-            "entries scoped to one language are held in the catalog data and left out here.") if lang == "en" else ""
+    note = ("Entries that only make sense on Wikipedia or in fiction are held in the catalog data and rendered "
+            "separately in the domains file next to this one; the scanner loads them only with --domain.")
     Path(md_out).write_text(render_catalog(catalog, lang, title, order, note))
+    domains_title = ("English catalog, domain-scoped entries (Wikipedia, fiction)" if lang == "en"
+                     else "Nederlandse catalogus, domeingebonden entries (Wikipedia, fictie)")
+    Path(domains_out).write_text(render_catalog(catalog, lang, domains_title, order, "", frozenset({"wikipedia", "fiction"})))
     rows = scanner_patterns(catalog, lang, skip_language_specific=(lang == "en"))
     print(f"{md_out}: {sum(len(v) for v in catalog['categories'].values())} entries, {len(rows)} scanner entries, {sum(len(r['regex']) for r in rows)} regexes")
     json.dump(rows, open(Path(sys.argv[2]).with_suffix(".patterns.json"), "w"), ensure_ascii=False, indent=1)

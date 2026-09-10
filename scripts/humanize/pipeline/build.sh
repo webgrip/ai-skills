@@ -8,8 +8,8 @@ SKILL="$ROOT/skills/humanize"
 
 lang=${1:?usage: build.sh <en|nl>}
 case "$lang" in
-  en) src="$HUMANIZE/catalog/catalog-en.json"; out=patterns-en.md; title="English catalog: the tells, by category" ;;
-  nl) src="$HUMANIZE/catalog/catalog-nl.json"; out=patterns-nl.md; title="Nederlandse catalogus: de tells, per categorie" ;;
+  en) src="$HUMANIZE/catalog/catalog-en.json"; out=patterns-en.md; domains=patterns-en-domains.md; title="English catalog: the tells, by category" ;;
+  nl) src="$HUMANIZE/catalog/catalog-nl.json"; out=patterns-nl.md; domains=patterns-nl-domains.md; title="Nederlandse catalogus: de tells, per categorie" ;;
   *)  echo "lang must be en or nl" >&2; exit 2 ;;
 esac
 [ -f "$src" ] || { echo "missing $src" >&2; exit 1; }
@@ -18,7 +18,7 @@ staged="$HUMANIZE/catalog/.staged-$lang.json"
 cp "$src" "$staged"
 python3 "$PIPELINE/clean.py" "$staged" "$lang"
 python3 "$PIPELINE/apply_additions.py" "$staged" "$lang" "$PIPELINE/additions.json"
-python3 "$PIPELINE/render.py" "$lang" "$staged" "$SKILL/$out" "$title"
+python3 "$PIPELINE/render.py" "$lang" "$staged" "$SKILL/$out" "$title" "$SKILL/$domains"
 
 python3 - "$SKILL" "$lang" "$staged" <<'PY'
 import json

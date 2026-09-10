@@ -132,7 +132,8 @@
     "<sup>\\[\\d+\\]</sup>",
     "\\[\\[categorie:[^\\]\\n]{1,60}\\]\\]"
    ],
-   "hint": "Opmaak die het model niet beheerst komt er verzonnen, verminkt of half toegepast uit"
+   "hint": "Opmaak die het model niet beheerst komt er verzonnen, verminkt of half toegepast uit",
+   "domain": "wikipedia"
   },
   {
    "id": "bypass-trick-characters",
@@ -614,7 +615,8 @@
     "=\\s*source_[a-z_]{3,30}\\b",
     "<!--\\s*add\\b[^>]{0,80}(?:if available|if reliably sourced|with citation)[^>]{0,40}-->"
    ],
-   "hint": "A citation, infobox or front-matter field holding a stub instead of a value: 'url=URL', 'INSERT_SOURCE_URL_30', 'SOURCE_PUBLISHER', 'PASTE_S"
+   "hint": "A citation, infobox or front-matter field holding a stub instead of a value: 'url=URL', 'INSERT_SOURCE_URL_30', 'SOURCE_PUBLISHER', 'PASTE_S",
+   "domain": "wikipedia"
   },
   {
    "id": "placeholder-in-metadata-field",
@@ -631,7 +633,8 @@
     "(?<![a-zà-ÿ])datum\\s?=\\s?onbekend(?![a-zà-ÿ])",
     "(?m)^(?:title|description|author|slug):\\s*(?:untitled|todo|your name|jouw naam|tbd|lorem)"
    ],
-   "hint": "Een bron-, infobox- of frontmatterveld draagt een stomp in plaats van een waarde: \"url=URL\", \"BRON_URL_HIER\", \"uitgever=UITGEVER\", \"datum=on"
+   "hint": "Een bron-, infobox- of frontmatterveld draagt een stomp in plaats van een waarde: \"url=URL\", \"BRON_URL_HIER\", \"uitgever=UITGEVER\", \"datum=on",
+   "domain": "wikipedia"
   },
   {
    "id": "reasoning-chain-leak",
@@ -767,7 +770,8 @@
     "\\|\\s?(?:bezocht|geraadpleegd)datum\\s?=\\s?\\d{1,2} [a-z]{3,10} \\d{4}",
     "(?<![a-zà-ÿ])laatst bijgewerkt\\s*:\\s*[a-z]{3,10}\\s+20\\d\\d"
    ],
-   "hint": "Een nieuw document draagt metadata die het niet verdiend kan hebben: een onderhouds- of stijlsjabloon met een datum van voor het bestaan van"
+   "hint": "Een nieuw document draagt metadata die het niet verdiend kan hebben: een onderhouds- of stijlsjabloon met een datum van voor het bestaan van",
+   "domain": "wikipedia"
   },
   {
    "id": "templated-change-note",
@@ -787,7 +791,8 @@
     "\\bconcise edit summary\\b",
     "\\bi revised the content to\\b"
    ],
-   "hint": "A change description written as exhaustive procedural prose rather than a terse human note"
+   "hint": "A change description written as exhaustive procedural prose rather than a terse human note",
+   "domain": "wikipedia"
   },
   {
    "id": "templated-change-note",
@@ -802,7 +807,8 @@
     "(?<![a-zà-ÿ])uitgebreide (?:herschrijving|opschoning|revisie)(?![a-zà-ÿ])",
     "(?<![a-zà-ÿ])zonder (?:de )?(?:inhoud|betekenis|strekking) (?:te )?(?:wijzigen|aan te tasten|te veranderen)(?![a-zà-ÿ])"
    ],
-   "hint": "Een wijzigingsbeschrijving (commitbericht, PR-tekst, bewerkingssamenvatting) geschreven als uitputtend procedureel proza in plaats van een k"
+   "hint": "Een wijzigingsbeschrijving (commitbericht, PR-tekst, bewerkingssamenvatting) geschreven als uitputtend procedureel proza in plaats van een k",
+   "domain": "wikipedia"
   },
   {
    "id": "unfilled-placeholder",
@@ -924,7 +930,8 @@
     "een symfonie van",
     "baken van (hoop|licht)"
    ],
-   "hint": "Standaardformuleringen en overversierde beschrijving zonder iets eronder: alles wat de tekst bedoelt staat op de bladzijde, er zit geen laag"
+   "hint": "Standaardformuleringen en overversierde beschrijving zonder iets eronder: alles wat de tekst bedoelt staat op de bladzijde, er zit geen laag",
+   "domain": "fiction"
   },
   {
    "id": "diff-anchored-writing",
@@ -1081,7 +1088,8 @@
    "regex": [
     "\\bas\\s+you\\s+know,\\s+(?:doctor|captain|professor|father|mother)\\b"
    ],
-   "hint": "Characters are interchangeable: no distinct idiolect, verbal tic, dialect or pattern of evasion separates one speaker from another, and spee"
+   "hint": "Characters are interchangeable: no distinct idiolect, verbal tic, dialect or pattern of evasion separates one speaker from another, and spee",
+   "domain": "fiction"
   },
   {
    "id": "flat-dialogue-and-exposition",
@@ -1093,7 +1101,8 @@
    "regex": [
     "(?<![a-zà-ÿ])zoals (je|u|jullie|we) (weet|weten)(?![a-zà-ÿ])"
    ],
-   "hint": "Personages zijn onderling verwisselbaar: geen eigen woorden, geen tic, geen dialect, geen eigen manier van ontwijken onderscheidt de een van"
+   "hint": "Personages zijn onderling verwisselbaar: geen eigen woorden, geen tic, geen dialect, geen eigen manier van ontwijken onderscheidt de een van",
+   "domain": "fiction"
   },
   {
    "id": "gratuitous-universals-and-category-errors",
@@ -1321,7 +1330,8 @@
     "\\bmirroring\\s+(?:her|his|their)\\s+(?:unspoken\\s+)?(?:grief|mood|sorrow|anxiety|turmoil|sadness)\\b",
     "\\brain\\s+(?:pattered|drummed|tapped)\\s+(?:softly|gently)\\b"
    ],
-   "hint": "Weather, rooms and objects exist only to mirror a character's feeling: rain that matches grief, a room that is cold because the marriage is"
+   "hint": "Weather, rooms and objects exist only to mirror a character's feeling: rain that matches grief, a room that is cold because the marriage is",
+   "domain": "fiction"
   },
   {
    "id": "pathetic-fallacy-mood-setting",
@@ -1336,7 +1346,8 @@
     "tikte (zacht(jes)? )?tegen het raam",
     "net zo grauw als (haar|zijn) stemming"
    ],
-   "hint": "Weer, kamers en voorwerpen bestaan alleen om het gevoel van een personage te spiegelen: regen bij verdriet, een kamer die koud is omdat het "
+   "hint": "Weer, kamers en voorwerpen bestaan alleen om het gevoel van een personage te spiegelen: regen bij verdriet, een kamer die koud is omdat het ",
+   "domain": "fiction"
   },
   {
    "id": "promotional-language",
@@ -2014,7 +2025,8 @@
    "regex": [
     "(?:^|\\n)[ \\t]*[a-z][a-z .'-]{0,30}:[ \\t]*\\((?:defensive(?:ly)?|frustrated|angr(?:y|ily)|sigh(?:s|ing)?|laugh(?:s|ing)?|paus(?:es|ing)|nervous(?:ly)?|smil(?:es|ing)|sarcastic(?:ally)?|calm(?:ly)?|quiet(?:ly)?|excited(?:ly)?|confused|annoyed|hesitant(?:ly)?|thoughtful(?:ly)?|firmly|softly|shrugs?|nods?)\\)"
    ],
-   "hint": "Dialogue tagged with a bracketed emotion before the line, script-style ('Bob: (defensive) Why should I?'), in prose that is not a screenplay"
+   "hint": "Dialogue tagged with a bracketed emotion before the line, script-style ('Bob: (defensive) Why should I?'), in prose that is not a screenplay",
+   "domain": "fiction"
   },
   {
    "id": "parenthetical-stage-directions",
@@ -2026,7 +2038,8 @@
    "regex": [
     "(?m)^[a-zà-ÿ]+:\\s*\\((?:verdedigend|geïrriteerd|zuchtend|lachend|aarzelend|fluisterend|glimlachend|schouderophalend)\\)"
    ],
-   "hint": "Dialoog met een emotie tussen haakjes voor de regel, als in een scenario, in proza dat geen scenario is"
+   "hint": "Dialoog met een emotie tussen haakjes voor de regel, als in een scenario, in proza dat geen scenario is",
+   "domain": "fiction"
   },
   {
    "id": "punt-achter-fragmentbullet-nl",
@@ -2398,6 +2411,20 @@
     "(?<![a-zà-ÿ])(?:jarenlang (?:deed|dacht|deden) ik|toen viel het kwartje|dat was mijn wake-?upcall|tot ik ontdekte dat)(?![a-zà-ÿ])"
    ],
    "hint": "Het stuk opent met een toegegeven fout of een jarenlange dwaling die alleen bestaat om de omslag naar het advies te dragen: Jarenlang deed i"
+  },
+  {
+   "id": "beyond-mere-escalation",
+   "lang": [
+    "en"
+   ],
+   "category": "rhetoric",
+   "severity": "always",
+   "regex": [
+    "단순한 [^\\n.]{1,20}[을를] 넘어",
+    "\\b(?:more than just|beyond (?:a )?mere)\\b",
+    "\\bmeer dan (?:alleen|zomaar)\\b"
+   ],
+   "hint": "Mid-sentence escalation that upgrades a thing by dismissing a smaller version of it: '단순한 X를 넘어 Y', a calque of English 'beyond mere X' and "
   },
   {
    "id": "booster-density-nl",
@@ -3121,7 +3148,8 @@
     "\\baddress(?:ed|ing) reviewer feedback\\b",
     "\\bper reviewer feedback\\b"
    ],
-   "hint": "When the provenance or quality of a contribution is questioned, the reply argues about the process instead of the text: asking the critic to"
+   "hint": "When the provenance or quality of a contribution is questioned, the reply argues about the process instead of the text: asking the critic to",
+   "domain": "wikipedia"
   },
   {
    "id": "review-process-deflection",
@@ -3133,7 +3161,8 @@
    "regex": [
     "(?<![a-zà-ÿ])(?:geef\\s+(?:alsjeblieft\\s+)?precies\\s+aan\\s+welke|laat\\s+me\\s+weten\\s+welke\\s+(?:delen|onderdelen)|ongefundeerde\\s+speculatie|laten\\s+we\\s+samen\\s+(?:het\\s+artikel|de\\s+tekst)\\s+verbeteren)(?![a-zà-ÿ])"
    ],
-   "hint": "Als de herkomst of kwaliteit van een bijdrage ter discussie staat, gaat het antwoord over het proces in plaats van over de tekst: de criticu"
+   "hint": "Als de herkomst of kwaliteit van een bijdrage ter discussie staat, gaat het antwoord over het proces in plaats van over de tekst: de criticu",
+   "domain": "wikipedia"
   },
   {
    "id": "scarcity-of-knowledge-claim",
@@ -3380,7 +3409,8 @@
     "\\bfeel free to leave a message on my\\b",
     "\\bif you have any suggestions, questions, or would like to collaborate\\b"
    ],
-   "hint": "A profile or bio page following a fixed template: headings like 'Welcome To My User Page!', 'About Me', 'My Interests', 'My Contributions', "
+   "hint": "A profile or bio page following a fixed template: headings like 'Welcome To My User Page!', 'About Me', 'My Interests', 'My Contributions', ",
+   "domain": "wikipedia"
   },
   {
    "id": "canned-profile-page",
@@ -3394,7 +3424,8 @@
     "stuur me gerust een (bericht|berichtje|dm)",
     "neem gerust contact met mij op"
    ],
-   "hint": "Een profiel- of biopagina volgens een vast sjabloon: koppen als Over mij, Mijn interesses en Laten we connecten, bullets met een emoji per i"
+   "hint": "Een profiel- of biopagina volgens een vast sjabloon: koppen als Over mij, Mijn interesses en Laten we connecten, bullets met een emoji per i",
+   "domain": "wikipedia"
   },
   {
    "id": "circular-return-ending",
@@ -3866,6 +3897,32 @@
     "(?m)^\\s{0,3}#{2,4}\\s*veelgestelde vragen\\s*$"
    ],
    "hint": "Alle tussenkoppen zijn vragen in de vorm die een zoekmachine indexeert (Wat is X? Waarom is X belangrijk? Hoe werkt X?), meestal in de vaste"
+  },
+  {
+   "id": "abstract-subject-all-purpose-verb",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "(?:보여준다|제공한다|가져온다|가져다준다|시사한다)(?![가-힣])",
+    "\\bthe (?:data|research|evidence|study|report|analysis) (?:suggests|shows|indicates|reveals|tells us)\\b"
+   ],
+   "hint": "Three sub-mechanisms the sources file together: an abstract or inanimate subject with a colourless verb, 'X shows / provides / brings' (보여준다"
+  },
+  {
+   "id": "agentive-by-passive",
+   "lang": [
+    "en"
+   ],
+   "category": "syntax",
+   "severity": "cluster",
+   "regex": [
+    "에 의(?:해|하여)(?![가-힣])",
+    "에 의한(?![가-힣])"
+   ],
+   "hint": "The English agentive passive with a named agent ('generated by AI', 'published by the ministry') rendered as X에 의해/에 의하여 plus a passive verb"
   },
   {
    "id": "agentless-passive-subjectless-fragment",
@@ -4590,19 +4647,6 @@
   {
    "id": "abstract-subject-all-purpose-verb",
    "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "cluster",
-   "regex": [
-    "(?:보여준다|제공한다|가져온다|가져다준다|시사한다)(?![가-힣])",
-    "\\bthe (?:data|research|evidence|study|report|analysis) (?:suggests|shows|indicates|reveals|tells us)\\b"
-   ],
-   "hint": "Three sub-mechanisms the sources file together: an abstract or inanimate subject with a colourless verb, 'X shows / provides / brings' (보여준다"
-  },
-  {
-   "id": "abstract-subject-all-purpose-verb",
-   "lang": [
     "nl"
    ],
    "category": "translationese",
@@ -4612,19 +4656,6 @@
     "(?<![a-zà-ÿ])de\\s+(?:data|cijfers|resultaten)\\s+(?:suggere(?:ert|ren)|laat\\s+zien|tonen\\s+aan)(?![a-zà-ÿ])"
    ],
    "hint": "Drie mechanismen met dezelfde oorzaak: een abstract of levenloos onderwerp met een kleurloos werkwoord (dit onderzoek laat zien, het rapport"
-  },
-  {
-   "id": "agentive-by-passive",
-   "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "cluster",
-   "regex": [
-    "에 의(?:해|하여)(?![가-힣])",
-    "에 의한(?![가-힣])"
-   ],
-   "hint": "The English agentive passive with a named agent ('generated by AI', 'published by the ministry') rendered as X에 의해/에 의하여 plus a passive verb"
   },
   {
    "id": "agentive-by-passive",
@@ -4676,20 +4707,6 @@
     "(?<![a-zà-ÿ])wij\\s+begrijpen\\s+als\\s+geen\\s+ander"
    ],
    "hint": "De tekst opent met een merk dat zichzelf empathie toeschrijft, letterlijk uit At X, we understand"
-  },
-  {
-   "id": "beyond-mere-escalation",
-   "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "always",
-   "regex": [
-    "단순한 [^\\n.]{1,20}[을를] 넘어",
-    "\\b(?:more than just|beyond (?:a )?mere)\\b",
-    "\\bmeer dan (?:alleen|zomaar)\\b"
-   ],
-   "hint": "Mid-sentence escalation that upgrades a thing by dismissing a smaller version of it: '단순한 X를 넘어 Y', a calque of English 'beyond mere X' and "
   },
   {
    "id": "beyond-mere-escalation",
@@ -4816,18 +4833,6 @@
     "(?<![a-zà-ÿ])(?:aangedreven\\s+door\\s+(?:ai|machine|algoritmes?|data)|door\\s+ai\\s+aangedreven|ai-powered)"
    ],
    "hint": "Het Engelse -driven en -powered worden productief als Nederlands achtervoegsel op elk zelfstandig naamwoord geplakt: AI-gedreven, resultaatg"
-  },
-  {
-   "id": "embedded-english-quotation",
-   "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "context",
-   "regex": [
-    "[\"“”‘’][a-z][a-z ,'’\\-]{25,}[.?!]?[\"“”‘’]\\s*(?:라고|이라고|라는|[가-힣])"
-   ],
-   "hint": "A full English sentence is pasted verbatim into the body as a quotation and immediately followed by its translation, so the reader gets the "
   },
   {
    "id": "embedded-english-quotation",
@@ -5024,19 +5029,6 @@
   {
    "id": "light-verb-literalism",
    "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "always",
-   "regex": [
-    "[을를] 가지고 있",
-    "\\b(?:(?:maakt?|maken|gemaakt)\\s+(?:een|de|het)\\s+(?:beslissing|besluit)|(?:een|de|het)\\s+(?:beslissing|besluit)\\s+(?:maken|maakt|gemaakt)|impact\\s+(?:maken|maakt|gemaakt))\\b"
-   ],
-   "hint": "An English light-verb construction ('have strong competitiveness', 'make a decision', 'take action', 'give support') is carried over word fo"
-  },
-  {
-   "id": "light-verb-literalism",
-   "lang": [
     "nl"
    ],
    "category": "translationese",
@@ -5152,18 +5144,6 @@
    "hint": "Beleefdheid en blijdschap komen in een register dat in gewone Nederlandse tekst niet meer voorkomt: wij zijn verheugd, het doet ons genoegen"
   },
   {
-   "id": "parenthetical-english-gloss",
-   "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "cluster",
-   "regex": [
-    "[가-힣][^()\\n]{0,20}\\(([a-z][a-z .\\-]{2,30})\\)[^()]{1,400}[가-힣][^()\\n]{0,20}\\(\\1\\)"
-   ],
-   "hint": "A term is followed by its English original in parentheses every time it appears, so 주권 AI(Sovereign AI) is followed later by 주권 AI(Sovereign"
-  },
-  {
    "id": "passive-progressive-calque",
    "lang": [
     "nl"
@@ -5250,18 +5230,6 @@
     "(?<![a-zà-ÿ])succesvol\\s+(?:geïnstalleerd|verwerkt|afgerond|aangemeld|toegevoegd|uitgevoerd|verwijderd|opgeslagen|geïmplementeerd|gelanceerd|voltooid|uitgerold|verzonden)(?![a-zà-ÿ])"
    ],
    "hint": "Het Engelse successfully wordt letterlijk meegenomen bij een handeling die alleen maar gelukt kan zijn: de update is succesvol geïnstalleerd"
-  },
-  {
-   "id": "untranslated-marketing-loanword",
-   "lang": [
-    "en"
-   ],
-   "category": "translationese",
-   "severity": "cluster",
-   "regex": [
-    "(?<![a-z])(?:seamless|robust|leverage|scalable|synergy|holistic|impactful|actionable)(?![a-z])(?=[^a-zA-Z]{0,12}[가-힣ぁ-んァ-ン一-鿿])"
-   ],
-   "hint": "English marketing adjectives and verbs (seamless, robust, leverage, scalable, synergy, holistic) dropped untranslated and unexplained into a"
   },
   {
    "id": "untranslated-marketing-loanword",
@@ -5763,6 +5731,19 @@
     "(?<![a-zà-ÿ])we\\s+nemen\\s+je\\s+mee(?![a-zà-ÿ])"
    ],
    "hint": "Een alinea of hoofdstuk geopend met een uitnodiging tot een gezamenlijke reis: laten we erin duiken, laten we dit uitpakken, laten we eens k"
+  },
+  {
+   "id": "light-verb-literalism",
+   "lang": [
+    "en"
+   ],
+   "category": "vocabulary",
+   "severity": "always",
+   "regex": [
+    "[을를] 가지고 있",
+    "\\b(?:(?:maakt?|maken|gemaakt)\\s+(?:een|de|het)\\s+(?:beslissing|besluit)|(?:een|de|het)\\s+(?:beslissing|besluit)\\s+(?:maken|maakt|gemaakt)|impact\\s+(?:maken|maakt|gemaakt))\\b"
+   ],
+   "hint": "An English light-verb construction ('have strong competitiveness', 'make a decision', 'take action', 'give support') is carried over word fo"
   },
   {
    "id": "load-bearing-metaphor",

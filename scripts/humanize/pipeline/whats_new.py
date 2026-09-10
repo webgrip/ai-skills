@@ -18,7 +18,8 @@ TITLES = {
 
 catalog = json.load(open(HUMANIZE / "catalog" / "catalog-en.json"))
 dutch = json.load(open(HUMANIZE / "catalog" / "catalog-nl.json"))
-kept = {c: [e for e in es if e["scope"] != "language-specific"] for c, es in catalog["categories"].items()}
+kept = {c: [e for e in es if e["scope"] != "language-specific" and not e.get("domain")] for c, es in catalog["categories"].items()}
+domain_scoped = [e for es in catalog["categories"].values() for e in es if e.get("domain")]
 total = sum(len(v) for v in kept.values())
 fresh = {c: [e for e in es if not e["in_baseline"]] for c, es in kept.items()}
 fresh = {c: v for c, v in fresh.items() if v}
@@ -31,7 +32,8 @@ lines = [
     f"covered by the house copy rule or the blog-writer de-AI-ify pass; {new_count} were not. The Dutch catalog "
     f"holds {dutch['count']} entries, {len(dutch_only)} of which have no English counterpart at all. This file "
     "lists the English additions so the gain is visible without reading the whole catalog; entries scoped to one "
-    "language are held in the catalog data and left out here.", "",
+    f"language are held in the catalog data and left out here, as are the {len(domain_scoped)} Wikipedia- and "
+    "fiction-scoped entries listed in patterns-en-domains.md.", "",
 ]
 for category in ORDER:
     if category not in fresh:

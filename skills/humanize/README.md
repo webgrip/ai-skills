@@ -42,6 +42,7 @@ adds facts, never bends meaning, and does nothing to fool a detector.
 | [SKILL.md](SKILL.md) | The decisions and the eight-step procedure |
 | [patterns-en.md](patterns-en.md) | The English catalog, by category, each entry with cues, an example, severity and false positives |
 | [patterns-nl.md](patterns-nl.md) | De Nederlandse catalogus, in het Nederlands, met de translationese-laag |
+| [patterns-en-domains.md](patterns-en-domains.md), [patterns-nl-domains.md](patterns-nl-domains.md) | Entries that only make sense on Wikipedia or in fiction; the scanner loads them with `--domain wikipedia`, `--domain fiction` or `--domain all` |
 | [method.md](method.md) | Modes, workflow, gates, the register tolerance table, voice matching, false positives, scoring, the substitution table, contested rules |
 | [scripts/scan.py](scripts/scan.py) | Dependency-free scanner over its pattern file: matches per line, em-dash density, sentence-length variance; exit 1 on an `always` finding |
 | [whats-new.md](whats-new.md) | The entries the consolidation added beyond what the house rule and the blog-writer pass already had |

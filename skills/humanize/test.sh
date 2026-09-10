@@ -6,7 +6,7 @@ SCAN="python3 scripts/scan.py"
 python3 - <<'PY'
 import json, re, sys
 patterns = json.load(open("scripts/patterns.json"))["patterns"]
-catalogs = {"en": open("patterns-en.md").read(), "nl": open("patterns-nl.md").read()}
+catalogs = {lang: open(f"patterns-{lang}.md").read() + open(f"patterns-{lang}-domains.md").read() for lang in ("en", "nl")}
 missing = [p["id"] for p in patterns for lang in p["lang"] if f"`{p['id']}`" not in catalogs[lang]]
 if missing:
     sys.exit(f"scanner ids without a catalog entry: {missing}")
@@ -59,7 +59,7 @@ EXAMPLES_THAT_MUST_CARRY_ANOTHER_SURFACE = {
 
 findings = collections.Counter()
 total = 0
-for lang, catalog in (("en", "patterns-en.md"), ("nl", "patterns-nl.md")):
+for lang, catalog in (("en", "patterns-en.md"), ("nl", "patterns-nl.md"), ("en", "patterns-en-domains.md"), ("nl", "patterns-nl-domains.md")):
     label = "Na: " if lang == "nl" else "After: "
     owner, examples = None, []
     for line in open(catalog):
@@ -128,6 +128,25 @@ missing = [c["id"] for c in cases if "expect_trigger" not in c]
 if missing:
     sys.exit(f"evals without an explicit expect_trigger: {missing}")
 print(f"mode rule stated once; {len(cases)} evals all carry expect_trigger")
+PY
+
+python3 - <<'PY'
+import json
+import sys
+rows = json.load(open("scripts/patterns.json"))["patterns"]
+scoped = [r["id"] for r in rows if r.get("domain")]
+if not scoped:
+    sys.exit("no domain-scoped scanner rows; the tagging did not reach patterns.json")
+sys.path.insert(0, "scripts")
+import scan
+default = len(scan.load_patterns("scripts/patterns.json", "en", False))
+everything = len(scan.load_patterns("scripts/patterns.json", "en", False, ("wikipedia", "fiction")))
+if everything <= default:
+    sys.exit("--domain all loads no more rows than the default")
+leaked = [r["id"] for r in rows if r.get("domain") and any(r["id"] == e["id"] for e, _ in scan.load_patterns("scripts/patterns.json", r["lang"][0], False))]
+if leaked:
+    sys.exit(f"domain-scoped rows load by default: {sorted(set(leaked))}")
+print(f"domain scoping: {len(set(scoped))} ids hidden by default, {everything - default} en rows restored by --domain all")
 PY
 
 echo "humanize: OK"
