@@ -1,0 +1,60 @@
+{
+  "skill_name": "linkedin-post",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "where-to-publish",
+      "prompt": "We hebben net een bedrijfspagina op LinkedIn aangemaakt. Is het beter om onze lanceringspost daarop te zetten en hem dan vanaf mijn eigen profiel te delen, of andersom?",
+      "assertions": [
+        "Recommends the original on the personal profile, and names the mechanism: a page post is first tested against roughly 2 to 5 percent of followers while a personal post seeds to first-degree connections",
+        "Rejects the repost route specifically, with the numbers: an instant repost lifts the original about 4 percent and does nothing for the reposter, and a repost-with-thoughts under 100 own words underperforms 3x",
+        "Still gives the page a role (its own native post, commented on from the personal profile; mention the page from the personal post) rather than dismissing it",
+        "Answers in Dutch"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "link-placement",
+      "prompt": "Ik zet de aanmeldlink altijd in de eerste reactie in plaats van in de post zelf, want dat scheelt bereik. Klopt dat nog?",
+      "assertions": [
+        "States plainly that the first-comment workaround has been penalised since early 2026 and is no longer a way around the penalty",
+        "Gives the body-link cost as roughly 18.8 percent median reach, attributed to van der Blom's Algorithm Insights over 1.3 million posts",
+        "Makes the decision depend on the post's goal rather than giving a blanket rule: keep the link when sign-ups are the metric, drop every URL when conversation is the metric",
+        "Mentions that a bare domain also counts as a link"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "formatting-collapsed",
+      "prompt": "Ik heb mijn post in het LinkedIn-venster geplakt en nu staat alles aan elkaar geplakt tot één blok. Kan ik de kopjes vet maken zodat het leesbaar wordt?",
+      "assertions": [
+        "Explains that the editor collapses consecutive newlines on paste while single newlines survive, so the layout must not depend on blank lines",
+        "Proposes a visible separator line between sections instead, and keeping paragraphs to three lines or fewer",
+        "Advises against Unicode pseudo-bold and gives the accessibility reason: a screen reader announces the characters one at a time as mathematical bold letters",
+        "Offers the accessible alternative: an emoji plus a short ALL-CAPS label on its own line, used a handful of times at most"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "draft-a-call-for-speakers",
+      "prompt": "Schrijf een LinkedIn-post waarin we sprekers zoeken voor onze nieuwe maandelijkse tech-avond, en zeg erbij wanneer ik hem moet plaatsen.",
+      "assertions": [
+        "Loads or explicitly defers to the humanize skill for the prose, and the draft contains no em dash and no not-X-but-Y construction",
+        "The draft carries exactly one ask, answerable in one word, rather than stacking several requests",
+        "Length lands in the 800 to 1500 character band, or the reply justifies going longer because it is a launch post",
+        "Names a posting window of Tuesday to Thursday, 08:00 to 10:00, and says to stay available for the first hour because that decides distribution",
+        "Uses at most three hashtags, at the end"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "not-a-linkedin-question",
+      "prompt": "Onze nieuwsbrief in Brevo komt bij Gmail in de spam terecht. Waar moet ik beginnen met zoeken?",
+      "assertions": [
+        "Does not invoke the linkedin-post skill or bring up LinkedIn reach mechanics",
+        "Answers about mail authentication and deliverability instead"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}
