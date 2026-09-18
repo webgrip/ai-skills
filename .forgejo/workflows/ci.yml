@@ -14,8 +14,9 @@ name: CI
 #     from the node's containerd cache, so that cost disappears entirely.
 #   - steps run as the image's non-root `runner` user, so nothing may assume root
 #     (this is why the old apt-get / npm -g install steps are gone — they're baked)
-#   - actions/checkout@v5 — resolves against data.forgejo.org; v6 is broken on
-#     non-GitHub runners
+#   - actions/checkout@v5 — resolves against data.forgejo.org. The pin is just a pin:
+#     the "v6 is broken on non-GitHub runners" reason was disproven 2026-09-18
+#     (homelab-cluster canary run 1710).
 #   - no `permissions:` block — Forgejo Actions ignores it; token scope is
 #     whatever the repo/runner grants
 
