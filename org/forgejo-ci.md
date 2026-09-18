@@ -49,10 +49,33 @@ met de expansie mee. Vervang die door een eigen, lokale check.
 | Wat | Waarde | Waarom |
 | --- | --- | --- |
 | Runnerlabel | `runs-on: docker` | |
-| Checkout | `actions/checkout@v5`, nooit `@v6` | v6 is stuk op niet-GitHub-runners |
+| Checkout | `actions/checkout@v5` als default, `@v6`/`@v7` mag | zie hieronder — de oude "v6 is stuk"-regel is op 2026-09-18 weerlegd |
 | Node-ondergrens | `^22.14.0 \|\| >=24.10.0` | org-breed |
 | Tijdzone | `Europe/Amsterdam` | ook voor elk cron-schema |
 | Releases | `@webgrip/semantic-release-config` | uit de Forgejo npm-registry |
+
+## De checkout-majors zijn niet stuk (gemeten 2026-09-18)
+
+Hier stond jarenlang "v6 is stuk op niet-GitHub-runners", zonder dat iemand de foutmelding had
+opgeschreven. Dat blokkeerde estate-breed elke `actions/checkout`- en `actions/setup-node`-major.
+
+Een canary op de echte runner
+([homelab-cluster run 1710](https://forgejo.webgrip.dev/webgrip/homelab-cluster/actions/runs/1710),
+workflow `.forgejo/workflows/runner-node-canary.yml`) draait checkout v5.1.0, v6 en v7 en
+setup-node v4.4.0, v5 en v7 naast elkaar. **Alles groen**, en geen no-ops: de v6-stap doet echt
+`git init`/`git config` en fetcht van de in-cluster Forgejo, setup-node v5 meldt `node: v24.21.0`.
+
+De onderliggende aanname — dat `using: node24` niet draait omdat de runner node20 aanreikt —
+klopt ook niet. De runner kiest per JS-actie de node uit `externals/` die de actie declareert, en
+daar staat een glibc `node24` (v24.16.0) naast `node20` (v20.19.5). De `PATH`-prepend naar
+`externals/node20/bin` in de runner-ScaledJob raakt alleen **shell-stappen**: een `run:`-stap die
+`node` aanroept krijgt v20 terwijl de image v24 aan boord heeft. Aparte, kleinere kwestie.
+
+Praktisch: majors mogen voorgesteld worden, maar zet ze niet op automerge. Eén canary-job is geen
+hele pipeline; een echte PR die de complete gate draait is het bewijs dat telt.
+
+**Les voor deze hele pagina.** Een "X is stuk"-regel zonder de logregel erbij houdt zichzelf jaren
+in stand. Kost één workflow en één run om te controleren.
 
 ## Wat geen Forgejo-equivalent heeft
 
