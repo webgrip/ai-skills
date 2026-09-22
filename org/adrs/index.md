@@ -58,3 +58,4 @@ section.
 | ADR | Decision | Status | Last updated |
 | --- | -------- | ------ | ------------ |
 | [0001](adr-0001-no-comments-in-code.md) | No comments in code, estate-wide | accepted | 2026-09-05 |
+| [0002](adr-0002-release-notes-live-in-the-forge-release.md) | Release notes live in the forge Release; CI stops committing CHANGELOG.md | proposed | 2026-09-17 |

@@ -129,6 +129,24 @@
       "keywords": []
     },
     {
+      "name": "linkedin-post",
+      "source": "./skills/linkedin-post",
+      "description": "Gets a LinkedIn post read: the 2026 ranking mechanics (the external-link penalty and the dead first-comment workaround, comments weighing 8 to 10 times a like, dwell time as the top signal, personal profiles out-reaching company pages 5 to 10 times), the plain-text formatting the editor will not destroy on paste, accessible emphasis instead of Unicode pseudo-bold, and the posting window.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "linkedin",
+        "social",
+        "announcement",
+        "reach",
+        "engagement",
+        "copywriting",
+        "accessibility",
+        "dutch",
+        "nederlands"
+      ]
+    },
+    {
       "name": "product-owner",
       "source": "./skills/product-owner",
       "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, flow metrics, and evidence-based closing.",
