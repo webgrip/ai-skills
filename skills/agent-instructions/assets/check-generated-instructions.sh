@@ -17,6 +17,10 @@ elif [ "$(head -n 1 CLAUDE.md)" != "@AGENTS.md" ]; then
   fail "The first line of CLAUDE.md must be @AGENTS.md. Instructions for every agent belong in .ai/guidelines or docs/."
 fi
 
+if grep -q "<laravel-boost-guidelines>" CLAUDE.md 2>/dev/null; then
+  fail "CLAUDE.md contains a generated Boost block. Claude Code ignores AGENTS.md while CLAUDE.md exists, so that block goes stale: remove it and keep only @AGENTS.md plus Claude-only lines."
+fi
+
 if [ ! -L .claude/skills ] || [ "$(readlink .claude/skills)" != "../.agents/skills" ]; then
   fail ".claude/skills must be a symlink to ../.agents/skills. Claude Code only reads .claude/skills; the other agents read .agents/skills."
 fi

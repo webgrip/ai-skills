@@ -12,6 +12,7 @@ Claude Code ships weekly.
 - [AGENTS.md](#agentsmd)
 - [Compaction](#compaction)
 - [Subagents, plugins, skills](#subagents-plugins-skills)
+- [Hook-injected instructions and output styles](#hook-injected-instructions-and-output-styles)
 - [Tools for inspecting and trimming](#tools-for-inspecting-and-trimming)
 - [Auto memory](#auto-memory)
 
@@ -42,7 +43,7 @@ Loaded broadest first, concatenated (nothing overrides anything):
 
 ## Imports and comments
 
-- `@path` on its own line; relative to the importing file; absolute and `~` allowed; max 4 hops.
+- `@path` anywhere outside code spans (`See @README for an overview`); relative to the importing file; absolute and `~` allowed; max 4 hops.
 - Imports skip code spans and fenced blocks, so a backticked path stays literal.
 - **Imports do not save context**: imported files load at launch. Splitting a file with imports
   organises it; it does not shrink it.
@@ -63,7 +64,7 @@ paths:
 - `paths` is the only frontmatter field read; bad YAML makes the rule load unconditionally.
 - Loaded when Claude **reads** a matching file, not on every tool use.
 - Symlinked rules match through the link; a link whose target is outside the working directory is
-  treated as an external import.
+  treated as an external import, and after approval only its unscoped rules load.
 - Tool-enforced path loading also exists in Cursor (`.mdc` globs), Copilot (`applyTo`) and OpenHands (skill `triggers`); opencode and Codex have none. See [tools.md](tools.md).
 
 ## AGENTS.md
@@ -111,14 +112,37 @@ test commands" steers the summary (BP).
 - A skill body loads on use and stays for the session; move a procedure out of CLAUDE.md into a
   skill ("a section of CLAUDE.md has grown into a procedure rather than a fact").
 
+## Hook-injected instructions and output styles
+
+Source: [hooks](https://code.claude.com/docs/en/hooks), [output styles](https://code.claude.com/docs/en/output-styles).
+
+- `additionalContext`, `systemMessage` and hook stdout are capped at **10,000 characters**; above
+  that Claude gets a 2,000-character preview and is not told to read the rest.
+- Write injected text **as facts, not as imperative system commands**: text framed as out-of-band
+  commands can trip prompt-injection defences, and Claude then shows it to the user instead of
+  using it. "For instructions that never change, prefer CLAUDE.md."
+- PostToolUse `additionalContext` suits conditional rules at the moment they apply ("which test
+  command applies to the file just edited").
+- On `--resume`, earlier hook text is replayed, not re-run; SessionStart runs again with
+  `source: "resume"`.
+- `InstructionsLoaded` does not fire for an `AGENTS.md` read natively, but does when `CLAUDE.md`
+  imports it: a way to confirm the `@AGENTS.md` layout loaded.
+- **Output styles** set how Claude responds (tone, length, format); `CLAUDE.md` carries what it
+  should know. Styles go into the system prompt with per-turn reminders, so tone rules that drift
+  belong there. A custom style drops the built-in coding instructions unless
+  `keep-coding-instructions: true`; styles do not reach non-fork subagents.
+
 ## Tools for inspecting and trimming
 
 | Command | Use |
 |---|---|
-| `/context` | what loaded and what it costs, including an AGENTS.md read directly |
+| `/context` | what loaded and what it costs (an `AGENTS.md` read natively is listed from v2.1.280) |
 | `/memory` | list/open loaded files, toggle auto memory |
 | `/init` | starter file; with an existing CLAUDE.md it suggests improvements. `CLAUDE_CODE_NEW_INIT=1` proposes CLAUDE.md, skills and hooks for review. It imports `.cursor/rules`, `.cursorrules`, `.github/copilot-instructions.md` |
-| `/doctor` | trims checked-in CLAUDE.md by cutting what Claude can derive from the code and moves remaining guidance into skills and nested files |
+| `/doctor` (`/checkup`) | trims checked-in CLAUDE.md by cutting what Claude can derive from the code, dedupes local files against checked-in ones, and moves remaining guidance into skills and nested files; keeps "pitfalls, rationale, and conventions that differ from tool defaults" |
+| `/import` | appends a one-time **copy** of `AGENTS.md` into `CLAUDE.md`; do not use it with the `@AGENTS.md` layout, it creates the drift that layout prevents |
+| `CLAUDE_CODE_DISABLE_CLAUDE_MDS=1` | a session without instruction files: the "without" arm of a probe |
+| `CLAUDE_CODE_SIMPLE=1` | disables all customisations, to rule them out when behaviour is odd |
 | `InstructionsLoaded` hook | logs why each file loaded (`session_start`, `nested_traversal`, `path_glob_match`, `include`, `compact`) |
 
 The `#` shortcut no longer exists; ask Claude to "add this to CLAUDE.md". "Remember X" goes to

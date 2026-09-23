@@ -47,6 +47,37 @@
       ]
     },
     {
+      "id": "rule-ignored-becomes-hook",
+      "prompt": "CLAUDE.md says never edit files in public/build, but Claude keeps running sed on them anyway. How do I make that stick?",
+      "expect_trigger": true,
+      "assertions": [
+        "Recommends enforcement instead of rewording the rule: a permission deny rule and a PreToolUse hook",
+        "Points out that an Edit(...) deny rule does not cover Bash writes such as sed -i",
+        "Uses exit code 2 (not 1) for the blocking hook",
+        "Suggests testing the hook by piping a sample event into it"
+      ]
+    },
+    {
+      "id": "review-agent-config-pr",
+      "prompt": "A contractor opened a PR that changes AGENTS.md, adds a .mcp.json and edits .claude/settings.json. What should I check before merging?",
+      "expect_trigger": true,
+      "assertions": [
+        "Runs or recommends measure.py --security-only (or an equivalent scan for hidden Unicode characters)",
+        "Flags enableAllProjectMcpServers, unpinned npx MCP packages, broad permission grants and hooks or env such as *_BASE_URL as review points",
+        "Treats hooks and env in settings as code changes that need the same review as code"
+      ]
+    },
+    {
+      "id": "test-an-instruction-change",
+      "prompt": "I rewrote a rule in our AGENTS.md. How do I prove the new wording actually changes what the agent does?",
+      "expect_trigger": true,
+      "assertions": [
+        "Proposes probe tasks run in fresh sessions with and without the change, e.g. scripts/probe.py",
+        "Recommends about 10 runs per arm and says 3 runs prove nothing",
+        "Grades deterministically (tool-call regex or a command run afterwards) before any LLM judge"
+      ]
+    },
+    {
       "id": "readme-is-not-an-instruction-file",
       "prompt": "Write a README for this repository that explains to new developers what the project does and how to run it.",
       "expect_trigger": false,

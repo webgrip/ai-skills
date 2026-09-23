@@ -16,6 +16,14 @@ audits and slims down bloated ones, and decides where each line belongs.
 - **Generated files**: Laravel Boost, rulesync, Ruler and Nx; where team text goes, what breaks on
   regeneration, machine-dependent output, and `assets/check-generated-instructions.sh` as a CI
   drift check for Boost repos.
+- **Enforcement**: rules turned into permission rules, hooks and CI, with hook templates for
+  generated paths, lint-on-edit and a tests-before-stop gate.
+- **Probe**: `scripts/probe.py` A/B-tests an instruction change with headless Claude Code runs in
+  fresh worktrees, deterministic graders, pass rates with a Fisher exact p, tokens and cost.
+- **Security**: `measure.py --security-only` flags hidden Unicode, fetch-and-execute lines,
+  secrets, broad permission grants and risky MCP or hook config, with a review checklist.
+- **Layering, routing, unattended agents**: per-level distribution and precedence per tool, a
+  pointer-table template for routing to docs, and what cloud, CI and headless agents need.
 - **Evidence**: the studies (ETH, McMillan, Vercel's eval and others) with what they do and do not
   show, and the cross-tool loading table for Claude Code, Codex, Cursor, Copilot, Gemini CLI,
   opencode, OpenHands, Junie, Windsurf, Zed and Kiro.

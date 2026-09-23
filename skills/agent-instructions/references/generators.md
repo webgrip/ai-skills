@@ -17,10 +17,14 @@ generator (rulesync, ruler, framework installers).
 
 - `php artisan boost:install` / `boost:update` compose guidelines into one block,
   `<laravel-boost-guidelines>` … `</laravel-boost-guidelines>`, and **replace the whole block** in
-  each agent's file. Text outside the markers survives; text inside is gone on the next run.
-- Per agent it writes a guidelines file and a skills directory. Defaults: Claude Code
-  `CLAUDE.md` + `.claude/skills`, Cursor `.cursor/skills`, Junie `.junie/skills`, opencode/Codex
-  `AGENTS.md` + `.agents/skills`.
+  each agent's file (the first block only; without one it appends the block). Text inside is gone
+  on the next run. Up to 2.7 it also collapsed blank lines outside the block; 2.8 stopped that.
+- Defaults per agent: guidelines to `AGENTS.md` for Codex, opencode, Cursor, Junie and Copilot;
+  Claude Code to `CLAUDE.md` up to 2.9 and **`AGENTS.md` from 2.10**. Skills to `.agents/skills`
+  (Codex, opencode), `.claude/skills`, `.cursor/skills`, `.junie/skills`, `.github/skills`.
+- **Version matters; pin it in the lockfile and read its release notes:** 2.8 stopped touching
+  text outside the block, 2.8.1 made `record-rule` opt-in ("only when the user explicitly asks"),
+  2.10 moved Claude Code to `AGENTS.md` without migrating an existing `CLAUDE.md`.
 - It deletes and recopies every skill it owns on each run; a hand edit inside a Boost skill is
   lost. Skills it does not own (not listed in `boost.json`) are left alone.
 - Content follows installed packages: PHP versions from `vendor/`, JavaScript packages from
@@ -36,15 +40,14 @@ generator (rulesync, ruler, framework installers).
 | Want | Do |
 |---|---|
 | House rules composed into every agent's block | `.ai/guidelines/<name>.blade.php` (or `.md`); they appear at the top of the block |
-| Replace one Boost guideline | `.ai/guidelines/<key>.blade.php`, key as shown in the block header (`pest/core`, `inertia-vue/core`) |
-| Replace a package's guideline | `.ai/guidelines/<vendor>/<package>/core.blade.php` |
-| Drop a guideline | `config('boost.guidelines.exclude')`, e.g. `['tests', 'pest/core', 'herd']` |
-| One file for every agent | `config('boost.agents.claude_code.guidelines_path') = 'AGENTS.md'`; `CLAUDE.md` becomes a hand-written `@AGENTS.md` that Boost never touches |
+| Replace one Boost guideline | `.ai/guidelines/<path>.blade.php`, named after the guideline's **path**, not its header: `pest/core`, `boost/core`, `herd/core`, but `enforce-tests` for the `tests` header |
+| Replace a package's guideline | `.ai/guidelines/<vendor>/<package>/<file>.blade.php` (usually `core`) |
+| Drop a guideline | `config('boost.guidelines.exclude')` by **header name**, e.g. `['tests', 'pest/core', 'herd']` |
+| One file for every agent | 2.10+: the default. Before: `config('boost.agents.claude_code.guidelines_path') = 'AGENTS.md'`. Either way `CLAUDE.md` becomes a hand-written `@AGENTS.md` that Boost never touches; delete any old block from it, because Claude Code ignores `AGENTS.md` while a `CLAUDE.md` exists |
 | One skills directory | `config('boost.agents.<agent>.skills_path') = '.agents/skills'` for `claude_code` and `cursor`; commit `.claude/skills` as a symlink to `../.agents/skills` |
-| Own skill | a directory in `.agents/skills/<name>/` that Boost does not own, or `.ai/skills/<name>/` (overrides a same-named Boost skill) |
+| Own skill | a directory in `.agents/skills/<name>/` that Boost does not own, or `.ai/skills/<name>/` (overrides a same-named Boost skill; symlinked into each agent's folder, copied when it contains Blade) |
 
-- `config/boost.php` is not published by default and its stub lacks `agents` and `guidelines`;
-  add those keys by hand. Laravel merges config shallowly: a published `rules` array replaces the
+- `config/boost.php` is not published by default and its stub lacks `agents`; add it by hand. Laravel merges config shallowly: a published `rules` array replaces the
   package's whole `rules` array.
 - `.gitignore` often has `.ai`. A directory entry cannot be re-included from; use `.ai/*` then
   `!.ai/guidelines/` (and `!.ai/rules/`, `!.ai/skills/` when used). Verify with
@@ -54,9 +57,10 @@ generator (rulesync, ruler, framework installers).
 
 ## Project rules (`.ai/rules`)
 
-Boost 2.5+ adds a `record-rule` MCP tool and a core guideline section that tells every agent to
-read `.ai/rules/index.md` before any edit and to record durable rules with `record-rule`. Rule
-files carry `paths:` frontmatter; Boost regenerates the index.
+Boost adds a `record-rule` MCP tool (2.4.12, on by default from 2.5) and a core guideline section that tells every agent to
+read `.ai/rules/index.md` before any edit; up to 2.8.0 it also told agents to record rules on
+their own, from 2.8.1 only when the user explicitly asks. Rule files carry `paths:` frontmatter;
+Boost regenerates the index.
 
 - In a repo that ignores `.ai`, every recorded rule is silently never committed. Until the repo
   decides, set `rules.enabled => false` (removes the section and unregisters the tool).
@@ -66,14 +70,15 @@ files carry `paths:` frontmatter; Boost regenerates the index.
 - Rule files invite a second home for knowledge next to `docs/`. If enabled, keep each rule a
   pointer ("working here, read docs/X first") and the content in `docs/`.
 - `rules.scoped_guidelines` moves Boost's own path-scoped guidelines into `.ai/rules/boost/`. Its
-  globs are `app/Models/**`, `app/Http/**`, `tests/**`; on a domain-structured app
-  (`app/Domains/*/…`) they never match and the saving is small (one measured repo: 23 lines).
+  globs include `app/Models/**`, `app/Http/**`, `routes/**`, `tests/**`, `database/migrations/**`,
+  `resources/js/**`, `resources/views/**`, `app/Livewire/**`; on a domain-structured app
+  (`app/Domains/*/…`) several miss, and the saving is small (one measured repo: 23 lines).
 
 ## Output that differs per machine
 
 A generated file that differs per machine makes every `composer install` dirty for someone and
 breaks any drift check. Known case: the `herd` guideline is only generated when `APP_URL`
-contains `.test` **and** Laravel Herd is installed. Agents in containers (OpenHands, cloud agents)
+contains `.test`, Laravel Herd is installed **and** the project does not use Sail. Agents in containers (OpenHands, cloud agents)
 also get Herd instructions that are false for them. Exclude `herd` and move the text to the
 repo's development docs. Before trusting a drift check, generate once on a machine without Herd
 and with a non-`.test` `APP_URL`.
@@ -111,12 +116,18 @@ a snapshot instead.
 
 ## Other generators
 
-| Tool | Source of truth | Pitfall |
-|---|---|---|
-| [rulesync](https://github.com/dyoshikawa/rulesync) | `.rulesync/`, `rulesync generate --targets "*"`; `rulesync import` reverse-imports | output overwritten; its own dialect; outputs meant to be ignored |
-| [Ruler](https://github.com/intellectronica/ruler) | `.ruler/*.md` + `ruler.toml`, `ruler apply` | manual edits overwritten; forgetting `apply`; worktrees lack generated files unless committed |
-| [Nx](https://nx.dev/docs/features/enhance-ai) | `nx configure-ai-agents` writes `CLAUDE.md`, `AGENTS.md`, skills, MCP config | how existing hand-written content is preserved is undocumented; diff after every run |
-| Claude Code `/import` | one-time copy of another agent's config | a copy, so it drifts from then on |
+| Generator | Markers | Source of truth | Commit or ignore | Drift check |
+|---|---|---|---|---|
+| Laravel Boost | `<laravel-boost-guidelines>` block; skills it lists in `boost.json` | `.ai/guidelines`, `.ai/skills`, `config/boost.php`, installed packages | Laravel's docs allow ignoring; commit + drift check when worktrees, cloud agents or CI need the files | none built in: regenerate and diff ([CI drift check](#ci-drift-check)) |
+| Next.js 16.3 | `<!-- BEGIN/END:nextjs-agent-rules -->` | `next` package (`next dev`, create-next-app) | commit; stopped writing `CLAUDE.md` | none; `next dev` re-adds it |
+| [Nx](https://nx.dev/docs/features/enhance-ai) | `<!-- nx configuration start/end-->` | Nx generator | commit | `nx configure-ai-agents --check` |
+| Symfony AI Mate | `<!-- BEGIN/END AI_MATE_INSTRUCTIONS -->`; `@AGENTS.md` import block in `CLAUDE.md` | `mate discover` | commit | none |
+| rails-ai-context | `<!-- BEGIN/END rails-ai-context -->` | app introspection | commit (not `.ai-context.json`) | none |
+| [rulesync](https://github.com/dyoshikawa/rulesync) | none; owns whole files | `.rulesync/rules/*.md` (`root: true`), `rulesync.jsonc` | commit (deliberately not ignored) | `rulesync generate --check --targets "*" --features "*"` |
+| [Ruler](https://github.com/intellectronica/ruler) | none; full overwrite, `.bak` backups | `.ruler/`, `ruler.toml` | ignored by default via a managed `.gitignore` block | `ruler apply` + `git diff` |
+| Claude Code `/import` | none | one-time copy | — | a copy drifts from then on |
+
+The convention is converging on a marked block inside `AGENTS.md` plus `CLAUDE.md` = `@AGENTS.md`.
 
 Boost's own guidelines carry redundancy (repeated `search-docs` reminders, baseline PHP the model
 knows): [laravel/boost#606](https://github.com/laravel/boost/issues/606). Trim through
@@ -125,7 +136,10 @@ knows): [laravel/boost#606](https://github.com/laravel/boost/issues/606). Trim t
 ## Any generator
 
 - Find the markers and the command. Everything between the markers is the generator's; put team
-  text where the generator composes it from (its source directory), never in the output.
+  text where the generator composes it from (its source directory), never in the output. A
+  generator without markers owns the whole file.
+- Prefer the generator's own check (`nx configure-ai-agents --check`, `rulesync generate --check`)
+  over a hand-written snapshot diff.
 - Pin the generator's version in the lockfile and regenerate in CI with the same flags.
 - Make the output machine-independent: exclude sections that depend on local tools, paths or
   environment.
