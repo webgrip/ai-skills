@@ -2,7 +2,7 @@
   "name": "agent-instructions",
   "displayName": "Agent Instructions",
   "description": "Write, audit and slim down CLAUDE.md and AGENTS.md: what belongs in them versus docs, skills, hooks and CI, across organisation, repo, path and personal levels; one canonical AGENTS.md for every tool; a measuring script, generator-safe layouts for Laravel Boost and friends with a CI drift check, and a probe-task method to test changes.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": {
     "name": "Webgrip",
