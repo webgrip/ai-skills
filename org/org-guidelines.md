@@ -1,7 +1,6 @@
 # webgrip org guidelines
 
-These apply to every webgrip repo. Claude Code injects them at session start (the
-`webgrip` plugin); opencode loads them via the org config's `instructions` array
+These apply to every webgrip repo. Claude Code loads them from `~/projects/webgrip/CLAUDE.md`, a symlink to this file that every repo below that folder inherits as an ancestor, so they never reach other orgs' repos; opencode loads them via the org config's `instructions` array
 (installed by `scripts/install_opencode.sh`). A repo's own `AGENTS.md`/`CLAUDE.md`
 always wins where it disagrees — this is the baseline, not an override.
 
