@@ -49,7 +49,7 @@ hand_written=$((header_lines + guideline_lines + claude_lines))
 echo "Hand-written agent instructions: ${hand_written} of ${HAND_WRITTEN_BUDGET} lines (AGENTS.md header ${header_lines}, .ai/guidelines ${guideline_lines}, CLAUDE.md ${claude_lines})."
 
 if [ "${hand_written}" -gt "${HAND_WRITTEN_BUDGET}" ]; then
-  fail "The hand-written agent instructions exceed ${HAND_WRITTEN_BUDGET} lines. Every agent loads them in every session and adherence drops as they grow. Move knowledge to docs/ and leave a pointer."
+  fail "The hand-written agent instructions exceed ${HAND_WRITTEN_BUDGET} lines. Every agent pays for them in every session. Move knowledge to docs/ and leave a pointer."
 fi
 
 exit "${failed}"
