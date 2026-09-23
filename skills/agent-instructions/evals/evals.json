@@ -1,0 +1,66 @@
+{
+  "skill_name": "agent-instructions",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "audit-bloated-claude-md",
+      "prompt": "Our CLAUDE.md is 500 lines and AGENTS.md is a slightly different copy of it. Claude keeps ignoring half of it. Clean this up properly.",
+      "expect_trigger": true,
+      "assertions": [
+        "Measures before editing (runs scripts/measure.py or reports line/byte counts and the CLAUDE.md/AGENTS.md relation)",
+        "Produces an inventory that assigns each section a destination: keep, docs/, hook or CI, skill, path rule, or delete",
+        "Makes AGENTS.md the canonical file and reduces CLAUDE.md to an @AGENTS.md import on its first line instead of a symlink or second copy",
+        "Moves knowledge into docs/ with a pointer row rather than deleting it outright",
+        "Proposes turning at least one must-always-hold rule into a hook, linter or CI check instead of prose"
+      ]
+    },
+    {
+      "id": "boost-regeneration-wiped-rules",
+      "prompt": "Every time someone runs composer install, php artisan boost:install rewrites AGENTS.md and our hand-written project rules disappear. How do we stop losing them?",
+      "expect_trigger": true,
+      "assertions": [
+        "Explains that everything inside the laravel-boost-guidelines block is regenerated and hand-written text there is lost",
+        "Moves standing instructions to .ai/guidelines and project knowledge to docs/",
+        "Mentions the .gitignore pattern .ai/* with !.ai/guidelines/ when .ai is ignored",
+        "Proposes a CI check that regenerates and fails on any diff, using the same flags as the automatic run"
+      ]
+    },
+    {
+      "id": "personal-rules-leak",
+      "prompt": "I put my own company's conventions in ~/.claude/rules, but now they show up when I work in a client's repo and contradict their rules. How should I set this up?",
+      "expect_trigger": true,
+      "assertions": [
+        "States that ~/.claude/rules and ~/.claude/CLAUDE.md load in every project and that conflicting levels are resolved arbitrarily",
+        "Recommends scoping the company rules by an ancestor-directory CLAUDE.md (or a plugin/managed route for a team) instead of user-level rules",
+        "Suggests verifying in a fresh session in both a company repo and a client repo"
+      ]
+    },
+    {
+      "id": "new-agents-md-for-multi-tool-team",
+      "prompt": "Set up the agent instructions for this repo. The team uses Claude Code, Cursor and opencode, and we want to try OpenHands.",
+      "expect_trigger": true,
+      "assertions": [
+        "Creates AGENTS.md as the canonical file and CLAUDE.md containing @AGENTS.md",
+        "Leads with commands the agent cannot guess (install, test, lint with flags) rather than an architecture overview",
+        "Places skills in .agents/skills with .claude/skills as a symlink to it",
+        "Keeps AGENTS.md well under 32 KiB and under roughly 200 lines"
+      ]
+    },
+    {
+      "id": "readme-is-not-an-instruction-file",
+      "prompt": "Write a README for this repository that explains to new developers what the project does and how to run it.",
+      "expect_trigger": false,
+      "assertions": [
+        "Writes a README without treating it as an agent instruction file"
+      ]
+    },
+    {
+      "id": "skill-authoring-is-skillsmith",
+      "prompt": "Write a new Claude skill that formats our changelog entries.",
+      "expect_trigger": false,
+      "assertions": [
+        "Treats the task as skill authoring, not as editing CLAUDE.md or AGENTS.md"
+      ]
+    }
+  ]
+}

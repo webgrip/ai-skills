@@ -38,6 +38,22 @@
       ]
     },
     {
+      "name": "agent-instructions",
+      "source": "./skills/agent-instructions",
+      "description": "Write, audit and slim down CLAUDE.md and AGENTS.md: what belongs in them versus docs, skills, hooks and CI, across organisation, repo, path and personal levels; one canonical AGENTS.md for every tool; a measuring script, generator-safe layouts for Laravel Boost and friends with a CI drift check, and a probe-task method to test changes.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "claude-md",
+        "agents-md",
+        "context-engineering",
+        "instruction-files",
+        "laravel-boost",
+        "cursor-rules",
+        "copilot-instructions"
+      ]
+    },
+    {
       "name": "blog-writer",
       "source": "./skills/blog-writer",
       "description": "Write, edit, and syndicate technical blog posts: evidence-first drafting, hook workshop, single-dimension edit sweeps with a de-AI-ify pass, fresh-reader testing, and per-platform adaptation for HN, LinkedIn, Substack, dev.to, Reddit, and Lobsters.",
