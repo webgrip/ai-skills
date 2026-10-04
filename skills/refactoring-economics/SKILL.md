@@ -44,7 +44,7 @@ Spend tokens now on refactoring only where it lowers what future agent changes c
    - Re-run the same changes on milestone refs, interleaved, then run `measure.py report --refactor-cost-usd X --changes-per-month N`.
    - Continue while the interval on the input ratio excludes 1.0 and break-even stays within the safety factor of expected changes.
    - Stop when the curve flattens, files read rises without tokens falling (fragmentation), or pass rate drops.
-8. **Lock it in.** Add a file-size or function-length budget, layer and dependency rules, and duplicate detection for the refactored area. Add a short entry-point map in AGENTS.md or CLAUDE.md, not an overview. Re-run the representative changes every few months. → [refactorings.md](refactorings.md#lock-it-in)
+8. **Lock it in.** Add a file-size or function-length budget, layer and dependency rules, and duplicate detection for the refactored area. Add a short entry-point map in AGENTS.md or CLAUDE.md, not an overview (the agent-instructions skill covers how). Re-run the representative changes every few months. → [refactorings.md](refactorings.md#lock-it-in)
 9. **Report and retain.** Keep the target card, plan, ledger, run directory, report and the decision next to the code. Give medians with intervals and the pass rate. State the refactoring cost and break-even, the benefits beyond tokens, and what was not measured. A refactoring plan does not authorise merging; follow the repository's process.
 
 ## Gotchas
