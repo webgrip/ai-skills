@@ -1,0 +1,11 @@
+@font-face { font-family: "Brand"; src: url(brand.woff2); }
+body { font-family: Inter, system-ui, sans-serif; }
+.hero { min-height: 100vh; background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.card { backdrop-filter: blur(12px); transition: all .3s; will-change: transform; }
+.nav { backdrop-filter: blur(8px); will-change: transform; }
+.modal { backdrop-filter: blur(20px); will-change: opacity; }
+.toast { backdrop-filter: blur(4px); will-change: transform; }
+button:focus { outline: none; }
+.blob { animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { top: 0; } 50% { top: -20px; } 100% { top: 0; } }
+.hero h1 { font-size: clamp(2rem, 8vw, 10rem); }

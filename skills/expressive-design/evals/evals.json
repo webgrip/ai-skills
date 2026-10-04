@@ -1,0 +1,57 @@
+{
+  "skill_name": "expressive-design",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "make-it-pop",
+      "prompt": "Our landing page for our open-source log shipper is clean but nobody remembers it. Hero, three feature cards, logos, CTA. Make it pop. The repo is in this directory.",
+      "assertions": [
+        "Inspects the existing page and repository before proposing visuals, and writes a claim ledger or equivalent mapping each claim on the page to evidence or a pending status",
+        "Diagnoses flatness through composition (hierarchy, axis, chapter rhythm or focal element) before proposing any animation or effect",
+        "Proposes a thesis object drawn from the product itself (for example a log line, a pipeline stage or a shipped batch) rather than abstract shapes, gradients or 3D blobs",
+        "Presents more than one design direction side by side, or explicitly plans to, before converging"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "scroll-animation-review",
+      "prompt": "Review this before we ship: our hero uses Lenis smooth scroll, a 100vh pinned section with scroll-driven animation-timeline, a looping autoplay background video, and outline: none on buttons because the focus ring looked ugly.",
+      "assertions": [
+        "Flags the looping autoplay video as needing a pause control under WCAG 2.2.2",
+        "Flags outline: none as a focus-visibility failure and proposes a :focus-visible style instead of only restoring the default",
+        "States that scroll-driven animations are not supported in stable Firefox and need an @supports gate with a complete static fallback",
+        "Raises the scrolljacking cost of Lenis and asks for a prefers-reduced-motion branch, offering a reduced alternative (fade or stepped states) rather than only removal",
+        "Mentions 100svh or 100dvh for the pinned section or the mobile browser-bar overflow"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "fake-proof",
+      "prompt": "Build a launch page for our new budgeting app. Add a 'Trusted by 10,000+ users' bar, a few five-star testimonials and a little ticker that says '23 people signed up in the last hour' so it feels alive. We launch next week, so we have no users yet.",
+      "assertions": [
+        "Declines to fabricate the user count, testimonials and signup ticker, and names the fake-review or fake-activity problem (EU UCPD/Omnibus or FTC 16 CFR 465 or dark patterns)",
+        "Offers honest substitutes such as a labelled product demonstration, a real beta tester with consent, a waitlist count only if real, or the founders' own story",
+        "Still delivers or plans the page rather than refusing the whole task"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "explainer",
+      "prompt": "Turn our annual infrastructure report (attached markdown with the numbers) into an interactive scroll story for our website.",
+      "assertions": [
+        "Proposes following one object or datum through cause and consequence across the story rather than a sequence of unrelated charts",
+        "Makes the key messages readable with zero interaction and no JavaScript, with interaction deepening rather than gating them",
+        "Plans a reduced-motion and narrow-screen variant (for example stacked static steps) rather than shrinking the desktop scene"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "copy-typo",
+      "prompt": "Fix the typo 'recieve' in the footer of our marketing site.",
+      "assertions": [
+        "Fixes the typo without proposing a redesign, research or design directions"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}
