@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.7.0 (2026-10-04)
+
+### 🚀 Features
+
+- **product-owner:** Definition of Mergeable with a git-only merge check (3c7f2c55)
+
+
 ## 0.6.0 (2026-09-01)
 
 ### 🚀 Features
