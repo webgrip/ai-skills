@@ -31,7 +31,8 @@
       "assertions": [
         "Does NOT create an ADR for an unmade decision — frames the work as design exploration (RFC/design doc territory)",
         "Offers to record an ADR only once a decision is actually made"
-      ]
+      ],
+      "expect_trigger": false
     }
   ]
 }
