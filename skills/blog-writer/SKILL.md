@@ -90,8 +90,8 @@ Per-platform recipes, constraints, canonical-URL mechanics, timing, and self-pro
   the whole distribution chain. Disclose AI assistance where the author's norms call for it.
 - **Never solicit votes** (HN/Reddit/Lobsters) — not in the post, not in DMs, not in a newsletter.
   Detection is automated and the penalty is the account, not the post.
-- **LinkedIn depresses external links** (~25–35% reach; the link-in-comments workaround is dying).
-  The LinkedIn variant must deliver value with no click; link via comment or post-distribution edit.
+- **LinkedIn taxes links**, in the body and in comments alike. The LinkedIn variant must deliver
+  value with no click; the `linkedin-post` skill owns the mechanics.
 - **Titles for aggregators stay de-hyped** — HN mods retitle editorialized submissions; keep the
   original title, drop gratuitous numbers and superlatives.
 - **No SEO ceremony.** Keyword density, E-E-A-T theater, schema blocks, "ultimate guide" framing —

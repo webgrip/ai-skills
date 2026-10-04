@@ -42,18 +42,16 @@ comments and answers the hard questions — that's where the credibility (and ha
 
 ## LinkedIn
 
-**Constraints**: posts cap at 3,000 chars; only ~210 (desktop) / ~140 (mobile) show before the
-"see more" fold — the first two lines carry the entire post; 60–70% never expand. No native
-bold/italic (Unicode-trick "bold" doubles char count, breaks screen readers, and correlates
-with reduced reach). External links in the body cost ~25–35% reach, and the link-in-comments
-workaround is being algorithmically closed — treat both as taxed.
+**Mechanics** (links, the fold, formatting, hashtags, timing, profile versus page) belong to the
+`linkedin-post` skill: load it for this variant. Two facts shape the adaptation: only the first
+~140 characters show on mobile before "see more", and a link costs reach in the body and gets
+hidden in a comment.
 
 **Recipe**: do not paste the post. Extract the single most surprising insight and write a
-native, standalone-value post of ~1,500–2,500 chars: strongest number/claim in line 1, a turn
-in lines 3–6, short whitespace-separated lines, soft closing question. Link to the canonical
-via a comment or an edit after initial distribution. 3–5 hashtags at the end. Alternatives
-that escape the link penalty: a native Article (long form, on-platform) or a document/PDF
-carousel (highest CTR format) for list-shaped content.
+native post that stands alone without the click: strongest number or claim in line 1, a turn
+in lines 3–6, short lines, one question people can answer in a word. Long-form alternatives
+that keep readers on the platform: a native Article, or a document/PDF carousel for
+list-shaped content.
 
 ## Substack
 
@@ -112,6 +110,6 @@ accounts (<70 days) can't use `show`/`announce`/`ask` tags.
 3. Syndicate: dev.to (canonical_url set) → Hashnode → Medium, each adapted.
 4. Aggregators on a strong weekday morning (US ET): HN (original title), relevant subreddit
    (rules read, flair set, context comment ready), Lobsters (authored-by ticked).
-5. LinkedIn native post same week; link via comment/edit.
+5. LinkedIn native post same week (`linkedin-post` skill decides the link placement).
 6. Author available for comments for 24–48 h after each aggregator submission.
 7. One post per platform per piece — no reposting the same link to the same venue.
