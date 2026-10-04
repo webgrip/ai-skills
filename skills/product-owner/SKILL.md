@@ -1,6 +1,6 @@
 ---
 name: product-owner
-description: Run any ticket board as product owner — Vikunja, ClickUp, or another tracker. Refinement to the Definition of Ready, agent-ready gating for AI-executed work, review-capacity WIP limits, the Definition of Done, and flow metrics. Use when creating, updating, closing or listing tickets, "make a ticket for X", "maak een ticket (aan) voor", "wat staat er op het bord", asking what to pick up next, refining or grooming a backlog or klantbacklog, "is dit ticket klaar voor de sprint", writing acceptance criteria or a verification, prioritizing or triaging, ordering pick-up, moving a ticket to another status, re-grooming a ticket rejected in testing or acceptance, running a board-health or WIP audit, measuring cycle time or deriving a service level expectation (SLE), preparing tickets for an AI coding agent, splitting an oversized ticket, handling a stale ticket, or when a ticket is just a product name with no definition of finished. NOT for agile-theory questions — this runs a live board.
+description: Run any ticket board as product owner — Vikunja, ClickUp, or any tracker. Refinement to the Definition of Ready, agent-ready gating for AI-executed work, review-capacity WIP limits, the Definitions of Mergeable and Done, and flow metrics. Use when creating, updating, closing or listing tickets, "make a ticket for X", "maak een ticket (aan) voor", "wat staat er op het bord", asking what to pick up next, refining or grooming a backlog or klantbacklog, "is dit ticket klaar voor de sprint", writing acceptance criteria or a verification, prioritizing or triaging, ordering pick-up, moving a ticket to another status, re-grooming a ticket rejected in testing or acceptance, deciding whether a PR or MR is mergeable ("mag dit gemerged worden"), running a board-health or WIP audit, measuring cycle time or deriving an SLE, preparing tickets for an AI coding agent, splitting an oversized ticket, handling a stale ticket, or when a ticket is just a product name. NOT for agile-theory questions — this runs a live board.
 ---
 
 # Product owner — the board operating manual
@@ -50,7 +50,8 @@ projects/boards, ask which one, and suggest adding a contract.
 → **prioritize** ([playbook.md](playbook.md)) → **sequence** (dependencies as relations,
 never prose) → **order** (pick-up queue where the contract has one) → **plan**
 (estimate/sprint where the board runs them) → **execute**, WIP-limited (AI executors →
-[agents.md](agents.md)) → **review** against evidence → **close** on the DoD. Periodic:
+[agents.md](agents.md)) → **review** against evidence → **merge** on the DoM
+([merge.md](merge.md)) → **close** on the DoD. Periodic:
 **sweep** + flow metrics ([flow.md](flow.md)). Catching is nearly free, pulling is
 expensive — deliberate. **Moving a ticket back is the gate working, not failure.**
 
@@ -120,19 +121,37 @@ dispatched tickets per reviewer, the review column gets its own cap, and a full 
 queue means *clear the review queue*, never *start more*. Twelve items in doing means
 nothing is in hand and everything is half done.
 
+## Definition of Mergeable
+
+The gate on a **change**, not a ticket: may this PR/MR land on main? Invariant: main
+always passes all the tests, so every merge leaves it releasable. Merged ≠ done, green ≠
+mergeable, and the forge's `mergeable` field is only a conflict check. The portable
+default (the contract may point at the team's own) — **Lands green**: required checks
+pass on the tree that will land (up to date with the base, or a merge queue), every
+required check ran and could fail, main green first · **Reviewed**: a qualified
+non-author approved the final revision; blocking threads resolved; a second approval by
+risk tier, never by default · **Scoped**: one ticket, only what it names, reviewable
+size, tests move with the behavior and none are thinned without a reason · **Safe to
+ship**: unfinished behavior dark behind a flag, compatible with the running version,
+revertable, no new critical findings or unchecked dependencies · **Legible**: the PR
+states what/why, verification, risk, rollback — and matches its diff. Agent-authored:
+builder ≠ judge, AI review is an input never the approval, test-touching hunks get a
+human read. Enforce in branch protection what the forge can hold; a line only prose
+holds is a wish. Criteria, forge settings and traps, agent extras, procedure →
+[merge.md](merge.md); mechanical half: `python3 scripts/merge_check.py --base
+origin/main --head pr-<n>`.
+
 ## Definition of Done
 
 One list per team, every ticket, regardless of size — per-ticket conditions are
 acceptance criteria, not DoD lines. The portable default (the contract may point at the
 team's own): **Result** — criteria met, Verification *executed*; green CI alone never
-closes · **Code** — MR/PR merged, reviewed by a non-author (agent work: a fresh-context
-reviewer checks the diff against intent and scope), no new critical/high vulns ·
+closes · **Code** — every change merged through the DoM ([merge.md](merge.md)) ·
 **Deployed** — seen running in the target environment (or explicitly not, with the
-reason), rollback written down · **Knowledge** — docs/ADR/runbook updated or "not
-needed, because …"; commit/MR carries the contract's ticket trailer ·
-**Accountability** — incident? cause + lessons recorded per the board's scheme;
-security touched? classified. Every rule has an escape *with a reason* — "not deployed"
-alone is not one.
+reason), the DoM's rollback path confirmed for that environment · **Knowledge** —
+docs/ADR/runbook updated or "not needed, because …" · **Accountability** — incident?
+cause + lessons recorded per the board's scheme; security touched? classified. Every
+rule has an escape *with a reason* — "not deployed" alone is not one.
 
 ## Writing to the board
 
@@ -164,6 +183,8 @@ the **commit trailer** (the token the tracker's own integration parses).
 - Refinement: interview, criteria craft, templates, teaching pass, splitting, triage,
   antipatterns, bulk fan-out → [refine.md](refine.md)
 - Agent execution: gate, dispatch, claim, accept, anti-reward-hacking → [agents.md](agents.md)
+- Definition of Mergeable: criteria, forge enforcement and traps, agent-authored extras,
+  merge-check procedure, merge folklore → [merge.md](merge.md)
 - Operation recipes incl. prioritization, queue ops, audits, sweeps, dedupe, rework →
   [playbook.md](playbook.md)
 - Flow metrics + SLE → [flow.md](flow.md) · evidence base → [rationale.md](rationale.md)

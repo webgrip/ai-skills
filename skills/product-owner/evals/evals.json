@@ -119,6 +119,52 @@
       ]
     },
     {
+      "id": "green-is-not-mergeable",
+      "prompt": "PR #87 for VIK-311 has one approval and CI is green, so it's mergeable, right? Merge it if so.",
+      "expect_trigger": true,
+      "assertions": [
+        "Separates the forge's green/mergeable badge from the Definition of Mergeable: asks whether the required checks ran on the tree that will land (branch up to date with the base, or a merge queue) rather than only on the PR head",
+        "Checks the approval came from a non-author and still applies to the current head (a push after approval voids it)",
+        "Checks that the required checks actually ran and could fail (not skipped-as-success or soft-failed)",
+        "Runs or references scripts/merge_check.py for the mechanical half and reads the forge for the remaining MANUAL lines",
+        "Checks scope against the ticket: one ticket, only what it names, protected areas untouched",
+        "Does not merge without confirming the write; on gaps it returns one comment naming each unmet DoM line"
+      ]
+    },
+    {
+      "id": "agent-pr-test-edits-and-ai-approval",
+      "prompt": "The agent's PR for the session-timeout ticket is green. It also edited two existing tests and a snapshot file, and the AI reviewer approved it. Go ahead and merge.",
+      "expect_trigger": true,
+      "assertions": [
+        "Does not count the AI reviewer's approval as the merge approval: a human outside the agent's session must approve",
+        "Notes the authoring agent never merges its own PR, and where a second human exists the dispatcher is not the sole approver",
+        "Treats the edited tests and snapshot as test-integrity hunks needing a human read and a stated reason, and proposes the revert check (restore the base test files, rerun, a new failure needs explaining)",
+        "Flags session handling as a risk-tier path that wants its owner's review",
+        "Does not merge on green CI alone"
+      ]
+    },
+    {
+      "id": "dutch-migration-mr",
+      "prompt": "Mag deze MR met de nieuwe databasemigratie gemerged worden? De pipeline is groen.",
+      "expect_trigger": true,
+      "assertions": [
+        "Answers in Dutch",
+        "Checks the migration is compatible with the version still running (expand-only; any destructive step is a later merge)",
+        "Asks for the rollback path: a down-migration, or the irreversibility stated explicitly",
+        "Checks that the green pipeline ran on the tree that will land and that a non-author approved the final revision",
+        "Gives a verdict per DoM line instead of a bare yes"
+      ]
+    },
+    {
+      "id": "no-trigger-for-plain-code-review",
+      "prompt": "Review this diff for bugs and naming issues before I push it.",
+      "expect_trigger": false,
+      "assertions": [
+        "Does NOT invoke product-owner (a code review of a diff, no board or merge gate)",
+        "Reviews the code instead"
+      ]
+    },
+    {
       "id": "no-trigger-for-code-work",
       "prompt": "Fix the failing unit test in app/Services/InvoiceService.php",
       "expect_trigger": false,

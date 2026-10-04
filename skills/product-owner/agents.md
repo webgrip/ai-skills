@@ -77,15 +77,19 @@ agent failure. Re-refining a ticket means recalling it first.
 changed and why (commit/PR links) · the ticket's own Verification output · risk areas ·
 known limitations · the regression signal (alert/dashboard/scheduled check, or why none
 applies). Then mark for review per the contract. **Agents never complete their own
-tickets.**
+tickets, and never approve, merge, or mark ready their own PRs.**
 
 **Accept (PO/human side)**:
 
-1. Evidence against the **DoD** — verification actually executed (not promised, not
-   just green CI), deployed-and-seen or reasoned, rollback known.
+1. The PR passes the **DoM** with its agent-authored extras ([merge.md](merge.md)):
+   approver outside the agent's session, AI review as input only, every test-touching
+   hunk read and reasoned. Mechanical half: `python3 scripts/merge_check.py --base
+   origin/main --head pr-<n> --protected '<glob>'` — agent authorship is auto-detected
+   and tightens the test and gate lines to FAIL.
 2. **Fresh-context review against intent and scope**, not just correctness: does the
    diff do what the *Problem* needed, and does it touch **nothing outside the ticket's
-   named files**? Mechanically diff changed paths against Protected areas.
+   named files**? Then evidence against the **DoD** — verification actually executed
+   (not promised, not just green CI), deployed-and-seen or reasoned.
 3. Where feasible, run a **held-out check** the agent never saw. Reward hacking is
    measured, not hypothetical (hard-coded expected outputs, edited tests); detectors
    catch only ~63% of hack categories, so green-on-visible-checks is necessary, never
@@ -109,3 +113,9 @@ rate, bounce-backs, reopen count, cycle time vs human baseline. Expand delegatio
 in classes with demonstrated success; pull classes with high rejection back to
 human-first. Pair every throughput number with its stability guardrail
 ([flow.md](flow.md)) — rising throughput with rising rework is net-negative, not a win.
+**Task type predicts merge more than the agent does** (docs/CI/chores merge far more
+often than performance or test work) — compare classes, not vendors. A merge rate is not
+an agent-quality score on its own: only about a third of rejected agent PRs are clear
+agent failures; the rest are duplicates, superseded work, abandoned reviews — or carry
+no reason at all, which is why every PR closed unmerged gets one. Watch **approvals without a single review comment** on agent
+PRs: approval rates rising while comments fall is habituation, not earned trust.

@@ -78,7 +78,9 @@ tickets is theater.
   net-negative, and merged-without-review is a red flag, not velocity.
 - **When agents execute, watch the review queue**: time-to-first-review and
   oldest-awaiting-review are the age metrics that matter most (measured: agent PRs wait
-  ~5× longer for pickup). The review column gets its own WIP cap and its own SLE.
+  ~5× longer for pickup). The review column gets its own WIP cap and its own SLE. Pair it
+  with **review depth**: the share of agent PRs approved without a single comment — when
+  approvals rise while comments fall, the gate is habituating, not the agent improving.
 - **Forecast with ranges, never dates**: "when will it be done" gets a probabilistic
   answer at named confidence levels from recent throughput — and the sample is void
   after a regime change (team change, agent adoption); re-baseline instead of trusting

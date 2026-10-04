@@ -1,7 +1,7 @@
 # Playbook — recipes for the common PO operations
 
-Create · Gate check · WIP · Prioritize · Close · Queue ops · Audit · Sweep · Dedupe ·
-Verify-and-close · Product-name rewrite · Sequencing · Sprint pull · Rework.
+Create · Gate check · WIP · Prioritize · Merge check · Close · Queue ops · Audit · Sweep ·
+Dedupe · Verify-and-close · Product-name rewrite · Sequencing · Sprint pull · Rework.
 Tool-agnostic sequences; the exact calls, payload shapes, and traps are in the adapter
 ([adapters/vikunja.md](adapters/vikunja.md) / [adapters/clickup.md](adapters/clickup.md)) —
 read it before the first write of a session. Board gates and ids: the Board contract.
@@ -53,9 +53,20 @@ the whole board, not your memory.
   drop), not another day of ageing.
 - Keep the backlog small and honest — hold fewer tickets rather than pad toward a target.
 
+## Merge check (is this PR mergeable?)
+
+1. Fetch the PR head into the up-to-date checkout; run `python3 scripts/merge_check.py
+   --base origin/<target> --head pr-<n>` with the ticket's Protected areas and the
+   contract's trailer.
+2. Read the forge for the MANUAL lines (checks on the landing tree, approval on the
+   current head, blocking threads) and name any trap the green badge rests on.
+3. Review intent and scope; verdict per [merge.md](merge.md). Not mergeable → one comment
+   naming each unmet line, back to the author. Never merge an agent's PR on its say-so.
+
 ## Close with evidence
 
-1. Check the DoD line by line against reality, not the ticket's optimism.
+1. Check the DoD line by line against reality, not the ticket's optimism — every change
+   for the ticket merged through the DoM, not just "a PR exists".
 2. Evidence comment: what shipped (commit/MR/PR), the Verification output, where it
    runs, the rollback path, the regression signal (alert/dashboard/check — or why none).
 3. A DoD line missing without a stated reason → not done; say which line and stop.
@@ -93,6 +104,9 @@ up to the cap → re-emit the queue → say what changed and why.
    - queue entries are open, in order, none above its blocker
    - nothing finished without its DoD evidence · completion counts use the
      *agreement's* finished status only
+   - every open PR references one ticket · no ticket with two open PRs · no PR in
+     review past the review SLE (abandoned review and duplicates are the two biggest
+     killers of agent PRs) · every PR closed unmerged carries a reason
 4. Report: **counts → violations → the three things worth doing about it.** Propose;
    don't mass-mutate. Ask before any bulk write.
 
@@ -154,6 +168,6 @@ commitment — roll unfinished work forward without ceremony.
 
 Read the rejection feedback and any bounce counters first → classify *unclear ticket*
 (DoR-repairable: feed feedback back in as reproduction/criteria) vs *defect in the work*
-(not a refinement problem) → **never reset the counters** (they are the
-DoR-effectiveness measurement) → report the two classes separately; that split is the
-DoR metric.
+(not a refinement problem; a PR bounced at the merge gate names the DoM lines it
+missed) → **never reset the counters** (they are the DoR-effectiveness measurement) →
+report the two classes separately; that split is the DoR metric.

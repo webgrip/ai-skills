@@ -24,6 +24,12 @@ never a guess.
 - do-next cap: <10> · pick-up queue: <where it lives, e.g. project description> · open target: ≈<N>
 - Risk tiers: human-review-mandatory paths: <auth, billing, migrations, ...>
 - DoD: <link to the team's own, else the skill's portable default applies>
+- DoM: <link to the team's own, else the portable default> · merge style: merge | squash | rebase ·
+  landing tree tested by: merge queue | up-to-date rule | merged-results run ≤ <N>h old
+- Approvals: <1> qualified non-author on the final revision · second approval on: <the risk-tier
+  paths> · agent PRs approved by a human other than the dispatcher: yes | no (solo maintainer)
+- Commit convention: conventional | none · AI trailer: Assisted-by | Co-authored-by | none ·
+  always-protected globs for merge_check: <e.g. '.forgejo/*' 'deploy/*'> · size target: <400>
 - Top-up ground truth: `git log --oneline <last-sweep>..HEAD` · <verification scripts> ·
   audit dimensions: <security · reliability · CI/DX · ...>
 - Instance ops (tokens, MCP deployment): <runbook path/URL>

@@ -4,8 +4,9 @@ Run any ticket board as product owner — one discipline, per-tool adapters. Tic
 intake, refinement to a research-backed Definition of Ready, binary acceptance criteria
 with verification, an **agent-ready gate** for work AI coding agents execute,
 prioritization and pick-up ordering, WIP limits anchored on review capacity, dependency
-sequencing, splitting, backlog sweeps, evidence-based closing on a Definition of Done,
-and flow metrics (Work Item Age, Cycle Time, Throughput, SLE).
+sequencing, splitting, backlog sweeps, a **Definition of Mergeable** gating every PR/MR
+before it lands, evidence-based closing on a Definition of Done, and flow metrics (Work
+Item Age, Cycle Time, Throughput, SLE).
 
 The skill carries the **role** (loop, gates, heuristics, protocols — every major rule
 traced to 2026 evidence in `rationale.md`). Adapters carry the **tool mechanics**
@@ -56,17 +57,21 @@ projects/boards, and asks.
 - "is this ticket ready for an agent to pick up?" · "prepare these tickets for Copilot/Claude"
 - "run a board-health audit" · "what's our cycle time — can we state an SLE?"
 - "is dit ticket klaar voor de sprint?" · "groom the customer backlog"
+- "is PR #87 mergeable?" · "the agent's PR is green, merge it" · "mag deze MR gemerged worden?"
 
 ## Files
 
 `SKILL.md` (role core: contract resolution, loop, skeleton, gates, DoD, invariants) ·
 `refine.md` (refinement execution: interview, criteria craft, EARS, templates,
 splitting, triage, bulk fan-out, antipattern gallery) · `agents.md` (AI-executor layer:
-agent-ready gate, claim/evidence/accept, risk tiers, anti-reward-hacking) ·
+agent-ready gate, claim/evidence/accept, risk tiers, anti-reward-hacking) · `merge.md`
+(Definition of Mergeable: criteria, forge enforcement and traps, agent-authored extras,
+merge-check procedure, merge folklore) ·
 `playbook.md` (operation recipes incl. prioritization and queue ops) · `flow.md` (flow
 metrics + SLE) · `contracts.md` (contract template + layer file shapes) ·
 `rationale.md` (the 2026 evidence base, sourced) · `adapters/vikunja.md` +
 `adapters/clickup.md` (tool mechanics) · `scripts/ticket_lint.py` (offline
-DoR/agent-ready gate check, EN+NL, markdown+HTML) · `scripts/flow_metrics.py` (offline
+DoR/agent-ready gate check, EN+NL, markdown+HTML) · `scripts/merge_check.py` (offline
+mechanical half of the DoM, reads git only) · `scripts/flow_metrics.py` (offline
 flow metrics — raw ClickUp payloads via `--tasks`, normalized items from any tracker
 via `--items`) · `scripts/mcp_client.py` (streamable-HTTP MCP client for bulk work).
