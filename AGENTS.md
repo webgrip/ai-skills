@@ -64,6 +64,9 @@ python3 scripts/new_skill.py my-skill "One-line description."
 npm run check && npm test
 ```
 
+`new_skill.py` refuses a name already published on skills.sh (`--allow-published-name` overrides):
+slugs are immutable once published, so a clash found mid-build forces a rename.
+
 `test.sh` is optional — only for plugin-specific behavior (see domain-language's);
 generic quality rules are enforced by `scripts/lint_skills.py` (frontmatter name==dir + kebab,
 description ≤1024 chars with "Use when …" triggers, no `when_to_use`, no angle brackets in
@@ -142,10 +145,13 @@ test.sh suites; domain-language's needs PyYAML). CI runs the same via
 pushes to main add the release flow (`release.yml`).
 
 **Trigger-accuracy eval** (on demand, costs tokens — not in CI): `python3 scripts/run_evals.py
-[skill…]` launches a headless `claude -p` per `evals/evals.json` case with only that skill loaded
-and checks it actually fired. `"expect_trigger": false` = should-NOT-trigger probe; `null` =
-output-quality-only case the probe skips. Under-triggering ⇒ tune the `description` (skillsmith),
-re-probe. This is the *triggering* half of the eval contract; output quality still wants the
+[skill…]` runs each `evals/evals.json` case 3× (`--repeats`) in isolated headless sessions — only
+that skill loaded, empty temp cwd, no user settings, plugins, CLAUDE.md or MCP, `Skill` the only
+tool — and reports PASS / FLAKY / FAIL. Default model is sonnet: haiku misses cases on skills known
+to fire, so it is a broken probe, not a cheap one. `"expect_trigger": false` = should-NOT-trigger
+probe; `null` = output-quality-only case the probe skips. Tune the `description` (skillsmith) only
+on FAIL, or on a FLAKY that stays flaky at `--repeats 5`; a timeout or session error is a probe
+problem. This is the *triggering* half of the eval contract; output quality still wants the
 with/without grading in CONTRIBUTING.md.
 
 ## Hook-carrying plugins

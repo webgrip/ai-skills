@@ -53,7 +53,8 @@ an imagined problem. To test a change, run each prompt in a fresh session
 with and without the skill and grade the assertions (Claude Code's
 `skill-creator` plugin automates this). Probe symptom phrasings, not just
 canonical ones — under-triggering hides in prompts that don't contain the
-skill's name.
+skill's name. `python3 scripts/run_evals.py <name>` runs the triggering half:
+three isolated runs per case, PASS / FLAKY / FAIL.
 
 ## Process
 

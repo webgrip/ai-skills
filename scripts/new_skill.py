@@ -3,6 +3,14 @@
 
 Usage:
     python scripts/new_skill.py my-skill-name "One-line description of the skill."
+    python scripts/new_skill.py my-skill-name "..." --allow-published-name
+
+Before scaffolding, the name is looked up on the skills.sh registry: a slug
+another publisher already uses means two same-named skills on any machine
+that installs both, and plugin slugs are immutable once published, so a
+clash found later costs a rename mid-build. An exact match stops the
+scaffold unless --allow-published-name is passed; an unreachable registry
+only warns.
 
 Creates (the skill directory IS the plugin — SKILL.md at the plugin root):
     skills/<name>/.claude-plugin/plugin.json    (the single source of truth)
@@ -16,26 +24,56 @@ in the README, and optionally add a test.sh for plugin-specific behavior —
 generic quality rules are already enforced by scripts/lint_skills.py.
 """
 
+import argparse
 import json
 import re
 import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 import sync_marketplace
 
 ROOT = Path(__file__).resolve().parent.parent
+REGISTRY_SEARCH = "https://skills.sh/api/search?q={}&limit=50"
+
+
+def published_twins(name: str) -> list[str] | None:
+    url = REGISTRY_SEARCH.format(urllib.parse.quote(name))
+    try:
+        with urllib.request.urlopen(url, timeout=10) as response:
+            found = json.load(response).get("skills", [])
+    except (OSError, ValueError):
+        return None
+    return [
+        f"{entry.get('source')} ({entry.get('installs', 0)} installs)"
+        for entry in found
+        if entry.get("name") == name
+    ]
 
 
 def main():
-    if len(sys.argv) < 3:
-        sys.exit(__doc__)
-    name, description = sys.argv[1], sys.argv[2]
+    parser = argparse.ArgumentParser(description=__doc__,
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("name")
+    parser.add_argument("description")
+    parser.add_argument("--allow-published-name", action="store_true")
+    args = parser.parse_args()
+    name, description = args.name, args.description
     if not re.fullmatch(r"[a-z][a-z0-9-]*", name):
         sys.exit("name must be lowercase-with-hyphens, e.g. spec-review")
 
     skill = ROOT / "skills" / name
     if skill.exists():
         sys.exit(f"skills/{name} already exists")
+
+    twins = published_twins(name)
+    if twins is None:
+        print(f"warning: skills.sh unreachable; check the name by hand: npx skills find {name}")
+    elif twins and not args.allow_published_name:
+        sys.exit(f"'{name}' is already published by: {'; '.join(twins)}\n"
+                 "pick a distinct name (slugs are immutable once published), "
+                 "or pass --allow-published-name")
 
     mp = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text())
     owner = mp.get("owner", {})
