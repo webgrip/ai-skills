@@ -1,0 +1,10 @@
+{
+  "refs": [
+    "baseline",
+    "step-15"
+  ],
+  "baseline": "baseline",
+  "repeats": 5,
+  "agent": "claude",
+  "model": "claude-sonnet-5-5"
+}

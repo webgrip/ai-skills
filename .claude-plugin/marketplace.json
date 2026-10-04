@@ -256,6 +256,25 @@
       "keywords": []
     },
     {
+      "name": "refactoring-economics",
+      "source": "./skills/refactoring-economics",
+      "description": "Refactor agent-maintained code where it measurably lowers what coding agents spend on future changes: git-hotspot targeting with agent share, a repeated-run token measurement harness over the agent's own usage stream, Fowler-catalog refactorings ordered by what shrinks the read set, tool-driven execution with a per-step gate, and a break-even model priced per token class with a safety factor.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "refactoring",
+        "technical-debt",
+        "token-cost",
+        "agentic-coding",
+        "claude-code",
+        "hotspots",
+        "measurement",
+        "roi",
+        "code-health",
+        "fowler"
+      ]
+    },
+    {
       "name": "secrets-levels",
       "source": "./skills/secrets-levels",
       "description": "Places a secret at the right level of the Webgrip estate and names the manifest that puts it there: floor (SOPS), vault (OpenBao), cluster (External Secrets), bridge (Forgejo Actions and Cloudflare Worker secrets), short-lived (OIDC, dynamic credentials, per-run tokens), person (a laptop). The placement half of the secrets model; guard-secrets is the enforcement half.",

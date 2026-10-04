@@ -1,0 +1,65 @@
+{
+  "skill_name": "refactoring-economics",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "worth-it",
+      "prompt": "Our Claude Code agents keep re-reading src/data/store.rs, which is 12,000 lines. Would refactoring it actually reduce our token spend enough to be worth it? The repo is here.",
+      "assertions": [
+        "Looks at change history (for example git log, churn or a hotspot ranking) to estimate how often agents will change the file, rather than judging by size alone",
+        "Proposes measuring the same representative change before and after with repeated runs (at least three to five) instead of a single run",
+        "Includes the cost of the refactoring itself, ideally including human review time, in a break-even or payback estimate",
+        "Sets expectations from the evidence (savings vary widely and are often far below the article's 83 percent) rather than promising a large saving"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "measure-before-after",
+      "prompt": "I have a branch refactor/store-split. Measure what it costs Claude Code to add a new ItemWatchStore trait on main versus on that branch.",
+      "assertions": [
+        "Runs or plans a fresh headless agent per trial on each ref with the same fixed prompt and an acceptance check",
+        "Uses the agent's reported token usage split by class (input, cache writes, cache reads, output) rather than estimating from characters",
+        "Repeats each variant several times, interleaved, and compares medians or an interval rather than two single runs",
+        "Asks for or states the budget before spending on paid runs"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "agent-split-file",
+      "prompt": "Have Claude split our 9,000-line OrderService.php into smaller files so agents spend fewer tokens on it.",
+      "assertions": [
+        "Splits along cohesive responsibilities with a stated reason per new file, and explicitly avoids splitting by line count",
+        "Ensures a safety net (existing or characterisation tests) before moving code",
+        "Uses a tool-driven or content-anchored approach (for example Phpactor, Rector, the IDE or the agent's edit tool with checks) rather than sed or regex over multi-line code",
+        "Commits one named refactoring per step with tests or static analysis passing, separate from behaviour changes"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "which-files",
+      "prompt": "Which files in this repository should we refactor first so that AI agents working on it spend less?",
+      "assertions": [
+        "Ranks candidates by change frequency combined with size (a hotspot or exposure measure), not by size alone",
+        "Excludes generated, vendored, lock or data files and cold code from the candidates",
+        "Mentions confirming the choice against what agents actually read or against real representative changes"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "bugfix",
+      "prompt": "Fix the off-by-one error in the pagination helper in src/utils/paginate.ts.",
+      "assertions": [
+        "Fixes the bug without proposing a refactoring programme, token measurement or hotspot analysis"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "pr-review",
+      "prompt": "Review this pull request for correctness and security issues.",
+      "assertions": [
+        "Reviews the pull request without turning it into a refactoring-economics analysis"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}

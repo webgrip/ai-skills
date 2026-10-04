@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"sample"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"command_execution","command":"rg -n ItemWatch src","aggregated_output":"src/store/watch.rs:12:pub trait ItemWatchStore {\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_1","type":"file_change","changes":[{"path":"src/store/watch.rs","kind":"update"}],"status":"completed"}}
+{"type":"turn.completed","usage":{"input_tokens":42000,"cached_input_tokens":30000,"output_tokens":1800,"reasoning_output_tokens":600}}
