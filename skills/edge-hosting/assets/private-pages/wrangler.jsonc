@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "private-pages",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "share.example.org", "custom_domain": true }],
+  "vars": { "ACCESS_TEAM_DOMAIN": "example.cloudflareaccess.com" },
+  "kv_namespaces": [{ "binding": "PAGES" }],
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,78 @@
+{
+  "skill_name": "edge-hosting",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load; null = output-quality only.",
+  "evals": [
+    {
+      "id": "www-522",
+      "expect_trigger": true,
+      "prompt": "Our site works on the apex but https://www.ourclub.dev just hangs and then shows a Cloudflare 522 page. The site deploys with wrangler as a static-assets Worker. What's wrong?",
+      "assertions": [
+        "Explains that the proxied www record has no claimant (no Worker route, custom domain or redirect rule), so Cloudflare forwards to the record's origin, which never answers",
+        "Recommends a 301 single redirect rule from www to the apex that preserves the path, rather than routing the Worker on www too",
+        "Mentions checking or replacing the placeholder origin with 192.0.2.1 or 100:: rather than a parking or registrar IP",
+        "Offers a verification step such as edge_check.py live or a curl on both hostnames"
+      ]
+    },
+    {
+      "id": "new-astro-site",
+      "expect_trigger": true,
+      "prompt": "I have a static Astro marketing site for my company. Set it up to deploy on Cloudflare for free from our Forgejo CI.",
+      "assertions": [
+        "Chooses Workers static assets (assets-only Worker, no main) over Cloudflare Pages for a new project",
+        "Config sets workers_dev and preview_urls explicitly, a route or custom domain for the hostname, and not_found_handling 404-page",
+        "CI uses CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID with a token scoped to Workers Scripts Edit plus Workers Routes Edit on the zone, and a pinned wrangler",
+        "Includes a post-deploy smoke test that waits for the edge and checks a real 404",
+        "Does not recommend Vercel Hobby, which forbids commercial use"
+      ]
+    },
+    {
+      "id": "review-wrangler-envs",
+      "expect_trigger": true,
+      "prompt": "Review this wrangler.toml before I merge:\n\nname = \"site\"\nmain = \"src/index.ts\"\ncompatibility_date = \"2026-09-26\"\nworkers_dev = true\nroutes = [{ pattern = \"example.org/*\", zone_name = \"example.org\" }]\n\n[[d1_databases]]\nbinding = \"DB\"\ndatabase_id = \"df25762e-0000-0000-0000-000000000000\"\n\n[env.staging]\nname = \"site-staging\"\nroutes = [{ pattern = \"staging.example.org/*\", zone_name = \"example.org\" }]\n\n[[env.staging.d1_databases]]\nbinding = \"DB\"\ndatabase_id = \"df25762e-0000-0000-0000-000000000000\"",
+      "assertions": [
+        "Flags that staging and production share one D1 database, so staging reads and writes production data",
+        "Flags workers_dev = true alongside routes as an extra public workers.dev hostname outside zone rules and hostname Access",
+        "Notes that preview_urls is unset",
+        "Runs or recommends edge_check.py config on the file"
+      ]
+    },
+    {
+      "id": "private-client-page",
+      "expect_trigger": true,
+      "prompt": "I want to send a client a one-page HTML proposal that only they can open, and that stops working after 30 days. We already have our domain on Cloudflare. How?",
+      "assertions": [
+        "Uses a Worker plus KV plus a per-page Cloudflare Access application with an Allow policy for the recipient's email and one-time PIN login",
+        "Creates the Access gate before uploading the content, and has the Worker validate the Access JWT so a missing gate fails closed",
+        "Disables or protects workers.dev and preview URLs so the page has no side door",
+        "Explains the 50-seat free limit, that each recipient holds a seat until removed, and to enable automatic removal of inactive users",
+        "Warns that the recipient must be on the policy before requesting a code, because Cloudflare sends codes only to allowed addresses while showing the same screen"
+      ]
+    },
+    {
+      "id": "eu-hosting-choice",
+      "expect_trigger": true,
+      "prompt": "A Dutch client insists their marketing site be hosted by an EU-owned company, no US hyperscalers or Cloudflare. Budget is near zero. What do you recommend?",
+      "assertions": [
+        "Recommends an EU-owned option such as Bunny.net, statichost.eu or Scaleway with its trade-off",
+        "Notes that Cloudflare's EU data localization is Enterprise-only and so doesn't meet the requirement on a free plan",
+        "States the cost or overage behaviour of the recommendation (prepaid, hard stop, or bill)"
+      ]
+    },
+    {
+      "id": "css-grid-bug",
+      "expect_trigger": false,
+      "prompt": "My CSS grid collapses into one column on Safari but not Chrome. Here's the grid-template-columns rule: repeat(auto-fit, minmax(18rem, 1fr)). Why?",
+      "assertions": [
+        "Does not load the edge-hosting skill"
+      ]
+    },
+    {
+      "id": "k8s-ingress-tls",
+      "expect_trigger": false,
+      "prompt": "Set up cert-manager with a Let's Encrypt HTTP-01 ClusterIssuer for our nginx ingress in Kubernetes.",
+      "assertions": [
+        "Does not load the edge-hosting skill"
+      ]
+    }
+  ]
+}

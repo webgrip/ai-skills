@@ -88,6 +88,27 @@
       ]
     },
     {
+      "name": "edge-hosting",
+      "source": "./skills/edge-hosting",
+      "description": "Ships static sites, Workers and private pages on Cloudflare's free edge tier with wrangler: Workers static assets over Pages, routes vs custom domains, www-to-apex redirects, DNS as code, Zero Trust Access gating with expiring per-recipient share links, previews and least-privilege CI tokens, a wrangler config linter and live-site prober, and when another host wins.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "cloudflare",
+        "wrangler",
+        "workers",
+        "static-site",
+        "edge",
+        "serverless",
+        "dns",
+        "zero-trust",
+        "cloudflare-access",
+        "free-tier",
+        "hosting",
+        "astro"
+      ]
+    },
+    {
       "name": "expressive-design",
       "source": "./skills/expressive-design",
       "description": "Designs and builds distinctive, memorable web pages from the subject's own evidence: a claim ledger, one thesis object carrying the identity, a still composition judged with motion off, parallel design directions, a motion contract per effect, a sourced Baseline and WCAG 2.2 floor, and a dependency-free source scanner for reduced-motion, zoom, focus, layout-shift, template-look and fake-proof failures.",

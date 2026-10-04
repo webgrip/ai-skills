@@ -1,0 +1,27 @@
+{
+  "name": "edge-hosting",
+  "displayName": "Edge Hosting",
+  "description": "Ships static sites, Workers and private pages on Cloudflare's free edge tier with wrangler: Workers static assets over Pages, routes vs custom domains, www-to-apex redirects, DNS as code, Zero Trust Access gating with expiring per-recipient share links, previews and least-privilege CI tokens, a wrangler config linter and live-site prober, and when another host wins.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "cloudflare",
+    "wrangler",
+    "workers",
+    "static-site",
+    "edge",
+    "serverless",
+    "dns",
+    "zero-trust",
+    "cloudflare-access",
+    "free-tier",
+    "hosting",
+    "astro"
+  ],
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/edge-hosting",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills"
+}
