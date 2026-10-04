@@ -204,6 +204,29 @@
       ]
     },
     {
+      "name": "product-ux",
+      "source": "./skills/product-ux",
+      "description": "Designs, critiques and builds product interfaces people use repeatedly: an evidence ledger instead of invented personas, job stories and top tasks, flows before screens, a state inventory for every view, sourced pattern rules for forms, navigation, feedback, tables, search, onboarding and AI features, a token-based visual system, a WCAG 2.2 and EAA floor, heuristic evaluation with severities and KLM estimates, and a dependency-free source scanner for unlabelled fields, fake buttons, blocked paste, deceptive consent, vague errors and other UI failures.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "ui",
+        "ux",
+        "product-design",
+        "interaction-design",
+        "usability",
+        "forms",
+        "design-system",
+        "design-tokens",
+        "accessibility",
+        "wcag",
+        "heuristic-evaluation",
+        "ux-writing",
+        "ai-ux",
+        "dashboard"
+      ]
+    },
+    {
       "name": "protocol-fit-research",
       "source": "./skills/protocol-fit-research",
       "description": "Evaluate an external protocol or standard against a project's architecture seams via parallel research fan-out.",

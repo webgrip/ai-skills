@@ -1,0 +1,17 @@
+:root { --x: 1; }
+.card { color: #111111; background: #fafafa; border-color: #e5e7eb; box-shadow: 0 1px 2px #00000022; }
+.badge { color: #16a34a; background: #dcfce7; }
+.badge-warn { color: #ca8a04; background: #fef9c3; }
+.badge-error { color: #dc2626; background: #fee2e2; }
+.link { color: #2563eb; }
+.link:hover { color: #1d4ed8; }
+.muted { color: #6b7280; }
+.border { border-color: #d1d5db; }
+.sidebar { background: #f3f4f6; color: #374151; }
+.header { background: #1f2937; color: #f9fafb; }
+.modal { z-index: 9999; }
+button:focus { outline: none; }
+.icon-button { width: 16px; height: 16px; }
+input, textarea { font-size: 14px; }
+.spinner { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }

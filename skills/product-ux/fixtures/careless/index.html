@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form action="/signup">
+    <input type="email" placeholder="Email" autocomplete="off">
+    <input type="password" onpaste="return false">
+    <select class="text-sm"><option>NL</option></select>
+    <label><input type="checkbox" checked> Send me marketing offers</label>
+    <button><svg viewBox="0 0 16 16"><path d="M2 2l12 12"/></svg></button>
+    <button type="submit" disabled>Submit</button>
+  </form>
+  <img src="avatar.png" width="40" height="40">
+  <div class="card" onclick="openInvoice()">Invoice for Jane Doe, Acme Inc</div>
+  <a href="#" tabindex="2">Export</a>
+  <button aria-hidden="true" type="button">Hidden action</button>
+  <p>Lorem ipsum dolor sit amet. <a href="/pricing">Learn more</a></p>
+  <p class="truncate">No thanks, I don't want to save money</p>
+  <span onmouseover="showTip()">Fees</span>
+  <input id="search" aria-label="Search" autofocus>
+  <div class="toast">Something went wrong</div>
+</body>
+</html>

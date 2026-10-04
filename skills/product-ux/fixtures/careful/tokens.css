@@ -1,0 +1,14 @@
+:root {
+  color-scheme: light dark;
+  --surface: light-dark(#ffffff, #16181d);
+  --surface-raised: light-dark(#f6f7f9, #1e2128);
+  --text: light-dark(#1b1d22, #e8eaef);
+  --text-muted: light-dark(#5b606b, #a3a8b3);
+  --border: light-dark(#c9cdd4, #3a3f4a);
+  --accent: light-dark(#0b57d0, #8ab4f8);
+  --danger: light-dark(#b3261e, #f2b8b5);
+  --focus: light-dark(#0b57d0, #8ab4f8);
+  --layer-dropdown: 100;
+  --layer-overlay: 200;
+  --layer-toast: 300;
+}

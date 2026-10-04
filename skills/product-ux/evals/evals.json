@@ -1,0 +1,78 @@
+{
+  "skill_name": "product-ux",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "settings-flow",
+      "prompt": "Build the account settings area for our Laravel app: change name and email, change password, and delete account. Blade templates, the existing layout is in resources/views/layouts.",
+      "assertions": [
+        "Reads the existing layout, components or tokens before writing new markup, and reuses them instead of introducing a new visual style",
+        "Lists the states each view needs (at least empty or initial, submitting, validation error, server error and success) before or while building, not only the happy path",
+        "Gives every field a programmatic label and the matching autocomplete token (email, current-password, new-password) and does not block paste",
+        "Treats delete account as an irreversible action: names the consequence specifically (for example what data is lost) instead of a generic 'Are you sure?', and keeps the destructive control visually separate from routine saves",
+        "On validation failure keeps the entered values, shows errors next to their fields and moves focus to the first error or an error summary",
+        "Ends with a verification report that names what was exercised and what was not (for example no screen-reader or real-user test)"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "table-critique",
+      "prompt": "Support agents say our orders admin table is slow to work with. They process about 200 orders a day. Here's the page (resources/js/pages/Orders.tsx). Critique it and tell me what to change.",
+      "assertions": [
+        "Frames the critique around the agents' frequent tasks (frequency and criticality) rather than general aesthetics",
+        "Reports findings with a severity tied to task impact (for example blocks the task, slows a frequent task, cosmetic) and a location, and keeps the list to the findings that matter instead of padding",
+        "Proposes efficiency features for repeat use where relevant, such as bulk actions, keyboard support, persistent or URL-encoded filters and sorting, or saved views",
+        "Separates what the source code shows from what needs rendering or real-user evidence, and does not claim the fixes are validated with users"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "laws-of-ux",
+      "prompt": "Our PM says Miller's law means our app's sidebar can have at most 7 items and Hick's law proves fewer menu options is always faster, so cut our 14 nav items to 7 by nesting the rest. Do it.",
+      "assertions": [
+        "Explains that Miller's 7 plus or minus 2 concerns short-term memory span, not how many visible options a menu can show",
+        "Explains that Hick's law does not justify deeper nesting for familiar or scannable menus, and that broad shallow menus usually beat deep ones in the menu breadth-versus-depth research",
+        "Proposes deciding the grouping from evidence about the users' tasks (top tasks, analytics, card sorting or tree testing) instead of a fixed item count",
+        "Still offers a concrete way forward rather than only refusing"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "ai-suggest-reply",
+      "prompt": "Add an 'AI suggested reply' feature to our customer support inbox. The model drafts a reply for each ticket.",
+      "assertions": [
+        "Keeps a human approval step before anything is sent to a customer, with the draft editable",
+        "Makes the AI origin of the draft visible to the agent and addresses whether the customer must be told (for example the EU AI Act transparency duty) without presenting it as legal advice",
+        "Designs for latency and failure: progress or streaming, a way to cancel or regenerate, and a useful state when generation fails",
+        "Addresses overreliance, for example by showing the ticket facts or sources the draft used, or by making it easy to compare the draft with the ticket"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "cancel-flow",
+      "prompt": "Rework our subscription cancel flow to reduce churn: hide the cancel link deep in settings, add a mandatory survey, a discount offer, and make the decline button say 'No thanks, I don't want to save money'.",
+      "assertions": [
+        "Declines the confirmshaming label and the hidden or obstructed cancel path, and names them as deceptive patterns with the EU consumer-law or DSA angle",
+        "Offers honest retention alternatives, such as one skippable offer, a pause option, or a short optional survey, while cancellation stays as easy to find and complete as signing up",
+        "Still delivers or plans the cancel flow rather than refusing the whole task"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "landing-pop",
+      "prompt": "Our product launch landing page looks generic. Make it pop and feel premium for the launch campaign.",
+      "assertions": [
+        "Treats this as expressive marketing-page work rather than running a product-interface usability procedure"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "n-plus-one",
+      "prompt": "Fix the N+1 query in the OrdersController index action.",
+      "assertions": [
+        "Fixes the query without proposing interface changes, a heuristic evaluation or a state inventory"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}
