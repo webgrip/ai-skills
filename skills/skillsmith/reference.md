@@ -4,6 +4,8 @@ Contents: [Frontmatter fields](#frontmatter-fields) · [Command name & discovery
 · [String substitutions](#string-substitutions) · [Advanced levers + when each fits](#advanced-levers--when-each-fits)
 · [Measure trigger accuracy & cost](#measure-trigger-accuracy--cost)
 · [Evaluate an installed skill](#evaluate-an-installed-skill)
+· [Research-backed skills](#research-backed-skills)
+· [Skills that ship a scanner](#skills-that-ship-a-scanner)
 
 ## Frontmatter fields
 
@@ -92,9 +94,23 @@ Full pass = qualitative audit → triggering eval → output-quality benchmark.
 
 - **Triggering: faithful probe, not `run_eval.py`.** The `skill-creator` harness injects each description as
   a *duplicate command twin* and only counts that twin firing — it **systematically undercounts an
-  already-installed skill** (the real skill wins the match, twin never fires). Instead run `claude -p <query>`
-  in the real repo, parse stream-json for the `Skill` tool call, compare to expected (~9s/query). Probe
-  *symptom* phrasings, not just canonical ones — under-triggering hides there.
+  already-installed skill** (the real skill wins the match, twin never fires). Instead run `claude -p <query>`,
+  parse stream-json for the `Skill` tool call, compare to expected. Probe *symptom* phrasings, not just
+  canonical ones — under-triggering hides there.
+- **Two probes, two questions.** *Is the description good?* — isolate: empty temp cwd,
+  `--plugin-dir <skill> --setting-sources "" --strict-mcp-config --tools Skill`. That drops installed
+  plugins, `~/.claude/CLAUDE.md`, MCP servers and every tool the agent could wander off with; a default
+  session loads all of them, and a sibling skill steals triggers. *Does it fire for me?* — then one pass in
+  the real repo with everything installed, to catch siblings competing for the same prompts.
+- **Runs and verdicts.** ≥ 3 runs per prompt: all as expected = pass, none = fail, mixed = flaky. Re-run a
+  flaky prompt at 5 before tuning; a 2-in-3 case often reads as a miss on one run.
+- **Read a consistent miss before tuning.** A case the description itself excludes is a mislabelled
+  should-not-fire probe. A prompt that makes the model stop and ask first (an ethical snag, missing
+  facts) never fires on turn one: that case tests output quality, so mark it as such and keep a plain
+  version of the request as the trigger case.
+- **Calibrate the probe model** on a skill known to fire before trusting a miss. Small models under-trigger
+  on good descriptions (haiku missed cases that sonnet fires on reliably), so a cheap probe can be a
+  broken one. A timeout or session error is a probe problem, never a description verdict.
 - **When the benchmark ties, the value is the gotchas, not the scaffolding.** On greenfield scaffolding a
   skill-on/skill-off benchmark can tie 9/9 — enforcing hooks + strong reference apps already carry the happy
   path; the skill's measurable win is speed/economy. Read that as: invest the skill's body in
@@ -105,5 +121,41 @@ Full pass = qualitative audit → triggering eval → output-quality benchmark.
   it trips built-in sensitive-path protection (auto-denies every write under headless `acceptEdits`); put them
   in `/tmp`. A `claude -p` run *inside* a worktree can still write into the MAIN checkout (worktree `.git` is a
   gitfile → project-root resolves to main) — capture outputs, then `git checkout`/`rm` the pollution.
+
+## Research-backed skills
+
+For a skill distilled from an article, a talk or a literature search.
+
+- **Survey what exists first.** `npx skills find <topic>` and the top repositories show what people
+  already ship: take the best ideas, avoid the name, and know what the new skill must beat.
+- **Parallel research tracks**, one subagent each (prior art and published skills, academic work,
+  practitioner and vendor guidance, tooling), each writing full notes to a scratch file and returning a
+  short summary. The main context stays small; notes stay greppable. Subagents share a web-search budget —
+  give each a quota.
+- **One track audits evidence**, with no other job: for every headline claim, find the controlled study,
+  the replication or the absence of one, and label strength — **Strong** (controlled or large-sample) ·
+  **Consistent** (several sources agree) · **Contested** · **Anecdotal** (one run, one team, unpublished
+  vendor data). Expect headlines to shrink: a single-run 83 % token cut met a controlled ~7 %; popular
+  UX "laws" turned out to be misquoted (Miller's 7±2 is about memory span, not menu length).
+- **Carry the labels into the skill**: a legend once, a tag per claim in the reference files, the
+  replicated size in any number the agent will act on, the headline only as motivation.
+- **Every number from its primary source.** Summaries by tools and subagents get figures wrong; open the
+  paper or the docs before a number enters the skill.
+- **Volatile facts in a dated data file** (prices, model limits) that the scripts read, and recompute
+  derived numbers instead of trusting a tool's own: a CLI's reported cost can price a model at last
+  quarter's rate.
+
+## Skills that ship a scanner
+
+A shipped scanner or linter is only useful while agents trust its findings.
+
+- **Fixture pair**: `fixtures/careless/` where every rule must fire, with an expect file listing them, and
+  `fixtures/careful/` where nothing may fire. `test.sh` asserts both; a new rule lands with its careless
+  case and its careful counterpart.
+- **False-positive pass on real code** before release: run it on two or three real repositories, read
+  every hit, and turn each false positive into an exemption plus a careful-fixture case. Every false
+  positive teaches the agent to ignore the tool.
+- **Severity and a pointer per finding**: the rule name, `file:line`, and the reference section that says
+  what to do instead.
 
 Source of truth: <https://code.claude.com/docs/en/skills>. Re-verify here before changing the SKILL.md guide.

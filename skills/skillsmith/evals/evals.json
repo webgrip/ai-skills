@@ -19,7 +19,19 @@
       "assertions": [
         "Diagnoses the description as the trigger surface and edits it (not the body) to add symptom phrasings like crashloop/pod/OOM",
         "Keeps description within budget (1024 spec cap; 1536 listing cap) and checks nothing else gets squeezed out",
-        "Recommends probing with realistic symptom phrasings, not only canonical ones"
+        "Recommends probing with realistic symptom phrasings, not only canonical ones",
+        "Puts the outcome the user wants and the symptom phrasings ahead of method or tool nouns in the revised description",
+        "Probes each phrasing at least three times, in isolation, before and after the edit rather than trusting one run"
+      ]
+    },
+    {
+      "id": "skill-from-article",
+      "prompt": "Turn this blog post into a skill for our agents. The gist: the author moved the static parts of every prompt (system instructions, tool definitions, few-shot examples) to the front and the per-request data to the end, switched on prompt caching, and says their monthly LLM bill fell 80% within a week.",
+      "assertions": [
+        "Searches for evidence beyond the post (controlled studies, replications, vendor docs) before writing the skill",
+        "Labels the 80% figure by evidence strength and does not present it as the expected saving",
+        "Checks the proposed skill name against published skills before scaffolding",
+        "Keeps prices or other volatile numbers out of prose, in a dated data file or behind a primary-source link"
       ]
     },
     {

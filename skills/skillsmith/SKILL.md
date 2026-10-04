@@ -1,6 +1,6 @@
 ---
 name: skillsmith
-description: Author, edit, and audit agent skills (.claude/skills/*/SKILL.md or plugin skills) for token-efficient, high-trigger-accuracy LLM ingestion. Use when creating a new skill, refactoring/auditing an existing one, writing or tuning a frontmatter description, cutting a skill's token weight, splitting a skill into supporting files, or deciding what belongs in a skill vs CLAUDE.md vs memory vs a runbook.
+description: Author, edit, and audit agent skills (.claude/skills/*/SKILL.md or plugin skills) for token-efficient, high-trigger-accuracy LLM ingestion. Use when creating a new skill, refactoring/auditing an existing one, writing or tuning a frontmatter description, a skill that never fires or fires only sometimes, probing whether a skill triggers, building a skill from articles or research, cutting a skill's token weight, splitting a skill into supporting files, or deciding what belongs in a skill vs CLAUDE.md vs memory vs a runbook.
 ---
 
 # Skillsmith — write skills for the model, not the reader
@@ -36,6 +36,9 @@ Its one job: load this skill **exactly when relevant, never otherwise**.
   (spec cap **1,024 chars**); only a personal CC-only skill may split into `when_to_use`
   (combined 1,536 cap either way — trim both).
 - Third person, present tense, verb-first. **Never** "this skill", "helps you", "designed to".
+- **Lead with the outcome the user asks for, then the request shapes they type.** "Refactors code so
+  agents spend fewer tokens" fires where "Fowler-catalog refactoring harness" stays quiet; "split a
+  big file", "cancel flow" are what people say. Method nouns go last.
 - A word absent from description/when_to_use can't match. A word that's pure filler costs the whole set.
 
 ## Body rules
@@ -104,6 +107,9 @@ levers (`paths`, `context: fork`/`agent`, dynamic bang-backtick shell injection)
 
 ## Create
 
+0. **Name first:** `npx skills find <name>` (or `https://skills.sh/api/search?q=<name>`). A published
+   twin means two same-named skills on every machine that installs both, and a slug is immutable once
+   published — pick a distinct name before writing a line.
 1. `.claude/skills/<name>/SKILL.md`. `<name>` kebab-case, == dir, reads as `/<name>`.
 2. Frontmatter: `description` with "Use when …" triggers folded in; add others only with a reason from the table.
 3. Body: decision → procedure → gotchas; point at one real example.
@@ -118,6 +124,14 @@ levers (`paths`, `context: fork`/`agent`, dynamic bang-backtick shell injection)
   stale paths. Tighten description/when_to_use. Confirm cited examples still exist (`test -e`).
 - **Measure, don't guess:** the `skill-creator` plugin runs with/without A/B on real prompts and reports
   trigger hit-rate + token/time overhead; `/doctor` flags dropped descriptions. (See reference.md.)
+- **Probe triggers in isolation, ≥ 3 runs per prompt,** with a model calibrated on a skill known to fire.
+  Tune the description only on a consistent miss; one run, a small model, or a timeout is noise. (See reference.md.)
+- **Built from research or an article?** Label each claim's evidence strength and find the controlled
+  study or replication behind every headline number; the skill carries the replicated size, the headline
+  only as motivation. Volatile numbers (prices, limits) go in a dated data file the scripts read.
+  → [reference.md](reference.md#research-backed-skills)
+- **Ships a scanner or linter?** A fixture where every rule fires, one where none does, and a
+  false-positive pass on real code before release → [reference.md](reference.md#skills-that-ship-a-scanner)
 
 ## Evaluate an installed skill
 
