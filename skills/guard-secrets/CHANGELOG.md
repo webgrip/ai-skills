@@ -1,5 +1,12 @@
 # guard-secrets
 
+## 1.0.5 (2026-10-04)
+
+### 🐛 Bug Fixes
+
+- **guard-secrets:** run the absent-gitleaks test with the real python interpreter (f6b979bf)
+
+
 ## 1.0.4 (2026-09-05)
 
 ### 🐛 Bug Fixes

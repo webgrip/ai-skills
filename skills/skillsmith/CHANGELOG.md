@@ -1,5 +1,12 @@
 # skillsmith
 
+## 1.1.0 (2026-10-04)
+
+### 🚀 Features
+
+- **skillsmith:** name checks, outcome-first descriptions, probe method, research-backed skills (2c31bf2d)
+
+
 ## 1.0.3 (2026-09-01)
 
 ### ♻️ Refactoring

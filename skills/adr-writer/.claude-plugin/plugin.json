@@ -2,7 +2,7 @@
   "name": "adr-writer",
   "displayName": "ADR Writer",
   "description": "Write, amend, and supersede Architecture Decision Records in MADR 4.0.0 — locate or bootstrap an ADR directory with template and registry index in any repo, keep decision history append-only through ratifications, reverts, and supersessions, and enforce file-to-index consistency with a bundled CI-ready validator.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.10.3",
+      "version": "1.11.0",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -25,7 +25,7 @@
       "name": "adr-writer",
       "source": "./skills/adr-writer",
       "description": "Write, amend, and supersede Architecture Decision Records in MADR 4.0.0 — locate or bootstrap an ADR directory with template and registry index in any repo, keep decision history append-only through ratifications, reverts, and supersessions, and enforce file-to-index consistency with a bundled CI-ready validator.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "keywords": [
         "adr",
@@ -57,7 +57,7 @@
       "name": "blog-writer",
       "source": "./skills/blog-writer",
       "description": "Write, edit, and syndicate technical blog posts: evidence-first drafting, hook workshop, single-dimension edit sweeps with a de-AI-ify pass, fresh-reader testing, and per-platform adaptation for HN, LinkedIn, Substack, dev.to, Reddit, and Lobsters.",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "license": "MIT",
       "keywords": [
         "blog",
@@ -112,7 +112,7 @@
       "name": "expressive-design",
       "source": "./skills/expressive-design",
       "description": "Designs and builds distinctive, memorable web pages from the subject's own evidence: a claim ledger, one thesis object carrying the identity, a still composition judged with motion off, parallel design directions, a motion contract per effect, a sourced Baseline and WCAG 2.2 floor, and a dependency-free source scanner for reduced-motion, zoom, focus, layout-shift, template-look and fake-proof failures.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "keywords": [
         "design",
@@ -133,7 +133,7 @@
       "name": "guard-secrets",
       "source": "./skills/guard-secrets",
       "description": "PreToolUse hook that hard-blocks plaintext-secret leaks before an edit/write runs: no decrypted secret artifacts, SOPS files must stay ciphertext, and a best-effort gitleaks scan. The Claude Code twin of the estate's opencode guard-secrets plugin — same secrets floor, both tools.",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "license": "MIT",
       "keywords": [
         "security",
@@ -190,7 +190,7 @@
       "name": "linkedin-post",
       "source": "./skills/linkedin-post",
       "description": "Gets a LinkedIn post read: the 2026 ranking mechanics (the external-link penalty and the dead first-comment workaround, comments weighing 8 to 10 times a like, dwell time as the top signal, personal profiles out-reaching company pages 5 to 10 times), the plain-text formatting the editor will not destroy on paste, accessible emphasis instead of Unicode pseudo-bold, and the posting window.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "keywords": [
         "linkedin",
@@ -259,7 +259,7 @@
       "name": "refactoring-economics",
       "source": "./skills/refactoring-economics",
       "description": "Refactor agent-maintained code where it measurably lowers what coding agents spend on future changes: git-hotspot targeting with agent share, a repeated-run token measurement harness over the agent's own usage stream, Fowler-catalog refactorings ordered by what shrinks the read set, tool-driven execution with a per-step gate, and a break-even model priced per token class with a safety factor.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "keywords": [
         "refactoring",
@@ -308,7 +308,7 @@
       "name": "skillsmith",
       "source": "./skills/skillsmith",
       "description": "Author, edit, and audit Claude Code skills for token-efficient, high-trigger-accuracy LLM ingestion: a verified token cost model, description-as-router rules, progressive disclosure into reference files, and skill eval methodology.",
-      "version": "1.0.3",
+      "version": "1.1.0",
       "license": "MIT",
       "keywords": [
         "skills",

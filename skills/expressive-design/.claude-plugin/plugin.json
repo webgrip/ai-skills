@@ -2,7 +2,7 @@
   "name": "expressive-design",
   "displayName": "Expressive Design",
   "description": "Designs and builds distinctive, memorable web pages from the subject's own evidence: a claim ledger, one thesis object carrying the identity, a still composition judged with motion off, parallel design directions, a motion contract per effect, a sourced Baseline and WCAG 2.2 floor, and a dependency-free source scanner for reduced-motion, zoom, focus, layout-shift, template-look and fake-proof failures.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

@@ -1,5 +1,12 @@
 # linkedin-post
 
+## 0.1.1 (2026-10-04)
+
+### 🐛 Bug Fixes
+
+- **linkedin-post:** label how firm the reach numbers are and correct the unsupported ones (da789e1b)
+
+
 ## 0.1.0 (2026-09-22)
 
 Initial release.
