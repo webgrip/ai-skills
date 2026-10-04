@@ -17,8 +17,8 @@
       "id": "link-placement",
       "prompt": "Ik zet de aanmeldlink altijd in de eerste reactie in plaats van in de post zelf, want dat scheelt bereik. Klopt dat nog?",
       "assertions": [
-        "States plainly that the first-comment workaround has been penalised since early 2026 and is no longer a way around the penalty",
-        "Gives the body-link cost as roughly 18.8 percent median reach, attributed to van der Blom's Algorithm Insights over 1.3 million posts",
+        "States plainly that the first-comment workaround no longer escapes the cost, because comment links now get hidden much of the time",
+        "Gives the body-link cost as a range of roughly 15 to 35 percent from practitioner datasets, not as a precise figure, and notes that LinkedIn denies a deliberate penalty",
         "Makes the decision depend on the post's goal rather than giving a blanket rule: keep the link when sign-ups are the metric, drop every URL when conversation is the metric",
         "Mentions that a bare domain also counts as a link"
       ],

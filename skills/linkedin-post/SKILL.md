@@ -10,22 +10,29 @@ ask for**, and **whether the editor destroys your formatting on paste**. The wor
 than any of those.
 
 Before writing a word, load the `humanize` skill and keep it loaded. A post that reads as
-generated gets near-zero dwell time, and dwell time is the top ranking signal. Scan your draft
-before handing it over.
+generated loses readers in its first lines, and time spent reading (dwell time) is a signal
+LinkedIn's feed ranking explicitly models. Scan your draft before handing it over.
+
+**How firm the numbers are.** LinkedIn publishes no weights. It confirms the direction of four
+things below: dwell time counts, conversation counts for more than likes, hashtags are no reach
+lever, and spammy comments get suppressed. Every figure beyond that comes from consultant and
+tool-vendor datasets with unpublished methods, and the same report's figures move between
+editions. Use them for direction and rough size, never as targets, and never state one as
+settled fact.
 
 ## 1. Where
 
 **The original goes on a personal profile. Always.**
 
-Personal profiles get roughly 5 to 10 times the organic reach of a company page for identical
-content. The cause is mechanical: a page post is first tested against 2 to 5 percent of
-followers, and if that sample does not engage quickly it never expands. A personal post seeds to
-first-degree connections automatically, which produces exactly the early engagement the
-algorithm looks for. A young page makes this worse — 2 percent of eighty followers is nobody.
+Personal profiles reach several times more people than a company page with the same content;
+vendor data puts it around 3 times the impressions and 5 times the engagement. A personal post
+seeds to first-degree connections automatically, which produces the early engagement the feed
+looks for. A page post reaches only a small share of its followers, so a young page with eighty
+followers has almost nobody to start from.
 
-**Never repost a page post to a profile.** An instant repost lifts the original about 4 percent
-and does nothing for the reposter. A repost-with-thoughts under 100 words of your own
-underperforms a fresh post 3×.
+**Never repost a page post to a profile.** An instant repost does little for the original and
+nothing for the reposter, and even a repost with your own thoughts trails a fresh post. Write a
+fresh post.
 
 What the page is for: a followable address for next time, and a destination the site and event
 listings can link to. Publish the same content there as its own post, reworded slightly, and
@@ -34,9 +41,9 @@ personal post so people can follow it without spending your reach on a page post
 
 ## 2. What you ask for
 
-**Comments weigh 8 to 10 times a like.** A post with five real conversations travels further
-than one with fifty likes. So the call to action should be something to type, not something to
-click.
+**Comments count for more than likes.** LinkedIn says so without giving a weight; the largest
+disclosed dataset puts a comment at about twice a like. So the call to action should be
+something to type, not something to click.
 
 **Ask for one thing.** Stacking four asks reads as begging and splits the response. State the
 rest; ask for one.
@@ -45,20 +52,22 @@ rest; ask for one.
 will approach them myself" beats "submit your talk", because naming someone costs nothing and
 tagging is a comment.
 
-**Expect noise.** Around 80 percent of comments in the first five minutes are AI-written. Answer
-the real ones with real sentences; short reciprocal comments from the same handful of people
-count for less.
+**Expect noise.** Many of the comments in the first minutes are AI-written, and LinkedIn says it
+limits the reach of spammy ones. Answer the real ones with real sentences; short reciprocal
+comments from the same handful of people count for less.
 
 ## 3. Links
 
-One external link in the body cuts median reach by about 18.8 percent (van der Blom, Algorithm
-Insights, 1.3M posts). **The "put the link in the first comment" workaround is dead** — it has
-been penalised since early 2026. Both placements cost you.
+One external link in the body costs reach: roughly 15 to 35 percent across the large datasets
+(16 percent in van der Blom's July 2026 update, 26.5 percent in Ordinal's 900,000 posts), and in
+Ordinal's data the cost falls mostly on company pages. LinkedIn denies a deliberate penalty as
+long as the post stands alone without the link, which is the useful instruction either way.
+**The "put the link in the first comment" workaround no longer escapes it**: comment links now
+get hidden much of the time. Both placements cost you.
 
 So decide on the goal, not the tactic. If the post exists to drive sign-ups or applications,
-keep the link in the body and accept the cost; a call to action with no path is worse than a
-19 percent haircut. If the post exists to start conversations, leave every URL out and let
-people ask.
+keep the link in the body and accept the cost; a call to action with no path is worse than the
+haircut. If the post exists to start conversations, leave every URL out and let people ask.
 
 **A bare domain counts as a link.** Writing `example.dev` three times gets you three underlined
 links and three penalties. Name it once, and make that one an `@`-mention of the company page if
@@ -66,9 +75,10 @@ there is one — a mention is not a link.
 
 ## 4. Formatting the editor cannot destroy
 
-**There is no bold.** The Unicode workaround substitutes mathematical alphanumeric characters,
-which a screen reader announces one character at a time as "mathematical bold small a". Do not
-use it. If someone insists, tell them what it does to a screen reader first.
+**There is no bold.** The Unicode workaround substitutes mathematical alphanumeric characters.
+JAWS spells them out one at a time ("mathematical bold small a"); NVDA, VoiceOver and Narrator
+skip them, so a bolded "do not" silently drops out of the sentence. Do not use it. If someone
+insists, tell them what it does to a screen reader first.
 
 **The editor eats blank lines on paste.** Single newlines survive; consecutive ones collapse, and
 a carefully spaced post arrives as a wall. Do not design around blank lines. Use a visible
@@ -82,27 +92,27 @@ only list markers available; do not add a dash or bullet in front of them.
 **The fold.** Roughly the first 140 characters show on mobile, 210 on desktop, before "see more".
 The first line carries the whole post. Do not move it.
 
-**Hashtags:** one to three, at the end, for categorisation. They have done nothing for reach
-since 2026.
+**Hashtags:** one to three, at the end, for categorisation. LinkedIn has said since 2025 that
+they are not a reach lever.
 
-**Length:** 800 to 1500 characters is the engagement sweet spot. A launch or announcement post
-may run to about 2000 because the people who care read it all and dwell time rewards that. A
-routine post that long is just long.
+**Length:** about 800 to 1200 characters, where the datasets' sweet spots cluster. A launch or
+announcement post may run to about 2000 because the people who care read it all and dwell time
+rewards that. A routine post that long is just long.
 
 ## 5. When
 
-Tuesday, Wednesday or Thursday, 08:00 to 10:00 local. Second-best windows are the lunch hour and
-late afternoon. Avoid Monday and Friday.
+Tuesday, Wednesday or Thursday, in working hours; Monday and Friday do worse. Studies disagree
+on the hour (early morning in some, late morning to afternoon in others), so try both and keep
+what your audience answers.
 
-**Block the first hour.** The first 60 minutes decide how far the post travels, and you need to
-be there answering comments in full sentences.
+**Block the first hour.** The first hour or so decides most of how far the post travels, and you
+need to be there answering comments in full sentences.
 
 **One language per day.** For a Dutch-speaking audience, a Dutch post reaches a tighter,
 higher-converting group than an English one in the same niche. Publish Dutch first and English
 three or four days later; both on the same day means competing with yourself in one feed.
 
-**Three to five posts a week** is the frequency ceiling worth aiming at. Posting daily lowers
-average reach per post.
+**Two to five posts a week.** Posting daily lowers average reach per post.
 
 ## Checklist before it goes out
 
@@ -118,11 +128,22 @@ average reach per post.
 
 ## Sources
 
-The numbers come from published 2026 research, chiefly Richard van der Blom's
-[Algorithm Insights](https://podcast.creatorscience.com/richard-van-der-blom-2/) over 1.3 million
-posts, plus
-[the reach-drop analysis](https://melaniegoodmanlinkedinconsultant.substack.com/p/linkedin-algorithm-2026-reach-topic-authority)
-and a [Dutch-language summary](https://www.sourcegeek.com/nl/news/zo-werkt-het-linkedin-algoritme-update-2026).
-They describe a platform that changes yearly: three of these rules reversed advice that was
-standard in 2025. Re-check the link penalty, the first-comment rule and the profile-versus-page
-ratio before leaning on them a year from now.
+**LinkedIn's own statements:** dwell time in
+[feed ranking](https://www.linkedin.com/blog/engineering/feed/understanding-feed-dwell-time);
+conversation over likes and spam-comment limits
+([PR Daily](https://www.prdaily.com/what-works-and-doesnt-on-linkedin-according-to-guardians-of-the-feed/));
+[hashtags](https://www.socialmediatoday.com/news/linkedin-algorithm-update-older-posts-ai-tools-hashtag-use/753512/);
+[links](https://www.linkedin.com/feed/update/urn:li:activity:7370869955623542785/).
+
+**Practitioner datasets** (methods unpublished): Richard van der Blom's Algorithm Insights, a paid
+report over 1.3 million posts ([interview](https://podcast.creatorscience.com/richard-van-der-blom-2/),
+[July 2026 link update](https://www.linkedin.com/pulse/67-link-penalty-just-changed-most-people-missed-richard-van-der-blom-9iese));
+[Ordinal's link study](https://www.tryordinal.com/blog/linkedin-link-penalty-study);
+[AuthoredUp](https://authoredup.com/blog/linkedin-algorithm);
+[Sprout Social on timing](https://sproutsocial.com/insights/best-times-to-post-on-linkedin/).
+
+**Screen readers:** [Adrian Roselli's recorded tests](https://adrianroselli.com/2025/03/dont-use-fake-bold-or-italic-in-social-media.html).
+
+The platform changes yearly and the datasets disagree with each other. Re-check the link
+penalty, the first-comment rule and the profile-versus-page ratio before leaning on them a year
+from now.
