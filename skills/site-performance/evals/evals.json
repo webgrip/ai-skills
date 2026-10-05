@@ -1,0 +1,86 @@
+{
+  "skill_name": "site-performance",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills",
+  "evals": [
+    {
+      "id": "slow-lcp",
+      "prompt": "PageSpeed Insights says LCP is 4.1 s on mobile for our Astro site on Cloudflare Workers. How do we fix it?",
+      "assertions": [
+        "Separates the field data from the lab run and checks which one reported 4.1 s",
+        "Diagnoses LCP by its subparts and puts discovery and priority (no lazy loading, fetchpriority=high, image in the HTML) before compressing the image",
+        "Mentions that Astro's <Image> is lazy by default and needs priority for the hero",
+        "Proposes verifying each change with repeated lab runs or RUM rather than one measurement"
+      ]
+    },
+    {
+      "id": "choose-rum",
+      "prompt": "We want real-user performance monitoring for our three company sites. Is RUMvision worth it or is there something free that's good enough?",
+      "assertions": [
+        "Recommends by site size and traffic, with a free option for small sites and a vendor for larger ones",
+        "Warns that Cloudflare Web Analytics on the Free plan excludes EU visitors in its automatic setup",
+        "Covers EU privacy: cookieless beacon, no IP stored, query strings stripped, processor agreement and privacy statement",
+        "States RUMvision's EU data storage and its price level accurately or says where to check"
+      ]
+    },
+    {
+      "id": "lighthouse-100",
+      "prompt": "Our Lighthouse performance score is 72. Get it to 100.",
+      "assertions": [
+        "Explains that field data at p75 is what users get and what Google ranks on, and checks it first",
+        "Does not treat the Lighthouse score as the goal; targets the failing metrics instead",
+        "Uses the mobile lab profile and median of several runs when measuring"
+      ]
+    },
+    {
+      "id": "jumpy-page",
+      "prompt": "The page jumps around when the cookie banner and our web fonts load. Fix it.",
+      "assertions": [
+        "Renders the cookie banner as an overlay or reserves its space instead of inserting it above content",
+        "Uses font-display with a metric-matched fallback (size-adjust, ascent-override) or font-display optional",
+        "Checks width and height on images, videos and iframes"
+      ]
+    },
+    {
+      "id": "ci-budget",
+      "prompt": "Add a performance budget to our CI so the site can't quietly get slower.",
+      "assertions": [
+        "Gates on byte budgets and lab metrics using the median run, not on the Lighthouse score",
+        "Runs the mobile preset and pins the @lhci/cli version because Lighthouse 13 renamed audits",
+        "Adds the build scan (perf_scan.py site) or an equivalent static check"
+      ]
+    },
+    {
+      "id": "inp-third-parties",
+      "prompt": "Our INP went poor after we added Google Tag Manager and a chat widget. What should we do?",
+      "assertions": [
+        "Attributes the slow interactions with Long Animation Frames or a trace before blaming a script",
+        "Recommends removing tags or using a click-to-load facade for the chat widget",
+        "Warns that delaying tag managers until the first interaction moves their cost onto INP"
+      ]
+    },
+    {
+      "id": "not-in-google",
+      "prompt": "Why doesn't our new website show up in Google search results yet?",
+      "assertions": [
+        "Does not load the site-performance skill; indexing belongs to search-visibility"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "slow-sql",
+      "prompt": "This PostgreSQL query on our orders table takes four seconds. Make it faster.",
+      "assertions": [
+        "Does not load the site-performance skill; database tuning is out of scope"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "deploy-only",
+      "prompt": "Deploy this Astro site to Cloudflare Workers with a custom domain.",
+      "assertions": [
+        "Does not load the site-performance skill; deployment belongs to edge-hosting"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}

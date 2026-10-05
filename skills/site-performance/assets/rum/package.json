@@ -1,0 +1,15 @@
+{
+  "name": "rum",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "web-vitals": "^6.2.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.147.0"
+  }
+}

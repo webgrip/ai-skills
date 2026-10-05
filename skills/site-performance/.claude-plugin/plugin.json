@@ -1,0 +1,25 @@
+{
+  "name": "site-performance",
+  "displayName": "Site Performance",
+  "description": "Makes static sites on Cloudflare's edge fast for real users and proves it with field data: Core Web Vitals diagnosed by subpart and phase, ranked fixes, edge delivery, RUM and APM choices with EU privacy, a DIY web-vitals beacon into Workers Analytics Engine, Lighthouse CI budgets, and a build plus live scanner.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "performance",
+    "core-web-vitals",
+    "lcp",
+    "inp",
+    "cls",
+    "rum",
+    "crux",
+    "lighthouse",
+    "web-vitals",
+    "cloudflare",
+    "astro",
+    "monitoring"
+  ]
+}
