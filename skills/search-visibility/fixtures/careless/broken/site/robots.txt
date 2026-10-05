@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+Sitemap: https://careless-site.invalid/sitemap.xml

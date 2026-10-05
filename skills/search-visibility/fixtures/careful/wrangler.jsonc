@@ -4,5 +4,5 @@
   "workers_dev": false,
   "preview_urls": false,
   "routes": [{ "pattern": "careful-site.invalid/*", "zone_name": "careful-site.invalid" }],
-  "assets": { "directory": "./dist", "html_handling": "auto-trailing-slash", "not_found_handling": "404-page" }
+  "assets": { "directory": "./site", "html_handling": "auto-trailing-slash", "not_found_handling": "404-page" }
 }
