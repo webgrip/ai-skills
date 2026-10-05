@@ -1,0 +1,229 @@
+{
+  "checked": "2026-10-04",
+  "roles": {
+    "search": "classic search index; blocking it removes the site from that engine",
+    "ai-search": "index an answer engine cites from; blocking it removes the site from those answers",
+    "ai-user": "fetch on a person's request in an assistant; several ignore robots.txt",
+    "ai-training": "model training; blocking is a policy choice with no search effect"
+  },
+  "crawlers": [
+    {
+      "token": "Googlebot",
+      "operator": "Google",
+      "role": "search",
+      "product": "Google Search, AI Overviews and AI Mode",
+      "honours_robots": "yes",
+      "docs": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+      "ip_list": "https://developers.google.com/static/crawling/ipranges/common-crawlers.json",
+      "probe_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+    },
+    {
+      "token": "Bingbot",
+      "operator": "Microsoft",
+      "role": "search",
+      "product": "Bing, Copilot, DuckDuckGo and other Bing-fed engines",
+      "honours_robots": "yes",
+      "docs": "https://www.bing.com/webmasters/help/which-crawlers-does-bing-use-8c184ec0",
+      "ip_list": "https://www.bing.com/toolbox/bingbot.json",
+      "probe_user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+    },
+    {
+      "token": "Applebot",
+      "operator": "Apple",
+      "role": "search",
+      "product": "Spotlight, Siri and Safari suggestions",
+      "honours_robots": "yes",
+      "docs": "https://support.apple.com/en-us/119829",
+      "ip_list": "https://search.developer.apple.com/applebot.json"
+    },
+    {
+      "token": "OAI-SearchBot",
+      "operator": "OpenAI",
+      "role": "ai-search",
+      "product": "ChatGPT search",
+      "honours_robots": "yes",
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "ip_list": "https://openai.com/searchbot.json",
+      "probe_user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot"
+    },
+    {
+      "token": "Claude-SearchBot",
+      "operator": "Anthropic",
+      "role": "ai-search",
+      "product": "Claude web search",
+      "honours_robots": "yes",
+      "docs": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+      "ip_list": "https://claude.com/crawling/bots.json"
+    },
+    {
+      "token": "PerplexityBot",
+      "operator": "Perplexity",
+      "role": "ai-search",
+      "product": "Perplexity",
+      "honours_robots": "yes",
+      "docs": "https://docs.perplexity.ai/guides/bots",
+      "ip_list": "https://www.perplexity.com/perplexitybot.json",
+      "probe_user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)"
+    },
+    {
+      "token": "DuckAssistBot",
+      "operator": "DuckDuckGo",
+      "role": "ai-search",
+      "product": "DuckDuckGo AI-assisted answers",
+      "honours_robots": "yes",
+      "docs": "https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot",
+      "ip_list": "https://duckduckgo.com/duckassistbot.json"
+    },
+    {
+      "token": "Amzn-SearchBot",
+      "operator": "Amazon",
+      "role": "ai-search",
+      "product": "Alexa and Amazon search",
+      "honours_robots": "yes",
+      "docs": "https://developer.amazon.com/amazonbot",
+      "ip_list": "https://developer.amazon.com/amazonbot/searchbot-ip-addresses/"
+    },
+    {
+      "token": "meta-webindexer",
+      "operator": "Meta",
+      "role": "ai-search",
+      "product": "Meta AI search",
+      "honours_robots": "yes",
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers"
+    },
+    {
+      "token": "MistralAI-Index",
+      "operator": "Mistral",
+      "role": "ai-search",
+      "product": "Mistral search index",
+      "honours_robots": "not stated",
+      "docs": "https://docs.mistral.ai/robots",
+      "ip_list": "https://mistral.ai/mistralai-index-ips.json"
+    },
+    {
+      "token": "ChatGPT-User",
+      "operator": "OpenAI",
+      "role": "ai-user",
+      "product": "ChatGPT",
+      "honours_robots": "may not apply",
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "ip_list": "https://openai.com/chatgpt-user.json"
+    },
+    {
+      "token": "Claude-User",
+      "operator": "Anthropic",
+      "role": "ai-user",
+      "product": "Claude",
+      "honours_robots": "yes",
+      "docs": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+      "ip_list": "https://claude.com/crawling/bots.json"
+    },
+    {
+      "token": "Perplexity-User",
+      "operator": "Perplexity",
+      "role": "ai-user",
+      "product": "Perplexity",
+      "honours_robots": "generally ignores",
+      "docs": "https://docs.perplexity.ai/guides/bots",
+      "ip_list": "https://www.perplexity.com/perplexity-user.json"
+    },
+    {
+      "token": "MistralAI-User",
+      "operator": "Mistral",
+      "role": "ai-user",
+      "product": "Mistral's assistant",
+      "honours_robots": "not stated",
+      "docs": "https://docs.mistral.ai/robots",
+      "ip_list": "https://mistral.ai/mistralai-user-ips.json"
+    },
+    {
+      "token": "Amzn-User",
+      "operator": "Amazon",
+      "role": "ai-user",
+      "product": "Alexa live answers",
+      "honours_robots": "may not follow all",
+      "docs": "https://developer.amazon.com/amazonbot",
+      "ip_list": "https://developer.amazon.com/amazonbot/live-ip-addresses/"
+    },
+    {
+      "token": "GPTBot",
+      "operator": "OpenAI",
+      "role": "ai-training",
+      "product": "OpenAI model training",
+      "honours_robots": "yes",
+      "docs": "https://developers.openai.com/api/docs/bots",
+      "ip_list": "https://openai.com/gptbot.json",
+      "probe_user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot"
+    },
+    {
+      "token": "ClaudeBot",
+      "operator": "Anthropic",
+      "role": "ai-training",
+      "product": "Anthropic model training",
+      "honours_robots": "yes",
+      "docs": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+      "ip_list": "https://claude.com/crawling/bots.json",
+      "probe_user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)"
+    },
+    {
+      "token": "Google-Extended",
+      "operator": "Google",
+      "role": "ai-training",
+      "product": "Gemini training and grounding in Gemini Apps and Vertex AI (not Search, not AI Overviews)",
+      "honours_robots": "yes",
+      "docs": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+      "token_only": true
+    },
+    {
+      "token": "Applebot-Extended",
+      "operator": "Apple",
+      "role": "ai-training",
+      "product": "Apple foundation-model training",
+      "honours_robots": "yes",
+      "docs": "https://support.apple.com/en-us/119829",
+      "token_only": true
+    },
+    {
+      "token": "CCBot",
+      "operator": "Common Crawl",
+      "role": "ai-training",
+      "product": "Common Crawl open corpus",
+      "honours_robots": "yes",
+      "docs": "https://commoncrawl.org/ccbot",
+      "ip_list": "https://index.commoncrawl.org/ccbot.json"
+    },
+    {
+      "token": "meta-externalagent",
+      "operator": "Meta",
+      "role": "ai-training",
+      "product": "Meta model training and product indexing",
+      "honours_robots": "yes",
+      "docs": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers"
+    },
+    {
+      "token": "Amazonbot",
+      "operator": "Amazon",
+      "role": "ai-training",
+      "product": "Amazon products and AI training",
+      "honours_robots": "yes",
+      "docs": "https://developer.amazon.com/amazonbot",
+      "ip_list": "https://developer.amazon.com/amazonbot/ip-addresses/"
+    },
+    {
+      "token": "MistralAI-Training",
+      "operator": "Mistral",
+      "role": "ai-training",
+      "product": "Mistral model training",
+      "honours_robots": "yes",
+      "docs": "https://docs.mistral.ai/robots"
+    },
+    {
+      "token": "Bytespider",
+      "operator": "ByteDance",
+      "role": "ai-training",
+      "product": "ByteDance model training",
+      "honours_robots": "contested",
+      "docs": "https://bytedance.com"
+    }
+  ]
+}

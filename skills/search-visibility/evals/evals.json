@@ -1,0 +1,86 @@
+{
+  "skill_name": "search-visibility",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills",
+  "evals": [
+    {
+      "id": "not-in-google",
+      "prompt": "Our Astro site on Cloudflare Workers has been live for two months and still doesn't show up in Google at all. Can you figure out why?",
+      "assertions": [
+        "Checks crawler access on the live site (robots.txt as served, noindex headers or meta, crawler user agents blocked at the edge) before content advice",
+        "Names Cloudflare's AI bot policy Training = Block (or Block on pages with ads, or legacy Block AI bots) as a setting that also blocks Googlebot since 2026-09-15",
+        "Checks that canonicals and the sitemap carry the production URL and the trailing-slash form the site serves with 200",
+        "Recommends verifying in Search Console (Page indexing, URL Inspection) rather than guessing"
+      ]
+    },
+    {
+      "id": "cited-by-chatgpt",
+      "prompt": "How do we get our meetup site cited when people ask ChatGPT or Perplexity about tech events in our region? Should we add an llms.txt?",
+      "assertions": [
+        "Distinguishes search and user-fetch crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot) from training crawlers and says the former must be allowed",
+        "States that there is no evidence llms.txt changes visibility and that Google ignores it",
+        "Does not present the GEO paper's up-to-40 % figure as an expected gain",
+        "Recommends being indexed in Google and Bing, content in the initial HTML, answer-first pages with concrete facts, and measuring with repeated runs"
+      ]
+    },
+    {
+      "id": "block-training-stay-in-search",
+      "prompt": "I want to stop AI companies training on our website but stay visible in Google and in AI search answers. What should I set in Cloudflare and robots.txt?",
+      "assertions": [
+        "Recommends Cloudflare's Disallow AI Training setting and warns against Training = Block",
+        "Lists training tokens (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot) separately from search crawlers in robots.txt",
+        "Says Google-Extended does not control AI Overviews and is a robots.txt token only"
+      ]
+    },
+    {
+      "id": "linkedin-no-image",
+      "prompt": "When I share our homepage on LinkedIn or WhatsApp there's no image in the preview. Can you fix it?",
+      "assertions": [
+        "Checks that og:image is an absolute URL to a file that actually exists and answers 200",
+        "Recommends a 1200x630 image under 600 KB with og:image:width, og:image:height and og:image:alt",
+        "Explains refreshing the preview by changing the image URL and re-scraping with LinkedIn Post Inspector"
+      ]
+    },
+    {
+      "id": "prelaunch-audit",
+      "prompt": "We launch the new Hugo site next week, deployed with wrangler. Do an SEO check on it first.",
+      "assertions": [
+        "Runs or proposes the build scan (seo_scan.py site) and the live scan with the mirror hostnames",
+        "Checks not_found_handling returns real 404s and that workers.dev, preview and staging hosts are not indexable",
+        "Covers sitemap with real lastmod, robots.txt Sitemap line, Search Console and Bing Webmaster Tools via DNS, and IndexNow from production deploys only"
+      ]
+    },
+    {
+      "id": "dutch-english-compete",
+      "prompt": "Google keeps showing our Dutch page to English searchers and the other way round. The site has /nl and /en versions.",
+      "assertions": [
+        "Prescribes reciprocal hreflang on every version including itself, plus x-default",
+        "Advises against redirecting by Accept-Language or IP address",
+        "Keeps each language version as its own canonical"
+      ]
+    },
+    {
+      "id": "google-ads",
+      "prompt": "Set up a Google Ads search campaign for our product launch with a 500 euro monthly budget and write the ad copy.",
+      "assertions": [
+        "Does not load the search-visibility skill; paid search is out of scope"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "deploy-only",
+      "prompt": "Deploy this Astro site to Cloudflare Workers with a custom domain and a www-to-apex redirect.",
+      "assertions": [
+        "Does not load the search-visibility skill; deployment belongs to edge-hosting"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "make-it-pop",
+      "prompt": "Our landing page looks like every other SaaS template. Make the hero section more distinctive and memorable.",
+      "assertions": [
+        "Does not load the search-visibility skill; visual design belongs to expressive-design"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "checked": "2026-10-04",
+  "source": "https://developers.google.com/search/updates",
+  "retired": {
+    "FAQPage": "FAQ rich results stopped showing for every site on 2026-05-07; keep visible FAQ content for people, expect nothing from the markup in Google",
+    "HowTo": "HowTo rich results were removed in September 2023",
+    "ClaimReview": "Google is phasing out ClaimReview (fact check) markup in Search",
+    "SpecialAnnouncement": "Special Announcement rich results were retired in June 2025",
+    "SearchAction": "the sitelinks search box that used WebSite SearchAction was removed in November 2024"
+  }
+}
