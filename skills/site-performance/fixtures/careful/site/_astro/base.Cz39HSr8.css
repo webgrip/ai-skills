@@ -1,0 +1,4 @@
+@font-face{font-family:"Inter";src:url(/fonts/inter-latin.woff2) format("woff2");font-display:swap;font-weight:100 900}
+@font-face{font-family:"Inter Fallback";src:local("Arial");size-adjust:107%;ascent-override:90%}
+body{font-family:"Inter","Inter Fallback",system-ui,sans-serif;margin:0}
+.hero img{width:100%;height:auto}
