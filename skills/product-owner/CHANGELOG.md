@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.8.0 (2026-10-06)
+
+### 🚀 Features
+
+- **product-owner:** two readers — functional half on top, technical below the rule (c72189ac)
+
+
 ## 0.7.0 (2026-10-04)
 
 ### 🚀 Features
