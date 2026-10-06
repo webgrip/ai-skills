@@ -39,8 +39,8 @@ projects/boards, ask which one, and suggest adding a contract.
   by creating it — drop the criteria that don't apply and say so.
 - **Language: match the board** (contract says; else the language of its existing
   tickets). Everything that lands on the board — titles, headings, criteria, comments —
-  in that language. Reason in any language; quotes and log lines stay original inside a
-  code block.
+  in that language. Reason in any language; quotes stay original in a quote block (`>`),
+  log lines in a code block.
 - Contract ids are a **cache to re-verify**, never truth — when a call behaves oddly,
   re-resolve before believing the file.
 

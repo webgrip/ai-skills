@@ -38,7 +38,7 @@ Templates · Splitting · Triage · Bulk fan-out · Antipattern gallery. The gat
    ticket or the metric; a bug without reproduction wants a screenshot or recording; a
    criterion that could not be verified wants the document defining expected behavior.
    Supplied material gets worked in, not parked: facts into the description (quotes in
-   original language in a code block), files attached to the ticket, the gap list updated.
+   original language in a quote block), files attached to the ticket, the gap list updated.
 
 ## What makes a criterion binary
 
@@ -118,7 +118,7 @@ line above becomes a heading):
 1. **Functional half** — complete on its own: a reader who stops at the rule can discuss,
    plan and accept the ticket.
    - **Source line** first: origin, date, link. The requester's words go in literally
-     (other language → a code block).
+     (other language → a quote block `>`, not a code block).
    - A plain-language summary (TL;DR or Problem), Outcome, criteria, Verification, Not in
      scope, Open questions. **Bug**: reproduction steps and environment *as the reporter
      or tester observed them* sit here too — they are the steps the tester reruns.

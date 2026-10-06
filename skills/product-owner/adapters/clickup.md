@@ -65,6 +65,11 @@ a bare URL as a markdown link to itself, and a bare file name ending in a TLD-li
 backticks, and on read → merge → write keep the escapes as they are rather than
 escaping again.
 
+**A fenced code block strips links from the paragraphs just above it** —
+named and bare links alike come back as plain text, without the URL. Quote prose with `>`, keep
+links out of the paragraphs right before a fence, and after every description write
+read it back and check that each URL you sent is still there.
+
 ## Pagination
 
 | Tool | Page size | Continue with |
