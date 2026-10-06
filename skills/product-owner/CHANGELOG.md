@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.8.1 (2026-10-06)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** note that ClickUp returns a horizontal rule as `* * *` (740a0d15)
+
+
 ## 0.8.0 (2026-10-06)
 
 ### 🚀 Features
