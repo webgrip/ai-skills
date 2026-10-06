@@ -277,7 +277,15 @@ def check_ready(raw: str, body: dict[str, str], work_type: str, report: Report) 
                    fixable=True)
 
     questions = body.get("questions", "")
-    lines = [ln for ln in strip_tags(questions).splitlines() if ln.strip(" -*\t")]
+    # One entry per question: a wrapped bullet's continuation lines belong to it.
+    lines: list[str] = []
+    for ln in strip_tags(questions).splitlines():
+        if not ln.strip(" -*\t"):
+            continue
+        if lines and not re.match(r"^\s*(?:[-*+]|\d+[.)])\s", ln):
+            lines[-1] += " " + ln.strip()
+        else:
+            lines.append(ln)
     if not lines:
         report.add(PASS, "ready", "open questions empty or owned", "none open")
     else:
