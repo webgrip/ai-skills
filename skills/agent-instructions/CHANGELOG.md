@@ -1,5 +1,12 @@
 # agent-instructions
 
+## 0.3.0 (2026-10-06)
+
+### 🚀 Features
+
+- **agent-instructions:** Boost upgrades, path rules and a stricter instruction check (3304e090)
+
+
 ## 0.2.0 (2026-09-23)
 
 ### 🚀 Features
