@@ -203,6 +203,8 @@ expect("Environment alone does not make a bug", lint(story_env)["type"], "change
 unowned = READY + "\n## Open questions\n- What do we do with: the old export?\n"
 expect("a colon is not an owner", status(lint(unowned), "open questions"), "FAIL")
 owned = READY + "\n## Open questions\n- Keep the old export? — owner: Ryan\n"
+wrapped = READY + "\n## Open questions\n- Which screens did the pilot user mean, and which\n  fields? Owner: customer (`needs client`)\n"
+expect("a wrapped question keeps its owner", status(lint(wrapped), "open questions"), "PASS")
 expect("a named owner counts", status(lint(owned), "open questions"), "PASS")
 
 ranged = READY.replace("Backups of `db/prod` fail silently since 2026-09-01 (see `ops/backup.log:12`).",
