@@ -10,6 +10,7 @@ generator (rulesync, ruler, framework installers).
 - [Project rules (`.ai/rules`)](#project-rules-airules)
 - [Output that differs per machine](#output-that-differs-per-machine)
 - [Packages that run Boost for you](#packages-that-run-boost-for-you)
+- [Upgrading Boost](#upgrading-boost)
 - [CI drift check](#ci-drift-check)
 - [Any generator](#any-generator)
 
@@ -42,8 +43,8 @@ generator (rulesync, ruler, framework installers).
 | House rules composed into every agent's block | `.ai/guidelines/<name>.blade.php` (or `.md`); they appear at the top of the block |
 | Replace one Boost guideline | `.ai/guidelines/<path>.blade.php`, named after the guideline's **path**, not its header: `pest/core`, `boost/core`, `herd/core`, but `enforce-tests` for the `tests` header |
 | Replace a package's guideline | `.ai/guidelines/<vendor>/<package>/<file>.blade.php` (usually `core`) |
-| Drop a guideline | `config('boost.guidelines.exclude')` by **header name**, e.g. `['tests', 'pest/core', 'herd']` |
-| One file for every agent | 2.10+: the default. Before: `config('boost.agents.claude_code.guidelines_path') = 'AGENTS.md'`. Either way `CLAUDE.md` becomes a hand-written `@AGENTS.md` that Boost never touches; delete any old block from it, because Claude Code ignores `AGENTS.md` while a `CLAUDE.md` exists |
+| Drop a guideline | `config('boost.guidelines.exclude')` by exact **key**: core `tests`, `pest/core`, `herd`, `deployments`, `pint/core`; a package's guideline is `<vendor>/<package>/<path under resources/boost/guidelines>`, e.g. `acme/quality/core` |
+| One file for every agent | Always set `config('boost.agents.claude_code.guidelines_path') = 'AGENTS.md'`. Without it Boost (2.10.1+, laravel/boost#1043) writes the whole block into `CLAUDE.md` as soon as that file exists, wiping the `@AGENTS.md` import. `CLAUDE.md` stays a hand-written `@AGENTS.md`; delete any old block from it, because Claude Code ignores `AGENTS.md` while a `CLAUDE.md` exists |
 | One skills directory | `config('boost.agents.<agent>.skills_path') = '.agents/skills'` for `claude_code` and `cursor`; commit `.claude/skills` as a symlink to `../.agents/skills` |
 | Own skill | a directory in `.agents/skills/<name>/` that Boost does not own, or `.ai/skills/<name>/` (overrides a same-named Boost skill; symlinked into each agent's folder, copied when it contains Blade) |
 
@@ -54,6 +55,12 @@ generator (rulesync, ruler, framework installers).
   `git check-ignore -v .ai/guidelines/x.blade.php`.
 - An override of a package guideline is a fork: remove it when the package ships the fix, and say
   so in the override's commit.
+- Excluding a package guideline does not drop your override of it: Boost promotes
+  `.ai/guidelines/<vendor>/<package>/core.blade.php` to a standalone guideline. Delete the
+  override file together with the exclude.
+- Boost reads guidelines and skills only from **direct** Composer dependencies listed under
+  `packages` in `boost.json`. A package that ships agent material and runs `boost:install` itself
+  adds its own name there first, or a fresh install skips it.
 
 ## Project rules (`.ai/rules`)
 
@@ -64,11 +71,22 @@ Boost regenerates the index.
 
 - In a repo that ignores `.ai`, every recorded rule is silently never committed. Until the repo
   decides, set `rules.enabled => false` (removes the section and unregisters the tool).
-- It is instruction-based: an agent must choose to read the index. Claude Code's own
+- It is instruction-based: an agent must choose to read the index, and the injected section is an
+  always-on "you MUST first open `.ai/rules/index.md`" paragraph. Claude Code's own
   `.claude/rules/*.md` with the same `paths:` frontmatter are loaded by the tool itself; opencode
   and Codex have no path-scoped loading (see [tools.md](tools.md)).
-- Rule files invite a second home for knowledge next to `docs/`. If enabled, keep each rule a
-  pointer ("working here, read docs/X first") and the content in `docs/`.
+- Layout that gives Claude native loading without that paragraph: rules in `.ai/rules/*.md`
+  (flat, `paths:` as the only frontmatter key; `globs` is ignored), `.gitignore` re-including
+  `!.ai/rules/`, a committed symlink `.claude/rules` → `../.ai/rules`, `rules.enabled => false`,
+  and one plain line in `AGENTS.md` for other agents ("rules for specific paths are in
+  `.ai/rules`; read the ones whose `paths` match the file you change"). Verify with
+  `claude -p "Read <a matching file>, then list the rule files that entered your context"`.
+- With `rules.enabled => false` Boost still clears `.ai/rules/boost/` on every run (and rewrites
+  `index.md` if that directory existed); hand-written rule files are left alone.
+- A rule body is the trap (what to do), the reason, and a link to the `docs/` section that owns
+  the full story, at most ~20 lines. Admit a rule only when the mistake happened twice or a review
+  caught it, it cannot be read from the code, and it is phrased as what to do; rules arrive through
+  review, never because an agent decided to record one.
 - `rules.scoped_guidelines` moves Boost's own path-scoped guidelines into `.ai/rules/boost/`. Its
   globs include `app/Models/**`, `app/Http/**`, `routes/**`, `tests/**`, `database/migrations/**`,
   `resources/js/**`, `resources/views/**`, `app/Livewire/**`; on a domain-structured app
@@ -94,25 +112,50 @@ rewrites `boost.json` (seen in an internal quality package). Consequences:
   destroys what it asks for. Fix it in the package; override locally until then.
 - Once committed files equal the generator's output, that install-time run is a no-op. The drift
   check below is what makes it harmless.
+- A plugin that swallows a failed `boost:install` leaves stale files with no signal. When you own
+  the plugin, print the failure with Boost's output and never fail Composer over it.
 
 Always verify against the versions in the lockfile: run `composer install` into a fresh worktree
 with its own `vendor/` first. A stale local `vendor/` produces confident wrong conclusions.
 
+## Upgrading Boost
+
+Stay on the latest Boost release; each one changes the generated block, so upgrade on purpose:
+
+1. Read the release notes (`https://github.com/laravel/boost/releases`) for guideline, skill and
+   target-file changes.
+2. `composer update laravel/boost`, adding only the dependencies it requires (2.10 needs
+   `laravel/mcp` ^1.0). `--with-dependencies` drags unrelated packages along.
+3. Regenerate twice with the same flags the automatic run uses; the second run must change nothing.
+4. Read the diff of `AGENTS.md`: a new upstream line can point at something the repo lacks (a skill
+   withheld by `boost.json`, a host the app never deploys to). Exclude that guideline rather than
+   editing the output.
+5. Re-measure what every session loads and re-set the token budget from the new figure.
+
 ## CI drift check
 
-Ship [../assets/check-generated-instructions.sh](../assets/check-generated-instructions.sh) and
-run it in the project's test image with `vendor` and `node_modules` linked in. It fails when:
+Ship [../assets/check-generated-instructions.sh](../assets/check-generated-instructions.sh) and,
+next to it, [../assets/check-instruction-rules.php](../assets/check-instruction-rules.php). Run
+them in the project's test image with `vendor` and `node_modules` linked in. They fail when:
 
-1. `CLAUDE.md` is not a file starting with `@AGENTS.md`;
-2. `.claude/skills` is not the symlink to `../.agents/skills`;
+1. `CLAUDE.md` is not a file starting with `@AGENTS.md`, or holds a generated block;
+2. `.claude/skills` is not the symlink to `../.agents/skills`, or `.claude/rules` not the symlink
+   to `../.ai/rules` while `.ai/rules` exists;
 3. `AGENTS.md`, `boost.json` or `.agents/skills` differ from a fresh
-   `boost:install --guidelines --skills` (same flags as whatever runs Boost automatically);
+   `boost:install --guidelines --skills` (same flags as whatever runs Boost automatically), or,
+   where `git` exists, generated files are untracked leftovers a clean checkout would not have;
 4. the hand-written part (header above the block, `.ai/guidelines`, `CLAUDE.md`) exceeds the
-   budget.
+   line budget (`AGENT_INSTRUCTIONS_BUDGET`, default 150);
+5. what every session loads (`AGENTS.md`, `CLAUDE.md`, rules without `paths`, bytes / 4) exceeds
+   `AGENT_INSTRUCTIONS_TOKEN_BUDGET`. Set it to the measured figure plus 15%; that headroom is
+   about 2 KB in a typical repo, so it catches a generator that grows, not every added line;
+6. a rule has no `paths`, a glob matches no file, a rule exceeds 20 lines or sits in a
+   subdirectory; a relative link or `#anchor` in `.ai/rules` or `docs/` points nowhere; a file in
+   `docs/` is missing from `docs/index.md`.
 
-Test it three ways before relying on it: clean tree (green), one hand-written line inside the
-block (red), budget exceeded (red). The test image usually has no `git`; the script diffs against
-a snapshot instead.
+Test it before relying on it: clean tree (green); one hand-written line inside the block, a dead
+glob, a broken link, an unindexed doc and a budget overrun (each red). The test image usually has
+no `git`; the scripts then diff against a snapshot and walk the tree.
 
 ## Other generators
 

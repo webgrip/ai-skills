@@ -74,6 +74,8 @@ doc? Keep it only for yes / no / no.
   does not generalise ("in `app/Domains/*/Pdf`, …").
 - Plain wording. Emphasis (`IMPORTANT`) on at most one line that keeps being skipped; MUST/CRITICAL
   across the file makes current Claude models overtrigger.
+- No hedges ("try to", "if possible", "where feasible"): current models read them literally as
+  permission to skip. State the rule, or leave it out.
 - Commands with exact flags; paths the agent can open; a pointer names its trigger
   ("Before changing a quotation PDF, read `docs/quotation-pdfs.md`").
 - Spend the tokens on gotchas; one line on what the repo is for; nothing obvious; no worked
@@ -97,7 +99,10 @@ doc? Keep it only for yes / no / no.
    CLAUDE.md/AGENTS.md relation, emphasis counts, paragraph-long lines, dead links, generated
    blocks, duplicate skill directories and the Codex cap. When a generator writes the file,
    measure against the lockfile's versions (fresh worktree, own install).
-2. **Scan** with `measure.py --security-only` when the file or config comes from someone else.
+2. **Scan** with `measure.py --security-only` when the file or config comes from someone else, and
+   run Claude Code's `/doctor prompt-audit` (non-interactively: `claude -p "/doctor prompt-audit
+   <path>"`) for wording written for older models, stale paths and contradictions. Apply its
+   findings only to text you own; generated text gets an exclude or an upstream issue.
 3. **Inventory** every line in a table: keep / docs (which file) / hook-CI / skill / path rule /
    other level / delete (derivable, duplicate, stale). Check `docs/` first: typically half is
    already documented there.
@@ -108,7 +113,9 @@ doc? Keep it only for yes / no / no.
    the rules that changed ([references/maintenance.md](references/maintenance.md)); for generated
    files regenerate twice and expect identical output.
 7. **Guard** in CI: `measure.py --budget-lines N`, or for Boost repos
-   [assets/check-generated-instructions.sh](assets/check-generated-instructions.sh).
+   [assets/check-generated-instructions.sh](assets/check-generated-instructions.sh) with
+   [assets/check-instruction-rules.php](assets/check-instruction-rules.php) beside it (rule globs,
+   links, docs index, token budget).
 
 ## Create a new file
 
@@ -128,7 +135,9 @@ file lists the done-commands and environment facts, a Stop hook or CI enforces t
 
 A Boost/rulesync/Ruler block belongs to the generator: put team text in the generator's source
 (`.ai/guidelines`, `.ruler/`, `.rulesync/`), exclude machine-dependent sections, and check in CI
-that regenerating changes nothing → [references/generators.md](references/generators.md).
+that regenerating changes nothing → [references/generators.md](references/generators.md). In a
+Boost repo, pin `agents.claude_code.guidelines_path` to `AGENTS.md`: from 2.10.1 Boost otherwise
+writes its block into an existing `CLAUDE.md` and destroys the import.
 
 ## Gotchas
 

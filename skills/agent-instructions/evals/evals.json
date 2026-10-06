@@ -92,6 +92,40 @@
       "assertions": [
         "Treats the task as skill authoring, not as editing CLAUDE.md or AGENTS.md"
       ]
+    },
+    {
+      "id": "boost-upgrade-overwrote-claude-md",
+      "prompt": "After upgrading Laravel Boost, our CLAUDE.md that only contained @AGENTS.md suddenly has the whole <laravel-boost-guidelines> block in it again. What happened and how do we stop it?",
+      "expect_trigger": true,
+      "assertions": [
+        "Explains that newer Boost writes its guideline block into an existing CLAUDE.md unless the Claude Code guidelines_path is configured",
+        "Fixes it by setting config('boost.agents.claude_code.guidelines_path') to AGENTS.md in config/boost.php",
+        "Restores CLAUDE.md to a hand-written file whose first line is @AGENTS.md instead of deleting CLAUDE.md or symlinking it",
+        "Adds or keeps a CI check that fails when CLAUDE.md contains a generated block"
+      ]
+    },
+    {
+      "id": "excluded-package-guideline-still-appears",
+      "prompt": "We added our company package's Boost guideline to guidelines.exclude in config/boost.php, but after boost:install its text still shows up in AGENTS.md. We had overridden it in .ai/guidelines before. Why?",
+      "expect_trigger": true,
+      "assertions": [
+        "Identifies that the leftover .ai/guidelines override of the package guideline is promoted to a standalone guideline when the package guideline is excluded",
+        "Tells the user to delete the override file under .ai/guidelines together with the exclude",
+        "Uses the exact guideline key form vendor/package/path in the exclude list",
+        "Regenerates and confirms the text is gone, rather than editing AGENTS.md by hand"
+      ]
+    },
+    {
+      "id": "path-rules-without-boost-index",
+      "prompt": "In our Laravel Boost repo I want rules that only load when an agent works on migrations or tests, and Claude Code should pick them up by itself without that 'you MUST first open .ai/rules/index.md' paragraph. Set it up.",
+      "expect_trigger": true,
+      "assertions": [
+        "Puts the rules in .ai/rules/*.md with paths: frontmatter, flat, and re-includes .ai/rules/ in .gitignore",
+        "Creates a committed .claude/rules symlink pointing to ../.ai/rules so Claude Code loads matching rules natively",
+        "Sets rules.enabled to false in config/boost.php so the always-on index paragraph disappears",
+        "Keeps each rule short (what to do, why, link to the docs section) instead of moving the full explanation into the rule",
+        "Adds a CI check that every rule glob matches at least one file and that its links resolve"
+      ]
     }
   ]
 }

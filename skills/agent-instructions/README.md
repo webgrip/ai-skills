@@ -14,8 +14,12 @@ audits and slims down bloated ones, and decides where each line belongs.
   emphasis, paragraph-long lines, dead links, generated blocks, duplicate skills and the Codex
   32 KiB cap. Stdlib only; `--budget-lines` and `--fail-on` make it a CI gate.
 - **Generated files**: Laravel Boost, rulesync, Ruler and Nx; where team text goes, what breaks on
-  regeneration, machine-dependent output, and `assets/check-generated-instructions.sh` as a CI
-  drift check for Boost repos.
+  regeneration, machine-dependent output, upgrading Boost, and
+  `assets/check-generated-instructions.sh` with `assets/check-instruction-rules.php` as a CI check
+  for Boost repos: drift, untracked leftovers, line and token budgets, path-rule globs, links and
+  the docs index.
+- **Path rules**: `.ai/rules` with `paths:` frontmatter and a `.claude/rules` symlink, so Claude
+  Code loads a rule by itself when it reads a matching file.
 - **Enforcement**: rules turned into permission rules, hooks and CI, with hook templates for
   generated paths, lint-on-edit and a tests-before-stop gate.
 - **Probe**: `scripts/probe.py` A/B-tests an instruction change with headless Claude Code runs in
