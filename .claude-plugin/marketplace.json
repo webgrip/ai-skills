@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.13.1",
+      "version": "1.13.2",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -208,7 +208,7 @@
       "name": "product-owner",
       "source": "./skills/product-owner",
       "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, a Definition of Mergeable for every PR, flow metrics, and evidence-based closing.",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "license": "MIT",
       "keywords": [
         "product-owner",

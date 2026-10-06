@@ -1,5 +1,13 @@
 # product-owner
 
+## 0.8.2 (2026-10-06)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** ship the ticket_lint half of the wrapped-question fix (1092aec2)
+- **product-owner:** a wrapped open question keeps its owner (a21826b3)
+
+
 ## 0.8.1 (2026-10-06)
 
 ### 🐛 Bug Fixes
