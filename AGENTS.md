@@ -37,6 +37,10 @@ it via `.claude-plugin/marketplace.json`, non-Claude agents and the
 - **`dist/` is never committed** (gitignored). The release pipeline builds the
   `.skill` zips fresh; `python3 scripts/build_dist.py` locally if you need one.
 - Plugin `name` slugs are immutable once published (renames break installs).
+- **`npx skills` consumers install from the generated `npx` branch**, where every skill is
+  `webgrip-<skill>` (`scripts/build_npx_branch.py`, published by the release job). Never edit
+  that branch, and never point npx docs at `main`: unprefixed names collide with other estates in
+  `~/.agents/skills/`. Details: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 - **Fetch/pull before every authoring session.** Release bots push `chore(release)` commit-backs
   and other sessions push plugins; a stale clone diverges silently (2026-07-13: local checkout was
   two plugins behind its own installed cache).
