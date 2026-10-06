@@ -59,7 +59,7 @@ acceptance criteria live in the description as markdown.
 ## Markdown on the round trip
 
 What `markdown_description` gives back is not what you sent: bullets come back as
-`*   `, an `N.` that is not a list item as `N\.`, a hyphen after inline code as `\-`,
+`*   `, a horizontal rule as `* * *`, an `N.` that is not a list item as `N\.`, a hyphen after inline code as `\-`,
 a bare URL as a markdown link to itself, and a bare file name ending in a TLD-like suffix
 (`CLAUDE.md`, `README.md`) **as a link to `http://CLAUDE.md`**. So: put file names in
 backticks, and on read → merge → write keep the escapes as they are rather than
