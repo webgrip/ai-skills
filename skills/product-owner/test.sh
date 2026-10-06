@@ -150,8 +150,35 @@ if failures:
 print("merge_check: clean, zombie, sabotage (agent + human), rename-out, test-edit, behind, body cases hold")
 PY
 
-python3 scripts/ticket_lint.py - --gate ready > /dev/null <<'MD' && echo "ticket_lint: a Ready ticket passes"
-## Problem
+python3 - <<'PY'
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+failures = []
+
+
+def lint(body, *args):
+    proc = subprocess.run([sys.executable, "scripts/ticket_lint.py", "-", "--json", *args],
+                          input=body, capture_output=True, text=True)
+    if proc.returncode not in (0, 1):
+        sys.exit(f"ticket_lint crashed: {proc.stderr}")
+    return json.loads(proc.stdout)
+
+
+def status(result, criterion):
+    return next((r["status"] for r in result["checks"] if r["criterion"].startswith(criterion)),
+                None)
+
+
+def expect(case, got, wanted):
+    if got != wanted:
+        failures.append(f"{case}: expected {wanted!r}, got {got!r}")
+
+
+READY = """## Problem
 Backups of `db/prod` fail silently since 2026-09-01 (see `ops/backup.log:12`).
 
 ## Outcome
@@ -164,4 +191,63 @@ Nightly backups either succeed or page the on-call.
 
 ## Verification
 Kill the backup job in staging; the page arrives within 15 minutes.
-MD
+"""
+expect("ready ticket passes", lint(READY)["passes"], True)
+
+fenced = READY + "\n## Approach\n```bash\n# Environment\nmake restore\n```\n"
+expect("heading inside a code fence is not a section", lint(fenced)["type"], "change")
+
+story_env = READY + "\n## Environment\nStaging only.\n"
+expect("Environment alone does not make a bug", lint(story_env)["type"], "change")
+
+unowned = READY + "\n## Open questions\n- What do we do with: the old export?\n"
+expect("a colon is not an owner", status(lint(unowned), "open questions"), "FAIL")
+owned = READY + "\n## Open questions\n- Keep the old export? — owner: Ryan\n"
+expect("a named owner counts", status(lint(owned), "open questions"), "PASS")
+
+ranged = READY.replace("Backups of `db/prod` fail silently since 2026-09-01 (see `ops/backup.log:12`).",
+                       "Backups fail silently after 10-15 seconds for every customer we host.")
+expect("a range is not a date", status(lint(ranged, "--gate", "ready"), "evidence"), "FAIL")
+
+result = lint(READY, "--title", "Gebruikersbeheer - Deel 4/6 - Inloggen zonder Azure-account")
+expect("split-series title", status(result, "title reads"), "PASS")
+
+tldr = READY.replace("## Problem", "## TL;DR")
+expect("TL;DR standing in for Problem is flagged", status(lint(tldr), "Problem heading"), "MANUAL")
+
+trap = READY + "Last line of the functional half\n---\n# Technical notes\n"
+expect("text above --- warns", status(lint(trap), "horizontal rule"), "WARN")
+safe = READY + "Last line of the functional half\n\n---\n\n# Technical notes\n"
+yaml = READY + "\n## Approach\n```yaml\nkey: value\n---\nnext: doc\n```\n"
+expect("--- inside a code fence is not a rule", status(lint(yaml), "horizontal rule"), None)
+expect("blank line above --- is fine", status(lint(safe), "horizontal rule"), None)
+
+source = READY.replace("Backups of `db/prod` fail silently since 2026-09-01 (see `ops/backup.log:12`).",
+                       "Backups fail silently and nobody notices until a restore is needed.")
+source = '**Source:** support ticket 12-08: "backups are gone"\n\n' + source
+expect("a source line above the first heading is evidence",
+       status(lint(source), "evidence"), "PASS")
+
+agent = READY + """
+## Approach
+1. Add the alert rule in `ops/alerts/backup.yaml`.
+
+---
+
+# Technical notes
+
+## Technical verification
+`make test-backup-alert`
+
+## Protected areas
+Tests and CI config are do-not-touch. Escalate to a human for production credentials.
+"""
+expect("technical verification feeds the agent-ready gate",
+       status(lint(agent, "--gate", "agent-ready"), "verification an agent"), "PASS")
+
+if failures:
+    print("\n".join(failures), file=sys.stderr)
+    sys.exit(1)
+print("ticket_lint: ready ticket, fences, owners, dates, bug inference, split titles, "
+      "TL;DR stand-in, setext trap, source line, technical verification hold")
+PY

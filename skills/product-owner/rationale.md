@@ -40,6 +40,39 @@ large-N dataset), **CONSENSUS** (independent vendors/practitioners converge),
   set of high-signal tokens"; prefer file paths/links over pasted content
   ([Anthropic context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)).
 
+## Two readers — functional on top, technical below
+
+- **EVIDENCE** — what developers need from a bug report (Apache/Eclipse/Mozilla survey,
+  156 developers): steps to reproduce rated most important (83%); the worst problems are
+  errors in those steps (79%) and incomplete information (74%) — "non-technical
+  language" bothered only 19%. Reporters find test cases and code examples hardest to
+  supply ([Bettenburg et al., FSE 2008](https://thomas-zimmermann.com/publications/files/bettenburg-fse-2008.pdf))
+  → plain language on top costs developers nothing as long as repro and facts are
+  right; the code-level half is what the researcher adds, not what the reporter must.
+- **EVIDENCE** — issue body length is the top-ranked feature against agent merges
+  (AIDev study above); file/module hints and edge cases specified raise them
+  → the technical half stays, as pointers.
+- **CONSENSUS** — specifications describe behaviour, not implementation: "Will this
+  wording need to change if the implementation does?"
+  ([Cucumber: Writing better Gherkin](https://cucumber.io/docs/bdd/better-gherkin/));
+  the card is a reminder of a conversation, the acceptance test its confirmation
+  ([Jeffries, Card/Conversation/Confirmation](https://ronjeffries.com/xprog/articles/expcardconversationconfirmation/));
+  rules paired with concrete examples ([Adzic](https://gojko.net/2008/11/04/specifying-with-examples/))
+  → the implementation-change test, observable criteria with examples.
+- **CONSENSUS** — customer-facing part first, technical questions after: Amazon's PR/FAQ
+  (one page, no jargon, then an internal FAQ — [Working Backwards](https://workingbackwards.com/concepts/working-backwards-pr-faq-process/));
+  Google design docs keep context factual and non-goals as things "that could
+  reasonably be goals" ([Design docs at Google](https://www.industrialempathy.com/posts/design-docs-at-google/))
+  → the order of the halves; Not in scope ≠ negated criteria.
+- **CONSENSUS** — specialists prefer plain language too ("the more specialist their
+  knowledge, the greater their preference for plain English" —
+  [GOV.UK](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/clear-language/);
+  [NN/g, plain language for experts](https://www.nngroup.com/articles/plain-language-experts/));
+  conclusion first ([NN/g, inverted pyramid](https://www.nngroup.com/articles/inverted-pyramid/));
+  split sentences over 25 words (GOV.UK), Dutch B1 15–20
+  ([Schrijfwijzer IPLO](https://iplo.nl/digitaal-stelsel/toepasbare-regels/maken-testen/schrijfwijzer/schrijftips-taalniveau-b1/))
+  → the plain-language rules on the functional half.
+
 ## Verification and anti-gaming
 
 - **EVIDENCE** — reward hacking is measured: RL post-training raised exploit rates 0.6%

@@ -38,6 +38,18 @@
       ]
     },
     {
+      "id": "functional-first-ticket",
+      "prompt": "A customer says the customer dropdown on the vessel edit page only shows a few names and they can't scroll to the rest, so they think customers are missing. Dig into the code to find out why and write the ticket.",
+      "expect_trigger": true,
+      "assertions": [
+        "Researches the code and stamps 'researched against <branch> @ <short-sha>', but opens the ticket with a functional half: a source line quoting the customer, a plain-language summary, Outcome, criteria, Verification",
+        "No class names, file paths, parameters, endpoints or code-formatted terms appear above the horizontal rule; the summary says what the user sees ('only a few names, can't scroll to the rest'), not the mechanism ('too few options loaded per page')",
+        "Criteria describe behaviour a tester can observe (screen, action, result) and the Verification is runnable by a tester without reading code",
+        "The code findings (file:line, root cause, Approach) are kept below a '---' preceded by a blank line, as pointers rather than pasted code",
+        "The reproduction steps as the user takes them sit above the rule; what the code does at each step sits below it"
+      ]
+    },
+    {
       "id": "agent-ready-gate",
       "prompt": "I want to hand this ticket to a coding agent tonight: 'auth: users stay logged in after password reset — fix the session invalidation'. Is it ready for that?",
       "expect_trigger": true,

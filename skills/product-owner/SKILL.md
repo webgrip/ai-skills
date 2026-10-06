@@ -57,12 +57,14 @@ expensive — deliberate. **Moving a ticket back is the gate working, not failur
 
 ## The skeleton
 
-Empty headings: **delete them**. One screen max — pointers, not payloads (longer
-descriptions measurably *reduce* agent success).
+Empty headings: **delete them**. **Two readers**: what/for whom on top, plain language;
+code-level research (`file:line`, Approach) below a horizontal rule → [refine.md](refine.md).
+The top fits one screen; below is pointers, not payloads (longer descriptions measurably
+*reduce* agent success).
 
 | Section | When | What |
 |---|---|---|
-| **Problem** | always | what goes wrong, for whom, what it costs — evidence someone can check (`file:line`, metric, support ticket + date). No solution. |
+| **Problem** | always | what goes wrong, for whom, what it costs — evidence someone can check (support ticket + date, metric, `file:line` — below the rule on a two-readers ticket). No solution. |
 | **Outcome** | always | one sentence: end state, not activity. New KPIs are a KPI-set change (the `kpi-groomer` skill, where installed), never a ticket side-effect. |
 | **Acceptance criteria** | to be Ready | 2–7 binary checkboxes; ≥1 closes the cheap way out; feature work: ≥1 error-path. |
 | **Verification** | to be Ready | who/what proves it, where, which concrete case, expected result. Runnable when an agent executes. Not the criteria restated. |
@@ -162,8 +164,8 @@ first. Descriptions **replace** on write in both adapters: read → merge → wr
 **Cross-references are complete links.** Every ticket named in a description or comment
 — blocker, split child, "not in scope, that's X", related work — goes in as the full
 URL from the adapter, so it resolves for a reader who is not already inside that board's
-UI. Bare ids survive in exactly two places, both deliberate: **titles** (plain text) and
-the **commit trailer** (the token the tracker's own integration parses).
+UI. Bare ids belong only in **titles** (plain text) and the **commit trailer** (the
+token the tracker's own integration parses).
 
 ## Gotchas
 

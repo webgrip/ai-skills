@@ -1,14 +1,16 @@
 # Refinement — raw ticket → Ready (→ agent-ready)
 
-Per-ticket procedure · Binary criteria · Interview · Teaching pass · Templates ·
-Splitting · Triage · Bulk fan-out · Antipattern gallery. The gates themselves are in
+Per-ticket procedure · Binary criteria · Interview · Two readers · Teaching pass ·
+Templates · Splitting · Triage · Bulk fan-out · Antipattern gallery. The gates themselves are in
 [SKILL.md](SKILL.md); agent-ready specifics in [agents.md](agents.md).
 
 ## Per-ticket procedure
 
 1. **Research before writing.** Read the repo (manifests, source, docs tree, ADRs,
    runbooks) and live state where the premise depends on it. Every Problem claim and
-   every criterion cites `file:line`, a command output, or a decision record.
+   every criterion has a source: `file:line`, a command output, a decision record, or
+   a dated requester quote. On a two-readers ticket the code-level citations sit in the
+   technical half (below).
    **Never invent** — information the sources don't contain becomes an explicit
    `MISSING — question for <owner>: …` line, never synthesized content. When refining,
    diff your rewrite against its inputs and strip any factual claim with no provenance.
@@ -103,6 +105,51 @@ operates it) · **Example Mapping** (25 min; the red unanswerable-question cards
 Open questions section) · **INVEST** as a heuristic earning its keep on one question:
 "is this one ticket or three?" — never as a scored gate.
 
+## Two readers — the functional half on top
+
+A ticket has two audiences. The **product owner, the customer and the tester** decide
+whether it is right, plan it and accept it: they need *what* changes for whom. The
+**developer and the agent** build it: they need *how* and *where*. Code-level research
+written straight into the top reads like a code review — the PO can't judge it and the
+customer doesn't recognise their problem. Where research produced code-level findings,
+write two halves divided by a horizontal rule (blank line above and below `---`, or the
+line above becomes a heading):
+
+1. **Functional half** — complete on its own: a reader who stops at the rule can discuss,
+   plan and accept the ticket.
+   - **Source line** first: origin, date, link. The requester's words go in literally
+     (other language → a code block).
+   - A plain-language summary (TL;DR or Problem), Outcome, criteria, Verification, Not in
+     scope, Open questions. **Bug**: reproduction steps and environment *as the reporter
+     or tester observed them* sit here too — they are the steps the tester reruns.
+   - **The implementation-change test, per sentence**: *would it change if the
+     implementation did?* Yes → it moves down. That removes class/file names,
+     endpoints, parameters, code-formatted terms and solutions in disguise ("raise
+     perPage to 30").
+   - Plain language: conclusion first; sentences ≤ ~20 words; active voice, verbs over
+     nouns; the screen and field names the user sees.
+   - **Criteria** describe what a tester can observe (screen, action, result), each with
+     a concrete example where a rule alone is ambiguous. A check that needs devtools
+     stays a criterion, phrased as its observable effect ("one request per opening"); the
+     Verification points down for the how. Never demote a criterion into the Approach —
+     it then escapes the DoD.
+   - **Not in scope** lists things someone could reasonably expect, not negated criteria.
+2. **Technical half**, under a heading such as `# Technical notes` and one line saying
+   nobody needs it to understand or discuss the ticket: technical context (mechanism with
+   `file:line`, stale premises, related commits/tickets), the code-level reproduction
+   ("per the code: …"), Approach, a technical verification (commands the agent runs),
+   and for agent work Protected areas and Rollback. Last line: the research stamp.
+
+**Length**: the functional half fits one screen; the technical half is pointers, never
+pasted code or logs (`file:line` beats a snippet — body length is the strongest negative
+predictor of agent merges, [rationale.md](rationale.md)). Scale it like everything else:
+a chore has no technical half; no code-level research means no rule.
+
+**The cheap failure mode** is a functional half that is the technical half with the
+paths deleted — the sentences still describe the mechanism ("too few options are loaded
+per page"). Rewrite from the user's chair: "you see four names and can't scroll to the
+rest".
+
 ## The teaching pass — human-executed tickets
 
 The ticket is read by someone who wasn't in the conversation — often a junior/medior;
@@ -111,7 +158,8 @@ on human-executed work it is also the lesson. After the skeleton is filled, one 
 1. **`Why it matters` under Problem** — three ingredients: the concrete failure/attack
    story (what goes wrong, for whom), the mechanism (the thing a junior doesn't yet
    know — *why* it goes wrong), and the lesson (what doing this ticket teaches). One
-   paragraph; needing three means the mechanism belongs in a doc you link instead.
+   paragraph; needing three means the mechanism belongs in a doc you link instead. On a
+   two-readers ticket it opens the technical half, not the top.
 2. **Links point at the object, not the tool** — the dashboard's own URL/UID, the config
    file path, the ADR. Say in one clause what the reader will see behind each link, and
    note access requirements (VPN, login) so nobody searches for why a link "is broken".
@@ -160,7 +208,8 @@ One sentence: the end state.
 Who/what proves it, where, with which concrete case and expected result.
 
 ## Not in scope
-- What someone would reasonably assume — with where it goes instead
+- What someone would reasonably assume — with where it goes instead (not a negated
+  criterion: "must not crash" is a criterion)
 
 ## Context
 - Repo / code: · Decision record / runbook: · Dashboard / support ticket:
@@ -290,6 +339,7 @@ findings summary.
 | **Nine tickets in doing** | Nothing in hand, everything half done. | The WIP limit; finish the oldest first. |
 | **Everything urgent** | Six P0s = no P0. | Priority is an order — rank them. |
 | **The DoD copied into every ticket** | Identical rules ×100 teach people to skim. | It lives once; per-ticket conditions are acceptance criteria. |
+| **The research dump as a ticket** (class names, `perPage`, file paths in the summary) | The PO can't judge it and the customer doesn't recognise their problem, so it gets accepted unread or rewritten in the meeting. | Two readers: functional half on top, the research below the rule. |
 | **A ticket needing narration** | It's a memory aid, not a ticket. | The cold-read test below. |
 
 **The cold-read test** — the strongest verification in the method, and free: someone

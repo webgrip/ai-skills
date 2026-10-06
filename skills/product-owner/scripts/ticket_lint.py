@@ -30,13 +30,17 @@ TYPES = ("change", "feature", "bug", "spike", "chore")
 
 # Canonical section -> heading aliases (lowercased), English + Dutch.
 SECTIONS = {
-    "problem": ("problem", "probleem"),
+    # A plain-language TL;DR may stand in for Problem when the evidence moved to the
+    # technical half (refine.md, "Two readers").
+    "problem": ("problem", "probleem", "tl;dr", "tldr"),
     "outcome": ("outcome", "uitkomst"),
     "criteria": ("acceptance criteria", "acceptatiecriteria"),
-    "verification": ("verification", "verificatie"),
+    "verification": ("verification", "verificatie", "technical verification",
+                     "technische verificatie"),
     "scope": ("not in scope", "out of scope", "niet in scope"),
     "questions": ("open questions", "open vragen"),
-    "context": ("context", "gates & links", "gates &amp; links", "links"),
+    "context": ("context", "gates & links", "gates &amp; links", "links",
+                "technical context", "technische context"),
     "approach": ("approach", "aanpak"),
     "repro": ("reproduction", "reproductie", "repro", "steps to reproduce"),
     "environment": ("environment", "omgeving"),
@@ -62,11 +66,17 @@ NUMBER_RE = re.compile(r"\d")
 # Evidence someone can look up: a URL, a path-like token, or a dated reference.
 EVIDENCE_RE = re.compile(
     r"https?://|\[[^\]]+\]\([^)]+\)|`[^`]*[/.][^`]*`|\b[\w./-]+\.(?:py|ts|js|php|go|rs|yaml|yml|json|md|vue|tf)\b"
-    r"|\b[\w-]+/[\w./-]+:\d+|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}-\d{1,2}\b", re.I)
+    r"|\b[\w-]+/[\w./-]+:\d+|\b\d{4}-\d{2}-\d{2}\b"
+    r"|\b(?:0?[1-9]|[12]\d|3[01])-(?:0?[1-9]|1[0-2])(?:-\d{2,4})?\b"
+    r"(?!\s*(?:s\b|sec|min|uur|hours?|days?|dagen|weken|weeks?|ms\b|%|keer|times))", re.I)
 PATH_RE = re.compile(r"`[^`]*[/.][^`]*`|\b[\w-]+/[\w.-]+[\w/]", )
 COMMAND_RE = re.compile(r"`[^`]+`|<code>[^<]+</code>", re.I)
 MD_CHECKBOX_RE = re.compile(r"^\s*[-*]\s*\[[ xX]\]\s*(.+)$", re.M)
-OWNER_RE = re.compile(r"@\w|\bDRI\b|—\s*\w+|--\s*\w+|:\s*\w+|\bowner\b|\beigenaar\b", re.I)
+OWNER_RE = re.compile(r"@\w|\bDRI\b|\b(?:owner|eigenaar|decides|beslist)\b\s*:?\s*\S|"
+                      r"\bneeds client\b", re.I)
+SPLIT_TITLE_RE = re.compile(r"\s-\s(?:Deel|Part)\s\d+/\d+\s-\s\S", re.I)
+# A paragraph line directly above `---` makes it a setext heading, not a rule.
+SETEXT_TRAP_RE = re.compile(r"^(?![\s#>|`*+-]|\d+[.)]\s).+\n-{3,}[ \t]*$", re.M)
 BLAST_RE = re.compile(r"allowed paths?|blast radius|only touch|may only (?:change|edit)|"
                       r"protected areas?|do[- ]?not[- ]?touch|beschermde|niet aankomen|"
                       r"mag alleen|raakt alleen|scope of change", re.I)
@@ -101,13 +111,18 @@ def sections_of(text: str) -> tuple[dict[str, str], list[str]]:
         parts = re.split(r"<h[1-6][^>]*>(.*?)</h[1-6]>", text, flags=re.I | re.S)
         # parts = [preamble, h1, body1, h2, body2, ...]
         pairs = list(zip(parts[1::2], parts[2::2]))
+        if parts[0].strip():
+            found["preamble"] = parts[0].strip()
         for heading, body in pairs:
             raw.append(strip_tags(heading).strip())
     else:
         pairs = []
         current, buffer = None, []
+        fenced = False
         for line in text.splitlines():
-            m = re.match(r"^\s{0,3}#{1,6}\s+(.*?)\s*$", line)
+            if re.match(r"^\s{0,3}(```|~~~)", line):
+                fenced = not fenced
+            m = None if fenced else re.match(r"^\s{0,3}#{1,6}\s+(.*?)\s*$", line)
             if m:
                 if current is not None:
                     pairs.append((current, "\n".join(buffer)))
@@ -115,6 +130,9 @@ def sections_of(text: str) -> tuple[dict[str, str], list[str]]:
                 raw.append(current.strip())
             elif current is not None:
                 buffer.append(line)
+            elif line.strip():
+                # Text above the first heading, e.g. a "**Source:** <quote, date>" line.
+                found["preamble"] = (found.get("preamble", "") + "\n" + line).strip()
         if current is not None:
             pairs.append((current, "\n".join(buffer)))
 
@@ -137,7 +155,7 @@ def checkboxes_of(text: str, section_body: str) -> list[str]:
 
 
 def infer_type(body: dict[str, str]) -> str:
-    if "repro" in body or "environment" in body:
+    if "repro" in body:
         return "bug"
     if "timebox" in body or "question" in body or "decide_on" in body:
         return "spike"
@@ -164,7 +182,7 @@ class Report:
 def check_intake(title: str | None, body: dict[str, str], plain: str, report: Report) -> None:
     if title is not None:
         name = title.strip()
-        if ":" in name and len(name.split(":")[0].split()) <= 3:
+        if (":" in name and len(name.split(":")[0].split()) <= 3) or SPLIT_TITLE_RE.search(name):
             report.add(PASS, "intake", "title reads `area: what changes`")
         elif len(name.split()) <= 2:
             report.add(FAIL, "intake", "title reads `area: what changes`",
@@ -188,18 +206,28 @@ def check_intake(title: str | None, body: dict[str, str], plain: str, report: Re
                    "very short — what goes wrong, for whom, and what does it cost?")
     else:
         report.add(PASS, "intake", "Problem section filled")
+    if body.get("problem") and not re.search(r"^\s{0,3}#{1,6}\s*(problem|probleem)\b|"
+                                             r"<h[1-6][^>]*>\s*(problem|probleem)\b",
+                                             plain, re.I | re.M):
+        report.add(MANUAL, "intake", "Problem heading the board gates on",
+                   "a TL;DR stands in for Problem — fine on a two-readers board, "
+                   "but a board that gates on a literal Problem heading still needs it")
+    if SETEXT_TRAP_RE.search(re.sub(r"(?ms)^\s{0,3}(```|~~~).*?^\s{0,3}\1", "", plain)):
+        report.add(WARN, "intake", "horizontal rule has a blank line above it",
+                   "text directly above `---` renders as a heading — add a blank line")
 
 
 def check_ready(raw: str, body: dict[str, str], work_type: str, report: Report) -> None:
     # A spike's Question section stands in for Problem, here as at intake.
     problem = body.get("problem") or body.get("question") or ""
-    context = body.get("context", "")
+    context = body.get("context", "") + "\n" + body.get("preamble", "")
     if EVIDENCE_RE.search(strip_tags(problem) + " " + problem) or EVIDENCE_RE.search(context):
         report.add(PASS, "ready", "evidence someone can look up",
-                   "path/URL/date found in Problem or Context")
+                   "path/URL/date found in Problem, Context or the source line")
     else:
         report.add(FAIL, "ready", "evidence someone can look up",
-                   "no file:line, URL, metric, or dated reference in Problem/Context — "
+                   "no file:line, URL, metric, or dated reference in Problem, Context or "
+                   "the source line — "
                    "an unverifiable claim is an open question, not a fact", fixable=True)
 
     if work_type == "spike":

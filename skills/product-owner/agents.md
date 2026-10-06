@@ -26,8 +26,9 @@ Ready, plus:
 6. **Self-contained** — everything needed is in or linked from the ticket. Unresolved
    external dependencies (API access, environment setup, third-party config) measurably
    sink agent PRs: split them out as sequenced prerequisite tickets.
-7. **Concise** — one screen. Longer descriptions *reduce* merge rates; density beats
-   completeness-by-volume. Pointers, not payloads.
+7. **Concise** — the functional half one screen, the technical half pointers
+   (`file:line`, not pasted code or logs). Body length is the strongest negative
+   predictor of merge; density beats completeness-by-volume.
 
 **Routing — refuse the gate regardless of ticket quality for:** security-critical
 paths, auth/billing/data-deletion/migrations (human-review-mandatory risk tier),

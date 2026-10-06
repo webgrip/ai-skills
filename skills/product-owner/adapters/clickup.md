@@ -11,7 +11,7 @@ only behavior that holds on any ClickUp workspace.
 | Skill concept | ClickUp realization |
 |---|---|
 | Ticket body | `markdown_description` (create and update) — **markdown, not HTML**; sending HTML gets you literal tags |
-| Skeleton headings | `##` markdown headings; criteria as `- [ ] …` (not in ClickUp's documented list but round-trips and renders as a checklist) |
+| Skeleton headings | `##` markdown headings; criteria as `- [ ] …` (not in ClickUp's documented list but round-trips and renders as a checklist). A horizontal rule `---` needs a **blank line above it** — text directly above turns into a heading (CommonMark setext). No collapsible/toggle block via the API — `/toggle` is UI-only |
 | Status/stage | real ClickUp statuses, **per list** — `clickup_get_list {list_id}` returns that list's own set; never assume two lists share one |
 | Priority | a word — `urgent\|high\|normal\|low` (+ `none` on update to clear), not the API's integer. Mapping: urgent=P0, high=P1, normal=P2 |
 | Taxonomy | tags (must already exist in the space — an unknown tag is **silently dropped**) + space-scoped custom fields (dropdowns take the **option UUID** as `value`, not the label) |
@@ -55,6 +55,15 @@ option catalog — **98% of a 70k-char response** was dropdown options, none of 
 (`clickup_get_task {include:["description"]}`), merge, then write — a blind write destroys
 whatever a colleague wrote. ClickUp *checklists* are a separate object the MCP cannot create;
 acceptance criteria live in the description as markdown.
+
+## Markdown on the round trip
+
+What `markdown_description` gives back is not what you sent: bullets come back as
+`*   `, an `N.` that is not a list item as `N\.`, a hyphen after inline code as `\-`,
+a bare URL as a markdown link to itself, and a bare file name ending in a TLD-like suffix
+(`CLAUDE.md`, `README.md`) **as a link to `http://CLAUDE.md`**. So: put file names in
+backticks, and on read → merge → write keep the escapes as they are rather than
+escaping again.
 
 ## Pagination
 
