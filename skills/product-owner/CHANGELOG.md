@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.8.3 (2026-10-06)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** quote in a quote block; a ClickUp code fence strips links (13093ba0)
+
+
 ## 0.8.2 (2026-10-06)
 
 ### 🐛 Bug Fixes
