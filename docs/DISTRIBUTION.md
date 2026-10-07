@@ -15,7 +15,7 @@ simultaneously the flat-layout skill and the Claude Code plugin (manifest in
 | Channel | Consumers | Updates | Pinning |
 | --- | --- | --- | --- |
 | Claude Code plugin marketplace (generated `marketplace.json` → `./skills/<n>`) | Claude Code | on a skill `version` bump — its own release train (`<skill>-vX.Y.Z`) on each push to main | `#ref` on the marketplace URL, or a full commit `sha` per plugin source |
-| `npx skills add <git-url>#npx` (the generated `npx` branch: `skills/webgrip-<n>/`, plugin machinery stripped) | 70+ agents incl. Claude Code, opencode, Cursor, Codex | `npx skills update` (re-clones the branch) | none yet: the branch moves on every release |
+| `npx skills add <git-url>` (walks the flat `skills/` tree) | 70+ agents incl. opencode, Cursor, Codex | `npx skills update` (re-clones the source) | pin an immutable `#vX.Y.Z` tag in the URL |
 | `.skill` zips (release assets + package registry; plugin machinery excluded) | claude.ai / Claude app | manual re-upload | the release you downloaded |
 | Manual copy / symlink of `skills/<n>/` into `.claude/skills/` | Claude Code + opencode (opencode reads `.claude/skills/` natively) | `git pull` if symlinked | your checkout |
 
@@ -47,16 +47,13 @@ without rewriting what earlier runs got right.
 
 ## skills CLI specifics
 
-- **The install folder is the frontmatter `name`**, not the source folder
-  (`sanitizeName(skill.name)` in the CLI), and `~/.agents/skills/` holds one
-  folder per name. Two estates that both ship `adr-writer` overwrite each other
-  there, silently, last install wins. That is why npx consumers install from
-  the `npx` branch, where `scripts/build_npx_branch.py` rewrites every
-  `name:` to `webgrip-<skill>` and drops the plugin machinery (a copied
-  `.claude-plugin/plugin.json` would otherwise make Claude Code load the
-  folder as `<name>@skills-dir` under the unprefixed plugin name). The
-  release job publishes it after the per-skill trains; it reads the remote
-  branch first and pushes nothing when the tree is unchanged.
+- **The install folder is the frontmatter `name`** (`sanitizeName(skill.name)`
+  in the CLI), and `~/.agents/skills/` holds one folder per name, so two
+  sources shipping the same name overwrite each other, last install wins.
+  Claude Code also hides a repo-level skill behind a global one of the same
+  name, without a warning. A shared name is fine only when it is one skill:
+  Code 14's estate consumes this estate's shared skills instead of forking
+  them, and a genuinely different variant gets its own name.
 - Project-scope installs write `skills-lock.json` in the consuming repo
   (source, skillPath, optional `ref`, content hash). Commit it; restore with
   `npx skills experimental_install`. **The hash is drift-detection, not

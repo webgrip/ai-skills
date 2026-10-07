@@ -91,21 +91,6 @@ jobs:
           if [ "$missing" != 0 ]; then echo "FAIL — some skills not discovered by the CLI"; exit 1; fi
           echo "install smoke OK — all $(ls -d skills/*/ | wc -l | tr -d ' ') skills discovered"
 
-      - name: Prefixed npx tree install smoke
-        env:
-          DISABLE_TELEMETRY: "1"
-          DO_NOT_TRACK: "1"
-        run: |
-          python3 scripts/build_npx_branch.py
-          npx -y skills@latest add ./dist/npx --list > /tmp/npx-list.txt 2>&1 || true
-          missing=0
-          for d in skills/*/; do
-            name="webgrip-$(basename "$d")"
-            grep -qF "$name" /tmp/npx-list.txt || { echo "MISSING from prefixed npx tree: $name"; missing=1; }
-          done
-          if [ "$missing" != 0 ]; then cat /tmp/npx-list.txt; exit 1; fi
-          echo "prefixed npx smoke OK"
-
       # Anthropic's official manifest + frontmatter validator (the `claude` CLI is
       # baked into the runner toolchain). --strict works here because plugin.json files
       # carry version/description (computed at release time — see CLAUDE.md).

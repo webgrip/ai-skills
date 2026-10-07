@@ -31,30 +31,24 @@ Webgrip's open-source Claude skills, shipped as one plugin marketplace hosted on
 
 ## Install
 
-**`npx skills` (recommended — every agent, not just Claude):** install from the generated
-`npx` branch, where every skill is named `webgrip-<skill>`. One command installs into 70+ agents
+**`npx skills` (recommended — every agent, not just Claude):** the flat `skills/` tree is the
+vendor-neutral layout the cross-tool installers consume, so one command installs into 70+ agents
 (Claude Code, opencode, Cursor, Codex, Copilot, Gemini CLI, …):
 
 ```bash
-npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git#npx            # interactive
-npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git#npx --all -g   # everything, user-level
-npx skills update -g                                                           # pull latest
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git            # interactive
+npx skills add https://forgejo.webgrip.dev/webgrip/ai-skills.git --all -g   # everything, user-level
+npx skills update -g                                                       # pull latest
 ```
 
-Skills land in `~/.agents/skills/webgrip-<skill>/` and are symlinked into each agent's skills dir
-(`~/.claude/skills/`, …). They invoke as `/webgrip-domain-language`. The prefix is why the
-branch exists: the CLI keeps one folder per skill name, so another estate's `adr-writer` or
-`skillsmith` would otherwise overwrite ours, and whichever installed last would win. Release CI
-rebuilds the branch from `main` (`scripts/build_npx_branch.py`); never edit it by hand.
-Pinning, lockfiles, and telemetry opt-out: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
-
-**Pick one route per agent.** In Claude Code, the `npx` install and the plugin below are the
-same skills twice (`webgrip-adr-writer` next to `webgrip:adr-writer`). Use one or the other.
+Skills land in `~/.agents/skills/` and are symlinked into each agent's skills dir
+(`~/.claude/skills/`, opencode, …). They invoke **unprefixed** — `/domain-language`. Pinning,
+lockfiles, and telemetry opt-out: [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 
 > **The CLI ships only the SKILL.md trees.** A skill's bundled `hooks/hooks.json`
 > (`guard-secrets`, `skill-usage`) or `.mcp.json` (`product-owner`) is copied but **not**
-> auto-wired — register those by hand in your `settings.json` / `.mcp.json` (the paths are
-> `~/.agents/skills/webgrip-<skill>/…`), or use the plugin route below, which wires them for you.
+> auto-wired — register those by hand in your `settings.json` / `.mcp.json`, or use the plugin
+> route below, which wires them for you.
 
 **Claude Code plugin (only if you need the bundled hooks/MCP wired automatically):**
 
