@@ -51,9 +51,9 @@ without rewriting what earlier runs got right.
   in the CLI), and `~/.agents/skills/` holds one folder per name, so two
   sources shipping the same name overwrite each other, last install wins.
   Claude Code also hides a repo-level skill behind a global one of the same
-  name, without a warning. A shared name is fine only when it is one skill:
-  Code 14's estate consumes this estate's shared skills instead of forking
-  them, and a genuinely different variant gets its own name.
+  name, without a warning. With two sources installed, pick one source per
+  shared name: `-s` on the second `npx skills add` limits it to the names
+  you want from there.
 - Project-scope installs write `skills-lock.json` in the consuming repo
   (source, skillPath, optional `ref`, content hash). Commit it; restore with
   `npx skills experimental_install`. **The hash is drift-detection, not
