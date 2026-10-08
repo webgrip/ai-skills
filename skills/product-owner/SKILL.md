@@ -127,21 +127,40 @@ nothing is in hand and everything is half done.
 
 The gate on a **change**, not a ticket: may this PR/MR land on main? Invariant: main
 always passes all the tests, so every merge leaves it releasable. Merged ≠ done, green ≠
-mergeable, and the forge's `mergeable` field is only a conflict check. The portable
-default (the contract may point at the team's own) — **Lands green**: required checks
-pass on the tree that will land (up to date with the base, or a merge queue), every
-required check ran and could fail, main green first · **Reviewed**: a qualified
-non-author approved the final revision; blocking threads resolved; a second approval by
-risk tier, never by default · **Scoped**: one ticket, only what it names, reviewable
-size, tests move with the behavior and none are thinned without a reason · **Safe to
-ship**: unfinished behavior dark behind a flag, compatible with the running version,
-revertable, no new critical findings or unchecked dependencies · **Legible**: the PR
-states what/why, verification, risk, rollback — and matches its diff. Agent-authored:
-builder ≠ judge, AI review is an input never the approval, test-touching hunks get a
-human read. Enforce in branch protection what the forge can hold; a line only prose
-holds is a wish. Criteria, forge settings and traps, agent extras, procedure →
-[merge.md](merge.md); mechanical half: `python3 scripts/merge_check.py --base
-origin/main --head pr-<n>`.
+mergeable, and the forge's `mergeable` field is only a conflict check. Asked "may this
+merge?" ("mag dit gemerged worden"):
+
+1. **Run the mechanical half first** when the repo is at hand: `python3
+   scripts/merge_check.py --base origin/main --head pr-<n>`. No checkout → say so and
+   name it as the first step.
+2. **A verdict per line, never a bare yes.** The portable default (the contract may point
+   at the team's own):
+   - **Lands green** — required checks passed on the *tree that will land* (up to date
+     with the base, or a merge queue), not only on the PR head; every required check
+     actually ran and could fail (skipped-as-success and allow-failure don't count);
+     main green first.
+   - **Reviewed** — a qualified non-author approved the *final* revision (a push after
+     the approval voids it); blocking threads resolved; a second approval by risk tier,
+     never by default.
+   - **Scoped** — one ticket, only what it names, protected areas untouched, reviewable
+     size; tests move with the behavior and none are thinned without a reason.
+   - **Safe to ship** — compatible with the running version (migrations expand-only, a
+     destructive step is a later merge); unfinished behavior dark behind a flag; a
+     rollback path, or the irreversibility stated; risk-tier paths (auth, sessions,
+     billing, migrations, secrets) get their owner's review; no new critical findings
+     or unchecked dependencies.
+   - **Legible** — the PR states what/why, verification, risk, rollback, and matches its
+     diff.
+3. **Agent-authored:** builder ≠ judge. The authoring agent never merges its own PR; AI
+   review is an input, never the approval; where a second human exists the dispatcher
+   is not the sole approver. Every edited or deleted test or snapshot gets a human read
+   and a stated reason, plus the revert check: restore the base's test files, rerun, and
+   explain any new failure.
+4. **Never merge without confirming the write.** On gaps, one comment naming each unmet
+   line.
+
+Enforce in branch protection what the forge can hold; a line only prose holds is a wish.
+Criteria, forge settings and traps, agent extras, procedure → [merge.md](merge.md).
 
 ## Definition of Done
 
