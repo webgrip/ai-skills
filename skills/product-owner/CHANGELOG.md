@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.8.4 (2026-10-08)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** answer a merge question line by line (9caf8e6f)
+
+
 ## 0.8.3 (2026-10-06)
 
 ### 🐛 Bug Fixes
