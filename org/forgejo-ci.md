@@ -77,6 +77,62 @@ hele pipeline; een echte PR die de complete gate draait is het bewijs dat telt.
 **Les voor deze hele pagina.** Een "X is stuk"-regel zonder de logregel erbij houdt zichzelf jaren
 in stand. Kost één workflow en één run om te controleren.
 
+## Een push-mirror kan een push stilletjes terugdraaien
+
+Een push-mirror zonder `branch_filter` krijgt in de repoconfig `fetch = +refs/*:refs/*`. Als
+zijn `push --mirror --force` klaar is, schrijft git de refs terug die het aan het begin las,
+over elke push die er tussendoor binnenkwam
+([forgejo#14273](https://codeberg.org/forgejo/forgejo/issues/14273)). Dat gebeurt buiten
+receive-pack: geen branchprotectie, geen feed-item, geen Actions-run, geen webhook. Met
+`sync_on_commit: true` opent elke push dat venster, en een releasejob die daarna draait,
+releaset zonder de verdwenen commit
+([reuse-and-releases.md](reuse-and-releases.md#een-releasejob-faalt-als-zijn-eigen-commit-verdwenen-is)).
+
+- **Opgelost** door [forgejo#14324](https://codeberg.org/forgejo/forgejo/pulls/14324), met
+  backports naar de v15.0- en v16.0-lijn; v15.0.9 en v16.0.5 zijn de eerste releases daarna.
+  Controleer de release notes van de versie die draait.
+- **Tot de upgrade:** maak elke ongefilterde mirror opnieuw met een filter op de trunks,
+  bijvoorbeeld `"branch_filter": "development,main"`. Welke mirrors er zijn, staat (als admin)
+  in `GET /api/v1/repos/<o>/<r>/push_mirrors`.
+- **Na elke push naar trunk:** controleer dat je SHA er nog op staat
+  (`git fetch && git merge-base --is-ancestor <sha> origin/<trunk>`).
+- **Bescherm trunk, ook in trunk-based repo's.** Een beschermingsregel waarin schrijvers
+  mogen pushen houdt gewone fast-forward-pushes open, maar weigert verwijderen en
+  force-pushes voor iedereen.
+
+## CI volgen zonder credentials
+
+Op een publieke repo kan een agent CI volgen zonder token:
+
+| Werkt anoniem | Vraagt een login |
+| --- | --- |
+| `GET /api/v1/repos/<o>/<r>/actions/tasks?limit=50` (traag: reken op seconden) · `GET …/commits/<sha>/status` · `GET …/pulls/<n>` · de `.diff`-URL van een PR · de activity feed · `GET /api/v1/version` | joblogs (anoniem 404, run-pagina's 307) · `/branch_protections` · `/push_mirrors` |
+
+Vraagt een log om een login, zeg dat dan tegen de eigenaar in plaats van te gokken wat er
+misging. Forgejo 15 heeft geen re-run-API en `tea` 0.9.2 geen `api`-subcommando: start een run
+opnieuw door de PR te sluiten en te heropenen, of met `workflow_dispatch`. Webpaden zijn
+`/src/branch/main/…`; `/tree/main/…` geeft 404.
+
+Pollen doe je op de achtergrond en je print alleen bij een statuswijziging, met een timeout per
+request en foutafhandeling op de JSON — anders print één onleesbaar antwoord urenlang dezelfde
+traceback. Reken bij een runner-backlog op anderhalf uur, en stop de poller zodra de commit
+vervangen is.
+
+```bash
+prev=
+for i in $(seq 1 120); do
+  state=$(curl -s --max-time 30 "https://forgejo.webgrip.dev/api/v1/repos/<o>/<r>/commits/$SHA/status" \
+    | python3 -c 'import json, sys
+try:
+    print(json.load(sys.stdin).get("state") or "none")
+except ValueError:
+    print("unreadable")')
+  [ "$state" != "$prev" ] && echo "$(date +%H:%M) $state" && prev=$state
+  case "$state" in success|failure|error) break ;; esac
+  sleep 60
+done
+```
+
 ## Wat geen Forgejo-equivalent heeft
 
 GitHub App-tokens, GitHub Models, GitHub Pages-hosting en GitHub Advanced Security. Die zijn

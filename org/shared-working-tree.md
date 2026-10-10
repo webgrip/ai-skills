@@ -12,9 +12,18 @@ even met twee perspagina's die naar drie merkassets linkten die niet meer beston
 redirects: 404's op precies de pagina waar journalisten heen gestuurd worden. Net op tijd
 gezien.
 
-**Dus: altijd `git commit -- <paden>`, nooit een kale `git commit` na `git add`.** Draai eerst
-`git status` en behandel alles wat je niet zelf hebt geschreven als lopend werk van iemand
-anders.
+**Dus: commit op pathspec (`git commit -- <paden>`), nooit een kale `git commit` na `git add`.**
+Draai eerst `git status` en behandel alles wat je niet zelf hebt geschreven als lopend werk van
+iemand anders.
+
+**Maar een pathspec neemt de working-tree-inhoud van die paden mee.** `git commit -- <pad>`
+(`--only`) houdt wat een peer elders gestaged heeft buiten je commit, maar commit het genoemde
+bestand zoals het op schijf staat, inclusief een wijziging die een andere sessie in datzelfde
+bestand heeft gemaakt en nog niet gestaged heeft. Toont `git diff -- <pad>` meer dan jouw
+wijziging, zet dan alleen jouw wijziging in de index (`git apply --cached jouw.patch`, of een
+blob uit `HEAD` plus jouw wijziging via `git hash-object -w` en
+`git update-index --cacheinfo "100644,<blob>,<pad>"`) en commit **zonder** pathspec, met een
+index die verder leeg is (`git diff --cached --name-only` toont alleen jouw paden).
 
 ## 2. Een lokale commit blijft niet lokaal
 
@@ -46,5 +55,15 @@ wijzigingen noemen ook echt bestaat — en land het dan als één samenhangende 
 een halve.
 
 Sinds 2026-09-05 staat de twente.dev-boom op een `development`-branch. Doe in zo'n gedeelde tree
-nooit `git checkout` of `git stash`; commit op pathspec op de branch die uitstaat, en zeg erbij
-op welke branch het geland is.
+nooit `git checkout`, `git rebase` of `git stash`; commit op pathspec op de branch die uitstaat,
+en zeg erbij op welke branch het geland is. `refs/stash` is één lijst voor alle sessies en
+worktrees: `git stash && <lint>; git stash pop` kan de stash van een ander poppen. Zet
+onaf werk liever in een commit op een eigen branch.
+
+Binnenhalen wat op de remote veranderde gaat in de gedeelde tree met een merge: fetch, check dat
+de index leeg is en dat de remote-wijzigingen geen van de bestanden raken waar iemand nog aan
+werkt, dan `git merge --no-edit origin/<trunk>`. Draai de gate daarna in een schone, detached
+worktree op die merge-commit, niet in de gedeelde tree: daar kan andermans lopende werk
+(een submodule op een andere versie, een half bestand) de gate vals laten falen. Je eigen
+werk doe je het liefst in zo'n detached worktree vanaf `origin/<trunk>`, en je pusht alleen
+commits waarvan `git log origin/<trunk>..HEAD` laat zien dat ze van jou zijn.

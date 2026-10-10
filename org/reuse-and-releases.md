@@ -20,6 +20,37 @@ github-actions-manager leest ook `.forgejo`-bomen, en de digest-pinregels staan 
 maar nooit gelezen (de bestandslijst staat hardcoded), en niets plant hem in — hij is alleen
 `workflow_call`.
 
+## Het committype is de releasebeslissing
+
+Waar releases uit conventional commits berekend worden, beslist het type van de commit of er
+een release komt, en welke. Bij squash-merges is de PR-titel die commit: controleer de titel
+vóór het mergen. Een verkeerd type geeft geen fout, alleen geen release.
+
+- **`@webgrip/semantic-release-config`** (`index.cjs`, 1.3.3): breaking → major; `feat` →
+  minor; `fix`, `perf`, `refactor`, `revert`, `chore(deps)` en `build(deps)` → patch. Al het
+  andere (`docs`, `ci`, `test`, `style`, een kale `chore` of `build`) geeft geen release.
+  Squash met een `chore:`-titel voor geen release; maak er `fix(<scope>): …` van om wel een
+  patch te snijden.
+- **`webgrip/ai-skills`** heeft een trein per skill: commits onder `skills/<naam>/` moeten
+  `feat`, `fix`, `perf`, `refactor`, `revert` of breaking zijn, en `version` bewerk je nooit
+  met de hand. De details staan in de `AGENTS.md` van die repo.
+- Releasebots committen terug (`chore(release): … [skip ci]`). Pull vóór elke push.
+
+## Een releasejob faalt als zijn eigen commit verdwenen is
+
+Een releasejob die bij een retry `reset --hard` naar de remote-head doet, releaset stilletjes
+zonder zijn triggerende commit als die intussen van de branch verdwenen is, bijvoorbeeld door
+een push-mirror die refs terugschrijft ([forgejo-ci.md](forgejo-ci.md#een-push-mirror-kan-een-push-stilletjes-terugdraaien)).
+Controleer vóór de reset en vóór de release dat de commit er nog op staat:
+
+```bash
+git merge-base --is-ancestor "$GITHUB_SHA" "origin/$GITHUB_REF_NAME" \
+  || { echo "triggering commit $GITHUB_SHA is no longer on $GITHUB_REF_NAME"; exit 1; }
+```
+
+Meld de fout in de vorm die `webgrip/workflows` voorschrijft: `::error::`-annotaties zijn daar
+bewust verwijderd.
+
 ## Packages
 
 De Forgejo npm-registry werkt (`https://forgejo.webgrip.dev/api/packages/webgrip/npm/`, anoniem
