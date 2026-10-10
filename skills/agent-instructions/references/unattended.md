@@ -119,11 +119,8 @@ schedules; the `check` job holds no secret, so it can run on every change ([ci.m
 - **Forgejo**: the same split (no secrets for fork heads, secrets for same-repository branches), and
   `pull_request_target` likewise carries the base secrets and a write token
   ([security](https://forgejo.org/docs/latest/user/actions/security-pull-request/)).
-- **GitLab tokens for bots**: `CI_JOB_TOKEN` cannot write MR notes, labels or edits; a bot needs a
-  project access token or a service-account token, held as a protected variable. A webhook receiver
-  verifies the signing token's `webhook-signature` (the legacy `X-Gitlab-Token` travels as plain
-  text), answers within 10 seconds and queues the work: GitLab disables a hook that keeps failing
-  ([webhooks](https://docs.gitlab.com/user/project/integrations/webhooks/)).
+- **Bots and webhook listeners on the forge** (which token may write MR notes, labels and edits;
+  signed, deduplicated webhooks; untrusted text written through the API): the forge-agents skill.
 
 ## Traps
 
