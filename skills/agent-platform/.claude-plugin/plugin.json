@@ -1,0 +1,25 @@
+{
+  "name": "agent-platform",
+  "displayName": "Agent Platform",
+  "description": "Runs coding agents for a team behind boundaries they cannot move: an LLM gateway (LiteLLM teams, budgets, deny-by-default MCP grants), scoped read-only agent tools enforced in the data proxy (vmauth extra_label, proven by replay and attack), and Claude Code usage telemetry with the organisation boundary in the collector. Ships an MCP grant probe and a collector-filter tester.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "litellm",
+    "llm-gateway",
+    "mcp",
+    "claude-code",
+    "opentelemetry",
+    "otel",
+    "grafana-alloy",
+    "victoriametrics",
+    "vmauth",
+    "agent-security",
+    "least-privilege",
+    "telemetry"
+  ]
+}

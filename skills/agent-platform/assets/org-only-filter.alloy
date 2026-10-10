@@ -1,0 +1,51 @@
+otelcol.receiver.otlp "in" {
+  http {
+    endpoint = "0.0.0.0:4318"
+  }
+  output {
+    metrics = [otelcol.processor.filter.org_only.input]
+    logs    = [otelcol.processor.filter.org_only.input]
+  }
+}
+
+otelcol.processor.filter "org_only" {
+  error_mode = "ignore"
+  metric_conditions {
+    conditions = [
+      `IsMatch(metric.name, "^claude_code[.]") and not (IsMatch(datapoint.attributes["vcs.owner.name"], "^example-org(/.*)?$") or IsMatch(resource.attributes["vcs.owner.name"], "^example-org(/.*)?$"))`,
+    ]
+  }
+  log_conditions {
+    conditions = [
+      `resource.attributes["service.name"] == "claude-code"`,
+    ]
+  }
+  output {
+    metrics = [otelcol.processor.transform.strip_identity.input]
+    logs    = [otelcol.processor.transform.strip_identity.input]
+  }
+}
+
+otelcol.processor.transform "strip_identity" {
+  error_mode = "ignore"
+  metric_statements {
+    context    = "datapoint"
+    statements = [
+      `delete_matching_keys(datapoint.attributes, "^(user[.](email|account_uuid|account_id|id)|session[.]id)$")`,
+    ]
+  }
+  log_statements {
+    context    = "log"
+    statements = [
+      `delete_matching_keys(log.attributes, "^(user[.](email|account_uuid|account_id|id)|session[.]id)$")`,
+    ]
+  }
+  output {
+    metrics = [otelcol.exporter.debug.out.input]
+    logs    = [otelcol.exporter.debug.out.input]
+  }
+}
+
+otelcol.exporter.debug "out" {
+  verbosity = "detailed"
+}

@@ -1,0 +1,9 @@
+identifier:user.account_id
+identifier:user.account_uuid
+identifier:user.email
+leak:claude-log
+leak:claude-log-other-owner
+leak:lookalike-nested
+leak:lookalike-prefix
+leak:lookalike-suffix
+overblock:org-resource

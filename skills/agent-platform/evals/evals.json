@@ -1,0 +1,67 @@
+{
+  "skill_name": "agent-platform",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load; null = output-quality only.",
+  "evals": [
+    {
+      "id": "agent-key-no-tools",
+      "expect_trigger": true,
+      "prompt": "We run LiteLLM in front of our coding agents. I registered our metrics MCP server under mcp_servers with access_groups [\"observability-read-payments\"] and gave the payments team that group, but an agent session with a key from that team sees no tools at all and /mcp initialize returns 403. Inference works fine. What's wrong?",
+      "assertions": [
+        "Explains that with require_key_mcp_access_defined the team's groups only cap what a key may request, so the key itself must be minted with object_permission.mcp_access_groups",
+        "Says the key must be minted with the team's id, not its alias, and recommends a fixed team_id in the team spec",
+        "Notes that a key without a grant still runs inference, so the session silently continues without tools",
+        "Proposes proving the fix with a short-lived, tiny-budget aliased key and a tools/list handshake (mcp_probe.py or equivalent), then deleting the key and expecting 401"
+      ]
+    },
+    {
+      "id": "telemetry-repo-settings-silent",
+      "expect_trigger": true,
+      "prompt": "Our repo commits a .claude/settings.json with CLAUDE_CODE_ENABLE_TELEMETRY=1 and the OTLP endpoint so only work repos report Claude Code usage to our collector. Since last week the dashboard is empty for most people, and our docs tell people to opt out with CLAUDE_CODE_ENABLE_TELEMETRY=0 in settings.local.json. What happened and how should we roll this out?",
+      "assertions": [
+        "States that from Claude Code 2.1.282 project and local settings cannot turn telemetry on or set its endpoint, so enablement moves to user or managed settings",
+        "Corrects the opt-out to OTEL_METRICS_EXPORTER=none (and OTEL_LOGS_EXPORTER=none) in the repo's .claude/settings.local.json, since CLAUDE_CODE_ENABLE_TELEMETRY=0 is not honoured there",
+        "Puts the organisation boundary in the collector: an anchored filter on vcs.owner.name checked on datapoint and resource attributes, with OTEL_METRICS_INCLUDE_REPOSITORY=true",
+        "Recommends proving the collector filter with synthetic OTLP cases, lookalike owners included, against a local collector before deploying"
+      ]
+    },
+    {
+      "id": "scoped-agent-metrics",
+      "expect_trigger": true,
+      "prompt": "I want each team's coding agents to query only their own team's metrics in VictoriaMetrics through an MCP server. Plan is one mcp-victoriametrics behind vmauth with extra_filters[]={team=\"<team>\"} per team. Good?",
+      "assertions": [
+        "Rejects extra_filters[] as the boundary because a client's own extra_filters[] is ORed and widens the result, and uses extra_label instead",
+        "Runs one read-only tool server per scope with that scope's proxy credential and no header passthrough",
+        "Allowlists the query paths on the proxy user and handles series without the team label (recording rules per scope)",
+        "Proves the boundary by replaying dashboard queries with and without the filter and attacking it (client filters, label_replace, export, federate, admin paths)"
+      ]
+    },
+    {
+      "id": "leaked-personal-telemetry",
+      "expect_trigger": true,
+      "prompt": "I put the Claude Code OTel env in my ~/.claude/settings.json and now our company collector has series from my personal GitHub repos and from sessions with no repo at all. How do I stop this and clean up what's there?",
+      "assertions": [
+        "Explains that user-level telemetry covers every session on the machine, so the organisation boundary belongs in the collector filter",
+        "Lists the leaked owners with a series query over a long window and deletes with a negative-match selector after counting per owner",
+        "Hands the destructive delete to a human rather than running it",
+        "Mentions stripping user.email and account ids in the collector because Claude Code has no switch for the email"
+      ]
+    },
+    {
+      "id": "per-developer-ranking",
+      "expect_trigger": null,
+      "prompt": "We have the Claude Code usage dashboard working. Add a panel that ranks developers by AI spend so team leads can talk to the low adopters.",
+      "assertions": [
+        "Does not build a per-developer ranking; shows a count of developers and team or repository totals instead",
+        "Points to the person-level ethics gate (works-council consent, purpose limitation) before any per-person view"
+      ]
+    },
+    {
+      "id": "kpi-workshop-not-platform",
+      "expect_trigger": false,
+      "prompt": "Help me prepare a 90-minute workshop where my team chooses its own delivery KPIs for next quarter, with a speed metric paired to a quality metric.",
+      "assertions": [
+        "Does not load agent-platform; a KPI-choosing workshop belongs to the kpi-groomer skill"
+      ]
+    }
+  ]
+}
