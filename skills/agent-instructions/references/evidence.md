@@ -13,7 +13,7 @@ the version; several blog posts quote superseded numbers.
 
 | Study | Setup | Finding |
 |---|---|---|
-| Gloaguen et al., [arXiv 2602.11988](https://arxiv.org/abs/2602.11988) (v2) | SWE-bench Lite + 138 tasks from 12 repos with developer-written files; Claude Code, Codex, Qwen Code | Developer-written files +2.4 %, LLM-generated −2 % on CTXbench (−0.5 % on SWE-bench Lite), **neither significant against no file**; developer-written did beat LLM-generated significantly (p = 0.038) and helped every agent except Claude Code. Cost **+20 %**, 2–4 extra steps. Named tools are followed (`uv` 1.6× more). Overviews did not speed up finding files. Generated files mostly repeat the README. Advice: only minimal, non-standard requirements. |
+| Gloaguen et al., [arXiv 2602.11988](https://arxiv.org/abs/2602.11988) (v3) | SWE-bench Lite + 138 tasks from 12 repos with developer-written files; Claude Code, Codex, Qwen Code | Developer-written files +2.4 %, LLM-generated −2 % on CTXbench (−0.5 % on SWE-bench Lite), **neither significant against no file**; developer-written did beat LLM-generated significantly (p = 0.038) and helped every agent except Claude Code. Cost **+20–23 %**, 2.5–3.9 extra steps. Named tools are followed (`uv` 1.6× more). Overviews did not speed up finding files. Generated files mostly repeat the README. Advice: only minimal, non-standard requirements. |
 | McMillan, [arXiv 2605.10039](https://arxiv.org/abs/2605.10039) | 1,650 Claude Code sessions, factorial | **Size (25–500 lines), position and file architecture had no detectable effect** on adherence to a marker rule. Adherence **decays within a session** (OR ≈ 0.944 per generated function, non-monotonic; first miss at median function 4). Task mattered more than structure. Advice: re-surface rules (hooks), enforce afterwards (lint, CI). |
 | Khatri, [arXiv 2607.27250](https://arxiv.org/html/2607.27250) | Claude Code + Codex, 288 runs | No correctness gain from architecture/style content; the one benefit was an operational warning ("tests are slow": full-suite runs 3.67 → 1.67 per task, Claude Code on one repo, p = 0.25). Underpowered. |
 | Lulla et al., [arXiv 2601.20404](https://arxiv.org/abs/2601.20404) | Codex, 124 small PRs | Median wall time −28.6 %, output tokens −16.6 % with `AGENTS.md`. Correctness not measured. |
@@ -38,12 +38,16 @@ Figures below were read from arXiv abstract/HTML pages; spot-check a decimal bef
 |---|---|
 | Instruction Stacking Collapse, [arXiv 2608.02639](https://arxiv.org/abs/2608.02639) | Follow rate ~96 % → as low as 20 % as 1–20 instructions stack; non-linear, driven by **pairwise conflicts** |
 | Paradoxical Interference, [arXiv 2601.22047](https://arxiv.org/html/2601.22047) | Adding self-evident constraints lowers task success; most loss from the first ~5 |
+| TDAD, [arXiv 2603.17973](https://arxiv.org/abs/2603.17973) (v2) | SWE-bench Verified, two open-weight models: TDD procedural instructions raised regressions to 9.94 % against 6.08 % with none; giving the agent the tests its change affects cut them to 1.82 % |
 | MTAC-IFBench, [arXiv 2609.14992](https://arxiv.org/abs/2609.14992) | In the Claude Code harness: path/encoding constraints ~95 %, repo-wide style and orchestration ~50–55 %; compliance falls over turns |
 | HANDBOOK.md, [arXiv 2607.25398](https://arxiv.org/html/2607.25398v1) | Long standing policies (median 15 k tokens): best strict pass 36 %; an in-task request overrides the standing file; agents claim compliance they did not deliver |
 | Many-Tier Instruction Hierarchy, [arXiv 2604.09443](https://arxiv.org/html/2604.09443v3) | With up to 12 privilege tiers the best model scores 42.7 %; style compliance in code 7.7–68 % while correctness stays > 86 % |
-| SkillsBench, [arXiv 2602.12670](https://arxiv.org/abs/2602.12670) | Curated skills 33.9 % → 50.5 %; **self-generated skills −8 to −11.5 pp**; 1–3 skills best, compact beats comprehensive |
+| SkillsBench, [arXiv 2602.12670](https://arxiv.org/abs/2602.12670) (v4) | 18 model-harness setups: curated skills 33.9 % → 50.5 % (+16.6 pp); focused skills of at most three modules beat exhaustive bundles; **self-generated skills underperform curated ones** and do not substitute for them |
 | More Skills, Worse Agents?, [arXiv 2605.24050](https://arxiv.org/html/2605.24050v1) | 52 / 102 / 202 skills: −8 / −14 / −21 %, mostly distractor skills shadowing the right one |
 | VibeMemBench, [arXiv 2609.23570](https://arxiv.org/html/2609.23570) | 11 of 12 automatic memory systems do not beat memory-off; memory hurt in 25.7 % of cases the model already solved |
+| The Compliance Trap, [arXiv 2607.10608](https://arxiv.org/abs/2607.10608) | Agents adopt a conflicting memory at the first decision it touches, even when it is wrong for the task; once they comply, success collapses to a low floor |
+| Cue-anchored memory, [arXiv 2607.20972](https://arxiv.org/abs/2607.20972) | A coding agent made 0 voluntary memory operations in 114 turns despite a pre-seeded store; memories the harness injected on a cue arrived in every run |
+| Rules from review comments, [arXiv 2607.13091](https://arxiv.org/abs/2607.13091) | Accepted review comments codified as rules in a versioned instruction file: 0 % recurrence of the ruled-against error classes; one platform, 11 recorded sessions, no control group |
 | Rule taxonomy in AI IDEs, [arXiv 2606.12231](https://arxiv.org/html/2606.12231) (TOSEM) | Compliance 49 % → 72 % after rules were revised against observed errors; 36 % of rule files ever edited |
 | Context engineering in OSS, [arXiv 2510.21413](https://arxiv.org/html/2510.21413) (MSR '26) | Mean `CLAUDE.md` 287 lines, `AGENTS.md` 142; half of `AGENTS.md` files never change; edits ~3:1 additions to removals |
 
@@ -51,7 +55,11 @@ Figures below were read from arXiv abstract/HTML pages; spot-check a decimal bef
 - Check a file for rules that contradict each other or the task, not only for length.
 - Checkable rules stick, style prose does not: push style to linters.
 - A request in the task beats the standing file; critical rules need enforcement.
-- Agents may **propose** rules and memory; a human reviews before they are committed.
+- Give the agent the relevant tests and commands, not process instructions ("do TDD").
+- Agents may **propose** rules and memory; a human reviews before they are committed. Verify a
+  remembered fact before relying on it: agents follow stale or conflicting memory anyway.
+- Memory an agent must choose to read is rarely read; a pointer in the always-loaded file or a hook
+  that injects it on a cue gets it used.
 - Keep skills few, compact and non-overlapping; prune near-duplicates.
 - Revise rules against observed errors, deletions included.
 
@@ -98,7 +106,9 @@ Figures below were read from arXiv abstract/HTML pages; spot-check a decimal bef
 
 ## Distortions to avoid repeating
 
-- "AGENTS.md reduces performance by 3 %": v1 numbers, not significant in v2.
+- "AGENTS.md reduces performance by 3 %": v1 numbers, not significant in v2 or v3.
+- "Prompt injection in 36 % of skills" (Snyk's headline): 36.82 % had a flaw of any severity,
+  13.4 % a critical one ([security.md](security.md#threats)).
 - "Longer files are followed less": not shown within 25–500 lines; the measured decay is over a
   session.
 - "Codex falls back to CLAUDE.md": `project_doc_fallback_filenames` defaults to `[]`.

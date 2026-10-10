@@ -4,6 +4,9 @@ A skill for the files every coding agent loads in every session: `CLAUDE.md`, `A
 their relatives (`.claude/rules`, `.cursor/rules`, `copilot-instructions.md`). It writes new ones,
 audits and slims down bloated ones, and decides where each line belongs.
 
+- **Set up a repo**: `scripts/agent_setup.py` (stdlib Python) runs `inventory`, `layout --apply`,
+  `generate` and `check`: one rule source in `.ai/rules` written out in each tool's format
+  (`assets/targets.json`), and a CI gate on drift, globs, links, the docs index and token budget.
 - **What goes where**: instruction file, `docs/` with a pointer, hook or CI check, skill, path
   rule, another level, or nowhere, with the line test "would removing this cause a mistake?".
 - **Levels**: organisation, stack, repo, path and person, with one owner per rule, and personal
@@ -15,9 +18,9 @@ audits and slims down bloated ones, and decides where each line belongs.
   32 KiB cap. Stdlib only; `--budget-lines` and `--fail-on` make it a CI gate.
 - **Generated files**: Laravel Boost, rulesync, Ruler and Nx; where team text goes, what breaks on
   regeneration, machine-dependent output, upgrading Boost, and
-  `assets/check-generated-instructions.sh` with `assets/check-instruction-rules.php` as a CI check
-  for Boost repos: drift, untracked leftovers, line and token budgets, path-rule globs, links and
-  the docs index.
+  `assets/check-generated-instructions.sh` as a CI check for Boost repos: generator drift,
+  untracked leftovers and the hand-written line budget, plus `agent_setup.py check` for the
+  file-level part.
 - **Path rules**: `.ai/rules` with `paths:` frontmatter and a `.claude/rules` symlink, so Claude
   Code loads a rule by itself when it reads a matching file.
 - **Enforcement**: rules turned into permission rules, hooks and CI, with hook templates for

@@ -1,7 +1,7 @@
 {
   "name": "agent-instructions",
   "displayName": "Agent Instructions",
-  "description": "Write, audit and slim down CLAUDE.md and AGENTS.md: what belongs in them versus docs, skills, hooks and CI, across organisation, repo, path and personal levels; one canonical AGENTS.md for every tool; a measuring script, generator-safe layouts for Laravel Boost and friends with a CI drift check, and a probe-task method to test changes.",
+  "description": "Set up any repository for AI coding agents end to end and keep it right: one canonical AGENTS.md with CLAUDE.md importing it, knowledge in docs, one path-rule source generated for every tool (Claude Code, Cursor, Copilot, Antigravity, Devin, Cline, Kiro, CodeRabbit), skills, MCP, cloud-agent and review-bot setup, and a CI check; plus auditing, slimming and probe-testing instruction files, and generator-safe layouts for Laravel Boost and friends.",
   "version": "0.3.0",
   "license": "MIT",
   "author": {
@@ -17,6 +17,12 @@
     "instruction-files",
     "laravel-boost",
     "cursor-rules",
-    "copilot-instructions"
+    "copilot-instructions",
+    "agent-setup",
+    "agentic-coding",
+    "coderabbit",
+    "review-bots",
+    "cloud-agents",
+    "path-rules"
   ]
 }

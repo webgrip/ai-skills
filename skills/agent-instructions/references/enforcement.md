@@ -12,6 +12,7 @@ OpenHands [hooks](https://docs.openhands.dev/openhands/usage/customization/hooks
 ## Contents
 - [Ladder](#ladder)
 - [Rule type → mechanism](#rule-type--mechanism)
+- [Checks over prose](#checks-over-prose)
 - [Claude Code semantics](#claude-code-semantics)
 - [Templates](#templates)
 - [Re-surfacing rules in long sessions](#re-surfacing-rules-in-long-sessions)
@@ -26,10 +27,11 @@ Pick the earliest step that can catch the rule; each later step catches more but
 2. **PreToolUse hook** — inspects the call (a Bash command, a path) and denies or asks.
 3. **PostToolUse hook** — runs a formatter or linter on the edited file and feeds the failure back.
 4. **Stop hook** — refuses to finish until a check passed (tests, build).
-5. **CI** — the backstop for everything, because hooks are local and other tools and people bypass
-   them.
+5. **CI** — the backstop for everything, because agent hooks are per tool and git pre-commit hooks
+   are skipped by `--no-verify`, by a checkout without dependencies and by web-editor commits.
+   Before caching, narrowing or skipping a check, make sure CI still covers every file with it.
 
-Then delete the prose rule, or shorten it to a pointer to the check.
+Then delete the prose rule, or shorten it to one line naming the check.
 
 ## Rule type → mechanism
 
@@ -46,6 +48,25 @@ Then delete the prose rule, or shorten it to a pointer to the check.
 OpenHands: `.openhands/hooks.json` Stop hook, exit 2 keeps the agent working; its older
 `pre-commit.sh` is deprecated for this.
 
+## Checks over prose
+
+A rule a parser can see belongs in a check every agent and person hits, not in prose:
+
+| Rule | Check |
+|---|---|
+| Must block the merge (layering, forbidden calls, naming) | architecture test in the test suite |
+| Structural pattern inside one file | an [ast-grep](https://ast-grep.github.io/) rule: it matches the syntax tree, so formatting and comments cannot hide a match |
+| Pure style | formatter or autofixer |
+
+- Test an ast-grep rule against fixtures that must match and against the real codebase. A rule
+  with existing hits starts at `info` or with a baseline.
+- Run the rule directory in pre-commit and CI. Run only by an AI reviewer, it is an advisory
+  comment, not a gate.
+- **Introducing a check over existing code**: list the current violations in a sorted baseline
+  (or the test's exceptions list) that fails on new violations **and** on entries that no longer
+  occur, so it can only shrink. For a count-based exception, assert the exact count. Fix the
+  existing violations in follow-up changes, not in the change that adds the check.
+
 ## Claude Code semantics
 
 - **Exit 2 blocks, with stderr as the reason. Exit 1 is a non-blocking error**, so a policy hook
@@ -57,8 +78,12 @@ OpenHands: `.openhands/hooks.json` Stop hook, exit 2 keeps the agent working; it
   across hooks deny > defer > ask > allow. A hook deny also holds in `bypassPermissions`; a hook
   allow cannot override a settings deny.
 - `additionalContext` and stdout are capped at 10,000 characters.
-- An `Edit(...)` deny rule does not cover Bash writes (`sed -i`, `>`); pair it with a PreToolUse
-  hook on Bash. Bash permission rules are "not a security boundary".
+- An `Edit(...)` deny rule does not cover Bash writes (`sed -i`, `>`, `tee`, `cp`, `mv`, `rm`);
+  pair it with a PreToolUse hook on Bash. Bash permission rules are "not a security boundary".
+  A `FileChanged` hook watches named files in the working directory and fires whatever wrote them,
+  Bash included.
+- Hook types besides `command`: `http`, `mcp_tool`, `prompt` (an LLM decides) and `agent` (a
+  verifier with tools). An `if` filter (`"if": "Bash(rm *)"`) narrows a hook to matching calls.
 
 ## Templates
 
@@ -84,13 +109,24 @@ Settings snippet (`.claude/settings.json`):
 }
 ```
 
+Other recipes worth having before adding tools:
+- SessionStart (`startup|resume`): check that installed dependencies match the lockfile and that
+  the worktree's services and database exist; print the branch.
+- PreToolUse on Bash: block destructive database commands (`migrate:fresh`, `db:wipe`, `DROP`)
+  and writes to `.env`.
+- Stop: the tests for changed files plus static analysis on them, exit 2 with the failures,
+  guarded by `stop_hook_active`.
+- A `WorktreeCreate` hook **replaces** Claude Code's own `git worktree` step and must print the new
+  path: a setup script there has to create the worktree as well.
+
 ## Re-surfacing rules in long sessions
 
 - After compaction: a SessionStart hook with matcher `compact` prints a short
   `critical-rules.md` (3–5 lines).
 - Mid-session: a UserPromptSubmit hook that adds the same lines every N prompts (counter in a
   file) is cheaper than every prompt; a reminder on every turn gets ignored like prose.
-- Delegation: Explore and Plan subagents skip `CLAUDE.md`; put must-follow rules in the prompt.
+- Delegation: Explore and Plan subagents skip `CLAUDE.md`; put must-follow rules in the prompt,
+  including "when a hook blocks you, stop and report; never route around it".
 
 ## Pitfalls
 
@@ -100,6 +136,13 @@ Settings snippet (`.claude/settings.json`):
 - **Latency**: UserPromptSubmit times out after 30 s and its output is silently dropped; other
   hooks default to 600 s and run on every matching call. Lint one file, never the suite.
 - **Noise**: keep messages short and say what to do instead; truncate tool output (`tail -20`).
+- **Text filters**: a hook that greps the raw command string blocks text, not actions: a heredoc
+  that writes a file mentioning the command, a `--help` call, a grep pattern. Write files with
+  Edit/Write, pass commit messages with `git commit -F <file>`, and keep any escape hatch narrow;
+  "anything containing `--dry-run` passes" also passes a dry run whose diff prints secrets.
+- **Routing around a block**: an agent, often a subagent, blocked on Edit/Write can make the same
+  change through Bash (a script doing string replacement). When that happened, run the skipped
+  control over the whole diff before trusting the result, and tell the user.
 - **Coverage**: Edit/Write hooks miss Bash writes; Codex hooks skip hosted tools; Copilot CLI has
   open bugs around deny and `additionalContext`. Probe each tool you rely on.
 - **Headless**: `claude -p --bare` loads no hooks, skills or CLAUDE.md; the Agent SDK with

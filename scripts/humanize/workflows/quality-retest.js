@@ -54,8 +54,8 @@ const CASES = [
   },
   {
     id: 'nl-meetup-description', lang: 'nl', first_person: true,
-    text: `Eén avond, geen verkooppraatje.\n\nLaten we erin duiken: op donderdag 12 februari om 19:00 openen we de deuren van Code14 aan de Hogepad 81 in Rijssen voor een avond vol inspiratie, kennis, en verbinding. Twee talks van ontwikkelaars die het werk zelf deden — geen keynotes, geen productdemo's.\n\nHet is belangrijk om te benadrukken dat de avond gratis is en dat er plek is voor 35 mensen. Kortom, een avond die je niet wilt missen.\n\nMeld je aan en deel dit met je netwerk!`,
-    facts: ['donderdag 12 februari', '19:00', 'Code14', 'Hogepad 81', 'Rijssen', 'twee talks', 'gratis', '35 plekken'],
+    text: `Eén avond, geen verkooppraatje.\n\nLaten we erin duiken: op donderdag 12 februari om 19:00 openen we de deuren van Studio Noord aan de Marktstraat 12 in Rijssen voor een avond vol inspiratie, kennis, en verbinding. Twee talks van ontwikkelaars die het werk zelf deden — geen keynotes, geen productdemo's.\n\nHet is belangrijk om te benadrukken dat de avond gratis is en dat er plek is voor 35 mensen. Kortom, een avond die je niet wilt missen.\n\nMeld je aan en deel dit met je netwerk!`,
+    facts: ['donderdag 12 februari', '19:00', 'Studio Noord', 'Marktstraat 12', 'Rijssen', 'twee talks', 'gratis', '35 plekken'],
   },
   {
     id: 'nl-readme-intro', lang: 'nl', first_person: false,

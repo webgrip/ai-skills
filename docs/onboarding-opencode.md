@@ -135,7 +135,7 @@ The estate pins an EXACT beta build (`OPENCODE_VERSION` in
    count, vikunja MCP, one opsx command, `opencode2 debug agents` rule
    dump for the floor).
 3. Bump the estate in one commit each: this repo (`OPENCODE_VERSION` +
-   org `_comment` + docs), erfbeeld `mise.toml`+`mise.lock`, Code 14 repo.
+   org `_comment` + docs), erfbeeld `mise.toml`+`mise.lock`, and every other repo that pins opencode.
    One-line announcement in the team channel.
 4. Gauntlet fails → stay pinned, file/watch upstream, retry next beta.
 

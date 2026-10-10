@@ -25,9 +25,16 @@
 | One subtree | path rule or nested file + a root pointer for tools without path loading |
 | Procedure the user asks for by name | skill with a keyword-rich description, named in a root pointer |
 | Version-specific framework API | docs MCP (Laravel Boost `search-docs`, Context7) + a root line saying when to call it |
+| Live application state (schema, logs, last error) | the framework's MCP tools |
 | Public dependency internals | DeepWiki / GitMCP |
 | Code facts (where X lives, who calls Y) | nothing written: grep finds them, a copy goes stale |
 | Your docs for other people's agents | `llms.txt` + `.md` pages; agents inside a repo do not read it |
+
+A framework's agent package earns its place mainly through its MCP tools: docs pinned to the
+installed versions and the app's real schema, logs and errors. With tool search deferring their
+schemas, Laravel Boost's tools cost about 640 tokens of Claude Code's context. Its generated
+guidance is build output ([generators.md](generators.md)), and its package-guideline and skill
+channels are how a stack's shared rules reach every repo.
 
 ## Pointer table template
 
@@ -37,9 +44,9 @@ Prefer these docs over what you remember about this project.
 
 | Before changing… | Read | Wrong without it |
 |---|---|---|
-| quotation PDFs (`app/Domains/Sqs/**/Pdf*`) | docs/quotation-pdfs.md | amounts derived in PHP |
-| anything that recalculates prices | docs/recalculate-flow.md | writer called inside a transaction |
-| a Laravel or Inertia API | Boost `search-docs` | a stale major-version API |
+| invoices or credit notes (`src/Billing/**`) | docs/billing.md | totals recomputed instead of read from the stored snapshot |
+| anything that runs in a queue | docs/queues.md | job dispatched inside a database transaction |
+| a framework API | the docs MCP's search tool | a stale major-version API |
 ```
 
 - Open each row with a trigger (verb + path or subject), point at one openable path, name the

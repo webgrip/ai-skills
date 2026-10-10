@@ -3,6 +3,51 @@
   "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
   "evals": [
     {
+      "id": "setup-repo-claude-cursor-coderabbit",
+      "prompt": "Zet deze repo op voor AI-agents. We werken met Claude Code en Cursor, en CodeRabbit reviewt onze MR's. Er staat nu een CLAUDE.md van 300 regels en een oude .cursorrules.",
+      "expect_trigger": true,
+      "assertions": [
+        "Runs an inventory first (scripts/agent_setup.py inventory or equivalent) and asks which tools the team uses instead of assuming",
+        "Shows a plan that assigns every existing CLAUDE.md line a destination (keep, docs/, path rule, hook or CI, skill, delete) and waits for approval before writing",
+        "Makes AGENTS.md canonical and CLAUDE.md a file whose first line is @AGENTS.md, and removes .cursorrules",
+        "Keeps path rules once in .ai/rules with paths: frontmatter and generates the Cursor .mdc files and the CodeRabbit per-rule {files, applyTo} mapping from them instead of hand-copying",
+        "Sets CodeRabbit's knowledge-base scopes to local or explains why org-wide learnings are a risk",
+        "Wires agent_setup.py check into CI and a pre-commit hook, and proves the gate by making it fail once",
+        "Does not put telemetry variables in the repo's .claude/settings.json"
+      ]
+    },
+    {
+      "id": "setup-cloud-agents",
+      "prompt": "Make our repo ready for the Copilot cloud agent and Codex cloud so they can pick up issues on their own. What do we need to add?",
+      "expect_trigger": true,
+      "assertions": [
+        "Names the environment setup file each agent reads (for Copilot the copilot-setup-steps.yml workflow) rather than relying on the instruction file to install dependencies",
+        "Puts the exact build, test and lint commands the agents must run in AGENTS.md",
+        "Addresses what repo-controlled files can change in the agents' security posture (hooks, MCP servers, network allowlists) and keeps tokens out of jobs that run branch code",
+        "Adds an enforcement step (CI or a stop hook) rather than trusting the agent to run checks"
+      ]
+    },
+    {
+      "id": "review-bot-ignores-rules",
+      "prompt": "CodeRabbit doesn't seem to apply the rules we keep in .ai/rules, even though we listed .ai/rules/*.md under code_guidelines. Why, and how do we fix it?",
+      "expect_trigger": true,
+      "assertions": [
+        "Explains that CodeRabbit ignores the rules' paths: frontmatter and applies a file listed as a plain glob only to its own folder",
+        "Fixes it with one {files, applyTo} entry per rule generated from the rules' paths and checked for drift in CI",
+        "Checks that a committed .coderabbit.yaml is not silently overriding a TypeScript config, and validates the config"
+      ]
+    },
+    {
+      "id": "add-antigravity-to-existing-setup",
+      "prompt": "Half the team switched to Google Antigravity. We already have path rules for Claude Code and Cursor. How do we give Antigravity the same rules without maintaining a third copy?",
+      "expect_trigger": true,
+      "assertions": [
+        "Adds Antigravity as a target and generates .agents/rules files with trigger: glob and globs from the same .ai/rules source",
+        "Warns that Antigravity silently discards a rule file without frontmatter",
+        "Keeps the drift check covering the new generated files"
+      ]
+    },
+    {
       "id": "audit-bloated-claude-md",
       "prompt": "Our CLAUDE.md is 500 lines and AGENTS.md is a slightly different copy of it. Claude keeps ignoring half of it. Clean this up properly.",
       "expect_trigger": true,
@@ -125,6 +170,14 @@
         "Sets rules.enabled to false in config/boost.php so the always-on index paragraph disappears",
         "Keeps each rule short (what to do, why, link to the docs section) instead of moving the full explanation into the rule",
         "Adds a CI check that every rule glob matches at least one file and that its links resolve"
+      ]
+    },
+    {
+      "id": "ci-for-tests-is-not-agent-setup",
+      "prompt": "Set up GitHub Actions to run our Jest tests and ESLint on every pull request.",
+      "expect_trigger": false,
+      "assertions": [
+        "Does not load the agent-instructions skill for an ordinary CI pipeline request"
       ]
     }
   ]
