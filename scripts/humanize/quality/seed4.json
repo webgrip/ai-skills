@@ -280,7 +280,7 @@
     "tells_remaining": [
      "parallelle ontkenning / niet-x-maar-y-familie: \"Geen keynotes, geen productdemo's.\"",
      "opbeurend slot met uitroepteken: \"Meld je aan en deel dit met je netwerk!\"",
-     "ambtelijke voorzetselketen: \"de deuren van Code14 aan de Hogepad 81 in Rijssen voor twee talks van ontwikkelaars die het werk zelf deden\""
+     "ambtelijke voorzetselketen: \"de deuren van Studio Noord aan de Marktstraat 12 in Rijssen voor twee talks van ontwikkelaars die het werk zelf deden\""
     ],
     "flattened": true,
     "cv": {
@@ -288,7 +288,7 @@
      "output": 0.65
     },
     "leakage": 0,
-    "reasoning": "B houdt alle acht de feiten vast en verzint niets, en de ergste AI-lagen uit het origineel (de instapzin, de drieslag met seriekomma, het \"het is belangrijk om te benadrukken\", het \"die je niet wilt missen\") zijn weg. Wat overblijft is de opeenstapeling van voorzetsels in één zin van tweeëntwintig woorden, van Code14 aan de Hogepad in Rijssen voor twee talks van ontwikkelaars die, en zo praat geen Nederlander over een avondje. A knipt precies daar en zet de talks in een eigen zin, wat het leesbaarder maakt bij gelijke feiten; beide laten wel het standpunt uit de kopregel vallen, want \"geen verkooppraatje\" was de enige mening in de tekst."
+    "reasoning": "B houdt alle acht de feiten vast en verzint niets, en de ergste AI-lagen uit het origineel (de instapzin, de drieslag met seriekomma, het \"het is belangrijk om te benadrukken\", het \"die je niet wilt missen\") zijn weg. Wat overblijft is de opeenstapeling van voorzetsels in één zin van tweeëntwintig woorden, van Studio Noord aan de Marktstraat in Rijssen voor twee talks van ontwikkelaars die, en zo praat geen Nederlander over een avondje. A knipt precies daar en zet de talks in een eigen zin, wat het leesbaarder maakt bij gelijke feiten; beide laten wel het standpunt uit de kopregel vallen, want \"geen verkooppraatje\" was de enige mening in de tekst."
    },
    {
     "case": "nl-readme-intro",

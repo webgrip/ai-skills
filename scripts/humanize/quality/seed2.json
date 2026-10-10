@@ -151,7 +151,7 @@
      "output": 0.55
     },
     "leakage": 0,
-    "reasoning": "A houdt alle acht feiten en de wij-vorm overeind, maar de openingsregel belooft \"tijd om bij te praten\" die het origineel niet noemt, en de lange zin \"openen we de deuren van Code14 aan de Hogepad 81 in Rijssen, voor twee talks\" is nog steeds de Engelse zinsbouw van het origineel met een komma erin. B houdt dezelfde feiten, schrijft kortere zinnen die een Nederlander zo zegt (\"Toegang is gratis\", \"Er passen 35 mensen in\", \"Ken je iemand voor wie dit iets is, stuur het door\") en zijn enige toevoeging (\"mensen die hetzelfde werk doen als jij\") is een zwakkere claim dan die van A. Daarom B, al zit ook daar de komma-voor-en-tic in."
+    "reasoning": "A houdt alle acht feiten en de wij-vorm overeind, maar de openingsregel belooft \"tijd om bij te praten\" die het origineel niet noemt, en de lange zin \"openen we de deuren van Studio Noord aan de Marktstraat 12 in Rijssen, voor twee talks\" is nog steeds de Engelse zinsbouw van het origineel met een komma erin. B houdt dezelfde feiten, schrijft kortere zinnen die een Nederlander zo zegt (\"Toegang is gratis\", \"Er passen 35 mensen in\", \"Ken je iemand voor wie dit iets is, stuur het door\") en zijn enige toevoeging (\"mensen die hetzelfde werk doen als jij\") is een zwakkere claim dan die van A. Daarom B, al zit ook daar de komma-voor-en-tic in."
    },
    {
     "case": "nl-readme-intro",

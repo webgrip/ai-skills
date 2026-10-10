@@ -14,10 +14,10 @@
     },
     {
       "id": "nl-edit-meetup",
-      "prompt": "Maak dit even normaal, niet zo AI. Het is de eerste alinea van onze meetup-tekst.\n\n🔧 Eén avond, geen verkooppraatje.\n\nTwente heeft veel goede mensen die technologie bouwen, en weinig plekken waar ze elkaar tegenkomen buiten hun eigen kantoor. Op woensdag 4 november openen we in Code14, Hogepad 81 in Rijssen, met twee talks van ongeveer een halfuur — en daarna is er tijd om bij te praten.",
+      "prompt": "Maak dit even normaal, niet zo AI. Het is de eerste alinea van onze meetup-tekst.\n\n🔧 Eén avond, geen verkooppraatje.\n\nTwente heeft veel goede mensen die technologie bouwen, en weinig plekken waar ze elkaar tegenkomen buiten hun eigen kantoor. Op woensdag 4 november openen we in Studio Noord, Marktstraat 12 in Rijssen, met twee talks van ongeveer een halfuur — en daarna is er tijd om bij te praten.",
       "assertions": [
         "Replaces the X-geen-Y slogan opener with a plain statement of what happens, and removes the em dash without adding a hyphen or en dash in its place",
-        "Keeps every fact verbatim: woensdag 4 november, Code14, Hogepad 81, Rijssen, twee talks, ongeveer een halfuur",
+        "Keeps every fact verbatim: woensdag 4 november, Studio Noord, Marktstraat 12, Rijssen, twee talks, ongeveer een halfuur",
         "Leaves the second sentence, which carries no tell, byte-identical, and reports what changed and what was left",
         "Answers in Dutch, and the reply itself contains no em dash and no niet-x-maar-y construction"
       ],
