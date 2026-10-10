@@ -78,7 +78,9 @@ appraisal input — appraisal requires a separately agreed HR process) · **tran
 EU these are personal data (GDPR); in NL any system that *can* track employee
 performance is a *personeelsvolgsysteem* — the effect decides, not the stated purpose —
 requiring a works-council consent check (WOR art. 27). No ratified charter → treat
-everything as team-level only.
+everything as team-level only. Per-person usage data (AI or agent usage included): count
+people, never name them, and strip identity where the data enters until consent exists —
+specifics, the size threshold and board rules in [reference.md](reference.md#person-level-data-in-practice).
 
 ## Keep it alive
 

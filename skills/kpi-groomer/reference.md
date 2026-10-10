@@ -1,9 +1,10 @@
 # Reference — frameworks, definition hygiene, law, failure modes, sources
 
 Contents: [Frameworks](#the-frameworks-and-what-each-is-for) · [Definition
-hygiene](#definition-hygiene--the-full-field-list) · [Ethics & law
-(EU/NL)](#ethics--law-eunl) · [Failure modes](#failure-modes-checklist) ·
-[Sources](#source-catalog)
+hygiene](#definition-hygiene--the-full-field-list) · [Delivery data that stays
+honest](#delivery-data-that-stays-honest) · [Ethics & law (EU/NL)](#ethics--law-eunl) ·
+[Person-level data in practice](#person-level-data-in-practice) · [Failure
+modes](#failure-modes-checklist) · [Sources](#source-catalog)
 
 ## The frameworks, and what each is for
 
@@ -39,6 +40,19 @@ Percentiles over averages for anything skewed (cycle time, latency). Ratios carr
 n ("96% of 20" means nothing). Vanity metrics (cumulative counts that only go up — Ries)
 demonstrate no cause and effect; actionable metrics do.
 
+## Delivery data that stays honest
+
+- **Deploy frequency counts deployment records** against production-tier environments,
+  never green pipelines: a pipeline count once reported 29 deploys a day.
+- **Store each deployment's ref**, so lead time and drift can be computed from what
+  actually runs.
+- **A trunk bypass is a hotfix only when it is a fix** (a `fix` change, a `hotfix` branch);
+  call the rest "direct to release branch" instead of flattering the incident count.
+- **Show drift with its age**: per repo, release-branch commits not on trunk and production
+  commits the acceptance environment lacks (the forge's compare API, cached per SHA pair),
+  next to the age of the oldest change waiting in each stage.
+- No people, no rankings — delivery data is a service-level view.
+
 ## Ethics & law (EU/NL)
 
 - SPACE and DORA both: measure teams and systems, **never rank individuals**; individual
@@ -50,7 +64,42 @@ demonstrate no cause and effect; actionable metrics do.
   **personeelsvolgsysteem** — **the effect decides, not the stated purpose** — requiring
   works-council consent under **WOR art. 27 lid 1 sub l** (monitoring) and **sub k**
   (personal-data processing rules). A dashboard with per-developer filters qualifies,
-  even when built "for coaching".
+  even when built "for coaching". Per-developer AI usage (tokens or cost per person) and
+  review data that links reviewer to author plausibly qualify too; a cost-control purpose
+  does not take them out of scope.
+- The rest of art. 27: no consent is needed where a CAO already regulates the matter
+  (lid 3); the employer can ask the kantonrechter for substitute permission (lid 4); a
+  decision taken without consent is void if the OR invokes that in writing within one
+  month (lid 5).
+- Which body applies depends on size: an OR is required from (as a rule) 50 people
+  (art. 2). A personeelsvertegenwoordiging, below 50, has consent rights only for sub b,
+  d and m — **not sub l**. Check which body the company actually has; GDPR and the
+  DPA's conditions apply either way.
+- The DPA (Autoriteit Persoonsgegevens): monitoring must be necessary and outweigh the
+  intrusion; the basis is legitimate interest, because employee consent is unusable under
+  the power imbalance; employees are told in advance; "Stemt de OR er niet mee in, dan mag
+  u niet controleren."
+
+## Person-level data in practice
+
+- **Count, don't name.** Default to team or repo aggregates; a usage view shows totals and
+  a *count* of active developers, never a list of who.
+- **Strip identity where the data enters, until consent exists.** Agent telemetry stamps
+  every datapoint with the user's email, account ids, a user id and a session id (Claude
+  Code sends the email whenever the user is signed in, with no client switch to turn it
+  off), and LLM-gateway metrics carry key alias, user and email labels. Drop them in the
+  collector or the scrape config, not in the dashboard — the `agent-platform` skill, where
+  installed, has the collector side.
+- **Per-person series live in their own store.** A per-person series that also carries
+  `team` shows every member their teammates' numbers through any team-scoped datasource;
+  hiding a board does not hide the data. Keep those series in a separate small store that
+  only the people entitled to them can query, and drop them from the shared one.
+- **Print the rules on the per-person view itself:** who may read it (an explicit grant,
+  listed), what it is never used for (performance review, ranking, bonus), rows sorted by
+  name and never by value, and what each number cannot tell — review counts say nothing
+  about care; merged counts show how work was cut up; open PRs are a flow problem; pickup
+  and cycle time carry meetings, holidays and part-time contracts; pair work is credited
+  to one name; bots are filtered out.
 
 ## Failure modes checklist
 
@@ -82,5 +131,5 @@ demonstrate no cause and effect; actionable metrics do.
 | Pairing indicators | Grove, *High Output Management* (1983) |
 | GQM | cs.umd.edu/users/mvz/handouts/gqm.pdf (Basili et al., 1994) |
 | North-star trees | Amplitude North Star Playbook (amplitude.com/blog/product-north-star-metric) |
-| NL works council & monitoring | autoriteitpersoonsgegevens.nl (OR-privacyboekje; DPIA list) · WOR art. 27 (wetten.overheid.nl/BWBR0002747) |
+| NL works council & monitoring | autoriteitpersoonsgegevens.nl (OR-privacyboekje; DPIA list; "Voorwaarden voor controle werknemers") · WOR arts. 2, 27, 35c, 35d (wetten.overheid.nl/BWBR0002747) |
 | Goodhart in practice | jellyfish.co/blog/goodharts-law-in-software-engineering-and-how-to-avoid-gaming-your-metrics/ |
