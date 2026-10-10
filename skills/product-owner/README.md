@@ -17,7 +17,7 @@ deployment, token rotation) stay in your instance's ops runbook.
 
 It consolidates and supersedes the earlier `vikunja-product-owner` plugin (this repo).
 **This skill is the parent-most source of the PO craft**: org estates vendor it as-is
-(pinned + sync-checked — code14/ai-skills is the live example) and layer their facts in
+(pinned + sync-checked) and layer their facts in
 as a `product-owner-contract` sibling skill; craft improvements land here, once, for
 every downstream.
 

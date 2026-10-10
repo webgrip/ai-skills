@@ -108,7 +108,7 @@
     },
     {
       "id": "groom-customer-backlog",
-      "prompt": "Groom de backlog van klant Nijhuis, er staat weer van alles ongerefined in.",
+      "prompt": "Groom de backlog van klant Acme, er staat weer van alles ongerefined in.",
       "expect_trigger": true,
       "assertions": [
         "Resolves the board and pages until exhausted before claiming counts",

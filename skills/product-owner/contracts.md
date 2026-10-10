@@ -46,17 +46,17 @@ Globally installed skills have no repo to read from. A directory of named contex
 ```text
 ~/.agents/contracts/product-owner/
 ├── webgrip.md
-├── code14.md          ← org base
-└── code14-team-c.md   ← Extends: code14.md — only the Team C deltas
+├── acme.md            ← org base
+└── acme-team-a.md     ← Extends: acme.md — only the Team A deltas
 ```
 
 Each file opens with headers the skill matches on before any merge:
 
 ```markdown
-Context: code14 / Team C
-Applies when: ClickUp MCP, boards in workspace <id>, klant boards by name,
-  or the user says "code14" or "team C"
-Extends: code14.md
+Context: acme / Team A
+Applies when: ClickUp MCP, boards in workspace <id>, client boards by name,
+  or the user says "acme" or "team A"
+Extends: acme.md
 ```
 
 `Extends:` keeps team files small — a team file carries only its deltas over the org
