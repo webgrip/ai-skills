@@ -18,9 +18,12 @@ secrets (best-effort `gitleaks` scan when installed).
 /plugin install guard-secrets@ai-skills
 ```
 
-The hook activates on install (after you trust the marketplace). It is
-fail-open on its own errors — a same-machine convenience guard, not a
-security boundary; MR review and protected branches are that.
+The hook activates on install (after you trust the marketplace). Only a
+finding blocks: when `gitleaks` is missing, times out or fails (it runs with
+its own exit code for findings), the hook warns on stderr and allows the
+write. It is a same-machine convenience guard, not a security boundary; MR
+review and protected branches are that. Pin `gitleaks` in the repo's
+`.mise.toml` so the scan actually runs.
 
 **Install (`npx skills`) — read this first:** `npx skills add … -s guard-secrets`
 copies the skill *and* `hooks/hooks.json`, but nothing registers the hook, so

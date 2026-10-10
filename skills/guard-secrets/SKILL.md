@@ -1,6 +1,6 @@
 ---
 name: guard-secrets
-description: The secrets-handling floor for Webgrip repos, and the enforcement hook behind it. Use when writing or wiring secrets, editing SOPS files, handling API keys/tokens/credentials in config or Helm values, or when an edit is blocked with a BLOCKED secret message. Explains why the block fired and the compliant path (SOPS + value wiring).
+description: The secrets-handling floor for Webgrip repos, and the enforcement hook behind it. Use when writing or wiring secrets, editing SOPS files, handling API keys/tokens/credentials in config or Helm values, or when an edit is blocked with a BLOCKED secret message. Explains why the block fired and the compliant path (a vault or SOPS reference, never an inline value).
 user-invocable: false
 ---
 
@@ -19,12 +19,16 @@ when it would leak a plaintext secret. Same rule set in both tools.
    whose content lacks `ENC[` is refused — that means you're about to commit
    plaintext into an encrypted file. Edit plaintext *elsewhere*, then
    `sops --encrypt`.
-3. **No plaintext secrets in any file.** When `gitleaks` is installed, the
-   content is scanned and a positive hit is refused (best-effort — skipped
-   silently without gitleaks).
+3. **No plaintext secrets in any file.** `gitleaks` scans the new content and
+   a finding is refused. Only a finding blocks: gitleaks missing, timing out,
+   or exiting with anything but its findings code is a scanner failure, so the
+   hook warns on stderr and allows the write.
 
 ## The compliant path
 
+- **The repo's own convention comes first.** Where a repo documents how it
+  handles secrets (its `AGENTS.md`, a project hook), follow that; the three
+  rules above still hold.
 - Which level a value belongs at (floor, vault, cluster, bridge, short-lived,
   person) and the manifest that puts it there: the `secrets-levels` skill.
   Almost every value is a vault (OpenBao) original read by an `ExternalSecret`;
@@ -36,12 +40,23 @@ when it would leak a plaintext secret. Same rule set in both tools.
   floor). A human enters the value; the agent never does.
 - Config templates carry **placeholders**, not values (`API_KEY: ${API_KEY}`
   from the environment, not the literal key).
-- Rule 3 needs `gitleaks` on `PATH`; pin it in the repo's `.mise.toml`. The hook
-  prints a warning and continues when it is missing.
+- Rule 3 needs a working `gitleaks` on `PATH`; pin it in the repo's
+  `.mise.toml`. A `guard-secrets: gitleaks …` warning means the scan did not
+  run: `gitleaks version` by hand shows why (a mise shim with no version set
+  for the repo exits 1 without scanning).
 
 ## When a BLOCKED message appears
 
 Read which rule fired (the message names it), then fix the *cause*, don't
-route around it: move the plaintext into SOPS, replace the value with a
-secret reference, or hand the provisioning step to a human. The hook is fail-open on its own
-errors, so a green write is not proof of compliance; these rules are.
+route around it: replace the value with a reference to where it lives (the
+vault, or SOPS at the floor), or hand the provisioning step to a human. The
+hook fails open on its own errors, so a green write is not proof of
+compliance; these rules are.
+
+Check the hook itself by piping a fake event into it and reading the exit code
+(2 = blocked, 0 = allowed):
+
+```bash
+echo '{"tool_input":{"file_path":"/tmp/app.sops.yaml","content":"password: hunter2"}}' \
+  | python3 scripts/guard_secrets.py; echo "exit=$?"
+```
