@@ -1,0 +1,8 @@
+#!/bin/sh
+scanner="${ORG_BOUNDARIES_SCANNER:-$HOME/.config/org-boundaries/scan_boundary.py}"
+git config --get-all org-boundaries.exclude > /dev/null || exit 0
+if [ ! -f "$scanner" ]; then
+  echo "org-boundaries: scanner not found at $scanner; copy scan_boundary.py there or set ORG_BOUNDARIES_SCANNER" >&2
+  exit 1
+fi
+exec python3 "$scanner" --message-file "$1" "$(git rev-parse --show-toplevel)"

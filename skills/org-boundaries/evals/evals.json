@@ -1,0 +1,66 @@
+{
+  "skill_name": "org-boundaries",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load.",
+  "evals": [
+    {
+      "id": "publish-lesson-into-own-oss-repo",
+      "expect_trigger": true,
+      "prompt": "At my day job (globex) we wrote a really good doc on retrying flaky webhook deliveries. I want the same lessons in my own open-source project acme-hooks. Copy it over and push it.",
+      "assertions": [
+        "Writes a fresh generic version instead of copying the file as is, removing the employer's name, hosts, clients, internal ticket or decision-record ids and parity or 'inspired by' lines",
+        "Checks the commit author and committer email for the target repo before committing, and commits with the address the open-source repo expects rather than the employer address",
+        "Scans the diff and the commit metadata for employer markers before the push (scan_boundary.py with --range, or an equivalent grep over the diff and git log author/committer/message)",
+        "Keeps the employer markers out of any file in the target repo, including a patterns file or guard config"
+      ]
+    },
+    {
+      "id": "scratch-clone-wrong-email",
+      "expect_trigger": true,
+      "prompt": "An agent cloned my public repo into /tmp to make a quick fix and the commit it pushed shows my work email from my employer instead of my personal one. My ~/.gitconfig has an includeIf for ~/projects/personal/. Why, and how do I stop this from happening again?",
+      "assertions": [
+        "Explains that includeIf gitdir only applies to repos under that directory, so a clone in /tmp falls back to the global identity",
+        "Recommends user.useConfigOnly = true with no global user.email so commits outside the scoped trees fail instead of guessing",
+        "For the already pushed commit, treats a history rewrite as a last resort with a plan (mirror backup, filter-repo --mailmap, tree-hash proof, forge purge) and mentions .mailmap as the low-cost option",
+        "Does not tell the user to force-push a rewrite immediately without a backup"
+      ]
+    },
+    {
+      "id": "employer-repo-still-mentions-own-company",
+      "expect_trigger": true,
+      "prompt": "Check whether my employer's infra repo still mentions my own company acme anywhere. We cleaned it last week, but I want to be sure, including branches.",
+      "assertions": [
+        "Keeps the list of acme markers in a patterns file outside the employer's repo, not in a file or CI variable of that repo",
+        "Searches for implicit references (phrases like the sibling estate, parity with, both clusters, org-qualified repo refs, hosts) and not only the name",
+        "Covers commit author and committer identities, commit messages, branch and tag names, and other branches without checking them out",
+        "Names the forge surfaces outside git (MR titles, descriptions and every note, issues, CI variables, registry names) as separate checks",
+        "Keeps the person's own name and work address and any functional image or chart paths rather than removing them"
+      ]
+    },
+    {
+      "id": "user-scope-mcp-wrong-tenant",
+      "expect_trigger": true,
+      "prompt": "In my side project the tracker MCP tools just created a task on my employer's board instead of my own. Both boards use a server called tracker. What happened?",
+      "assertions": [
+        "Explains that a user-scope MCP server loads in every project, so the employer's tracker server was active in the side project",
+        "Recommends registering each organisation's server at local or project scope or through a per-project plugin, with distinct per-organisation names",
+        "Recommends confirming the tenant (an identity call or the server URL via claude mcp get) before any write"
+      ]
+    },
+    {
+      "id": "claude-md-cleanup-negative",
+      "expect_trigger": false,
+      "prompt": "Our CLAUDE.md is 600 lines and Claude ignores half of it. Slim it down and make AGENTS.md the canonical file.",
+      "assertions": [
+        "Does not load the org-boundaries skill"
+      ]
+    },
+    {
+      "id": "secret-placement-negative",
+      "expect_trigger": false,
+      "prompt": "Where should the API token for our deploy workflow live so the CI job can read it?",
+      "assertions": [
+        "Does not load the org-boundaries skill"
+      ]
+    }
+  ]
+}

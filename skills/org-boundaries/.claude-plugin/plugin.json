@@ -1,0 +1,22 @@
+{
+  "name": "org-boundaries",
+  "displayName": "Org Boundaries",
+  "description": "Keeps each organisation's knowledge and identity out of the others' repos when one person works for several on one machine: remove the organisation, keep the person; tell-tale references; a stdlib scanner over file content, commit identities and messages, branches and tags with a local pre-commit guard; neutral rewrites; per-directory git identity; user-level agent config that crosses organisations; and when to rewrite history.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "confidentiality",
+    "git",
+    "identity",
+    "multi-organisation",
+    "leak-scan",
+    "pre-commit",
+    "mailmap",
+    "filter-repo",
+    "mcp"
+  ]
+}
