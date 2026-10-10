@@ -211,7 +211,8 @@ repo does nothing on current versions. A repository can still turn a signal off:
 `OTEL_METRICS_EXPORTER=none` (or `OTEL_LOGS_EXPORTER=none`) is honoured there, while
 `CLAUDE_CODE_ENABLE_TELEMETRY=0` is not; neither beats a value set by managed settings, a
 `--settings` file or the launch environment
-([monitoring](https://code.claude.com/docs/en/monitoring-usage)).
+([monitoring](https://code.claude.com/docs/en/monitoring-usage)). The rollout itself, the organisation boundary in the collector and
+stripping personal identifiers: the agent-platform skill.
 
 ## Auto memory
 
