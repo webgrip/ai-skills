@@ -1,6 +1,6 @@
 # Secrets levels — reference
 
-Contents: the six levels · runbooks per level · example manifests by path · what changed in ADR-0055.
+Contents: the six levels · runbooks per level · example manifests by path · which CI events see a secret · what changed in ADR-0055.
 
 ## The six levels
 
@@ -32,6 +32,31 @@ Base: `https://forgejo.webgrip.dev/webgrip/homelab-cluster/src/branch/main/docs/
 | Worker bridge | `kubernetes/apps/forgejo/forgejo-actions-secrets/app/counterscale-worker-secrets.cronjob.yaml` |
 | OIDC signing role | `kubernetes/apps/security/openbao/bootstrap/config.sh`, the `cosign-signer` JSON |
 | Human helpers | `justfile` recipes `bao-login`, `secret-env`, `harbor-s3-cred`, `cloudflare-deploy-cred` |
+
+## Which CI events see a secret
+
+A pipeline that runs branch code runs that branch's workflow file and scripts, so any secret it
+can read is readable by anyone who can push a branch, agents included. Masking only hides the
+value in job logs. Run token-holding jobs (bridges, ticket mirrors, release and deploy jobs) only
+on push to a protected branch, on a schedule, or from a webhook service. A manual dispatch runs
+the workflow file of whichever ref it is started on, so it is only as safe as that ref.
+
+| Event | Forgejo Actions |
+| --- | --- |
+| `pull_request`, head from a fork | `secrets` is empty, the automatic token is read-only, OIDC is off; a read-only user's PR waits for approval before any workflow runs |
+| `pull_request`, head from a branch of the same repo | the docs empty `secrets` only for fork heads, so the job **gets the repo's secrets** |
+| `pull_request_target` | runs the base repo's default-branch workflow with its secrets and a write token; checking out or running PR code in it hands both to the PR author |
+| push to a protected branch, `schedule` | secrets available; only people who may push to that branch change what runs |
+
+Other forges, same rule: on GitHub, write access means read access to every repo secret, fork
+PRs get none, and `pull_request_target` plus a checkout of PR code is the classic exfiltration.
+On GitLab, an unprotected variable reaches every MR pipeline from a same-project branch; only
+"Protect variable" (protected branches and tags) or an environment scope keeps it out.
+
+Sources: [Forgejo Actions reference](https://forgejo.org/docs/latest/user/actions/reference/) ·
+[Forgejo pull request security](https://forgejo.org/docs/latest/user/actions/security-pull-request/) ·
+[GitHub secure use](https://docs.github.com/en/actions/reference/security/secure-use) ·
+[GitLab CI/CD variable security](https://docs.gitlab.com/ci/variables/).
 
 ## What ADR-0055 changes
 

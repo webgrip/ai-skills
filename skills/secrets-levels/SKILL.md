@@ -1,6 +1,6 @@
 ---
 name: secrets-levels
-description: Places a secret at the right level of the Webgrip estate and names the manifest that puts it there, per homelab-cluster ADR-0055 - floor (SOPS), vault (OpenBao), cluster (External Secrets), bridge (Forgejo Actions and Cloudflare Worker secrets), short-lived (OIDC, dynamic credentials, per-run tokens), person (a laptop). Use when adding, wiring, rotating, or asking where to put an API key, token, password, credential, PAT, or client secret; when a CI job, workflow, pod, Worker, or developer machine needs a secret; when someone proposes a new sops.yaml, a Forgejo org secret, a Keychain entry, a .env file, or a bao kv put; or when deciding whether a value is entropy, provided, or mintable.
+description: Places a secret at the right level of the Webgrip estate and names the manifest that puts it there, per homelab-cluster ADR-0055 - floor (SOPS), vault (OpenBao), cluster (External Secrets), bridge (Forgejo Actions and Cloudflare Worker secrets), short-lived (OIDC, dynamic credentials, per-run tokens), person (a laptop). Use when adding, wiring, rotating, or asking where to put an API key, token, password, credential, PAT, or client secret; when a CI job, workflow, pod, Worker, or developer machine needs a secret; when someone proposes a new sops.yaml, a Forgejo org secret, a Keychain entry, a .env file, or a bao kv put; when deciding whether a value is entropy, provided, or mintable; when a CI job holding a token runs on pull requests; when a generated password will not regenerate; or when a secret was printed into a session.
 ---
 
 # Secrets levels — which level, which manifest
@@ -48,6 +48,19 @@ name; that is the mechanism, not a collision.
 
 - **Never** create a `*.sops.yaml` outside the floor, and never write a value into a manifest,
   a `.env`, a commit, or a chat message. Ask for the seed; do not perform it.
+- **Never print a value into the session, even when asked for it.** Transcripts are kept and
+  harvested. Read it into a variable, or hand it over as its vault path or straight to the
+  clipboard (`… | base64 -d | pbcopy`). A value that did reach a transcript gets rotated.
+- A generator with `refreshInterval: "0"` generates **once**: a changed `spec` (length,
+  charset) does nothing to the existing Secret. Rename the `ExternalSecret` and its target, or
+  delete the Secret, then follow every copy downstream: the PushSecret into the vault, the
+  consumer `ExternalSecret`s on their refresh, the Reloader restart, any IdP or app config
+  holding the old value.
+- A secret a CI job holds is readable by whoever can push the code that job runs. A
+  token-holding Forgejo job triggers on push to a protected branch or on a schedule, never on
+  `pull_request` (same-repo branches get the secrets), and under `pull_request_target` it
+  never checks out or runs PR code. Events per forge →
+  [reference.md](reference.md#which-ci-events-see-a-secret).
 - A provided value that already encrypts data is seeded once from its current value; a
   generator in its place corrupts every row the old key touched.
 - `workflow_call: secrets:` is rejected by Forgejo's parser; pass secrets from the calling job.
