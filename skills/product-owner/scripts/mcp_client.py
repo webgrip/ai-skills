@@ -5,16 +5,17 @@ bulk board operations, the dark-factory dispatcher).
 Usage:
     from mcp_client import init, call
     init()                                   # or init("https://other-mcp.example/mcp")
-    print(call("tasks_list", {"projectId": 3, "limit": 200}))
+    print(call("tasks_list", {"projectId": 3, "show": "all"}))
 
 Protocol notes (the parts that are easy to get wrong):
 - POST JSON-RPC with Accept: application/json, text/event-stream.
 - Capture the `mcp-session-id` response header on initialize; echo it on every later request.
 - Send the `notifications/initialized` notification after initialize.
 - Responses may be SSE — take the last `data:` line.
-- tools/call results arrive as text content (this MCP returns formatted text, not JSON —
-  see adapters/vikunja.md "Response formats").
-- Auth: the webgrip vikunja-mcp server (v1.0.0, 2026-08) authenticates per request —
+- tools/call results arrive as text content (formatted text, not JSON — parse ids from
+  `[ID: n]`; adapters/vikunja.md "Scripted access").
+- Tool names and argument casing differ per server: adapters/vikunja.md "Two servers, two surfaces".
+- Auth: both Vikunja MCP servers authenticate per request —
   initialize and tools/list are anonymous, every tools/call needs `Authorization: Bearer`.
   Token comes from $VIKUNJA_API_TOKEN, else read from the file named by $VIKUNJA_TOKEN_FILE.
 """

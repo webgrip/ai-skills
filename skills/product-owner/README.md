@@ -31,7 +31,8 @@ every downstream.
 ```
 
 The bundled `.mcp.json` points at `https://mcp-vikunja.webgrip.dev/mcp` (LAN-only); a
-repo-level `.mcp.json` entry named `vikunja` overrides it. ClickUp boards: add your own
+repo- or user-level `mcpServers` entry named `vikunja` overrides it, so give a server for
+another Vikunja instance its own name. ClickUp boards: add your own
 ClickUp MCP server to the consuming repo's `.mcp.json`. Scripts override via
 `VIKUNJA_MCP_URL`.
 
