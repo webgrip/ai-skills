@@ -45,6 +45,9 @@ upload it via Settings → Skills (or attach it in a chat), and hit *Save skill*
 
 - At the end of a productive thread: *"harvest this thread"* / *"distill this conversation
   into a digest"*
+- For sessions that already ended: *"harvest the last five sessions in this repo"* — each
+  transcript is dumped with `scripts/dump_transcript.py` (subagent reports included) and
+  distilled by its own subagent
 - With digests collected from several threads: *"consolidate these digests"* (paste them into
   a fresh thread)
 - In the repo, with the knowledge set: *"synthesize this into our docs and skills"*
@@ -66,4 +69,6 @@ skills/harvest-knowledge/
   prompt-1-distill.md       # the thread-digest prompt (use verbatim)
   prompt-2-consolidate.md   # the integration-thread prompt (use verbatim)
   prompt-3-synthesize.md    # the repo-writing prompt (use verbatim)
+  scripts/dump_transcript.py  # JSONL transcript -> compact text dump for finished threads
+  fixtures/transcript.jsonl   # test fixture for the dump script
 ```

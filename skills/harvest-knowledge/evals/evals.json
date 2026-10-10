@@ -13,6 +13,17 @@
       ]
     },
     {
+      "id": "phase1-finished-sessions",
+      "prompt": "Harvest what we learned in my last four Claude Code sessions in this repo. They're all closed already.",
+      "assertions": [
+        "Locates the session JSONL transcripts under ~/.claude/projects instead of trying to distill the current conversation",
+        "Dumps each transcript with scripts/dump_transcript.py so subagent hand-back reports and queued user messages are kept",
+        "Runs one subagent per thread (or per part of a split dump) whose brief contains prompt-1-distill.md verbatim after a short input preamble",
+        "Has each subagent write its digest to a file and return only a short summary",
+        "Consolidates the digests with prompt-2-consolidate.md (in batches with a final merge when there are many) without modifying the repo"
+      ]
+    },
+    {
       "id": "phase2-readonly",
       "prompt": "Here are five thread digests pasted below. Consolidate them into one knowledge set. [digest 1] ... [digest 5]",
       "assertions": [
@@ -30,6 +41,15 @@
         "Inventories the repo's existing docs/skills/conventions FIRST",
         "Presents the item-to-action PLAN table and waits for approval before writing anything",
         "LOW-confidence items are verified against the repo or deferred — never enshrined as fact"
+      ]
+    },
+    {
+      "id": "not-an-adr",
+      "prompt": "We just decided to move session storage from Redis to PostgreSQL. Write the ADR for it.",
+      "expect_trigger": false,
+      "assertions": [
+        "Treats this as recording one architecture decision (the adr-writer skill's territory), not as harvesting knowledge from threads",
+        "Does not start a distill, consolidate or synthesize phase"
       ]
     }
   ]

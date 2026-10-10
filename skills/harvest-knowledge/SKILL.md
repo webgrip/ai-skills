@@ -1,6 +1,6 @@
 ---
 name: harvest-knowledge
-description: Mine durable, reusable knowledge out of Claude conversation threads with a three-phase workflow — distill each thread into a self-contained digest, consolidate many digests into one deduplicated truth-checked knowledge set, then synthesize repo docs, CLAUDE.md rules, new-skill candidates, and memory updates from it. Use when distilling/harvesting durable learnings from a Claude thread, extracting a thread digest, consolidating multiple digests into one knowledge set, running the integration thread, or turning collected learnings into docs/skills/memory.
+description: Mine durable, reusable knowledge out of Claude conversation threads with a three-phase workflow — distill each thread into a self-contained digest, consolidate many digests into one deduplicated truth-checked knowledge set, then synthesize repo docs, CLAUDE.md rules, new-skill candidates, and memory updates from it. Use when distilling/harvesting durable learnings from a Claude thread or from finished Claude Code sessions and their JSONL transcripts, extracting a thread digest, consolidating multiple digests into one knowledge set, running the integration thread, or turning collected learnings into docs/skills/memory.
 ---
 
 # Harvest Knowledge — distill Claude threads into docs + skills
@@ -11,7 +11,7 @@ uniform digests are what let Phase 2 consolidate.
 
 | Phase | Run it in | Input | Produces | Prompt (use verbatim) |
 |---|---|---|---|---|
-| **1 · Distill** | the working thread you want to mine (at its end) | the whole current conversation | one self-contained thread digest | [prompt-1-distill.md](prompt-1-distill.md) |
+| **1 · Distill** | the working thread you want to mine (at its end), or a subagent over a finished thread's dump | the whole conversation | one self-contained thread digest | [prompt-1-distill.md](prompt-1-distill.md) |
 | **2 · Consolidate** | a fresh "integration" thread | every Phase-1 digest, pasted together | one deduped, truth-checked knowledge set | [prompt-2-consolidate.md](prompt-2-consolidate.md) |
 | **3 · Synthesize** | the repo being documented (write access) | the Phase-2 knowledge set | doc / CLAUDE.md / skill / memory updates + new-skill candidates | [prompt-3-synthesize.md](prompt-3-synthesize.md) |
 
@@ -27,6 +27,42 @@ uniform digests are what let Phase 2 consolidate.
    - **2** operates ONLY on the pasted digests and **modifies no files** — output only.
    - **3** inventories existing docs/skills FIRST, then shows the item→action PLAN table and
      **waits for approval before writing**.
+
+## Phase 1 on finished threads
+
+A closed thread can't audit itself: dump its transcript and hand the dump to a subagent.
+
+1. **Find the transcript:** `~/.claude/projects/<dir>/<session-id>.jsonl`, where `<dir>` is the
+   session's working directory with every non-alphanumeric character turned into `-`. From
+   inside `~/.claude/projects`, glob as `ls ./*/<id>*.jsonl` — the directory names start with
+   `-`, so `ls */…` reads them as options.
+2. **Dump it** with this skill's script:
+   `python3 <skill dir>/scripts/dump_transcript.py <session>.jsonl -o dumps/<id>.txt`. The dump
+   keeps user and assistant text, tool calls, truncated tool results, summaries, and the
+   subagent hand-back reports and queued user messages that a naive dump drops (they sit in
+   `queue-operation` enqueue entries, `queued_command` attachments and `isMeta` user
+   messages). A subagent's own transcript is `<session-id>/subagents/agent-<id>.jsonl`; dump
+   it the same way when its hand-back is too thin.
+3. **Split a dump one reader can't finish** (a few hundred thousand characters):
+   `--split-chars 350000` writes `<id>.part1.txt`, `<id>.part2.txt`, … and cuts only before a
+   user turn.
+4. **One background subagent per thread or part**, all launched together. Its brief is a
+   short input preamble, then [prompt-1-distill.md](prompt-1-distill.md) verbatim, then the
+   output handling:
+   - *Preamble:* "You are running Phase 1 of harvest-knowledge on a finished session. The
+     conversation is dumped at `<path>` as `[timestamp ROLE] text` blocks, tool results
+     truncated; the raw JSONL is `<path>` if you must confirm something. Read the whole dump
+     in chunks, not just the start. For this run, THIS ENTIRE conversation means that dump."
+     For a part, add the other parts' paths: digest only your part, and grep the others to
+     learn whether a claim was corrected later. An optional FOCUS line names the topics to
+     keep.
+   - *Output handling:* "Write the digest to `digests/<id>.md` and modify no other file.
+     Final message: the digest's title, its item count and the three most important items,
+     one line each — not the digest."
+5. **Consolidate in batches:** one fresh subagent per batch of about four digests runs
+   [prompt-2-consolidate.md](prompt-2-consolidate.md) verbatim over them and writes
+   `consolidated-<n>.md`; a last subagent runs the same prompt over the batch outputs as the
+   final merge. They write only these files, in a scratch directory, never the repo.
 
 ## Where Phase 3 lands things
 
@@ -44,3 +80,5 @@ preferences / incident state → memory (`MEMORY.md` index) · open items → a 
   guesses.
 - **Don't collapse the phases into one pass** — skipping the digest step loses the uniform
   structure Phase 2 consolidates on.
+- **A dump that skips `isMeta` messages and queue entries loses every subagent report**, often
+  most of a session's research. Dump with `scripts/dump_transcript.py`, not an ad-hoc parser.

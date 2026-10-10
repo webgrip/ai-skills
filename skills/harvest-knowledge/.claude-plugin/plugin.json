@@ -15,7 +15,8 @@
     "context-distillation",
     "skills",
     "memory",
-    "retrospective"
+    "retrospective",
+    "transcripts"
   ],
   "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/harvest-knowledge",
   "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills"
