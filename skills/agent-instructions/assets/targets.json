@@ -1,0 +1,1220 @@
+{
+  "schema_version": 1,
+  "defaults": {
+    "rules_dir": ".ai/rules",
+    "skills_dir": ".agents/skills",
+    "docs_dir": "docs",
+    "docs_index": "docs/index.md",
+    "rule_line_limit": 20,
+    "token_budget": 5000,
+    "bytes_per_token": 2.9,
+    "agents_md_max_bytes": 32768
+  },
+  "nested_instruction_names": [
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "flagged_files": [
+    "REVIEW.md"
+  ],
+  "docs_sites": [
+    "mkdocs.yml",
+    "mkdocs.yaml",
+    "docusaurus.config.js",
+    "docusaurus.config.ts",
+    "book.toml",
+    "docs/conf.py",
+    "antora.yml",
+    "docs/antora.yml"
+  ],
+  "walk_skip": [
+    ".git",
+    "node_modules",
+    "vendor",
+    ".venv",
+    "venv",
+    "dist",
+    "build",
+    ".next",
+    "target",
+    "storage"
+  ],
+  "tools": [
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "interactive-agent",
+      "detect": [
+        "CLAUDE.md",
+        "CLAUDE.local.md",
+        ".claude/",
+        ".mcp.json"
+      ],
+      "instructions": [
+        "CLAUDE.md",
+        ".claude/CLAUDE.md",
+        "CLAUDE.local.md",
+        "AGENTS.md"
+      ],
+      "rules": {
+        "format": "claude-symlink",
+        "dir": ".claude/rules",
+        "ext": ".md",
+        "keys": {}
+      },
+      "skills_dir": ".claude/skills",
+      "mcp_config": ".mcp.json",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": [
+        ".claude/settings.json",
+        ".claude/settings.local.json"
+      ],
+      "docs": "https://code.claude.com/docs/en/memory"
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot",
+      "category": "interactive-agent",
+      "detect": [
+        ".github/copilot-instructions.md",
+        ".github/instructions/",
+        ".github/copilot/",
+        ".github/hooks/",
+        ".github/mcp.json",
+        ".vscode/mcp.json"
+      ],
+      "instructions": [
+        ".github/copilot-instructions.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md"
+      ],
+      "rules": {
+        "format": "copilot-applyto",
+        "dir": ".github/instructions",
+        "ext": ".instructions.md",
+        "keys": {
+          "apply_to": "applyTo",
+          "separator": ",",
+          "all_files": "**",
+          "exclude_agent": "excludeAgent",
+          "exclude_agent_values": [
+            "code-review",
+            "cloud-agent"
+          ]
+        }
+      },
+      "skills_dir": [
+        ".github/skills",
+        ".claude/skills",
+        ".agents/skills"
+      ],
+      "mcp_config": [
+        ".vscode/mcp.json",
+        ".mcp.json",
+        ".github/mcp.json"
+      ],
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": ".github/hooks/*.json",
+      "reads_hooks_from": [
+        ".claude/settings.json",
+        ".claude/settings.local.json"
+      ],
+      "docs": "https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions"
+    },
+    {
+      "id": "codex",
+      "name": "OpenAI Codex",
+      "category": "interactive-agent",
+      "detect": [
+        "AGENTS.override.md",
+        ".codex/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "AGENTS.override.md"
+      ],
+      "rules": null,
+      "skills_dir": ".agents/skills",
+      "mcp_config": ".codex/config.toml",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": ".codex/hooks.json",
+      "docs": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "category": "interactive-agent",
+      "detect": [
+        ".cursor/",
+        ".cursorrules",
+        ".cursorignore"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        ".cursorrules"
+      ],
+      "rules": {
+        "format": "cursor-mdc",
+        "dir": ".cursor/rules",
+        "ext": ".mdc",
+        "keys": {
+          "description": "description",
+          "globs": "globs",
+          "always_apply": "alwaysApply",
+          "separator": ", "
+        }
+      },
+      "skills_dir": [
+        ".agents/skills",
+        ".cursor/skills",
+        ".claude/skills",
+        ".codex/skills"
+      ],
+      "mcp_config": ".cursor/mcp.json",
+      "setup_file": null,
+      "ignore_file": ".cursorignore",
+      "hooks_file": ".cursor/hooks.json",
+      "reads_hooks_from": [
+        ".claude/settings.json",
+        ".claude/settings.local.json"
+      ],
+      "docs": "https://cursor.com/docs/rules"
+    },
+    {
+      "id": "antigravity",
+      "name": "Google Antigravity",
+      "category": "interactive-agent",
+      "detect": [
+        ".agents/rules/",
+        ".agents/mcp_config.json",
+        ".agents/hooks.json",
+        ".agent/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "GEMINI.md"
+      ],
+      "rules": {
+        "format": "trigger-globs",
+        "dir": ".agents/rules",
+        "ext": ".md",
+        "keys": {
+          "trigger": "trigger",
+          "glob_trigger": "glob",
+          "always_trigger": "always_on",
+          "globs": "globs",
+          "separator": ", ",
+          "quote_globs": true
+        }
+      },
+      "skills_dir": ".agents/skills",
+      "mcp_config": ".agents/mcp_config.json",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": ".agents/hooks.json",
+      "docs": "https://antigravity.google/docs/rules"
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode",
+      "category": "interactive-agent",
+      "detect": [
+        "opencode.json",
+        "opencode.jsonc",
+        ".opencode/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "rules": null,
+      "skills_dir": [
+        ".opencode/skills",
+        ".claude/skills",
+        ".agents/skills"
+      ],
+      "mcp_config": "opencode.json",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": ".opencode/plugins/",
+      "docs": "https://opencode.ai/docs/rules/"
+    },
+    {
+      "id": "junie",
+      "name": "JetBrains Junie",
+      "category": "interactive-agent",
+      "detect": [
+        ".junie/"
+      ],
+      "instructions": [
+        ".junie/AGENTS.md",
+        "AGENTS.md",
+        ".junie/playbook.md",
+        ".junie/guidelines.md"
+      ],
+      "rules": {
+        "format": null,
+        "dir": ".junie/rules",
+        "ext": ".md",
+        "keys": {}
+      },
+      "skills_dir": [
+        ".junie/skills",
+        ".agents/skills"
+      ],
+      "mcp_config": ".junie/mcp/mcp.json",
+      "setup_file": null,
+      "ignore_file": ".aiignore",
+      "hooks_file": null,
+      "docs": "https://junie.jetbrains.com/docs/guidelines-and-memory.html"
+    },
+    {
+      "id": "devin-desktop",
+      "name": "Devin Desktop (formerly Windsurf)",
+      "category": "interactive-agent",
+      "detect": [
+        ".devin/",
+        ".windsurf/",
+        ".windsurfrules",
+        ".devinignore"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "AGENT.md",
+        "AGENTS.local.md",
+        ".windsurfrules",
+        "CLAUDE.md"
+      ],
+      "rules": {
+        "format": "trigger-globs",
+        "dir": ".devin/rules",
+        "also_dirs": [
+          ".windsurf/rules"
+        ],
+        "ext": ".md",
+        "keys": {
+          "trigger": "trigger",
+          "glob_trigger": "glob",
+          "always_trigger": "always_on",
+          "globs": "globs",
+          "separator": ", ",
+          "quote_globs": false
+        }
+      },
+      "skills_dir": [
+        ".agents/skills",
+        ".devin/skills",
+        ".windsurf/skills"
+      ],
+      "mcp_config": ".devin/mcp_config.json",
+      "setup_file": null,
+      "ignore_file": ".devinignore",
+      "hooks_file": ".devin/hooks.v1.json",
+      "reads_hooks_from": [
+        ".claude/settings.json",
+        ".claude/settings.local.json"
+      ],
+      "note": "the globs format (one comma-separated string) is inferred from the former Windsurf rule format that Google Antigravity documents; confirm it with a headless probe before relying on multi-glob rules.",
+      "docs": "https://docs.devin.ai/desktop/cascade/memories.md"
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "category": "interactive-agent",
+      "detect": [
+        "WARP.md",
+        ".warp/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "WARP.md"
+      ],
+      "rules": null,
+      "skills_dir": [
+        ".agents/skills",
+        ".warp/skills"
+      ],
+      "mcp_config": ".warp/.mcp.json",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": null,
+      "docs": "https://docs.warp.dev/agents/capabilities/rules"
+    },
+    {
+      "id": "cline",
+      "name": "Cline",
+      "category": "interactive-agent",
+      "detect": [
+        ".clinerules",
+        ".cline/",
+        ".clineignore"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        ".cursorrules",
+        ".windsurfrules"
+      ],
+      "rules": {
+        "format": "cline-paths",
+        "dir": ".clinerules",
+        "also_dirs": [
+          ".cline/rules"
+        ],
+        "ext": ".md",
+        "keys": {
+          "paths": "paths"
+        }
+      },
+      "skills_dir": [
+        ".cline/skills",
+        ".clinerules/skills",
+        ".claude/skills",
+        ".agents/skills"
+      ],
+      "mcp_config": null,
+      "setup_file": null,
+      "ignore_file": ".clineignore",
+      "hooks_file": [
+        ".clinerules/hooks/",
+        ".cline/hooks/"
+      ],
+      "docs": "https://docs.cline.bot/customization/cline-rules"
+    },
+    {
+      "id": "gemini-cli",
+      "name": "Gemini CLI",
+      "category": "interactive-agent",
+      "detect": [
+        "GEMINI.md",
+        ".gemini/settings.json",
+        ".geminiignore"
+      ],
+      "instructions": [
+        "GEMINI.md",
+        "AGENTS.md"
+      ],
+      "rules": null,
+      "skills_dir": [
+        ".gemini/skills",
+        ".agents/skills"
+      ],
+      "mcp_config": ".gemini/settings.json",
+      "setup_file": null,
+      "ignore_file": ".geminiignore",
+      "hooks_file": ".gemini/settings.json",
+      "note": "since 2026-06-18 Gemini CLI serves only Gemini Code Assist Standard/Enterprise and API-key users; individual accounts moved to Google Antigravity.",
+      "docs": "https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md"
+    },
+    {
+      "id": "kiro",
+      "name": "Kiro",
+      "category": "interactive-agent",
+      "detect": [
+        ".kiro/"
+      ],
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "rules": {
+        "format": "kiro-filematch",
+        "dir": ".kiro/steering",
+        "ext": ".md",
+        "keys": {
+          "inclusion": "inclusion",
+          "pattern": "fileMatchPattern"
+        }
+      },
+      "skills_dir": ".kiro/skills",
+      "mcp_config": ".kiro/settings/mcp.json",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": ".kiro/hooks/*.json",
+      "docs": "https://kiro.dev/docs/steering/"
+    },
+    {
+      "id": "jetbrains-ai-assistant",
+      "name": "JetBrains AI Assistant",
+      "category": "interactive-agent",
+      "detect": [
+        ".aiassistant/"
+      ],
+      "instructions": [],
+      "rules": {
+        "format": null,
+        "dir": ".aiassistant/rules",
+        "ext": ".md",
+        "keys": {}
+      },
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": null,
+      "docs": "https://www.jetbrains.com/help/ai-assistant/configure-project-rules.html"
+    },
+    {
+      "id": "zed",
+      "name": "Zed",
+      "category": "interactive-agent",
+      "detect": [
+        ".rules",
+        ".zed/"
+      ],
+      "instructions": [
+        ".rules",
+        "AGENT.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md"
+      ],
+      "rules": null,
+      "skills_dir": ".agents/skills",
+      "mcp_config": ".zed/settings.json",
+      "setup_file": null,
+      "ignore_file": null,
+      "hooks_file": null,
+      "docs": "https://zed.dev/docs/ai/instructions"
+    },
+    {
+      "id": "claude-code-cloud",
+      "name": "Claude Code cloud sessions",
+      "category": "cloud-agent",
+      "detect": [],
+      "instructions": [
+        "CLAUDE.md"
+      ],
+      "rules": {
+        "format": "claude-symlink",
+        "dir": ".claude/rules",
+        "ext": ".md",
+        "keys": {}
+      },
+      "skills_dir": ".claude/skills",
+      "mcp_config": ".mcp.json",
+      "setup_file": null,
+      "hooks_file": ".claude/settings.json",
+      "note": "the environment and its setup script live in the Claude UI; repo SessionStart hooks can test CLAUDE_CODE_REMOTE. Whether cloud sessions read AGENTS.md without a CLAUDE.md is inferred, so keep CLAUDE.md = @AGENTS.md.",
+      "docs": "https://code.claude.com/docs/en/cloud-environments"
+    },
+    {
+      "id": "claude-code-action",
+      "name": "Claude Code GitHub Action",
+      "category": "cloud-agent",
+      "detect": [
+        {
+          "file": ".github/workflows/*.yml",
+          "pattern": "anthropics/claude-code-action"
+        },
+        {
+          "file": ".github/workflows/*.yaml",
+          "pattern": "anthropics/claude-code-action"
+        }
+      ],
+      "instructions": [
+        "CLAUDE.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": ".mcp.json",
+      "setup_file": null,
+      "hooks_file": ".claude/settings.json",
+      "note": "the Action enables every server in .mcp.json and restores .claude/, .mcp.json and CLAUDE.md from the base branch on pull requests.",
+      "docs": "https://code.claude.com/docs/en/github-actions"
+    },
+    {
+      "id": "cursor-cloud-agents",
+      "name": "Cursor cloud agents",
+      "category": "cloud-agent",
+      "detect": [
+        ".cursor/environment.json"
+      ],
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "rules": {
+        "format": "cursor-mdc",
+        "dir": ".cursor/rules",
+        "ext": ".mdc",
+        "keys": {
+          "description": "description",
+          "globs": "globs",
+          "always_apply": "alwaysApply",
+          "separator": ", "
+        }
+      },
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": ".cursor/environment.json",
+      "hooks_file": ".cursor/hooks.json",
+      "note": ".cursor/environment.json can widen egress (egressMode) and is read from the default branch; give it a CODEOWNERS line.",
+      "docs": "https://cursor.com/docs/cloud-agent"
+    },
+    {
+      "id": "copilot-cloud-agent",
+      "name": "GitHub Copilot cloud agent",
+      "category": "cloud-agent",
+      "detect": [
+        ".github/workflows/copilot-setup-steps.yml",
+        ".github/agents/"
+      ],
+      "instructions": [
+        ".github/copilot-instructions.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md"
+      ],
+      "rules": {
+        "format": "copilot-applyto",
+        "dir": ".github/instructions",
+        "ext": ".instructions.md",
+        "keys": {
+          "apply_to": "applyTo",
+          "separator": ",",
+          "all_files": "**",
+          "exclude_agent": "excludeAgent",
+          "exclude_agent_values": [
+            "code-review",
+            "cloud-agent"
+          ]
+        }
+      },
+      "skills_dir": [
+        ".github/skills",
+        ".claude/skills",
+        ".agents/skills"
+      ],
+      "mcp_config": null,
+      "setup_file": ".github/workflows/copilot-setup-steps.yml",
+      "hooks_file": ".github/hooks/*.json",
+      "note": "copilot-setup-steps.yml (job copilot-setup-steps, timeout-minutes at most 59) runs outside the firewall; MCP servers are set in the repository settings, not in a file.",
+      "docs": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment"
+    },
+    {
+      "id": "codex-cloud",
+      "name": "OpenAI Codex cloud",
+      "category": "cloud-agent",
+      "detect": [],
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "rules": null,
+      "skills_dir": ".agents/skills",
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "the environment, network and secrets are set in ChatGPT, not in the repo.",
+      "docs": "https://learn.chatgpt.com/docs/cloud"
+    },
+    {
+      "id": "devin-cloud",
+      "name": "Devin",
+      "category": "cloud-agent",
+      "detect": [
+        ".devin/blueprint.yaml"
+      ],
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "rules": null,
+      "skills_dir": [
+        ".agents/skills",
+        ".devin/skills",
+        ".github/skills",
+        ".claude/skills",
+        ".cognition/skills",
+        ".windsurf/skills"
+      ],
+      "mcp_config": null,
+      "setup_file": ".devin/blueprint.yaml",
+      "note": "reads AGENTS.md up to 16 KiB each; .devin/blueprint.yaml is read from the default branch and syncs on push only with the opt-in toggle.",
+      "docs": "https://docs.devin.ai/onboard-devin/environment/git-backed-blueprints"
+    },
+    {
+      "id": "jules",
+      "name": "Google Jules",
+      "category": "cloud-agent",
+      "detect": [],
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "reads the root AGENTS.md; the setup script lives in the Jules UI.",
+      "docs": "https://jules.google/docs/"
+    },
+    {
+      "id": "amp",
+      "name": "Amp orbs",
+      "category": "cloud-agent",
+      "detect": [
+        ".agents/setup",
+        ".agents/resume",
+        ".amp/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "AGENT.md",
+        "CLAUDE.md"
+      ],
+      "rules": null,
+      "skills_dir": [
+        ".agents/skills",
+        ".claude/skills"
+      ],
+      "mcp_config": ".amp/settings.json",
+      "setup_file": [
+        ".agents/setup",
+        ".agents/resume",
+        ".amp/services.yaml"
+      ],
+      "note": ".agents/setup runs as trusted code; MCP servers in .amp/settings.json need amp mcp approve.",
+      "docs": "https://ampcode.com/docs/orbs/customizing"
+    },
+    {
+      "id": "openhands",
+      "name": "OpenHands",
+      "category": "cloud-agent",
+      "detect": [
+        ".openhands/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md"
+      ],
+      "rules": null,
+      "skills_dir": [
+        ".agents/skills",
+        ".openhands/skills",
+        ".openhands/microagents"
+      ],
+      "mcp_config": null,
+      "setup_file": ".openhands/setup.sh",
+      "hooks_file": ".openhands/hooks.json",
+      "note": ".openhands/setup.sh and .openhands/hooks.json run with no approval step; MCP servers are per user, not per repo.",
+      "docs": "https://docs.openhands.dev/openhands/usage/customization/repository"
+    },
+    {
+      "id": "factory",
+      "name": "Factory Droids",
+      "category": "cloud-agent",
+      "detect": [
+        ".factory/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": ".factory/mcp.json",
+      "setup_file": ".factory/worktree-setups/*.yaml",
+      "hooks_file": ".factory/hooks.json",
+      "note": "Droid also looks for AGENTS.md inside .factory/, .agents/ and .agent/ in each directory up to the git root.",
+      "docs": "https://docs.factory.com/harness/agents-md"
+    },
+    {
+      "id": "gitlab-duo-agent-platform",
+      "name": "GitLab Duo Agent Platform",
+      "category": "cloud-agent",
+      "detect": [
+        ".gitlab/duo/"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        ".gitlab/duo/chat-rules.md"
+      ],
+      "rules": null,
+      "skills_dir": ".agents/skills",
+      "mcp_config": ".gitlab/duo/mcp.json",
+      "setup_file": ".gitlab/duo/agent-config.yml",
+      "note": ".gitlab/duo/agent-config.yml is read from the default branch and its setup_script runs outside the sandbox with GitLab tokens; give it a CODEOWNERS line.",
+      "docs": "https://docs.gitlab.com/user/duo_agent_platform/"
+    },
+    {
+      "id": "copilot-code-review",
+      "name": "GitHub Copilot code review",
+      "category": "review-bot",
+      "detect": [],
+      "instructions": [
+        ".github/copilot-instructions.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        "REVIEW.md"
+      ],
+      "rules": {
+        "format": "copilot-applyto",
+        "dir": ".github/instructions",
+        "ext": ".instructions.md",
+        "keys": {
+          "apply_to": "applyTo",
+          "separator": ",",
+          "all_files": "**",
+          "exclude_agent": "excludeAgent",
+          "exclude_agent_values": [
+            "code-review",
+            "cloud-agent"
+          ]
+        }
+      },
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "a .github/instructions file with excludeAgent: \"cloud-agent\" is read only by code review; files without applyTo are ignored.",
+      "docs": "https://docs.github.com/en/copilot/concepts/agents/code-review"
+    },
+    {
+      "id": "coderabbit",
+      "name": "CodeRabbit",
+      "category": "review-bot",
+      "detect": [
+        ".coderabbit.yaml",
+        ".coderabbit.yml",
+        ".coderabbit.config.ts"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "AGENT.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        ".cursorrules",
+        ".windsurfrules",
+        ".github/copilot-instructions.md",
+        "REVIEW.md"
+      ],
+      "rules": {
+        "format": "coderabbit-filepatterns",
+        "dir": null,
+        "ext": null,
+        "keys": {
+          "config_files": [
+            ".coderabbit.yaml",
+            ".coderabbit.yml"
+          ],
+          "typescript_config": ".coderabbit.config.ts",
+          "schema": "https://coderabbit.ai/integrations/schema.v2.json",
+          "separator": ",",
+          "fragments": [
+            ".coderabbit/*.yaml",
+            ".coderabbit/*.yml"
+          ]
+        }
+      },
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://docs.coderabbit.ai/knowledge-base/code-guidelines"
+    },
+    {
+      "id": "codex-code-review",
+      "name": "OpenAI Codex code review",
+      "category": "review-bot",
+      "detect": [
+        {
+          "file": "AGENTS.md",
+          "pattern": "(?m)^## Code Review Rules"
+        }
+      ],
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "reads the ## Code Review Rules section of the nearest AGENTS.md and posts only P0 and P1 findings on GitHub.",
+      "docs": "https://learn.chatgpt.com/docs/code-review"
+    },
+    {
+      "id": "cursor-bugbot",
+      "name": "Cursor Bugbot",
+      "category": "review-bot",
+      "detect": [
+        ".cursor/BUGBOT.md",
+        ".cursor/config/bugbot.yaml"
+      ],
+      "instructions": [
+        ".cursor/BUGBOT.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "a nested <dir>/.cursor/BUGBOT.md applies below that directory; Bugbot does not apply .cursor/rules.",
+      "docs": "https://cursor.com/docs/bugbot"
+    },
+    {
+      "id": "greptile",
+      "name": "Greptile",
+      "category": "review-bot",
+      "detect": [
+        ".greptile/",
+        "greptile.json"
+      ],
+      "instructions": [
+        ".greptile/rules.md",
+        "CLAUDE.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "path-scoped rules are rules[] with scope globs in .greptile/config.json, a file that also holds hand-written settings, so nothing is generated for it yet; Greptile also reads .cursor/rules at review time.",
+      "docs": "https://www.greptile.com/docs/code-review/greptile-config-reference"
+    },
+    {
+      "id": "sourcery",
+      "name": "Sourcery",
+      "category": "review-bot",
+      "detect": [],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "review rules and their path patterns live in the Sourcery dashboard; nothing in the repo configures it.",
+      "docs": "https://docs.sourcery.ai/reviews/review-rules/"
+    },
+    {
+      "id": "claude-code-review",
+      "name": "Claude Code Review (managed)",
+      "category": "review-bot",
+      "detect": [],
+      "instructions": [
+        "REVIEW.md",
+        "CLAUDE.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "reads the root REVIEW.md and CLAUDE.md at every level.",
+      "docs": "https://code.claude.com/docs/en/code-review"
+    },
+    {
+      "id": "qodo-merge",
+      "name": "Qodo / PR-Agent",
+      "category": "review-bot",
+      "detect": [
+        ".pr_agent.toml"
+      ],
+      "instructions": [
+        "AGENTS.md",
+        "REVIEW.md"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "reads a root REVIEW.md only with [review_agent] enable_review_md = true in .pr_agent.toml.",
+      "docs": "https://docs.qodo.ai/code-review"
+    },
+    {
+      "id": "cubic",
+      "name": "cubic",
+      "category": "review-bot",
+      "detect": [
+        "cubic.yaml"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "path-scoped review rules are reviews.custom_rules[] with include and exclude globs in cubic.yaml, a file that also holds hand-written settings, so nothing is generated for it yet.",
+      "docs": "https://docs.cubic.dev/configure/cubic-yaml.md"
+    },
+    {
+      "id": "devin-review",
+      "name": "Devin Review",
+      "category": "review-bot",
+      "detect": [],
+      "instructions": [
+        "REVIEW.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        ".cursorrules",
+        ".windsurfrules"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "reads REVIEW.md, AGENTS.md, CLAUDE.md and CONTRIBUTING.md at any depth, each scoped to its directory.",
+      "docs": "https://docs.devin.ai/work-with-devin/devin-review"
+    },
+    {
+      "id": "gemini-code-assist",
+      "name": "Gemini Code Assist review",
+      "category": "review-bot",
+      "detect": [
+        ".gemini/config.yaml",
+        ".gemini/styleguide.md"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "the free consumer GitHub app shut down on 2026-07-17; the current docs no longer state where styleguide.md goes.",
+      "docs": "https://docs.cloud.google.com/gemini/docs/code-review/customize-repo-review"
+    },
+    {
+      "id": "gitlab-duo-code-review",
+      "name": "GitLab Duo Code Review",
+      "category": "review-bot",
+      "detect": [
+        ".gitlab/duo/mr-review-instructions.yaml"
+      ],
+      "instructions": [
+        ".gitlab/duo/mr-review-instructions.yaml"
+      ],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "note": "instructions[] with fileFilters globs is a path-scoped format inside a hand-written file, so nothing is generated for it yet; the Code Review Flow does not use AGENTS.md.",
+      "docs": "https://docs.gitlab.com/user/duo_agent_platform/customize/review_instructions/"
+    },
+    {
+      "id": "laravel-boost",
+      "name": "Laravel Boost",
+      "category": "generator",
+      "detect": [
+        {
+          "file": "composer.json",
+          "pattern": "\"laravel/boost\"\\s*:"
+        },
+        "boost.json"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": ".ai/skills",
+      "mcp_config": null,
+      "setup_file": null,
+      "owns": [
+        ".ai/rules/index.md",
+        ".ai/rules/boost/"
+      ],
+      "docs": "https://github.com/laravel/boost"
+    },
+    {
+      "id": "symfony-ai-mate",
+      "name": "Symfony AI Mate",
+      "category": "generator",
+      "detect": [
+        {
+          "file": "composer.json",
+          "pattern": "\"symfony/ai-mate\"\\s*:"
+        }
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "owns": [
+        ".claude/skills/"
+      ],
+      "docs": "https://packagist.org/packages/symfony/ai-mate"
+    },
+    {
+      "id": "nx",
+      "name": "Nx",
+      "category": "generator",
+      "detect": [
+        "nx.json"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://nx.dev/docs/features/enhance-ai"
+    },
+    {
+      "id": "rulesync",
+      "name": "rulesync",
+      "category": "generator",
+      "detect": [
+        ".rulesync/",
+        "rulesync.jsonc"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://github.com/dyoshikawa/rulesync"
+    },
+    {
+      "id": "ruler",
+      "name": "Ruler",
+      "category": "generator",
+      "detect": [
+        ".ruler/"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://github.com/intellectronica/ruler"
+    },
+    {
+      "id": "github-actions",
+      "name": "GitHub Actions",
+      "category": "ci",
+      "detect": [
+        ".github/workflows/"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://docs.github.com/en/actions"
+    },
+    {
+      "id": "forgejo-actions",
+      "name": "Forgejo Actions",
+      "category": "ci",
+      "detect": [
+        ".forgejo/workflows/"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://forgejo.org/docs/latest/user/actions/"
+    },
+    {
+      "id": "gitlab-ci",
+      "name": "GitLab CI/CD",
+      "category": "ci",
+      "detect": [
+        ".gitlab-ci.yml"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "id": "bitbucket-pipelines",
+      "name": "Bitbucket Pipelines",
+      "category": "ci",
+      "detect": [
+        "bitbucket-pipelines.yml"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucketpipelinesyml/"
+    },
+    {
+      "id": "azure-pipelines",
+      "name": "Azure Pipelines",
+      "category": "ci",
+      "detect": [
+        "azure-pipelines.yml"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/"
+    },
+    {
+      "id": "lefthook",
+      "name": "Lefthook",
+      "category": "hook-manager",
+      "detect": [
+        "lefthook.yml",
+        "lefthook.yaml",
+        ".lefthook.yml",
+        ".lefthook.yaml"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://lefthook.dev/"
+    },
+    {
+      "id": "husky",
+      "name": "Husky",
+      "category": "hook-manager",
+      "detect": [
+        ".husky/"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://typicode.github.io/husky/"
+    },
+    {
+      "id": "pre-commit",
+      "name": "pre-commit",
+      "category": "hook-manager",
+      "detect": [
+        ".pre-commit-config.yaml"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://pre-commit.com/"
+    },
+    {
+      "id": "captainhook",
+      "name": "CaptainHook",
+      "category": "hook-manager",
+      "detect": [
+        "captainhook.json"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://docs.captainhook.info/"
+    },
+    {
+      "id": "simple-git-hooks",
+      "name": "simple-git-hooks",
+      "category": "hook-manager",
+      "detect": [
+        {
+          "file": "package.json",
+          "pattern": "\"simple-git-hooks\"\\s*:"
+        },
+        ".simple-git-hooks.json",
+        ".simple-git-hooks.js"
+      ],
+      "instructions": [],
+      "rules": null,
+      "skills_dir": null,
+      "mcp_config": null,
+      "setup_file": null,
+      "docs": "https://github.com/toplenboren/simple-git-hooks"
+    }
+  ]
+}

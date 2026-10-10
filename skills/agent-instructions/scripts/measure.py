@@ -6,6 +6,7 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 SKIPPED_DIRECTORIES = {".git", "node_modules", "vendor", ".venv", "venv", "dist", "build", ".next", "target", "storage"}
@@ -38,9 +39,13 @@ PIPE_TO_SHELL = re.compile(r"\b(curl|wget|iwr|Invoke-WebRequest)\b[^\n|]*\|\s*(s
 SKILL_BROAD_TOOLS = re.compile(r"^allowed-tools:.*\bBash\b(?!\()", re.M)
 COMMENT_IMPERATIVE = re.compile(r"<!--(?:(?!-->).)*\b(ignore (all|previous)|disregard|do not tell|don't mention|execute|exfiltrat|send .* to http)\b", re.I | re.S)
 SECRET = re.compile(r"AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|glpat-[A-Za-z0-9_-]{20,}|sk-(ant-)?[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----")
+ZERO_WIDTH_JOINER = "\u200d"
+EMOJI_MODIFIERS = {"\ufe0f", "\U0001f3fb", "\U0001f3fc", "\U0001f3fd", "\U0001f3fe", "\U0001f3ff"}
 CODEX_PROJECT_DOC_MAX_BYTES = 32 * 1024
 ANTHROPIC_LINE_TARGET = 200
 LONG_LINE_CHARACTERS = 400
+MARKDOWN_BYTES_PER_TOKEN = 2.9
+BYTES_PER_TOKEN_VARIABLE = "AGENT_INSTRUCTIONS_BYTES_PER_TOKEN"
 
 
 def read_text(path):
@@ -73,11 +78,31 @@ def tracked_files(root):
     return set(output.splitlines())
 
 
-def estimate_tokens(byte_count):
-    return round(byte_count / 4)
+def estimate_tokens(byte_count, bytes_per_token):
+    return round(byte_count / bytes_per_token)
 
 
-def file_facts(root, path):
+def positive_ratio(value):
+    try:
+        ratio = float(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"{value!r} is not a number of bytes per token")
+    if ratio <= 0:
+        raise argparse.ArgumentTypeError(f"{value!r} must be above 0 bytes per token")
+    return ratio
+
+
+def default_bytes_per_token():
+    configured = os.environ.get(BYTES_PER_TOKEN_VARIABLE)
+    if not configured:
+        return MARKDOWN_BYTES_PER_TOKEN
+    try:
+        return positive_ratio(configured)
+    except argparse.ArgumentTypeError as error:
+        sys.exit(f"{BYTES_PER_TOKEN_VARIABLE}: {error}")
+
+
+def file_facts(root, path, bytes_per_token):
     raw = read_text(path)
     loaded = strip_html_comments(raw)
     prose = strip_code_fences(loaded)
@@ -86,7 +111,7 @@ def file_facts(root, path):
         "lines": len(raw.splitlines()),
         "bytes": len(raw.encode("utf-8")),
         "loaded_bytes": len(loaded.encode("utf-8")),
-        "est_tokens": estimate_tokens(len(loaded.encode("utf-8"))),
+        "est_tokens": estimate_tokens(len(loaded.encode("utf-8")), bytes_per_token),
         "emphasis": len(EMPHASIS.findall("\n".join(prose))),
         "long_lines": sum(1 for line in prose if len(line) > LONG_LINE_CHARACTERS),
         "imports": import_references(prose),
@@ -239,6 +264,17 @@ def skill_directories(root, tracked):
     return report, sorted(overlap)
 
 
+def is_emoji(character):
+    return unicodedata.category(character) == "So"
+
+
+def joins_emoji(text, index):
+    before = index - 1
+    while before >= 0 and text[before] in EMOJI_MODIFIERS:
+        before -= 1
+    return before >= 0 and index + 1 < len(text) and is_emoji(text[before]) and is_emoji(text[index + 1])
+
+
 def locate(text, match):
     line = text.count("\n", 0, match.start()) + 1
     return line, match.group(0)
@@ -291,6 +327,8 @@ def security_findings(root, tracked):
         text = read_text(path)
         name = str(path.relative_to(root))
         for match in INVISIBLE.finditer(text):
+            if match.group(0) == ZERO_WIDTH_JOINER and joins_emoji(text, match.start()):
+                continue
             line, character = locate(text, match)
             findings.append(("error", f"{name}:{line}: invisible or bidi character U+{ord(character):04X}"))
         for pattern, level, label in ((PIPE_TO_SHELL, "error", "fetch-and-execute instruction"), (SECRET, "error", "possible secret"), (COMMENT_IMPERATIVE, "warn", "imperative inside an HTML comment")):
@@ -345,7 +383,7 @@ def findings_for(report, budget_lines):
     return findings
 
 
-def measure(root, budget_lines):
+def measure(root, budget_lines, bytes_per_token=MARKDOWN_BYTES_PER_TOKEN):
     tracked = tracked_files(root)
     paths = [root / relative for relative in ROOT_INSTRUCTION_FILES if (root / relative).exists() or (root / relative).is_symlink()]
     for relative in RULE_DIRECTORIES:
@@ -353,7 +391,7 @@ def measure(root, budget_lines):
         if directory.is_dir():
             paths.extend(sorted(path for path in directory.rglob("*") if path.is_file() and path.suffix in (".md", ".mdc", ".php")))
     paths.extend(nested_instruction_files(root))
-    files = [file_facts(root, path) for path in dict.fromkeys(paths)]
+    files = [file_facts(root, path, bytes_per_token) for path in dict.fromkeys(paths)]
     launch_bytes, launch_lines, missing = launch_cost(root)
     codex_file = root / "AGENTS.override.md" if (root / "AGENTS.override.md").is_file() else root / "AGENTS.md"
     skills, duplicated = skill_directories(root, tracked)
@@ -365,7 +403,8 @@ def measure(root, budget_lines):
         "root": str(root),
         "claude_agents_relation": claude_agents_relation(root),
         "claude_md_launch_bytes": launch_bytes,
-        "claude_md_launch_tokens_est": estimate_tokens(launch_bytes),
+        "claude_md_launch_tokens_est": estimate_tokens(launch_bytes, bytes_per_token),
+        "bytes_per_token": bytes_per_token,
         "claude_md_launch_lines": launch_lines,
         "agents_md_chain_bytes": len(read_text(codex_file).encode("utf-8")) if codex_file.is_file() else 0,
         "files": files,
@@ -382,7 +421,7 @@ def measure(root, budget_lines):
 def print_text(report):
     print(f"Repository: {report['root']}")
     print(f"CLAUDE.md / AGENTS.md: {report['claude_agents_relation']}")
-    print(f"Loaded by Claude Code at launch: ~{report['claude_md_launch_lines']} lines, {report['claude_md_launch_bytes']} bytes, ~{report['claude_md_launch_tokens_est']} tokens")
+    print(f"Loaded by Claude Code at launch: ~{report['claude_md_launch_lines']} lines, {report['claude_md_launch_bytes']} bytes, ~{report['claude_md_launch_tokens_est']} tokens at {report['bytes_per_token']} bytes per token")
     print()
     print(f"{'file':60} {'lines':>6} {'bytes':>8} {'~tok':>6} {'emph':>5} {'long':>5}")
     for facts in report["files"]:
@@ -407,9 +446,10 @@ def main():
     parser.add_argument("--security-only", action="store_true", help="report only the security scan: hidden characters, fetch-and-execute, secrets, broad grants, risky MCP and hook config")
     parser.add_argument("--budget-lines", type=int, default=0, help="fail when what Claude Code loads at launch (CLAUDE.md, CLAUDE.local.md, unscoped rules, imports) exceeds this many lines")
     parser.add_argument("--fail-on", choices=["error", "warn", "never"], default="error", help="exit 1 on findings at or above this level")
+    parser.add_argument("--bytes-per-token", type=positive_ratio, default=default_bytes_per_token(), help=f"bytes per token for the token estimates (default {MARKDOWN_BYTES_PER_TOKEN}, measured on Markdown instruction files with claude -p /context; override with {BYTES_PER_TOKEN_VARIABLE})")
     arguments = parser.parse_args()
     root = Path(arguments.root).resolve()
-    report = measure(root, arguments.budget_lines)
+    report = measure(root, arguments.budget_lines, arguments.bytes_per_token)
     if arguments.security_only:
         report["findings"] = report["security"]
         for finding in report["findings"]:
