@@ -108,7 +108,9 @@ exclusions → [agents.md](agents.md). Read it before dispatching anything.
 more → back with a comment naming exactly what's missing. Not a rubber stamp — a
 missing skeleton is a refinement conversation. DoR and DoD are **not negotiable per
 ticket** (only per team, in the retro); structurally missed ⇒ the definition is wrong,
-not the team.
+not the team. A skill file or doc carrying a team's ratified agreement is a governance
+document: a change to it needs that team's consent before it merges, and its canonical
+copy changes in the same pass.
 
 Check mechanically: `python3 scripts/ticket_lint.py body.md --gate ready|agent-ready
 --title "..."` — PASS/FAIL/WARN per criterion (EN + NL headings), MANUAL for what needs
@@ -149,8 +151,8 @@ merge?" ("mag dit gemerged worden"):
      rollback path, or the irreversibility stated; risk-tier paths (auth, sessions,
      billing, migrations, secrets) get their owner's review; no new critical findings
      or unchecked dependencies.
-   - **Legible** — the PR states what/why, verification, risk, rollback, and matches its
-     diff.
+   - **Legible** — the PR opens with the problem and what prompted it, states what/why,
+     verification, risk, rollback, and matches its *current* diff.
 3. **Agent-authored:** builder ≠ judge. The authoring agent never merges its own PR; AI
    review is an input, never the approval; where a second human exists the dispatcher
    is not the sole approver. Every edited or deleted test or snapshot gets a human read
@@ -179,6 +181,18 @@ rule has an escape *with a reason* — "not deployed" alone is not one.
 Reads are free. **Confirm before**: bulk status moves, closing anything, rewriting a
 description someone else wrote, touching more than ~3 tickets — show the intended diff
 first. Descriptions **replace** on write in both adapters: read → merge → write.
+
+- **Lint before, read back after.** `ticket_lint.py` on the draft before the write; after
+  it, read the ticket back (boards mangle rules, links and escapes, and drop unknown tags
+  without an error) and query the fields you set to see the values stuck.
+- **A status is a claim about reality.** Move a ticket only to a status that is true now:
+  review needs a PR to review and a named reviewer; merged work is merged, not "for review".
+- **Cite only what exists.** Never name a PR/MR number before the forge has assigned it.
+- **Naming someone notifies nobody** — use the tracker's real @mention, and never guess
+  who decides; ask.
+- **Client-visible boards are read by the client.** Internal strategy and org work go on
+  the internal backlog; ask before writing anything to a client board that is not that
+  client's own work.
 
 **Cross-references are complete links.** Every ticket named in a description or comment
 — blocker, split child, "not in scope, that's X", related work — goes in as the full

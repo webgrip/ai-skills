@@ -6,18 +6,22 @@ large-N dataset), **CONSENSUS** (independent vendors/practitioners converge),
 
 ## The ticket is the agent's prompt
 
-- **EVIDENCE** — 3,180 real Copilot-coding-agent PRs (AIDev dataset): well-scoped issues
-  +16% merge rate, self-contained +17%, unambiguous +8%, actionable steps +8%; **longer
-  descriptions −9%**, external dependencies −7%, environment specs −9%,
-  performance-sensitive work −34%.
+- **EVIDENCE** — 3,180 real Copilot-coding-agent PRs (AIDev dataset), merge rate of high-
+  vs low-scoring issues per criterion: well-scoped +16%, self-contained +17%, expected and
+  edge behaviour specified +11%, unambiguous +8%, actionable steps +8%; external
+  dependencies −7%, environment specs −9%, performance-sensitive work −34% (only 21 such
+  issues). In the paper's predictive model, **body length is the top-ranked feature**: a
+  longer body lowers the predicted merge probability by up to 9%, more comments by 11%.
   [arxiv.org/html/2512.21426v1](https://arxiv.org/html/2512.21426v1)
   → the skeleton, the concision cap, self-containedness, splitting env/setup out, and
   routing performance-sensitive work to humans.
 - **EVIDENCE** — UnderSpecBench (2,208 prompt variants, Claude Code/Codex/OpenCode):
   safe success 67.9% → 8.6% as underspecification rises; wrong-target actions 9.6% →
   75.1%. Agents guess instead of asking ([arxiv.org/pdf/2607.02294](https://arxiv.org/pdf/2607.02294));
-  Ambig-SWE: interactivity recovers up to 74%, but "models default to non-interactive
-  behavior unless explicitly prompted"
+  Ambig-SWE: interactivity recovers up to 74%, but "LLMs default to non-interactive
+  behavior without explicit encouragement"; Claude Sonnet 4 recovers 89% of its
+  full-spec performance by asking and tells under- from well-specified input 89% of the
+  time, while most other models can't tell them apart
   ([arxiv.org/html/2502.13069](https://arxiv.org/html/2502.13069))
   → burn ambiguity down before dispatch; zero open design choices at agent-ready.
 - **EVIDENCE** — "What makes a good bug report for an AI agent" (433 SWE-bench issues ×
@@ -82,6 +86,12 @@ large-N dataset), **CONSENSUS** (independent vendors/practitioners converge),
   ([arxiv.org/html/2601.20103v1](https://arxiv.org/html/2601.20103v1))
   → protected areas always include tests + CI config; held-out checks at review; green
   CI alone never closes a ticket; fresh-context review against intent and scope.
+- **EVIDENCE** — SWE-Bench+: 32.67% of SWE-Agent+GPT-4's "successful" patches had the
+  solution spelled out in the issue or its comments, and 31.08% passed only because the
+  tests were weak; filtering both drops its resolution rate from 12.47% to 3.97%
+  ([arxiv.org/html/2410.06992](https://arxiv.org/html/2410.06992))
+  → file pointers help, but hints in the ticket inflate visible success: the
+  Verification checks the outcome independently of the hints.
 - **EVIDENCE** — LLMs "improving" tickets hallucinate absent Expected/Actual sections
   ~50% of the time even when told not to
   ([arxiv.org/html/2504.18804](https://arxiv.org/html/2504.18804))
@@ -141,6 +151,11 @@ large-N dataset), **CONSENSUS** (independent vendors/practitioners converge),
   code lines, ~10× slower than iterative prompting on small work
   ([Scott Logic](https://blog.scottlogic.com/2025/11/26/putting-spec-kit-through-its-paces-radical-idea-or-reinvented-waterfall.html))
   → ceremony scales with size × risk × ambiguity; chores stay title + Problem.
+- **CONSENSUS** — Example Mapping: a well-understood, well-sized story maps in about 25
+  minutes; a table covered in red question cards means much is still unknown, one covered
+  in blue rule cards means the story is big and complicated
+  ([Wynne, Introducing Example Mapping](https://cucumber.io/blog/bdd/example-mapping-introduction/))
+  → many open questions = not Ready; many rules = split.
 - **VENDOR** — Atlassian's AI-native team: tickets as "executable specs" scored 4.47/5
   vs 2.72, 83% vs 6% agent-ready, widest gap = AC clarity; ~180 small tickets/engineer
   vs ~43 ([Atlassian](https://www.atlassian.com/blog/jira/writing-tickets-for-ai-agents))
@@ -372,6 +387,10 @@ large-N dataset), **CONSENSUS** (independent vendors/practitioners converge),
 
 ## Debunked — never cite these
 
+- **"The Scrum Guide requires a Definition of Ready"**: the 2020 guide never uses the
+  phrase; it says items that can be Done within one Sprint "are deemed ready for
+  selection" ([scrumguides.org](https://scrumguides.org/scrum-guide.html)). A DoR is a
+  team agreement — which is why it changes only per team, in the retro.
 - **The 1×/10×/100× defect-cost curve**: traced to untraceable 1981 training notes
   (Bossavit); the largest study (171 projects) found **no delayed-issue effect**
   ([Menzies et al., EMSE 2017](https://arxiv.org/pdf/1609.04886)). The defensible

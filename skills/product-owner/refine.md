@@ -305,23 +305,52 @@ More triage heuristics for an ungroomed backlog:
 
 For a whole backlog: themed batches of ~8, or the fan-out (proven on 92 tickets / 11
 agents; **60/92 came back flagged** — stale premises, drift, real bugs — that's the
-sweep working, not a problem with it):
+sweep working, not a problem with it). Many agents draft; **one writer** writes.
 
-1. **Packets**: theme groups of ~7–10 as JSON files (`packet-<group>.json`). Resolve
-   field/option ids **once** and put them in the brief — never per task (payload trap,
-   [adapters/clickup.md](adapters/clickup.md)).
+1. **Set and packets**: collect the ids, skip superseded tickets, group by theme into
+   packets of ~7–10 (`packet-<group>.json`). Resolve field/option ids **once** and put
+   them in the brief — never per task (payload trap, [adapters/clickup.md](adapters/clickup.md)).
 2. **Shared brief** (`brief.md`): the DoR + template contract, research standard (cite
-   `file:line`; stale premises are findings; never invent), output contract — write
-   `refined-<group>.json` `[{"n", "body", "flags"}]`, validate it parses, final message
-   = one line per ticket, never paste bodies into it.
-3. **One agent per packet** (parallel, read-only research).
-4. **Central validation** before applying: JSON parses · every ticket covered · format
-   matches the adapter (checkbox markup present; no markdown smells in HTML) · cited
-   repo paths exist (beware regex false-positives on basename fragments — check context
-   before accusing) · spot-read 2–3 drafts for invented claims.
-5. **Apply centrally in one session** (sequential writes — parallel sessions stress MCP
-   servers; see the adapter's etiquette), set labels/statuses, report flags grouped:
-   stale premises / drift / real bugs / evidence gaps.
+   `file:line`; stale premises are findings), and the rewrite rule — *restructure only,
+   invent nothing, never drop a fact, path, link, commit, question or criterion*. Output
+   contract: `refined-<group>.json` `[{"n", "body", "flags"}]`, validated to parse; final
+   message = one line per ticket, never bodies. Check the brief against the team's golden
+   examples before dispatch — a clash between them splits the drafts.
+3. **Drafting agents only read** — one per packet, in parallel. Each saves the original
+   **mechanically** (tool output piped to a file, never retyped), writes the new body,
+   lints it, and flags contradictions, stale premises, duplicates, split candidates and
+   missing dependencies.
+4. **Central validation** before any write: JSON parses · every ticket covered · the gate
+   passes · format matches the adapter (checkbox markup present; no markdown smells in
+   HTML) · cited repo paths exist (beware regex false-positives on basename fragments) ·
+   **no token lost**: every path, URL, short SHA and `file:line` in the original is still
+   in the draft after normalising the tracker's escapes — a lost token blocks that write ·
+   spot-read 2–3 drafts for invented claims.
+
+   ```python
+   TOKENS = re.compile(r"`[^`\n]+`|https?://[^\s\])>*]+|\b[0-9a-f]{7,12}\b|[\w./-]+\.\w+:\d+")
+   unescape = lambda text: text.replace("\\-", "-").replace("\\.", ".").replace("\\_", "_")
+   lost = set(TOKENS.findall(unescape(original))) - set(TOKENS.findall(unescape(draft)))
+   ```
+5. **One writer, sequential** (parallel sessions stress MCP servers; see the adapter's
+   etiquette), per ticket: back up the live description by tool → update only the
+   description → read it back and check every heading and URL → log the result →
+   **stop at the first anomaly** and diagnose before touching the next ticket.
+6. **State outlives the session.** Backups, drafts, the validation result and the apply
+   log go to a durable directory (the repo's ignored work dir, a folder under `$HOME`) —
+   never only a session scratchpad: a session killed mid-run by a usage limit takes the
+   scratchpad with it, and what was written becomes unknowable. The log is a state file
+   (`{"updated": [...], "created": {...}, "comments": [...], "relations": [...]}`) saved
+   after every call, so a rerun skips what is done, ids created earlier in the run fill
+   placeholders, and one failing ticket doesn't stop the rest of a create pass.
+7. **Report flags grouped**: stale premises / drift / real bugs / evidence gaps / split
+   candidates / missing dependencies / duplicates — the drafters' flags are refinement
+   work, not noise.
+
+**A diagnosis from one case is a hypothesis.** When a drafter or the writer reports a board
+behaviour ("the tracker drops named links") and proposes a mass rewrite, reproduce it on a
+scratch ticket with variants first — one variable per variant — and change only the drafts
+the confirmed trigger affects. Delete the scratch ticket only with approval.
 
 Gotcha: a sub-agent that itself spawns children may stall after its children finish
 (their notifications bubble to the main loop) — nudge it with a message carrying the

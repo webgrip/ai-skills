@@ -1,5 +1,8 @@
 # Agent execution — running a board where AI agents do the work
 
+Contents: agent-ready gate · dispatch · claim and ownership · frozen scope · finish,
+review, accept · machine-authored tickets · pilot · measuring the delegation.
+
 The ticket body is the executing agent's prompt: it reads title, body, and all comments,
 decomposes into a checklist, and stops when its check passes. **Agents almost never ask
 clarifying questions unprompted — they guess.** As underspecification rises, safe
@@ -105,6 +108,17 @@ Tickets created by agents (incident bots, PRD decomposition, sweep agents) enter
 human prioritization pass. AI-slop economics: every criterion that maps to an automated
 check lets red CI bounce work back with zero human minutes — no human review until
 automated gates are green.
+
+## Start with a pilot
+
+Before delegating a ticket class, pilot it: about five small, well-described agent-ready
+tickets, two harnesses side by side where you can. Measure merged-without-rework, reviewer
+minutes and cost per PR. Guardrails: the agent opens **draft** PRs only and never merges;
+it runs under a least-privilege service account limited to the target repos, with a
+per-run budget, in a sandbox. Review-bot and CI rate limits are per identity, so one bot
+account gets one developer's capacity — check them before scaling. Good first fare: small
+clear tickets, red pipelines, applying review comments, dependency upgrades; leave complex
+domain logic to humans until the pilot says otherwise.
 
 ## Measure the delegation, not the vibes
 

@@ -8,6 +8,9 @@ indicative. Schemas are deferred:
 Instance operations (deployment, token creation/rotation) belong to the instance's ops
 runbook — the Board contract points there.
 
+Contents: concept map · HTML description template · pick-up queue · semantics ·
+scripted access · tool catalog.
+
 ## How the generic concepts map here
 
 | Skill concept | Vikunja realization |
@@ -61,6 +64,14 @@ non-empty before writing** (a failed extraction clobbers the project description
 spot-check with `project_get` after.
 
 ## Semantics worth knowing (from the live schemas)
+
+- **The output is formatted text, and a list position is not an id.** `labels_list`
+  returns lines like `36. ready (46a758)` followed by `[ID: 28]`; `task_get` returns a
+  formatted string, not JSON. Parse the explicit `[ID: n]` field, never the position — a
+  position used as an id puts the wrong label on the ticket, and one that matches a label
+  you can't see answers 403 and fails the whole bulk call. Load a tool's schema before
+  the first call instead of guessing parameters (guessed `tasks_list` parameters answer
+  400), and read the object back after every write.
 
 - `task_update` / `project_update` **read first — fields you do not name survive.** A
   named `description` still replaces that field wholesale: read → merge → write.

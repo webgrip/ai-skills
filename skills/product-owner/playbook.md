@@ -1,7 +1,8 @@
 # Playbook — recipes for the common PO operations
 
-Create · Gate check · WIP · Prioritize · Merge check · Close · Queue ops · Audit · Sweep ·
-Dedupe · Verify-and-close · Product-name rewrite · Sequencing · Sprint pull · Rework.
+Create · Gate check · WIP · Prioritize · Merge check · Stale-PR triage · Close · Queue ops ·
+Audit · Sweep · Dedupe · Verify-and-close · Product-name rewrite · Sequencing · Sprint pull ·
+Rework.
 Tool-agnostic sequences; the exact calls, payload shapes, and traps are in the adapter
 ([adapters/vikunja.md](adapters/vikunja.md) / [adapters/clickup.md](adapters/clickup.md)) —
 read it before the first write of a session. Board gates and ids: the Board contract.
@@ -62,6 +63,23 @@ the whole board, not your memory.
    current head, blocking threads) and name any trap the green badge rests on.
 3. Review intent and scope; verdict per [merge.md](merge.md). Not mergeable → one comment
    naming each unmet line, back to the author. Never merge an agent's PR on its say-so.
+
+## Stale-PR triage (before anyone merges an old PR)
+
+Merging an old PR blind can undo work done since — re-creating something retired,
+reviving a superseded bot PR. Triage first, read-only (one agent per few PRs is fine):
+
+1. **Facts per PR**: commits ahead of and behind the base · whether its content already
+   landed (forges don't always close a PR whose commits reached the base by a direct
+   push — compare trees with the after-merge check in [merge.md](merge.md)) · whether the
+   base fixed the same thing another way · whether the touched files still exist ·
+   conflicts · whether it breaks the repo's current agent instructions or conventions.
+2. **CI traps**: a red run the base shares is not the PR's fault — compare with the base's
+   own latest run; a path-filtered workflow that never ran is not a pass.
+3. **Report per PR** — TL;DR · State · Relevance · Risk · Recommendation (merge after
+   rebase and review / rework / close with a reason) — then an action order with the
+   highest-hazard closes first. Closing is the owner's call: ask, then close with the
+   reason on the PR.
 
 ## Close with evidence
 

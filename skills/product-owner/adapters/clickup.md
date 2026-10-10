@@ -6,6 +6,10 @@ Workspace/space/list ids, status sets, custom-field catalogs and tag sets are **
 facts** — the Board contract carries them (or you resolve them live); this file carries
 only behavior that holds on any ClickUp workspace.
 
+Contents: concept map · resolving the vocabulary · payload trap · descriptions replace ·
+markdown round trip · task ids in forge text · scripted REST reads · pagination · time in
+status · other behaviours.
+
 ## How the generic concepts map here
 
 | Skill concept | ClickUp realization |
@@ -24,10 +28,14 @@ only behavior that holds on any ClickUp workspace.
 
 ## Resolving this board's vocabulary
 
-`clickup_get_list {list_name}` or `clickup_get_workspace_hierarchy` → the list id (**ask
-which one** when the name is ambiguous — "the backlog" can match dozens);
+`clickup_get_workspace_hierarchy {space_ids: [<space>], max_depth: "2"}` → the list id
+(it pages per 10 spaces by default — follow `cursor`). `clickup_get_list {list_name}` can
+answer "not found" for a list that exists, so a miss there is not proof of absence. **Ask
+which one** when the name is ambiguous — "the backlog" can match dozens.
 `clickup_get_list {list_id}` → *that* list's statuses; `clickup_get_custom_fields
-{space_id}` → which fields exist there.
+{space_id}` → which fields exist there. **Custom fields are per space**: the same field
+name carries a different id in every space, so ids a contract records for one space never
+apply to another — resolve them per space.
 
 **Status *types* vs meaning**: every status has a ClickUp type (open/unstarted/custom/done/
 closed). Teams routinely keep type-"done" statuses (e.g. `merged`, `testing`, `carryover`)
@@ -69,6 +77,32 @@ escaping again.
 named and bare links alike come back as plain text, without the URL. Quote prose with `>`, keep
 links out of the paragraphs right before a fence, and after every description write
 read it back and check that each URL you sent is still there.
+
+## Task ids in forge text
+
+Tracker integrations scan PR/MR titles, descriptions, comments and commit messages for task
+ids and link whatever they find: an unrelated task cited as context gets linked (and
+sometimes a bot note) it should never have had. Put a task id only where you mean to link
+— the title or the `Refs CU-<task-id>` trailer — and keep unrelated task ids out of PR/MR
+text. GitLab's ClickUp integration links `CU-<id>`, `#<id>`, `<list prefix>-<id>` and full
+custom ids; prefer `CU-`, because `#<id>` can resolve to a GitLab issue. A spelling it does
+not parse (`clickup-<id>`) links nothing, silently.
+
+## Scripted reads through the REST API
+
+For automation outside the MCP (a CI job, a bot that reads the ticket behind a PR):
+
+- **Least privilege.** A personal token acts with all its user's rights in every workspace
+  they belong to. Automation reads with a view-only guest limited to the lists it needs.
+- **Call:** `GET https://api.clickup.com/api/v2/task/{id}?include_markdown_description=true`
+  with header `Authorization: pk_…` (personal token, no `Bearer`; OAuth tokens take
+  `Bearer`). Custom ids add `custom_task_ids=true&team_id=<workspace id>`.
+- **Link forms to parse:** `app.clickup.com/t/<id>`, `app.clickup.com/t/<workspace>/<id>`,
+  `CU-<id>`.
+- **Errors:** a task outside the guest's lists answers 404 or "Team not authorized" —
+  skip it with a notice; a revoked or invalid token is a failure of the run.
+- **Webhooks in:** verify `X-Signature`, the hex HMAC-SHA256 of the raw request body keyed
+  with the `secret` returned when the webhook was created; reject a mismatch.
 
 ## Pagination
 

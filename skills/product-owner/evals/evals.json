@@ -168,6 +168,28 @@
       ]
     },
     {
+      "id": "bulk-rewrite-forty-tickets",
+      "prompt": "Rewrite the descriptions of all 40 open tickets on the platform backlog to the new template. Use subagents so it goes fast.",
+      "expect_trigger": true,
+      "assertions": [
+        "Has subagents draft in parallel but only read, and a single writer apply the updates one ticket at a time",
+        "Takes a mechanical backup of each live description before writing it and reads the ticket back after the write, stopping at the first anomaly",
+        "Validates that no path, URL, short SHA or file:line from the original is lost in the draft before writing",
+        "Keeps backups and the apply log somewhere durable outside the session scratchpad so a rerun can skip what is done",
+        "Asks for confirmation before the bulk write"
+      ]
+    },
+    {
+      "id": "fix-pushed-after-merge",
+      "prompt": "The MR for the login timeout was squash-merged this morning, but I pushed two review fixes to its branch afterwards. Can I delete the branch now?",
+      "expect_trigger": true,
+      "assertions": [
+        "Says commits pushed after the merge never reached the target and must be checked before deleting the branch",
+        "Compares trees rather than commits (git merge-tree against the target), because the squash changed every SHA",
+        "Moves anything left behind onto a fresh branch as a new MR before the old branch is deleted"
+      ]
+    },
+    {
       "id": "no-trigger-for-plain-code-review",
       "prompt": "Review this diff for bugs and naming issues before I push it.",
       "expect_trigger": false,

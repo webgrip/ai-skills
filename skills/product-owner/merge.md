@@ -1,5 +1,8 @@
 # Definition of Mergeable — may this change land on main?
 
+Contents: the portable DoM · enforcement in the forge · agent-authored changes · the merge
+check · stacks, scope repair and the after-merge check · escapes · merge folklore.
+
 Three definitions, three questions. **DoR**: may work on this ticket start? **DoM**: may
 this *change* land on the shared branch? **DoD**: is the ticket's outcome delivered? The
 DoM is the gate between review and merge, and it exists because **merged ≠ done, green ≠
@@ -32,7 +35,10 @@ binary, and each has an escape *with a reason written in the PR* — silence is 
 4. **Approved by a qualified non-author, on the final revision.** A push after approval
    voids it; the last pusher never supplies the only approval. Qualified = has history in
    the touched files, or is their named owner — familiarity roughly doubles the share of
-   useful review comments. **A second approval goes by risk tier** (the contract's
+   useful review comments. Suggest one from data and show it: who reviewed most of the
+   last ~60 merged PRs, and who wrote the area
+   (`git log --since=<date> --format='%an' -- <paths> | sort | uniq -c | sort -rn`).
+   **A second approval goes by risk tier** (the contract's
    human-review-mandatory paths; security paths above all — single reviewers miss most
    planted vulnerabilities), never by default. Approvals without any discussion on
    non-trivial changes go with more post-release defects — look twice at one.
@@ -44,8 +50,11 @@ binary, and each has an escape *with a reason written in the PR* — silence is 
 6. **One ticket, one logical change** — it references exactly one ticket (the contract's
    trailer), touches only what that ticket names (Protected areas untouched), keeps
    refactoring out of behavior changes, and is the only open PR for that ticket.
+   Application code inside a tooling or docs PR comes out
+   ([scope repair](#stacks-scope-repair-and-what-a-merge-left-behind)).
 7. **Reviewable** — past ~400 changed lines or ~20 files (lockfiles and generated files
-   aside), split, stack, or say why it cannot be smaller. A split trigger, not a cap: risk
+   aside), split, stack ([stacks](#stacks-scope-repair-and-what-a-merge-left-behind)), or
+   say why it cannot be smaller. A split trigger, not a cap: risk
    rises with files touched and churn, but no study has estimated a hard threshold.
 8. **Tests move with the behavior** — changed behavior has tests in the same change that
    execute the changed lines and assert on them; no existing test deleted, skipped, or
@@ -67,9 +76,13 @@ binary, and each has an escape *with a reason written in the PR* — silence is 
 
 ### 5 · Legible
 
-13. **The PR says what and why, how it was verified, the risk, and the rollback** — and
-    every claim matches the diff. Verification means the ticket's Verification output or
-    where to read it, never "tested locally".
+13. **The PR opens with the problem and what prompted the change**, then what changed
+    and why, how it was verified, the risk, and the rollback — and every claim matches the
+    *current* diff: update the description after every push and read it back.
+    Verification means the ticket's Verification output or where to read it, never
+    "tested locally". A claim about state outside the diff (another PR, a release, a
+    version, "this never worked") is re-checked right before the merge: the forge or
+    release API for state, `git log -- <file>` and `git show <sha>^:<file>` for history.
 14. **History lands clean** — no `fixup!`/WIP commits under a merge or rebase style; the
     subject follows the repo's convention; docs that change with the code are in the
     change (their *review* never blocks).
@@ -180,6 +193,38 @@ Everything above, plus — because the author will not ask and does not tire of 
    unmet line, back to the author; **do not fix it inside the review**. A PR closed
    unmerged always gets a reason (duplicate, superseded, wrong approach, abandoned) —
    rejections without one blind the per-class learning in [flow.md](flow.md).
+
+## Stacks, scope repair, and what a merge left behind
+
+**Stacked PRs.** Stack only to keep one large review small; an independent fix targets the
+base. Each PR in a stack merges into the base, bottom-up, never into the PR below it: a PR
+merged into another PR's branch reaches the base without its own approval and afterwards
+shows zero changes. A squash merge strands everything stacked on it, so once the bottom
+lands, move the next branch onto the base past the old commits —
+`git rebase --onto origin/<base> <last commit of the landed PR> <next-branch>` — and drop
+commits already in. Native stacks exist on GitHub (`gh stack`; a stack rebase keeps
+approvals on unchanged code); GitLab infers stacks from branch topology; Forgejo and Gitea
+have none, so there an agent workflow sequences independent PRs, ordered by dependency
+relations on their tickets. Check the forge's current docs before planning on either.
+
+**Application code in a tooling or docs PR.** Take it out without losing it: park the
+commit (`git branch -f local/<topic> <sha>`), `git revert --no-edit <sha>` in the PR, restore
+single files from the base where needed, and confirm the PR no longer touches them with
+`git diff --stat origin/<base>...HEAD -- <app paths>`. A check the PR introduces lists
+today's violations as a baseline; their fixes are follow-up PRs.
+
+**After the merge.** Commits pushed to a branch after its PR merged never reach the target —
+late review fixes are the usual casualty. Compare trees, not commits (a squash changes every
+SHA):
+
+```bash
+t=$(git merge-tree --write-tree origin/<target> <branch> | head -1)
+[ "$t" = "$(git rev-parse 'origin/<target>^{tree}')" ] && echo "fully in target" \
+  || git diff --stat origin/<target> "$t"
+```
+
+Whatever it lists goes onto a fresh branch (cherry-pick) as a new PR. The same check says
+which old branches are safe to delete.
 
 ## Escapes and exceptions
 
