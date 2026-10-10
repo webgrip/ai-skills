@@ -1,0 +1,21 @@
+{
+  "name": "subagent-fleet",
+  "displayName": "Subagent Fleet",
+  "description": "Runs several coding agents at once on shared repositories without losing work or trust: one worktree and test database per agent, a brief with local-only commits and stop-on-block, steering and resuming background subagents, background tasks and timeouts, landing agent commits by exact paths and fast-forward only, transcripts as the record, and read-only scripts that inventory leftover worktrees, branches and processes and search session transcripts.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "subagents",
+    "multi-agent",
+    "orchestration",
+    "git-worktree",
+    "claude-code",
+    "agentic-coding",
+    "transcripts",
+    "parallel-sessions"
+  ]
+}

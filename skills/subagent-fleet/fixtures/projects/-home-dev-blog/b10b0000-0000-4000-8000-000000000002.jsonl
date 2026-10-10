@@ -1,0 +1,1 @@
+{"type": "assistant", "timestamp": "2026-10-01T10:06:00.000Z", "sessionId": "b10b0000-0000-4000-8000-000000000002", "cwd": "/home/dev/blog", "message": {"role": "assistant", "content": [{"type": "tool_use", "id": "toolu_4", "name": "Bash", "input": {"command": "rm -rf build"}}]}}

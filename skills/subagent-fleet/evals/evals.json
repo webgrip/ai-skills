@@ -1,0 +1,76 @@
+{
+  "skill_name": "subagent-fleet",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "fan-out-fixes-on-colleagues-branches",
+      "prompt": "Spin up three agents in parallel to fix the open review threads on MRs 41, 42 and 43. They're colleagues' branches and all three are behind main. Push the fixes when they're done.",
+      "expect_trigger": true,
+      "assertions": [
+        "Gives each agent its own worktree and its own test database, or names a single test-lock holder per checkout",
+        "Briefs the agents to commit locally only, with no push, force-push or code-host comments",
+        "Tells the agents to bring main into the colleagues' branches by merging, not rebasing",
+        "Has the orchestrator review each commit's diff size (for example git diff --shortstat) before anything is pushed",
+        "Pushes only fast-forwards and confirms the push policy with the user instead of force-pushing"
+      ]
+    },
+    {
+      "id": "stalled-background-agent",
+      "prompt": "One of my background subagents has been silent for twenty minutes and now says 'Agent stalled: no progress for 600s (stream watchdog did not recover)'. It was running the test suite piped through grep. What do I do?",
+      "expect_trigger": true,
+      "assertions": [
+        "Inspects the agent's worktree and processes first (git status, git log, ps for test runners) before resuming",
+        "Resumes the agent once via SendMessage with the state found on disk, and takes the work over in the main thread if it stalls again",
+        "Says the gate should run in the foreground with output to a log file instead of piped through grep"
+      ]
+    },
+    {
+      "id": "isolation-worktree-missing-local-commits",
+      "prompt": "I launched two subagents with isolation worktree, but neither of them can see the commit I made on my branch an hour ago. Why, and how do I fix it?",
+      "expect_trigger": true,
+      "assertions": [
+        "Explains that worktree isolation branches from the remote default branch (origin/HEAD), not the local HEAD",
+        "Offers setting worktree.baseRef to head, pushing first, or creating the worktrees from the local branch and passing each agent its path"
+      ]
+    },
+    {
+      "id": "exit-144-and-timeout",
+      "prompt": "My Bash call said it 'did not complete within its 120s timeout and was moved to the background', and a while later another background task reported 'failed with exit code 144'. Did my tests fail?",
+      "expect_trigger": true,
+      "assertions": [
+        "Explains the timed-out command kept running as a background task and its result is in the output file, so it should not be started again",
+        "Explains exit code 144 means the task's process was killed, not that tests failed",
+        "Recommends reading the output file and rerunning the gate in the foreground to a log if a result is needed"
+      ]
+    },
+    {
+      "id": "who-wired-this",
+      "prompt": "Some Claude session replaced ~/.claude/commands/deploy.md with a symlink two days ago and I have no idea which one. Find out.",
+      "expect_trigger": true,
+      "assertions": [
+        "Uses the file's birth or modification time to get a time window",
+        "Searches the saved transcripts under ~/.claude/projects, including subagents/agent-*.jsonl, for tool calls in that window (for example scripts/transcript_calls.py --around)",
+        "Reports the session and command found in the transcript rather than relying on summaries"
+      ]
+    },
+    {
+      "id": "prune-agent-leftovers",
+      "prompt": "This repo has a pile of worktree-agent-* branches and stuff under .claude/worktrees from old agent runs. Clean it all up.",
+      "expect_trigger": true,
+      "assertions": [
+        "Inventories first (scripts/fleet_inventory.py or equivalent git worktree list, git cherry and status checks) before deleting anything",
+        "Keeps worktrees that are dirty, locked, mid-operation or hold unpushed commits",
+        "Deletes merged branches with git branch -d rather than -D and removes only clean worktrees",
+        "Asks before deleting anything on the remote"
+      ]
+    },
+    {
+      "id": "slim-claude-md-not-this-skill",
+      "prompt": "Our CLAUDE.md is 700 lines and Claude ignores half of it. Slim it down and move the project knowledge into docs/.",
+      "expect_trigger": false,
+      "assertions": [
+        "Does not load the subagent-fleet skill"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+agent-leftover
+dirty-worktree
+locked-worktree
+merged-branch
+missing-worktree
+operation-in-progress
+process-in-worktree
+shared-stash
+unpushed-commits
+upstream-gone
