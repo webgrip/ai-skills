@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.8.6 (2026-10-10)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** document both Vikunja MCP surfaces and the npm server's quirks (9b3e7213)
+
+
 ## 0.8.5 (2026-10-10)
 
 ### 🐛 Bug Fixes
