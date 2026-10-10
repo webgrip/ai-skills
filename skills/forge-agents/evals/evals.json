@@ -1,0 +1,77 @@
+{
+  "skill_name": "forge-agents",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions.",
+  "evals": [
+    {
+      "id": "job-token-cannot-comment",
+      "prompt": "Our GitLab CI job runs Claude Code to review merge requests, but posting the review back as an MR comment fails with 403 when it uses CI_JOB_TOKEN. Anthropic's docs say the job token works. How do we fix this?",
+      "assertions": [
+        "States that CI_JOB_TOKEN can only read merge requests and MR notes (GET endpoints) and cannot create notes, labels or MRs",
+        "Recommends a GitLab service account PAT (available on Free) or a project access token, with no more than the Developer role on the target project",
+        "Says the token is held as a protected variable and the token-holding job does not run in merge request pipelines that execute branch code",
+        "Does not suggest widening the job token's permissions or using a person's personal access token"
+      ]
+    },
+    {
+      "id": "label-trigger-webhook",
+      "prompt": "Write a small Python (FastAPI) endpoint that receives GitLab webhooks and starts our coding agent when someone adds the label 'agent' to an issue.",
+      "assertions": [
+        "Verifies the webhook-signature header as HMAC-SHA256 over webhook-id.webhook-timestamp.raw-body with the signing token minus whsec_, base64-decoded, compared in constant time, before parsing JSON",
+        "Rejects a stale webhook-timestamp and deduplicates on webhook-id",
+        "Returns 2xx quickly and hands the work to a queue or background task instead of running the agent inside the request",
+        "Detects the label from changes.labels (previous vs current) on an Issue Hook and ignores events whose actor is a bot or the agent's own account"
+      ]
+    },
+    {
+      "id": "headless-on-customer-repos",
+      "prompt": "We built a runner that clones customer repositories and runs `claude -p` in a container to fix issues. Which flags should the claude command get so the customer's repo can't run anything of its own?",
+      "assertions": [
+        "Passes --setting-sources user (or an equivalent that excludes the project source), --settings '{\"disableAllHooks\":true}' and --strict-mcp-config with the runner's own --mcp-config",
+        "Explains that disabling hooks and strict MCP alone still leave the repo's env block and apiKeyHelper active, and that -p shows no trust dialog and connects .mcp.json servers without asking",
+        "Allows bypassPermissions only inside a disposable sandbox whose credentials are scoped to the run",
+        "Takes verification commands from operator config rather than from the repo, and fences pushes to the run's own branch"
+      ]
+    },
+    {
+      "id": "mirror-duplicates-and-close",
+      "prompt": "Our script mirrors tickets from the tracker into GitLab issues. It retries every failed request three times. Last week it created duplicate issues, and one ticket whose text contained a line '/close' closed a GitLab issue. What should change?",
+      "assertions": [
+        "Says a creating POST is retried only when it never reached the server (DNS or connect failure) or got a 429, and after a timeout or 5xx the script re-reads by marker before posting again",
+        "Says to find the bot's own issue by a label plus a hidden marker rather than by search",
+        "Says to escape lines starting with / (GitLab quick actions run in API-written text) and to break @mentions, for example with python3 scripts/forge_safety.py neutralise"
+      ]
+    },
+    {
+      "id": "release-tag-pipeline-never-runs",
+      "prompt": "semantic-release in our GitLab pipeline pushes the tag with CI_JOB_TOKEN, but the tag pipeline that publishes the package to the registry never starts. Why?",
+      "assertions": [
+        "States that pushes made with the CI job token trigger no pipelines",
+        "Moves the publish step into the release pipeline itself, with needs on the release job and the tag passed through a dotenv artifact, exiting cleanly when nothing was released"
+      ]
+    },
+    {
+      "id": "github-required-check-bypassed",
+      "prompt": "I pushed straight to main on GitHub and it was accepted even though 'verify' is a required status check. And GET /repos/o/r/commits/SHA/status says pending with zero statuses even though the Actions run passed. Is branch protection broken?",
+      "assertions": [
+        "Explains that an owner or admin on the bypass list can push past a required check, with a 'Bypassed rule violations' warning, and that the bypass list should be emptied",
+        "Explains that Actions report check runs, not commit statuses, and points to the check-runs endpoint or gh pr checks"
+      ]
+    },
+    {
+      "id": "not-instruction-file-setup",
+      "expect_trigger": false,
+      "prompt": "Set up AGENTS.md and CLAUDE.md in this repo so Claude Code and Cursor read the same rules, and keep CLAUDE.md short.",
+      "assertions": [
+        "Does not load the forge-agents skill"
+      ]
+    },
+    {
+      "id": "not-secret-placement",
+      "expect_trigger": false,
+      "prompt": "Where should the Postgres password for our new app live so the pod can read it? We use OpenBao and External Secrets.",
+      "assertions": [
+        "Does not load the forge-agents skill"
+      ]
+    }
+  ]
+}

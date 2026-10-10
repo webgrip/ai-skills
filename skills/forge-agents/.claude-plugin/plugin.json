@@ -1,0 +1,24 @@
+{
+  "name": "forge-agents",
+  "displayName": "Forge Agents",
+  "description": "Wires bots and coding agents into GitLab, GitHub and Forgejo or Gitea safely: the identity and token a CI or bot agent needs, label and assignment triggers, signed and deduplicated webhook listeners, untrusted text written through the API without quick actions or mentions, retries that never duplicate a creating POST, Claude Code in GitLab CI, and headless agents on repos you do not control.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "gitlab",
+    "github",
+    "forgejo",
+    "webhooks",
+    "service-accounts",
+    "ci-job-token",
+    "bots",
+    "coding-agents",
+    "claude-code",
+    "sandboxing",
+    "security"
+  ]
+}
