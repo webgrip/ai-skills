@@ -22,6 +22,9 @@ Notes:
   ~/.claude/CLAUDE.md), no MCP servers, and Skill as the only tool — so a
   sibling skill can't steal the trigger and a timeout can't come from the
   agent wandering the repo
+- stdin is closed for every session: `claude -p` appends piped stdin to its
+  prompt, so a probe started from a pipe or heredoc would otherwise receive
+  whatever the parent was fed
 - a case is PASS when every run behaved as expected, FAIL when none did,
   FLAKY otherwise; single runs mislead, so tune a description only on FAIL
   or a FLAKY that stays flaky at --repeats 5
@@ -69,7 +72,12 @@ def probe(skill: str, prompt: str, model: str) -> tuple[bool, str]:
     with tempfile.TemporaryDirectory(prefix="trigger-probe-") as cwd:
         try:
             proc = subprocess.run(
-                cmd, capture_output=True, text=True, timeout=TIMEOUT, cwd=cwd
+                cmd,
+                stdin=subprocess.DEVNULL,
+                capture_output=True,
+                text=True,
+                timeout=TIMEOUT,
+                cwd=cwd,
             )
         except subprocess.TimeoutExpired:
             return False, "timeout"
