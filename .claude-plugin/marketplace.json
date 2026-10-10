@@ -60,6 +60,27 @@
       ]
     },
     {
+      "name": "agent-platform",
+      "source": "./skills/agent-platform",
+      "description": "Runs coding agents for a team behind boundaries they cannot move: an LLM gateway (LiteLLM teams, budgets, deny-by-default MCP grants), scoped read-only agent tools enforced in the data proxy (vmauth extra_label, proven by replay and attack), and Claude Code usage telemetry with the organisation boundary in the collector. Ships an MCP grant probe and a collector-filter tester.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "litellm",
+        "llm-gateway",
+        "mcp",
+        "claude-code",
+        "opentelemetry",
+        "otel",
+        "grafana-alloy",
+        "victoriametrics",
+        "vmauth",
+        "agent-security",
+        "least-privilege",
+        "telemetry"
+      ]
+    },
+    {
       "name": "blog-writer",
       "source": "./skills/blog-writer",
       "description": "Write, edit, and syndicate technical blog posts: evidence-first drafting, hook workshop, single-dimension edit sweeps with a de-AI-ify pass, fresh-reader testing, and per-platform adaptation for HN, LinkedIn, Substack, dev.to, Reddit, and Lobsters.",
@@ -136,6 +157,67 @@
       ]
     },
     {
+      "name": "flaky-ci-forensics",
+      "source": "./skills/flaky-ci-forensics",
+      "description": "Diagnoses flaky tests and red CI jobs with evidence instead of retries: counts recurrence of one assertion across pipelines and merge requests through the GitLab or GitHub API, proves or rules out the CI image by digest and layer content, fixes timing, ordering and shared-state flakes, proves fixes with repeat loops and break-checks, and covers zero-job pipelines, schedules that run releases, branch-rewrite forensics and slow lint hooks.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "flaky-tests",
+        "ci",
+        "gitlab-ci",
+        "github-actions",
+        "test-reliability",
+        "buildkit",
+        "docker",
+        "regression-testing",
+        "git-forensics",
+        "pre-commit",
+        "eslint",
+        "prettier"
+      ]
+    },
+    {
+      "name": "forge-agents",
+      "source": "./skills/forge-agents",
+      "description": "Wires bots and coding agents into GitLab, GitHub and Forgejo or Gitea safely: the identity and token a CI or bot agent needs, label and assignment triggers, signed and deduplicated webhook listeners, untrusted text written through the API without quick actions or mentions, retries that never duplicate a creating POST, Claude Code in GitLab CI, and headless agents on repos you do not control.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "gitlab",
+        "github",
+        "forgejo",
+        "webhooks",
+        "service-accounts",
+        "ci-job-token",
+        "bots",
+        "coding-agents",
+        "claude-code",
+        "sandboxing",
+        "security"
+      ]
+    },
+    {
+      "name": "grafana-access",
+      "source": "./skills/grafana-access",
+      "description": "Decides and enforces who sees which data in Grafana OSS: one org per confidentiality scope, generic OAuth org_mapping that keeps staff in the default org while a kiosk sees only its scope, per-scope orgs from git with grafana-operator, a kiosk identity per wall screen, snapshots and public dashboards off, major upgrades proven through the API, and wall dashboards readable across the room, with a read-only access audit script.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "grafana",
+        "grafana-operator",
+        "access-control",
+        "oauth",
+        "org-mapping",
+        "kiosk",
+        "wall-dashboard",
+        "victoriametrics",
+        "observability",
+        "multi-tenancy",
+        "upgrade"
+      ]
+    },
+    {
       "name": "guard-secrets",
       "source": "./skills/guard-secrets",
       "description": "PreToolUse hook that hard-blocks plaintext-secret leaks before an edit/write runs: no decrypted secret artifacts, SOPS files must stay ciphertext, and a best-effort gitleaks scan. The Claude Code twin of the estate's opencode guard-secrets plugin — same secrets floor, both tools.",
@@ -162,7 +244,8 @@
         "context-distillation",
         "skills",
         "memory",
-        "retrospective"
+        "retrospective",
+        "transcripts"
       ]
     },
     {
@@ -208,6 +291,24 @@
         "accessibility",
         "dutch",
         "nederlands"
+      ]
+    },
+    {
+      "name": "org-boundaries",
+      "source": "./skills/org-boundaries",
+      "description": "Keeps each organisation's knowledge and identity out of the others' repos when one person works for several on one machine: remove the organisation, keep the person; tell-tale references; a stdlib scanner over file content, commit identities and messages, branches and tags with a local pre-commit guard; neutral rewrites; per-directory git identity; user-level agent config that crosses organisations; and when to rewrite history.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "confidentiality",
+        "git",
+        "identity",
+        "multi-organisation",
+        "leak-scan",
+        "pre-commit",
+        "mailmap",
+        "filter-repo",
+        "mcp"
       ]
     },
     {
@@ -278,6 +379,26 @@
         "roi",
         "code-health",
         "fowler"
+      ]
+    },
+    {
+      "name": "renovate-pins",
+      "source": "./skills/renovate-pins",
+      "description": "Pins container images, Helm charts and operator-managed versions so Renovate keeps updating them: the pin shape per location, a tag-plus-digest regex manager for Helm values, the blind spots that freeze a pin while the dashboard stays green, fixing red and stuck Renovate PRs, approval backlogs and behaviour-neutral preset refactors, with a pin coverage script built on Renovate's extract report and an anonymous registry digest check.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "renovate",
+        "dependency-updates",
+        "digest-pinning",
+        "helm",
+        "container-images",
+        "regex-manager",
+        "supply-chain",
+        "gitops",
+        "flux",
+        "grafana-operator",
+        "oci-registry"
       ]
     },
     {
@@ -366,6 +487,23 @@
         "token-efficiency",
         "frontmatter",
         "progressive-disclosure"
+      ]
+    },
+    {
+      "name": "subagent-fleet",
+      "source": "./skills/subagent-fleet",
+      "description": "Runs several coding agents at once on shared repositories without losing work or trust: one worktree and test database per agent, a brief with local-only commits and stop-on-block, steering and resuming background subagents, background tasks and timeouts, landing agent commits by exact paths and fast-forward only, transcripts as the record, and read-only scripts that inventory leftover worktrees, branches and processes and search session transcripts.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "subagents",
+        "multi-agent",
+        "orchestration",
+        "git-worktree",
+        "claude-code",
+        "agentic-coding",
+        "transcripts",
+        "parallel-sessions"
       ]
     }
   ]
