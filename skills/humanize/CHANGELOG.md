@@ -1,5 +1,12 @@
 # humanize
 
+## 0.2.3 (2026-10-10)
+
+### 🐛 Bug Fixes
+
+- **humanize:** use a fictional venue in the meetup eval and quality data (752abf8b)
+
+
 ## 0.2.2 (2026-09-10)
 
 ### 🐛 Bug Fixes

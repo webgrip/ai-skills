@@ -1,5 +1,17 @@
 # agent-instructions
 
+## 0.4.0 (2026-10-10)
+
+### 🚀 Features
+
+- **agent-instructions:** set up a repo for AI agents end to end (5a505715)
+
+### 🐛 Bug Fixes
+
+- **agent-instructions:** point the telemetry rollout at the agent-platform skill (a8eaf661)
+- **agent-instructions:** point forge bot tokens and webhooks at the forge-agents skill (a0c4ea6a)
+
+
 ## 0.3.0 (2026-10-06)
 
 ### 🚀 Features

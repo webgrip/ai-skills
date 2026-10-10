@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.8.5 (2026-10-10)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** use a fictional organisation in the contract examples (fb9976b7)
+
+
 ## 0.8.4 (2026-10-08)
 
 ### 🐛 Bug Fixes

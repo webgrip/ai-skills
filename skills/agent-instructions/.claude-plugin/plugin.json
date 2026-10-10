@@ -2,7 +2,7 @@
   "name": "agent-instructions",
   "displayName": "Agent Instructions",
   "description": "Set up any repository for AI coding agents end to end and keep it right: one canonical AGENTS.md with CLAUDE.md importing it, knowledge in docs, one path-rule source generated for every tool (Claude Code, Cursor, Copilot, Antigravity, Devin, Cline, Kiro, CodeRabbit), skills, MCP, cloud-agent and review-bot setup, and a CI check; plus auditing, slimming and probe-testing instruction files, and generator-safe layouts for Laravel Boost and friends.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

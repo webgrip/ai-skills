@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.13.4",
+      "version": "1.14.0",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -41,7 +41,7 @@
       "name": "agent-instructions",
       "source": "./skills/agent-instructions",
       "description": "Set up any repository for AI coding agents end to end and keep it right: one canonical AGENTS.md with CLAUDE.md importing it, knowledge in docs, one path-rule source generated for every tool (Claude Code, Cursor, Copilot, Antigravity, Devin, Cline, Kiro, CodeRabbit), skills, MCP, cloud-agent and review-bot setup, and a CI check; plus auditing, slimming and probe-testing instruction files, and generator-safe layouts for Laravel Boost and friends.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "license": "MIT",
       "keywords": [
         "claude-md",
@@ -169,7 +169,7 @@
       "name": "humanize",
       "source": "./skills/humanize",
       "description": "Detects and removes the tells of AI-generated writing in English and Dutch, or keeps them out while drafting: a consolidated catalog (negative parallelism, colon reveals, rule of three, em-dash density, hollow intensifiers, promotional and vague-attribution content, chatbot artifacts, and for Dutch the translationese layer of English-shaped Dutch), a register-aware procedure with fact and voice protection, and a dependency-free regex scanner for CI.",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "license": "MIT",
       "keywords": [
         "writing",
@@ -214,7 +214,7 @@
       "name": "product-owner",
       "source": "./skills/product-owner",
       "description": "Run any ticket board as product owner — Vikunja and ClickUp adapters, research-backed Definition of Ready, agent-ready gating for AI-executed work, a Definition of Mergeable for every PR, flow metrics, and evidence-based closing.",
-      "version": "0.8.4",
+      "version": "0.8.5",
       "license": "MIT",
       "keywords": [
         "product-owner",
