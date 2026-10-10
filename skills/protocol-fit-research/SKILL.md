@@ -11,6 +11,7 @@ description: Evaluates an external protocol, standard, or ecosystem tool (MCP, A
 |---|---|
 | Single fact ("what transport does X use?") | One fetch, answer inline. No fan-out. |
 | "Does X matter to **us**", "how does X fit our design", "deep research on X" | Full sweep below |
+| Field survey ("what exists for X") or "what did version N change" | [Landscape fan-out](reference.md#landscape-fan-out) or [release-notes research](reference.md#release-notes-research), then land it as in step 4 |
 
 ## 1. Resolve the landing contract
 
@@ -47,6 +48,7 @@ Re-confirm or amend any **existing** entry the sweep touches (a rejected alterna
 
 - **Never park the verdict in agent memory or a per-user store** — it must be readable by anyone cloning the repo. Memory is invisible to the team and to every other machine.
 - **Never answer from prior knowledge of a young protocol.** Names lie; crawl first. (AHP sounds like orchestration; it is client-facing session sync.)
+- **A dated record is a claim about its date.** Before building on an earlier dossier, ledger row or a ticket marked done, check what landed since: `git log --since=<record date> --format='%h %ci %s' -- <paths>`, and for a done ticket `git log --all --grep='<ticket id>'`. Parallel sessions can fix half a dossier's findings minutes after it is committed, and a closed ticket can have no code on the trunk.
 - **Maturity is not fit.** A 1.0 spec with cross-org governance and a GA SDK still loses if it claims a seam the project does not have. Say which of the two killed it.
 - **Adoption claims need a shipped artifact** — docs, an endpoint, merged code. Partner-logo press releases and governance seats are not adoption.
 - Pre-1.0 + single vendor + sole reference implementation defaults to "watchlist, adopt nothing" — and the recommendation must name the trigger that flips it, never "keep an eye on it".

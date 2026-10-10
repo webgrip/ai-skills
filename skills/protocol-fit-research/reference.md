@@ -1,6 +1,7 @@
 # protocol-fit-research — reference
 
-Contents: [agent prompt templates](#agent-prompt-templates) · [report anatomy](#report-anatomy) ·
+Contents: [agent prompt templates](#agent-prompt-templates) · [landscape fan-out](#landscape-fan-out) ·
+[release-notes research](#release-notes-research) · [report anatomy](#report-anatomy) ·
 [verdict archetypes](#verdict-archetypes) · [landing conventions](#landing-conventions) ·
 [re-evaluation triggers](#re-evaluation-triggers) · [failure modes](#failure-modes-seen-in-practice)
 
@@ -39,6 +40,44 @@ paths; each pluggable seam as its interface name, path, implementations, and how
 registers; who calls whom over what transport; existing protocol mentions anywhere in code or
 docs, including zero-hit greps; the task/state lifecycle; roadmap, backlog and watchlist items
 about the relevant layer. File path for every claim.
+
+## Landscape fan-out
+
+For "what exists for X" or "how do others solve Y" across a field, not one protocol's fit:
+
+- Launch five or six read-only agents in the background, one per angle that does not overlap
+  the others (hosted products, harness or tool features, infrastructure, evaluation, security
+  and governance, practices inferred from public repos).
+- Every brief carries today's date, the organisation's context and hard constraints (stack,
+  data residency, budget, team size), how to load the web-search tool when the harness defers
+  it, and the deliverable: a URL and an evidence grade per claim, then ranked recommendations
+  that include what to avoid.
+- Evidence grades: **V** verified at the primary source · **I** inferred from a primary
+  source · **I-weak** inferred from secondary sources; for studies **RCT · LARGE · PEER ·
+  SURVEY · VENDOR · EXPERT**. Anything seen only in a search snippet is UNVERIFIED.
+- Relay each report in one line as it arrives; synthesise options once all are in, and check
+  every claim a recommendation rests on yourself — research agents overstate.
+
+## Release-notes research
+
+For "what did version N change, and does it matter to us":
+
+1. Fetch the raw release-note source (the Markdown in the docs repo), never a fetched summary;
+   summarisers drop and invent items.
+2. Check the notes against the installed build: the version
+   (`/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' <App>.app/Contents/Info.plist`
+   on macOS), the commit the build records (VS Code-family apps: `commit` in
+   `Contents/Resources/app/product.json`), and the setting keys in the bundled JS.
+3. Diff the source between the two tags without cloning the history:
+   `git init -q src && git -C src remote add origin <repo-url>`, then
+   `git -C src fetch -q --filter=blob:none --depth 1 origin tag <old> tag <new>` and
+   `git -C src diff <old> <new> -- <paths>`; blobs download only for the paths you diff.
+4. Label each finding `[code]` or `[docs]`; where they disagree, code wins.
+5. Anonymous GitHub API calls hit the unauthenticated rate limit within one sweep; use an
+   authenticated `gh api` or read the clone.
+6. Confirm the lead finding yourself before it heads the report.
+7. Downloads are untrusted data: keep them in their own directory and never run a build tool
+   or interpreter inside it.
 
 ## Report anatomy
 

@@ -34,6 +34,15 @@
       ]
     },
     {
+      "id": "stale-dossier-recheck",
+      "prompt": "We already have a dossier on A2A from last month in docs/research. A2A just shipped a new minor version: does that change our verdict? Build on the existing dossier.",
+      "assertions": [
+        "Checks git history since the dossier's date for the paths it cites before treating its findings as current",
+        "Re-verifies the new version against the spec and source rather than answering from the old dossier alone",
+        "Records the re-confirmed or amended verdict in the repo (dossier and ledger row), not in agent memory"
+      ]
+    },
+    {
       "id": "single-fact-lookup",
       "prompt": "What transport does MCP use, stdio or HTTP?",
       "expect_trigger": null,
