@@ -1,0 +1,128 @@
+{
+  "repositories": {
+    "local": {
+      "packageFiles": {
+        "dockerfile": [
+          {
+            "deps": [
+              {
+                "depName": "alpine",
+                "packageName": "alpine",
+                "currentValue": "3.20",
+                "currentDigest": "sha256:54c5b3dd459d5ef778bb2fa1e23a5fb0e1b62ae66970bcb436e8f81a1a1a8e41",
+                "replaceString": "alpine:3.20@sha256:54c5b3dd459d5ef778bb2fa1e23a5fb0e1b62ae66970bcb436e8f81a1a1a8e41",
+                "autoReplaceStringTemplate": "{{depName}}{{#if newValue}}:{{newValue}}{{/if}}{{#if newDigest}}@{{newDigest}}{{/if}}",
+                "datasource": "docker",
+                "depType": "final"
+              }
+            ],
+            "packageFile": "Dockerfile"
+          }
+        ],
+        "flux": [
+          {
+            "packageFile": "apps/web/helmrelease.yaml",
+            "deps": [
+              {
+                "depName": "ghcr.io/example/web",
+                "packageName": "ghcr.io/example/web",
+                "currentValue": "2.3.0",
+                "datasource": "docker",
+                "replaceString": "2.3.0",
+                "versioning": "docker",
+                "autoReplaceStringTemplate": "{{newValue}}{{#if newDigest}}@{{newDigest}}{{/if}}"
+              }
+            ]
+          }
+        ],
+        "helm-values": [
+          {
+            "deps": [
+              {
+                "depName": "ghcr.io/example/gateway",
+                "packageName": "ghcr.io/example/gateway",
+                "currentValue": "v1.104.2",
+                "datasource": "docker",
+                "replaceString": "v1.104.2",
+                "versioning": "docker",
+                "autoReplaceStringTemplate": "{{newValue}}{{#if newDigest}}@{{newDigest}}{{/if}}"
+              }
+            ],
+            "packageFile": "deploy/gateway/values.yaml"
+          }
+        ],
+        "kubernetes": [
+          {
+            "deps": [
+              {
+                "depName": "ghcr.io/example/worker",
+                "packageName": "ghcr.io/example/worker",
+                "currentValue": "1.4.0",
+                "replaceString": "ghcr.io/example/worker:1.4.0",
+                "autoReplaceStringTemplate": "{{depName}}{{#if newValue}}:{{newValue}}{{/if}}{{#if newDigest}}@{{newDigest}}{{/if}}",
+                "datasource": "docker"
+              },
+              {
+                "depName": "Deployment",
+                "currentValue": "apps/v1",
+                "datasource": "kubernetes-api",
+                "versioning": "kubernetes-api",
+                "packageName": "Deployment"
+              }
+            ],
+            "packageFile": "apps/web/deployment.yaml"
+          }
+        ],
+        "regex": [
+          {
+            "deps": [
+              {
+                "depName": "ghcr.io/example/gateway",
+                "currentValue": "v1.104.2",
+                "currentDigest": "sha256:4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889",
+                "datasource": "docker",
+                "replaceString": "repository: ghcr.io/example/gateway\n    tag: v1.104.2\n    digest: sha256:4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889",
+                "packageName": "ghcr.io/example/gateway"
+              }
+            ],
+            "matchStrings": [
+              "repository: (?<depName>ghcr\\.io/example/gateway)\\n(?:[ \\t]*#.*\\n)*[ \\t]*tag: \"?(?<currentValue>[^\"\\s]+)\"?\\n[ \\t]*digest: \"?(?<currentDigest>sha256:[a-f0-9]{64})\"?"
+            ],
+            "datasourceTemplate": "docker",
+            "packageFile": "deploy/gateway/values.yaml"
+          },
+          {
+            "deps": [
+              {
+                "depName": "grafana/grafana",
+                "currentValue": "13.2.3",
+                "datasource": "docker",
+                "replaceString": "# renovate: datasource=docker depName=grafana/grafana\n  version: \"13.2.3\"",
+                "packageName": "grafana/grafana"
+              }
+            ],
+            "matchStrings": [
+              "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+version: \"?(?<currentValue>[^\"\\s]+)\"?"
+            ],
+            "packageFile": "observability/grafana.yaml"
+          },
+          {
+            "deps": [
+              {
+                "depName": "quay.io/prometheus/prometheus",
+                "currentValue": "v3.0.0",
+                "datasource": "docker",
+                "replaceString": "# renovate: datasource=docker depName=quay.io/prometheus/prometheus\n  version: v3.0.0",
+                "packageName": "quay.io/prometheus/prometheus"
+              }
+            ],
+            "matchStrings": [
+              "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+version: \"?(?<currentValue>[^\"\\s]+)\"?"
+            ],
+            "packageFile": "observability/prometheus.yaml"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+spec:
+  # renovate: datasource=docker depName=grafana/grafana
+  version: "13.2.3"
+  config:
+    snapshots:
+      enabled: "false"

@@ -1,0 +1,68 @@
+{
+  "skill_name": "renovate-pins",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load.",
+  "evals": [
+    {
+      "id": "split-digest-stranded",
+      "expect_trigger": true,
+      "prompt": "Our HelmRelease for the API sets image.repository, image.tag and image.digest as three keys. Renovate bumped the tag to v2.4.0 last week, but the pod is still running the old image. Fix the Renovate config so this can't happen again.",
+      "assertions": [
+        "Explains that the helm-values manager reads repository plus tag but not a separate digest key, so the tag moved while the old digest stayed and the runtime keeps pulling the old image by digest",
+        "Adds a packageRule disabling the helm-values manager for that dependency",
+        "Adds a regex custom manager whose matchStrings capture depName, currentValue and currentDigest from the repository, tag and digest lines, with datasourceTemplate docker",
+        "Verifies with renovate-config-validator and with a local extract (pin_coverage.py or the extract report) or the rendered image reference repo:tag@sha256"
+      ]
+    },
+    {
+      "id": "operator-default-version",
+      "expect_trigger": true,
+      "prompt": "Grafana is deployed with grafana-operator. Renovate bumps the operator chart every month and the dependency dashboard shows nothing pending, yet Grafana has been on 12.1 for three months. Why, and how do we make Renovate own the Grafana version?",
+      "assertions": [
+        "Explains that a Grafana resource without spec.version runs the operator's built-in default, so no manager sees it and an operator bump silently changes Grafana",
+        "Pins spec.version explicitly with a '# renovate: datasource=docker depName=grafana/grafana' comment and a regex custom manager",
+        "If it adds an automerge exception for Grafana, places that packageRule after blanket automerge rules because the last matching rule wins",
+        "Suggests checking that every other pin is extracted, for example with the local extract plus pin_coverage.py"
+      ]
+    },
+    {
+      "id": "red-renovate-pr",
+      "expect_trigger": true,
+      "prompt": "The Renovate 'all non-major dependencies' PR is red: pnpm fails with ERR_PNPM_FROZEN_LOCKFILE_WITH_OUTDATED_LOCKFILE, and a policy test asserts our workflow references deploy.yml@v2.7.8 while the PR bumps it to v2.8.0. Fix the PR.",
+      "assertions": [
+        "Regenerates the lockfile under the new pnpm version, for example with corepack pnpm install --lockfile-only",
+        "Changes the test to assert the version pattern rather than the literal v2.7.8",
+        "Warns that after pushing to the bot's branch Renovate stops updating it, and that ticking rebase or adding the rebase label would regenerate the branch and drop the fix commits",
+        "Says to merge the PR by hand once it is green"
+      ]
+    },
+    {
+      "id": "stuck-bot-mrs",
+      "expect_trigger": true,
+      "prompt": "We have 15 open Renovate merge requests on GitLab, most with failed pipelines and some two months old. Go through them and get them moving.",
+      "assertions": [
+        "First checks per MR whether the base branch already contains the change",
+        "Reads each MR's merge status, head pipeline and failed job logs before changing anything",
+        "Identifies a stale base (failures unrelated to the bump and already fixed on the base, given rebaseWhen auto only rebases conflicted branches) and asks the bot to rebase through its own rebase-check checkbox or the rebase label",
+        "Leaves major updates and branches someone pushed to for a person instead of rebasing them"
+      ]
+    },
+    {
+      "id": "anonymous-digest-check",
+      "expect_trigger": true,
+      "prompt": "Without registry credentials: does ghcr.io/acme/worker have a v3.1.0 tag yet, and what multi-arch digest should I pin?",
+      "assertions": [
+        "Uses scripts/registry_digest.py or the same flow: an anonymous pull token from the registry's bearer challenge, then a HEAD of the manifest with OCI and Docker index Accept headers",
+        "Reads the digest from the Docker-Content-Digest header and says it is the multi-arch index digest",
+        "Treats a 404 as the tag not being published rather than as an authentication problem"
+      ]
+    },
+    {
+      "id": "renovate-token-is-secrets",
+      "expect_trigger": false,
+      "prompt": "Our self-hosted Renovate CronJob needs a GitHub token to read release notes. Where should that token live and how does the pod get it?",
+      "assertions": [
+        "Does not load renovate-pins; placing a credential belongs to a secrets skill such as secrets-levels"
+      ]
+    }
+  ]
+}

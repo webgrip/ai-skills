@@ -1,0 +1,2 @@
+FROM alpine:3.20@sha256:54c5b3dd459d5ef778bb2fa1e23a5fb0e1b62ae66970bcb436e8f81a1a1a8e41 AS build
+FROM build

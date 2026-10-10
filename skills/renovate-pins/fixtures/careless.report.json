@@ -1,0 +1,38 @@
+{
+  "repositories": {
+    "local": {
+      "packageFiles": {
+        "dockerfile": [
+          {
+            "deps": [
+              {
+                "skipReason": "contains-variable",
+                "replaceString": "${BASE_IMAGE}",
+                "autoReplaceStringTemplate": "{{depName}}{{#if newValue}}:{{newValue}}{{/if}}{{#if newDigest}}@{{newDigest}}{{/if}}",
+                "datasource": "docker",
+                "depType": "final"
+              }
+            ],
+            "packageFile": "Dockerfile"
+          }
+        ],
+        "helm-values": [
+          {
+            "deps": [
+              {
+                "depName": "ghcr.io/example/gateway",
+                "packageName": "ghcr.io/example/gateway",
+                "currentValue": "v1.104.2",
+                "datasource": "docker",
+                "replaceString": "v1.104.2",
+                "versioning": "docker",
+                "autoReplaceStringTemplate": "{{newValue}}{{#if newDigest}}@{{newDigest}}{{/if}}"
+              }
+            ],
+            "packageFile": "deploy/gateway/values.yaml"
+          }
+        ]
+      }
+    }
+  }
+}

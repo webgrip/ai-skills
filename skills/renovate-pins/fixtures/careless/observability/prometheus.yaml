@@ -1,0 +1,7 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: main
+spec:
+  version: v3.0.0
+  replicas: 1

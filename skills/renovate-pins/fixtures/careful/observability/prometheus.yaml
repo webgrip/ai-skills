@@ -1,0 +1,8 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: main
+spec:
+  # renovate: datasource=docker depName=quay.io/prometheus/prometheus
+  version: v3.0.0
+  replicas: 1

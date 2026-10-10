@@ -1,0 +1,24 @@
+{
+  "name": "renovate-pins",
+  "displayName": "Renovate Pins",
+  "description": "Pins container images, Helm charts and operator-managed versions so Renovate keeps updating them: the pin shape per location, a tag-plus-digest regex manager for Helm values, the blind spots that freeze a pin while the dashboard stays green, fixing red and stuck Renovate PRs, approval backlogs and behaviour-neutral preset refactors, with a pin coverage script built on Renovate's extract report and an anonymous registry digest check.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "renovate",
+    "dependency-updates",
+    "digest-pinning",
+    "helm",
+    "container-images",
+    "regex-manager",
+    "supply-chain",
+    "gitops",
+    "flux",
+    "grafana-operator",
+    "oci-registry"
+  ]
+}

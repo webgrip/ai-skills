@@ -1,0 +1,5 @@
+gateway:
+  image:
+    repository: ghcr.io/example/gateway
+    tag: v1.104.2
+    digest: sha256:4ea5ee68fea05586106890ded5733820bb77d919cda27bc4b8139b7cd33b8889
