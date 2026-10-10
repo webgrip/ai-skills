@@ -61,12 +61,21 @@ Its one job: load this skill **exactly when relevant, never otherwise**.
 
 No fact lives in two skills. Pick one **canonical home**; everywhere else is a one-line summary + "see
 the X skill". Duplication multiplies token cost *and* drifts out of sync. When you catch the same rule
-in two skills, that's a bug — consolidate.
+in two skills, that's a bug — consolidate: move the rule to one home, leave a one-line pointer, and
+add a routing hint to the other skill's description.
+
+**Inside one skill too.** A rule lives in the body, reference files, templates, examples, evals and
+any bundled linter at once. After changing a rule, find every restatement with
+`grep -rn '<rule phrase>' <skill-dir>` (a read-only background audit for a large skill) and fix them,
+the evals included, in the same change.
 
 ## Progressive disclosure (supporting files)
 
-Split when the body **exceeds ~60 lines** *or* carries **lookup tables / reference catalogs / link
-lists** — anything needed only sometimes. Move it to a sibling and reference it:
+Split out **lookup material** — tables, catalogs, link lists, rare branches — once the body passes
+**~60 lines**. **Never split out the steps:** the checks an answer depends on (run this script, give a
+verdict per line) stay in the section the agent reads, even if that keeps the body longer. The agent
+answers from the paragraph in front of it; a step that lives only in a linked file gets skipped.
+Move the lookup material to a sibling and reference it:
 
 ```markdown
 ## Additional resources
@@ -107,14 +116,27 @@ levers (`paths`, `context: fork`/`agent`, dynamic bang-backtick shell injection)
 
 ## Create
 
+"Make a skill for X" means a researched, tested package — script, evals, probe — not a prose draft.
+
 0. **Name first:** `npx skills find <name>` (or `https://skills.sh/api/search?q=<name>`). A published
    twin means two same-named skills on every machine that installs both, and a slug is immutable once
-   published — pick a distinct name before writing a line.
-1. `.claude/skills/<name>/SKILL.md`. `<name>` kebab-case, == dir, reads as `/<name>`.
-2. Frontmatter: `description` with "Use when …" triggers folded in; add others only with a reason from the table.
-3. Body: decision → procedure → gotchas; point at one real example.
-4. Heavy/rare detail → sibling file, referenced one level deep.
-5. No registration — Claude Code auto-discovers `.claude/skills/*/SKILL.md` (live, no restart for edits).
+   published — pick a distinct name before writing a line. In an estate with per-skill release tags,
+   `git tag -l '<name>-v*'` too: a retired name's old tags resume its release series.
+   **One name, one content:** a same-named skill elsewhere is a conflict only if its content differs —
+   `diff -rq -x .claude-plugin -x CHANGELOG.md <a> <b>` first. Rename only a real variant, after what
+   differs, never after who owns it.
+1. Read the neighbouring skills and runbooks; start parallel read-only research in the background
+   ([reference.md](reference.md#research-backed-skills)).
+2. While it runs, write the bundled script and test it against the real system.
+3. Check every claim that would change the skill at a primary source.
+4. `.claude/skills/<name>/SKILL.md`. `<name>` kebab-case, == dir, reads as `/<name>`. Frontmatter:
+   `description` with "Use when …" triggers folded in; add others only with a reason from the table.
+5. Body: decision → procedure → gotchas; point at one real example. Heavy/rare detail → sibling file,
+   referenced one level deep.
+6. Evals with should-trigger cases and should-not cases from neighbouring skills
+   ([reference.md](reference.md#eval-cases)); then probe triggering.
+7. Add pointer lines in CLAUDE.md and the neighbouring skills; move overlapping content to one home.
+8. No registration — Claude Code auto-discovers `.claude/skills/*/SKILL.md` (live, no restart for edits).
 
 ## Edit / audit
 
@@ -124,14 +146,19 @@ levers (`paths`, `context: fork`/`agent`, dynamic bang-backtick shell injection)
   stale paths. Tighten description/when_to_use. Confirm cited examples still exist (`test -e`).
 - **Measure, don't guess:** the `skill-creator` plugin runs with/without A/B on real prompts and reports
   trigger hit-rate + token/time overhead; `/doctor` flags dropped descriptions. (See reference.md.)
-- **Probe triggers in isolation, ≥ 3 runs per prompt,** with a model calibrated on a skill known to fire.
-  Tune the description only on a consistent miss; one run, a small model, or a timeout is noise. (See reference.md.)
+- **Probe triggers in isolation, ≥ 3 runs per prompt,** on an otherwise idle machine, with a model calibrated
+  on a skill known to fire. Tune the description only on a consistent miss; one run, a small model, or a
+  timeout is noise. (See reference.md.)
 - **Built from research or an article?** Label each claim's evidence strength and find the controlled
   study or replication behind every headline number; the skill carries the replicated size, the headline
   only as motivation. Volatile numbers (prices, limits) go in a dated data file the scripts read.
   → [reference.md](reference.md#research-backed-skills)
 - **Ships a scanner or linter?** A fixture where every rule fires, one where none does, and a
   false-positive pass on real code before release → [reference.md](reference.md#skills-that-ship-a-scanner)
+- **Ships scripts or commands?** Test them on macOS bash 3.2 and inside the CI image, and never depend on
+  an install script running again → [reference.md](reference.md#bundled-scripts)
+- **Wraps an expensive operation?** The skill plans, gates read-only and verifies; the human runs the
+  mutation → [reference.md](reference.md#skills-that-wrap-risky-operations)
 
 ## Evaluate an installed skill
 

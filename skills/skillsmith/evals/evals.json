@@ -35,6 +35,16 @@
       ]
     },
     {
+      "id": "steps-only-in-linked-file",
+      "prompt": "Our merge-check skill answers 'may this MR merge?' from the short paragraph in SKILL.md and skips the checks listed in its checklist.md (did CI run, does a new push void the approval, did the author approve their own work). Fix the skill.",
+      "assertions": [
+        "Moves the checks the verdict depends on into the SKILL.md section the agent reads, as a procedure (run the checks, give a verdict per line)",
+        "Keeps only lookup detail in the sibling file rather than deleting it or duplicating all of it",
+        "Finds and updates every restatement of the changed rule inside the skill, the evals included",
+        "Proposes re-running the skill's evals in isolated sessions to confirm the answer now covers every check"
+      ]
+    },
+    {
       "id": "route-to-right-home",
       "prompt": "I want the agent to always use conventional commits in this repo. Should that be a skill?",
       "assertions": [
@@ -43,6 +53,15 @@
         "Does not create an unnecessary skill"
       ],
       "expect_trigger": null
+    },
+    {
+      "id": "not-claude-md-cleanup",
+      "prompt": "Our CLAUDE.md is 600 lines and Claude keeps ignoring half of it. Slim it down.",
+      "expect_trigger": false,
+      "assertions": [
+        "Handled as an instruction-file cleanup (the agent-instructions skill's territory), not as skill authoring",
+        "Does not scaffold a new skill directory"
+      ]
     }
   ]
 }

@@ -10,6 +10,7 @@ What it teaches Claude:
 - **Progressive disclosure** — when to split into `reference.md`/`scripts/` siblings and how deep references may nest
 - **Boundaries** — what belongs in a skill vs CLAUDE.md vs memory vs a runbook
 - **Auditing & evals** — token-diet passes, smells to cut on sight, and how to measure trigger accuracy and output quality of an installed skill (`reference.md` carries the full frontmatter catalog, string substitutions, and eval methodology)
+- **Shipping code with a skill** — scripts that survive macOS bash 3.2 and slim CI images, commands that survive updates, read-only gate scripts for risky operations, and scanners agents keep trusting
 
 ## Install
 
