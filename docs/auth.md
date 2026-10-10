@@ -87,8 +87,17 @@ replacement.
 
 ## Watch items
 
-- LiteLLM `/metrics` is Enterprise-gated in OSS; a ledger→VictoriaMetrics
-  exporter is the tracked follow-up (homelab). Spend still lands in the DB.
+- LiteLLM's Prometheus `/metrics` is **not** licence-gated in current OSS
+  releases: `litellm_settings.callbacks: [prometheus]` serves it (no premium
+  check in `litellm/integrations/prometheus.py` at v1.104.2; a dedicated
+  metrics port exists from v1.101.0). Spend and token counters carry
+  `api_key_alias`, `team`, `user` and `user_email` labels, so trim them with
+  `prometheus_metrics_config[].include_labels` before person-level data
+  reaches a shared store; `end_user` stays empty unless
+  `enable_end_user_cost_tracking_prometheus_only: true`. Check the proxy
+  version you run before building a separate ledger→VictoriaMetrics exporter
+  — the gate may have applied to older releases. Spend also lands in the DB.
+  Source: [docs.litellm.ai/docs/proxy/prometheus](https://docs.litellm.ai/docs/proxy/prometheus).
 - Server-side guards (homelab ADR-0045): opencode does not run `.claude/`
   hooks, and `guard-secrets` blocking is unconfirmed on v2 — the durable
   control is moving secret/destructive guards into the LiteLLM/gateway

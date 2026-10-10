@@ -68,8 +68,11 @@ three isolated runs per case, PASS / FLAKY / FAIL.
    breaking) or your change never ships to installs.
 5. Open the PR — the template's checklist is the review contract. Editing an
    existing skill? The bar is a failure you actually watched (a gotcha that
-   cost a loop, a drifted path): bake the root cause in as a dated gotcha and
-   add an eval that would have caught it.
+   cost a loop, a drifted path): state its root cause as a rule at the step
+   where it bites, and add an eval that would have caught it. A skill states
+   rules as they stand now — no dates, names or "since"/"added" history in
+   skill files (the generated `CHANGELOG.md` aside); that story belongs in the
+   commit message.
 
 **Deprecating a skill:** plugin `name` slugs are immutable once published, so
 deprecation = remove the plugin dir + README row in one release-triggering PR

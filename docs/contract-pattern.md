@@ -110,3 +110,32 @@ may *name* where a credential lives (the secret manager path); never the credent
 The test: *would this line be true in a different organization using the same skill?*
 True → skill. Only true here → contract. Too big for every session? → layer 1 or 3,
 not `AGENTS.md`.
+
+## If you must fork anyway
+
+Sometimes an org forks a skill regardless — say Acme wants its colleagues on one install
+of `product-owner` that already carries Acme's board section. A fork stays cheap only with
+byte-equal discipline and a scripted port; without them it drifts within weeks.
+
+- **The invariant:** only a listed set of paths and one named `SKILL.md` section (here
+  `## Acme boards`) may differ from upstream. Every other file is byte-identical.
+- **Upstream into the fork, by script:** copy the upstream files, re-insert the fork
+  section before its anchor heading, `cmp` every other file, and prove `SKILL.md` differs
+  only in that section:
+
+  ```bash
+  diff <(awk '/^## Acme boards/{s=1} /^## The loop/{s=0} !s' "$FORK/SKILL.md") "$UP/SKILL.md" \
+    && echo "identical apart from the fork section"
+  ```
+
+- **Fork into upstream:** pull first (the release bot commits back) · `cmp` each file ·
+  grep the candidates for org terms · copy the byte-equal files and hand-port the rest ·
+  rewrite evals without org names · leave the org section and contract layers behind.
+- **Corrections to upstream-owned text go upstream** (a PR) or into the fork-owned
+  section — never edited in place, which breaks the invariant. Keep upstream's mentions of
+  trackers you don't use.
+- **Re-run the proof after every fork edit.** The first edit for a new rule is where the
+  invariant usually breaks.
+
+A fork that keeps needing more than its one section is a sign the difference is a fact
+(move it into a contract layer) or a procedure (an overlay skill), not a fork.
