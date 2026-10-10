@@ -1,0 +1,88 @@
+{
+  "skill_name": "flaky-ci-forensics",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load; null = output-quality only.",
+  "evals": [
+    {
+      "id": "red-job-is-it-mine",
+      "expect_trigger": true,
+      "prompt": "The phpunit job on my merge request is red: CurrencyConversionTest fails with 'Failed asserting that 2287 matches expected 1143.' My MR only changes a Blade view and a translation file. Can I just hit retry until it goes green and merge?",
+      "assertions": [
+        "Checks whether the change touches the failing code and whether trunk's latest pipeline is green before deciding",
+        "Counts how often the same assertion failed on other pipelines or merge requests through the GitLab API (for example ci_recurrence.py or glab api over failed jobs and their traces) instead of calling it a one-off",
+        "Distinguishes retrying the job from starting a new pipeline on the same commit, and compares the image digest of a failing and a passing run",
+        "Recommends at most one rerun to unblock plus a flake ticket carrying the count, not retry-until-green",
+        "Names the likely mechanism class: values landing on the wrong row points at an unordered query or a positional fake"
+      ]
+    },
+    {
+      "id": "prove-the-flake-fix",
+      "expect_trigger": true,
+      "prompt": "I fixed our flaky upload test. It used to fail sometimes, so I bumped the wait before stopping the fake worker from 300 ms to 2 seconds. It passed three times locally. Good to merge?",
+      "assertions": [
+        "Rejects the longer timer as a fix and has the test wait for a signal from the fake (a line it prints once its output is written) under an overall deadline",
+        "Proves the fix with many repeated runs (tens or hundreds), each with a per-run timeout, ideally under parallel load",
+        "Requires a break-check: reverting the fix or mutating the guarded behaviour must turn the test red",
+        "Does not accept three local passes as evidence"
+      ]
+    },
+    {
+      "id": "image-size-drift",
+      "expect_trigger": true,
+      "prompt": "Two builds of our CI testing image from commits that differ only in one test fixture are about 500 KB apart, and the last layer (COPY . .) is bigger in the second one. Could something have sneaked into the image, and could that explain our flaky test?",
+      "assertions": [
+        "Checks whether the failing and passing pipelines ran the same image digest before suspecting the image",
+        "Compares layer digests from the manifests and the differing layers' file contents rather than image sizes",
+        "Explains that BuildKit re-adds files with unchanged content when their mtime changed (COPY cache keys ignore mtime while the layer differ compares it), so builds are not byte-reproducible across checkouts",
+        "Runs or recommends layer_diff.py or an equivalent content comparison that ignores mtime"
+      ]
+    },
+    {
+      "id": "zero-job-pipeline",
+      "expect_trigger": true,
+      "prompt": "I set up GitLab CI for our PHP library using the same CI components our apps use. Every merge request pipeline now shows 'failed' with 0 jobs and no log. What is going on?",
+      "assertions": [
+        "Reads the pipeline's yaml_errors (REST) or errorMessages (GraphQL) instead of looking for a job log",
+        "Explains that jobs without rules default to except merge_requests, so a job another job needs is missing from merge request pipelines",
+        "Proposes matching rules or workflow rules in the project's own .gitlab-ci.yml, noting that rules arriving through include do not count",
+        "Notes that app components which run inside the application's testing image do not fit a library"
+      ]
+    },
+    {
+      "id": "who-rewrote-main",
+      "expect_trigger": true,
+      "prompt": "Two commits that were on main yesterday are gone and a release was cut without them. Nobody admits to force-pushing. How do we find out what happened?",
+      "assertions": [
+        "Builds one UTC timeline from the forge activity feed, the SHAs CI runs fetched, mirror activity, every clone's remote-tracking reflog and agent session push commands",
+        "Uses reflog entries such as 'update by push' and 'forced-update' to place local pushes and rewrites",
+        "States that a ref change with no feed entry, no CI run and no client push points inside the forge, such as a mirror sync",
+        "Pins the lost commit on a rescue branch before any repair and avoids an unagreed force-push"
+      ]
+    },
+    {
+      "id": "slow-pre-commit",
+      "expect_trigger": true,
+      "prompt": "Our pre-commit hook (php-cs-fixer, phpstan, prettier --check, eslint) takes about 45 seconds. Static analysis is surely the slow part. Make it faster.",
+      "assertions": [
+        "Times each step separately and records the machine load before choosing what to optimise or claiming a speed-up",
+        "Uses Prettier and ESLint caches with a cache location keyed on the lockfile hash, because neither cache key tracks plugin versions",
+        "Keeps the CI check uncached as the gate"
+      ]
+    },
+    {
+      "id": "merge-readiness",
+      "expect_trigger": false,
+      "prompt": "Is PR #212 ready to merge? Check the approvals, whether the branch is up to date with main, and that the description links the ticket.",
+      "assertions": [
+        "Does not load the flaky-ci-forensics skill"
+      ]
+    },
+    {
+      "id": "write-a-unit-test",
+      "expect_trigger": false,
+      "prompt": "Write a Pest unit test for the InvoiceTotal action that covers a discount and a zero-VAT line.",
+      "assertions": [
+        "Does not load the flaky-ci-forensics skill"
+      ]
+    }
+  ]
+}

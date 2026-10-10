@@ -1,0 +1,25 @@
+{
+  "name": "flaky-ci-forensics",
+  "displayName": "Flaky Ci Forensics",
+  "description": "Diagnoses flaky tests and red CI jobs with evidence instead of retries: counts recurrence of one assertion across pipelines and merge requests through the GitLab or GitHub API, proves or rules out the CI image by digest and layer content, fixes timing, ordering and shared-state flakes, proves fixes with repeat loops and break-checks, and covers zero-job pipelines, schedules that run releases, branch-rewrite forensics and slow lint hooks.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "flaky-tests",
+    "ci",
+    "gitlab-ci",
+    "github-actions",
+    "test-reliability",
+    "buildkit",
+    "docker",
+    "regression-testing",
+    "git-forensics",
+    "pre-commit",
+    "eslint",
+    "prettier"
+  ]
+}

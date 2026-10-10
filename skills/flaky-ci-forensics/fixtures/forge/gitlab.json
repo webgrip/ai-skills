@@ -1,0 +1,243 @@
+{
+  "api_url": "https://gitlab.example.com/api/v4",
+  "project": "example/app",
+  "responses": {
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs?scope%5B%5D=failed&per_page=100": {
+      "status": 200,
+      "headers": {
+        "link": "<https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs?page=2&per_page=100&scope%5B%5D=failed>; rel=\"next\", <https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs?page=1&per_page=100&scope%5B%5D=failed>; rel=\"first\""
+      },
+      "json": [
+        {
+          "id": 5108,
+          "status": "failed",
+          "stage": "test",
+          "name": "phpunit",
+          "ref": "refs/merge-requests/23/head",
+          "tag": false,
+          "allow_failure": false,
+          "created_at": "2026-10-08T09:12:44.512Z",
+          "started_at": "2026-10-08T09:12:44.512Z",
+          "finished_at": "2026-10-08T09:12:44.512Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "8f14e45fceea167a5a36dedd4bea2543a1b2c3d4",
+            "short_id": "8f14e45f",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1208,
+            "iid": 208,
+            "project_id": 42,
+            "sha": "8f14e45fceea167a5a36dedd4bea2543a1b2c3d4",
+            "ref": "refs/merge-requests/23/head",
+            "status": "failed",
+            "source": "merge_request_event",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1208"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5108"
+        },
+        {
+          "id": 5107,
+          "status": "failed",
+          "stage": "test",
+          "name": "eslint",
+          "ref": "refs/merge-requests/23/head",
+          "tag": false,
+          "allow_failure": false,
+          "created_at": "2026-10-08T09:12:40.100Z",
+          "started_at": "2026-10-08T09:12:40.100Z",
+          "finished_at": "2026-10-08T09:12:40.100Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "8f14e45fceea167a5a36dedd4bea2543a1b2c3d4",
+            "short_id": "8f14e45f",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1208,
+            "iid": 208,
+            "project_id": 42,
+            "sha": "8f14e45fceea167a5a36dedd4bea2543a1b2c3d4",
+            "ref": "refs/merge-requests/23/head",
+            "status": "failed",
+            "source": "merge_request_event",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1208"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5107"
+        },
+        {
+          "id": 5106,
+          "status": "failed",
+          "stage": "test",
+          "name": "phpunit",
+          "ref": "refs/merge-requests/19/head",
+          "tag": false,
+          "allow_failure": false,
+          "created_at": "2026-09-29T14:03:11.000Z",
+          "started_at": "2026-09-29T14:03:11.000Z",
+          "finished_at": "2026-09-29T14:03:11.000Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "c9f0f895fb98ab9159f51fd0297e236d11223344",
+            "short_id": "c9f0f895",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1206,
+            "iid": 206,
+            "project_id": 42,
+            "sha": "c9f0f895fb98ab9159f51fd0297e236d11223344",
+            "ref": "refs/merge-requests/19/head",
+            "status": "failed",
+            "source": "merge_request_event",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1206"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5106"
+        },
+        {
+          "id": 5105,
+          "status": "failed",
+          "stage": "test",
+          "name": "phpunit",
+          "ref": "main",
+          "tag": false,
+          "allow_failure": false,
+          "created_at": "2026-09-21T07:45:00.250Z",
+          "started_at": "2026-09-21T07:45:00.250Z",
+          "finished_at": "2026-09-21T07:45:00.250Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "45c48cce2e2d7fbdea1afc51c7c6ad2655667788",
+            "short_id": "45c48cce",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1205,
+            "iid": 205,
+            "project_id": 42,
+            "sha": "45c48cce2e2d7fbdea1afc51c7c6ad2655667788",
+            "ref": "main",
+            "status": "failed",
+            "source": "push",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1205"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5105"
+        }
+      ]
+    },
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs?page=2&per_page=100&scope%5B%5D=failed": {
+      "status": 200,
+      "headers": {},
+      "json": [
+        {
+          "id": 5104,
+          "status": "failed",
+          "stage": "test",
+          "name": "phpunit",
+          "ref": "refs/merge-requests/15/head",
+          "tag": false,
+          "allow_failure": false,
+          "created_at": "2026-09-12T16:30:00.000Z",
+          "started_at": "2026-09-12T16:30:00.000Z",
+          "finished_at": "2026-09-12T16:30:00.000Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "d3d9446802a44259755d38e6d163e82099aabbcc",
+            "short_id": "d3d94468",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1204,
+            "iid": 204,
+            "project_id": 42,
+            "sha": "d3d9446802a44259755d38e6d163e82099aabbcc",
+            "ref": "refs/merge-requests/15/head",
+            "status": "failed",
+            "source": "merge_request_event",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1204"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5104"
+        },
+        {
+          "id": 5103,
+          "status": "failed",
+          "stage": "test",
+          "name": "phpunit",
+          "ref": "refs/merge-requests/12/head",
+          "tag": false,
+          "allow_failure": true,
+          "created_at": "2026-09-03T11:00:00.000Z",
+          "started_at": "2026-09-03T11:00:00.000Z",
+          "finished_at": "2026-09-03T11:00:00.000Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "6512bd43d9caa6e02c990b0a82652dcaddeeff00",
+            "short_id": "6512bd43",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1203,
+            "iid": 203,
+            "project_id": 42,
+            "sha": "6512bd43d9caa6e02c990b0a82652dcaddeeff00",
+            "ref": "refs/merge-requests/12/head",
+            "status": "failed",
+            "source": "merge_request_event",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1203"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5103"
+        },
+        {
+          "id": 5102,
+          "status": "failed",
+          "stage": "test",
+          "name": "phpunit",
+          "ref": "refs/merge-requests/12/head",
+          "tag": false,
+          "allow_failure": false,
+          "created_at": "2026-08-20T10:00:00.000Z",
+          "started_at": "2026-08-20T10:00:00.000Z",
+          "finished_at": "2026-08-20T10:00:00.000Z",
+          "failure_reason": "script_failure",
+          "commit": {
+            "id": "c20ad4d76fe97759aa27a0c99bff6710ffeeddcc",
+            "short_id": "c20ad4d7",
+            "title": "Change something"
+          },
+          "pipeline": {
+            "id": 1202,
+            "iid": 202,
+            "project_id": 42,
+            "sha": "c20ad4d76fe97759aa27a0c99bff6710ffeeddcc",
+            "ref": "refs/merge-requests/12/head",
+            "status": "failed",
+            "source": "merge_request_event",
+            "web_url": "https://gitlab.example.com/example/app/-/pipelines/1202"
+          },
+          "web_url": "https://gitlab.example.com/example/app/-/jobs/5102"
+        }
+      ]
+    },
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs/5108/trace": {
+      "status": 200,
+      "text": "Running with gitlab-runner 18.4.0 (abcdef12)\r\n\u001b[0Ksection_start:1791600000:prepare_executor\r\u001b[0K\u001b[0K\u001b[36;1mPreparing the \"docker\" executor\u001b[0;m\r\n\u001b[0KUsing docker image sha256:0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f for registry.example.com/example/app/testing:latest with digest registry.example.com/example/app/testing@sha256:a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1 ...\u001b[0;m\r\n\u001b[0Ksection_end:1791600010:prepare_executor\r\u001b[0K\r\n$ php artisan test --parallel\r\n  ..........................................................\r\n  \u001b[41;1m FAILED \u001b[49;22m Tests\\Feature\\CurrencyConversionTest > converts every order line\r\n  Failed asserting that 2287 matches expected 1143.\r\n\u001b[31;1mERROR: Job failed: exit code 1\u001b[0;m\r\n"
+    },
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs/5106/trace": {
+      "status": 200,
+      "text": "Running with gitlab-runner 18.4.0 (abcdef12)\r\n\u001b[0Ksection_start:1791600000:prepare_executor\r\u001b[0K\u001b[0K\u001b[36;1mPreparing the \"docker\" executor\u001b[0;m\r\n\u001b[0KUsing docker image sha256:0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f for registry.example.com/example/app/testing:latest with digest registry.example.com/example/app/testing@sha256:a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1 ...\u001b[0;m\r\n\u001b[0Ksection_end:1791600010:prepare_executor\r\u001b[0K\r\n$ php artisan test --parallel\r\n  ..........................................................\r\n  \u001b[41;1m FAILED \u001b[49;22m Tests\\Feature\\CurrencyConversionTest > converts every order line\r\n  Failed asserting that 2287 matches expected 1143.\r\n\u001b[31;1mERROR: Job failed: exit code 1\u001b[0;m\r\n"
+    },
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs/5105/trace": {
+      "status": 200,
+      "text": "Running with gitlab-runner 18.4.0 (abcdef12)\r\n\u001b[0Ksection_start:1791600000:prepare_executor\r\u001b[0K\u001b[0K\u001b[36;1mPreparing the \"docker\" executor\u001b[0;m\r\n\u001b[0KUsing docker image sha256:0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f for registry.example.com/example/app/testing:latest with digest registry.example.com/example/app/testing@sha256:a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1 ...\u001b[0;m\r\n\u001b[0Ksection_end:1791600010:prepare_executor\r\u001b[0K\r\n$ php artisan test --parallel\r\n  ..........................................................\r\n  \u001b[41;1m FAILED \u001b[49;22m Tests\\Feature\\CurrencyConversionTest > converts every order line\r\n  Failed asserting that 2287 matches expected 1143.\r\n\u001b[31;1mERROR: Job failed: exit code 1\u001b[0;m\r\n"
+    },
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs/5104/trace": {
+      "status": 200,
+      "text": "Running with gitlab-runner 18.4.0 (abcdef12)\r\n\u001b[0Ksection_start:1791600000:prepare_executor\r\u001b[0K\u001b[0K\u001b[36;1mPreparing the \"docker\" executor\u001b[0;m\r\n\u001b[0KUsing docker image sha256:0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f for registry.example.com/example/app/testing:latest with digest registry.example.com/example/app/testing@sha256:a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1 ...\u001b[0;m\r\n\u001b[0Ksection_end:1791600010:prepare_executor\r\u001b[0K\r\n$ php artisan test --parallel\r\n  ..........................................................\r\n  \u001b[41;1m FAILED \u001b[49;22m Tests\\Feature\\InvoiceExportTest > exports a credit note\r\n  Failed asserting that two strings are equal.\r\n\u001b[31;1mERROR: Job failed: exit code 1\u001b[0;m\r\n"
+    },
+    "https://gitlab.example.com/api/v4/projects/example%2Fapp/jobs/5103/trace": {
+      "status": 404,
+      "text": "{\"message\":\"404 Not found\"}"
+    }
+  }
+}
