@@ -1,0 +1,67 @@
+{
+  "skill_name": "grafana-access",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load.",
+  "evals": [
+    {
+      "id": "folder-permissions-are-not-a-boundary",
+      "expect_trigger": true,
+      "prompt": "In our self-hosted Grafana (OSS), team B must not see team C's dashboards or numbers, because team C works for a client under NDA. Can we just put team C's boards in a folder only they can open?",
+      "assertions": [
+        "Asks or establishes that this is a confidentiality need, not noise",
+        "States that folder permissions and Teams hide boards but not data, because any org member, Viewers included, can query every datasource in the org",
+        "Proposes a separate org per scope whose datasources reach data through a scope-filtering proxy credential, and points to the agent-platform skill for the proxy",
+        "Says to switch off snapshots and public dashboards, which publish data without login"
+      ]
+    },
+    {
+      "id": "kiosk-for-a-wall-screen",
+      "expect_trigger": true,
+      "prompt": "We want a TV in the team room that cycles team C's Grafana playlist. I don't want it logged in as me, but random people shouldn't be able to open that playlist either. We log in to Grafana through our IdP with generic OAuth.",
+      "assertions": [
+        "Gives the screen its own IdP account holding only team C's scope group plus a kiosk marker group, not a person's session or a public dashboard",
+        "Uses org_attribute_path with the marker group so staff keep the default org while the kiosk lands only in team C's org, with numeric org ids",
+        "Ends role_attribute_path in an empty string so the kiosk is not raised to Editor in its scope org",
+        "Generates a password a TV remote can type, keeps it in the vault, and revokes the screen by disabling the account"
+      ]
+    },
+    {
+      "id": "staff-lost-default-org",
+      "expect_trigger": true,
+      "prompt": "We added org_mapping for our new client orgs to the generic OAuth settings in grafana.ini. Since then, people who are also in a client group lose the Main Org on their next login. Why, and how do we fix it?",
+      "assertions": [
+        "Explains that a user matching any org_mapping entry gets exactly the matched orgs and is removed from all other orgs at every login",
+        "Proposes a mapping entry that keeps staff in org 1, such as a synthetic key derived from not being in a kiosk group, using numeric org ids",
+        "Says the sync happens only at login and that sessions must be revoked after the change",
+        "Advises keeping role_attribute_strict off until every entry resolves"
+      ]
+    },
+    {
+      "id": "plugin-not-registered-after-upgrade",
+      "expect_trigger": true,
+      "prompt": "We upgraded Grafana to 13.2 via grafana-operator. The pod is Running and healthy, but every Prometheus and Loki panel now says 'Plugin not registered'.",
+      "assertions": [
+        "Identifies preinstall_auto_update deleting bundled plugins at startup on a read-only root filesystem, with the unlinkat read-only file system error in the logs",
+        "Sets [plugins] preinstall_auto_update to false",
+        "Verifies through the API rather than pod status: loaded plugins, datasource health and a real query per type, for example with grafana_access_audit.py --health"
+      ]
+    },
+    {
+      "id": "playlist-not-found-for-colleague",
+      "expect_trigger": true,
+      "prompt": "I shared a Grafana playlist link ending in ?orgId=2&kiosk. It works for me, but my colleague gets 'not found'. Is the playlist broken?",
+      "assertions": [
+        "Explains that Grafana answers not found (404) for resources in an org the user is not a member of",
+        "Suggests checking the colleague's org membership or org mapping rather than the playlist",
+        "Recommends testing as the target identity in a private window"
+      ]
+    },
+    {
+      "id": "vmauth-label-enforcement-is-agent-platform",
+      "expect_trigger": false,
+      "prompt": "Configure vmauth so our agents' MCP metrics tool can only read series labelled team=team-c, and show that a client can't widen the filter by adding its own.",
+      "assertions": [
+        "Does not load grafana-access; label enforcement in vmauth for agent tools belongs to the agent-platform skill"
+      ]
+    }
+  ]
+}

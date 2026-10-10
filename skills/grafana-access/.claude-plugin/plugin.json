@@ -1,0 +1,24 @@
+{
+  "name": "grafana-access",
+  "displayName": "Grafana Access",
+  "description": "Decides and enforces who sees which data in Grafana OSS: one org per confidentiality scope, generic OAuth org_mapping that keeps staff in the default org while a kiosk sees only its scope, per-scope orgs from git with grafana-operator, a kiosk identity per wall screen, snapshots and public dashboards off, major upgrades proven through the API, and wall dashboards readable across the room, with a read-only access audit script.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "grafana",
+    "grafana-operator",
+    "access-control",
+    "oauth",
+    "org-mapping",
+    "kiosk",
+    "wall-dashboard",
+    "victoriametrics",
+    "observability",
+    "multi-tenancy",
+    "upgrade"
+  ]
+}

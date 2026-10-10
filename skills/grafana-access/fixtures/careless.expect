@@ -1,0 +1,13 @@
+datasource-plugin-missing
+datasource-unhealthy
+external-snapshots-enabled
+infinity-api-key-field
+kiosk-outside-scope
+org-mapping-by-name
+org-not-audited
+preinstall-auto-update
+public-dashboard-exists
+public-dashboards-enabled
+role-path-fallback
+snapshot-exists
+snapshots-enabled

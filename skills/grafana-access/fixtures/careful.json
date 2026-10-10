@@ -1,0 +1,518 @@
+{
+  "routes": {
+    "/api/health": {
+      "status": 200,
+      "body": {
+        "database": "ok",
+        "version": "13.2.3",
+        "commit": "90ffed056f0884267356c12a0eeb72a022af53f1"
+      }
+    },
+    "/api/admin/settings": {
+      "status": 200,
+      "body": {
+        "auth.generic_oauth": {
+          "allow_assign_grafana_admin": "true",
+          "enabled": "true",
+          "org_attribute_path": "groups && [groups, [!contains(groups, 'grafana-kiosk') && 'grafana-org1-member' || 'none']][]",
+          "org_mapping": "grafana-org1-member:1:Editor grafana-admins:1:Admin grafana-scope-b:2:Viewer",
+          "role_attribute_path": "contains(groups, 'grafana-admins') && 'GrafanaAdmin' || ''",
+          "role_attribute_strict": "false"
+        },
+        "plugins": {
+          "allow_loading_unsigned_plugins": "",
+          "app_tls_skip_verify_insecure": "false",
+          "cdn_base_url": "",
+          "disable_plugins": "",
+          "enable_alpha": "false",
+          "forward_host_env_vars": "",
+          "log_backend_requests": "false",
+          "plugin_admin_enabled": "true",
+          "plugin_admin_external_manage_enabled": "false",
+          "plugin_catalog_hidden_plugins": "",
+          "plugin_catalog_url": "https://grafana.com/grafana/plugins/",
+          "preinstall": "",
+          "preinstall_auto_update": "false",
+          "preinstall_disabled": "true",
+          "preinstall_sync": "",
+          "public_key_retrieval_disabled": "false",
+          "public_key_retrieval_on_startup": "false",
+          "update_strategy": "minor"
+        },
+        "public_dashboards": {
+          "enabled": "false"
+        },
+        "snapshots": {
+          "enabled": "false",
+          "external_enabled": "false",
+          "external_snapshot_name": "Publish to snapshots.raintank.io",
+          "external_snapshot_token": "",
+          "external_snapshot_url": "https://snapshots.raintank.io",
+          "public_mode": "false"
+        }
+      }
+    },
+    "/api/plugins?embedded=0": {
+      "status": 200,
+      "body": [
+        {
+          "id": "alertlist",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "alertmanager",
+          "type": "datasource",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "annolist",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "grafana-azure-monitor-datasource",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.2"
+          }
+        },
+        {
+          "id": "barchart",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "bargauge",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "candlestick",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "canvas",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "cloudwatch",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.2"
+          }
+        },
+        {
+          "id": "dashlist",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "elasticsearch",
+          "type": "datasource",
+          "info": {
+            "version": "12.9.1"
+          }
+        },
+        {
+          "id": "flamegraph",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "gauge",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "geomap",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "gettingstarted",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "stackdriver",
+          "type": "datasource",
+          "info": {
+            "version": "12.6.2"
+          }
+        },
+        {
+          "id": "grafana-pyroscope-datasource",
+          "type": "datasource",
+          "info": {
+            "version": "13.0.6"
+          }
+        },
+        {
+          "id": "graphite",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.2"
+          }
+        },
+        {
+          "id": "heatmap",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "histogram",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "influxdb",
+          "type": "datasource",
+          "info": {
+            "version": "13.1.5"
+          }
+        },
+        {
+          "id": "jaeger",
+          "type": "datasource",
+          "info": {
+            "version": "13.0.3"
+          }
+        },
+        {
+          "id": "logs",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "logstable",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "loki",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.0"
+          }
+        },
+        {
+          "id": "mssql",
+          "type": "datasource",
+          "info": {
+            "version": "13.0.5"
+          }
+        },
+        {
+          "id": "mysql",
+          "type": "datasource",
+          "info": {
+            "version": "13.1.2"
+          }
+        },
+        {
+          "id": "news",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "nodeGraph",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "opentsdb",
+          "type": "datasource",
+          "info": {
+            "version": "13.0.3"
+          }
+        },
+        {
+          "id": "piechart",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "grafana-postgresql-datasource",
+          "type": "datasource",
+          "info": {
+            "version": "13.0.3"
+          }
+        },
+        {
+          "id": "prometheus",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.1"
+          }
+        },
+        {
+          "id": "stat",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "state-timeline",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "status-history",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "table",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "tempo",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.2"
+          }
+        },
+        {
+          "id": "grafana-testdata-datasource",
+          "type": "datasource",
+          "info": {
+            "version": "13.2.2"
+          }
+        },
+        {
+          "id": "text",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "timeseries",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "traces",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "trend",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "welcome",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "xychart",
+          "type": "panel",
+          "info": {
+            "version": ""
+          }
+        },
+        {
+          "id": "zipkin",
+          "type": "datasource",
+          "info": {
+            "version": "12.4.8"
+          }
+        }
+      ]
+    },
+    "/api/user/orgs": {
+      "status": 200,
+      "body": [
+        {
+          "orgId": 1,
+          "name": "Main Org.",
+          "role": "Admin"
+        },
+        {
+          "orgId": 2,
+          "name": "Scope B",
+          "role": "Admin"
+        }
+      ]
+    },
+    "/api/orgs?perpage=1000": {
+      "status": 200,
+      "body": [
+        {
+          "id": 1,
+          "name": "Main Org."
+        },
+        {
+          "id": 2,
+          "name": "Scope B"
+        }
+      ]
+    },
+    "/api/orgs/1/users?perpage=1000": {
+      "status": 200,
+      "body": [
+        {
+          "orgId": 1,
+          "userId": 1,
+          "login": "admin",
+          "email": "admin@localhost",
+          "role": "Admin"
+        }
+      ]
+    },
+    "/api/datasources @1": {
+      "status": 200,
+      "body": []
+    },
+    "/api/dashboard/snapshots?limit=1000 @1": {
+      "status": 403,
+      "body": {
+        "message": "Dashboard Snapshots are disabled"
+      }
+    },
+    "/api/dashboards/public-dashboards?perpage=1000 @1": {
+      "status": 404,
+      "body": {
+        "message": "Not found"
+      }
+    },
+    "/api/orgs/2/users?perpage=1000": {
+      "status": 200,
+      "body": [
+        {
+          "orgId": 2,
+          "userId": 1,
+          "login": "admin",
+          "email": "admin@localhost",
+          "role": "Admin"
+        },
+        {
+          "orgId": 2,
+          "userId": 2,
+          "login": "tv-scope-b",
+          "email": "tv-scope-b@example.test",
+          "role": "Viewer"
+        }
+      ]
+    },
+    "/api/datasources @2": {
+      "status": 200,
+      "body": [
+        {
+          "id": 1,
+          "uid": "prometheus",
+          "orgId": 2,
+          "name": "metrics",
+          "type": "prometheus",
+          "typeName": "Prometheus",
+          "typeLogoUrl": "public/plugins/prometheus/img/prometheus_logo.svg",
+          "access": "proxy",
+          "url": "http://metrics-proxy.example.test:8427",
+          "user": "",
+          "database": "",
+          "basicAuth": true,
+          "isDefault": true,
+          "jsonData": {},
+          "readOnly": false
+        }
+      ]
+    },
+    "/api/datasources/uid/prometheus @2": {
+      "status": 200,
+      "body": {
+        "id": 1,
+        "uid": "prometheus",
+        "orgId": 2,
+        "name": "metrics",
+        "type": "prometheus",
+        "typeLogoUrl": "public/plugins/prometheus/img/prometheus_logo.svg",
+        "access": "proxy",
+        "url": "http://metrics-proxy.example.test:8427",
+        "user": "",
+        "database": "",
+        "basicAuth": true,
+        "basicAuthUser": "boards-scope-b",
+        "withCredentials": false,
+        "isDefault": true,
+        "jsonData": {},
+        "secureJsonFields": {
+          "basicAuthPassword": true
+        },
+        "version": 1,
+        "readOnly": false,
+        "apiVersion": ""
+      }
+    },
+    "/api/dashboard/snapshots?limit=1000 @2": {
+      "status": 403,
+      "body": {
+        "message": "Dashboard Snapshots are disabled"
+      }
+    },
+    "/api/dashboards/public-dashboards?perpage=1000 @2": {
+      "status": 404,
+      "body": {
+        "message": "Not found"
+      }
+    }
+  }
+}
