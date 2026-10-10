@@ -34,6 +34,8 @@ proposed ──ratified──▶ accepted ──replaced──▶ superseded by 
 
 - Every transition = three writes: frontmatter `status:` + `date:`, a dated More Information
   bullet citing the commit/evidence, and the registry row. The validator fails on any drift.
+- `proposed` = under review. Ratify to `accepted` when the decision is made; the rollout is
+  tracked in tickets, not by holding the record in `proposed`.
 - `date` = last update of the decision (MADR semantics). A format-only touch (e.g. migration)
   is not a decision update — log the bullet, keep the date.
 - `rejected` records are kept forever: they prevent re-deriving a dead end.
@@ -78,11 +80,14 @@ python3 scripts/validate_adr_consistency.py .            # auto-discovers the AD
 python3 scripts/validate_adr_consistency.py . --adr-dir docs/adr
 ```
 
-Enforces: one filename style per corpus, unique never-reused numbers, status+date in exactly
-one format generation per file, legal status values, superseded-by targets exist, single
-bare-title H1, required sections, `Chosen option:` line, and file ↔ registry parity on status
-(primary word) + date. Reports (without failing): Nygard skips, missing registry. Exit codes:
-0 clean, 1 violations, 2 no ADR directory.
+Enforces: one filename style per corpus, unique never-reused numbers, every file that starts
+like a record (`adr-NNNN`, `NNNN`, any case) matches the filename pattern (only `0000`, the
+template, is skipped), status+date in exactly one format generation per file, legal status
+values, a `superseded` status that names an existing superseding record, single bare-title
+H1, required sections, `Chosen option:` line, a registry file (`index.md`/`README.md`) that
+has Records rows once records exist, and file ↔ registry parity on status (primary word) +
+date. Reports (without failing): Nygard skips, no registry file. Exit codes: 0 clean,
+1 violations, 2 no ADR directory.
 
 ## CI wiring
 

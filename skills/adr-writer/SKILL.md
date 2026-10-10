@@ -41,6 +41,8 @@ docs tree.
    concrete check that proves the decision is implemented — a command, dashboard, policy, or
    test by name, not a proxy. Why-nots → `## Pros and Cons of the Options`
    (`Good/Neutral/Bad, because` bullets per option; omit when no real alternative was weighed).
+   Options weighed against drivers → an optional `## Scoring` table between Decision Drivers
+   and Considered Options: one row per option, 0/1/2 per driver, a total column.
 4. `## More Information`: parent RFC/issue first (`* Technical story: …`), then dated history
    bullets `* YYYY-MM-DD — <event> (<commit>)` oldest first, then cross-ADR relations
    (Supersedes / Refined by / Supported by).
@@ -53,6 +55,18 @@ Reality changed (revert, partial rollout, ratification)? Append a dated More Inf
 bullet citing the commit, update frontmatter `status:` + `date:`, mirror the index row.
 **The body stays as decided** — never rewrite it to match new reality. A reversed decision
 gets a *new* superseding ADR; the old one's status becomes superseded-by, linking forward.
+
+- **Accept when the decision is made**, not when the rollout lands: `accepted` = decided;
+  tickets track the implementation and stay open until it ships.
+- **Factual drift** (a renamed command, a moved path) is fixed in the docs that describe
+  current practice and in the parent RFC, never in the decision body. A moved mechanism
+  behind an accepted ADR gets a dated history bullet.
+- **Narrowed, not replaced?** A new ADR that carves an exception out of an older one does
+  not supersede it. The old record stays `accepted` and gains
+  `* YYYY-MM-DD — amended in part by [ADR-NNNN](adr-NNNN-<title>.md) (<commit>)` plus a new
+  `date:` and index row; the new record lists `* Amends in part [ADR-NNNN](adr-NNNN-<title>.md)`
+  among its relations, pointing back. Supersede only when the whole decision is replaced.
+
 Records keep their **birth format**: amend older MADR 2.x records (`* Status:` bullets,
 `## Links`) or Nygard records in their own shape; don't retro-migrate the corpus
 (deliberate migration → [reference.md](reference.md)).
@@ -72,7 +86,17 @@ on status + date. Run after every ADR touch; keep it in CI so drift can't land.
 - Dates come from `git log --follow --oneline -- <file>` or the triggering commit — never
   from memory. No ratification commit exists? Log `status corrected in audit YYYY-MM-DD`;
   don't backdate acceptance.
-- Numbers are never reused; files never renamed (inbound links break).
+- Numbers are never reused; files on the trunk are never renamed (inbound links break).
+- Numbers are unique only on the trunk. Before merging a long-lived branch that adds records,
+  compare its numbers with the trunk's (`git ls-tree --name-only origin/<trunk> docs/adr/`). On
+  a clash, renumber the branch's unmerged records and every reference the branch wrote —
+  links, index, docs nav, agent instructions, CI comments, superseded statuses — and leave
+  the trunk's references alone. Links to files the branch deleted become commit-pinned
+  permalinks. Then run the validator.
+- A repo link checker flags the template's placeholder links (`adr-0123-example.md`): wrap
+  placeholders in backticks in the repo's copy, or exclude the template from the checker.
+- Bullets may follow the repo's markdownlint style (`-`), except the `* Status:` / `* Date:`
+  lines of MADR 2.x records, which the validator reads verbatim.
 
 ## Additional resources
 

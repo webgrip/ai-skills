@@ -26,6 +26,17 @@
       ]
     },
     {
+      "id": "partial-amendment",
+      "prompt": "ADR-0004 says agents get no MCP servers. We just agreed to allow read-only MCP tools behind our gateway, but everything else in 0004 stands. Record that.",
+      "assertions": [
+        "Writes a new ADR for the read-only exception with the next free number and a row in the index",
+        "Does not set ADR-0004's status to superseded; it stays accepted",
+        "Appends a dated 'amended in part by' history bullet to ADR-0004 linking the new record, and the new record links back",
+        "Leaves ADR-0004's decision body text unchanged",
+        "Runs the consistency validator (or calls out its absence) after writing"
+      ]
+    },
+    {
       "id": "no-adr-for-exploration",
       "prompt": "Help me think through whether we should adopt Kafka or RabbitMQ for our event bus — I want to weigh the options.",
       "assertions": [

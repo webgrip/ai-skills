@@ -14,14 +14,16 @@ Without --adr-dir the ADR directory is auto-discovered from common homes
 
 Enforced:
 - Filenames adr-NNNN-<kebab-title>.md or NNNN-<kebab-title>.md — one style
-  per corpus, numbers unique, 0000/"template" files skipped.
+  per corpus, numbers unique. 0000 is the template and is skipped; any other
+  file that starts like a record (adr-NNNN or NNNN) but breaks the pattern
+  is an error, never silently ignored.
 - Every record carries status + date in exactly one format generation:
   MADR 4.0.0 (YAML frontmatter) or MADR 2.x (`* Status:` / `* Date:`
   bullets). Mixing both shapes in one file is an error. Legacy Nygard
   records (`## Status` heading) are tolerated: status is still checked,
   section checks are skipped, and the skip is reported.
 - Status is legal: proposed | accepted | rejected | deprecated |
-  superseded by ADR-NNNN (the referenced record must exist).
+  superseded by ADR-NNNN (the superseding record must be named and exist).
 - One bare-title H1; required MADR sections incl. the history section
   (More Information in 4.0, Links in 2.x) and a `Chosen option:` line.
 - Registry parity: if the ADR directory has an index.md/README.md with
@@ -29,8 +31,9 @@ Enforced:
   record must have exactly one row whose status (primary word) and date
   match the file. Static-site generators hide frontmatter, so the registry
   row is the reader-visible status — that drift is the failure mode this
-  script exists to catch. A corpus without a registry is reported, not
-  failed.
+  script exists to catch. A registry file without Records rows while
+  records exist is an error; a corpus without a registry file is reported,
+  not failed.
 """
 
 from __future__ import annotations
@@ -54,6 +57,7 @@ CANDIDATE_DIRS = (
 )
 
 RE_FILENAME = re.compile(r"^(adr-)?(\d{4})-[a-z0-9][a-z0-9._-]*\.md$")
+RE_RECORD_LIKE = re.compile(r"(?i)^(adr-)?\d{4}")
 RE_FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 RE_FM_STATUS = re.compile(r'^status:\s*"?([^"\n]+?)"?\s*$', re.MULTILINE)
 RE_FM_DATE = re.compile(r'^date:\s*"?(\d{4}-\d{2}-\d{2})"?\s*$', re.MULTILINE)
@@ -67,6 +71,8 @@ RE_CELL_LINK = re.compile(r"\[(?:ADR-)?(\d{4})\]\(([^)]+)\)")
 RE_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 LEGAL_PRIMARY = {"proposed", "accepted", "rejected", "deprecated", "superseded"}
+TEMPLATE_NUMBER = "0000"
+REGISTRY_NAMES = ("index.md", "README.md")
 
 REQUIRED_SECTIONS = (
     "## Context and Problem Statement",
@@ -92,8 +98,7 @@ def discover_adr_dir(root: Path) -> Path | None:
 
 
 def registry_rows(adr_dir: Path, err) -> dict[str, tuple[str, str, str]] | None:
-    """number -> (file, status, date) from the first index file with table rows."""
-    for name in ("index.md", "README.md"):
+    for name in REGISTRY_NAMES:
         index = adr_dir / name
         if not index.is_file():
             continue
@@ -140,15 +145,21 @@ def main() -> int:
     def err(name: str, msg: str) -> None:
         errors.append(f"{name}: {msg}")
 
-    records: dict[str, dict] = {}  # number -> {name, status, date}
+    records: dict[str, dict] = {}
     prefixes: set[str] = set()
     legacy = 0
 
     for path in sorted(adr_dir.glob("*.md")):
         m = RE_FILENAME.match(path.name)
         if not m:
-            continue  # index.md, README.md, prose pages — not records
-        if m.group(2) == "0000" or "template" in path.name:
+            if RE_RECORD_LIKE.match(path.name):
+                err(
+                    path.name,
+                    "looks like an ADR but does not match adr-NNNN-<kebab-title>.md"
+                    " or NNNN-<kebab-title>.md",
+                )
+            continue
+        if m.group(2) == TEMPLATE_NUMBER:
             continue
         prefixes.add(m.group(1) or "")
         number = m.group(2)
@@ -166,15 +177,15 @@ def main() -> int:
 
         if fm_status and b_status:
             err(path.name, "mixes frontmatter status and `* Status:` bullet — pick one format")
-        if fm_status:  # MADR 4.0.0
+        if fm_status:
             status = fm_status.group(1)
             date = fm_date.group(1) if fm_date else None
             sections = REQUIRED_SECTIONS + ("## More Information",)
-        elif b_status:  # MADR 2.x
+        elif b_status:
             status = b_status.group(1)
             date = b_date.group(1) if b_date else None
             sections = REQUIRED_SECTIONS + ("## Links",)
-        elif n_status:  # legacy Nygard — tolerated, reduced checks
+        elif n_status:
             status = n_status.group(1)
             n_date = RE_NYGARD_DATE.search(text)
             date = n_date.group(1) if n_date else None
@@ -190,7 +201,14 @@ def main() -> int:
         if primary(status) not in LEGAL_PRIMARY:
             err(path.name, f"illegal status {status!r}")
         if primary(status) == "superseded":
-            for ref in set(re.findall(r"\d{4}", strip_links(status))):
+            superseding = set(re.findall(r"\d{4}", strip_links(status)))
+            if not superseding:
+                err(
+                    path.name,
+                    "status `superseded` must name the superseding record"
+                    " (superseded by ADR-NNNN)",
+                )
+            for ref in superseding:
                 if not (
                     list(adr_dir.glob(f"adr-{ref}-*.md")) or list(adr_dir.glob(f"{ref}-*.md"))
                 ):
@@ -216,7 +234,13 @@ def main() -> int:
         notes.append(f"{legacy} legacy Nygard record(s) — section checks skipped")
 
     rows = registry_rows(adr_dir, err)
-    if rows is None:
+    registry_files = [name for name in REGISTRY_NAMES if (adr_dir / name).is_file()]
+    if rows is None and registry_files and records:
+        err(
+            registry_files[0],
+            "the registry has no Records rows, but there are ADR files to register",
+        )
+    elif rows is None:
         notes.append("no registry table found (index.md/README.md) — parity checks skipped")
     else:
         for number, rec in sorted(records.items()):

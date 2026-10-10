@@ -51,7 +51,7 @@ Open Claude in a project and say, for example:
 - *"we don't have ADRs yet — set them up"*
 - *"we reverted the Kafka migration — update the ADR"*
 - *"this decision replaces ADR-0007, supersede it"*
-- *"ratify ADR-0012, it's fully rolled out now"*
+- *"we agreed on ADR-0012 in today's review — accept it"*
 - *"wire ADR validation into our CI"*
 
 ## Why

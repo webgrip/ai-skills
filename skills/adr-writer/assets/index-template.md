@@ -30,8 +30,8 @@ records a single decision and the alternatives it beat.
 
 | Status | Meaning |
 | ------ | ------- |
-| **proposed** | Decided to pursue, not yet ratified/implemented end-to-end. |
-| **accepted** | Decided. Current source of truth. |
+| **proposed** | Under review; not decided yet. |
+| **accepted** | Decided. Current source of truth; tickets track the rollout. |
 | **rejected** | Considered and declined; kept to prevent re-derivation. |
 | **superseded by ADR-NNNN** | Replaced by a later ADR. Never deleted. |
 | **deprecated** | No longer relevant, not directly replaced. |
