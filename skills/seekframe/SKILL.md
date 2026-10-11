@@ -20,7 +20,7 @@ Playwright with its headless shell, all in `~/.cache/seekframe`; override with `
 | A scene looks wrong | `render.mjs stills` at three times inside it, fix, check stills again, then render |
 | Add a voice | Per subtitle line with `eleven.py`, tiered and dry-run first ([reference.md](reference.md#voice)) |
 | Thumbnail, title, upload | Fill the video's `youtube` block; every render writes the upload sheet (below). Rules: the `youtube-upload-kit` skill |
-| Vertical Short | The kit renders 1920×1080 only; a 9:16 layout per scene is not built. Say so, then plan it as its own task |
+| Vertical Short | `format: '9:16'` on the video: 1080×1920, every built-in scene lays out inside the Shorts safe area (clear of the top 290 px, bottom 420 px and right 200 px). A project's own scenes must read `VERTICAL`, `SAFE` and `SW` the same way |
 
 ## Script
 

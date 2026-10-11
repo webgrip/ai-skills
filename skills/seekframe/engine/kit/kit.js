@@ -78,19 +78,19 @@ function richWords(parent, text) {
 }
 
 function titleBlock(root, s, V) {
-  const kick = at(root, 150, 108, 'mono', '', { fontSize: '15px', letterSpacing: '0.18em', color: 'var(--mute)', whiteSpace: 'nowrap' });
+  const kick = at(root, SAFE.l, SAFE.t, 'mono', '', { fontSize: '15px', letterSpacing: '0.18em', color: 'var(--mute)', whiteSpace: 'nowrap' });
   const items = [];
   s.lines.forEach((l, i) => {
     const prev = items[items.length - 1];
     if (prev && prev.text === (l.h || '')) { prev.t1 = l.t0 - s.t0 + l.dur; return; }
-    const hb = at(root, 146, 132, '', '', { fontSize: (s.p.hsize || 76) + 'px', fontWeight: 780, letterSpacing: '-0.028em', whiteSpace: 'nowrap', lineHeight: 1.1, color: 'var(--ink)' });
+    const hb = at(root, SAFE.l - 4, SAFE.t + 24, '', '', { fontSize: (s.p.hsize || (VERTICAL ? 84 : 76)) + 'px', fontWeight: 780, letterSpacing: '-0.028em', whiteSpace: VERTICAL ? 'normal' : 'nowrap', width: VERTICAL ? SW + 'px' : '', lineHeight: 1.1, color: 'var(--ink)' });
     items.push({ hb, ws: richWords(hb, l.h || ''), text: l.h || '', t0: i === 0 ? 0 : l.t0 - s.t0, t1: l.t0 - s.t0 + l.dur });
   });
   let fitted = false;
   const ktext = (s.p.k || V.kicker || '').toUpperCase();
   return lt => {
     if (!fitted) {
-      items.forEach(it => { const w = it.hb.scrollWidth; if (w > 1640) it.hb.style.fontSize = Math.floor((s.p.hsize || 76) * 1640 / w) + 'px'; });
+      if (!VERTICAL) items.forEach(it => { const w = it.hb.scrollWidth; if (w > SW + 20) it.hb.style.fontSize = Math.floor((s.p.hsize || 76) * (SW + 20) / w) + 'px'; });
       fitted = true;
     }
     kick.textContent = scramble(ktext, P(lt, 0.05, 0.4), Math.floor((s.t0 + lt) * 30));
@@ -112,7 +112,7 @@ function titleBlock(root, s, V) {
 function plannedFrame(root, V) {
   const label = (V.txt && V.txt.planned) || 'PLANNED · NOT BUILT YET';
   const f = at(root, 34, 34, '', '', { width: (W - 68) + 'px', height: (H - 68) + 'px', border: '2px dashed var(--acc)', borderRadius: '18px', pointerEvents: 'none' });
-  const l = at(root, W - 72, 74, 'mono', label, { fontSize: '13px', letterSpacing: '0.18em', color: 'var(--bg)', background: 'var(--acc)', padding: '7px 12px', borderRadius: '6px', transform: 'translateX(-100%)', whiteSpace: 'nowrap' });
+  const l = at(root, VERTICAL ? SAFE.r : W - 72, VERTICAL ? SAFE.t - 80 : 74, 'mono', label, { fontSize: (VERTICAL ? 20 : 13) + 'px', letterSpacing: '0.18em', color: 'var(--bg)', background: 'var(--acc)', padding: '7px 12px', borderRadius: '6px', transform: 'translateX(-100%)', whiteSpace: 'nowrap' });
   return lt => { const p = E(lt, 0.1, 0.5); f.style.opacity = p; l.style.opacity = p; };
 }
 

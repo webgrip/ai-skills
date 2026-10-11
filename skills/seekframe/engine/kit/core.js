@@ -1,5 +1,10 @@
 'use strict';
-const W = 1920, H = 1080, FPS = 60;
+const VERTICAL = new URLSearchParams(location.search).get('f') === '9:16';
+const W = VERTICAL ? 1080 : 1920, H = VERTICAL ? 1920 : 1080, FPS = 60;
+const SAFE = VERTICAL ? { l: 90, r: W - 200, t: 290, b: H - 420 } : { l: 150, r: W - 150, t: 108, b: H - 110 };
+const SW = SAFE.r - SAFE.l;
+document.documentElement.style.setProperty('--W', W + 'px');
+document.documentElement.style.setProperty('--H', H + 'px');
 let DUR = 40;
 const clamp = (x, a = 0, b = 1) => (x < a ? a : x > b ? b : x);
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -67,10 +72,11 @@ const HUD = (() => {
     paths.push(sv('path', { d: `M${x} ${y + dy * L}V${y}H${x + dx * L}`, fill: 'none', 'stroke-width': 1.5 }, s));
   });
   const prog = sv('rect', { x: 0, y: H - 3, height: 3, width: 0 }, s);
-  const tl = h('div', 'hudtxt', root); css(tl, { left: '80px', top: '35px' });
+  const tl = h('div', 'hudtxt', root); css(tl, VERTICAL ? { left: SAFE.l + 'px', top: (SAFE.t - 70) + 'px' } : { left: '80px', top: '35px' });
   const tr = h('div', 'hudtxt', root); css(tr, { right: '80px', top: '35px', textAlign: 'right' });
   const bl = h('div', 'hudtxt', root); css(bl, { left: '80px', bottom: '33px' });
   const br = h('div', 'hudtxt', root); css(br, { right: '80px', bottom: '33px', textAlign: 'right' });
+  if (VERTICAL) [tr, bl, br].forEach(e => (e.style.display = 'none'));
   let sections = [[0, '']], bottoms = [[0, '']], site = '';
   const pick = (list, t) => { let r = list[0]; for (const e of list) if (t >= e[0]) r = e; return r; };
   const pad = n => String(n).padStart(2, '0');
@@ -86,7 +92,7 @@ const HUD = (() => {
       tl.textContent = scramble(sec[1].toUpperCase(), P(t, sec[0], sec[0] + 0.35), seed);
       bl.textContent = scramble(bot[1].toUpperCase(), P(t, bot[0], bot[0] + 0.5), seed + 3);
       const fr = Math.round(t * FPS);
-      tr.textContent = `TC ${pad(Math.floor(fr / 3600))}:${pad(Math.floor(fr / 60) % 60)}:${pad(fr % 60)}  ·  1920×1080  ·  ${FPS}P`;
+      tr.textContent = `TC ${pad(Math.floor(fr / 3600))}:${pad(Math.floor(fr / 60) % 60)}:${pad(fr % 60)}  ·  ${W}×${H}  ·  ${FPS}P`;
       br.textContent = site.toUpperCase();
       [tl, tr, bl, br].forEach(e => { e.style.color = ink; e.style.opacity = a; });
       root.style.opacity = E(t, 0.1, 0.8, ease.outCubic) * (1 - E(t, DUR - 0.8, DUR - 0.2, ease.inOutCubic));
@@ -95,7 +101,8 @@ const HUD = (() => {
 })();
 
 const GRAIN = (() => {
-  const cv = document.getElementById('grain'), g = cv.getContext('2d');
+  const cv = document.getElementById('grain'); cv.width = W / 2; cv.height = H / 2;
+  const g = cv.getContext('2d');
   const img = g.createImageData(cv.width, cv.height);
   return {
     update(frame) {

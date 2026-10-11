@@ -25,8 +25,8 @@ defineScene('statement', (root, p, ctx) => {
   const items = p.items || ctx.lines.map(l => l.h || '');
   const center = p.align === 'center';
   const els = items.map(txt => {
-    const size = p.size || (txt.length > 40 ? 84 : txt.length > 26 ? 104 : 128);
-    const e = at(root, center ? 0 : 150, 0, '', '', { width: (center ? W : 1620) + 'px', textAlign: center ? 'center' : 'left', fontSize: size + 'px', fontWeight: 820, letterSpacing: '-0.035em', lineHeight: 1.03, color: VAR.ink, padding: center ? '0 140px' : '0' });
+    const size = p.size || (VERTICAL ? (txt.length > 40 ? 76 : txt.length > 26 ? 92 : 112) : (txt.length > 40 ? 84 : txt.length > 26 ? 104 : 128));
+    const e = at(root, center && !VERTICAL ? 0 : SAFE.l, 0, '', '', { width: (center && !VERTICAL ? W : SW) + 'px', textAlign: center ? 'center' : 'left', fontSize: size + 'px', fontWeight: 820, letterSpacing: '-0.035em', lineHeight: 1.03, color: VAR.ink, padding: center && !VERTICAL ? '0 140px' : '0' });
     return { e, ws: richWords(e, txt) };
   });
   let hs = null;
@@ -37,7 +37,7 @@ defineScene('statement', (root, p, ctx) => {
     els.forEach((x, i) => { if (lt >= itemAt(info, i) - 0.05) k = i; });
     const gap = 28;
     const blockH = i1 => hs.slice(0, i1 + 1).reduce((a, b) => a + b, 0) + gap * i1;
-    const topFor = i1 => (H - blockH(i1)) / 2 + 10;
+    const topFor = i1 => SAFE.t + (SAFE.b - SAFE.t - blockH(i1)) / 2 + 10;
     const tk = itemAt(info, k);
     els.forEach((x, i) => {
       const vis = i <= k;
@@ -59,14 +59,23 @@ defineScene('statement', (root, p, ctx) => {
 defineScene('slam', (root, p, ctx) => {
   const B = 60 / (ctx.video.bpm || 124);
   const word = p.words || ['ONE', 'BIG', 'IDEA'];
-  const row = at(root, 0, 250, '', '', { width: W + 'px', display: 'flex', justifyContent: 'center', gap: '28px' });
-  const fs = p.size || (word.join('').length > 8 ? 230 : 300);
+  const row = VERTICAL
+    ? at(root, SAFE.l, SAFE.t + 120, '', '', { width: SW + 'px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px' })
+    : at(root, 0, 250, '', '', { width: W + 'px', display: 'flex', justifyContent: 'center', gap: '28px' });
+  const fs = p.size || (VERTICAL ? 230 : word.join('').length > 8 ? 230 : 300);
   const ls = word.map(c => { const e = h('span', '', row, c); css(e, { display: 'inline-block', fontSize: fs + 'px', fontWeight: 900, lineHeight: 1, color: VAR.ink, letterSpacing: '-0.02em' }); return e; });
-  const sub = at(root, 0, 720, 'mono', '', { width: W + 'px', textAlign: 'center', fontSize: '40px', letterSpacing: '0.42em', color: VAR.ink });
+  const sub = VERTICAL
+    ? at(root, SAFE.l, SAFE.b - 60, 'mono', '', { width: SW + 'px', fontSize: '34px', letterSpacing: '0.3em', color: VAR.ink })
+    : at(root, 0, 720, 'mono', '', { width: W + 'px', textAlign: 'center', fontSize: '40px', letterSpacing: '0.42em', color: VAR.ink });
   const subTxt = (p.sub || '').toUpperCase();
   let fitted = false;
   return (lt, info) => {
-    if (!fitted) { const w = row.scrollWidth; if (w > 1680) ls.forEach(e => (e.style.fontSize = Math.floor(fs * 1680 / w) + 'px')); fitted = true; }
+    if (!fitted) {
+      const room = VERTICAL ? SW : 1680;
+      const w = VERTICAL ? Math.max(...ls.map(e => e.scrollWidth)) : row.scrollWidth;
+      if (w > room) ls.forEach(e => (e.style.fontSize = Math.floor(fs * room / w) + 'px'));
+      fitted = true;
+    }
     ls.forEach((e, i) => {
       const t0 = 0.02 + i * B, k = P(lt, t0, t0 + 0.12);
       const settle = lt > t0 + 0.12 ? 1 + 0.06 * Math.exp(-(lt - t0 - 0.12) * 12) * Math.sin((lt - t0) * 50) : 1;
@@ -80,17 +89,20 @@ defineScene('slam', (root, p, ctx) => {
 }, { noTitle: true, ground: 'red', sfx: s => { const B = 60 / ((window.VIDEO && window.VIDEO.bpm) || 124); return (s.p.words || ['ONE', 'BIG', 'IDEA']).map((w, i) => ({ t: 0.02 + i * B, k: 'slam' })); } });
 
 defineScene('tiles', (root, p) => {
-  const items = p.items || [], cols = p.cols || 3, rows = Math.ceil(items.length / cols);
-  const GW = 1620, GAP = 24, tw = (GW - GAP * (cols - 1)) / cols, th = Math.min(270, (580 - GAP * (rows - 1)) / rows);
-  const grid = at(root, 150, 320, '', '', { width: GW + 'px', height: (rows * th + GAP * (rows - 1)) + 'px', perspective: '1600px' });
+  const items = p.items || [], cols = VERTICAL ? (p.colsV || 1) : (p.cols || 3), rows = Math.ceil(items.length / cols);
+  const GY = VERTICAL ? SAFE.t + 300 : 320, room = VERTICAL ? SAFE.b - GY : 580;
+  const GW = SW, GAP = 24, tw = (GW - GAP * (cols - 1)) / cols, th = Math.min(VERTICAL ? 220 : 270, (room - GAP * (rows - 1)) / rows);
+  const grid = at(root, SAFE.l, GY, '', '', { width: GW + 'px', height: (rows * th + GAP * (rows - 1)) + 'px', perspective: '1600px' });
   const tiles = items.map((it, i) => {
     const x = (i % cols) * (tw + GAP), y = Math.floor(i / cols) * (th + GAP);
     const t = at(grid, x, y, '', '', { width: tw + 'px', height: th + 'px', border: `1.5px ${it.planned ? 'dashed' : 'solid'} ${VAR.line}`, borderRadius: '20px', background: VAR.bg, transformOrigin: '50% 0', overflow: 'hidden' });
     const bar = at(t, 0, 0, '', '', { width: tw + 'px', height: '5px', background: VAR.acc, transformOrigin: '0 50%', transform: 'scaleX(0)' });
-    icon(t, it.icon || 'check', 52, 28, 24);
-    at(t, 28, 92, '', it.t, { fontSize: (it.t.length > 24 ? 28 : 33) + 'px', fontWeight: 760, color: VAR.ink, letterSpacing: '-0.015em', width: (tw - 56) + 'px', lineHeight: 1.12 });
-    if (it.s) at(t, 28, th - 64, '', it.s, { fontSize: '20px', color: VAR.mute, width: (tw - 56) + 'px', lineHeight: 1.3 });
-    if (it.planned) at(t, tw - 24, 24, 'mono', it.planned === true ? 'PLANNED' : it.planned, monoT(11, VAR.acc, { letterSpacing: '0.16em', border: `1.5px dashed ${VAR.acc}`, borderRadius: '5px', padding: '4px 8px', transform: 'translateX(-100%)' }));
+    const flat = th < 170;
+    const isz = VERTICAL ? 64 : 52;
+    icon(t, it.icon || 'check', isz, 28, flat ? (th - isz) / 2 : 24);
+    at(t, flat ? isz + 56 : 28, flat ? th / 2 - (VERTICAL ? 26 : 20) : (VERTICAL ? 108 : 92), '', it.t, { fontSize: (VERTICAL ? (it.t.length > 24 ? 40 : 46) : (it.t.length > 24 ? 28 : 33)) + 'px', fontWeight: 760, color: VAR.ink, letterSpacing: '-0.015em', width: (tw - 56) + 'px', lineHeight: 1.12 });
+    if (it.s && th >= 170) at(t, 28, th - 64, '', it.s, { fontSize: '20px', color: VAR.mute, width: (tw - 56) + 'px', lineHeight: 1.3 });
+    if (it.planned) at(t, tw - 24, 24, 'mono', it.planned === true ? 'PLANNED' : it.planned, monoT(VERTICAL ? 18 : 11, VAR.acc, { letterSpacing: '0.16em', border: `1.5px dashed ${VAR.acc}`, borderRadius: '5px', padding: '4px 8px', transform: 'translateX(-100%)' }));
     return { t, bar };
   });
   return (lt, info) => {
@@ -109,22 +121,25 @@ defineScene('tiles', (root, p) => {
 
 defineScene('steps', (root, p, ctx) => {
   const st = p.steps || ['Plan', 'Build', 'Check', 'Ship'];
-  const n = st.length, X0 = 230, X1 = 1690, Y = 600, dx = (X1 - X0) / Math.max(1, n - 1);
+  const n = st.length;
+  const A = VERTICAL ? SAFE.t + 340 : 230, B = VERTICAL ? SAFE.b - 120 : 1690, C = VERTICAL ? SAFE.l + 40 : 600;
+  const pos = j => (VERTICAL ? [C, A + j * (B - A) / Math.max(1, n - 1)] : [A + j * (B - A) / Math.max(1, n - 1), C]);
+  const [X0, Y0] = pos(0), [X1, Y1] = pos(n - 1);
   const s = sv('svg', { width: W, height: H }, root); css(s, { position: 'absolute', left: 0, top: 0 });
-  sv('line', { x1: X0, y1: Y, x2: X1, y2: Y, style: `stroke:${VAR.line};stroke-width:3` }, s);
-  const run = sv('line', { x1: X0, y1: Y, x2: X0, y2: Y, style: `stroke:${VAR.acc};stroke-width:5;stroke-linecap:round` }, s);
+  sv('line', { x1: X0, y1: Y0, x2: X1, y2: Y1, style: `stroke:${VAR.line};stroke-width:3` }, s);
+  const run = sv('line', { x1: X0, y1: Y0, x2: X0, y2: Y0, style: `stroke:${VAR.acc};stroke-width:5;stroke-linecap:round` }, s);
   const nodes = st.map((label, i) => {
-    const x = X0 + i * dx;
+    const [x, Y] = pos(i);
     const c = sv('circle', { cx: x, cy: Y, r: 26, style: `fill:${VAR.bg};stroke:${VAR.line};stroke-width:3` }, s);
     const tick = sv('path', { d: `M${x - 11} ${Y + 1}l7 7 15-16`, style: `fill:none;stroke:${VAR.bg};stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:0` }, s);
-    const l = at(root, x, Y + 56, '', label, { transform: 'translateX(-50%)', fontSize: '34px', fontWeight: 760, color: VAR.ink, whiteSpace: 'nowrap', opacity: 0 });
+    const l = at(root, VERTICAL ? x + 64 : x, VERTICAL ? Y - 30 : Y + 56, '', label, { transform: VERTICAL ? '' : 'translateX(-50%)', fontSize: (VERTICAL ? 52 : 34) + 'px', fontWeight: 760, color: VAR.ink, whiteSpace: 'nowrap', opacity: 0 });
     return { c, tick, l };
   });
   const at_ = j => (p.lit && info_.beats[p.lit[j]] != null ? info_.beats[p.lit[j]] + 0.45 : 0.9 + j * Math.max(0.55, (ctx.dur - 2.2) / Math.max(1, n - 1)));
   let info_ = null;
   return (lt, info) => {
     info_ = info;
-    let reach = X0;
+    let reach = pos(0);
     nodes.forEach((o, j) => {
       const t0 = at_(j), q = E(lt, t0, t0 + 0.35, ease.outBackS);
       o.l.style.opacity = E(lt, t0 - 0.2, t0 + 0.2);
@@ -132,24 +147,24 @@ defineScene('steps', (root, p, ctx) => {
       o.c.style.stroke = lt >= t0 ? VAR.acc : VAR.line;
       o.c.setAttribute('r', 26 * (lt >= t0 ? lerp(0.7, 1, q) : 1));
       o.tick.style.opacity = lt >= t0 ? q : 0;
-      if (lt >= t0) reach = X0 + j * dx;
+      if (lt >= t0) reach = pos(j);
     });
-    run.setAttribute('x2', reach);
+    run.setAttribute('x2', reach[0]); run.setAttribute('y2', reach[1]);
   };
 }, { sfx: s => { const n = (s.p.steps || [0, 0, 0, 0]).length; return Array.from({ length: n }, (_, j) => ({ t: s.p.lit && s.beats[s.p.lit[j]] != null ? s.beats[s.p.lit[j]] + 0.45 : 0.9 + j * Math.max(0.55, (s.dur - 2.2) / Math.max(1, n - 1)), k: 'check', i: j })); } });
 
 defineScene('compare', (root, p, ctx) => {
   const lanes = p.lanes || [{ label: 'The usual way', speed: 0.3 }, { label: 'With the product', speed: 1 }];
-  const X0 = 520, X1 = 1680, top = 360, gap = 170;
+  const X0 = VERTICAL ? SAFE.l : 520, X1 = VERTICAL ? SAFE.r : 1680, top = VERTICAL ? SAFE.t + 420 : 360, gap = VERTICAL ? 260 : 170;
   const els = lanes.map((ln, i) => {
     const y = top + i * gap;
-    at(root, 150, y - 18, '', ln.label, { fontSize: '34px', fontWeight: 760, color: i === lanes.length - 1 ? VAR.acc : VAR.ink, whiteSpace: 'nowrap' });
+    at(root, SAFE.l, VERTICAL ? y - 80 : y - 18, '', ln.label, { fontSize: (VERTICAL ? 46 : 34) + 'px', fontWeight: 760, color: i === lanes.length - 1 ? VAR.acc : VAR.ink, whiteSpace: 'nowrap' });
     const track = at(root, X0, y, '', '', { width: (X1 - X0) + 'px', height: '10px', borderRadius: '5px', background: VAR.line });
     const bar = at(root, X0, y, '', '', { width: '0px', height: '10px', borderRadius: '5px', background: i === lanes.length - 1 ? VAR.acc : VAR.ink });
-    const end = at(root, X1, y + 26, 'mono', (ln.end || '').toUpperCase(), monoT(15, VAR.mute, { transform: 'translateX(-100%)', opacity: 0 }));
+    const end = at(root, X1, y + 26, 'mono', (ln.end || '').toUpperCase(), monoT(VERTICAL ? 24 : 15, VAR.mute, { transform: 'translateX(-100%)', opacity: 0 }));
     return { ln, bar, end, track };
   });
-  at(root, X0, top + lanes.length * gap - 40, 'mono', (p.note || 'Illustration · not a measurement').toUpperCase(), monoT(13, VAR.mute, { letterSpacing: '0.16em' }));
+  at(root, X0, top + lanes.length * gap - 40, 'mono', (p.note || 'Illustration · not a measurement').toUpperCase(), monoT(VERTICAL ? 22 : 13, VAR.mute, { letterSpacing: '0.16em', whiteSpace: VERTICAL ? 'normal' : 'nowrap', width: VERTICAL ? SW + 'px' : '' }));
   return lt => {
     els.forEach(o => {
       const q = clamp(E(lt, 0.5, 0.5 + 2.4 / o.ln.speed, ease.inOutCubic));
@@ -161,12 +176,13 @@ defineScene('compare', (root, p, ctx) => {
 
 defineScene('endcard', (root, p, ctx) => {
   const name = p.name || ctx.video.product || '';
-  const wm = at(root, 0, 380, '', '', { width: W + 'px', textAlign: 'center', fontSize: '190px', fontWeight: 860, letterSpacing: '-0.04em', color: VAR.ink, lineHeight: 1 });
+  const CX = VERTICAL ? SAFE.l : 0, CW = VERTICAL ? SW : W, CY = VERTICAL ? (SAFE.t + SAFE.b) / 2 - 260 : 380;
+  const wm = at(root, CX, CY, '', '', { width: CW + 'px', textAlign: 'center', fontSize: (VERTICAL ? 170 : 190) + 'px', fontWeight: 860, letterSpacing: '-0.04em', color: VAR.ink, lineHeight: 1 });
   const ws = richWords(wm, name);
   if (ws.length) h('span', '', ws[ws.length - 1].n, '.').style.color = 'var(--acc)';
-  const a = at(root, 0, 640, '', p.a || '', { width: W + 'px', textAlign: 'center', fontSize: '54px', fontWeight: 700, color: VAR.ink, opacity: 0 });
-  const b = at(root, 0, 712, '', p.b || '', { width: W + 'px', textAlign: 'center', fontSize: '54px', fontWeight: 700, color: VAR.acc, opacity: 0 });
-  const url = at(root, 0, 860, 'mono', (p.url || ctx.video.site || '').toUpperCase(), monoT(20, VAR.mute, { width: W + 'px', textAlign: 'center', letterSpacing: '0.3em', opacity: 0 }));
+  const a = at(root, CX, CY + 260, '', p.a || '', { width: CW + 'px', textAlign: 'center', fontSize: '54px', fontWeight: 700, color: VAR.ink, opacity: 0 });
+  const b = at(root, CX, CY + 332, '', p.b || '', { width: CW + 'px', textAlign: 'center', fontSize: '54px', fontWeight: 700, color: VAR.acc, opacity: 0 });
+  const url = at(root, CX, CY + 480, 'mono', (p.url || ctx.video.site || '').toUpperCase(), monoT(20, VAR.mute, { width: CW + 'px', textAlign: 'center', letterSpacing: '0.3em', opacity: 0 }));
   return lt => {
     ws.forEach((w, j) => { const q = E(lt, 0.3 + j * 0.08, 1.1 + j * 0.08); w.n.style.transform = `translateY(${(1 - q) * 110}%)`; });
     a.style.opacity = E(lt, 1.3, 1.7); a.style.transform = `translateY(${(1 - E(lt, 1.3, 1.9)) * 20}px)`;

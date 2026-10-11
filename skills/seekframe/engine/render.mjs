@@ -26,11 +26,14 @@ const CHROME = process.env.REEL_CHROME || (fs.existsSync(CACHE)
   ? fs.readdirSync(CACHE).filter(d => d.startsWith('chromium_headless_shell-')).sort((a, b) => +b.split('-')[1] - +a.split('-')[1])
     .map(d => path.join(CACHE, d, 'chrome-headless-shell-linux64/chrome-headless-shell')).find(f => fs.existsSync(f))
   : undefined);
-const PAGE = 'file://' + path.join(HERE, 'kit', 'kit.html') + '?v=' + encodeURIComponent(id) + '&p=' + encodeURIComponent(project);
+const FORMAT = JSON.parse(fs.readFileSync(path.join(project, 'videos', id + '.js'), 'utf8').replace(/^window\.VIDEO = /, '').replace(/;\s*$/, '')).format || '16:9';
+if (!['16:9', '9:16'].includes(FORMAT)) { console.error(`video ${id}: format must be '16:9' or '9:16', not '${FORMAT}'`); process.exit(2); }
+const VIEW = FORMAT === '9:16' ? { width: 1080, height: 1920 } : { width: 1920, height: 1080 };
+const PAGE = 'file://' + path.join(HERE, 'kit', 'kit.html') + '?v=' + encodeURIComponent(id) + '&p=' + encodeURIComponent(project) + '&f=' + encodeURIComponent(FORMAT);
 
 async function open() {
   const browser = await chromium.launch({ executablePath: CHROME, args: ['--force-color-profile=srgb', '--font-render-hinting=none', '--disable-lcd-text', '--allow-file-access-from-files'] });
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+  const page = await browser.newPage({ viewport: VIEW, deviceScaleFactor: 1 });
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   await page.goto(PAGE);
@@ -72,7 +75,7 @@ if (mode === 'meta') {
   const cues = await page.evaluate(() => window.CUES());
   const times = cues.lines.map(l => +(l.t0 + Math.min(l.dur - 0.3, Math.max(1.6, l.dur * 0.75))).toFixed(2));
   const cols = 4, rows = Math.ceil(times.length / cols);
-  const ff = spawn(FFMPEG, ['-nostdin', '-y', '-loglevel', 'error', '-f', 'image2pipe', '-c:v', 'png', '-i', '-', '-vf', `scale=480:270,tile=${cols}x${rows}:padding=4:color=white`, '-frames:v', '1', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+  const ff = spawn(FFMPEG, ['-nostdin', '-y', '-loglevel', 'error', '-f', 'image2pipe', '-c:v', 'png', '-i', '-', '-vf', `scale=${VIEW.width / 4}:${VIEW.height / 4},tile=${cols}x${rows}:padding=4:color=white`, '-frames:v', '1', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   for (const t of times) ff.stdin.write(await shot(t));
   ff.stdin.end();
   await new Promise(r => ff.on('close', r));

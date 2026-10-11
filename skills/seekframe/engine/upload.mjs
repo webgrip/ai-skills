@@ -58,10 +58,11 @@ function thumbnails(kit) {
   const run = (cmd, args) => { const r = spawnSync(cmd, args, { stdio: 'inherit' }); if (r.status !== 0) throw new Error(`${path.basename(cmd)} exited ${r.status}`); };
   run(process.execPath, [path.join(HERE, 'render.mjs'), 'stills', project, id, work, String(t)]);
   const still = path.join(work, fs.readdirSync(work).filter(f => f.endsWith('.png')).sort().pop());
-  const [y0, h] = spec.crop || [0, 1080];
-  run(path.join(RUNTIME, 'ffmpeg'), ['-nostdin', '-loglevel', 'error', '-y', '-i', still, '-vf', `crop=1920:${h}:0:${y0}`, path.join(dir, 'still-art.png')]);
+  const vertical = v.format === '9:16';
+  const [y0, h] = spec.crop || [0, vertical ? 1920 : 1080];
+  run(path.join(RUNTIME, 'ffmpeg'), ['-nostdin', '-loglevel', 'error', '-y', '-i', still, '-vf', `crop=iw:${h}:0:${y0}`, path.join(dir, 'still-art.png')]);
   const { frame, crop, ...look } = spec;
-  const config = { brand: path.join(project, 'brand.css'), product: v.product, kicker: v.kicker, bg: 'still-art.png', ...look };
+  const config = { brand: path.join(project, 'brand.css'), product: v.product, kicker: v.kicker, bg: 'still-art.png', ...(vertical ? { ratio: '9:16' } : {}), ...look };
   fs.writeFileSync(path.join(dir, 'thumb.json'), JSON.stringify(config, null, 2));
   run(process.execPath, [path.join(kit, 'scripts/thumb.mjs'), path.join(dir, 'thumb.json'), path.join(dir, 'thumb.jpg')]);
   return existing();
@@ -75,6 +76,7 @@ const upload = {
   file: path.basename(videoPath),
   subtitles: path.basename(srtPath),
   duration: cues.dur,
+  format: v.format || '16:9',
   language: languageOf(),
   product: v.product,
   lines: cues.lines,

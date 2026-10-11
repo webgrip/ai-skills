@@ -35,6 +35,8 @@ events `{t, k}` in local seconds. Scenes draw with CSS variables (`--ink`, `--mu
 | `compare` | `lanes: [{label, speed, end}]`, `note` | Before and after; always labelled an illustration |
 | `endcard` | `name`, `a`, `b`, `url` | The closing line |
 
+On `format: '9:16'` the core exposes `VERTICAL`, `SAFE` (`l r t b`) and `SW` (safe width); `tiles` takes `colsV` (default 1), `steps` runs top to bottom, `slam` stacks its words.
+
 Icons for `tiles`: `doc check person shield clock bolt eye stack chat key`. Transitions rotate
 through wipe, rise, page, zoom and flap from `seed`; set `tr` on a line to force one.
 

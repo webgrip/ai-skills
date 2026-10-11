@@ -9,10 +9,10 @@
   --brand-mute-light: #5E6B66;
 }
 * { box-sizing: border-box; margin: 0; padding: 0 }
-html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--brand-dark) }
-#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; font-family: var(--font-sans); color: var(--brand-light); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision }
+html, body { width: var(--W, 1920px); height: var(--H, 1080px); overflow: hidden; background: var(--brand-dark) }
+#stage { position: absolute; left: 0; top: 0; width: var(--W, 1920px); height: var(--H, 1080px); overflow: hidden; font-family: var(--font-sans); color: var(--brand-light); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision }
 #world { position: absolute; inset: 0 }
-.scene { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden }
+.scene { position: absolute; left: 0; top: 0; width: var(--W, 1920px); height: var(--H, 1080px); overflow: hidden }
 .shade { position: absolute; inset: 0; pointer-events: none; opacity: 0 }
 .a { position: absolute }
 .mono { font-family: var(--font-mono) }
@@ -21,7 +21,7 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 svg { overflow: visible }
 #hud { position: absolute; inset: 0; pointer-events: none }
 .hudtxt { position: absolute; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; white-space: pre }
-#grain { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; opacity: 0.035; pointer-events: none }
+#grain { position: absolute; left: 0; top: 0; width: var(--W, 1920px); height: var(--H, 1080px); opacity: 0.035; pointer-events: none }
 #vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 75% 70% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.38) 100%) }
 #fade { position: absolute; inset: 0; background: #0b0f11; opacity: 0; pointer-events: none }
 .g-dark { --bg: var(--brand-dark); --ink: var(--brand-light); --mute: var(--brand-mute-dark); --acc: var(--brand-accent-on-dark); --line: rgba(244,246,242,.22); --card: var(--brand-light); --cardInk: var(--brand-dark); --cardMute: var(--brand-mute-light) }
