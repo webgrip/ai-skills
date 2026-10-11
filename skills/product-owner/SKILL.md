@@ -17,7 +17,10 @@ mention wins, else the repo's contract, else the `Applies when:` headers of user
 contracts, else the connected MCP's boards; still ambiguous → ask one question, never
 guess. Then merge the **Board contract** layers, most specific fact wins:
 
-1. `.agents/contracts/product-owner.md` in the consuming repo
+1. the repo overlay `.agents/product-owner/` in the consuming repo — `board.md`
+   (`Extends: <org>/<team>`, additions and overrides only) plus optional `assets/`
+   that add to or replace the team's hand-over docs — then
+   `.agents/contracts/product-owner.md`
 2. a contract block in its `AGENTS.md`/CLAUDE.md
 3. user contracts in `~/.agents/contracts/product-owner/` — one file per context,
    `Context:` / `Applies when:` headers, `Extends:` for org→team layering
