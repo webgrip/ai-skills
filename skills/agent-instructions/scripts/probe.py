@@ -65,16 +65,48 @@ def summarise(events):
     }
 
 
+def regex_outcome(grader, summary):
+    haystack = summary["tools"] if grader.get("target") == "tools" else summary["result"]
+    return re.search(grader["pattern"], haystack, re.S) is not None
+
+
 def grade(case, summary, worktree):
     outcomes = []
     for grader in case.get("graders", []):
         if grader["type"] == "regex":
-            haystack = summary["tools"] if grader.get("target") == "tools" else summary["result"]
-            outcomes.append(re.search(grader["pattern"], haystack, re.S) is not None)
+            outcomes.append(regex_outcome(grader, summary))
         elif grader["type"] == "command":
             completed = subprocess.run(grader["run"], shell=True, cwd=worktree, capture_output=True, text=True)
             outcomes.append(completed.returncode == 0)
     return bool(outcomes) and all(outcomes)
+
+
+def regrade(case, record):
+    graders = case.get("graders", [])
+    if not graders or any(grader["type"] != "regex" for grader in graders) or "result" not in record:
+        return None
+    return all(regex_outcome(grader, record) for grader in graders)
+
+
+UNESCAPED_ANCHOR = re.compile(r"(?<!\\)[\^$]")
+MULTILINE_FLAG = re.compile(r"\(\?[a-zA-Z]*m[a-zA-Z]*[):]")
+
+
+def anchors_inside(pattern):
+    body = re.sub(r"\[\^", "[", pattern)
+    body = body[1:] if body.startswith("^") else body
+    body = body[:-1] if body.endswith("$") and not body.endswith("\\$") else body
+    return bool(UNESCAPED_ANCHOR.search(body))
+
+
+def grader_warnings(cases):
+    warnings = []
+    for case in cases:
+        for grader in case.get("graders", []):
+            pattern = grader.get("pattern", "")
+            if grader["type"] == "regex" and anchors_inside(pattern) and not MULTILINE_FLAG.search(pattern):
+                warnings.append(f"{case['id']}: pattern {pattern!r} anchors with ^ or $ inside the pattern but has no (?m); there they match only the start and end of the whole text")
+    return warnings
 
 
 def run_once(repo, arm, case, arguments):
@@ -83,7 +115,7 @@ def run_once(repo, arm, case, arguments):
     git(repo, "worktree", "add", "--detach", str(worktree), arm["commit"])
     try:
         command = [
-            "claude", "-p", case["prompt"],
+            arguments.claude_bin, "-p", case["prompt"],
             "--output-format", "stream-json", "--verbose",
             "--no-session-persistence",
             "--setting-sources", "project,local",
@@ -122,13 +154,16 @@ def fisher_two_sided(passed_a, total_a, passed_b, total_b):
 def main():
     parser = argparse.ArgumentParser(description="A/B an instruction-file change with headless Claude Code sessions: fresh worktree per run, deterministic graders, pass rate per arm with a Fisher exact p, median tokens and turns, total cost.")
     parser.add_argument("--cases", required=True, help="JSON file: {\"cases\": [{\"id\", \"prompt\", \"max_turns\"?, \"graders\": [{\"type\": \"regex\", \"target\": \"tools|result\", \"pattern\"} | {\"type\": \"command\", \"run\"}]}]}")
-    parser.add_argument("--arm", action="append", required=True, help="name=REF[,noinstructions]; REF is a git ref or WORKTREE for uncommitted tracked changes")
+    parser.add_argument("--arm", action="append", default=[], help="name=REF[,noinstructions]; REF is a git ref or WORKTREE for uncommitted tracked changes")
     parser.add_argument("--repo", default=".")
     parser.add_argument("--runs", type=int, default=10)
-    parser.add_argument("--model", default="sonnet")
+    parser.add_argument("--model", default="haiku", help="start with the cheapest model that shows the mistake, and the model the team really runs; default haiku")
     parser.add_argument("--max-turns", type=int, default=25)
     parser.add_argument("--max-budget-usd", type=float, default=1.0)
-    parser.add_argument("--max-total-usd", type=float, default=20.0)
+    parser.add_argument("--max-total-usd", type=float, default=5.0)
+    parser.add_argument("--claude-bin", default=os.environ.get("CLAUDE_BIN", "claude"), help="the Claude Code binary to run, for example the IDE extension's bundled one; default $CLAUDE_BIN or claude on PATH")
+    parser.add_argument("--yes", action="store_true", help="start the runs; without it the plan and its cost cap are printed and nothing runs")
+    parser.add_argument("--regrade", metavar="RESULTS", help="regrade the runs recorded in RESULTS (an --out file) with the current regex graders; runs nothing and costs nothing")
     parser.add_argument("--allowed-tools", default="Read,Grep,Glob")
     parser.add_argument("--jobs", type=int, default=4)
     parser.add_argument("--timeout", type=int, default=900)
@@ -136,9 +171,20 @@ def main():
     parser.add_argument("--out", help="append one JSON line per run to this file")
     arguments = parser.parse_args()
 
+    cases = json.loads(Path(arguments.cases).read_text())["cases"]
+    for warning in grader_warnings(cases):
+        print(f"warning: {warning}", file=sys.stderr)
+    if arguments.regrade:
+        return report_regrade(cases, arguments.regrade)
+    if not arguments.arm:
+        parser.error("--arm is required unless --regrade is given")
+    total = len(cases) * len(arguments.arm) * arguments.runs
+    print(f"Plan: {total} runs ({len(cases)} cases x {len(arguments.arm)} arms x {arguments.runs}) on {arguments.model} with {arguments.claude_bin}; each run capped at ${arguments.max_budget_usd:.2f}, all runs at ${arguments.max_total_usd:.2f}.", file=sys.stderr)
+    if not arguments.yes:
+        print("Nothing ran. State this cost to whoever pays for it, then add --yes.", file=sys.stderr)
+        return 0
     repo = Path(git(Path(arguments.repo), "rev-parse", "--show-toplevel"))
     arms = [resolve_arm(repo, spec) for spec in arguments.arm]
-    cases = json.loads(Path(arguments.cases).read_text())["cases"]
     spent, lock, results = 0.0, threading.Lock(), []
 
     def job(case, arm):
@@ -147,7 +193,7 @@ def main():
             if spent >= arguments.max_total_usd:
                 return None
         outcome = run_once(repo, arm, case, arguments)
-        record = {"case": case["id"], "arm": arm["name"], **{key: outcome[key] for key in ("passed", "cost", "turns", "tokens", "error")}}
+        record = {"case": case["id"], "arm": arm["name"], **{key: outcome[key] for key in ("passed", "cost", "turns", "tokens", "error", "result", "tools")}}
         with lock:
             spent += outcome["cost"]
             results.append(record)
@@ -161,19 +207,41 @@ def main():
         futures = [pool.submit(job, case, arm) for case in cases for arm in arms for _ in range(arguments.runs)]
         concurrent.futures.wait(futures)
 
+    print_table(cases, [arm["name"] for arm in arms], results)
+    print(f"\ntotal cost ${spent:.2f}; p compares each arm with the first; errors: {sum(record['error'] for record in results)}")
+    return 0
+
+
+def print_table(cases, arm_names, results):
     print(f"\n{'case':30} {'arm':14} {'pass':>7} {'p':>6} {'med tok':>9} {'med turns':>9}")
     for case in cases:
-        rows = {arm["name"]: [record for record in results if record["case"] == case["id"] and record["arm"] == arm["name"]] for arm in arms}
-        first = rows[arms[0]["name"]]
-        for arm in arms:
-            runs = rows[arm["name"]]
+        rows = {name: [record for record in results if record["case"] == case["id"] and record["arm"] == name] for name in arm_names}
+        first = rows[arm_names[0]] if arm_names else []
+        for index, name in enumerate(arm_names):
+            runs = rows[name]
             passed = sum(record["passed"] for record in runs)
-            p_value = "" if arm is arms[0] or not runs or not first else f"{fisher_two_sided(sum(r['passed'] for r in first), len(first), passed, len(runs)):.3f}"
+            p_value = "" if index == 0 or not runs or not first else f"{fisher_two_sided(sum(r['passed'] for r in first), len(first), passed, len(runs)):.3f}"
             tokens = statistics.median([record["tokens"] for record in runs]) if runs else 0
             turns = statistics.median([record["turns"] for record in runs]) if runs else 0
-            print(f"{case['id'][:30]:30} {arm['name'][:14]:14} {passed:>3}/{len(runs):<3} {p_value:>6} {tokens:>9.0f} {turns:>9.1f}")
-    print(f"\ntotal cost ${spent:.2f}; p compares each arm with the first; errors: {sum(record['error'] for record in results)}")
+            print(f"{case['id'][:30]:30} {name[:14]:14} {passed:>3}/{len(runs):<3} {p_value:>6} {tokens:>9.0f} {turns:>9.1f}")
+
+
+def report_regrade(cases, path):
+    records = [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
+    by_case = {case["id"]: case for case in cases}
+    regraded, skipped = [], 0
+    for record in records:
+        case = by_case.get(record["case"])
+        outcome = regrade(case, record) if case else None
+        if outcome is None:
+            skipped += 1
+            continue
+        regraded.append({**record, "passed": outcome})
+    arm_names = list(dict.fromkeys(record["arm"] for record in regraded))
+    print_table([case for case in cases if any(record["case"] == case["id"] for record in regraded)], arm_names, regraded)
+    print(f"\nregraded {len(regraded)} runs from {path}; skipped {skipped} (command graders, unknown cases or runs recorded without their result text)")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

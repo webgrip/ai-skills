@@ -48,7 +48,7 @@ BYTES_PER_TOKEN_VARIABLE = "AGENT_INSTRUCTIONS_BYTES_PER_TOKEN"
 TARGET_CATEGORIES = ("interactive-agent", "cloud-agent", "review-bot")
 CATEGORIES = TARGET_CATEGORIES + ("generator", "ci", "hook-manager")
 REQUIRED_TOOL_KEYS = ("id", "name", "category", "detect", "instructions", "rules", "skills_dir", "mcp_config", "setup_file", "docs")
-CONFIG_KEYS = ("targets", "rules_dir", "skills_dir", "docs_dir", "docs_index", "rule_line_limit", "token_budget", "bytes_per_token", "agents_md_max_bytes")
+CONFIG_KEYS = ("targets", "path_rules", "rules_dir", "skills_dir", "docs_dir", "docs_index", "rule_line_limit", "token_budget", "bytes_per_token", "agents_md_max_bytes")
 ALWAYS_LOADED_FILES = ("CLAUDE.md", ".claude/CLAUDE.md", "AGENTS.md")
 MAX_GLOB_EXPANSIONS = 1000
 BUDGET_HEADROOM_PERCENT = 15
@@ -132,6 +132,7 @@ class Registry:
 @dataclass
 class Config:
     targets: List[str]
+    path_rules: bool
     rules_dir: str
     skills_dir: str
     docs_dir: str
@@ -409,8 +410,12 @@ def load_config(root: Path, registry: Registry) -> Config:
         bytes_per_token = positive_ratio(merged["bytes_per_token"])
     except argparse.ArgumentTypeError as error:
         raise UsageError(f"bytes_per_token: {error}")
+    path_rules = merged["path_rules"]
+    if not isinstance(path_rules, bool):
+        raise UsageError(f"{CONFIG_FILE}: path_rules must be true or false, not {path_rules!r}")
     return Config(
         targets=config_targets(registry, values["targets"]) if "targets" in values else detected_targets(root, registry),
+        path_rules=path_rules,
         rules_dir=config_path("rules_dir", merged["rules_dir"]),
         skills_dir=config_path("skills_dir", merged["skills_dir"]),
         docs_dir=config_path("docs_dir", merged["docs_dir"]),
@@ -426,6 +431,7 @@ def load_config(root: Path, registry: Registry) -> Config:
 def config_document(config: Config) -> str:
     document = {
         "targets": config.targets,
+        "path_rules": config.path_rules,
         "rules_dir": config.rules_dir,
         "skills_dir": config.skills_dir,
         "docs_dir": config.docs_dir,
@@ -1366,7 +1372,8 @@ def claude_links(tools: List[Tool], config: Config, owned: List[str]) -> List[Tu
     for tool in tools:
         if tool.rules is None or tool.rules.format != LINK_FORMAT:
             continue
-        links.append((tool.rules.directory, config.rules_dir))
+        if config.path_rules:
+            links.append((tool.rules.directory, config.rules_dir))
         links.extend((directory, config.skills_dir) for directory in tool.skills_dirs)
     return unique((link, target) for link, target in links if link and link != target and not is_owned(link, owned))
 
@@ -1609,10 +1616,11 @@ def measured_token_budget(tokens: int) -> int:
     return max(BUDGET_STEP, with_headroom)
 
 
-def layout_config(root: Path, registry: Registry, declared: Optional[str]) -> Tuple[Config, str]:
+def layout_config(root: Path, registry: Registry, declared: Optional[str], path_rules: bool = True) -> Tuple[Config, str]:
     config = load_config(root, registry)
     if config.from_file:
         return config, ""
+    config = replace(config, path_rules=path_rules)
     if declared is not None:
         names = [name.strip() for name in declared.split(",") if name.strip()]
         for name in names:
@@ -1639,9 +1647,15 @@ def agents_skeleton(config: Config) -> str:
         "| Subject | Start at |",
         "| --- | --- |",
         f"| All documentation, by subject | [{config.docs_index}]({config.docs_index}) |",
-        f"| Rules for specific paths: read the files whose `paths` match the file you change | [{config.rules_dir}/]({config.rules_dir}/) |",
+        path_rules_row(config),
         "",
     ])
+
+
+def path_rules_row(config: Config) -> str:
+    if config.path_rules:
+        return f"| Rules for specific paths: read the files whose `paths` match the file you change | [{config.rules_dir}/]({config.rules_dir}/) |"
+    return "| Rules for one directory: read the `AGENTS.md` nearest the file you change | that directory |"
 
 
 def docs_index_skeleton() -> str:
@@ -1783,7 +1797,7 @@ def plan_layout(root: Path, registry: Registry, config: Config, declared: Option
         agents_step(root, config),
         claude_step(root),
         docs_index_step(root, config),
-        directory_step(root, config.rules_dir, "the one rules source"),
+        *([directory_step(root, config.rules_dir, "the one rules source")] if config.path_rules else []),
         *skills_steps(root, registry, config),
         *link_steps(root, registry, config),
         gitignore_step(root),
@@ -1928,6 +1942,7 @@ def inventory_report(root: Path, registry: Registry, config: Config) -> dict:
         "generators": evidence_rows(registry, evidence, ("generator",)),
         "ci": evidence_rows(registry, evidence, ("ci",)),
         "hook_managers": evidence_rows(registry, evidence, ("hook-manager",)),
+        "instruction_checks": instruction_checks(root, files),
         "docs": {
             "dir": config.docs_dir if (root / config.docs_dir).is_dir() else None,
             "index": config.docs_index if (root / config.docs_index).is_file() else None,
@@ -1946,6 +1961,29 @@ def inventory_report(root: Path, registry: Registry, config: Config) -> dict:
         },
         "notes": shared_hook_notes(root, targets) + tool_notes(registry, evidence) + flagged_file_notes(root, registry),
     }
+
+
+CHECK_DIRECTORIES = ("scripts/", "bin/", "tools/", "ci/", ".github/", ".forgejo/", ".gitea/", ".gitlab/", ".husky/", ".githooks/")
+CHECK_FILES = ("lefthook.yml", "lefthook.yaml", ".pre-commit-config.yaml", "Makefile", "package.json", "mise.toml", "Taskfile.yml", ".gitlab-ci.yml", "composer.json")
+CHECK_MARKERS = ("AGENTS.md", "CLAUDE.md")
+CHECK_MAX_BYTES = 512 * 1024
+
+
+def is_check_location(name: str) -> bool:
+    return name.startswith(CHECK_DIRECTORIES) or posixpath.basename(name) in CHECK_FILES and "/" not in name
+
+
+def instruction_checks(root: Path, files: List[str]) -> List[str]:
+    found = []
+    for name in files:
+        if not is_check_location(name) or name.endswith(".md"):
+            continue
+        path = root / name
+        if not path.is_file() or path.stat().st_size > CHECK_MAX_BYTES:
+            continue
+        if any(marker in read_text(path) for marker in CHECK_MARKERS):
+            found.append(name)
+    return sorted(found)
 
 
 def joined_or_none(values: List[str]) -> str:
@@ -1977,6 +2015,8 @@ def print_inventory(report: dict) -> None:
     for label, key in (("Review bots", "review_bots"), ("Generators", "generators"), ("CI", "ci"), ("Hook manager", "hook_managers")):
         print(f"{label}: {joined_or_none([evidence_label(row) for row in report[key]])}")
     print(f"Cloud-agent setup: {joined_or_none([row['path'] for row in report['cloud_agent_setup']])}")
+    checks = report["instruction_checks"]
+    print(f"Existing instruction checks: {joined_or_none(checks)}" + (" (extend these before adding agent_setup.py check: one gate per rule)" if checks else ""))
     docs = report["docs"]
     print(f"Docs: {docs['dir'] or 'no docs directory'}, index {docs['index'] or 'missing'}, site {joined_or_none(docs['sites'])}")
     print("Symlinks: " + "; ".join(f"{row['path']} {row['state']}" + (f" -> {row['points_to']}" if row["points_to"] else "") + ("" if row["state"] == "ok" else f" (expected -> {row['expected']})") for row in report["symlinks"]))
@@ -2001,7 +2041,7 @@ def run_inventory(arguments) -> int:
 
 def run_layout(arguments) -> int:
     root, registry = resolve_root(arguments.repo), resolve_registry(arguments.registry)
-    config, budget_derivation = layout_config(root, registry, arguments.targets)
+    config, budget_derivation = layout_config(root, registry, arguments.targets, not arguments.no_path_rules)
     steps = plan_layout(root, registry, config, arguments.targets, budget_derivation)
     print(f"{'Applied to' if arguments.apply else 'Plan for'} {root}{'' if arguments.apply else ' (dry run; --apply writes it)'}:")
     for step in steps:
@@ -2067,6 +2107,7 @@ def build_parser() -> argparse.ArgumentParser:
     layout = commands.add_parser("layout", parents=[common], help="plan, or with --apply write, the canonical layout", description=f"Plan {CONFIG_FILE}, AGENTS.md, CLAUDE.md = @AGENTS.md, the docs index, the rules directory, the skills directory, the .claude/rules and .claude/skills symlinks and the .gitignore entries. A new {CONFIG_FILE} gets token_budget = what every session will load, plus {BUDGET_HEADROOM_PERCENT}%, rounded up to the next {BUDGET_STEP}. Exits 1 while a step needs a person.")
     layout.add_argument("--apply", action="store_true", help="write the plan; a second run changes nothing")
     layout.add_argument("--targets", help=f"comma-separated tool ids for a new {CONFIG_FILE} (default: the detected tools); {ALWAYS_TARGETED} is always included")
+    layout.add_argument("--no-path-rules", action="store_true", help=f"for a new {CONFIG_FILE}: no rules directory and no .claude/rules link; subtree rules go in nested AGENTS.md files, which every agent that reads AGENTS.md can be told to read")
     layout.set_defaults(handler=run_layout)
 
     generate = commands.add_parser("generate", parents=[common], help="write each enabled tool's rule files from the rules directory", description="Generate every enabled target's path-rule files and the CodeRabbit filePatterns block from the flat rules directory, delete generated files whose rule is gone, and never overwrite a file without the generated marker.", epilog=GLOB_DIALECT, formatter_class=argparse.RawDescriptionHelpFormatter)

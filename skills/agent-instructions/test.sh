@@ -497,6 +497,61 @@ test_drift_script() {
   expect_output "FAIL: docs/orphan.md is not linked from docs/index.md" "the drift script runs agent_setup.py check"
 }
 
+test_layout_without_path_rules() {
+  new_repo
+  expect_status 0 "layout --apply --no-path-rules" agent_setup layout "${repo}" --apply --no-path-rules
+  [ ! -e "${repo}/.ai/rules" ] || fail "layout --no-path-rules created .ai/rules"
+  [ ! -L "${repo}/.claude/rules" ] || fail "layout --no-path-rules linked .claude/rules"
+  [ "$(readlink "${repo}/.claude/skills")" = "../.agents/skills" ] || fail "layout --no-path-rules did not link .claude/skills"
+  grep -qF 'read the `AGENTS.md` nearest the file you change' "${repo}/AGENTS.md" || fail "the AGENTS.md skeleton does not point at nested AGENTS.md files"
+  python3 -c 'import json, sys; assert json.load(open(sys.argv[1]))["path_rules"] is False' "${repo}/.ai/agent-setup.json" || fail "layout --no-path-rules did not record path_rules: false"
+  expect_status 0 "check without path rules" agent_setup check "${repo}"
+  expect_status 0 "a second layout without path rules" agent_setup layout "${repo}" --apply
+  reject_output "^(create|update|link) " "a second layout without path rules"
+}
+
+test_existing_checks() {
+  new_repo
+  mkdir -p "${repo}/scripts" "${repo}/docs/research"
+  printf '# Agents\n' > "${repo}/AGENTS.md"
+  printf 'import sys\nprint(open("AGENTS.md").read())\n' > "${repo}/scripts/agents-files.py"
+  printf '{"note": "AGENTS.md"}\n' > "${repo}/docs/research/survey.json"
+  expect_status 0 "inventory with an existing checker" agent_setup inventory "${repo}"
+  expect_output "Existing instruction checks: scripts/agents-files.py (extend these" "inventory names the repository's own checker"
+  reject_output "survey.json" "inventory ignores files outside check locations"
+}
+
+test_probe() {
+  local probe="${skill_dir}/scripts/probe.py" cases_file="${workspace}/cases.json" results="${workspace}/results.jsonl"
+  printf '%s\n' '{"cases": [{"id": "gate", "prompt": "p", "graders": [{"type": "regex", "target": "result", "pattern": "(?s)\\A(?!.*^\\+\\s*if:).*enabled"}]}]}' > "${cases_file}"
+  expect_status 0 "probe without --yes" python3 "${probe}" --cases "${cases_file}" --arm base=HEAD --arm change=HEAD --runs 10 --claude-bin /nonexistent/claude
+  expect_output "Plan: 20 runs (1 cases x 2 arms x 10) on haiku with /nonexistent/claude" "probe states its plan"
+  expect_output "Nothing ran." "probe without --yes runs nothing"
+  expect_output "anchors with ^ or \$ inside the pattern but has no (?m)" "probe warns about an anchor without multiline"
+  printf '%s\n' '{"case": "gate", "arm": "base", "passed": true, "cost": 0.1, "turns": 1, "tokens": 10, "error": false, "result": "+  if: x\nenabled", "tools": ""}' '{"case": "gate", "arm": "base", "passed": true, "cost": 0.1, "turns": 1, "tokens": 10, "error": false}' > "${results}"
+  printf '%s\n' '{"cases": [{"id": "gate", "prompt": "p", "graders": [{"type": "regex", "target": "result", "pattern": "(?sm)\\A(?!.*^\\+\\s*if:).*enabled"}]}]}' > "${cases_file}"
+  expect_status 0 "probe --regrade" python3 "${probe}" --cases "${cases_file}" --regrade "${results}"
+  expect_output "regraded 1 runs" "probe regrades recorded runs"
+  expect_output "skipped 1" "probe skips a run recorded without its result text"
+  expect_output "  0/1" "the fixed grader fails the run that added if:"
+}
+
+test_shell_guard() {
+  local guard="${skill_dir}/assets/hooks/stage-explicit-paths.py"
+  guard_case() {
+    local expected="$1" description="$2" event="$3" status=0
+    output="$(printf '%s' "${event}" | python3 "${guard}" 2>&1)" || status=$?
+    cases=$((cases + 1))
+    [ "${status}" -eq "${expected}" ] || fail "${description}: expected exit ${expected}, got ${status}:" "${output}"
+  }
+  guard_case 2 "the guard blocks git add -A from Claude Code" '{"tool_name": "Bash", "tool_input": {"command": "git add -A"}}'
+  guard_case 2 "the guard blocks git commit -a from any harness" '{"tool_name": "terminal", "tool_input": {"command": "git commit -am x"}}'
+  guard_case 0 "the guard allows explicit paths" '{"tool_name": "terminal", "tool_input": {"command": "git add src/a.py"}}'
+  guard_case 0 "the guard ignores tools without a shell command" '{"tool_name": "Write", "tool_input": {"content": "git add ."}}'
+  guard_case 0 "the guard ignores a heredoc body" '{"tool_input": {"command": "git commit -F - <<'"'"'EOF'"'"'\nfix: stop git add -A\nEOF"}}'
+  guard_case 2 "the guard still blocks after a heredoc" '{"tool_input": {"command": "cat <<EOF > m\ngit add .\nEOF\ngit add -A"}}'
+}
+
 run_agent_setup_tests() {
   test_inventory
   test_layout
@@ -504,6 +559,10 @@ run_agent_setup_tests() {
   test_check_failures
   test_git_checkout
   test_drift_script
+  test_layout_without_path_rules
+  test_existing_checks
+  test_probe
+  test_shell_guard
   echo "agent-instructions: agent_setup.py passed ${cases} cases"
 }
 
