@@ -79,6 +79,26 @@ Tool: `node <this skill's base directory>/scripts/thumb.mjs <config.json> <out.j
 | Short to long | Studio › Content › the Short › Related video |
 | Test & Compare | The A/B Testing buttons next to the title and thumbnail, desktop Studio, up to three of each; not for Shorts or private videos; editing either stops the test |
 
+## Test & Compare programme
+
+Run a test on every long video; Shorts cannot use it. Evidence, sample sizes and the log format:
+[testing.md](testing.md).
+
+1. **Upload your best guess first**: an inconclusive test falls back to the first variant.
+2. **Test promises, not pixels.** Single cues (colour, font, one word) move click-through by a few
+   percent; telling 2 % from 2.2 % takes about 80,000 impressions per variant, 2 % from 3 % about
+   3,800. A small channel can only see promise-level differences.
+3. **One named hypothesis per test**, written down before upload (outcome vs mechanism, vague vs
+   concrete, face vs product screen). Make the title concrete enough to understand and leave one
+   question for the video to answer.
+4. **Never edit the title or thumbnail mid-test**, and never compare one week's thumbnail with the
+   next week's: the traffic mix changes.
+5. **Log every arm** (impressions, click-through, watch time share, average view duration, the
+   verdict) and pool results per hypothesis across videos; most single tests end inconclusive and
+   that is expected.
+6. Vendor "X % more clicks" figures and gut feeling are sources of hypotheses, not evidence; people
+   pick the A/B winner barely better than chance.
+
 ## Afterwards
 
 Wait for real impressions (days, not hours). Compare impressions click-through against the

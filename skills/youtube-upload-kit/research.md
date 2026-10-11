@@ -22,6 +22,8 @@ Official pages change; re-read them before relying on a limit.
 
 ## Test & Compare (OFF, 13861714)
 
+Full evidence, sample sizes and the test log: [testing.md](testing.md).
+
 Up to three thumbnails and/or titles, desktop only; the winner is chosen by watch time share;
 usually done within two weeks; outcomes Winner, Performed the same, Inconclusive; editing the title
 or thumbnail stops it; not available for Shorts, private, made-for-kids or age-restricted videos;
