@@ -37,7 +37,13 @@ low-impression videos rarely produce a winner.
   ([6390658](https://support.google.com/youtube/answer/6390658)).
 - OFF end screens: last 5 to 20 s, video at least 25 s, up to four elements; external links need
   the Partner Program ([6388789](https://support.google.com/youtube/answer/6388789)).
-- GAP: tags matter little; widely reported, the official page was not read.
+- OFF tags: "tags play a minimal role in your video's discovery"; useful for common misspellings;
+  title, thumbnail and description matter more ([146402](https://support.google.com/youtube/answer/146402)).
+- GAP: description limit 5000 characters and tags 500 characters, as the Studio form enforces;
+  the help pages were not re-read.
+- OFF paid promotion: disclose "branded content, sponsorships, endorsements, or other commercial
+  relationships" ([154235](https://support.google.com/youtube/answer/154235)). The page does not
+  say whether your own product counts; reading it as a third-party relationship is ANEC.
 
 ## Disclosure (OFF, [14328491](https://support.google.com/youtube/answer/14328491))
 
@@ -60,6 +66,10 @@ synthetic narrator over animation is not one of the listed cases.
 - GAP: loops ranking higher; a 70 to 90 % viewed-vs-swiped target attributed to one analyst.
 
 ## Drafts and licensing
+
+- OFF: videos are available for Shorts remixing by default; the Shorts remixing setting sits under
+  Show more; blocking audio-only remixing needs Content Manager
+  ([10623810](https://support.google.com/youtube/answer/10623810)).
 
 - OFF: unlisted videos are link-only with comments; private videos are shared by email without
   comments ([157177](https://support.google.com/youtube/answer/157177)).

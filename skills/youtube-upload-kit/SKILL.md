@@ -1,12 +1,26 @@
 ---
 name: youtube-upload-kit
-description: 'Packages a video for YouTube and YouTube Shorts so it gets clicked and watched: thumbnails rendered from the video''s own frames in the brand''s fonts and colours, three variants for Test & Compare, titles, descriptions, chapters, hashtags, end screens, the Short-to-long related-video link, captions, AI-voice and synthetic-content disclosure, unlisted drafts for feedback, and which Studio numbers to read afterwards. Use when uploading or publishing a video to YouTube, making a thumbnail or a Shorts cover, writing a YouTube title or description, setting up a thumbnail A/B test, choosing unlisted or private to collect feedback, filling in the upload form (audience, altered content, subtitles), or asking why a video gets impressions but no clicks or views. Dutch: video uploaden naar YouTube, thumbnail maken, titel en beschrijving, A/B-test.'
+description: 'Packages a video for YouTube and YouTube Shorts so it gets clicked and watched: thumbnails rendered from the video''s own frames in the brand''s fonts and colours, three variants for Test & Compare, titles, descriptions, chapters, hashtags, end screens, the Short-to-long related-video link, captions, AI-voice and synthetic-content disclosure, unlisted drafts for feedback, and which Studio numbers to read afterwards. Use when uploading or publishing a video to YouTube, making a thumbnail or a Shorts cover, writing a YouTube title or description, setting up a thumbnail A/B test, choosing unlisted or private to collect feedback, filling in the upload form (audience, altered content, subtitles, tags, license, category, remixing), turning a finished render into an upload sheet, or asking why a video gets impressions but no clicks or views. Dutch: video uploaden naar YouTube, thumbnail maken, titel en beschrijving, A/B-test.'
 ---
 
 # YouTube upload kit
 
 Thumbnail and title make one promise; the first seconds keep it. Every rule here carries an
 evidence label in [research.md](research.md); treat VENDOR and GAP items as starting points to test.
+
+## Upload sheet
+
+Hand the owner one sheet in the order Studio's upload dialog asks (Details with Show more, Video
+elements, Checks, Visibility), every field filled, ready to paste. The upload dialog is in the
+owner's own browser tab; do not open a second Studio tab on the same video while it is open.
+
+`node <this skill's base directory>/scripts/sheet.mjs <id>.upload.json` writes `<id>-youtube.md`
+and prints what breaks a rule: chapters under 10 s or fewer than three, a title over 100 characters
+or without the product last, thumbnail words that repeat the title, a link that does not load,
+thumbnails over 2 MB, an end screen outside 5 to 20 s, and a free-plan voice set to public. The
+`seekframe` skill writes `<id>.upload.json` and runs this after every render; for any other video
+write the JSON by hand (`node scripts/sheet.mjs` prints the format). Choose the title after the
+thumbnails and run the sheet again until only notes are left.
 
 ## Thumbnail
 
@@ -21,7 +35,8 @@ Tool: `node <this skill's base directory>/scripts/thumb.mjs <config.json> <out.j
 
 1. **Background**: a frame from the video, cropped below that scene's own headline
    (`ffmpeg -i still.png -vf crop=1920:760:0:270 still-art.png`), so the old headline never shows
-   through the new words. Place the art on the right; the words sit on a solid left.
+   through the new words. Prefer a scene whose art is a diagram or interface over one that is mostly
+   words. Place the art on the right; the words sit on a solid left.
 2. **Words**: two to five, on two short lines, one accent phrase. They add to the title and never
    repeat it.
 3. One focal point; nothing important in the bottom-right corner (the duration badge).
@@ -42,18 +57,27 @@ Tool: `node <this skill's base directory>/scripts/thumb.mjs <config.json> <out.j
   "Voice: ElevenLabs (elevenlabs.io)" in the title or description, and replace the audio with a
   paid-plan generation before publishing publicly.
 - Third-party logos on screen: add "<Brand> is a trademark of its owner." for each.
+- Open the link before putting it in; a domain that is still being set up costs the click.
 
 ## Upload form
 
 | Field | Choice |
 |---|---|
-| Visibility for feedback | **Unlisted**: link only, comments on, no Google account needed. Private only for sensitive drafts (no comments) |
 | Audience | Not made for kids; "made for kids" disables comments, end screens and Test & Compare |
+| Paid promotion | Only for a paid relationship with a third party; your own product is not one |
 | Altered or synthetic content | No for animation with a generic AI narrator; Yes when a real person appears to say or do something they did not |
-| Subtitles | Upload the word-timed `.srt`; set the video language |
-| End screen | Last 5 to 20 s: the related video or playlist plus subscribe; leave that space free in the edit |
+| Tags | A few, for misspellings and the product name; they barely affect discovery |
+| Automatic chapters | Off when the description carries chapters |
+| License | Standard YouTube License; Creative Commons allows commercial reuse, which free-plan audio forbids |
+| Shorts remixing | Don't allow video remixing while the audio is free-plan; audio-only remixing can only be blocked with Content Manager |
+| Automatic dubbing | Off when a chosen voice is part of the video |
+| Category | Science & Technology for a developer tool |
+| Subtitles (Video elements) | Upload the word-timed `.srt`; set the video language; play a few seconds in Edit |
+| End screen | Last 5 to 20 s: the related video or playlist plus subscribe; leave that space free in the edit, otherwise skip it |
+| Cards, quiz | Cards only when a related video exists; no quiz on a promo |
+| Visibility for feedback | **Unlisted**: link only, comments on, no Google account needed; sort comments by newest. Private only for sensitive drafts (no comments) |
 | Short to long | Studio › Content › the Short › Related video |
-| Test & Compare | Desktop Studio, up to three thumbnails and/or titles; not for Shorts or private videos; editing either stops the test |
+| Test & Compare | The A/B Testing buttons next to the title and thumbnail, desktop Studio, up to three of each; not for Shorts or private videos; editing either stops the test |
 
 ## Afterwards
 

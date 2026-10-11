@@ -15,6 +15,28 @@
       "expect_trigger": true
     },
     {
+      "id": "show-more-fields",
+      "prompt": "tags? license? category? what else is under Show more when I upload this AI-voiced explainer for feedback?",
+      "assertions": [
+        "Gives a concrete choice for tags, license, category, paid promotion, Shorts remixing and automatic chapters",
+        "Picks the Standard YouTube License over Creative Commons because free-plan synthetic audio is non-commercial",
+        "Says tags play a minimal role in discovery and keeps the list short",
+        "Says audio-only remixing cannot be blocked without Content Manager",
+        "Presents the fields in the order the upload dialog shows them"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "sheet-checks",
+      "prompt": "Here's my title 'Get your coding agents off your laptop | Unfold' and my thumbnail says 'Ten agents. One laptop.' Good to go?",
+      "assertions": [
+        "Points out that the thumbnail words repeat the title (agents, laptop) and proposes a title that adds to the thumbnail instead",
+        "Runs or recommends scripts/sheet.mjs to check the package",
+        "Keeps the product name last in any proposed title"
+      ],
+      "expect_trigger": true
+    },
+    {
       "id": "thumbnail",
       "prompt": "Make me a YouTube thumbnail for this explainer, I want to A/B test it.",
       "assertions": [
