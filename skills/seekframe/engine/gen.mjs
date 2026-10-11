@@ -25,7 +25,7 @@ function expand(v) {
     if (!c) throw new Error(`video "${v.id}": no claim "${id}" in parts.mjs`);
     const say = pick(c.say, r.register);
     if (!say) throw new Error(`video "${v.id}": claim "${id}" has no "${r.register}" phrasing`);
-    for (const vo of [].concat(say)) lines.push({ vo, h: pick(c.h, r.register), sc: c.sc, p: c.p, g: 'claim-' + id, planned: c.status === 'planned', claim: id });
+    for (const one of [].concat(say)) lines.push({ h: pick(c.h, r.register), sc: c.sc, p: c.p, g: 'claim-' + id, planned: c.status === 'planned', claim: id, ...(typeof one === 'string' ? { vo: one } : one) });
   }
   const close = CLOSES[r.close || 'default'];
   if (r.close && !close) throw new Error(`video "${v.id}": no close "${r.close}" in parts.mjs`);
