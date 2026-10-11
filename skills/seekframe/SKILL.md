@@ -36,9 +36,18 @@ scene, `group` is the output folder. Scenes and their parameters: [reference.md]
    they are recorded; no invented numbers. Check every claim against the product's docs.
 3. A song, ad or meme the owner names is a reference for tone and structure. Write original lines;
    never mirror its words or its structure beat for beat.
-4. Optional `youtube: {title, titles, above, link, chapters: [{line, title}], hashtags, tags,
+4. **Compose from parts** when several videos share facts: `<project>/parts.mjs` exports `CLAIMS`
+   (`{status: 'live'|'planned', proof, sc, p, h, say: {<register>: '...'}}`: one fact, one fixed
+   scene, a phrasing per register), `HOOKS` (`{lines}`: one audience's opening) and `CLOSES`. A video
+   then sets `recipe: {register, hook, claims: [...], close}` instead of `lines`; planned claims are
+   marked planned on screen automatically, and `gen.mjs` writes `claims.md` (which video uses which
+   claim). A Short is one hook, one claim and the close. Why: the `devtool-social` skill.
+5. Shorts and brand rules from the evidence (`devtool-social`): frame one shows the product doing
+   the thing, the name spoken within ~3 s with no centred logo, keyword supers instead of full
+   captions while a diagram is on screen, the same end card every time.
+6. Optional `youtube: {title, titles, above, link, chapters: [{line, title}], hashtags, tags,
    trademarks, endScreen, thumb: {frame, crop: [y, h], variants}}` packages the video for upload.
-5. `node $E/gen.mjs <project>` writes `videos/<id>.js` and `scripts.md` (the voice script).
+7. `node $E/gen.mjs <project>` writes `videos/<id>.js` and `scripts.md` (the voice script).
 
 ## Render
 

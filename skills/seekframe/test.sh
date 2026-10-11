@@ -5,7 +5,7 @@ TMP=$(mktemp -d)
 PIDS=()
 trap 'kill "${PIDS[@]}" 2>/dev/null || true; rm -rf "$TMP"' EXIT
 
-for f in engine/kit/*.js engine/render.mjs engine/gen.mjs engine/upload.mjs; do node --check "$f"; done
+for f in engine/kit/*.js engine/render.mjs engine/gen.mjs engine/upload.mjs engine/lines.mjs; do node --check "$f"; done
 python3 -m py_compile engine/eleven.py engine/vo.py engine/srt.py engine/music.py engine/audio_lib.py tests/mock_elevenlabs.py
 bash -n engine/make.sh engine/voice.sh engine/setup.sh
 
@@ -13,6 +13,14 @@ cp -r example "$TMP/project"
 node engine/gen.mjs "$TMP/project" > /dev/null
 grep -q '^window.VIDEO = ' "$TMP/project/videos/demo-reviewers.js"
 grep -q 'So who actually read it?' "$TMP/project/scripts.md"
+grep -q 'A second agent and your own CI check every change' "$TMP/project/videos/demo-lgtm.js"
+grep -q '"planned":true' "$TMP/project/videos/demo-lgtm.js"
+grep -q '^| automerge | planned | statement |' "$TMP/project/claims.md"
+test "$(node engine/lines.mjs "$TMP/project/videos/demo-lgtm.js")" = '5 [8,14,5,10,5]'
+mkdir -p "$TMP/noproof"
+printf 'export const VIDEOS = [];\n' > "$TMP/noproof/videos.mjs"
+printf 'export const CLAIMS = { x: { status: "live", sc: "statement", say: { dev: "x" } } };\n' > "$TMP/noproof/parts.mjs"
+if node engine/gen.mjs "$TMP/noproof" 2>/dev/null; then echo "gen.mjs accepted a claim without proof" >&2; exit 1; fi
 printf 'export const VIDEOS = [{ id: "Bad Id", group: "x", lines: [] }];\n' > "$TMP/bad.mjs"
 mkdir -p "$TMP/bad" && cp "$TMP/bad.mjs" "$TMP/bad/videos.mjs"
 if node engine/gen.mjs "$TMP/bad" 2>/dev/null; then echo "gen.mjs accepted an invalid id" >&2; exit 1; fi

@@ -7,7 +7,7 @@ R="${SEEKFRAME_RUNTIME:-${XDG_CACHE_HOME:-$HOME/.cache}/seekframe}"
 P="$(cd "$1" && pwd)"; ID=$2; SUB=${3:-8}; WK=${4:-16}
 VDIR="$P/voice"; W="$P/.work/$ID"; mkdir -p "$W"
 TAKE=$(ls "$VDIR/$ID".mp3 "$VDIR/$ID".wav 2>/dev/null | head -1 || true); TAKE=${TAKE:-$VDIR/$ID.mp3}
-read -r N WORDS < <(node -e "import(process.argv[1]).then(m=>{const v=m.VIDEOS.find(v=>v.id===process.argv[2]);if(!v){console.error('no video '+process.argv[2]);process.exit(2)}console.log(v.lines.length,JSON.stringify(v.lines.map(l=>l.vo.trim().split(/\s+/).length)))})" "$P/videos.mjs" "$ID")
+read -r N WORDS < <(node "$E/lines.mjs" "$P/videos/$ID.js")
 "$R/venv/bin/python" -I "$E/vo.py" prep "$TAKE" "$N" "$W/lines" "$P/videos/$ID.timing.js" "$WORDS"
 trap 'mv -f "$P/videos/$ID.timing.js" "$W/timing-voice.js" 2>/dev/null || true' EXIT
 node "$E/render.mjs" meta "$P" "$ID" "$W/cues-voice.json"

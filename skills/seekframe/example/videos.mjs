@@ -29,4 +29,18 @@ export const VIDEOS = [
       { vo: 'Acme. Agents work. You decide.', sc: 'endcard', g: 'f', p: { a: 'Agents work.', b: 'You decide.' } },
     ],
   },
+  {
+    id: 'demo-lgtm',
+    group: 'developers',
+    name: 'LGTM speedrun',
+    voice: '[dry]',
+    music: 'drive',
+    seed: 2,
+    product: 'Acme',
+    site: 'acme.example',
+    kicker: 'For developers',
+    hud: 'Acme · for developers',
+    note: 'Acme · example project',
+    recipe: { register: 'dev', hook: 'lgtm-speedrun', claims: ['review', 'person', 'automerge'] },
+  },
 ];
