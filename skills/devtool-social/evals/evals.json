@@ -37,6 +37,42 @@
       "expect_trigger": true
     },
     {
+      "id": "edgy-shorts",
+      "prompt": "I want tongue-in-cheek Shorts that troll a bit, poke at 'agentic engineering' and 'swarms'. Give me three ideas.",
+      "assertions": [
+        "Aims the humour at the situation, the hype vocabulary or the brand's unimportant traits, never at a group of people or a named competitor",
+        "Signals the joke visually in the first two seconds instead of pure deadpan",
+        "Ends each idea on a real product screen or a labelled demo to repay credibility",
+        "Ties each joke to the product so it would not work without it",
+        "Warns that claims sounding measured must be provable and that a recognisable competitor makes it comparative advertising"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "shorts-retention",
+      "prompt": "Our Shorts get views but people swipe away. How do we make people stay?",
+      "assertions": [
+        "Says view counts count every start and judges on stayed to watch, engaged views and average % viewed against the channel's own baseline",
+        "Puts the product doing the thing in the first frame instead of a logo or intro card",
+        "Says the name early without a big centred logo and uses brief brand pulses",
+        "Recommends keyword supers over full captions while a diagram is on screen and making the first 3 s work muted",
+        "Marks hook-type and cut-cadence rules as tests because no study supports a fixed cadence"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "demand",
+      "prompt": "How do I find out if anyone actually wants this, using the videos we made per audience?",
+      "assertions": [
+        "Measures a ladder of behaviour (visit, qualified signup, call, letter of intent or pilot) rather than views or likes",
+        "Gives each audience its own spoken short web address because Shorts links are not clickable",
+        "Asks for thresholds and kill criteria written down before launch, with a fixed window and no peeking",
+        "Says small traffic cannot A/B-test landing pages and compares each audience against its threshold",
+        "Mentions consent for waitlist email and cookieless analytics in the EU"
+      ],
+      "expect_trigger": true
+    },
+    {
       "id": "not-social",
       "prompt": "Our Kubernetes ingress returns 502s after the last deploy. Where do I look first?",
       "assertions": [
