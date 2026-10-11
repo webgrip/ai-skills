@@ -8,7 +8,7 @@ const USAGE = `node sheet.mjs <upload.json> [out.md] [--offline]
                 "thumbs": ["thumb-a.jpg", ...], "thumbWords": ["Ten agents.\\n*One laptop.*", ...],
                 "youtube": {"title", "titles": [...], "above": ["problem", "what the video shows"], "link",
                             "hashtags": [...], "tags": [...], "category", "chapters": [{"line": 1, "title"}],
-                            "trademarks": [...], "credits": [...], "endScreen": {"from": 40}, "playlist",
+                            "trademarks": [...], "credits": [...], "endScreen": {"from": 40}, "playlist", "related",
                             "visibility": "unlisted|public|private", "paidPromotion": false, "realPerson": false}}
   writes the Studio upload sheet (default <upload.json minus .upload.json>-youtube.md) in the order the
   upload dialog asks, and prints every rule the package breaks`;
@@ -29,6 +29,7 @@ const stem = w => w.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/s$/, '');
 const FILLER = new Set(['your', 'you', 'with', 'that', 'this', 'from', 'them', 'they', 'what', 'into', 'have', 'about', 'without', 'when', 'than', 'then', 'just', 'every', 'own']);
 const contentWords = s => new Set(plain(s).split(' ').map(stem).filter(w => w.length >= 4 && !FILLER.has(w)));
 const duration = +u.duration || 0;
+const short = u.format === '9:16' && duration <= 180;
 const lines = u.lines || [];
 
 function chapters() {
@@ -42,12 +43,12 @@ function chapters() {
   while (list.length > 1 && duration - list[list.length - 1].t < 10) list.pop();
   return list;
 }
-const chs = chapters();
+const chs = short ? [] : chapters();
 if (chs.length >= 3) chs.forEach((c, i) => {
   const end = i + 1 < chs.length ? chs[i + 1].t : duration;
   if (end - c.t < 10) problem('fix', `chapter "${c.title}" lasts ${(end - c.t).toFixed(1)} s; YouTube needs at least 10 s per chapter`);
 });
-if (chs.length < 3) problem('note', `chapters left out: ${clock(duration)} does not split into three of at least 10 s`);
+if (chs.length < 3 && !short) problem('note', `chapters left out: ${clock(duration)} does not split into three of at least 10 s`);
 else if (chs.some(c => c.auto)) problem('check', 'chapter titles were taken from the on-screen headlines; rename them to what a viewer would search for, or set youtube.chapters');
 
 const title = y.title || '';
@@ -59,6 +60,7 @@ for (const words of u.thumbWords || []) {
   const shared = [...contentWords(words)].filter(w => contentWords(title).has(w));
   if (shared.length) problem('check', `thumbnail "${plain(words)}" repeats the title (${shared.join(', ')}); the two should add to each other`);
 }
+if (short && ((y.titles || []).length || (u.thumbs || []).length > 1)) problem('note', 'Shorts cannot use Test & Compare: post the alternatives as separate Shorts and compare stayed-to-watch');
 if ((y.titles || []).length > 2) problem('fix', 'Test & Compare takes three titles at most: the title plus two alternatives');
 if ((u.thumbs || []).length > 3) problem('fix', 'Test & Compare takes three thumbnails at most');
 
@@ -124,14 +126,14 @@ const md = [
   '',
   block(title),
   '',
-  ...(y.titles?.length ? ['**A/B Testing** (next to the title), alternatives:', '', ...y.titles.map(t => `- \`${t}\``), ''] : []),
+  ...(y.titles?.length && !short ? ['**A/B Testing** (next to the title), alternatives:', '', ...y.titles.map(t => `- \`${t}\``), ''] : []),
   '**Description**',
   '',
   block(description),
   '',
-  '**Thumbnail**: ' + ((u.thumbs || []).length
+  (short ? `**Short**: ${y.related ? `set the related video to ${y.related}` : 'set the related video to the long version'}; pick the cover in the YouTube app${(u.thumbs || []).length ? ` (design: \`${u.thumbs[0]}\`)` : ''}.` : '**Thumbnail**: ' + ((u.thumbs || []).length
     ? `Upload file \`${u.thumbs[0]}\`${u.thumbs.length > 1 ? `; A/B Testing adds ${u.thumbs.slice(1).map(t => `\`${t}\``).join(', ')}` : ''}.`
-    : 'none rendered; make them with scripts/thumb.mjs from a frame of this video.'),
+    : 'none rendered; make them with scripts/thumb.mjs from a frame of this video.')),
   '',
   `**Playlists**: ${y.playlist || 'none yet'}`,
   '',
@@ -161,8 +163,8 @@ const md = [
   '## 2. Video elements',
   '',
   `- **Subtitles**: upload \`${u.subtitles || 'the .srt'}\`, language ${u.language || 'en'}; play a few seconds in Edit to check the timing.`,
-  `- **End screen**: ${endScreen}`,
-  '- **Cards**: only when a related video exists to point to.',
+  short ? '- **End screen, cards**: not available on Shorts; the related video does that job.' : `- **End screen**: ${endScreen}`,
+  ...(short ? [] : ['- **Cards**: only when a related video exists to point to.']),
   '- **Quiz**: skip for a promo or explainer under a few minutes.',
   '',
   '## 3. Checks',

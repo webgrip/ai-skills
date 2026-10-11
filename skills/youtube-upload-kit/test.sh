@@ -33,4 +33,12 @@ grep -q 'product name last' "$TMP/bad.log"
 grep -q 'missing.jpg does not exist' "$TMP/bad.log"
 grep -q 'end screen window is 2.0 s' "$TMP/bad.log"
 grep -q 'no youtube.above' "$TMP/bad.log"
+cat > "$TMP/short.upload.json" <<'JSON'
+{"id": "s", "file": "s.mp4", "duration": 30, "format": "9:16", "product": "Acme",
+ "youtube": {"title": "Who read the diff? | Acme", "titles": ["Other | Acme"], "above": ["a", "b"], "related": "https://youtu.be/x"}}
+JSON
+node scripts/sheet.mjs "$TMP/short.upload.json" --offline > "$TMP/short.log"
+grep -q 'Shorts cannot use Test & Compare' "$TMP/short.log"
+grep -q 'set the related video to https://youtu.be/x' "$TMP/short-youtube.md"
+if grep -q 'chapters left out' "$TMP/short.log"; then echo "chapter note on a Short" >&2; exit 1; fi
 echo "youtube-upload-kit: all checks passed"
