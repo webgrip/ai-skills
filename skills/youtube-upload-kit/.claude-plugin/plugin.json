@@ -1,0 +1,24 @@
+{
+  "name": "youtube-upload-kit",
+  "displayName": "YouTube Upload Kit",
+  "description": "Package a video for YouTube and Shorts: thumbnails rendered from the video's own frames in brand fonts and colours, Test & Compare variants, titles, descriptions, chapters, end screens, captions, synthetic-content disclosure, unlisted feedback drafts and the Studio numbers to read, each rule labelled by evidence.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/youtube-upload-kit",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills",
+  "keywords": [
+    "youtube",
+    "shorts",
+    "thumbnail",
+    "title",
+    "a-b-test",
+    "video",
+    "marketing",
+    "dutch",
+    "nederlands"
+  ]
+}

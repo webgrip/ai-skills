@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thumbnail</title>
+<style>
+:root { --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif; --font-mono: "JetBrains Mono", "DejaVu Sans Mono", monospace; --brand-dark: #111619; --brand-light: #F4F6F2; --brand-accent: #D23A4E; --brand-accent-on-dark: #D65162; --brand-mute-dark: #8C9A94; --brand-mute-light: #5E6B66 }
+.g-dark { --bg: var(--brand-dark); --ink: var(--brand-light); --mute: var(--brand-mute-dark); --acc: var(--brand-accent-on-dark) }
+.g-paper { --bg: var(--brand-light); --ink: var(--brand-dark); --mute: var(--brand-mute-light); --acc: var(--brand-accent) }
+.g-red { --bg: var(--brand-accent); --ink: var(--brand-light); --mute: rgba(244,246,242,.85); --acc: var(--brand-dark) }
+* { box-sizing: border-box; margin: 0; padding: 0 }
+html, body { overflow: hidden; background: var(--bg) }
+#t { position: relative; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased }
+#bg, #veil { position: absolute; inset: 0 }
+#words { position: absolute; font-weight: 800; letter-spacing: -0.035em; line-height: 0.94; white-space: nowrap }
+#words em { font-style: normal; color: var(--acc) }
+#kicker { position: absolute; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute) }
+#badge { position: absolute; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: var(--acc); color: var(--bg); border-radius: 10px }
+#mark { position: absolute; font-weight: 800; letter-spacing: -0.02em }
+#mark i { font-style: normal; color: var(--acc) }
+</style>
+</head>
+<body>
+<div id="t"><div id="bg"></div><div id="veil"></div><div id="kicker"></div><div id="words"></div><div id="badge"></div><div id="mark"></div></div>
+<script>
+const C = JSON.parse(new URLSearchParams(location.search).get('c') || '{}');
+const V = C.ratio === '9:16';
+const W = V ? 1080 : 1280, H = V ? 1920 : 720, $ = id => document.getElementById(id);
+const css = (el, o) => Object.assign(el.style, o);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+document.body.className = 'g-' + (C.ground || 'dark');
+css($('t'), { width: W + 'px', height: H + 'px' });
+
+function layout() {
+  const pad = V ? 90 : 64;
+  if (C.bg) {
+    css($('bg'), { backgroundImage: `url("${C.bg}")`, backgroundSize: V ? `auto ${100 * (C.bgZoom || 1)}%` : `${100 * (C.bgZoom || 1)}% auto`, backgroundPosition: C.bgPos || 'center', backgroundRepeat: 'no-repeat' });
+    const bg = getComputedStyle(document.body).getPropertyValue('--bg').trim();
+    css($('veil'), { background: V
+      ? `linear-gradient(180deg, ${bg} 0%, color-mix(in srgb, ${bg} 55%, transparent) 46%, transparent 70%, color-mix(in srgb, ${bg} 60%, transparent) 100%)`
+      : `linear-gradient(90deg, ${bg} 0%, color-mix(in srgb, ${bg} 95%, transparent) 50%, transparent 64%)` });
+  }
+  $('words').innerHTML = esc(C.words || '').replace(/\*([^*]+)\*/g, '<em>$1</em>').replace(/\n/g, '<br>');
+  $('kicker').textContent = C.kicker || '';
+  $('mark').innerHTML = C.product ? esc(C.product) + '<i>.</i>' : '';
+  const box = V ? { l: pad, t: 300, w: W - 2 * pad, h: 760 } : { l: pad, t: 120, w: 760, h: 470 };
+  css($('kicker'), { left: box.l + 'px', top: (box.t - (V ? 70 : 52)) + 'px', fontSize: (V ? 30 : 22) + 'px' });
+  const w = $('words');
+  css(w, { left: box.l + 'px', top: box.t + 'px', width: box.w + 'px' });
+  let fs = V ? 200 : 150;
+  do { w.style.fontSize = fs + 'px'; fs -= 2; } while ((w.scrollWidth > box.w || w.offsetHeight > box.h) && fs > 40);
+  const b = $('badge');
+  if (C.badge) {
+    b.textContent = C.badge;
+    css(b, { left: box.l + 'px', top: (box.t + w.offsetHeight + (V ? 50 : 34)) + 'px', fontSize: (V ? 34 : 24) + 'px', padding: V ? '14px 22px' : '10px 16px' });
+  } else b.remove();
+  css($('mark'), V ? { left: pad + 'px', top: (H - 470) + 'px', fontSize: '54px' } : { left: pad + 'px', top: (H - 92) + 'px', fontSize: '38px' });
+}
+
+window.READY = (async () => {
+  if (C.brand) await new Promise(r => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = C.brand; l.onload = l.onerror = r; document.head.appendChild(l); });
+  const fam = getComputedStyle(document.documentElement).getPropertyValue('--font-sans').split(',')[0].replace(/["']/g, '').trim();
+  await document.fonts.load(`800 100px "${fam}"`);
+  await document.fonts.ready;
+  layout();
+  if (C.bg) await new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = C.bg; });
+})();
+</script>
+</body>
+</html>
