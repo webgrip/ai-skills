@@ -1,0 +1,25 @@
+{
+  "name": "seekframe",
+  "displayName": "Seekframe",
+  "description": "Make motion-graphics explainer videos from code: one script source per product, a deterministic seek(t) page rendered in headless Chromium with motion blur, a score synthesized from the cut, careful per-line ElevenLabs voice-over that re-times the scenes, subtitles, posters and share copies, one cut per audience.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/seekframe",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills",
+  "keywords": [
+    "video",
+    "motion-graphics",
+    "explainer",
+    "animation",
+    "playwright",
+    "ffmpeg",
+    "voice-over",
+    "elevenlabs",
+    "subtitles",
+    "marketing"
+  ]
+}
