@@ -30,4 +30,5 @@ else
   python3 "$E/srt.py" "$W/cues-voice.json" "$DEST/$ID-voice.srt"
 fi
 rm -f "$W"/x264v* "$W/reel-voice.mkv"
+node "$E/upload.mjs" "$P" "$ID" "$W/cues-voice.json" "$DEST/$ID-voice.mp4" "$DEST/$ID-voice.srt" || echo "upload sheet failed; the video itself is fine" >&2
 ls -la "$DEST/$ID-voice"*

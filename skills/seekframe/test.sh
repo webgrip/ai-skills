@@ -5,7 +5,7 @@ TMP=$(mktemp -d)
 PIDS=()
 trap 'kill "${PIDS[@]}" 2>/dev/null || true; rm -rf "$TMP"' EXIT
 
-for f in engine/kit/*.js engine/render.mjs engine/gen.mjs; do node --check "$f"; done
+for f in engine/kit/*.js engine/render.mjs engine/gen.mjs engine/upload.mjs; do node --check "$f"; done
 python3 -m py_compile engine/eleven.py engine/vo.py engine/srt.py engine/music.py engine/audio_lib.py tests/mock_elevenlabs.py
 bash -n engine/make.sh engine/voice.sh engine/setup.sh
 
@@ -18,7 +18,13 @@ mkdir -p "$TMP/bad" && cp "$TMP/bad.mjs" "$TMP/bad/videos.mjs"
 if node engine/gen.mjs "$TMP/bad" 2>/dev/null; then echo "gen.mjs accepted an invalid id" >&2; exit 1; fi
 
 P="$TMP/project"
-mkdir -p "$P/out/developers" "$P/voice"
+mkdir -p "$P/out/developers/thumbs/demo-reviewers" "$P/voice"
+printf '{"dur":31,"id":"demo-reviewers","group":"developers","lines":[{"t0":0.6,"dur":5,"vo":"a","h":"A"},{"t0":5.6,"dur":10.5,"vo":"b","h":"B"},{"t0":16.1,"dur":14.9,"vo":"c","h":"C"}]}' > "$TMP/cues.json"
+printf x > "$P/out/developers/thumbs/demo-reviewers/thumb-a.jpg"
+SEEKFRAME_OFFLINE=1 node engine/upload.mjs "$P" demo-reviewers "$TMP/cues.json" "$P/out/developers/demo-reviewers.mp4" "$P/out/developers/demo-reviewers.srt" > "$TMP/upload.log"
+grep -q 'thumbs/demo-reviewers/thumb-a.jpg' "$P/out/developers/demo-reviewers.upload.json"
+grep -q 'Review agent pull requests without reading every diff | Acme' "$P/out/developers/demo-reviewers-youtube.md"
+test ! -e "$P/out/developers/thumbs/demo-reviewers/thumb.json"
 printf '1\n00:00:00,700 --> 00:00:03,000\nAgents open pull requests.\n\n2\n00:00:03,100 --> 00:00:05,000\nWho read it?\n\n3\n00:00:05,100 --> 00:00:07,000\nAcme. You decide.\n' > "$P/out/developers/demo-reviewers.srt"
 printf '{"groups":{"developers":"VOICE_EN"},"videos":{},"languages":{},"settings":{"stability":0.6},"seed":1,"output_format":"mp3_44100_128"}\n' > "$P/voice/voices.json"
 

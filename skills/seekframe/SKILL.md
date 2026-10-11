@@ -19,7 +19,7 @@ Playwright with its headless shell, all in `~/.cache/seekframe`; override with `
 | "Too fast", "unclear" | Fewer words per line, one idea per scene, a longer `gap`; never squeeze more into a scene |
 | A scene looks wrong | `render.mjs stills` at three times inside it, fix, check stills again, then render |
 | Add a voice | Per subtitle line with `eleven.py`, tiered and dry-run first ([reference.md](reference.md#voice)) |
-| Thumbnail, title, upload | The `youtube-upload-kit` skill |
+| Thumbnail, title, upload | Fill the video's `youtube` block; every render writes the upload sheet (below). Rules: the `youtube-upload-kit` skill |
 | Vertical Short | The kit renders 1920×1080 only; a 9:16 layout per scene is not built. Say so, then plan it as its own task |
 
 ## Script
@@ -36,7 +36,9 @@ scene, `group` is the output folder. Scenes and their parameters: [reference.md]
    they are recorded; no invented numbers. Check every claim against the product's docs.
 3. A song, ad or meme the owner names is a reference for tone and structure. Write original lines;
    never mirror its words or its structure beat for beat.
-4. `node $E/gen.mjs <project>` writes `videos/<id>.js` and `scripts.md` (the voice script).
+4. Optional `youtube: {title, titles, above, link, chapters: [{line, title}], hashtags, tags,
+   trademarks, endScreen, thumb: {frame, crop: [y, h], variants}}` packages the video for upload.
+5. `node $E/gen.mjs <project>` writes `videos/<id>.js` and `scripts.md` (the voice script).
 
 ## Render
 
@@ -46,6 +48,13 @@ node $E/render.mjs stills <project> <id> out/ 4.0,12.5         # exact frames
 bash $E/make.sh  <project> <id> [subframes=8] [workers=16]     # music, frames, master, share copy, poster, SRT
 bash $E/voice.sh <project> <id> [subframes] [workers]          # after voice lines exist: <id>-voice.mp4 beside the music-only cut
 ```
+
+After each render, `upload.mjs` writes `<id>[-voice].upload.json` beside the video, renders
+thumbnails into `out/<group>/thumbs/<id>/` once (never over existing ones) and, when the
+`youtube-upload-kit` skill is installed next to this one or `YOUTUBE_UPLOAD_KIT` points at it,
+`<id>[-voice]-youtube.md`: the Studio form filled in, with what to fix first. Voice renders take the
+plan from the voice files, so free-plan audio comes out unlisted with the credit line. Rerun on
+its own: `node $E/upload.mjs <project> <id> .work/<id>/cues[-voice].json out/<group>/<id>[-voice].mp4 out/<group>/<id>[-voice].srt`.
 
 Read the sheet for overlap, overflow, label collisions and empty frames before every full render.
 A 60 s video at 8 sub-frames on 16 workers takes several minutes; test at 2 sub-frames.

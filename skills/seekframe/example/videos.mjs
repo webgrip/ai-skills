@@ -11,6 +11,15 @@ export const VIDEOS = [
     kicker: 'For reviewers',
     hud: 'Acme · for reviewers',
     note: 'Acme · example project',
+    youtube: {
+      title: 'Review agent pull requests without reading every diff | Acme',
+      titles: ['Know what an agent changed before you approve it | Acme'],
+      above: ['Agents open pull requests faster than anyone can read them.', 'This video shows how Acme plans, checks and explains each change before it reaches you.'],
+      link: 'https://acme.example',
+      hashtags: ['CodeReview', 'DevTools'],
+      tags: ['Acme', 'code review', 'AI coding agents', 'pull requests'],
+      thumb: { frame: 12, crop: [300, 600], bgZoom: 1.05, bgPos: '690px 55%', variants: [{ words: 'Ten PRs.\n*One reviewer.*', badge: 'who read it?' }, { words: 'Who read\n*the change?*' }] },
+    },
     lines: [
       { vo: 'Agents open pull requests faster than anyone can read them.', h: 'Faster than you *can read.*', sc: 'statement', g: 'a', p: { items: ['Ten pull requests.', 'One *reviewer.*'] } },
       { vo: 'So who actually read it?', sc: 'slam', g: 'b', p: { words: ['WHO', 'READ', 'IT?'] } },

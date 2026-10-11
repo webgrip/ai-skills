@@ -23,4 +23,5 @@ COLOR=(-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv
 "$FF" -nostdin -loglevel error -y -sseof -2.2 -i "$W/reel.mkv" -frames:v 1 "$DEST/$ID-poster.png"
 python3 "$E/srt.py" "$W/cues.json" "$DEST/$ID.srt"
 rm -f "$W"/x264* "$W/reel.mkv"
+node "$E/upload.mjs" "$P" "$ID" "$W/cues.json" "$DEST/$ID.mp4" "$DEST/$ID.srt" || echo "upload sheet failed; the video itself is fine" >&2
 ls -la "$DEST/$ID"*
