@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "defaults": {
+    "path_rules": true,
     "rules_dir": ".ai/rules",
     "skills_dir": ".agents/skills",
     "docs_dir": "docs",

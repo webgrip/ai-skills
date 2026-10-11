@@ -6,6 +6,7 @@ input to human review, never the approval. Set it up in step 7 of
 
 ## Contents
 - [Any review bot](#any-review-bot)
+- [One home for review criteria](#one-home-for-review-criteria)
 - [CodeRabbit](#coderabbit)
   - [Config files and precedence](#config-files-and-precedence)
   - [Map rules to the bot](#map-rules-to-the-bot)
@@ -52,6 +53,26 @@ input to human review, never the approval. Set it up in step 7 of
   guidelines are advice ([enforcement.md](enforcement.md#checks-over-prose)).
 - **Humans keep** intent, domain fit, cross-module impact, migrations and money paths, test
   adequacy and sign-off. Keep changes small.
+
+## One home for review criteria
+
+Every reviewer, a person, a bot, an orchestrator's reviewer role or a review command, reads the
+same criteria from one page in `docs/`. The bot config, the role's prompt and the command point
+at it; none of them carries its own copy.
+
+- **Build the criteria from the repo's history**, not from a generic checklist: group the `fix:`
+  commits of the last weeks by cause (`git log --since=3.weeks --oneline | grep -i fix`) and turn
+  each recurring cause into one question (tenancy and authorization, money and retries,
+  lifecycle and concurrency, protocol conformance, demo or replay drift, UI and accessibility, CI
+  quirks, rename leftovers). The groups are the risk areas a reviewer checks.
+- **Order the review**: scope against the ticket, size, evidence (a test that fails without the
+  fix), then the risk areas the diff touches, then consequences for callers and stored data.
+- **Name what tools decide** (format, types, tests, policy checks) and stop on a red check.
+- **Check that review happens at all** before tuning it: count recorded reviews on the last 50
+  merged changes and read the branch protection. A repo where nothing is reviewed and checks are
+  advisory needs a required check before it needs better review text.
+- **Commands are thin**: `/review` in Claude Code or opencode fetches the diff, reads the guide and
+  the nearest `AGENTS.md`, and reports in the guide's format. It adds no criteria of its own.
 
 ## CodeRabbit
 

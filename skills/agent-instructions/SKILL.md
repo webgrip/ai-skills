@@ -25,10 +25,17 @@ the target repo.
 1. **Inventory.** `python3 scripts/agent_setup.py inventory <repo>` lists instruction files, path
    rules, skills directories, MCP, review-bot and cloud-agent configs, generators, the CI forge,
    the hook manager, docs, and what every session loads. `python3 scripts/measure.py <repo>` adds
-   the line-level report. Detection finds files, not habits: ask which tools the team uses.
+   the line-level report. Detection finds files, not habits: ask which tools the team uses, and
+   which agent does the work unattended (an orchestrator, a cloud agent, CI) with which model.
+   Inventory also names the repo's own instruction checks; extend those instead of adding a second
+   gate. Read the forge's branch protection and recent reviews too: advisory CI and unreviewed
+   merges outweigh any instruction line ([references/enforcement.md](references/enforcement.md#ladder)).
 2. **Choose targets** per category from [references/targets.md](references/targets.md): only the
    tools in use. `AGENTS.md` alone already reaches most agents; tool-specific files are for path
-   rules, skills, MCP and cloud setup.
+   rules, skills, MCP and cloud setup. Pick the path-rule carrier by the agent that does the work:
+   when it cannot load `.claude/rules` or a generated rule format (OpenHands, most orchestrators),
+   carry subtree rules in nested `AGENTS.md` files and run `layout --no-path-rules`
+   ([references/targets.md](references/targets.md#orchestrated-and-headless-agents)).
 3. **Plan, then wait.** One table for every existing instruction line (keep / `docs/` file / path
    rule / hook or CI / skill / other level / delete), the files to create per target, and the CI
    and hook wiring. Get approval before writing.
@@ -46,8 +53,9 @@ the target repo.
    ([references/unattended.md](references/unattended.md)), the review bot
    ([references/review-bots.md](references/review-bots.md)). Telemetry is never a repo setting:
    it belongs at user or managed level ([references/claude-code.md](references/claude-code.md)).
-8. **Enforce**: a CI job and a pre-commit hook run `python3 scripts/agent_setup.py check <repo>`
-   ([references/ci.md](references/ci.md)); a generator-owned file also gets a regenerate-and-diff
+8. **Enforce**: a CI job and a pre-commit hook run `python3 scripts/agent_setup.py check <repo>`,
+   or the repo's own checker extended to the same checks ([references/ci.md](references/ci.md));
+   make a required check of it on the forge. A generator-owned file also gets a regenerate-and-diff
    job ([references/generators.md](references/generators.md#ci-drift-check)). Make each gate fail
    once on purpose before trusting it.
 9. **Verify and hand over**: `check` is green, regenerating twice changes nothing, a headless marker
@@ -73,8 +81,9 @@ the target repo.
 | Must hold every time (format, forbidden files, secrets, commit format) | permission rule / hook / linter / CI |
 | Structure a parser can see (a call, a name, a file location) | architecture test or ast-grep rule |
 | Knowledge about the product: flows, decisions, reasons | `docs/` + one pointer row in the file |
-| Review convention | the same `.ai/rules` file, mapped to the review bot; a bot learning moves into a rule, check or doc and is then deleted in the bot |
-| Only matters in one subtree | path rule in `.ai/rules/` (generated per tool) or a nested `AGENTS.md` |
+| Review criteria | one review guide in `docs/`, built from the repo's own post-merge fixes; the review bot, a reviewer role and a review command all read it ([references/review-bots.md](references/review-bots.md#one-home-for-review-criteria)); a bot learning moves into a rule, check or doc and is then deleted in the bot |
+| Only matters in one subtree | path rule in `.ai/rules/` (generated per tool) or a nested `AGENTS.md`; the nested file when the working agent cannot load path rules |
+| Pitfalls an orchestrator retrieves per work item | a knowledge pack (`knowledge/`, OKF): short concepts tagged with the words tickets use, each linking the doc that owns it, never a copy of an instruction line ([references/routing.md](references/routing.md#knowledge-retrieved-per-work-item)) |
 | Multi-step procedure, needed sometimes | skill, named in a pointer row (skills fire about half the time on their own) |
 | Version-specific framework API | docs MCP (Boost `search-docs`, Context7) + one line saying when to call it |
 | Tone, length, response format | output style, not the instruction file |
@@ -95,7 +104,7 @@ a tool enforce it? Is it already in a doc? Keep it only for yes / no / no.
 | Repo | `AGENTS.md` + `CLAUDE.md` = `@AGENTS.md` | commands, repo traps, pointer table |
 | Path | `.ai/rules/*.md` or a nested file | subtree specifics |
 | Client (agency) | the client repo's own files, an ancestor directory per client | client rules stay in client repos |
-| Person | `~/.claude/*` | preferences, never team facts |
+| Person | `~/.claude/*`, the agent's memory | preferences, never team facts; audit memory for team knowledge that belongs in the repo ([references/layering.md](references/layering.md#personal-memory)) |
 
 Claude Code concatenates levels and resolves conflicts arbitrarily: one owner per rule.
 `~/.claude/CLAUDE.md`, `~/.claude/rules/`, user-scope MCP servers, plugin hooks and a user-level
@@ -145,11 +154,14 @@ another's; scope by ancestor directory, per project, or in the collector
    [references/claude-code.md](references/claude-code.md#which-binary-runs)); its findings are
    claims to check, and apply only to text you own.
 3. **Inventory** every line: keep / docs (which file) / hook-CI / skill / path rule / other level /
-   delete. Check `docs/` first: typically half is already there.
+   delete. Check `docs/` first: typically half is already there. Compare the gate commands each
+   level names: a nested file that names fewer gates than the root silently weakens it.
 4. **Move**, one pointer row per subject; before moving, trial-merge open branches that edit the file
    ([references/maintenance.md](references/maintenance.md)).
 5. **Fix the layout**, then continue from step 6 of [Set up a repo](#set-up-a-repo).
-6. **Verify**: measure again; `scripts/probe.py` (10 runs per arm) on the rules that changed.
+6. **Verify**: measure again; `scripts/probe.py` (10 runs per arm) on the rules that changed, on the
+   cheapest model that shows the mistake, after stating the cost
+   ([references/maintenance.md](references/maintenance.md#test-a-change)).
 
 ## Gotchas
 
@@ -167,6 +179,13 @@ another's; scope by ancestor directory, per project, or in the collector
 - Agents may propose rules, skills and memory; they land only through review. Self-generated skills
   measured worse than curated ones.
 - Tool-generated summaries of papers, docs and release notes are claims; quote the primary source.
+- A capable model often follows the right behaviour without the rule; a cheap one may not. A probe
+  run only on the strongest model can show "no effect" for a rule the working agent needs.
+- Generators and agents add skills on their own (spec tools write one per workflow, some agents
+  migrate another tool's commands into `source-command-*` skills): read the skill list a session
+  actually shows and remove duplicates.
+- A research subagent asked to stay read-only can still write: a tool run with `-C <dir>` or a
+  changed working directory lands in the repo. Give it a scratch copy and check `git status` after.
 
 ## References
 

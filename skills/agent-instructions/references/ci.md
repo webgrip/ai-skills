@@ -18,6 +18,11 @@ generator whose drift check needs the application image (Laravel Boost) gets a s
 
 ## Getting the script into CI
 
+When the repo already has its own instruction-file checker (`inventory` lists it under "Existing
+instruction checks"), extend that checker with what is missing (the skills link, a knowledge-pack
+check) instead of vendoring this one beside it: two checkers give every rule two owners, and they
+disagree after the first edit.
+
 Vendor `scripts/agent_setup.py` together with `assets/targets.json` from one pinned version of this
 skill, and name that version in the commit message. The script finds the registry at
 `../assets/targets.json` or next to itself; anywhere else, pass `--registry <path>`. The snippets

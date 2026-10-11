@@ -127,6 +127,12 @@ schedules; the `check` job holds no secret, so it can run on every change ([ci.m
 - Generator output that depends on the developer's machine (Boost's Herd section) is false in a
   sandbox.
 - OpenHands `pre-commit.sh` is deprecated for quality gates; use its Stop hooks.
+- An orchestrator's own post-run checks are configured outside the repo and can be far weaker
+  than the repo's gate (a formatter check where the repo runs typecheck and tests). Read them;
+  the repo's `verify` command does not run just because `AGENTS.md` names it.
+- An orchestrator that starts a harness with a fresh home and repository hooks disabled delivers
+  only the repository's files; which ones reach the agent depends on the harness
+  ([targets.md](targets.md#orchestrated-and-headless-agents)).
 - A Copilot or Cursor setup change merged without a run proves nothing: trigger one task after
   merging and read its setup log.
 - Verify by running one probe task headless in a clean container: did the agent run the

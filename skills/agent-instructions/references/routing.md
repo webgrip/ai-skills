@@ -29,12 +29,27 @@
 | Public dependency internals | DeepWiki / GitMCP |
 | Code facts (where X lives, who calls Y) | nothing written: grep finds them, a copy goes stale |
 | Your docs for other people's agents | `llms.txt` + `.md` pages; agents inside a repo do not read it |
+| Pitfalls an orchestrator selects per work item | a knowledge pack; see below |
 
 A framework's agent package earns its place mainly through its MCP tools: docs pinned to the
 installed versions and the app's real schema, logs and errors. With tool search deferring their
 schemas, Laravel Boost's tools cost about 640 tokens of Claude Code's context. Its generated
 guidance is build output ([generators.md](generators.md)), and its package-guideline and skill
 channels are how a stack's shared rules reach every repo.
+
+## Knowledge retrieved per work item
+
+An orchestrator can pack the concepts that match a work item into the agent's brief, for example
+OKF concepts from a repo's `knowledge/` directory matched against the ticket's title, description
+and labels. Pitfalls usually rank first. Keep the pack a map, not a mirror:
+
+- One short concept per pitfall or fact, with `type`, `title`, `description`, `tags` and a
+  `resource` link to the doc that owns it. Rules every agent needs stay in `AGENTS.md`; the pack
+  never copies them, or the two drift.
+- Tags carry the words a ticket would use ("bump", "mise.toml", "workflow"), because retrieval
+  matches words, not meaning. Common words in a concept (a long body) pull it into unrelated packs.
+- Test retrieval with the packer itself on real ticket titles, and check the bundle in CI: fields,
+  resources that exist, an index entry per concept, no sentence copied from the root file.
 
 ## Pointer table template
 
