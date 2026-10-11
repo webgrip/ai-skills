@@ -269,6 +269,20 @@
       ]
     },
     {
+      "name": "product-owner-contract",
+      "source": "./skills/product-owner-contract",
+      "description": "Webgrip's board contract for the product-owner skill: the default team's Vikunja stage ladder and pull criteria, label dimensions, ratified Definition of Ready, ticket template, golden tickets and Definition of Done, plus a per-repo overlay hook.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "product-owner",
+        "vikunja",
+        "definition-of-ready",
+        "definition-of-done",
+        "board-contract"
+      ]
+    },
+    {
       "name": "product-ux",
       "source": "./skills/product-ux",
       "description": "Designs, critiques and builds product interfaces people use repeatedly: an evidence ledger instead of invented personas, job stories and top tasks, flows before screens, a state inventory for every view, sourced pattern rules for forms, navigation, feedback, tables, search, onboarding and AI features, a token-based visual system, a WCAG 2.2 and EAA floor, heuristic evaluation with severities and KLM estimates, and a dependency-free source scanner for unlabelled fields, fake buttons, blocked paste, deceptive consent, vague errors and other UI failures.",
