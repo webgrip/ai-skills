@@ -1,0 +1,166 @@
+<title>Users and Journeys</title>
+<style>
+:root {
+  --ink: #16191d;
+  --paper: #f5f6f3;
+  --surface: #ffffff;
+  --accent: #b8323f;
+  --muted: #5d6670;
+  --line: #dde1dc;
+  --soft: #edf0ec;
+  --ok: #2e7d50;
+  --part: #a86b12;
+  --none: #a2303d;
+  --font: "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --ink: #edf0ec; --paper: #111518; --surface: #192024; --accent: #e0596b; --muted: #9aa6ad; --line: #2a3539; --soft: #1f292d; --ok: #5dbb86; --part: #e0a84a; --none: #e0596b; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --ink: #edf0ec; --paper: #111518; --surface: #192024; --accent: #e0596b; --muted: #9aa6ad; --line: #2a3539; --soft: #1f292d; --ok: #5dbb86; --part: #e0a84a; --none: #e0596b; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; padding-inline: 16px; padding-block: 0 72px; }
+.wrap { max-width: 1100px; margin-inline: auto; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+button, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+header { display: grid; gap: 12px; padding-block: 40px 16px; }
+h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.05; }
+.eyebrow, .src { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.lede { color: var(--muted); max-width: 68ch; font-size: 17px; }
+.status { justify-self: start; display: inline-flex; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--surface); font-size: 14px; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.status[data-state="live"] i { background: var(--ok); }
+.status[data-state="local"] i { background: var(--part); }
+section { display: grid; gap: 14px; padding-block: 32px 4px; }
+section > h2 { font-size: 26px; }
+section > p { color: var(--muted); max-width: 72ch; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card h3 { font-size: 17px; }
+.card .muted { color: var(--muted); font-size: 14px; }
+.guess b { font-family: var(--mono); font-size: 12px; padding: 1px 7px; border-radius: 999px; background: var(--soft); }
+ul.plain { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; }
+.stages { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 13px; }
+th, td { text-align: left; vertical-align: top; padding: 7px 9px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.st { font-family: var(--mono); font-size: 11px; border: 1px solid currentColor; border-radius: 4px; padding: 0 5px; }
+.st.have { color: var(--ok); } .st.part { color: var(--part); } .st.none { color: var(--none); }
+.rec b { color: var(--accent); }
+.answer { border-top: 1px dashed var(--line); padding-top: 10px; display: grid; gap: 8px; }
+.answer .q { font-weight: 700; font-size: 14px; }
+.choices { display: flex; flex-wrap: wrap; gap: 6px; }
+.choices button { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 11px; font-size: 13px; cursor: pointer; }
+.choices button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+textarea { width: 100%; min-height: 2.6em; resize: vertical; border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; background: var(--paper); font-size: 14px; }
+.saved { font-family: var(--mono); font-size: 11px; color: var(--muted); min-height: 1em; }
+.export { display: grid; gap: 8px; }
+.export textarea { min-height: 8em; font-family: var(--mono); font-size: 12px; }
+.sr { position: absolute; left: -9999px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="title"></h1>
+    <p class="lede" id="lede"></p>
+    <p class="status" id="status" data-state="wait"><i></i><span id="status-text">Connecting to the answer store…</span></p>
+  </header>
+  <section id="roles-part"><h2>The cast</h2><p>Classify every role. The guess and the evidence are a starting point, not a decision.</p><div class="grid" id="roles"></div></section>
+  <section id="needs-part"><h2>Needs</h2><p>Job stories per core role, each with its source.</p><div class="grid" id="needs"></div></section>
+  <section id="journeys-part"><h2>Journeys</h2><p>Draft journeys stage by stage, with where the product stands today.</p><div id="journeys" style="display:grid;gap:12px"></div></section>
+  <section id="decisions-part"><h2>Decisions</h2><p>Each has a recommendation. Pick an option or write your own.</p><div id="decisions" style="display:grid;gap:12px"></div></section>
+  <section class="export" id="export-part" hidden><h2>Your answers</h2><p>The answer store is not available here. Copy this and send it back.</p><label class="sr" for="export">Answers as JSON</label><textarea id="export" readonly></textarea></section>
+</div>
+
+<script type="application/json" id="questions">
+{
+  "eyebrow": "Example product · users before screens",
+  "title": "Who uses the product, and what do they need?",
+  "lede": "Hypotheses from the docs and the owner's words. Nobody has been interviewed yet. Answer on the page; the answers are read back and written into the users-and-journeys doc.",
+  "roleChoices": ["Core", "Secondary", "Edge", "Outside the product", "Not a user"],
+  "roles": [
+    { "id": "role-lead", "name": "Tech lead", "who": "Owns delivery for a team.", "does": "Decides what gets done by whom, reviews, unblocks.", "where": "This product, the forge", "guess": "Core", "evidence": "docs/product/positioning.md" }
+  ],
+  "needs": [
+    { "id": "need-lead", "name": "Tech lead", "stories": [["When work is ready,", "I want to hand it over in one move,", "so starting work costs seconds.", "owner, 2026-10-11"]], "needs": ["Speed", "Cost before commit"], "feel": "In control and productive." }
+  ],
+  "journeys": [
+    { "id": "j-lead", "name": "Tech lead: from backlog to accepted change", "meta": "Daily.", "stages": [["Plan", "Picks ready work", "Tracker", "part", "No readiness check yet"]] }
+  ],
+  "decisions": [
+    { "id": "q1", "title": "Who is the one primary user for the next few months?", "why": "Every screen gets optimised for someone.", "rec": "The person who hands work over and reviews it.", "options": ["Tech lead", "Reviewer", "Product owner", "Buyer"] }
+  ]
+}
+</script>
+
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById('questions').textContent);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => `&#${c.charCodeAt(0)};`);
+  const state = {};
+  let db = null;
+  const setText = (id, text) => { document.getElementById(id).textContent = text; };
+  setText('eyebrow', data.eyebrow || ''); setText('title', data.title || ''); setText('lede', data.lede || '');
+  document.title = data.title || document.title;
+  const setStatus = (kind, text) => { document.getElementById('status').dataset.state = kind; setText('status-text', text); };
+
+  function answer(id, question, options, placeholder) {
+    const opts = options.length ? `<div class="choices" role="group" aria-label="${esc(question)}">${options.map(o => `<button type="button" data-q="${esc(id)}" data-choice="${esc(o)}" aria-pressed="false">${esc(o)}</button>`).join('')}</div>` : '';
+    return `<div class="answer"><span class="q">${esc(question)}</span>${opts}<label class="sr" for="note-${esc(id)}">Note</label><textarea id="note-${esc(id)}" data-note="${esc(id)}" placeholder="${esc(placeholder)}"></textarea><span class="saved" id="saved-${esc(id)}"></span></div>`;
+  }
+  const hide = (part, list) => { if (!list?.length) document.getElementById(part).hidden = true; };
+
+  document.getElementById('roles').innerHTML = (data.roles || []).map(r => `<article class="card"><h3>${esc(r.name)}</h3><p class="muted">${esc(r.who)}</p><p><b>Would do:</b> ${esc(r.does)}</p><p><b>Mostly in:</b> ${esc(r.where)}</p><p class="guess">Guess <b>${esc(r.guess)}</b></p><p class="src">${esc(r.evidence)}</p>${answer(r.id, 'Your call', data.roleChoices || [], 'What is wrong or missing about this role')}</article>`).join('');
+  document.getElementById('needs').innerHTML = (data.needs || []).map(n => `<article class="card"><h3>${esc(n.name)}</h3><ul class="plain">${(n.stories || []).map(([w, i, s, src]) => `<li>${esc(w)} <b>${esc(i)}</b> ${esc(s)} <span class="src">${esc(src)}</span></li>`).join('')}</ul><ul class="plain">${(n.needs || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul><p class="muted">${esc(n.feel)}</p>${answer(n.id, 'Does this match?', ['Yes', 'Mostly', 'No'], 'What is wrong, missing or more important')}</article>`).join('');
+  const label = { have: 'today', part: 'partly', none: 'missing' };
+  document.getElementById('journeys').innerHTML = (data.journeys || []).map(j => `<article class="card"><h3>${esc(j.name)}</h3><p class="muted">${esc(j.meta)}</p><div class="stages"><table><thead><tr><th>Stage</th><th>What they do</th><th>Where</th><th>Today</th><th>Notes</th></tr></thead><tbody>${(j.stages || []).map(([s, d, w, st, note]) => `<tr><td>${esc(s)}</td><td>${esc(d)}</td><td>${esc(w)}</td><td><span class="st ${esc(st)}">${esc(label[st] || st)}</span></td><td>${esc(note)}</td></tr>`).join('')}</tbody></table></div>${answer(j.id, 'Is this the journey?', ['Yes', 'Mostly', 'No'], 'Steps that are wrong, missing or out of order')}</article>`).join('');
+  document.getElementById('decisions').innerHTML = (data.decisions || []).map(d => `<article class="card"><h3>${esc(d.title)}</h3><p class="muted">${esc(d.why)}</p>${d.rec ? `<p class="rec"><b>Recommended:</b> ${esc(d.rec)}</p>` : ''}${answer(d.id, 'Your answer', d.options || [], 'Your own answer, or why')}</article>`).join('');
+  hide('roles-part', data.roles); hide('needs-part', data.needs); hide('journeys-part', data.journeys); hide('decisions-part', data.decisions);
+
+  function paint(id) {
+    const a = state[id] || {};
+    document.querySelectorAll(`[data-q="${CSS.escape(id)}"]`).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.choice === a.choice)));
+    const note = document.getElementById(`note-${id}`);
+    if (note && document.activeElement !== note) note.value = a.note || '';
+    const saved = document.getElementById(`saved-${id}`);
+    if (saved) saved.textContent = a.updatedAt ? `Saved ${new Date(a.updatedAt).toLocaleString()}` : '';
+    const out = document.getElementById('export');
+    out.value = JSON.stringify(state, null, 1);
+  }
+  async function save(id, patch) {
+    state[id] = { ...(state[id] || {}), ...patch, updatedAt: new Date().toISOString() };
+    paint(id);
+    if (!db) { try { localStorage.setItem('journey-distiller-answers', JSON.stringify(state)); } catch {} return; }
+    try { await db.doc(`answers/${id}`).set(state[id]); }
+    catch { const s = document.getElementById(`saved-${id}`); if (s) s.textContent = 'Not saved. Try again in a moment.'; }
+  }
+  document.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-choice]'); if (!b) return;
+    const id = b.dataset.q;
+    save(id, { choice: state[id]?.choice === b.dataset.choice ? '' : b.dataset.choice });
+  });
+  const timers = {};
+  document.addEventListener('input', ev => {
+    const t = ev.target.closest('[data-note]'); if (!t) return;
+    clearTimeout(timers[t.dataset.note]);
+    timers[t.dataset.note] = setTimeout(() => save(t.dataset.note, { note: t.value }), 700);
+  });
+  try { Object.assign(state, JSON.parse(localStorage.getItem('journey-distiller-answers') || '{}')); } catch {}
+  Object.keys(state).forEach(paint);
+  (async () => {
+    db = window.claude?.use ? await window.claude.use('db') : null;
+    if (!db) {
+      setStatus('local', 'Answers stay in this browser only. Copy them from the bottom of the page.');
+      document.getElementById('export-part').hidden = false;
+      return;
+    }
+    setStatus('live', 'Answers save as you go.');
+    db.collection('answers').onSnapshot(snap => snap.docs.forEach(d => { if (d.exists) { state[d.id] = d.data(); paint(d.id); } }),
+      () => { setStatus('local', 'Lost the answer store. Copy your answers from the bottom of the page.'); document.getElementById('export-part').hidden = false; });
+  })();
+})();
+</script>
