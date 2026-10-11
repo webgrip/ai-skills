@@ -1,0 +1,23 @@
+export const VIDEOS = [
+  {
+    id: 'demo-reviewers',
+    group: 'developers',
+    name: 'The reviewer',
+    voice: '[calm, dry]',
+    music: 'tech',
+    seed: 1,
+    product: 'Acme',
+    site: 'acme.example',
+    kicker: 'For reviewers',
+    hud: 'Acme · for reviewers',
+    note: 'Acme · example project',
+    lines: [
+      { vo: 'Agents open pull requests faster than anyone can read them.', h: 'Faster than you *can read.*', sc: 'statement', g: 'a', p: { items: ['Ten pull requests.', 'One *reviewer.*'] } },
+      { vo: 'So who actually read it?', sc: 'slam', g: 'b', p: { words: ['WHO', 'READ', 'IT?'] } },
+      { vo: 'Acme plans the change, builds it, checks it, and hands you a summary you can trust.', h: 'Plan. Build. Check. *Explain.*', sc: 'steps', g: 'c', p: { steps: ['Plan', 'Build', 'Check', 'Explain'] } },
+      { vo: 'Every step is recorded, and nothing merges without a person.', h: 'You stay *in charge.*', sc: 'tiles', g: 'd', p: { items: [{ t: 'Recorded steps', icon: 'doc' }, { t: 'Your own CI', icon: 'check' }, { t: 'A person merges', icon: 'person' }, { t: 'Policy auto-merge', icon: 'bolt', planned: true }], cols: 2, hl: [[0, 1, 2]] } },
+      { vo: 'Illustration: the usual way next to Acme.', h: 'Same work. *Less waiting.*', sc: 'compare', g: 'e', p: { lanes: [{ label: 'The usual way', speed: 0.35, end: 'days' }, { label: 'With Acme', speed: 1, end: 'hours' }] } },
+      { vo: 'Acme. Agents work. You decide.', sc: 'endcard', g: 'f', p: { a: 'Agents work.', b: 'You decide.' } },
+    ],
+  },
+];

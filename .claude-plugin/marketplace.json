@@ -78,6 +78,25 @@
       ]
     },
     {
+      "name": "devtool-social",
+      "source": "./skills/devtool-social",
+      "description": "Reach developers and technical buyers with social content for a founder-led developer tool: which platform does which job, Shorts cut from long audience videos, hooks, a launch order, claims that survive developer scepticism and metrics that mean something, each rule labelled by evidence.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "social-media",
+        "developer-marketing",
+        "shorts",
+        "hacker-news",
+        "reddit",
+        "linkedin",
+        "launch",
+        "content",
+        "dutch",
+        "nederlands"
+      ]
+    },
+    {
       "name": "domain-language",
       "source": "./skills/domain-language",
       "description": "Define and maintain a project's ubiquitous language (terms, entities, rules, events) in docs/domain/model.yaml, and generate documentation, diagrams, Context Mapper exports, health scores, and feature specs from it.",
@@ -318,6 +337,25 @@
       ]
     },
     {
+      "name": "seekframe",
+      "source": "./skills/seekframe",
+      "description": "Make motion-graphics explainer videos from code: one script source per product, a deterministic seek(t) page rendered in headless Chromium with motion blur, a score synthesized from the cut, careful per-line ElevenLabs voice-over that re-times the scenes, subtitles, posters and share copies, one cut per audience.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "video",
+        "motion-graphics",
+        "explainer",
+        "animation",
+        "playwright",
+        "ffmpeg",
+        "voice-over",
+        "elevenlabs",
+        "subtitles",
+        "marketing"
+      ]
+    },
+    {
       "name": "site-performance",
       "source": "./skills/site-performance",
       "description": "Makes static sites on Cloudflare's edge fast for real users and proves it with field data: Core Web Vitals diagnosed by subpart and phase, ranked fixes, edge delivery, RUM and APM choices with EU privacy, a DIY web-vitals beacon into Workers Analytics Engine, Lighthouse CI budgets, and a build plus live scanner.",
@@ -366,6 +404,24 @@
         "token-efficiency",
         "frontmatter",
         "progressive-disclosure"
+      ]
+    },
+    {
+      "name": "youtube-upload-kit",
+      "source": "./skills/youtube-upload-kit",
+      "description": "Package a video for YouTube and Shorts: thumbnails rendered from the video's own frames in brand fonts and colours, Test & Compare variants, titles, descriptions, chapters, end screens, captions, synthetic-content disclosure, unlisted feedback drafts and the Studio numbers to read, each rule labelled by evidence.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "youtube",
+        "shorts",
+        "thumbnail",
+        "title",
+        "a-b-test",
+        "video",
+        "marketing",
+        "dutch",
+        "nederlands"
       ]
     }
   ]

@@ -1,0 +1,48 @@
+{
+  "skill_name": "youtube-upload-kit",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "feedback-upload",
+      "prompt": "I'm uploading my product video to YouTube so I can share it with a few people for feedback. What do I fill in?",
+      "assertions": [
+        "Recommends unlisted (link-only, comments allowed) over private for collecting feedback",
+        "Sets the audience to not made for kids and explains it would disable comments and end screens",
+        "Advises uploading the subtitle file",
+        "Raises the AI-voice licensing question if the voice is synthetic, including attribution on a free ElevenLabs plan",
+        "Gives a concrete title that leads with the outcome and ends with the product name"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "thumbnail",
+      "prompt": "Make me a YouTube thumbnail for this explainer, I want to A/B test it.",
+      "assertions": [
+        "Produces two to three variants that differ in promise or words, not only in colour",
+        "Keeps the words to about two to five and makes them add to the title instead of repeating it",
+        "Uses a frame from the video as background, cropped so the scene's own headline does not show behind the new words",
+        "Checks legibility at small size and keeps the bottom-right corner clear of important content",
+        "Explains Test & Compare judges by watch time share, runs up to about two weeks, and is unavailable for Shorts"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "no-clicks",
+      "prompt": "My video gets impressions but almost nobody clicks. What's wrong?",
+      "assertions": [
+        "Compares click-through against the channel's own median rather than a universal benchmark",
+        "Looks at title and thumbnail as one promise and suggests testing meaningfully different variants",
+        "Checks the first 30 seconds of retention for a promise mismatch rather than only chasing clicks"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "not-youtube",
+      "prompt": "Write a LinkedIn post announcing our meetup next month.",
+      "assertions": [
+        "Does not invoke youtube-upload-kit; LinkedIn post mechanics belong to another skill"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}

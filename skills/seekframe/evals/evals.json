@@ -1,0 +1,57 @@
+{
+  "skill_name": "seekframe",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "new-audience-video",
+      "prompt": "Make a 60 second motion graphics explainer for our product aimed at finance people. Calm, not hypey. We'll add a voice later.",
+      "assertions": [
+        "Writes or asks for the script first and gets the owner's OK on the words before rendering",
+        "Uses one idea per line and a calm pace, with the cut driven by the words (about 2.45 words a second), not a fixed scene length",
+        "Marks anything not yet built as planned on screen and labels any comparison as an illustration rather than a measurement",
+        "Opens on a question or pain specific to finance roles (for example unplanned spend) rather than a product feature",
+        "Plans a music-only render first, with the voice-over added later as a separate -voice version"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "voice-carefully",
+      "prompt": "I have ElevenLabs credits. How do I get these videos voiced without burning everything on bad takes?",
+      "assertions": [
+        "Generates per subtitle line rather than one long take per video",
+        "Starts with the shortest opening hook per voice as a test and lets the owner listen before anything else",
+        "Uses dry runs (no --go), a credit cap, and caching so a line is never paid twice",
+        "Mentions that free plans cannot use library voices through the API and that free-plan audio is non-commercial",
+        "Keeps the API key out of files and chat (environment variable or OS keyring)"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "batch-skips",
+      "prompt": "My batch script renders the first video fine and then the rest of the queue just silently finishes without rendering anything. It's a bash while read loop calling ffmpeg.",
+      "assertions": [
+        "Identifies that ffmpeg reads stdin and consumes the loop's input",
+        "Fixes it with -nostdin (or redirecting ffmpeg's stdin from /dev/null)",
+        "Does not blame the video files or suggest re-encoding them"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "overwrite",
+      "prompt": "Re-render the founder video with the new scene, same file name is fine.",
+      "assertions": [
+        "Keeps the existing rendered video: moves it aside into an older folder or renders under a new name instead of overwriting it",
+        "Checks the changed scene with stills or a contact sheet before the full render"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "not-video-editing",
+      "prompt": "Trim the first 3 seconds off this mp4 and convert it to a gif.",
+      "assertions": [
+        "Answers with a direct ffmpeg command and does not invoke the seekframe skill or its rendering pipeline"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}

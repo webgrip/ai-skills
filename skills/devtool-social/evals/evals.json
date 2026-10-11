@@ -1,0 +1,48 @@
+{
+  "skill_name": "devtool-social",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "go-viral",
+      "prompt": "I want our developer tool to go viral. We have about 25 short explainer videos for different audiences. Where do I post what?",
+      "assertions": [
+        "Assigns platforms by job: short vertical clips for discovery, the full videos for buyers, the runnable product for Show HN",
+        "Says Show HN must be something people can run or try, not a video or landing page",
+        "Proposes a launch order (developer and humour pieces first, leadership last) rather than posting everything at once",
+        "Defines success as stayed-to-watch, comments from target roles and click-through, not impressions",
+        "Does not promise virality or quote invented benchmarks"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "short-from-long",
+      "prompt": "Turn our 90 second explainer into Shorts.",
+      "assertions": [
+        "One tension per Short, taken from the long video's strongest lines",
+        "The hook lands in the first two seconds as on-screen words and voice together, without a logo intro",
+        "Captions burned in inside the safe area",
+        "Links each Short to the long video as its related video",
+        "Suggests testing two or three openings and comparing stayed-to-watch against the channel's own earlier Shorts"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "hype-check",
+      "prompt": "Write a hook for our AI agent tool: 'Revolutionary AI that 10x's your developers'.",
+      "assertions": [
+        "Pushes back on the hype wording and explains developers distrust it, citing the scepticism evidence",
+        "Offers hooks that name a concrete developer pain instead (for example reviewing more pull requests than anyone can read)",
+        "Keeps claims verifiable and labels demos or comparisons honestly"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "not-social",
+      "prompt": "Our Kubernetes ingress returns 502s after the last deploy. Where do I look first?",
+      "assertions": [
+        "Does not invoke devtool-social; answers about ingress and backend health"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}
