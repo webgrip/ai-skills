@@ -1,0 +1,50 @@
+{
+  "skill_name": "journey-distiller",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "target-audience",
+      "prompt": "Before we redesign anything else in our agent workbench: describe our target audience. Junior devs, medior, senior, team leads, scrum masters, POs, business people, clients. Who is actually using this?",
+      "assertions": [
+        "Reads the repository's product docs, ADRs or role definitions before classifying, and cites what it found",
+        "Lists each role with what it would do, where it mostly works, and a classification such as core, secondary, edge or outside the product",
+        "Separates the buyer from the daily user",
+        "Labels the classification as a hypothesis to confirm with the owner rather than presenting it as research",
+        "Proposes a way for the owner to answer per role (an answer page, a questionnaire or numbered questions) instead of only a prose verdict"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "top-ten-enterprise",
+      "prompt": "I answered round 1. I want to think about this properly in an enterprise way: what are the top 10 user journeys we must support, and what else do you need to know from me?",
+      "assertions": [
+        "Gives each of the ten journeys actors, a trigger, a done-when, a frequency and stages with the tool used at each stage",
+        "Names enterprise requirements per journey: the permission each action needs, the audit event, and applicable policies",
+        "Asks follow-up questions that cover organisation model, roles and permissions, identity provider or provisioning, review routing, audit retention and success measures",
+        "Checks existing decision records first and does not re-ask a question an accepted ADR already answers",
+        "Flags contradictory or ambiguous earlier answers as questions instead of resolving them silently"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "journeys-to-tickets",
+      "prompt": "Turn the users and top journeys we decided into tickets on our Vikunja board. Do it properly.",
+      "assertions": [
+        "Creates an epic plus a decision ticket, a concept-doc ticket, ADR spike tickets and one design ticket per journey, linked by dependency relations",
+        "Every ADR or decision ticket uses the spike shape: a single question, a timebox, what we decide on, who decides, and a criterion that it is decided and recorded",
+        "Each ticket opens with a source line that quotes the owner's words, and separates a plain-language functional half from technical notes",
+        "Runs the product-owner ticket linter (or an equivalent ready-gate check) on the bodies before marking any ticket ready",
+        "Records the owner's answers on the board, for example as a comment on the epic"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "single-form-polish",
+      "prompt": "The save button on our profile settings form is misaligned on mobile and the error message under the email field is too vague. Fix both.",
+      "assertions": [
+        "Fixes the alignment and rewrites the error message without starting a user or journey discovery process"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}
