@@ -1,5 +1,13 @@
 # agent-instructions
 
+## 0.5.0 (2026-10-11)
+
+### 🚀 Features
+
+- **agent-instructions:** choose carriers by the agent that does the work (f7f0c622)
+- **agent-instructions:** cost-gated probes, path-rule-free layouts and harness-agnostic guards (0edbf3be)
+
+
 ## 0.4.0 (2026-10-10)
 
 ### 🚀 Features
