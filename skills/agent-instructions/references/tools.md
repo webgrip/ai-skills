@@ -27,7 +27,7 @@ documented.
 | [Kiro](https://kiro.dev/docs/steering/) | `.kiro/steering/*.md`, `AGENTS.md` always | — | — | `inclusion: fileMatch` + `fileMatchPattern` (string or array); frontmatter must come first |
 | [Zed](https://zed.dev/docs/ai/instructions) | **first match only**: `.rules`, `.cursorrules`, `.windsurfrules`, `.clinerules`, `.github/copilot-instructions.md`, `AGENT.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` | first match | — | none |
 | [Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md) | `GEMINI.md` hierarchy + per directory on access; `AGENTS.md` only with `context.fileName: ["AGENTS.md", "GEMINI.md"]` | concatenated | — | none |
-| [OpenHands](https://docs.openhands.dev/overview/skills) | `AGENTS.md` always; `CLAUDE.md`/`GEMINI.md` as model-specific | project > user > public | keep brief | skills with `paths:` or keyword triggers |
+| [OpenHands](https://docs.openhands.dev/overview/skills) | `AGENTS.md` always; `CLAUDE.md`/`GEMINI.md` as model-specific; nested `AGENTS.md` only when the task says to read it | project > user > public | keep brief | skills with `paths:` or keyword triggers; never `.claude/rules` or generated rule files |
 
 ## Skills, MCP, ignore files, hooks
 

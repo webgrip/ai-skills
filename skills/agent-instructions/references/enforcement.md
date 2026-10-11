@@ -30,6 +30,10 @@ Pick the earliest step that can catch the rule; each later step catches more but
 5. **CI** — the backstop for everything, because agent hooks are per tool and git pre-commit hooks
    are skipped by `--no-verify`, by a checkout without dependencies and by web-editor commits.
    Before caching, narrowing or skipping a check, make sure CI still covers every file with it.
+6. **Required check on the forge** — CI that nobody must pass is advisory. Branch protection with
+   the gate jobs as required status checks is what stops a red merge. Keep pushing enabled when a
+   release bot pushes its own commit to the protected branch: on Forgejo and Gitea, required
+   checks gate pull-request merges, and a user who may push still can.
 
 Then delete the prose rule, or shorten it to one line naming the check.
 
@@ -45,8 +49,9 @@ Then delete the prose rule, or shorten it to one line naming the check.
 | Tests before finishing | Stop hook | Stop `decision: "block"` | `stop` `followup_message` | `agentStop` | `AfterAgent` | none documented |
 | Commit message format | PreToolUse on `git commit` + commitlint in CI | PreToolUse | `beforeShellExecution` | `preToolUse` | `BeforeTool` | `tool.execute.before` |
 
-OpenHands: `.openhands/hooks.json` Stop hook, exit 2 keeps the agent working; its older
-`pre-commit.sh` is deprecated for this.
+OpenHands: `.openhands/hooks.json` with `pre_tool_use` (matcher `*`, the event on stdin as JSON
+with `tool_name` and `tool_input`, `$OPENHANDS_PROJECT_DIR` set) and `stop`; only exit 2 blocks,
+any other non-zero exit is a non-blocking error. Its older `pre-commit.sh` is deprecated for this.
 
 ## Checks over prose
 
@@ -62,6 +67,9 @@ A rule a parser can see belongs in a check every agent and person hits, not in p
   with existing hits starts at `info` or with a baseline.
 - Run the rule directory in pre-commit and CI. Run only by an AI reviewer, it is an advisory
   comment, not a gate.
+- **Make the cheap local command catch the mistake**, not only the full gate. When people and
+  agents run `npm test` while iterating and the type check lives elsewhere, a `pretest` that
+  typechecks first stops the recurring miss at the command they already run.
 - **Introducing a check over existing code**: list the current violations in a sorted baseline
   (or the test's exceptions list) that fails on new violations **and** on entries that no longer
   occur, so it can only shrink. For a count-based exception, assert the exact count. Fix the
@@ -94,6 +102,17 @@ Shipped in [../assets/hooks/](../assets/hooks/):
 | `protect-generated.sh` | PreToolUse, matcher `Bash` | no shell writes into generated paths (`PROTECTED_PATHS` regex) |
 | `lint-on-edit.sh` | PostToolUse, matcher `Edit\|Write` | the project linter on the one edited file (`LINT_COMMAND`) |
 | `tests-before-stop.sh` | Stop | a reminder to run the narrow tests when source changed since the last green run |
+| `stage-explicit-paths.py` | any pre-tool event | no `git add -A`, `git add .` or `git commit -a` in a shared checkout; reads `tool_input.command` from any harness and skips heredoc bodies |
+| `openhands-hooks.json` | OpenHands `pre_tool_use` | runs `stage-explicit-paths.py` before every OpenHands tool call |
+| `opencode-guard.js` | opencode `tool.execute.before` | runs the same guard before every opencode tool call; throwing blocks the call |
+
+**One guard, every harness.** Write a guard once against the shape every harness shares, a JSON
+event whose `tool_input.command` holds the shell command, exit 2 to block with the reason on
+stderr, and give each harness a thin adapter: the `.claude/settings.json` hook entry,
+`.openhands/hooks.json`, and an opencode plugin in `.opencode/plugins/`. Keying on a tool name
+(`Bash`) silently skips the others, whose shell tools are named `terminal` or `bash`. Check each
+adapter with the harness's own loader or one probe: the OpenHands SDK's hook manager can run a
+config without a model call.
 
 Settings snippet (`.claude/settings.json`):
 
@@ -144,7 +163,9 @@ Other recipes worth having before adding tools:
   change through Bash (a script doing string replacement). When that happened, run the skipped
   control over the whole diff before trusting the result, and tell the user.
 - **Coverage**: Edit/Write hooks miss Bash writes; Codex hooks skip hosted tools; Copilot CLI has
-  open bugs around deny and `additionalContext`. Probe each tool you rely on.
+  open bugs around deny and `additionalContext`. Probe each tool you rely on. A Codex project
+  hook was once not observed to fire at all, not even in a scratch repo with hook trust bypassed:
+  register a hook that only logs its stdin before trusting a Codex guard.
 - **Headless**: `claude -p --bare` loads no hooks, skills or CLAUDE.md; the Agent SDK with
   `settingSources: []` neither. CI stays the guarantee.
 

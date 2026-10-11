@@ -34,6 +34,21 @@ An instruction file is code with no compiler. Test it by behaviour, not by readi
    single object under `--setting-sources project`).
 5. Keep a line only if a probe changes with it.
 
+**Model, cost and binary**:
+
+- Probe on the cheapest model that makes the mistake, and on the model the working agent really
+  runs. A strong model often does the right thing without the rule: on one repo a CI rule scored
+  10/10 with and without it on Opus ($13 for 60 runs), and 4/10 → 10/10 on Haiku ($0.40 for 40).
+  `probe.py` defaults to `haiku` and a $5 total cap.
+- Say runs × model × cap to whoever pays before starting. `probe.py` prints that plan and runs
+  nothing until `--yes`.
+- Run the binary the team runs: `--claude-bin` (or `CLAUDE_BIN`) points at the IDE extension's
+  bundled `claude` when `PATH` holds an older one.
+- `--out` keeps each run's final message and tool calls, and `--regrade <file>` rescores them with
+  fixed regex graders without paying again. `probe.py` warns about a `^` or `$` inside a pattern
+  without `(?m)`: there it matches only the start or end of the whole text, so a "no line starts
+  with …" check can never fail.
+
 **How many runs** (two-sided α 0.05, power 0.8):
 
 | Shift to detect | Runs per arm |
@@ -101,7 +116,7 @@ owns that scope.
 Before writing, keeping or migrating a rule, count what the code does and find where the rule came
 from. A naming rule that half the files break, or an "always do X" that most of the codebase never
 does, is worse than no rule: agents follow it into new inconsistency, and review bots trained on
-the code contradict it. Count with `git ls-files` plus `grep -c`, find the origin with
+the code contradict it. The same count can show a rule is not needed: when every recent commit header already follows the convention, a commit-message lint guards against a mistake nobody makes. Count with `git ls-files` plus `grep -c`, find the origin with
 `git log -S '<rule text>'`, carry or add the reason, and then fix either the rule or the code.
 
 ## Agent-proposed rules

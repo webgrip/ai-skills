@@ -8,6 +8,7 @@ id is the `id` of its entry in [assets/targets.json](../assets/targets.json).
 - [Enabling a target](#enabling-a-target)
 - [Interactive agents](#interactive-agents)
 - [Cloud agents](#cloud-agents)
+- [Orchestrated and headless agents](#orchestrated-and-headless-agents)
 - [Review bots](#review-bots)
 - [Generators](#generators)
 - [CI forges](#ci-forges)
@@ -78,6 +79,26 @@ Runners-up: Google Jules (root `AGENTS.md` only; setup in its UI), Amp (`.agents
 (`openhands`: `.openhands/setup.sh`, `.openhands/hooks.json`), Factory, GitLab Duo Agent Platform
 (`.gitlab/duo/agent-config.yml`; the only agent native to GitLab). Forgejo and Gitea have none:
 run a headless CLI in a runner ([unattended.md](unattended.md#triggers-identity-network-forges)).
+
+## Orchestrated and headless agents
+
+An orchestrator that runs agents for you (a dispatch service, an issue-to-PR pipeline, a CI job)
+decides which harness and model touch the repo, and it is often not the tool the team uses
+interactively. Ask what it runs before choosing where rules live:
+
+- **What reaches the agent.** OpenHands reads `AGENTS.md`, `CLAUDE.md`, `.agents/skills` and
+  `.openhands/skills`, and runs `.openhands/hooks.json`; it never loads `.claude/rules` or a
+  generated rule format. Orchestrators usually start the harness with a fresh home directory, so
+  nothing from `~/.claude` or `~/.codex` arrives, and may disable repository hooks
+  (`--settings '{"disableAllHooks":true}'` for Claude Code).
+- **Subtree rules.** When the working agent cannot load path rules, put subtree rules in nested
+  `AGENTS.md` files, run `layout --no-path-rules`, and make the orchestrator's brief say "read the
+  `AGENTS.md` nearest each directory you change". Claude Code still loads the nested file through
+  its `CLAUDE.md` = `@AGENTS.md` when it reads a file there.
+- **Models.** Orchestrators often run cheap models; probe rules on that model
+  ([maintenance.md](maintenance.md#test-a-change)).
+- **Verification.** The orchestrator's own post-run checks are configured outside the repo; read
+  them, because they may be far weaker than the repo's gate.
 
 ## Review bots
 

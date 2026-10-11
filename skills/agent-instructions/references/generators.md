@@ -253,8 +253,20 @@ Run it in the project's test image with `vendor` and `node_modules` linked in. I
 | [rulesync](https://github.com/dyoshikawa/rulesync) | none; owns whole files | `.rulesync/rules/*.md` (`root: true`), `rulesync.jsonc` | commit (deliberately not ignored) | `rulesync generate --check --targets "*" --features "*"` |
 | [Ruler](https://github.com/intellectronica/ruler) | none; full overwrite, `.bak` backups | `.ruler/`, `ruler.toml` | ignored by default via a managed `.gitignore` block | `ruler apply` + `git diff` |
 | Claude Code `/import` | none | one-time copy | — | a copy drifts from then on |
+| [OpenSpec](https://github.com/Fission-AI/OpenSpec) 1.x | none; owns whole files (`.claude/commands/opsx/*`, `.agents/skills/openspec-*`, `.agents/skills/.openspec-target`); 1.x only removes old `OPENSPEC:START/END` blocks from `AGENTS.md`/`CLAUDE.md` | `openspec init --tools <ids>`, `openspec/config.yaml`, the schema | commit | `openspec update` + `git diff`; `openspec validate --all --strict` for the specs |
 
 The convention is converging on a marked block inside `AGENTS.md` plus `CLAUDE.md` = `@AGENTS.md`.
+
+**Spec tools (OpenSpec)** write one command and one skill per workflow for every tool passed to
+`init --tools`. Choose the tools so a skill exists once: `agents` writes `.agents/skills`, which
+Codex, OpenHands and opencode already read, and `claude` adds only the `/opsx` commands when
+`.claude/skills` links to `.agents/skills`; adding `opencode` writes a second copy of every skill
+in `.opencode/skills`. The CLI sends usage events by default: set `OPENSPEC_TELEMETRY=0` and
+`OPENSPEC_NO_UPDATE_CHECK=1` in the repo's tool environment (for example mise `[env]`). Adapt the
+schema to the repo's decision ledgers instead of keeping a second ledger in `openspec/`, put
+`openspec validate --all --strict` in the gate, and treat archived changes as records and
+`openspec/specs/` as current requirements. Other agents may later migrate the generated commands
+into more skills (`source-command-opsx-*`): read the skill list a session shows after setup.
 
 ## Any generator
 

@@ -179,6 +179,30 @@
       "assertions": [
         "Does not load the agent-instructions skill for an ordinary CI pipeline request"
       ]
+    },
+    {
+      "id": "orchestrated-harness-subtree-rules",
+      "prompt": "Our tickets are executed by an orchestrator that runs OpenHands with a cheap model against this repo; I use Claude Code myself. I want rules that only apply to .github/workflows. Set that up.",
+      "expect_trigger": true,
+      "assertions": [
+        "Establishes which harness and model actually do the work before choosing where the rule lives",
+        "Puts the workflow rule in a nested .github/workflows/AGENTS.md (with CLAUDE.md = @AGENTS.md beside it) instead of only .ai/rules, because OpenHands does not load .claude/rules or generated rule files",
+        "Uses agent_setup.py layout --no-path-rules, or explains why .ai/rules stays, rather than creating .ai/rules by default",
+        "Makes sure the orchestrator's brief or the root AGENTS.md tells the agent to read the AGENTS.md nearest the files it changes",
+        "Proposes probing the rule on the orchestrator's cheap model, with the cost stated before any run"
+      ]
+    },
+    {
+      "id": "probe-cost-and-model",
+      "prompt": "Can you A/B test whether my new CLAUDE.md rule about database migrations actually changes what the agent does?",
+      "expect_trigger": true,
+      "assertions": [
+        "Uses scripts/probe.py (or the same method) with two arms in fresh worktrees and 10 runs per arm, not 3",
+        "Starts on the cheapest model that shows the mistake (haiku by default) and the model the team really runs, not the strongest model by default",
+        "States runs x model x cost cap and waits for an OK before running; probe.py runs nothing without --yes",
+        "Checks which claude binary runs (IDE extension versus PATH) and passes --claude-bin when they differ",
+        "Keeps a line only if a probe changes with it, and keeps the --out file so graders can be fixed with --regrade without paying again"
+      ]
     }
   ]
 }

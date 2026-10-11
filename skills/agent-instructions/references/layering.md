@@ -49,6 +49,20 @@ throwaway app: install the package from a path repository that copies rather tha
 generated files, then run the check clean and once after a hand edit inside the generated block.
 The smoke test catches a generator release that changes its output before any consumer does.
 
+## Personal memory
+
+An agent's memory and a person's notes collect team knowledge that nobody else can see: how CI
+fails, how a release is repaired, which trap bit twice. Audit them as a level of their own:
+
+- Sort every entry: repo doc (which page), path trap (nearest `AGENTS.md` or knowledge pack),
+  another repo, ticket (open work), personal (preferences, private context) or stale.
+- Move team knowledge into the repo through review, and check each claim against the repo first;
+  memory goes stale in both directions.
+- In a public repo, filter for privacy before moving anything: employers, deals, contracts,
+  private hosts, storage and node ids, credentials stay out.
+- Archive instead of deleting, so a wrong call can be undone, and fix index lines that contradict
+  their own entries.
+
 ## Pitfalls
 
 - A `CLAUDE.md` at a plugin root is never loaded; a plugin carries always-on text through a
