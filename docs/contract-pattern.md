@@ -33,6 +33,13 @@ Resolution order: the skill checks **1 → 2 → 3 → 4** — a repo-specific f
 personal default, which beats the org default. Layers combine: the org skill carries
 defaults, the more specific layers carry only what differs.
 
+**Repo overlay (product-owner).** When the org contract skill ships teams with their own
+hand-over docs, a repo hooks its own ticket rules onto a team in `.agents/product-owner/`:
+a `board.md` that opens with `Extends: <org>/<team>` and lists only additions, plus an
+optional `assets/` whose files add to or replace the team's. It is read first within
+layer 1. Shape: `skills/product-owner/contracts.md`; webgrip's teams live in
+`skills/product-owner-contract`.
+
 ## User level — one person, many orgs and teams
 
 Globally installed skills have no repo to read a contract from — and one person often

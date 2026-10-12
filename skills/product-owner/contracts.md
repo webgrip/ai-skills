@@ -39,6 +39,32 @@ Small and always-relevant → paste as this block in the repo's `AGENTS.md`. Ric
 bulky (id tables, status ladders, field catalogs) → `.agents/contracts/product-owner.md`
 instead — loaded only when the skill fires.
 
+## Layer 1 — the repo overlay (a repo's own ticket rules)
+
+When an org contract skill ships teams (layer 4), a repo hooks its own rules onto a team
+without copying it:
+
+```text
+.agents/product-owner/
+├── board.md        ← Extends: <org>/<team> — additions and overrides only
+└── assets/         ← optional: a file named like a team asset replaces it for this
+                      repo; any other file adds to the team's set
+```
+
+```markdown
+Extends: acme/default
+
+## Additions
+- Project: `<name>` (id <N>)
+- Extra kind: `kind/migration` — needs a Rollback section and a dry-run Verification
+- Protected paths for agents: `deploy/`, `.forgejo/`
+```
+
+Anything the overlay does not mention falls through to the team, then to this skill's
+portable defaults. State the resolved layers in one line before the first write; flag
+once where the overlay and the `AGENTS.md` block disagree (the overlay wins). A rule that
+would hold for every repo of the org belongs in the team file instead.
+
 ## Layer 3 — user contexts (one person, many orgs/teams)
 
 Globally installed skills have no repo to read from. A directory of named contexts:
