@@ -1,5 +1,16 @@
 # product-owner
 
+## 0.9.0 (2026-10-12)
+
+### 🚀 Features
+
+- **product-owner:** repo overlay hooks a repo's ticket rules onto a team (0c095f8c)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** name no other organisation's host in the vikunja adapter (28a6286c)
+
+
 ## 0.8.6 (2026-10-10)
 
 ### 🐛 Bug Fixes

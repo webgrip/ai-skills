@@ -1,5 +1,12 @@
 # agent-instructions
 
+## 0.5.1 (2026-10-12)
+
+### 🐛 Bug Fixes
+
+- **agent-instructions:** warn that a guard fails open when its interpreter cannot start (1b2ea1ec)
+
+
 ## 0.5.0 (2026-10-11)
 
 ### 🚀 Features
