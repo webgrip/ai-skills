@@ -166,6 +166,12 @@ Other recipes worth having before adding tools:
   open bugs around deny and `additionalContext`. Probe each tool you rely on. A Codex project
   hook was once not observed to fire at all, not even in a scratch repo with hook trust bypassed:
   register a hook that only logs its stdin before trusting a Codex guard.
+- **Fail-open interpreters**: harnesses block only on exit 2, so a guard whose interpreter cannot
+  start (a mise or asdf shim with no trusted config under a fresh home, a missing `python3`, a
+  broken venv) exits 1 and the call goes through. Orchestrators start agents with a fresh home, so
+  test a guard with that home and the runner's `PATH`, not your own shell. Seen with OpenHands
+  under a fresh home: the hook ran in every run, exited 1 from a mise shim, and `git add -A`
+  staged files; the same command with the image's own Python blocked.
 - **Headless**: `claude -p --bare` loads no hooks, skills or CLAUDE.md; the Agent SDK with
   `settingSources: []` neither. CI stays the guarantee.
 
