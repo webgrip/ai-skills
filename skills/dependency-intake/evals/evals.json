@@ -1,0 +1,62 @@
+{
+  "skill_name": "dependency-intake",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = should-NOT-fire probe; null = output-quality-only case the trigger probe skips.",
+  "evals": [
+    {
+      "id": "grouped-renovate-pr",
+      "prompt": "Go over all the release notes in our open Renovate PR that bumps mise, pnpm and uv. Is there anything in our source we need to be aware of, and what could we use?",
+      "assertions": [
+        "Resolves the Dependency intake contract block, or states the inferred bot, automerge policy, workaround locations and board",
+        "Reads the notes of every intermediate version in each range, not only the target version",
+        "Searches the repo for the concrete handles each note names (flags, config keys, env vars, defaults) and cites a path:line hit or a counted absence per verdict",
+        "Flags the uv 0.x minor as a breaking candidate rather than a safe minor",
+        "Checks the CI status of the trunk head before attributing a red PR to the bump",
+        "Opens the report with decisions and ends with a not-verified line"
+      ]
+    },
+    {
+      "id": "weekly-intake-tickets",
+      "prompt": "Run our weekly dependency review: everything Renovate merged since last week plus what's open. What tickets should we make to improve the product based on these updates?",
+      "assertions": [
+        "Covers open update PRs and updates merged since the last-intake marker",
+        "Searches workaround locations (allowlists, version caps, patches, 'until upstream' notes) for fixes the releases make removable",
+        "Asks whether a release changes what AI agents in the product load or write, or what users' projects experience",
+        "Drafts tickets with the release note quoted, the path:line where it meets the code, and observable acceptance criteria",
+        "Does not create tickets or post PR comments without the user's go unless the contract grants it"
+      ]
+    },
+    {
+      "id": "red-update-pr",
+      "prompt": "The dependabot PR bumping our Python toolchain is failing CI. Is it the upgrade, or something else?",
+      "assertions": [
+        "Compares the PR head's CI status with the trunk head's before blaming the bump",
+        "Reads the release notes for breaking changes and searches the repo for the handles they name",
+        "Runs or proposes a cheap probe (install or sync the new version against a copy of the lockfiles) and reports its command and exit code"
+      ]
+    },
+    {
+      "id": "dutch-request",
+      "prompt": "Loop de release notes van onze deps na in de openstaande update-PR's. Wat kunnen we ermee?",
+      "assertions": [
+        "Treats this as a dependency intake over the open update PRs",
+        "Classifies each note with a verdict and evidence"
+      ]
+    },
+    {
+      "id": "write-own-release-notes",
+      "prompt": "Write the release notes for our v2.3.0 release from the commits since v2.2.0.",
+      "expect_trigger": false,
+      "assertions": [
+        "Treats this as authoring the project's own changelog, not reviewing dependency updates"
+      ]
+    },
+    {
+      "id": "plain-bump",
+      "prompt": "Bump lodash to 4.17.21 in package.json.",
+      "expect_trigger": false,
+      "assertions": [
+        "Makes the edit without running an intake review"
+      ]
+    }
+  ]
+}
