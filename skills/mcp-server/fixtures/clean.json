@@ -1,0 +1,147 @@
+{
+  "tools": [
+    {
+      "name": "tickets_search",
+      "title": "Search tickets",
+      "description": "Use when you need tickets matching words or a status. Returns up to `limit` tickets with id, title, status and url, plus next_cursor. Does not return comments; use tickets_get for one ticket's full detail.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Words to match in title and body, e.g. 'login timeout'"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "closed",
+              "any"
+            ],
+            "default": "open",
+            "description": "Ticket status filter"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 20,
+            "description": "Page size"
+          },
+          "cursor": {
+            "type": "string",
+            "description": "next_cursor from the previous page"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Search tickets",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": true
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array"
+          },
+          "next_cursor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "tickets_get",
+      "title": "Get ticket",
+      "description": "Use when you have a ticket id and need its body, comments and links. Returns one ticket. To find an id from words, use tickets_search first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "string",
+            "pattern": "^T-[0-9]+$",
+            "description": "Ticket id such as T-123"
+          }
+        },
+        "required": [
+          "ticket_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Get ticket",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": true
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array"
+          },
+          "next_cursor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "tickets_create",
+      "title": "Create ticket",
+      "description": "Use when the user asks to file a new ticket. Returns the new ticket's id and url. Does not assign or label; use tickets_update afterwards.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "One-line summary"
+          },
+          "body": {
+            "type": "string",
+            "description": "Markdown description"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Create ticket",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array"
+          },
+          "next_cursor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

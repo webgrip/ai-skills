@@ -1,0 +1,77 @@
+{
+  "skill_name": "mcp-server",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load; null = output-quality only.",
+  "evals": [
+    {
+      "id": "new-server-from-api",
+      "expect_trigger": true,
+      "prompt": "We have a REST API for our support tickets with about 40 endpoints. I want our team to use it from Claude Code and claude.ai. Build an MCP server for it.",
+      "assertions": [
+        "Asks for or derives agent stories before choosing tools instead of mapping every endpoint to a tool",
+        "Recommends a remote Streamable HTTP server rather than a local stdio server, because it wraps a remote API",
+        "For a surface of about 40 operations proposes curated outcome tools plus a search or layered read/write pattern, keeping read and write tools separate",
+        "Requires explicit title, readOnlyHint, destructiveHint and openWorldHint annotations on every tool",
+        "Plans per-user OAuth with the server as a resource server and protected resource metadata, not a shared API key for claude.ai"
+      ]
+    },
+    {
+      "id": "connect-button-missing",
+      "expect_trigger": true,
+      "prompt": "I added OAuth to my MCP server. When a tool needs login I return a normal result with isError true saying 'please sign in', but claude.ai never shows a Connect button. What's wrong?",
+      "assertions": [
+        "Explains that sign-in starts only on an HTTP 401 and that a 200 response with isError shows text instead of a Connect button",
+        "Says the 401 must carry WWW-Authenticate with resource_metadata, returned in the HTTP layer before the MCP SDK handles the request",
+        "Checks that the protected resource metadata is served unauthenticated and that its resource equals the URL the user entered",
+        "Mentions that the authorization server must be reachable from Anthropic's cloud for hosted connectors"
+      ]
+    },
+    {
+      "id": "idp-without-cimd",
+      "expect_trigger": true,
+      "prompt": "Our identity provider has no dynamic client registration and no client ID metadata documents, and it ignores the resource parameter. How do I put OAuth on our internal MCP server so Claude Code, VS Code and Cursor can sign in?",
+      "assertions": [
+        "Recommends pre-registering one OAuth client per MCP client type with that client's redirect URIs",
+        "Validates the token audience against the registered client IDs because the IdP ignores RFC 8707 resource",
+        "States that the server must not pass the client's token through to upstream APIs",
+        "If an OAuth proxy is suggested, requires a per-client consent screen against the confused deputy problem"
+      ]
+    },
+    {
+      "id": "wrong-tool-choice",
+      "expect_trigger": true,
+      "prompt": "Agents using our MCP server keep calling list_records and then filtering in their head, and sometimes call update_record when they only meant to look something up. How do I fix the tool design?",
+      "assertions": [
+        "Suggests a search tool with filters and pagination instead of a list-everything tool",
+        "Rewrites descriptions to say when to use each tool, what it returns and which sibling to use instead",
+        "Sets readOnlyHint true on read tools and an explicit destructiveHint on update_record",
+        "Proposes measuring the change with selection prompts including negative cases, one change at a time"
+      ]
+    },
+    {
+      "id": "lint-tools-list",
+      "expect_trigger": true,
+      "prompt": "Here is the tools/list output of our MCP server saved as tools.json. Can you check it for problems before we submit it to the Claude connector directory?",
+      "assertions": [
+        "Runs or recommends scripts/tools_lint.py on tools.json",
+        "Checks for title and read-only or destructive annotations on every tool and names at most 64 characters",
+        "Flags descriptions that instruct the model beyond the tool and any generic tool mixing reads and writes"
+      ]
+    },
+    {
+      "id": "python-dict-bug",
+      "expect_trigger": false,
+      "prompt": "My Python function mutates a default dict argument and the values leak between calls. How do I fix it?",
+      "assertions": [
+        "Does not load the mcp-server skill"
+      ]
+    },
+    {
+      "id": "use-existing-mcp",
+      "expect_trigger": false,
+      "prompt": "Using the Vikunja tools you have, list my open tasks due this week.",
+      "assertions": [
+        "Does not load the mcp-server skill"
+      ]
+    }
+  ]
+}
