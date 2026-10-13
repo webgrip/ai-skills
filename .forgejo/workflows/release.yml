@@ -31,7 +31,7 @@ jobs:
       # Explicit token: the auto-injected Forgejo Actions token is rejected by
       # the git HTTP endpoint (401 → prompt → fail). WEBGRIP_CI_TOKEN is the
       # same known-good bot token the release job checks out with.
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           token: ${{ secrets.WEBGRIP_CI_TOKEN }}
 
@@ -90,7 +90,7 @@ jobs:
       - checks
     runs-on: docker
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0
           token: ${{ secrets.WEBGRIP_CI_TOKEN }}
