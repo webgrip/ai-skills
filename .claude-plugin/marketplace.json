@@ -78,6 +78,20 @@
       ]
     },
     {
+      "name": "dependency-intake",
+      "source": "./skills/dependency-intake",
+      "description": "Read the release notes of dependency updates against the repo's own source: what breaks, which workarounds retire, what to adopt, and which tickets follow.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "dependencies",
+        "renovate",
+        "dependabot",
+        "release-notes",
+        "upgrades"
+      ]
+    },
+    {
       "name": "devtool-social",
       "source": "./skills/devtool-social",
       "description": "Reach developers and technical buyers with social content for a founder-led developer tool: which platform does which job, Shorts cut from long audience videos, hooks, a launch order, claims that survive developer scepticism and metrics that mean something, each rule labelled by evidence.",
