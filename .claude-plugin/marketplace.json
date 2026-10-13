@@ -12,7 +12,7 @@
       "name": "webgrip",
       "source": "./",
       "description": "The whole Webgrip skills estate as one namespaced plugin — every skill loads as webgrip:<skill>, so it can sit alongside another estate's same-named skills.",
-      "version": "1.16.1",
+      "version": "1.16.2",
       "license": "MIT",
       "keywords": [
         "agent-skills",
@@ -116,7 +116,7 @@
       "name": "edge-hosting",
       "source": "./skills/edge-hosting",
       "description": "Ships static sites, Workers and private pages on Cloudflare's free edge tier with wrangler: Workers static assets over Pages, routes vs custom domains, www-to-apex redirects, DNS as code, Zero Trust Access gating with expiring per-recipient share links, previews and least-privilege CI tokens, a wrangler config linter and live-site prober, and when another host wins.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "keywords": [
         "cloudflare",
@@ -412,7 +412,7 @@
       "name": "site-performance",
       "source": "./skills/site-performance",
       "description": "Makes static sites on Cloudflare's edge fast for real users and proves it with field data: Core Web Vitals diagnosed by subpart and phase, ranked fixes, edge delivery, RUM and APM choices with EU privacy, a DIY web-vitals beacon into Workers Analytics Engine, Lighthouse CI budgets, and a build plus live scanner.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "keywords": [
         "performance",
