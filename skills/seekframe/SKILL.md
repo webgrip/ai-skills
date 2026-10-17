@@ -1,64 +1,70 @@
 ---
 name: seekframe
-description: 'Makes showreel-quality motion-graphics explainer videos from code: one script source per product, a deterministic seek(t) page rendered frame by frame in headless Chromium with motion blur, a score synthesized from the cut, per-line ElevenLabs voice-over that re-times the scenes, subtitles, posters and share copies, one cut per audience. Use when asked to make, script, storyboard, render, re-render or voice a product video, explainer, promo, showreel or motion-graphics animation; to make versions for different audiences (leadership, clients, developers, business roles, family, tongue-in-cheek); to add or swap a voice-over or generate it carefully with ElevenLabs; or when a render hangs, renders only some videos, clips, drifts out of sync or a scene overlaps. Dutch: maak een video, explainer, motion graphics, voice-over toevoegen.'
+description: 'Makes showreel-quality motion-graphics explainer videos from code with the seekframe app: a TOML project of shared claims, hooks and closes composed into one cut per audience, a deterministic seek(t) scene page rendered frame by frame in headless Chromium with motion blur, a synthesized score, per-line ElevenLabs voice-over that re-times the scenes, subtitles, posters, 16:9 and 9:16 Shorts, and a YouTube upload sheet. Use when asked to make, script, storyboard, render, re-render or voice a product video, explainer, promo, showreel or motion-graphics animation; to make versions for different audiences (leadership, clients, developers, business roles, family, tongue-in-cheek); to add or swap a voice-over or generate it carefully with ElevenLabs; to move an old videos.mjs project into the app; or when a render hangs, renders only some videos, clips, drifts out of sync or a scene overlaps. Dutch: maak een video, explainer, motion graphics, voice-over toevoegen.'
 ---
 
-# Motion videos rendered from code
+# Motion videos with the seekframe app
 
-Engine: `E=<this skill's base directory>/engine`. A **project** is a folder you own:
-`videos.mjs` (the script source), `brand.css` (colours and fonts), optional `scenes.js` (your own
-scenes), and the generated `videos/`, `out/`, `voice/`, `.work/`. Start a project by copying
-[example/](example/). Run `bash $E/setup.sh` once (Python venv with numpy and imageio-ffmpeg,
-Playwright with its headless shell, all in `~/.cache/seekframe`; override with `SEEKFRAME_RUNTIME`).
+seekframe is a Rust app: the `seekframe` command plus a studio in the browser. A **project** is a
+folder of TOML files the owner keeps: `seekframe.toml` (product, pacing, `[voice]`), `parts.toml`
+(claims with status and proof, hooks, closes), `videos/<id>.toml` (a storyboard of lines or a
+recipe), `brand.css`, optional `scenes.js`, and `fonts/` or `assets/` for what those load.
+
+## Get the binary
+
+1. `command -v seekframe` and `seekframe --version`. Use it when found.
+2. Otherwise build it from `webgrip/seekframe` (trunk `development`): `mise run setup`, then
+   `mise run build`; the binary is `target/release/seekframe`. Put it on `PATH`.
+3. Rendering needs Chromium (a Playwright headless shell in `~/.cache/ms-playwright`, `chromium`
+   on `PATH`, or `SEEKFRAME_CHROME`) and ffmpeg (`PATH` or `SEEKFRAME_FFMPEG`). `seekframe import`
+   also needs Node.js 20+. Run commands in the project or pass `-C <project>`.
 
 ## Decide first
 
 | Ask | Do |
 |---|---|
-| New video or audience | Write the script (below) and get the owner's OK on the words before rendering anything |
+| New video or audience | Facts into `parts.toml`, a recipe or storyboard per audience, then the words gate below |
+| An old project with `videos.mjs` | `seekframe import <old> <new>` ([reference.md](reference.md#move-an-old-project)) |
 | "Too fast", "unclear" | Fewer words per line, one idea per scene, a longer `gap`; never squeeze more into a scene |
-| A scene looks wrong | `render.mjs stills` at three times inside it, fix, check stills again, then render |
-| Add a voice | Per subtitle line with `eleven.py`, tiered and dry-run first ([reference.md](reference.md#voice)) |
-| Thumbnail, title, upload | The `youtube-upload-kit` skill |
-| Vertical Short | The kit renders 1920×1080 only; a 9:16 layout per scene is not built. Say so, then plan it as its own task |
+| A scene looks wrong | `seekframe stills <id> <t,...>` at three times inside it, fix, stills again |
+| Vertical Short | `format = "9:16"` on the video; one hook, one claim, the close |
+| Thumbnail, title, upload copy | `youtube.*` in the video, then `upload-sheet`; the `youtube-upload-kit` skill for the craft |
 
-## Script
+## Workflow
 
-Each video in `videos.mjs`: `{id, group, name, voice, music, bpm?, seed, product, site, kicker, hud,
-note, lines: [{vo, h, sc, g, p, planned, beats}]}`. `vo` is spoken, `h` is the on-screen headline
-(`*word*` takes the accent colour), `sc` the scene, consecutive lines with the same `g` share one
-scene, `group` is the output folder. Scenes and their parameters: [reference.md](reference.md#scenes).
-
-1. Open on what this reader fears or wants right now, then how it works, then proof, then one
-   closing line. One idea per line, 6 to 14 words; the cut follows the words at 2.45 words a second.
-2. **Truth on screen.** Set `planned: true` on lines about things not built yet (dashed frame,
-   "planned, not built yet"); comparisons keep "Illustration · not a measurement"; recorded demos say
-   they are recorded; no invented numbers. Check every claim against the product's docs.
-3. A song, ad or meme the owner names is a reference for tone and structure. Write original lines;
-   never mirror its words or its structure beat for beat.
-4. `node $E/gen.mjs <project>` writes `videos/<id>.js` and `scripts.md` (the voice script).
-
-## Render
-
-```sh
-node $E/render.mjs sheet  <project> <id> sheet.png            # one frame per line: read it first
-node $E/render.mjs stills <project> <id> out/ 4.0,12.5         # exact frames
-bash $E/make.sh  <project> <id> [subframes=8] [workers=16]     # music, frames, master, share copy, poster, SRT
-bash $E/voice.sh <project> <id> [subframes] [workers]          # after voice lines exist: <id>-voice.mp4 beside the music-only cut
-```
-
-Read the sheet for overlap, overflow, label collisions and empty frames before every full render.
-A 60 s video at 8 sub-frames on 16 workers takes several minutes; test at 2 sub-frames.
+1. **Start**: `seekframe new <dir>` (an example project), or `seekframe studio` to edit visually
+   (`127.0.0.1:7731`; never open the owner's browser unasked, give the URL).
+2. **Write** parts and videos ([reference.md](reference.md#project)). One idea per line, 6 to 14
+   words; the cut follows the words at 2.45 words a second.
+3. **Truth on screen.** Every claim has `status` and `proof`; planned work is `status = "planned"`
+   or `planned = true` (dashed frame); comparisons say "Illustration"; no invented numbers, spend
+   or results. Check claims against the product's docs. A song or meme the owner names is a
+   reference for tone, never words to mirror.
+4. **Check** `seekframe check` (errors stop you), **plan** `seekframe plan <id>` (timings).
+5. **Look**: `seekframe sheet <id>` (one frame late in every line) and read it for overlap,
+   overflow, empty frames and font fallbacks before any render.
+6. **Approve**: show the owner the exact words (`plan <id>`) and ask. Only the owner runs or
+   OKs `seekframe approve <id> --by "<name>"`; never approve on their behalf. Any change to a
+   spoken line, headline, scene or planned flag clears it.
+7. **Render**: `seekframe render <id> --draft --subframes 2` first; the full render (approved
+   words) after. Outputs land in `out/<group>/`; an earlier render moves to `older/`.
+8. **Voice** ([reference.md](reference.md#voice)): `voice plan` (free), `voice gen` as a dry run,
+   and `--go` only after the owner states OK to the credit cost you quote. Then `voice place`,
+   `render <id> --voice --draft`.
+9. **Publish**: `seekframe upload-sheet <id> --check-link`, `seekframe publish <id> --dry-run`.
+   A real upload (unlisted) only on the owner's explicit go; later `metrics` and `verdict`.
 
 ## Gotchas
 
-- **Never overwrite a rendered video.** `make.sh` and `voice.sh` refuse when the output exists; move
-  the old file into an `older/` folder, never delete it.
-- Everything that moves is a pure function of `t`: no `Date.now`, no `requestAnimationFrame` state,
-  no unseeded random. Parallel workers render different frames of the same page.
-- Fit text after `document.fonts` has loaded; text measured in the fallback font overflows later.
+- **Never overwrite or delete a rendered video.** The app moves the previous set to
+  `out/<group>/older/<timestamp>/`; never clear `older/` or rename over a render by hand.
+- Voice files cost money: copy them, never move or delete them; `voice/cache/` keeps every paid line.
+- Everything in `scenes.js` that moves is a pure function of `t`: no `Date.now`, no
+  `requestAnimationFrame` state, no unseeded random. Parallel workers render different frames.
+- Scenes take timing from `window.VIDEO.plan`; never recompute it from the words.
+- Fonts: `@font-face` in `brand.css` pointing into `fonts/` or `assets/`; other paths are not
+  staged and the sheet silently shows a fallback. Fit text after `document.fonts` has loaded.
 - Measure positions under 3D transforms with the `offsetLeft` chain, not `getBoundingClientRect`.
-- ffmpeg inside a `while read` loop eats the loop's input: always `-nostdin`.
-- Loops over musical time step by integer index; `t += step` on floats can fail to terminate.
-- Loudness is measured (EBU R128, two passes to −16 LUFS) behind a look-ahead limiter, never set by peak.
-- Stop a stuck batch by PID; `pkill -f <name>` also matches the shell running it.
+- A full render of a 60 s video at 8 sub-frames takes minutes; test with `--draft --subframes 2`.
+- Stop a stuck render by PID; `pkill -f seekframe` also kills the studio.
+- Unknown keys in any TOML file are refused: read the error, do not guess field names.

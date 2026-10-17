@@ -1,31 +1,32 @@
 # seekframe
 
-Showreel-quality motion-graphics explainer videos made from code, one cut per audience.
+Showreel-quality motion-graphics explainer videos made from code, one cut per audience, with the
+[seekframe app](https://forgejo.webgrip.dev/webgrip/seekframe).
 
-A video is a list of spoken lines in `videos.mjs`. The engine turns it into a page whose every frame
-is a pure function of time, renders that page in headless Chromium with sub-frame motion blur,
-scores music from the cut, and encodes a master, a share copy, a poster and subtitles. Voice-over
-comes from ElevenLabs one subtitle line at a time, dry-run first and capped, and re-times the scenes
-to the real voice in a separate `-voice` cut.
+The skill teaches an agent to drive the app: find or build the `seekframe` binary, keep a project
+as TOML (shared claims with status and proof, hooks, closes, one recipe or storyboard per
+audience), check and time it, read a contact sheet before rendering, wait for the owner to
+approve the words, render a draft first, generate ElevenLabs voice-over only after a dry run and
+the owner's OK on the cost, and publish unlisted after a dry run. Projects of the old script
+engine (`videos.mjs`, `parts.mjs`) move into the app with `seekframe import`.
 
 Built while making a family of audience videos for a developer tool: leadership, clients,
-developers, business roles, family and tongue-in-cheek pieces from one script source. The gotchas
-in the skill are the failures that cost real render time.
+developers, business roles, family and tongue-in-cheek pieces from one set of facts. The gotchas
+are the failures that cost real render time and voice credits.
 
 ## Try it
 
 ```sh
-E=skills/seekframe/engine
-bash $E/setup.sh
-cp -r skills/seekframe/example /tmp/acme
-node $E/gen.mjs /tmp/acme
-node $E/render.mjs sheet /tmp/acme demo-reviewers /tmp/acme/sheet.png
-bash $E/make.sh /tmp/acme demo-reviewers 2 8
+seekframe new /tmp/acme
+seekframe -C /tmp/acme check
+seekframe -C /tmp/acme plan demo-reviewers
+seekframe -C /tmp/acme sheet demo-reviewers
+seekframe -C /tmp/acme render demo-reviewers --draft --subframes 2
 ```
 
-Needs Node.js 20+, Python 3.10+ and network access for the first setup (numpy, imageio-ffmpeg,
-Playwright). `test.sh` checks the engine and the voice tool against a local mock of the ElevenLabs
-API, without a key or credits.
+Needs the `seekframe` binary (build it from the app repository with `mise run build`), Chromium
+(a Playwright headless shell) and ffmpeg; `seekframe import` also needs Node.js 20+. `test.sh`
+checks the skill's commands against the binary when one is on `PATH`, without network or credits.
 
 Pairs with `youtube-upload-kit` (thumbnails, titles, upload) and `devtool-social` (where and how
 to post).
