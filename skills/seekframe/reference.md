@@ -1,88 +1,124 @@
 # Seekframe reference
 
-Contents: [Pipeline](#pipeline) · [Scenes](#scenes) · [Brand](#brand) · [Sound](#sound) ·
-[Voice](#voice) · [Audiences](#audiences) · [Failure modes](#failure-modes)
+Contents: [Project](#project) · [Commands](#commands) · [Scenes](#scenes) · [Brand](#brand) ·
+[Sound](#sound) · [Voice](#voice) · [Publish](#publish) · [Move an old project](#move-an-old-project) ·
+[Audiences](#audiences) · [Failure modes](#failure-modes)
 
-`$E` is the skill's `engine/` folder.
+The app's own docs (`docs/` in `webgrip/seekframe`) are the source of truth; `seekframe <command>
+--help` lists every flag.
 
-## Pipeline
+## Project
 
-| Step | Command | What happens |
-|---|---|---|
-| Plan | `kit/kit.js` `planVideo` | Line length = words ÷ 2.45 + gap (0.95 s), or the spoken length from `videos/<id>.timing.js`; snapped to the beat when `bpm` is set; same-`g` lines become one scene |
-| Cue sheet | `render.mjs meta` | `window.CUES()`: duration, group, scenes, transitions, planned flags, on-screen sound events, lines |
-| Music | `music.py cues.json music.wav` (runtime venv) | Score synthesized in numpy (`audio_lib.py`): styles `drive`, `tech`, `calm` |
-| Frames | `render.mjs video` | Workers each open the page, call `seek(t)` per sub-frame and capture through CDP; ffmpeg `tmix` averages sub-frames into motion blur (half-frame shutter); FFV1 segments are concatenated |
-| Encode | `make.sh` | x264 CRF 17 master, two-pass 8 Mb/s share copy, AAC, bt709 tags, poster 2.2 s before the end, SRT from the cue sheet |
-| Voice | `voice.sh` | `vo.py prep` trims and levels each line and writes the timing → cue sheet → music → `vo.py mix` ducks the music under the voice → `-voice.mp4`, `-voice-share.mp4`, word-timed `-voice.srt` |
+| File | Holds |
+|---|---|
+| `seekframe.toml` | `name`, `product`, `site`, optional `[pacing]` (`words_per_second` 2.45, `gap` 0.95, ...) and `[voice]` |
+| `parts.toml` | `[claims.<id>]` `status` (live or planned), `proof`, `sc`, `p`, `h`, `say` per register; `[[hooks.<id>.lines]]`; `[[closes.<id>.lines]]` |
+| `videos/<id>.toml` | `group` (output folder, required), `name`, `kicker`, `hud`, `note`, `format` (`16:9` or `9:16`), `music` (`drive`, `tech`, `calm`), `bpm`, `seed`, `voice` (delivery tag), then `lines` or a `recipe` (never both), `youtube` |
+| `brand.css`, `scenes.js`, `fonts/`, `assets/` | the look; the scene page loads only these |
+| `out/<group>/` | renders, sheets, stills, upload sheets; `older/` keeps every earlier version |
+| `voice/` | line audio, `cache/`, `ledger.jsonl` |
 
-`render.mjs` uses Playwright from the runtime cache (`~/.cache/seekframe`, or `SEEKFRAME_RUNTIME`), or `PLAYWRIGHT_MJS`. When the Playwright CDN times out,
-it falls back to the newest `chromium_headless_shell-*` in `~/.cache/ms-playwright` (or `REEL_CHROME`).
+A line: `vo` (spoken), `h` (headline, `*word*` takes the accent), `sc` (scene), `g` (consecutive
+lines with the same `g` share one scene), `p` (scene parameters), `planned`, `beats`, `gap`, `min`,
+`tr` (force a transition). A recipe: `register` (`dev`, `biz`, `family`, ...), `hook`, `claims`
+in speaking order, `close`. A Short is one hook, one claim and the close; a long video a hook, two
+or three claims and the close. `seekframe claims --write` writes `claims.md`: which video uses
+which claim, so one correction fixes every video.
+
+## Commands
+
+| Step | Command |
+|---|---|
+| New project, or move an old one | `seekframe new <dir>`, `seekframe import <old> <new>` |
+| Edit visually | `seekframe studio [--no-open]` |
+| Check and time | `seekframe check`, `seekframe plan <id> [--json]` |
+| Look | `seekframe sheet <id>`, `seekframe stills <id> 2.5,10` |
+| Approve (owner) | `seekframe approve <id> --by "<name>"` |
+| Render | `seekframe render <id> [--draft] [--subframes N] [--workers N] [--voice]`, `seekframe thumbs <id>` |
+| Package | `seekframe upload-sheet <id> [--check-link]` |
+| Voice | `seekframe voice` with `status`, `models`, `voices`, `preview`, `plan`, `gen`, `place`, `import` |
+| Publish | `seekframe youtube login`, `youtube status`, `seekframe publish <id> --dry-run`, `metrics <id>`, `verdict <id>` |
+
+A render writes music, frames with sub-frame motion blur, master, share copy, poster, subtitles
+and a `.render.json` manifest; full renders add thumbnails and the upload sheet. `--draft` renders
+without approved words, names files `<id>-draft*` and marks every frame DRAFT.
 
 ## Scenes
 
-A scene is `defineScene(name, (root, p, ctx) => update(lt, info), {noTitle, ground, note, sfx})`.
-`update` receives local time `lt` and `info` (`beat`, `beats`, `dur`); `sfx(scene)` returns sound
-events `{t, k}` in local seconds. Scenes draw with CSS variables (`--ink`, `--mute`, `--acc`,
-`--line`, `--card`), so one scene works on the `dark`, `paper` and `red` grounds.
+Built in: `statement` (`items`, big type), `slam` (`words`, one per beat), `steps` (`steps`),
+`tiles` (`items: [{t, s, icon, planned}]`, `cols`, `hl`), `compare` (`lanes: [{label, speed,
+end}]`, always an illustration), `endcard` (`name`, `a`, `b`, `url`). Transitions rotate through
+wipe, rise, page, zoom and flap from `seed`; the endcard zooms; `tr` forces one.
 
-| Scene | Parameters (`p`) | Use for |
-|---|---|---|
-| `statement` | `items` (lines of big type, `*accent*`), `align: 'center'`, `dim`, `every` | The hook, the thesis, a turn |
-| `slam` | `words` (one per beat), `sub`, `size` | One punchline; red ground |
-| `steps` | `steps`, `lit` (beat per step) | How it works, in order |
-| `tiles` | `items: [{t, s, icon, planned}]`, `cols`, `hl` (indexes lit per beat) | What you get; planned items dashed |
-| `compare` | `lanes: [{label, speed, end}]`, `note` | Before and after; always labelled an illustration |
-| `endcard` | `name`, `a`, `b`, `url` | The closing line |
-
-Icons for `tiles`: `doc check person shield clock bolt eye stack chat key`. Transitions rotate
-through wipe, rise, page, zoom and flap from `seed`; set `tr` on a line to force one.
-
-A product's own scenes go in `<project>/scenes.js` and use the same helpers (`at`, `h`, `sv`, `css`,
-`E`, `P`, `lerp`, `ease`, `spring`, `scramble`, `richWords`). Copy the closest built-in scene, keep
-every coordinate derived from `lt`, and check it with `stills` at the start, middle and end.
+A product's own scenes go in `scenes.js` as `defineScene(name, (root, p, ctx) => update(lt, info),
+{noTitle, ground, note, sfx})`, with the kit's helpers (`at`, `h`, `sv`, `css`, `E`, `P`, `lerp`,
+`ease`, `spring`, `scramble`, `richWords`) and `VERTICAL`, `SAFE`, `SW` for 9:16. Copy the closest
+built-in scene, derive every coordinate from `lt`, keep text inside the Shorts safe area on 9:16,
+and check with `stills` at the start, middle and end. The full contract is
+`docs/reference/scene-page.md` in the app.
 
 ## Brand
 
-`<project>/brand.css` overrides the `:root` tokens of `kit/kit.css`: `--font-sans`, `--font-mono`,
-`--brand-dark`, `--brand-light`, `--brand-accent`, `--brand-accent-on-dark`, `--brand-mute-dark`,
-`--brand-mute-light`. Load web fonts there with `@font-face` pointing at files in the project, so
-every render uses the same glyphs. Third-party logos belong to their owners; show them only to state
-compatibility, unmodified, and credit the trademarks in the description.
+`brand.css` overrides `--font-sans`, `--font-mono`, `--brand-dark`, `--brand-light`,
+`--brand-accent`, `--brand-accent-on-dark`, `--brand-mute-dark`, `--brand-mute-light`. Web fonts
+load with `@font-face` from `fonts/` (or `assets/`), so every render uses the same glyphs.
+Third-party logos belong to their owners; show them only to state compatibility, unmodified, and
+credit the trademarks in the description.
 
 ## Sound
 
-- The score follows the cut: pads change every two bars, drums stop for planned chapters and for
-  scenes with `energy: 'drop'`, a riser lands on the `endcard`.
-- Sound events: `word slam flap blip check whoosh chime swell impact tagline drop tick click thunk
-  stamp sweep typing msg error fail`.
-- Music ducks 62 % under the voice with a 0.3 s release. The final mix is measured to −16 LUFS.
+The score is synthesized from the cut (`drive`, `tech`, `calm`): pads change every two bars,
+drums stop for planned chapters, a riser lands on the endcard. Music ducks under the voice; the
+mix is measured to -16 LUFS behind a look-ahead limiter, never set by peak.
 
 ## Voice
 
-`eleven.py` drives ElevenLabs one subtitle line at a time; run `eleven.py --help` for every command.
+Two ways: a recorded take (`seekframe voice import <id> take.wav`, free, cut into lines at the
+pauses) or ElevenLabs per line (credits).
 
-1. Render the music-only cut first; its `out/<group>/<id>.srt` is the line list.
-2. `voice/voices.json`: one voice id per output group, per-video overrides, `languages` per video
-   (default `en`), fixed voice settings (changing them changes every cache key).
-3. Tiers: 0 the shortest opening hook per voice (the first test), 1 the other hooks, 2 the closing
-   lines, 3 the rest. Let the owner listen after tier 0; voices that sounded right in a preview
-   often sound wrong on the real lines.
-4. `plan` is free. `gen` is a dry run until `--go`, refuses above `--max-credits` (default 300) and
-   above the credits left. Lines are cached, so a line is never paid twice.
-5. `place` copies complete videos to `voice/<id>-NN.mp3` with character timing; `voice.sh` renders.
-
-Model and plan facts that change the plan:
+1. `[voice]` in `seekframe.toml`: `voice`, `model` (`cheapest` picks the lowest credit multiplier
+   that speaks the language), `language`, `settings`, `seed`, with `[voice.groups.<group>]` and
+   `[voice.videos.<id>]` overrides. Settings are part of every cache key: keep them fixed.
+2. `voice voices`, `voice preview <id>` (free) to pick; `voice status` for credits.
+3. `voice plan` (free) shows tiers: 0 the shortest opening hook per voice (the first test), 1
+   other hooks, 2 closing lines, 3 the rest. Generate tier 0 and let the owner listen first;
+   voices that sound right in a preview often sound wrong on the real lines.
+4. `voice gen --tier 0` is a dry run: quote lines x characters x model multiplier as credits, and
+   wait for the owner's stated OK before `--go`. A go refuses above `--max-credits` (default 300)
+   and above the credits left; a cached line is never paid twice.
+5. `voice place` copies complete videos to `voice/<id>-NN.mp3`; `render <id> --voice --draft`
+   writes `<id>-voice.mp4` beside the music-only cut, with word-timed subtitles.
 
 | Fact | Consequence |
 |---|---|
-| Models differ in price (×0.5 or ×1 per character) and language | `--model cheapest` picks the cheapest model that speaks every selected line's language |
-| Free plans use only ElevenLabs' own voices through the API; library voices answer 402 | `gen` skips library-voice lines on a free plan and says so |
-| Free-plan audio is non-commercial and needs attribution | Each line records its plan; on a paid plan `gen` makes free lines again and keeps the old copies in `voice/lines/free-plan/` |
+| Free plans use only ElevenLabs' own voices through the API | library voices answer 402; `gen` skips them on a free plan and says so |
+| Free-plan audio is non-commercial and needs attribution | each line records its plan; on a paid plan `gen` makes free lines again and keeps the old copies |
 
-Keep the API key in a secrets manager and export it as `ELEVENLABS_API_KEY`, or cache it in the
-OS keyring under `ELEVENLABS_KEYRING`. Scope it to text to speech and reading voices, models and
-the subscription, with a credit limit.
+Keep the API key in a secrets manager or the OS keyring, never in files or chat.
+
+## Publish
+
+`seekframe youtube login --client <file>` with the owner's own Google OAuth client (once a week
+while it is in testing). `publish <id> --dry-run` shows exactly what would go up; without
+`--dry-run` it uploads unlisted with captions and thumbnail and records it in `published.toml`.
+Set `youtube.test` thresholds before the upload; `metrics` and `verdict` judge against them.
+Never run a real upload, `--public`, or `metrics` with credentials without the owner's go.
+
+## Move an old project
+
+The old script engine kept videos in `videos.mjs` and parts in `parts.mjs`. `seekframe import
+<old> <new>` evaluates them with Node.js and writes a new project; the old folder is not touched
+and the target must be new or empty.
+
+- It refuses and lists every field with no place in the app. `--extras-into-p` moves unknown line
+  keys into the line's `p` (then change `scenes.js` to read `line.p.<key>`); `--flatten` turns
+  recipe videos whose claims time single lines (`{vo, min, gap}`) into storyboards; `--only
+  a,b` leaves the rest out. A `4:5` format has no place: change or leave out those videos.
+- Voice files are copied (never moved): placed lines, takes, the ledger, and the old line cache
+  re-keyed into `voice/cache/` so nothing is paid twice; the rest stays in `voice/imported/`.
+- Renders (`out/`) stay where they are. Approvals never carry over.
+- Then `check`, `plan <id>` for every video (timings match the old planner), `sheet <id>`, and
+  ask the owner to approve the words again.
 
 ## Audiences
 
@@ -101,10 +137,10 @@ the subscription, with a credit limit.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| A batch renders only its first video | ffmpeg read the loop's stdin | `-nostdin`; feed batches from a queue file |
-| The soundtrack step never finishes | A float loop over bars never reached its end | Step by integer index |
-| Clipping above 0 dBFS | Waveshaper peaks | Look-ahead limiter before loudness normalisation |
-| An underline lands in the wrong place | Measured under a page-turn transform | `offsetLeft` chain |
-| Voice lines split in the wrong places | Cutting a whole take at its longest pauses | Per-line generation, or dynamic programming on each line's word share |
-| Thumbnail or headline text overflows | Fitted before the web font loaded | Fit after `document.fonts.load` |
-| Browser missing after an unrelated upgrade | Shared Playwright moved versions | The engine's own runtime cache, newest cached headless shell |
+| `check` says unknown scene | the scene is not in the kit or `scenes.js` | add it to `scenes.js` with `defineScene`, or use a built-in |
+| Text overflows or the font looks generic | the font is outside `fonts/`/`assets/`, or fitted before it loaded | move it, fit after `document.fonts.load` |
+| An underline lands in the wrong place | measured under a page-turn transform | `offsetLeft` chain |
+| Frames differ between workers, flicker | state outside `seek(t)` | make the scene a pure function of `t` |
+| Full render refused | words not approved, or changed since | show the owner the words; `--draft` meanwhile |
+| Voice cut drifts or lines split wrongly | a whole take cut at the wrong pauses | per-line generation, or re-record with clear pauses |
+| Chromium or ffmpeg not found | the app names every place it searched | install the Playwright headless shell or set `SEEKFRAME_CHROME`/`SEEKFRAME_FFMPEG` |
