@@ -2,7 +2,7 @@
   "name": "seekframe",
   "displayName": "Seekframe",
   "description": "Make motion-graphics explainer videos from code with the seekframe app: a TOML project of shared claims, hooks and closes composed into one cut per audience, a deterministic seek(t) scene page rendered in headless Chromium with motion blur, a synthesized score, careful per-line ElevenLabs voice-over that re-times the scenes, subtitles, 16:9 and 9:16 Shorts, and a YouTube upload sheet; plus import of old videos.mjs projects.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",
