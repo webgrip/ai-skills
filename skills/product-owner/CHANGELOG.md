@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.9.1 (2026-10-14)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** describe the single-file Vikunja server without naming its repository (616354f8)
+
+
 ## 0.9.0 (2026-10-12)
 
 ### 🚀 Features
