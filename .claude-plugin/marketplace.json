@@ -423,6 +423,22 @@
       ]
     },
     {
+      "name": "session-tldr",
+      "source": "./skills/session-tldr",
+      "description": "A TL;DR of the current agent session that the person can act on in one reply: what is done and how it was verified, what is left, what they need to know, and numbered decisions with a recommendation, with every PR, commit, ticket, file and CI run linked and checked against the live repository.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": [
+        "session",
+        "tldr",
+        "status",
+        "hand-off",
+        "decisions",
+        "unblock",
+        "summary"
+      ]
+    },
+    {
       "name": "site-performance",
       "source": "./skills/site-performance",
       "description": "Makes static sites on Cloudflare's edge fast for real users and proves it with field data: Core Web Vitals diagnosed by subpart and phase, ranked fixes, edge delivery, RUM and APM choices with EU privacy, a DIY web-vitals beacon into Workers Analytics Engine, Lighthouse CI budgets, and a build plus live scanner.",

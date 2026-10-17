@@ -1,0 +1,62 @@
+{
+  "skill_name": "session-tldr",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills",
+  "evals": [
+    {
+      "id": "tldr-after-work",
+      "prompt": "tldr of where we are? I only want to unblock you.",
+      "assertions": [
+        "Runs git status and checks the current branch and unpushed commits before writing the summary",
+        "Answers with exactly four sections in this order: Done, Still to do, What you need to know, Decisions for you",
+        "Every branch, commit or pull request it names is a markdown link built from the git remote, or it says the link could not be built",
+        "Ends with a single line giving the shortest reply that unblocks the agent"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "what-do-you-need",
+      "prompt": "I'm stepping away for an hour. What do you need me to decide before I go?",
+      "assertions": [
+        "Each decision is numbered and has two or three options, a recommendation with a one-line reason, and what the agent will do once answered",
+        "Merging, releasing, deploying or spending money that the session wants to do appears as a decision, not as work the agent will just do",
+        "States anything it could not check as unverified instead of reporting it from memory"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "nl-waar-staan-we",
+      "prompt": "Waar staan we nu met deze sessie? Wat moet ik beslissen?",
+      "assertions": [
+        "Answers in Dutch with the four sections",
+        "Lists state left behind (uncommitted files, unpushed branches, worktrees) under what the person needs to know, or says there is none"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "focus-one-pr",
+      "prompt": "tldr for PR 42 only, I'll deal with the rest later",
+      "assertions": [
+        "Keeps the four sections but reports only what concerns PR 42",
+        "Checks PR 42's current state and CI result before writing instead of restating it from earlier in the conversation",
+        "Lists merging PR 42 as a decision for the person, not as a task the agent will do"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "not-a-document-summary",
+      "prompt": "Give me a tldr of this article: https://example.com/blog/why-we-moved-to-postgres",
+      "assertions": [
+        "Summarizes the article and does not produce the session sections"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "not-a-codebase-summary",
+      "prompt": "Give me a quick summary of what this repository does and how it is structured.",
+      "assertions": [
+        "Describes the repository's purpose and layout and does not produce the Done / Still to do / Decisions sections"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}
