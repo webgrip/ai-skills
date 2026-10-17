@@ -1,5 +1,12 @@
 # product-owner
 
+## 0.9.2 (2026-10-17)
+
+### 🐛 Bug Fixes
+
+- **product-owner:** reach the Vikunja board through LiteLLM's MCP gateway (de02fe50)
+
+
 ## 0.9.1 (2026-10-14)
 
 ### 🐛 Bug Fixes
