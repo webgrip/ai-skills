@@ -34,8 +34,11 @@
     "servers": {
       "vikunja": {
         "type": "remote",
-        "url": "https://mcp-vikunja.webgrip.dev/mcp",
-        "oauth": false
+        "url": "https://litellm.webgrip.dev/mcp/",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:LITELLM_MCP_KEY}"
+        }
       }
     }
   },

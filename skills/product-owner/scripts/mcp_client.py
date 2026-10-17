@@ -15,21 +15,26 @@ Protocol notes (the parts that are easy to get wrong):
 - tools/call results arrive as text content (formatted text, not JSON — parse ids from
   `[ID: n]`; adapters/vikunja.md "Scripted access").
 - Tool names and argument casing differ per server: adapters/vikunja.md "Two servers, two surfaces".
-- Auth: both Vikunja MCP servers authenticate per request —
-  initialize and tools/list are anonymous, every tools/call needs `Authorization: Bearer`.
-  Token comes from $VIKUNJA_API_TOKEN, else read from the file named by $VIKUNJA_TOKEN_FILE.
+- Endpoint: the webgrip board is reached through LiteLLM's MCP gateway (the direct LAN route
+  was closed 2026-10-17 because it answered anonymous calls). The gateway needs
+  `Authorization: Bearer <LiteLLM virtual key with the board access group>` on every request,
+  from $LITELLM_MCP_KEY, else $VIKUNJA_API_TOKEN, else the file named by $VIKUNJA_TOKEN_FILE.
+- The gateway prefixes each tool with its server name (`vikunja-tasks_list`); `call()` adds
+  $VIKUNJA_MCP_TOOL_PREFIX (default `vikunja-`, empty for a direct server) so callers keep
+  using the bare names.
 """
 import json
 import os
 import urllib.request
 
-DEFAULT_URL = os.environ.get("VIKUNJA_MCP_URL", "https://mcp-vikunja.webgrip.dev/mcp")
+DEFAULT_URL = os.environ.get("VIKUNJA_MCP_URL", "https://litellm.webgrip.dev/mcp/")
+TOOL_PREFIX = os.environ.get("VIKUNJA_MCP_TOOL_PREFIX", "vikunja-")
 session = {"id": None, "url": DEFAULT_URL}
 _id = [0]
 
 
 def _token():
-    tok = os.environ.get("VIKUNJA_API_TOKEN", "").strip()
+    tok = (os.environ.get("LITELLM_MCP_KEY", "") or os.environ.get("VIKUNJA_API_TOKEN", "")).strip()
     if not tok:
         path = os.environ.get("VIKUNJA_TOKEN_FILE", "").strip()
         if path and os.path.exists(path):
@@ -81,8 +86,9 @@ def init(url=None):
 def call(tool, args, timeout=90):
     """Call a tool; returns its text content (raises on tool error)."""
     _id[0] += 1
+    name = tool if tool.startswith(TOOL_PREFIX) else TOOL_PREFIX + tool
     r = post({"jsonrpc": "2.0", "id": _id[0], "method": "tools/call",
-              "params": {"name": tool, "arguments": args}}, timeout)
+              "params": {"name": name, "arguments": args}}, timeout)
     if r is None:
         return None
     if "error" in r:

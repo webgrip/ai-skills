@@ -11,7 +11,7 @@ instance's ops runbook — the Board contract points there.
 | | **npm surface** | **single-file surface** |
 |---|---|---|
 | Server | upstream `@aimbitgmbh/vikunja-mcp` behind `supergateway` | a single-file Python MCP server |
-| Where | the plugin `.mcp.json` default, `mcp-vikunja.webgrip.dev` | a self-hosted HTTP deployment, or stdio on one machine |
+| Where | the plugin `.mcp.json` default: LiteLLM's MCP gateway `litellm.webgrip.dev/mcp/` (tools named `vikunja-<tool>`) | a self-hosted HTTP deployment, or stdio on one machine |
 | Tell-tale in `tools/list` | `relation_create`, `comment_create`, `tasks_list_all`, `label_add_to_task` | `task_relation_add`, `task_comment_add`, `whoami` |
 | Argument casing | camelCase: `projectId`, `taskId`, `otherTaskId`, `relationKind`, `labelId(s)` | snake_case: `project_id`, `task_id`, `other_task_id`, `relation_kind` |
 
@@ -92,11 +92,14 @@ Both surfaces:
 - A bulk label **set** replaces the task's whole label set — read its current labels
   first, merge, then set the complete list. Prefer single-label add/remove where the
   surface has them.
-- **Auth is per caller**: initialize and tools/list are anonymous, every tools/call
-  needs `Authorization: Bearer <vikunja-api-token>`. The plugin's `.mcp.json` sends
-  `Bearer ${VIKUNJA_API_TOKEN}` (export it before launching the client);
-  [mcp_client.py](../scripts/mcp_client.py) reads `$VIKUNJA_API_TOKEN`, else the file
-  named by `$VIKUNJA_TOKEN_FILE`; a stdio single-file server reads `VIKUNJA_TOKEN_FILE`.
+- **Auth is per caller, at the gateway**: every request needs `Authorization: Bearer
+  <LiteLLM virtual key with the board access group>`; an anonymous call is refused (401).
+  The plugin's `.mcp.json` sends `Bearer ${LITELLM_MCP_KEY}` (export it before launching the
+  client); [mcp_client.py](../scripts/mcp_client.py) reads `$LITELLM_MCP_KEY`, else
+  `$VIKUNJA_API_TOKEN`, else the file named by `$VIKUNJA_TOKEN_FILE`, and prefixes tool names
+  with `vikunja-`; a stdio single-file server reads `VIKUNJA_TOKEN_FILE`. The webgrip direct
+  route `mcp-vikunja.webgrip.dev` was closed on 2026-10-17 because it accepted anonymous
+  writes.
   Token minting/rotation stays with the instance (the contract's ops-runbook pointer). A
   connect timeout or a name that no longer resolves means the endpoint is unreachable
   from here (VPN/LAN?) or the service is down — also instance ops, and no reason to

@@ -30,7 +30,8 @@ every downstream.
 "enabledPlugins": { "product-owner@ai-skills": true }
 ```
 
-The bundled `.mcp.json` points at `https://mcp-vikunja.webgrip.dev/mcp` (LAN-only); a
+The bundled `.mcp.json` points at LiteLLM's MCP gateway `https://litellm.webgrip.dev/mcp/` (needs
+`LITELLM_MCP_KEY`, a key with the board access group; tools appear as `vikunja-<tool>`); a
 repo- or user-level `mcpServers` entry named `vikunja` overrides it, so give a server for
 another Vikunja instance its own name. ClickUp boards: add your own
 ClickUp MCP server to the consuming repo's `.mcp.json`. Scripts override via
