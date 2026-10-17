@@ -33,10 +33,28 @@
       "expect_trigger": true
     },
     {
+      "id": "focus-one-pr",
+      "prompt": "tldr for PR 42 only, I'll deal with the rest later",
+      "assertions": [
+        "Keeps the four sections but reports only what concerns PR 42",
+        "Checks PR 42's current state and CI result before writing instead of restating it from earlier in the conversation",
+        "Lists merging PR 42 as a decision for the person, not as a task the agent will do"
+      ],
+      "expect_trigger": true
+    },
+    {
       "id": "not-a-document-summary",
       "prompt": "Give me a tldr of this article: https://example.com/blog/why-we-moved-to-postgres",
       "assertions": [
         "Summarizes the article and does not produce the session sections"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "not-a-codebase-summary",
+      "prompt": "Give me a quick summary of what this repository does and how it is structured.",
+      "assertions": [
+        "Describes the repository's purpose and layout and does not produce the Done / Still to do / Decisions sections"
       ],
       "expect_trigger": false
     }
