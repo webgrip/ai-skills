@@ -78,10 +78,10 @@
       "id": "grid-columns-slide-on-load",
       "prompt": "When I open our orders overview the table columns kind of slide in from the left for a moment. It looks cheap. It's an AG Grid in a Vue component. What do we do about it?",
       "assertions": [
-        "Identifies the cause as a layout correction after the first render (columns drawn at a default width, then resized to fit) that the grid animates, rather than guessing at slow data loading",
-        "Proves the cause with a measurement, such as sampling the header cells' position and width per animation frame after load, or says that this measurement is still needed",
-        "Recommends sizing the columns before the first paint (flex with a minimum width) as the fix, and treats only switching off the animation as a fallback that leaves a one-frame jump",
-        "Keeps motion for user-caused changes only and does not propose a nicer entrance animation for the table"
+        "Identifies the cause as the screen correcting its own first layout, with that correction animated, rather than guessing at slow data loading",
+        "Confirms the cause by watching or recording the load, or says that this observation is still needed",
+        "Recommends making the layout right from the start, and treats only switching off the animation as a fallback that still shows a jump",
+        "Keeps motion for changes the user caused and does not propose a nicer entrance animation for the table"
       ],
       "expect_trigger": true
     }
