@@ -91,6 +91,7 @@ The number of top-level items is decided by tasks, not by a memory-span rule; se
 | --- | --- | --- |
 | Right-align numbers, `tabular-nums`, units in the header, consistent decimals | [C] | Long-standing convention ([Few](https://www.perceptualedge.com/articles/Whitepapers/Communicating_Numbers.pdf)); no controlled study |
 | First column is a human-readable identifier; sticky header (and key column) beyond the viewport | [C] | [NN/g data tables](https://www.nngroup.com/articles/data-tables/) |
+| Columns fill the width through flex with a minimum width, not a fit-to-width call after render; fixed widths only for columns whose content has a known size (dates, status, actions) | [C] | AG Grid applies its load-time fit once after the first render, from a 200 px default, and recommends flex "for smoother results" ([column sizing](https://www.ag-grid.com/javascript-data-grid/column-sizing/)) |
 | Sort: `<button>` in `<th>`, `aria-sort`, direction in icon + text, state in the URL | [S] | [APG sortable table](https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/) |
 | Row detail by task: inline edit (one value), side panel (keeps list context), modal (focused edit), expandable row (secondary detail) | [C] | NN/g data tables |
 | Bulk: row checkboxes, "select all on page", then an explicit "Select all 1,240 matching"; persistent count and action bar; destructive bulk confirms with the count | [C] | Design-system convention |

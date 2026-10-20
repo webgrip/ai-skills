@@ -85,6 +85,7 @@ Pick dimensions from the subject; combine where failures are likely.
 - **Preferences:** light, dark, reduced motion, `forced-colors: active`, touch without hover, no script where the stack is server-rendered.
 - **Build:** production build, console errors, axe per page, the repository's own gates.
 - **Performance:** INP on the top tasks' interactions, CLS after load and after interaction, with tool version and throttling recorded.
+- **Settle:** load each screen with no input and record the position and size of its key elements every animation frame for about 1.5 s (Playwright `page.addInitScript` with `requestAnimationFrame`). Anything that moves after the first paint is a finding, with the frame log as proof.
 
 ## Findings that hold up
 
