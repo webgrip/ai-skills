@@ -1,5 +1,12 @@
 # product-ux
 
+## 0.2.2 (2026-10-24)
+
+### 🐛 Bug Fixes
+
+- **product-ux:** cut taglines and restating helper text, and fix the layout a caption was explaining (8d6bb0fb)
+
+
 ## 0.2.1 (2026-10-20)
 
 ### 🐛 Bug Fixes
