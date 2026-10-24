@@ -2,7 +2,7 @@
 
 Most product-UI copy is labels, buttons, errors, empty states and confirmations. Write them as part of the design, not after it, and with real strings, because copy length changes the layout.
 
-Contents: plain language · names and labels · buttons and the verb chain · errors · empty states and confirmations · voice and tone · casing and characters · checks
+Contents: plain language · names and labels · cutting copy · buttons and the verb chain · errors · empty states and confirmations · voice and tone · casing and characters · checks
 
 ## Plain language
 
@@ -16,6 +16,15 @@ Contents: plain language · names and labels · buttons and the verb chain · er
 - **One term per concept, everywhere.** If the product says "workspace" on one screen and "organisation" on the next, people assume they are different things. Keep a glossary; load `domain-language` for a project vocabulary. [C]
 - **Labels say what to enter** ("Email address"), hints say why or in what format, placeholders never carry either. [S]
 - **Headings describe the area or what can be done in it**, so the page reads as an outline from headings alone. [E] ([NN/g layer-cake scanning](https://www.nngroup.com/articles/layer-cake-pattern-scanning/))
+
+## Cutting copy
+
+Every tagline, subtitle, helper line and secondary label competes with the content for attention. Cut them first, then check whether the screen still makes sense. If it doesn't, the layout is the problem: fix the grouping, order, headings or choice of control, not the caption. [C]
+
+- **Cut:** taglines and slogans inside the product, subtitles that repeat their heading ("Settings" over "Manage your settings"), hints that restate their label ("Name" over "Enter your name"), and secondary labels that echo a value already on screen. [C]
+- **A caption that explains how to read the screen is a layout bug.** "Fields on the right apply to all projects" means the shared fields need their own group and heading. "Click a row to see details" means the rows need to look clickable. [C]
+- **Keep what the layout can't say:** format rules and constraints before they are broken ([WCAG 3.3.2](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html) requires instructions where input needs them), the consequence of an irreversible action, errors and units. Show a hint only when most people need it ([GOV.UK](https://design-system.service.gov.uk/components/text-input/)). [S]
+- **Test by deletion.** Remove every secondary line, render the screen and do the main task. Restore only the lines whose absence caused a wrong guess, and try a layout fix for each one first. [C]
 
 ## Buttons and the verb chain
 
@@ -63,4 +72,4 @@ Keep one voice and adjust the tone to the reader's state of mind: clear beats en
 
 ## Checks
 
-Grep the UI strings (the i18n files are ideal) for: Submit, OK, Click here, Invalid, Oops, "Please", "Something went wrong", raw codes, internal names, `(s)` plurals, Title Case mixed with sentence case, and several words for one concept. Check that every error string has a recovery path and every empty state has a next action. `scripts/ui_scan.py` flags the most common of these.
+Grep the UI strings (the i18n files are ideal) for: subtitles that repeat their heading, hints that repeat their label, Submit, OK, Click here, Invalid, Oops, "Please", "Something went wrong", raw codes, internal names, `(s)` plurals, Title Case mixed with sentence case, and several words for one concept. Check that every error string has a recovery path and every empty state has a next action. `scripts/ui_scan.py` flags the most common of these.

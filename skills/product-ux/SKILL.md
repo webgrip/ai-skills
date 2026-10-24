@@ -65,6 +65,7 @@ Folklore is never cited as evidence: Miller's 7 ± 2 as a menu limit, Hick as "f
 
 - **Familiar beats novel in tools.** Distinctiveness belongs on entry points and marketing pages, not on controls used daily. If the save button looks different in two places, one is wrong.
 - **Four defaults generated UIs get wrong:** placeholder labels, a disabled submit button, toasts for important outcomes, and "Are you sure?" where undo belongs.
+- **Helper text usually patches a layout.** Cut taglines, subtitles that repeat their heading and hints that repeat their label; if the screen then stops making sense, fix the layout instead of restoring the line. Keep format rules, consequences and errors. → [content.md](content.md#cutting-copy)
 - **Confirmations and approval prompts habituate.** Attention drops after the second exposure, and Claude Code users approve 93 % of permission prompts. Reserve them for the irreversible and make them specific.
 - **The AI critic is one fallible evaluator**: about a third of real problems found, roughly 0.6 precision, worse across iterations and inside feedback loops. Use a fresh context, a rubric, grounding and independent passes, and never ask the same reviewer "is it fixed now?".
 - **Synthetic users are not evidence.** Use simulated walkthroughs to find candidate problems, never to report preferences, success rates or quotes.

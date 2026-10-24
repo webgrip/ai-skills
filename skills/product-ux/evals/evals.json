@@ -84,6 +84,17 @@
         "Keeps motion for changes the user caused and does not propose a nicer entrance animation for the table"
       ],
       "expect_trigger": true
+    },
+    {
+      "id": "settings-page-copy-heavy",
+      "prompt": "Our project settings page feels cluttered. Every section has a heading plus a grey subtitle, every field has a helper line under it, and there's a tagline at the top saying 'Configure your project your way'. Some helper lines explain that the fields on the right apply to all projects. Clean it up.",
+      "assertions": [
+        "Removes the tagline, subtitles that repeat their heading and helper lines that restate their field label",
+        "Treats the 'fields on the right apply to all projects' line as a layout problem and regroups those fields under their own heading instead of rewording the line",
+        "Keeps hints that state a format rule or constraint, and does not move any of them into placeholders",
+        "Checks the result by rendering the page or says that this check is still needed"
+      ],
+      "expect_trigger": true
     }
   ]
 }
