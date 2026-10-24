@@ -1,0 +1,21 @@
+{
+  "name": "security-review-triage",
+  "displayName": "Security Review Triage",
+  "description": "Defensive security review and triage: decide whether a finding or CVE is real and affects you, size its blast radius, map it to advisories, disclose privately, and prove a fix works both ways.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "security",
+    "vulnerability",
+    "triage",
+    "cve",
+    "blast-radius",
+    "disclosure",
+    "kubernetes",
+    "code-review"
+  ]
+}
