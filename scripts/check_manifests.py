@@ -76,7 +76,10 @@ for pdir in plugin_dirs:
     if not (pdir / "SKILL.md").exists():
         err(f"{name}: no SKILL.md at the skill/plugin root")
 
-# Bundle hook coverage. A skill's hooks/hooks.json resolves ${CLAUDE_PLUGIN_ROOT}
+# Bundle hook coverage. The bundle declares its hooks inline in the root
+# .claude-plugin/plugin.json, not in a root hooks/ folder: APM treats a root
+# hooks/ folder as the repository's own hooks and wires them into
+# .claude/settings.json. A skill's hooks/hooks.json resolves ${CLAUDE_PLUGIN_ROOT}
 # to the skill dir — correct for its own plugin, wrong under the bundle, where
 # that root is the repo. So the bundle must re-declare every skill hook with a
 # skills/<name>/ prefix, or installing the bundle ships the hooks silently dead.
@@ -99,15 +102,14 @@ def hook_commands(hooks_json: Path) -> list:
     ]
 
 
-bundle_hooks = ROOT / "hooks" / "hooks.json"
-bundle_cmds = set(hook_commands(bundle_hooks)) if bundle_hooks.exists() else set()
+bundle_cmds = set(hook_commands(ROOT / ".claude-plugin" / "plugin.json"))
 for skill_hooks in sorted(ROOT.glob("skills/*/hooks/hooks.json")):
     sname = skill_hooks.parent.parent.name
     for cmd in hook_commands(skill_hooks):
         expected = cmd.replace(CMD_ROOT, f"{CMD_ROOT}skills/{sname}/", 1)
         if expected not in bundle_cmds:
             err(
-                f"hooks/hooks.json: missing the {sname} hook — the bundle plugin "
+                f".claude-plugin/plugin.json: missing the {sname} hook — the bundle plugin "
                 f"must re-declare it rooted at the repo: {expected}"
             )
 

@@ -81,10 +81,12 @@ competing to trigger — you get `webgrip:adr-writer` next to the other's
 skills across estates encode *different org policy*.
 
 The bundle wires the estate's hooks too — the `guard-secrets` PreToolUse block
-and the `skill-usage` PostToolUse logger, re-declared in the root
-[hooks/hooks.json](hooks/hooks.json) rooted at the repo instead of the skill
+and the `skill-usage` PostToolUse logger, re-declared under `hooks` in the root
+[.claude-plugin/plugin.json](.claude-plugin/plugin.json) rooted at the repo instead of the skill
 dir (a skill's own `hooks.json` resolves `${CLAUDE_PLUGIN_ROOT}` to that skill's
-directory, which is wrong under the bundle). `check_manifests.py` fails if a
+directory, which is wrong under the bundle). They are inline rather than in a root `hooks/` folder because APM
+would wire a root `hooks/` folder into this repository's own `.claude/settings.json`.
+`check_manifests.py` fails if a
 skill grows a hook the bundle doesn't mirror, so the bundle can't ship an
 enforcement hook silently dead.
 
