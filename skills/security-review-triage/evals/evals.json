@@ -1,0 +1,63 @@
+{
+  "skill_name": "security-review-triage",
+  "_format": "skill-creator eval format — see https://agentskills.io/skill-creation/evaluating-skills. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = should-NOT-fire probe; null = output-quality-only case the trigger probe skips.",
+  "evals": [
+    {
+      "id": "is-this-real-config-finding",
+      "prompt": "An agent says the Kata extension on our Talos nodes forwards all io.katacontainers annotations to the runtime and that this matches a critical Kata advisory. Is this actually real and are we affected?",
+      "assertions": [
+        "Restates the claim as actor, capability, trigger, root cause and impact before judging it",
+        "Separates what was inspected in the config from what is inferred from the advisory text, and labels each",
+        "Checks the preconditions against the deployment (who can create pods with that runtime) instead of accepting the advisory's severity",
+        "Gives a verdict of confirmed, not actionable or needs review, and a needs-review verdict names the smallest fact that would change it",
+        "Contains no exploit payload or step-by-step attack"
+      ]
+    },
+    {
+      "id": "blast-radius",
+      "prompt": "What is the blast radius of this issue? Who could actually trigger it and what does it reach?",
+      "assertions": [
+        "Fills the blast-radius fields: entry point, position needed, privileges and preconditions, asset reached, what limits it, what it does not give, who is exposed",
+        "Lists explicit non-capabilities so severity does not inflate",
+        "Names the existing controls that limit it (RBAC, admission policy, network policy, sandbox)"
+      ]
+    },
+    {
+      "id": "private-disclosure",
+      "prompt": "I found a security problem in an open-source project's default config. How and where do I report it without making it public?",
+      "assertions": [
+        "Checks the project's SECURITY.md first and names the forge's private vulnerability report as the usual channel",
+        "Warns against describing the flaw in issues, chat, PR titles, branch names or commits before publication",
+        "Drafts the report with summary, details, impact, affected versions, workaround and a severity marked as a proposal",
+        "States plainly in the draft whether anything was exploited or tested"
+      ]
+    },
+    {
+      "id": "verify-policy",
+      "prompt": "I added a Kyverno policy to block those annotations. Did it actually work?",
+      "assertions": [
+        "Tests at least one case that must be blocked and one legitimate case that must be allowed",
+        "Proves it against the live cluster (server-side dry run or policy report), not only by reading the committed file",
+        "Treats a timeout or setup failure as inconclusive, never as a pass",
+        "Names the signal that would catch a regression"
+      ]
+    },
+    {
+      "id": "infra-review",
+      "prompt": "Review this Helm values file and GitHub Actions workflow for security problems before I merge.",
+      "assertions": [
+        "Rates findings by exposure times blast radius rather than by pattern alone",
+        "Checks the CI trigger, permissions and untrusted-code combination and action pinning by SHA",
+        "Lists what a file review cannot see (live drift, effective RBAC, runtime) instead of declaring the change clean"
+      ]
+    },
+    {
+      "id": "should-not-fire-general-question",
+      "prompt": "What does the HTTP Strict-Transport-Security header do?",
+      "expect_trigger": false,
+      "assertions": [
+        "Answers the factual question directly without running a triage or review procedure"
+      ]
+    }
+  ]
+}
