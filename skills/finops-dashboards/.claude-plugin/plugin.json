@@ -1,0 +1,29 @@
+{
+  "name": "finops-dashboards",
+  "displayName": "FinOps Dashboards",
+  "description": "Designs, reviews and builds cost and FinOps dashboards: billing rules reproduced in code (Hetzner hourly-capped, OpenCost allocation and idle, LiteLLM spend, electricity, SaaS, VAT), one cost basis per panel, an answer-first layout with delta, forecast and budget, unit cost and showback, budget and anomaly alerts, Grafana specifics, a 24-rule dashboard linter and a forecast script.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "finops",
+    "cost",
+    "dashboard",
+    "grafana",
+    "budget",
+    "forecast",
+    "showback",
+    "chargeback",
+    "unit-economics",
+    "opencost",
+    "hetzner",
+    "focus",
+    "anomaly-detection",
+    "linter"
+  ],
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/finops-dashboards",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills"
+}

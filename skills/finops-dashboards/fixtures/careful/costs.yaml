@@ -1,0 +1,458 @@
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: careful-costs
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  folderRef: finops
+  json: |-
+    {
+      "uid": "careful-costs",
+      "title": "Cloud costs",
+      "schemaVersion": 41,
+      "timezone": "utc",
+      "time": {
+        "from": "now/M",
+        "to": "now"
+      },
+      "templating": {
+        "list": [
+          {
+            "name": "team",
+            "type": "query",
+            "datasource": {
+              "type": "prometheus",
+              "uid": "victoriametrics"
+            },
+            "query": "label_values(cost_month_to_date_eur, team)"
+          }
+        ]
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "Month to date",
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 4
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum(cost_month_to_date_eur)",
+              "instant": true
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "graphMode": "area",
+            "colorMode": "value",
+            "textMode": "value",
+            "showPercentChange": true,
+            "percentChangeColorMode": "inverted"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "currencyEUR",
+              "decimals": 2,
+              "noValue": "no data"
+            },
+            "overrides": []
+          },
+          "description": "Net EUR, billed cost, calendar month in UTC; the delta compares with the same day last month."
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Projected end of month",
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 8
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum(cost_projected_month_eur)",
+              "instant": true
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "graphMode": "none",
+            "colorMode": "value",
+            "textMode": "value"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "currencyEUR",
+              "decimals": 2,
+              "color": {
+                "mode": "thresholds"
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 400
+                  },
+                  {
+                    "color": "red",
+                    "value": 500
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "description": "Each resource's started hours to the 1st, capped at its monthly price. Budget 500."
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Cost per CI build",
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 12
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum(cost_month_to_date_eur{role=\"ci\"}) / sum(ci_builds_month_to_date)",
+              "instant": true
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "graphMode": "area",
+            "colorMode": "value",
+            "textMode": "value"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "currencyEUR",
+              "decimals": 4
+            },
+            "overrides": []
+          },
+          "description": "CI runner spend divided by builds this month."
+        },
+        {
+          "id": 4,
+          "type": "timeseries",
+          "title": "Daily spend by team",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 32
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum by (team) (increase(cost_eur_total{team=~\"$team\"}[1d]))",
+              "legendFormat": "{{team}}",
+              "interval": "1d"
+            }
+          ],
+          "options": {},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "currencyEUR",
+              "decimals": 2
+            },
+            "overrides": []
+          },
+          "description": "Net EUR per day per team label; unlabelled spend shows as team none."
+        },
+        {
+          "id": 5,
+          "type": "table",
+          "title": "Top movers this month",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 40
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "topk(10, sum by (team) (cost_month_to_date_eur) - sum by (team) (cost_month_to_date_eur offset 30d))",
+              "format": "table",
+              "instant": true
+            },
+            {
+              "refId": "B",
+              "expr": "sum by (team) (cost_month_to_date_eur)",
+              "format": "table",
+              "instant": true
+            },
+            {
+              "refId": "C",
+              "expr": "sum by (team) (cost_month_to_date_eur) / scalar(sum(cost_month_to_date_eur))",
+              "format": "table",
+              "instant": true
+            }
+          ],
+          "options": {
+            "sortBy": [
+              {
+                "displayName": "Change EUR",
+                "desc": true
+              }
+            ]
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "filterable": true
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "include",
+                    "names": [
+                      "Change EUR",
+                      "Month to date EUR"
+                    ]
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "currencyEUR"
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 2
+                  },
+                  {
+                    "id": "custom.footer.reducers",
+                    "value": [
+                      "sum"
+                    ]
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Share"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "percentunit"
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {}
+            },
+            {
+              "id": "organize",
+              "options": {
+                "renameByName": {
+                  "Value #A": "Change EUR",
+                  "Value #B": "Month to date EUR",
+                  "Value #C": "Share"
+                }
+              }
+            }
+          ],
+          "description": "Change against the same day last month, net EUR."
+        },
+        {
+          "id": 6,
+          "type": "stat",
+          "title": "Node capacity cost per month",
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 24
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum(max by (node, resource) (kube_node_status_allocatable{job=\"kube-state-metrics\",resource=\"cpu\"})) * 0.031611 * 730",
+              "instant": true
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "graphMode": "none",
+            "colorMode": "value",
+            "textMode": "value"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "currencyEUR",
+              "decimals": 2,
+              "color": {
+                "mode": "thresholds"
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue",
+                    "value": null
+                  },
+                  {
+                    "color": "orange",
+                    "value": 200
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "description": "Allocatable cores from kube-state-metrics only, priced per core-hour."
+        },
+        {
+          "id": 7,
+          "type": "stat",
+          "title": "Cost exporter",
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 28
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "victoriametrics"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "min(cost_refresh_success)",
+              "instant": true
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "graphMode": "none",
+            "colorMode": "value",
+            "textMode": "value"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "none",
+              "color": {
+                "mode": "thresholds"
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "orange",
+                    "value": null
+                  },
+                  {
+                    "color": "blue",
+                    "value": 1
+                  }
+                ]
+              },
+              "mappings": [
+                {
+                  "type": "value",
+                  "options": {
+                    "0": {
+                      "text": "Stale"
+                    },
+                    "1": {
+                      "text": "OK"
+                    }
+                  }
+                }
+              ]
+            },
+            "overrides": []
+          },
+          "description": "1 = the last refresh succeeded."
+        }
+      ]
+    }

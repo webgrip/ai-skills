@@ -1,0 +1,113 @@
+{
+  "skill_name": "finops-dashboards",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false marks a should-not-trigger probe.",
+  "evals": [
+    {
+      "id": "hetzner-budget-dashboard",
+      "prompt": "Build a Grafana dashboard for what our Hetzner Cloud project costs. Budget is 50 euro a month. Hetzner doesn't seem to have a billing API, we run VictoriaMetrics and grafana-operator.",
+      "assertions": [
+        "Computes cost from the inventory and the pricing endpoint using Hetzner's rule (every started hour at the hourly price, capped at the monthly price per resource per month) rather than inventing a billing API",
+        "Separates month to date, projected end of month and full-month run-rate instead of one undifferentiated forecast",
+        "Puts the 50 euro budget on the projected figure as thresholds or a comparison, and proposes a forecast-over-budget alert",
+        "Uses a currency unit with 2 decimals for totals, states net figures (no VAT, reverse charge) and sets the dashboard timezone to the billing timezone",
+        "Names the known gaps (resources deleted earlier in the month, traffic) and suggests reconciling against an invoice"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "review-cost-dashboard",
+      "prompt": "Can you review kubernetes/apps/observability/grafana/app/dashboards/exec-finops.yaml before I show it to finance next week?",
+      "assertions": [
+        "Runs or proposes running the dashboard linter on the file and reports findings with panel and line",
+        "Checks that each money panel states its basis (net or gross, billed or amortized, period)",
+        "Checks headline figures for a comparison (delta, budget or forecast)",
+        "Separates what a file read can establish from what needs a query against the datasource or a reconciliation with an invoice"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "doubled-kubernetes-cost",
+      "prompt": "Our cluster cost panel says the nodes have 72 allocatable cores but we only have 36. sum(kube_node_status_allocatable{resource=\"cpu\"}). What's going on?",
+      "assertions": [
+        "Identifies that two exporters (kube-state-metrics and OpenCost) can publish the same metric name and that the sum counts both",
+        "Proposes checking count by (job) and fixing with a job matcher, a max by deduplication, or disabling OpenCost's re-export",
+        "Suggests checking other panels that sum the same metrics"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "llm-spend-anomaly",
+      "prompt": "We route all our model calls through LiteLLM. I want an alert when spend per API key suddenly jumps, without getting paged for a 2 cent blip.",
+      "assertions": [
+        "Uses LiteLLM spend data (spend logs, daily spend tables or its Prometheus spend metric) per key",
+        "Defines the anomaly against a baseline (median and MAD, same weekday or similar) rather than a fixed absolute number alone",
+        "Requires both a relative and an absolute threshold so small amounts do not alert",
+        "Routes the alert to an owner and includes the top contributing key or model in the message"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "dutch-prognose",
+      "prompt": "Ons kostendashboard zegt dat de Hetzner-rekening deze maand op 39 euro uitkomt, maar vorige maand was het 33. Klopt die prognose wel? Hij rekent maand-tot-nu gedeeld door het deel van de maand dat voorbij is.",
+      "assertions": [
+        "Explains that a linear run-rate overshoots hourly billing that is capped per resource per month",
+        "Proposes projecting per resource with the cap (inventory projection) instead",
+        "Answers in Dutch"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "cost-per-tenant",
+      "prompt": "We host customers in their own namespaces. I want a showback view: what each customer costs us per month and per active user, from OpenCost.",
+      "assertions": [
+        "Allocates by an ownership label and shows unallocated or idle cost as its own named row",
+        "Decides explicitly whether idle and shared cost is shared across tenants or shown separately",
+        "Computes unit cost with numerator and denominator over the same window and shows the volume beside it",
+        "Uses a table for the per-tenant comparison rather than a pie chart"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "electricity-panel",
+      "prompt": "Add a panel to our homelab dashboard that shows what the cluster costs in electricity per month. We have node power metrics in watts.",
+      "assertions": [
+        "Converts average watts to kWh over the period (watts times hours divided by 1000) rather than summing samples",
+        "Makes the price per kWh a variable or constant instead of a hard-coded literal, and states the assumed price",
+        "Labels modelled power as an estimate if power is not measured at the wall"
+      ],
+      "expect_trigger": true
+    },
+    {
+      "id": "latency-dashboard",
+      "prompt": "Build a Grafana dashboard for the checkout service: p99 latency, error rate and requests per second.",
+      "assertions": [
+        "Builds a service health dashboard without cost, budget or forecast panels"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "kpi-workshop",
+      "prompt": "Help our platform team pick five KPIs for next quarter and run a short workshop to agree on them.",
+      "assertions": [
+        "Treats this as KPI selection and facilitation, not as building a cost dashboard"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "invoice-rounding-bug",
+      "prompt": "Fix the rounding bug in our invoice PDF generator: line totals are off by one cent from the grand total.",
+      "assertions": [
+        "Fixes the rounding in the generator code without proposing dashboards, forecasts or alerts"
+      ],
+      "expect_trigger": false
+    },
+    {
+      "id": "dutch-chart-colours",
+      "prompt": "Maak de kleuren in deze matplotlib-grafiek consistent met onze huisstijl, en zorg dat het ook in dark mode werkt.",
+      "assertions": [
+        "Works on chart colours and theming without cost or budget content"
+      ],
+      "expect_trigger": false
+    }
+  ]
+}

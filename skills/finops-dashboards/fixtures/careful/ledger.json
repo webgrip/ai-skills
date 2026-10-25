@@ -1,0 +1,117 @@
+{
+  "dashboard": {
+    "uid": "careful-ledger",
+    "title": "LLM spend ledger",
+    "schemaVersion": 41,
+    "timezone": "utc",
+    "time": {
+      "from": "now/M",
+      "to": "now"
+    },
+    "templating": {
+      "list": []
+    },
+    "panels": [
+      {
+        "id": 1,
+        "type": "stat",
+        "title": "LLM spend this month vs budget",
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 4
+        },
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "litellm-db"
+        },
+        "targets": [
+          {
+            "refId": "A",
+            "datasource": {
+              "type": "grafana-postgresql-datasource",
+              "uid": "litellm-db"
+            },
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT sum(spend) AS spend_usd FROM \"LiteLLM_DailyUserSpend\" WHERE date >= to_char(date_trunc('month', now()), 'YYYY-MM-DD')"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "graphMode": "area",
+          "colorMode": "value",
+          "textMode": "value"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "decimals": 2,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                },
+                {
+                  "color": "orange",
+                  "value": 80
+                },
+                {
+                  "color": "red",
+                  "value": 100
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "description": "Sum of LiteLLM daily spend since the 1st (UTC), provider list price in USD, net. Budget 100."
+      },
+      {
+        "id": 2,
+        "type": "barchart",
+        "title": "Spend per key this month",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "litellm-db"
+        },
+        "targets": [
+          {
+            "refId": "A",
+            "datasource": {
+              "type": "grafana-postgresql-datasource",
+              "uid": "litellm-db"
+            },
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT api_key AS key, sum(spend) AS spend_usd FROM \"LiteLLM_DailyUserSpend\" WHERE date >= to_char(date_trunc('month', now()), 'YYYY-MM-DD') GROUP BY 1 ORDER BY 2 DESC LIMIT 10"
+          }
+        ],
+        "options": {},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "decimals": 2
+          },
+          "overrides": []
+        },
+        "description": "Top ten keys by spend this month, USD list price."
+      }
+    ]
+  }
+}
