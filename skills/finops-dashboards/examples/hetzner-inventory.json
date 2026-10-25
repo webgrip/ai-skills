@@ -1,0 +1,68 @@
+[
+  {
+    "name": "control-plane-1",
+    "hourly": 0.0088,
+    "monthly_cap": 5.49,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "control-plane-2",
+    "hourly": 0.0088,
+    "monthly_cap": 5.49,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "control-plane-3",
+    "hourly": 0.0088,
+    "monthly_cap": 5.49,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "worker-1",
+    "hourly": 0.0136,
+    "monthly_cap": 8.49,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "headscale",
+    "hourly": 0.0088,
+    "monthly_cap": 5.49,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "ipv4-0",
+    "hourly": 0.0008,
+    "monthly_cap": 0.5,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "ipv4-1",
+    "hourly": 0.0008,
+    "monthly_cap": 0.5,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "ipv4-2",
+    "hourly": 0.0008,
+    "monthly_cap": 0.5,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "ipv4-3",
+    "hourly": 0.0008,
+    "monthly_cap": 0.5,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "ipv4-4",
+    "hourly": 0.0008,
+    "monthly_cap": 0.5,
+    "created": "2026-09-01T00:00:00Z"
+  },
+  {
+    "name": "talos-snapshot",
+    "hourly": 8.401739726027399e-06,
+    "monthly_cap": 0.0061332700000000006,
+    "created": "2026-09-01T00:00:00Z"
+  }
+]
