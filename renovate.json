@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>webgrip/renovate-config:profile-library#v1.15.0"
+    "local>webgrip/renovate-config:profile-library#v1.15.1"
   ]
 }
