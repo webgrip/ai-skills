@@ -2,7 +2,6 @@
   "name": "session-tldr",
   "displayName": "Session TL;DR",
   "description": "A TL;DR of the current agent session that the person can act on in one reply: what is done and how it was verified, what is left, what they need to know, and numbered decisions with a recommendation, with every PR, commit, ticket, file and CI run linked and checked against the live repository.",
-  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

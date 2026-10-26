@@ -2,7 +2,6 @@
   "name": "kpi-groomer",
   "displayName": "Kpi Groomer",
   "description": "Define, groom and facilitate KPI sets for teams and organizations.",
-  "version": "0.3.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

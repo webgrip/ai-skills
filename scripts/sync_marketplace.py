@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
-ENTRY_FIELDS = ("description", "version", "license", "keywords")
+ENTRY_FIELDS = ("description", "license", "keywords")
 
 
 def entry_from(pj_path: Path, source: str) -> dict:

@@ -2,7 +2,6 @@
   "name": "search-visibility",
   "displayName": "Search Visibility",
   "description": "Gets static sites on Cloudflare's edge found in Google and Bing and cited by ChatGPT, Claude, Perplexity and AI Overviews: crawler access and Cloudflare AI bot settings, one canonical URL per page, page signals, answer-first content, an evidence-graded verdict on GEO and llms.txt, and a build plus live-site scanner.",
-  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

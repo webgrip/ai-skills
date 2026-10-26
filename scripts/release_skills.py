@@ -3,8 +3,7 @@
 
 Each skill is its own independent release train:
   - its own tag         `<skill>-v<MAJOR.MINOR.PATCH>`
-  - its own changelog   `skills/<skill>/CHANGELOG.md`
-  - its own version     `skills/<skill>/.claude-plugin/plugin.json` (+ marketplace mirror)
+  - its own notes       the Forgejo release of that tag
   - its own artifact     the `<skill>.skill` zip, published to the generic
                          package registry at that skill's version
 bumped ONLY by conventional commits that touch `skills/<skill>/` since that
@@ -12,15 +11,20 @@ skill's last tag. There is no repo-wide release tag — a change to one skill
 releases that skill and nothing else.
 
     python3 scripts/release_skills.py plan     # print what would release; no writes, no side effects
-    python3 scripts/release_skills.py apply     # write versions + changelogs + marketplace, commit, tag;
-                                                 # push + Forgejo release + package publish when CI env present
+    python3 scripts/release_skills.py apply     # tag HEAD; push the tags + Forgejo release + package
+                                                 # publish when CI env present
     python3 scripts/release_skills.py plan --all   # ... and patch-release every skill, changed or not
                                                    # (in CI: `[release-all]` in the HEAD commit message)
 
 Bump: breaking (`!`/BREAKING CHANGE) → major, `feat` → minor, else releasing
 (`fix`/`perf`/`refactor`/`revert`) → patch. A skill with no releasing commit
 since its last tag is skipped; a skill with no tag yet gets an initial
-`<skill>-v<current plugin.json version>` baseline.
+`<skill>-v0.1.0`.
+
+Nothing is committed: the version exists only in the tag, and no plugin.json
+carries one, so Claude Code installs track the commit on main. The release run
+pushes tags and never a branch, which is what lets main refuse every direct
+push.
 
 Idempotent by *reading before writing*: each skill is based off its own last
 tag; `chore(release)`/`[skip ci]` commits are ignored; the package registry and
@@ -48,13 +52,13 @@ import urllib.request
 from pathlib import Path
 
 import build_dist
-import sync_marketplace
 
 ROOT = Path(__file__).resolve().parent.parent
 TYPE_RE = re.compile(r"^(?P<type>[a-z]+)(?:\((?P<scope>[^)]*)\))?(?P<bang>!)?:\s*(?P<desc>.+)")
 BREAKING_RE = re.compile(r"^BREAKING(?: CHANGES?)?:", re.M)
 SEMVER_TAG_RE = re.compile(r"-v(\d+)\.(\d+)\.(\d+)$")
 LEVELS = ("patch", "minor", "major")
+INITIAL_VERSION = "0.1.0"
 RELEASING = {"feat", "fix", "perf", "refactor", "revert"}
 SECTIONS = [
     ("feat", "### 🚀 Features"),
@@ -127,25 +131,8 @@ def bumped(version, level):
     )
 
 
-def plugin_version(skill):
-    return json.loads((ROOT / "skills" / skill / ".claude-plugin" / "plugin.json").read_text())["version"]
-
-
-def bump_bundle(level):
-    """Move the bundle plugin's version whenever any skill releases.
-
-    The bundle carries a repo-wide version, not a per-skill one, and consumers
-    only pull an update when the catalog version moves — so a release that left
-    it untouched would never reach anyone installed on the bundle. It is
-    versioned but deliberately never tagged: <skill>-v<X.Y.Z> stays the only
-    release tag and the only unit of pinning.
-    """
-    pj = ROOT / ".claude-plugin" / "plugin.json"
-    data = json.loads(pj.read_text())
-    old = data["version"]
-    data["version"] = bumped(old, level)
-    pj.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-    print(f"  bundle {data['name']}: {old} -> {data['version']} ({level})", file=sys.stderr)
+def tag_version(tag):
+    return ".".join(SEMVER_TAG_RE.search(tag).groups())
 
 
 def force_all_requested():
@@ -171,7 +158,7 @@ def plan(force_all=False):
     for skill in skills():
         base = last_tag(skill)
         if base is None:
-            out.append({"skill": skill, "base": None, "old": None, "new": plugin_version(skill),
+            out.append({"skill": skill, "base": None, "old": None, "new": INITIAL_VERSION,
                         "level": "initial", "initial": True, "forced": False, "commits": []})
             continue
         commits = commits_touching(skill, base)
@@ -181,7 +168,7 @@ def plan(force_all=False):
             continue
         level = (max((level_of(s, b) for _, s, b in releasing), key=LEVELS.index)
                  if releasing else "patch")
-        old = plugin_version(skill)
+        old = tag_version(base)
         out.append({"skill": skill, "base": base, "old": old, "new": bumped(old, level),
                     "level": level, "initial": False, "forced": not releasing,
                     "commits": releasing})
@@ -209,17 +196,6 @@ def changelog_section(new, commits, initial, forced=False):
     return "\n".join(lines)
 
 
-def write_changelog(skill, section):
-    path = ROOT / "skills" / skill / "CHANGELOG.md"
-    title = f"# {skill}\n"
-    if path.exists():
-        body = path.read_text()
-        rest = body[len(title):].lstrip("\n") if body.startswith(title) else body
-        path.write_text(f"{title}\n{section}\n\n{rest}".rstrip() + "\n")
-    else:
-        path.write_text(f"{title}\n{section}".rstrip() + "\n")
-
-
 def _api():
     """(server, owner, repo, token) from the Forgejo Actions env, or None.
 
@@ -237,7 +213,8 @@ def _api():
 
 
 def changelog_top(skill):
-    """The newest '## …' section of skills/<skill>/CHANGELOG.md (release notes)."""
+    """The newest '## …' section of skills/<skill>/CHANGELOG.md, the notes file
+    releases before tag-only ones wrote; used for a tag whose release is missing."""
     path = ROOT / "skills" / skill / "CHANGELOG.md"
     if not path.exists():
         return f"{skill} release."
@@ -458,55 +435,35 @@ def ensure_release(tag, notes):
 
 
 def apply():
-    # 1) Bump/commit/tag/push the skills that actually changed (may be none).
     force_all = force_all_requested()
     if force_all:
         print("[release-all]: patch-releasing EVERY skill, changed or not", file=sys.stderr)
     releases = plan(force_all)
-    if releases:
-        for r in releases:
-            pj = ROOT / "skills" / r["skill"] / ".claude-plugin" / "plugin.json"
-            data = json.loads(pj.read_text())
-            data["version"] = r["new"]
-            pj.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
-            write_changelog(r["skill"], changelog_section(
-                r["new"], r["commits"], r["initial"], r["forced"]))
-        # strongest level across this run — a major anywhere makes it a major
-        bump_bundle(max((r["level"] for r in releases if r["level"] in LEVELS),
-                        key=LEVELS.index, default="patch"))
-        sync_marketplace.sync()
-        tags = [f"{r['skill']}-v{r['new']}" for r in releases]
-        git("add", "-A")
-        git("commit", "-m", f"chore(release): {', '.join(tags)} [skip ci]")
-        for tag in tags:
-            git("tag", tag)
-        print("prepared: " + ", ".join(tags))
+    notes = {}
+    for r in releases:
+        tag = f"{r['skill']}-v{r['new']}"
+        git("tag", tag)
+        notes[tag] = changelog_section(r["new"], r["commits"], r["initial"], r["forced"])
+    if notes:
+        print("prepared: " + ", ".join(notes))
         if _api():
-            branch = os.environ.get("GITHUB_REF_NAME", "main")
-            git("push", "origin", f"HEAD:{branch}")
-            git("push", "origin", "--tags")
+            git("push", "origin", *[f"refs/tags/{tag}" for tag in notes])
     else:
         print("no version bumps this run")
 
-    # 2) Ensure EVERY skill's current version is published + has a release
-    #    object. Idempotent (skips what already exists) and self-healing: it
-    #    backfills a version whose earlier run tagged it but failed mid-publish,
-    #    so a plain re-run recovers a partial release instead of skipping it.
-    #    Every step reads before it writes, so a run with nothing to do makes no
-    #    remote changes at all.
     if not _api():
         print("no CI API env — skipping package publish / releases")
         return
     tally = {"verified": 0, "published": 0, "repaired": 0}
     linked = created = 0
     for skill in skills():
-        version = plugin_version(skill)
-        tag = f"{skill}-v{version}"
-        if tag not in git("tag", "--list", tag).split():
-            continue  # not yet tagged (never released) — nothing to publish
+        tag = last_tag(skill)
+        if tag is None:
+            continue
+        version = tag_version(tag)
         tally[publish_artifact(skill, version)] += 1
         linked += link_package(skill, version)
-        created += ensure_release(tag, changelog_top(skill))
+        created += ensure_release(tag, notes.get(tag) or changelog_top(skill))
     print(f"packages: {tally['verified']} verified, {tally['published']} published, "
           f"{tally['repaired']} repaired; releases: {created} created; links: {linked} added")
     if tally["repaired"]:

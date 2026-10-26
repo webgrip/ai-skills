@@ -94,10 +94,10 @@ jobs:
       # Anthropic's official manifest + frontmatter validator (the `claude` CLI is
       # baked into the runner toolchain). --strict works here because plugin.json files
       # carry version/description (computed at release time — see CLAUDE.md).
-      - name: Official plugin validation (strict)
+      - name: Official plugin validation (every warning fails but the omitted version)
         env:
           CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
-        run: claude plugin validate . --strict
+        run: bash scripts/validate_plugins.sh
 
       # test.sh is optional — only skills with plugin-specific behavior ship
       # one (generic quality rules live in scripts/lint_skills.py).

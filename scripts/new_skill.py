@@ -85,7 +85,6 @@ def main():
         "name": name,
         "displayName": name.replace("-", " ").title(),
         "description": description,
-        "version": "0.1.0",
         "license": "MIT",
         "author": owner,
         "keywords": [],

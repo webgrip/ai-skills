@@ -5,6 +5,8 @@ Enforced invariants:
 - marketplace.json is valid JSON with name/owner/plugins
 - every skills/<name> dir has a valid .claude-plugin/plugin.json whose name
   matches the dir and carries the fields marketplace entries are generated from
+- no plugin.json and no catalog entry carries `version`: Claude Code then tracks
+  the commit, so a merge reaches installs without a release commit on main
 - every skill dir has SKILL.md at its root (the skill dir IS the plugin root)
 
 Drift between marketplace.json and the plugin manifests is checked by
@@ -17,7 +19,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REQUIRED_PLUGIN_FIELDS = ("name", "description", "version", "license", "keywords")
+REQUIRED_PLUGIN_FIELDS = ("name", "description", "license", "keywords")
+VERSION_FORBIDDEN = (
+    "{where} carries `version`; versions live only in <skill>-vX.Y.Z tags, and a version "
+    "here would hold Claude Code installs on it until someone commits a bump to main"
+)
 errors = []
 
 
@@ -48,6 +54,8 @@ if bundle_pj is not None:
     for field in REQUIRED_PLUGIN_FIELDS:
         if field not in bundle_pj:
             err(f"bundle: plugin.json missing field {field!r}")
+    if "version" in bundle_pj:
+        err(VERSION_FORBIDDEN.format(where="bundle: plugin.json"))
     bundle_name = bundle_pj.get("name")
     if bundle_name and (ROOT / "skills" / bundle_name).exists():
         err(
@@ -72,6 +80,8 @@ for pdir in plugin_dirs:
     for field in REQUIRED_PLUGIN_FIELDS:
         if field not in pj:
             err(f"{name}: plugin.json missing field {field!r}")
+    if "version" in pj:
+        err(VERSION_FORBIDDEN.format(where=f"{name}: plugin.json"))
 
     if not (pdir / "SKILL.md").exists():
         err(f"{name}: no SKILL.md at the skill/plugin root")

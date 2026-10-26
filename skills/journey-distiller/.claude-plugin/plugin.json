@@ -2,7 +2,6 @@
   "name": "journey-distiller",
   "displayName": "Journey Distiller",
   "description": "Decides who a product is for and which user journeys it must support before screens are designed: a role cast from junior developer to buyer and client, owner decision rounds on an answer page that stores the answers, job stories and needs, the top journeys with actors, stages, permissions, audit events and success measures, and an enterprise round on organisation model, roles, SSO, review routing, policies and audit, landed as a concept doc, decision records and Definition-of-Ready tickets.",
-  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",
