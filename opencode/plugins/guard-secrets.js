@@ -25,7 +25,7 @@ const run = promisify(execFile);
 
 async function gitleaksPath() {
   try {
-    const { stdout } = await run("/bin/sh", ["-c", "command -v gitleaks"]);
+    const { stdout } = await run("/bin/sh", ["-c", "command -v gitleaks || mise which gitleaks 2>/dev/null"]);
     return stdout.trim() || null;
   } catch {
     return null;
@@ -65,7 +65,7 @@ export default Plugin.define({
       if (content) {
         const gl = await gitleaksPath();
         if (!gl) {
-          console.warn("guard-secrets: gitleaks not on PATH; plaintext scan skipped. Pin it in .mise.toml.");
+          console.warn("guard-secrets: gitleaks not on PATH or in mise; plaintext scan skipped. Pin it in .mise.toml.");
           return;
         }
         const tmp = `${tmpdir()}/guard-secrets-${process.pid}-${Date.now()}`;
