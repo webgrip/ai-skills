@@ -2,7 +2,6 @@
   "name": "mcp-server",
   "displayName": "MCP Server",
   "description": "Designs, builds, secures, deploys and evaluates MCP servers on the stateless 2026-07-28 spec with 2025-11-25 back-compat: agent stories, deployment choice, tool surface by size, descriptions, schemas, outputs, errors and annotations, lethal-trifecta threat model, OAuth resource-server auth with PRM, audience checks and pre-registered clients, client limits for Claude, VS Code and Cursor, Inspector, conformance, agent evals and a tools/list linter.",
-  "version": "0.1.0",
   "license": "MIT",
   "author": {
     "name": "Webgrip",

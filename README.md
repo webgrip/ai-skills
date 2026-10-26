@@ -91,13 +91,12 @@ would wire a root `hooks/` folder into this repository's own `.claude/settings.j
 skill grows a hook the bundle doesn't mirror, so the bundle can't ship an
 enforcement hook silently dead.
 
-The bundle carries a repo-wide version that moves whenever *any* skill releases
-— it has to, or installs never see the update — but it is deliberately **not
-tagged**: `<skill>-v<X.Y.Z>` stays the only release tag and the only unit of
-pinning. Take the bundle **or** per-skill plugins, never both; enabling `webgrip`
+The bundle carries no version, like every plugin here, so installs track the
+commit on main and see every merged change; `<skill>-v<X.Y.Z>` stays the only
+release tag and the only unit of pinning. Take the bundle **or** per-skill plugins, never both; enabling `webgrip`
 alongside `domain-language@ai-skills` loads that skill twice.
 
-Updates arrive via `/plugin marketplace update ai-skills` whenever a version is bumped. Plugin
+Updates arrive via `/plugin marketplace update ai-skills` (or auto-update) for every change merged to main. Plugin
 skills load at session start (not `/reload-skills`) and invoke **namespaced**:
 `/domain-language:domain-language`. Don't run both routes for the same skill — it double-loads.
 
@@ -136,7 +135,8 @@ scripts/sync_marketplace.py       # regenerate marketplace.json from plugin mani
 scripts/lint_skills.py            # skill-quality rules for every plugin (CI)
 scripts/check_manifests.py        # manifest structure checks (CI)
 scripts/check_plugin_commits.py   # plugin commits must be release-worthy, no hand-bumps (CI, PRs)
-scripts/release_skills.py         # per-skill release trains (versions, changelogs, tags, releases)
+scripts/release_skills.py         # per-skill release trains (tags, release notes, packages)
+scripts/validate_plugins.sh       # claude plugin validate; every warning but the omitted version fails (CI)
 scripts/build_dist.py             # build a skill's .skill zip into dist/ (gitignored; used by release)
 ```
 
@@ -156,17 +156,17 @@ That's the whole job: no version bookkeeping, no zip building, no catalog editin
 
 ## CI & releases
 
-CI runs on [Forgejo Actions](https://forgejo.webgrip.dev/webgrip/ai-skills/actions). Every PR gets `ci.yml`: conventional-commit check, plugin-commit guard (`scripts/check_plugin_commits.py` — commits touching a skill must use a release-triggering type, and versions must not be hand-edited), manifest structure (`scripts/check_manifests.py`), catalog sync (`scripts/sync_marketplace.py --check`), skill lint (`scripts/lint_skills.py`), and any plugin `test.sh`. Pushes to `main` run `release.yml`: the same checks, then the **per-skill release trains** (`scripts/release_skills.py`).
+CI runs on [Forgejo Actions](https://forgejo.webgrip.dev/webgrip/ai-skills/actions). Every PR gets `ci.yml`: conventional-commit check, plugin-commit guard (`scripts/check_plugin_commits.py` — commits touching a skill must use a release-triggering type), manifest structure (`scripts/check_manifests.py`), catalog sync (`scripts/sync_marketplace.py --check`), skill lint (`scripts/lint_skills.py`), and any plugin `test.sh`. Pushes to `main` run `release.yml`: the same checks, then the **per-skill release trains** (`scripts/release_skills.py`).
 
 ## Versioning — per-skill release trains
 
-Each skill is its **own release train**. `scripts/release_skills.py` walks each skill independently: for a skill with conventional commits touching `skills/<skill>/` since its own last `<skill>-v<X.Y.Z>` tag, it bumps that skill's version (breaking → major, `feat` → minor, `fix`/`perf`/`refactor`/`revert` → patch), prepends `skills/<skill>/CHANGELOG.md`, regenerates `marketplace.json`, commits back `chore(release): <skill>-vX.Y.Z, … [skip ci]`, tags each released skill, and publishes its `<skill>.skill` to the [generic package registry](https://forgejo.webgrip.dev/webgrip/-/packages) at `api/packages/webgrip/generic/<skill>/<version>/<skill>.skill` plus a [Forgejo release](https://forgejo.webgrip.dev/webgrip/ai-skills/releases) per tag.
+Each skill is its **own release train**. `scripts/release_skills.py` walks each skill independently: for a skill with conventional commits touching `skills/<skill>/` since its own last `<skill>-v<X.Y.Z>` tag, it computes that skill's next version from its tag (breaking → major, `feat` → minor, `fix`/`perf`/`refactor`/`revert` → patch), tags HEAD, pushes only the tags (the release never commits to main), and publishes its `<skill>.skill` to the [generic package registry](https://forgejo.webgrip.dev/webgrip/-/packages) at `api/packages/webgrip/generic/<skill>/<version>/<skill>.skill` plus a [Forgejo release](https://forgejo.webgrip.dev/webgrip/ai-skills/releases) per tag.
 
-So a `feat:` touching one skill bumps, tags, changelogs, and releases **only that skill** — the others don't move, and there is no repo-wide `vX.Y.Z` tag. Claude Code users are prompted to update only the skills whose version rose. Never edit a version by hand (CI rejects it — use `feat(<plugin>)!:` to force a major); plugin `name` slugs are immutable once published (renames break installs — use `displayName`). A commit touching a skill under a non-releasing type (`docs:`/`chore:`) releases nothing for it — `check_plugin_commits.py` blocks that on PRs. If a release run goes red, fix it promptly — the trains are idempotent (each skill bases off its own tag; re-runs converge), so a fixed re-run resumes cleanly.
+So a `feat:` touching one skill tags and releases **only that skill** — the others don't move, and there is no repo-wide `vX.Y.Z` tag. No `plugin.json` carries a version (`check_manifests.py` rejects one), so Claude Code installs follow main's commits rather than release bumps; release notes live in the Forgejo release of each tag. Use `feat(<plugin>)!:` to force a major; plugin `name` slugs are immutable once published (renames break installs — use `displayName`). A commit touching a skill under a non-releasing type (`docs:`/`chore:`) releases nothing for it — `check_plugin_commits.py` blocks that on PRs. If a release run goes red, fix it promptly — the trains are idempotent (each skill bases off its own tag; re-runs converge), so a fixed re-run resumes cleanly.
 
 ## Contributing
 
-Issues and PRs welcome. Use conventional commit messages (release-triggering types for anything under `skills/`), run `npm run check` and `npm test` locally before submitting, and run `claude plugin validate .` if you have Claude Code installed. Versions, the catalog, and dist zips are all derived — don't edit them.
+Issues and PRs welcome. Use conventional commit messages (release-triggering types for anything under `skills/`), run `npm run check` and `npm test` locally before submitting, and run `claude plugin validate .` if you have Claude Code installed. Versions, the catalog, and dist zips are all derived — don't add them by hand.
 
 ## License
 

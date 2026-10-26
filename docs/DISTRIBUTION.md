@@ -14,7 +14,7 @@ simultaneously the flat-layout skill and the Claude Code plugin (manifest in
 
 | Channel | Consumers | Updates | Pinning |
 | --- | --- | --- | --- |
-| Claude Code plugin marketplace (generated `marketplace.json` → `./skills/<n>`) | Claude Code | on a skill `version` bump — its own release train (`<skill>-vX.Y.Z`) on each push to main | `#ref` on the marketplace URL, or a full commit `sha` per plugin source |
+| Claude Code plugin marketplace (generated `marketplace.json` → `./skills/<n>`) | Claude Code | on every commit merged to main (no plugin carries a `version`, so Claude Code tracks the commit) | `#<skill>-vX.Y.Z` or another ref on the marketplace URL, or a full commit `sha` per plugin source |
 | `npx skills add <git-url>` (walks the flat `skills/` tree) | 70+ agents incl. opencode, Cursor, Codex | `npx skills update` (re-clones the source) | pin an immutable `#vX.Y.Z` tag in the URL |
 | `.skill` zips (release assets + package registry; plugin machinery excluded) | claude.ai / Claude app | manual re-upload | the release you downloaded |
 | Manual copy / symlink of `skills/<n>/` into `.claude/skills/` | Claude Code + opencode (opencode reads `.claude/skills/` natively) | `git pull` if symlinked | your checkout |
@@ -29,17 +29,18 @@ twice. Non-Claude agents ignore the extra manifest entirely.
 
 ## Version semantics — per-skill release trains
 
-Each skill is its **own release train**. Claude Code prompts consumers to
-update a skill when its `plugin.json` `version` rises, and that bump is
-**computed at release time** by `scripts/release_skills.py` from the
+Each skill is its **own release train**, and a release is a tag: no file is
+committed. `scripts/release_skills.py` computes the next version from the
 conventional commits **touching that skill** since its own `<skill>-vX.Y.Z`
-tag — so a change to one skill releases, tags (`<skill>-vX.Y.Z`), changelogs
-(`skills/<skill>/CHANGELOG.md`), and re-publishes **only that skill**; the
-others don't move, and there's no repo-wide tag. Hand-edits are rejected;
-a commit type that releases nothing (`chore:`, `docs:`) never reaches a
-skill's installs. Corollary: between a merge and its release commit, `main`
-briefly carries new content under the old version; installs converge on the
-bump. A red release run must be fixed promptly — the trains are idempotent
+tag, tags HEAD, and publishes a Forgejo release (with the notes) and the
+`.skill` package for **only that skill**; the others don't move, and there's no
+repo-wide tag. No `plugin.json` and no catalog entry carries `version`, which
+Claude Code documents as "users track your commits instead": an install
+updates to main's latest commit whenever its marketplace refreshes, so every
+merged change reaches it, released or not. Pin a tag (`#<skill>-vX.Y.Z`) on
+the marketplace URL to follow releases only. A commit type that releases
+nothing (`chore:`, `docs:`) still reaches Claude Code installs, but gets no tag,
+release or package. A red release run must be fixed promptly — the trains are idempotent
 (each skill bases off its own tag, and every remote write is gated on a state
 query first: an artifact already published at the right sha256 is verified and
 left alone, an existing release is skipped), so a fixed re-run resumes cleanly
@@ -81,8 +82,9 @@ without rewriting what earlier runs got right.
   (exact snippet in the README) — members are prompted on folder trust,
   skills load namespaced `<plugin>:<skill>`.
 - `claude plugin validate .` validates the manifests + skill frontmatter;
-  CI runs it with `--strict` (this repo's plugin.json files carry versions
-  and descriptions, so strict passes).
+  CI runs it through `scripts/validate_plugins.sh`, which fails on every
+  warning except "No version specified": `--strict` would turn that one into
+  an error, and omitting the version is what keeps installs on the commit.
 
 ## opencode
 
