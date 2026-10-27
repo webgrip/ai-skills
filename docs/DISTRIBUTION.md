@@ -60,6 +60,16 @@ without rewriting what earlier runs got right.
   `npx skills experimental_install`. **The hash is drift-detection, not
   pinning** — restore re-resolves the ref; pin a `#vX.Y.Z` tag for real
   reproducibility. `ref` must be a branch/tag, not a commit SHA.
+- This repository has its own root `skills-lock.json`, and it must list every
+  skill that APM deploys into `.claude/skills/` or `.agents/skills/` (now
+  `guard-secrets` and `secrets-levels`, through agent-standards'
+  `packages/secrets`). The CLI walks those directories as well as `skills/`.
+  On a Forgejo `.git` URL it cannot use the locked `skillPath` to choose
+  between copies (only GitHub sources append a subpath), so
+  `npx skills update -g` warns "Multiple current paths match" and skips the
+  skill. Copies named in the local lock count as installed project skills,
+  and discovery skips them. When `apm.yml` pulls in another of our own
+  skills, add it here as well.
 - Default install copies once into `.agents/skills/` and symlinks agent dirs.
   Gotcha: if the project has no `.claude/` directory yet, the Claude Code
   symlink can be silently skipped — and Claude Code does **not** read

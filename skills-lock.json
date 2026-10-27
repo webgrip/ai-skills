@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "guard-secrets": {
+      "source": "https://forgejo.webgrip.dev/webgrip/ai-skills.git",
+      "sourceType": "git",
+      "sourceUrl": "https://forgejo.webgrip.dev/webgrip/ai-skills.git",
+      "skillPath": "skills/guard-secrets/SKILL.md"
+    },
+    "secrets-levels": {
+      "source": "https://forgejo.webgrip.dev/webgrip/ai-skills.git",
+      "sourceType": "git",
+      "sourceUrl": "https://forgejo.webgrip.dev/webgrip/ai-skills.git",
+      "skillPath": "skills/secrets-levels/SKILL.md"
+    }
+  }
+}
