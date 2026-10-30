@@ -2,5 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>webgrip/renovate-config:profile-library#v1.15.1"
+  ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "skills/*/fixtures/**"
   ]
 }
