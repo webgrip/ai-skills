@@ -15,10 +15,10 @@
  * Pinned against @opencode-ai/plugin 0.0.0-next-15495.
  */
 import { Plugin } from "@opencode-ai/plugin/v2";
-import { basename } from "node:path";
+import { basename, dirname, join, relative, resolve } from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { writeFile, rm } from "node:fs/promises";
+import { writeFile, rm, mkdir, mkdtemp, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 
 const run = promisify(execFile);
@@ -29,6 +29,29 @@ async function gitleaksPath() {
     return stdout.trim() || null;
   } catch {
     return null;
+  }
+}
+
+async function exists(path) {
+  try {
+    await stat(path);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// The repository root above `file` and its .gitleaks.toml, if any, so the
+// repository's own allowlist (test fixtures, published test vectors) applies.
+async function repoConfig(file) {
+  let dir = dirname(resolve(file));
+  for (;;) {
+    const config = join(dir, ".gitleaks.toml");
+    if (await exists(config)) return { root: dir, config };
+    if (await exists(join(dir, ".git"))) return { root: dir, config: null };
+    const parent = dirname(dir);
+    if (parent === dir) return { root: null, config: null };
+    dir = parent;
   }
 }
 
@@ -68,10 +91,17 @@ export default Plugin.define({
           console.warn("guard-secrets: gitleaks not on PATH or in mise; plaintext scan skipped. Pin it in .mise.toml.");
           return;
         }
-        const tmp = `${tmpdir()}/guard-secrets-${process.pid}-${Date.now()}`;
+        const { root, config } = await repoConfig(file);
+        const scratch = await mkdtemp(join(tmpdir(), "guard-secrets-"));
         try {
-          await writeFile(tmp, content);
-          await run(gl, ["detect", "--no-banner", "--no-git", "--redact", "-s", tmp]);
+          let rel = root ? relative(root, resolve(file)) : basename(file);
+          if (!rel || rel.startsWith("..")) rel = basename(file) || "content.txt";
+          const target = join(scratch, rel);
+          await mkdir(dirname(target), { recursive: true });
+          await writeFile(target, content);
+          const argv = ["detect", "--no-banner", "--no-git", "--redact", "-s", scratch];
+          if (config) argv.push("--config", config);
+          await run(gl, argv);
         } catch (err) {
           if (err?.code === 1) {
             throw new Error(
@@ -81,7 +111,7 @@ export default Plugin.define({
           if (err instanceof Error && err.message.startsWith("BLOCKED:")) throw err;
           // other environment noise: swallow, mirroring the shell hook's best-effort
         } finally {
-          await rm(tmp, { force: true }).catch(() => {});
+          await rm(scratch, { recursive: true, force: true }).catch(() => {});
         }
       }
     });
