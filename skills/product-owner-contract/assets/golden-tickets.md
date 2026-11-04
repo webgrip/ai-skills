@@ -9,6 +9,8 @@ Every ticket has **two halves**: on top the functional half the product owner an
 acceptor read, below the rule the technical write-up for the developer and the agent. The
 skeleton, the language rules and the per-sentence test are in
 [ticket-template.md](ticket-template.md).
+The taxonomy line names dimension and value; the tracker file spells them
+(`repo/unfold` on Vikunja, `repo:unfold` on ClickUp, a List for the theme).
 
 ---
 
@@ -16,7 +18,7 @@ skeleton, the language rules and the per-sentence test are in
 
 ```text
 Title:  Status page: show when each service was last checked
-Labels: theme/observability · repo/status-page · kind/change · value/reduces-risk · impact/M
+Taxonomy: theme observability · repo status-page · kind change · value reduces-risk · impact medium
 ```
 
 ```markdown
@@ -82,7 +84,7 @@ Above the rule no file name appears: the requester recognises their own words in
 
 ```text
 Title:  Nightly backup: job reports success when the upload failed
-Labels: theme/backup-dr · repo/homelab-cluster · kind/bug · value/reduces-risk · impact/H
+Taxonomy: theme backup-dr · repo homelab-cluster · kind bug · value reduces-risk · impact high
 ```
 
 ```markdown
@@ -155,7 +157,7 @@ still accepts half an archive), and the verification proves both the red and the
 
 ```text
 Title:  Logs: decide where logs older than 30 days are kept
-Labels: theme/observability · repo/homelab-cluster · kind/spike · value/unblocks · impact/M
+Taxonomy: theme observability · repo homelab-cluster · kind spike · value unblocks · impact medium
 ```
 
 ```markdown
@@ -195,7 +197,7 @@ options and stops has not delivered. Done = decided and recorded.
 
 ```text
 Title:  Agents: identity - Part 2/4 - each agent run gets its own token
-Labels: theme/agents · repo/unfold · kind/change · value/reduces-risk · impact/H
+Taxonomy: theme agents · repo unfold · kind change · value reduces-risk · impact high
 Parent: Epic: agent identity · blocked by Part 1/4
 ```
 

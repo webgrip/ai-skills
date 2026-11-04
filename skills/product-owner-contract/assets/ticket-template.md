@@ -1,4 +1,4 @@
-# Ticket template — webgrip default team
+# Ticket template — webgrip
 
 The fill-in skeleton behind the [Definition of Ready](definition-of-ready.md). Filled in =
 DoR-compliant; what "filled in" looks like is in [golden-tickets.md](golden-tickets.md).
@@ -17,9 +17,10 @@ Four rules up front:
 - **The title is the summary**: `<area>: <what changes>`, ≤ 70 characters, usable as a
   commit subject. No product name on its own, no complaint, no class name.
 
-Labels at grooming: one `theme/*`, one `repo/*`, one `kind/*`, one `value/*`, `impact/*`.
-The estimation trio (`effort/` `time/` `uncertainty/`) is set at refinement; `do-next` and
-the pick-up queue are planning ([board.md](../board.md)).
+Taxonomy at grooming: one `theme`, one `repo`, one `kind`, one `value`, an `impact`. The
+estimation trio (`effort` `time` `uncertainty`) is set at refinement; `do-next` and the
+pick-up queue are planning ([board.md](../board.md)). How each is spelled on the board's
+tracker: [trackers/](../trackers/).
 
 ---
 

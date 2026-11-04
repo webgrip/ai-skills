@@ -8,8 +8,8 @@
       "expect_trigger": true,
       "assertions": [
         "The ticket is written in English even though the request is Dutch",
-        "The body follows the default team's ticket template: Source line, TL;DR, Outcome, binary Acceptance criteria, Verification, and the technical write-up below a horizontal rule",
-        "The labels proposed include exactly one theme/*, one repo/*, kind/bug, one value/* and one impact/* label, and none is created without asking",
+        "The body follows the webgrip ticket template: Source line, TL;DR, Outcome, binary Acceptance criteria, Verification, and the technical write-up below a horizontal rule",
+        "The labels proposed use the Vikunja spelling: exactly one theme/*, one repo/*, kind/bug, one value/* and one impact/* label, and none is created without asking",
         "Reproduction and Environment sections are present because it is a bug"
       ]
     },
@@ -18,19 +18,19 @@
       "prompt": "Is VIK-512 ready to move to ready? It has a TL;DR and criteria but no effort/time/uncertainty labels.",
       "expect_trigger": true,
       "assertions": [
-        "The answer is no, naming the missing estimation trio from the default team's pull-criteria table",
+        "The answer is no, naming the missing estimation trio from the pull-criteria table in board.md",
         "It runs or names ticket_lint.py --gate ready for the content half",
         "It does not count estimate or priority as part of the Definition of Ready's four rules"
       ]
     },
     {
       "id": "repo-overlay",
-      "prompt": "This repo has an .agents/product-owner/board.md with `Extends: webgrip/default` and an extra kind/migration rule. Refine the migration ticket VIK-88.",
+      "prompt": "This repo has an .agents/product-owner/board.md with `Extends: webgrip`, `Tracker: vikunja` and an extra migration kind rule. Refine the migration ticket VIK-88.",
       "expect_trigger": true,
       "assertions": [
-        "It states the resolved layers (default team plus the repo overlay) before writing",
-        "It applies the overlay's extra kind/migration rule on top of the default team's Definition of Ready",
-        "Rules the overlay does not mention fall through to the default team"
+        "It states the resolved layers (webgrip on Vikunja plus the repo overlay) before writing",
+        "It applies the overlay's extra migration rule on top of the webgrip Definition of Ready",
+        "Rules the overlay does not mention fall through to board.md and trackers/vikunja.md"
       ]
     },
     {
@@ -39,7 +39,18 @@
       "expect_trigger": true,
       "assertions": [
         "It refuses to close on the rollout alone and asks for the reconciled revision and the running image digest",
-        "It requires an evidence comment walking the default team's Definition of Done, including the monitored signal or the reason none applies"
+        "It requires an evidence comment walking the webgrip Definition of Done, including the monitored signal or the reason none applies"
+      ]
+    },
+    {
+      "id": "webgrip-clickup-ticket",
+      "prompt": "Make a ticket in the Unfold Space on ClickUp: the Now page shows a stale count after a Work Item closes. This repo's overlay says `Extends: webgrip` and `Tracker: clickup`.",
+      "expect_trigger": true,
+      "assertions": [
+        "It reads trackers/clickup.md and proposes lowercase colon tags such as repo:unfold and impact:m, never repo/unfold or impact/M",
+        "The theme is the List the ticket goes in, not a theme tag",
+        "The stage is set with the backlog status, not a lifecycle tag, and it does not invent kind or value tags the Space lacks",
+        "The commit trailer it names is CU-<id>, not VIK-<id>"
       ]
     },
     {

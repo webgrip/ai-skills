@@ -1,4 +1,4 @@
-# Definition of Ready — webgrip default team
+# Definition of Ready — webgrip
 
 > **A ticket is ready to pick up when someone else — a person or an agent — can start on it
 > without calling the writer.**

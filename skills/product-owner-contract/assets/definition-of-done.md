@@ -1,4 +1,4 @@
-# Definition of Done — webgrip default team
+# Definition of Done — webgrip
 
 > One list. It applies to **every** ticket that wants to be completed, whatever its kind or
 > size. No ticket-specific DoDs — those are acceptance criteria and live in the ticket.
@@ -36,7 +36,7 @@ list: each line met, or its way out with a reason.
 **Knowledge**
 
 - Behaviour changed? TechDocs, runbook or ADR updated *(or: "not needed, because …")*
-- Commits reference the ticket: trailer `VIK-<id>`
+- Commits reference the ticket with the tracker's trailer (`VIK-<id>` or `CU-<id>`)
 
 ## Three rules that keep the DoD standing
 
