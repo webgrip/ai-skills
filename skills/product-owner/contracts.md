@@ -41,18 +41,19 @@ instead — loaded only when the skill fires.
 
 ## Layer 1 — the repo overlay (a repo's own ticket rules)
 
-When an org contract skill ships teams (layer 4), a repo hooks its own rules onto a team
-without copying it:
+When an org contract skill exists (layer 4), a repo hooks its own rules onto it without
+copying it:
 
 ```text
 .agents/product-owner/
-├── board.md        ← Extends: <org>/<team> — additions and overrides only
-└── assets/         ← optional: a file named like a team asset replaces it for this
-                      repo; any other file adds to the team's set
+├── board.md        ← Extends: <org> · Tracker: <tracker> — additions and overrides only
+└── assets/         ← optional: a file named like an org asset replaces it for this
+                      repo; any other file adds to the org's set
 ```
 
 ```markdown
-Extends: acme/default
+Extends: acme
+Tracker: clickup
 
 ## Additions
 - Project: `<name>` (id <N>)
@@ -60,10 +61,10 @@ Extends: acme/default
 - Protected paths for agents: `deploy/`, `.forgejo/`
 ```
 
-Anything the overlay does not mention falls through to the team, then to this skill's
-portable defaults. State the resolved layers in one line before the first write; flag
+Anything the overlay does not mention falls through to the org, then to this skill's
+portable defaults. `Extends: <org>/<name>` is the older spelling of `Extends: <org>`. State the resolved layers in one line before the first write; flag
 once where the overlay and the `AGENTS.md` block disagree (the overlay wins). A rule that
-would hold for every repo of the org belongs in the team file instead.
+would hold for every repo of the org belongs in the org's `board.md` instead.
 
 ## Layer 3 — user contexts (one person, many orgs/teams)
 
@@ -96,13 +97,19 @@ as a sibling skill named `product-owner-contract` (the base skill matches
 
 ```text
 skills/product-owner-contract/
-├── SKILL.md                    ← routes the org's boards; per-team Context /
-│                                 Applies when blocks; facts only, no craft
-├── teams/<team>/board.md       ← that team's contract: statuses, gates, field
-│                                 ids, tags, house rules
-└── teams/<team>/assets/        ← that team's hand-over docs (ratified DoR,
-                                  golden tickets, fill-in template)
+├── SKILL.md                    ← Context / Applies when; routes to the files below;
+│                                 facts only, no craft
+├── board.md                    ← the org's house rules on any tracker: stages,
+│                                 gates, taxonomy dimensions, WIP, invariants
+├── trackers/<tracker>.md       ← how those rules are spelled on one tracker:
+│                                 statuses or labels, tag syntax, trailer, queue
+└── assets/                     ← the org's hand-over docs (ratified DoR, golden
+                                  tickets, fill-in template, DoD)
 ```
+
+Granularity: a rule lives at the highest level where it is true for everything below it.
+Add a level between org and repo (a group of repos, a client) only once a second one
+actually differs — never as an empty placeholder.
 
 Its SKILL.md description names the org's boards, teams and customers — that is what
 routes it; the base skill stays org-free. Board files reference the base skill's
