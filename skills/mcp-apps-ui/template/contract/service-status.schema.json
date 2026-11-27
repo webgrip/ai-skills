@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/contracts/service-status/v1",
+  "title": "ServiceStatus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "service", "state", "release", "replicas", "updatedAt", "actions"],
+  "properties": {
+    "version": { "const": 1 },
+    "service": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,62}$" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 }
+      }
+    },
+    "state": { "enum": ["healthy", "degraded", "down"] },
+    "release": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "replicas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ready", "desired"],
+      "properties": {
+        "ready": { "type": "integer", "minimum": 0 },
+        "desired": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["restart"],
+      "properties": {
+        "restart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowed"],
+          "properties": {
+            "allowed": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

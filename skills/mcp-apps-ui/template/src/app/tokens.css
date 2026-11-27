@@ -1,0 +1,60 @@
+:root {
+  color-scheme: light dark;
+
+  --color-background-primary: light-dark(#ffffff, #1c1c1e);
+  --color-background-secondary: light-dark(#f4f4f5, #27272a);
+  --color-background-tertiary: light-dark(#fafafa, #111113);
+  --color-background-inverse: light-dark(#18181b, #f4f4f5);
+  --color-background-info: light-dark(#e0ecfb, #1d3557);
+  --color-background-danger: light-dark(#fbe9e9, #5c1f1f);
+  --color-background-success: light-dark(#e6f4e8, #173d1f);
+  --color-background-warning: light-dark(#fbf1dc, #4a3910);
+  --color-background-disabled: light-dark(#f4f4f5, #27272a);
+
+  --color-text-primary: light-dark(#18181b, #f4f4f5);
+  --color-text-secondary: light-dark(#52525b, #b4b4bc);
+  --color-text-tertiary: light-dark(#5f5f68, #a1a1aa);
+  --color-text-inverse: light-dark(#ffffff, #18181b);
+  --color-text-info: light-dark(#1d4f91, #9cc3f5);
+  --color-text-danger: light-dark(#9b1c1c, #ffaaaa);
+  --color-text-success: light-dark(#1e5b2a, #8fd49c);
+  --color-text-warning: light-dark(#6b4a00, #f0c56a);
+  --color-text-disabled: light-dark(#71717a, #8b8b94);
+
+  --color-border-primary: light-dark(#a1a1aa, #63636e);
+  --color-border-secondary: light-dark(#d4d4d8, #3f3f46);
+  --color-border-tertiary: light-dark(#e4e4e7, #2f2f35);
+  --color-border-danger: light-dark(#c53030, #f87171);
+  --color-border-success: light-dark(#2f855a, #68d391);
+  --color-border-warning: light-dark(#b7791f, #f6ad55);
+
+  --color-ring-primary: light-dark(#2563eb, #93c5fd);
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-text-xs-size: 12px;
+  --font-text-sm-size: 14px;
+  --font-text-md-size: 16px;
+  --font-text-xs-line-height: 1.4;
+  --font-text-sm-line-height: 1.4;
+  --font-text-md-line-height: 1.5;
+  --font-heading-sm-size: 16px;
+  --font-heading-sm-line-height: 1.4;
+
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 9999px;
+  --border-width-regular: 1px;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}

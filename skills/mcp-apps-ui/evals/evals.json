@@ -1,0 +1,91 @@
+{
+  "skill_name": "mcp-apps-ui",
+  "_format": "skill-creator eval format. Run each prompt in a fresh session with and without the skill; grade the assertions. expect_trigger false = must not load; null = output-quality only.",
+  "evals": [
+    {
+      "id": "status-card-in-claude-and-chatgpt",
+      "expect_trigger": true,
+      "prompt": "Our MCP server has a get_deploy_status tool. Instead of a wall of text I want it to render a small interactive card with the status and a retry button, in claude.ai and in ChatGPT. Build it.",
+      "assertions": [
+        "Serves the UI as a ui:// resource with mimeType text/html;profile=mcp-app",
+        "Links the tool to the resource through _meta.ui.resourceUri (nested form, not only the deprecated flat ui/resourceUri key)",
+        "Returns a complete text answer in content in addition to structuredContent, so hosts without MCP Apps still get the answer",
+        "Implements the retry button through an app-only tool with _meta.ui.visibility set to [\"app\"] and re-checks authorization on the server",
+        "Bundles the view into one self-contained HTML file with no CDN scripts or fonts, or declares each external origin in _meta.ui.csp",
+        "Defines fallback values for the host style variables it uses and lets host-provided variables override them"
+      ]
+    },
+    {
+      "id": "widget-blank-in-one-host",
+      "expect_trigger": true,
+      "prompt": "Our MCP App works in Claude Desktop but in Open WebUI the frame stays empty and the console shows a SecurityError on localStorage plus a blocked fetch to our API. What's going on?",
+      "assertions": [
+        "Explains that the host renders the view in a sandboxed srcdoc iframe with an opaque origin, so localStorage is unavailable and must be wrapped in try/catch and not used for essential state",
+        "Explains that the fetch is blocked by the default CSP and recommends calling an app-only server tool through the host, or declaring the origin in _meta.ui.csp.connectDomains with its scheme",
+        "Recommends designing for the weakest host: inline only, no style variables, confirmation on every app tool call",
+        "Suggests verifying with the MCP Inspector --app-info probe or a fake host harness"
+      ]
+    },
+    {
+      "id": "operator-approval-console",
+      "expect_trigger": true,
+      "prompt": "I want on-call engineers to approve or reject pending production deploys from inside the chat, through our MCP server. Design the UI and the server side so it is safe.",
+      "assertions": [
+        "Uses a two-step prepare/confirm flow with a short-lived token bound to the user and the deploy",
+        "Requires an idempotency key on the confirming call so a double click or retry does not approve twice",
+        "States that _meta.ui.visibility [\"app\"] is not an authorization boundary and that the server authorizes every call for the calling principal",
+        "Keeps the confirmation token out of structuredContent and content",
+        "Writes an audit record with principal, action, target and an operation id for every accepted approval"
+      ]
+    },
+    {
+      "id": "secret-in-structured-content",
+      "expect_trigger": true,
+      "prompt": "To keep it simple, my MCP tool puts the user's API key in structuredContent so the widget can call our REST API directly from the iframe. The model only sees content anyway, right?",
+      "assertions": [
+        "Rejects putting the API key in structuredContent",
+        "States that some hosts pass structuredContent to the model (ChatGPT does) and that tool results are stored in the conversation",
+        "Proposes routing the API calls through an app-only server tool so the credential stays on the server",
+        "Mentions that a direct fetch from the view would also need a declared connectDomains CSP entry"
+      ]
+    },
+    {
+      "id": "framework-choice-python",
+      "expect_trigger": true,
+      "prompt": "We want to add MCP Apps to our Python MCP server. Should we use Skybridge, mcp-use, FastMCP or something else? I want something that will still be maintained next year.",
+      "assertions": [
+        "Recommends the official ext-apps SDK for the view and a Python server option (FastMCP apps or the official Python SDK mcp.server.apps)",
+        "Points out that Skybridge and mcp-use assume a Node server",
+        "Backs the recommendation with dated maturity signals such as release dates, cadence, maintainer concentration or named adopters",
+        "Warns that ChatGPT-only window.openai extensions such as widgetState are vendor lock-in"
+      ]
+    },
+    {
+      "id": "dark-mode-and-fonts",
+      "expect_trigger": true,
+      "prompt": "The chart widget from my MCP tool has unreadable grey text in dark mode in Claude and ignores the host's font. How should theming work?",
+      "assertions": [
+        "Applies the host theme and variables with applyDocumentTheme, applyHostStyleVariables and applyHostFonts, or equivalent code reading hostContext.theme and hostContext.styles",
+        "Defines a fallback token layer on :root using light-dark() so the view is readable when the host sends no variables",
+        "Registers onhostcontextchanged before app.connect() so later theme changes arrive",
+        "Recommends testing light and dark, with and without host variables, against WCAG AA contrast"
+      ]
+    },
+    {
+      "id": "oauth-connect-button",
+      "expect_trigger": false,
+      "prompt": "I added OAuth to my MCP server but claude.ai never shows a Connect button when a tool needs login. What's wrong?",
+      "assertions": [
+        "Does not load mcp-apps-ui; this is MCP server auth, owned by the mcp-server skill"
+      ]
+    },
+    {
+      "id": "plain-react-dashboard",
+      "expect_trigger": false,
+      "prompt": "Build a React dashboard page for our web app that shows deploy statistics with a bar chart and a date filter.",
+      "assertions": [
+        "Does not load mcp-apps-ui; nothing here involves MCP or a chat host"
+      ]
+    }
+  ]
+}

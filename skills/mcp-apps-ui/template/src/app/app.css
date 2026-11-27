@@ -1,0 +1,179 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--font-text-md-size);
+  line-height: var(--font-text-md-line-height);
+}
+
+.card {
+  container-type: inline-size;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-background-primary);
+  border: var(--border-width-regular) solid var(--color-border-secondary);
+  border-radius: var(--border-radius-lg);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-heading-sm-size);
+  line-height: var(--font-heading-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: var(--border-radius-full);
+  border: var(--border-width-regular) solid currentColor;
+  font-size: var(--font-text-sm-size);
+  font-weight: var(--font-weight-medium);
+}
+
+.badge[data-state="healthy"] {
+  color: var(--color-text-success);
+  background: var(--color-background-success);
+}
+
+.badge[data-state="degraded"] {
+  color: var(--color-text-warning);
+  background: var(--color-background-warning);
+}
+
+.badge[data-state="down"] {
+  color: var(--color-text-danger);
+  background: var(--color-background-danger);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+@container (min-width: 420px) {
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.facts dt {
+  color: var(--color-text-secondary);
+  font-size: var(--font-text-sm-size);
+}
+
+.facts dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  border-radius: var(--border-radius-md);
+  border: var(--border-width-regular) solid var(--color-border-primary);
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.button[data-variant="primary"] {
+  background: var(--color-background-inverse);
+  color: var(--color-text-inverse);
+  border-color: transparent;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  color: var(--color-text-disabled);
+  background: var(--color-background-disabled);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-ring-primary);
+  outline-offset: 2px;
+}
+
+.note {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-text-sm-size);
+}
+
+.note[data-tone="danger"] {
+  color: var(--color-text-danger);
+}
+
+.skeleton {
+  display: grid;
+  gap: 8px;
+}
+
+.skeleton span {
+  display: block;
+  height: 16px;
+  border-radius: var(--border-radius-sm);
+  background: var(--color-background-secondary);
+  animation: pulse 1.2s ease-in-out infinite alternate;
+}
+
+.skeleton span:first-child {
+  width: 40%;
+  height: 20px;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton span {
+    animation: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
