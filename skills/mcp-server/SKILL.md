@@ -15,7 +15,7 @@ Ask, a few at a time, and record the answers:
 2. **What it touches**: a remote API, a shared database, the user's own machine.
 3. **Who uses it**: just me, a team, anyone through a directory.
 4. **Upstream auth**: none, a service credential, or each user's own account.
-5. **Mid-call input**: confirmations, picking among matches, a rich UI (MCP Apps).
+5. **Mid-call input**: confirmations, picking among matches, a rich UI (MCP Apps: the view, its actions and host support belong to the mcp-apps-ui skill).
 
 Already have a good CLI or API and only one agent? A skill that drives it may be enough; say so before building.
 
