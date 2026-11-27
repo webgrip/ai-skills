@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "service": { "id": "search-indexer", "name": "Search indexer with a deliberately long display name" },
+  "state": "degraded",
+  "release": "v14.0.0-rc.3",
+  "replicas": { "ready": 1, "desired": 4 },
+  "updatedAt": "2026-11-26T23:59:00Z",
+  "actions": { "restart": { "allowed": false } }
+}

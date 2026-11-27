@@ -1,0 +1,24 @@
+{
+  "name": "mcp-apps-ui",
+  "displayName": "MCP Apps UI",
+  "description": "Builds interactive MCP Apps on the official MCP Apps extension: app vs text vs elicitation, display modes, ui:// resources and _meta.ui, content vs structuredContent, app-only tools, CSP, host theming with fallback tokens, i18n, sizing, WCAG 2.2 AA, confirmed writes for operator surfaces, a dated host matrix and ecosystem radar, and a tested Preact single-file template with a fake host and TypeScript, FastMCP and stdlib Python servers.",
+  "license": "MIT",
+  "author": {
+    "name": "Webgrip",
+    "url": "https://forgejo.webgrip.dev/webgrip"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-apps",
+    "mcp-ui",
+    "apps-sdk",
+    "widgets",
+    "interactive-ui",
+    "preact",
+    "accessibility",
+    "connectors"
+  ],
+  "homepage": "https://forgejo.webgrip.dev/webgrip/ai-skills/src/branch/main/skills/mcp-apps-ui",
+  "repository": "https://forgejo.webgrip.dev/webgrip/ai-skills"
+}
